@@ -2,26 +2,236 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/* ─── Base Styles ───────────────────────────────────────────── */
 
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --color-cream: #fdfaf5;
+    --color-parchment: #f5ecd7;
+    --color-terracotta: #c1714f;
+    --color-sage: #7a9e7e;
+    --color-bark: #3d2b1f;
+    --color-gold: #bca480;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-surface text-bark font-body;
+    font-feature-settings: "kern" 1, "liga" 1;
+  }
+
+  /* Never use pure black — deepest is bark */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading text-bark;
+  }
+
+  h1 {
+    @apply text-4xl md:text-5xl lg:text-6xl font-light tracking-wide leading-tight;
+  }
+
+  h2 {
+    @apply text-3xl md:text-4xl font-normal tracking-wide;
+  }
+
+  h3 {
+    @apply text-xl md:text-2xl font-medium;
+  }
+
+  p {
+    @apply leading-relaxed;
+  }
+
+  /* Selection */
+  ::selection {
+    @apply bg-parchment text-bark;
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-cream;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-parchment-dark rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-gold;
+  }
+
+  /* Focus ring — gold */
+  *:focus-visible {
+    @apply outline-none ring-2 ring-gold ring-offset-2 ring-offset-cream;
   }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+/* ─── Component Utilities ───────────────────────────────────── */
+
+@layer components {
+  /* Section label — uppercase tracking for category/badge text */
+  .section-label {
+    @apply font-accent text-[11px] uppercase tracking-[0.12em] font-medium;
+  }
+
+  /* Price display */
+  .price-display {
+    @apply font-body font-semibold text-terracotta;
+  }
+
+  /* Gold underline that grows from center */
+  .gold-underline {
+    @apply relative;
+  }
+
+  .gold-underline::after {
+    content: "";
+    @apply absolute bottom-0 left-1/2 h-[1px] bg-gold w-0;
+    transform: translateX(-50%);
+    transition: width 0.3s ease-out;
+  }
+
+  .gold-underline:hover::after {
+    width: 100%;
+  }
+
+  /* Warm shimmer skeleton */
+  .skeleton-shimmer {
+    background: linear-gradient(
+      90deg,
+      #f5ecd7 25%,
+      #fdfaf5 37%,
+      #f5ecd7 63%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 2s linear infinite;
+  }
+
+  /* Container with max-width matching design */
+  .container-brand {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Ornamental frame — used on special sections */
+  .ornamental-frame {
+    @apply relative;
+  }
+
+  .ornamental-frame::before,
+  .ornamental-frame::after {
+    content: "";
+    @apply absolute w-8 h-8 border-gold;
+  }
+
+  .ornamental-frame::before {
+    @apply top-0 left-0 border-t border-l;
+  }
+
+  .ornamental-frame::after {
+    @apply bottom-0 right-0 border-b border-r;
+  }
+
+  /* Product card hover container */
+  .product-card-hover {
+    @apply transition-all duration-500 ease-out-expo;
+  }
+
+  .product-card-hover:hover {
+    @apply shadow-warm;
+  }
+
+  .product-card-hover:hover .product-card-image {
+    transform: scale(1.05);
+  }
+
+  .product-card-hover:hover .product-card-border {
+    @apply border-gold;
+  }
+
+  .product-card-hover:hover .product-card-name {
+    @apply text-terracotta;
+  }
+
+  .product-card-hover:hover .product-card-overlay {
+    @apply opacity-100 translate-y-0;
+  }
+
+  /* Safe area padding for iOS */
+  .safe-bottom {
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
 }
 
+/* ─── Utility Classes ───────────────────────────────────────── */
+
 @layer utilities {
+  /* Text balance for headings */
   .text-balance {
     text-wrap: balance;
   }
+
+  /* Hide scrollbar but keep scroll */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Glass morphism */
+  .glass {
+    @apply bg-cream/80 backdrop-blur-md;
+  }
+
+  /* Ornamental corners — for luxury frames */
+  .corner-ornament-tl::before {
+    content: "";
+    @apply absolute top-0 left-0 w-6 h-6 border-t-2 border-l-2 border-gold/40;
+  }
+
+  .corner-ornament-br::after {
+    content: "";
+    @apply absolute bottom-0 right-0 w-6 h-6 border-b-2 border-r-2 border-gold/40;
+  }
+
+  /* Fade mask for carousel edges */
+  .fade-mask-x {
+    mask-image: linear-gradient(
+      to right,
+      transparent,
+      black 5%,
+      black 95%,
+      transparent
+    );
+  }
+
+  /* Aspect ratios */
+  .aspect-product {
+    aspect-ratio: 4 / 5;
+  }
+
+  .aspect-hero {
+    aspect-ratio: 16 / 9;
+  }
+
+  /* Animation delays for stagger */
+  .delay-100 { animation-delay: 100ms; }
+  .delay-200 { animation-delay: 200ms; }
+  .delay-300 { animation-delay: 300ms; }
+  .delay-400 { animation-delay: 400ms; }
+  .delay-500 { animation-delay: 500ms; }
+  .delay-600 { animation-delay: 600ms; }
+  .delay-700 { animation-delay: 700ms; }
+  .delay-800 { animation-delay: 800ms; }
 }

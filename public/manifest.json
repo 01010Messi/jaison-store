@@ -1,0 +1,16 @@
+{
+  "name": "jaison — Natural Ayurvedic Beauty",
+  "short_name": "jaison",
+  "description": "Discover the ancient wisdom of Ayurvedic beauty care. 100% natural herbal powders for skin and hair.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FDFAF5",
+  "theme_color": "#3D2B1F",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "48x48",
+      "type": "image/x-icon"
+    }
+  ]
+}
