@@ -21,11 +21,13 @@ export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [announcementDismissed, setAnnouncementDismissed] = useState(true);
+  const [mounted, setMounted] = useState(false);
   const pathname = usePathname();
   const { toggleCart, itemCount } = useCartStore();
-  const count = itemCount();
+  const count = mounted ? itemCount() : 0;
 
   useEffect(() => {
+    setMounted(true);
     const dismissed = localStorage.getItem("announcement-dismissed");
     setAnnouncementDismissed(dismissed === "true");
   }, []);
@@ -54,7 +56,7 @@ export default function Header() {
         )}
       >
         {/* Announcement Bar */}
-        {!announcementDismissed && (
+        {mounted && !announcementDismissed && (
           <div className="bg-bark text-cream/90 text-center py-2 px-4 relative">
             <p className="text-xs font-accent tracking-[0.12em]">
               Pure Ayurvedic Skincare for Naturally Healthy Skin

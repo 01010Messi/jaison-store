@@ -17,9 +17,14 @@ const navItems = [
 export default function MobileNav() {
   const pathname = usePathname();
   const { openCart, itemCount } = useCartStore();
-  const count = itemCount();
+  const [mounted, setMounted] = useState(false);
+  const count = mounted ? itemCount() : 0;
   const [lastScrollY, setLastScrollY] = useState(0);
   const [isVisible, setIsVisible] = useState(true);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
