@@ -206,8 +206,8 @@ model Address {
   landmark     String?
   isDefault    Boolean @default(false)
 
-  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
-  userId String
+  user   User?   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId String?
   orders Order[] @relation("shippingAddress")
 
   createdAt DateTime @default(now())
@@ -239,8 +239,10 @@ model Order {
   id          String @id @default(cuid())
   orderNumber String @unique
 
-  user              User          @relation(fields: [userId], references: [id])
-  userId            String
+  user              User?         @relation(fields: [userId], references: [id])
+  userId            String?
+  guestEmail        String?
+  guestPhone        String?
   items             OrderItem[]
   shippingAddress   Address       @relation("shippingAddress", fields: [shippingAddressId], references: [id])
   shippingAddressId String

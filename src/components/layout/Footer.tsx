@@ -1,10 +1,11 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Instagram, Mail, Phone } from "lucide-react";
 import SectionDivider from "@/components/decorative/SectionDivider";
 
 const footerLinks = {
   "Skin Care": [
-    { href: "/shop/ubtan", label: "Ubtan" },
+    { href: "/shop/ubtan", label: "Ubtan Powder" },
     { href: "/shop/multani-mitti", label: "Multani Mitti" },
     { href: "/shop/neem-powder", label: "Neem Powder" },
     { href: "/shop/orange-peel-powder", label: "Orange Peel" },
@@ -15,7 +16,6 @@ const footerLinks = {
     { href: "/shop/mhendi-powder", label: "Mhendi" },
     { href: "/shop/reetha-powder", label: "Reetha" },
     { href: "/shop/shikakai-powder", label: "Shikakai" },
-    { href: "/shop/silkeshine", label: "Silkeshine" },
   ],
   Help: [
     { href: "/faq", label: "FAQs" },
@@ -33,20 +33,13 @@ export default function Footer() {
       <div className="container-brand pt-16 pb-12">
         {/* Logo section */}
         <div className="text-center mb-12">
-          <svg
-            width="24"
-            height="20"
-            viewBox="0 0 24 20"
-            className="mx-auto mb-2 text-sage-light"
-            fill="currentColor"
-          >
-            <ellipse cx="12" cy="7" rx="3" ry="7" opacity="0.8" />
-            <ellipse cx="7" cy="9" rx="2.5" ry="5.5" transform="rotate(-25 7 9)" opacity="0.6" />
-            <ellipse cx="17" cy="9" rx="2.5" ry="5.5" transform="rotate(25 17 9)" opacity="0.6" />
-          </svg>
-          <h2 className="font-heading text-3xl text-cream tracking-wide">
-            jaison
-          </h2>
+          <Image
+            src="/images/logo.png"
+            alt="jaison"
+            width={180}
+            height={64}
+            className="h-14 w-auto mx-auto mb-2 brightness-[1.8] contrast-[0.9]"
+          />
           <p className="text-sm text-cream/50 mt-2 font-body">
             The Essence of Herbs in Every Grain
           </p>

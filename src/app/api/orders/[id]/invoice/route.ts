@@ -37,7 +37,7 @@ export async function GET(
     // Check ownership (unless admin)
     const isAdmin =
       (session.user as { role?: string }).role === "ADMIN";
-    if (!isAdmin && order.user.email !== session.user.email) {
+    if (!isAdmin && order.user?.email !== session.user.email) {
       return NextResponse.json(
         { message: "Not authorized" },
         { status: 403 }
@@ -54,7 +54,7 @@ export async function GET(
       orderNumber: order.orderNumber,
       orderDate: order.createdAt.toLocaleDateString("en-IN"),
       customerName: order.shippingAddress.fullName,
-      customerEmail: order.user.email,
+      customerEmail: order.user?.email || order.guestEmail || "",
       customerPhone: order.shippingAddress.phone,
       shippingAddress: {
         addressLine1: order.shippingAddress.addressLine1,

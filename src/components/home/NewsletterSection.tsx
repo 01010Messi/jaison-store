@@ -53,17 +53,12 @@ export default function NewsletterSection() {
       <div className="container-brand relative z-10">
         <ScrollReveal animation="fade-up">
           <div className="max-w-xl mx-auto text-center">
-            <svg
-              width="20"
-              height="16"
-              viewBox="0 0 24 20"
-              className="mx-auto mb-4 text-sage-light"
-              fill="currentColor"
-            >
-              <ellipse cx="12" cy="7" rx="3" ry="7" opacity="0.8" />
-              <ellipse cx="7" cy="9" rx="2.5" ry="5.5" transform="rotate(-25 7 9)" opacity="0.6" />
-              <ellipse cx="17" cy="9" rx="2.5" ry="5.5" transform="rotate(25 17 9)" opacity="0.6" />
-            </svg>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/images/logo.png"
+              alt="jaison"
+              className="h-10 w-auto mx-auto mb-4 brightness-[1.8] contrast-[0.9]"
+            />
 
             <h2 className="font-heading text-2xl md:text-3xl text-cream mb-3">
               Ancient Beauty Wisdom

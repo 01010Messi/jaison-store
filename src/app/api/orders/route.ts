@@ -8,13 +8,6 @@ import { sendOrderConfirmation } from "@/lib/email";
 export async function POST(req: Request) {
   try {
     const session = await getServerSession(authOptions);
-    if (!session?.user?.email) {
-      return NextResponse.json(
-        { message: "Authentication required" },
-        { status: 401 }
-      );
-    }
-
     const body = await req.json();
     const {
       items,
@@ -26,7 +19,17 @@ export async function POST(req: Request) {
       discount,
       couponCode,
       total,
+      guestEmail,
+      guestPhone,
     } = body;
+
+    // Must be logged in OR provide guest email
+    if (!session?.user?.email && !guestEmail) {
+      return NextResponse.json(
+        { message: "Email is required for checkout" },
+        { status: 400 }
+      );
+    }
 
     if (!items?.length || !address || !paymentMethod) {
       return NextResponse.json(
@@ -42,21 +45,27 @@ export async function POST(req: Request) {
       );
     }
 
-    const user = await prisma.user.findUnique({
-      where: { email: session.user.email },
-    });
+    // Determine user (logged in) or guest
+    let userId: string | null = null;
+    let customerEmail: string;
+    const customerName: string = address.fullName;
 
-    if (!user) {
-      return NextResponse.json(
-        { message: "User not found" },
-        { status: 404 }
-      );
+    if (session?.user?.email) {
+      const user = await prisma.user.findUnique({
+        where: { email: session.user.email },
+      });
+      if (user) {
+        userId = user.id;
+      }
+      customerEmail = session.user.email;
+    } else {
+      customerEmail = guestEmail;
     }
 
-    // Save or find shipping address
+    // Save shipping address
     const savedAddress = await prisma.address.create({
       data: {
-        userId: user.id,
+        ...(userId ? { userId } : {}),
         fullName: address.fullName,
         phone: address.phone,
         addressLine1: address.addressLine1,
@@ -70,11 +79,14 @@ export async function POST(req: Request) {
 
     const orderNumber = generateOrderNumber();
 
-    // Create order with items
+    // Create order
     const order = await prisma.order.create({
       data: {
         orderNumber,
-        userId: user.id,
+        ...(userId ? { userId } : {}),
+        ...(!userId && guestEmail
+          ? { guestEmail, guestPhone: guestPhone || address.phone }
+          : {}),
         shippingAddressId: savedAddress.id,
         status: "PENDING",
         paymentMethod,
@@ -117,11 +129,11 @@ export async function POST(req: Request) {
       });
     }
 
-    // Send order confirmation email (fire and forget)
+    // Send order confirmation email
     sendOrderConfirmation({
       orderNumber: order.orderNumber,
-      customerName: savedAddress.fullName,
-      customerEmail: user.email,
+      customerName,
+      customerEmail,
       items: order.items.map((i) => ({
         name: i.name,
         quantity: i.quantity,

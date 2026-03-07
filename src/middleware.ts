@@ -25,11 +25,7 @@ export default withAuth(
           return !!token;
         }
 
-        // Checkout requires authentication
-        if (pathname.startsWith("/checkout")) {
-          return !!token;
-        }
-
+        // Checkout is open to everyone (guest checkout supported)
         return true;
       },
     },
@@ -37,5 +33,5 @@ export default withAuth(
 );
 
 export const config = {
-  matcher: ["/admin/:path*", "/account/:path*", "/checkout/:path*"],
+  matcher: ["/admin/:path*", "/account/:path*"],
 };

@@ -19,9 +19,9 @@ const config: Config = {
           dark: "#E8D5B7",
         },
         terracotta: {
-          DEFAULT: "#C1714F",
-          light: "#D4916F",
-          dark: "#A35A3A",
+          DEFAULT: "#A0885C",
+          light: "#BCA480",
+          dark: "#8A7346",
         },
         sage: {
           DEFAULT: "#7A9E7E",
@@ -29,9 +29,9 @@ const config: Config = {
           dark: "#5C7E60",
         },
         bark: {
-          DEFAULT: "#3D2B1F",
-          light: "#5C4A3A",
-          50: "#6B5B4E",
+          DEFAULT: "#1A3C34",
+          light: "#2B5248",
+          50: "#3D685C",
         },
         gold: {
           DEFAULT: "#BCA480",
@@ -40,7 +40,7 @@ const config: Config = {
         },
         surface: "#FDFAF5",
         "surface-warm": "#F5ECD7",
-        "surface-dark": "#3D2B1F",
+        "surface-dark": "#1A3C34",
         border: "#E8D5B7",
         "border-light": "#F0E6D0",
       },
@@ -50,9 +50,9 @@ const config: Config = {
         accent: ["var(--font-accent)", "system-ui", "sans-serif"],
       },
       boxShadow: {
-        warm: "0 4px 20px rgba(61, 43, 31, 0.08)",
-        "warm-lg": "0 8px 40px rgba(61, 43, 31, 0.12)",
-        "warm-xl": "0 12px 60px rgba(61, 43, 31, 0.16)",
+        warm: "0 4px 20px rgba(26, 60, 52, 0.08)",
+        "warm-lg": "0 8px 40px rgba(26, 60, 52, 0.12)",
+        "warm-xl": "0 12px 60px rgba(26, 60, 52, 0.16)",
         gold: "0 2px 12px rgba(188, 164, 128, 0.3)",
       },
       backgroundImage: {
@@ -61,13 +61,13 @@ const config: Config = {
         "paper-texture": "url('/images/patterns/paper-texture.png')",
       },
       animation: {
-        "fade-up": "fadeUp 0.6s ease-out forwards",
-        "fade-in": "fadeIn 0.8s ease-out forwards",
-        "fade-in-fast": "fadeIn 0.3s ease-out forwards",
-        "slide-in-left": "slideInLeft 0.5s ease-out forwards",
-        "slide-in-right": "slideInRight 0.5s ease-out forwards",
-        "slide-up": "slideUp 0.4s ease-out forwards",
-        "scale-in": "scaleIn 0.4s ease-out forwards",
+        "fade-up": "fadeUp 0.8s cubic-bezier(0.19, 1, 0.22, 1) forwards",
+        "fade-in": "fadeIn 1s cubic-bezier(0.19, 1, 0.22, 1) forwards",
+        "fade-in-fast": "fadeIn 0.4s cubic-bezier(0.19, 1, 0.22, 1) forwards",
+        "slide-in-left": "slideInLeft 0.7s cubic-bezier(0.19, 1, 0.22, 1) forwards",
+        "slide-in-right": "slideInRight 0.7s cubic-bezier(0.19, 1, 0.22, 1) forwards",
+        "slide-up": "slideUp 0.6s cubic-bezier(0.19, 1, 0.22, 1) forwards",
+        "scale-in": "scaleIn 0.6s cubic-bezier(0.19, 1, 0.22, 1) forwards",
         "ornament-draw": "ornamentDraw 1.2s ease-in-out forwards",
         "leaf-float": "leafFloat 6s ease-in-out infinite",
         shimmer: "shimmer 2s linear infinite",
@@ -135,7 +135,7 @@ const config: Config = {
       typography: {
         DEFAULT: {
           css: {
-            color: "#3D2B1F",
+            color: "#1A3C34",
             maxWidth: "65ch",
           },
         },

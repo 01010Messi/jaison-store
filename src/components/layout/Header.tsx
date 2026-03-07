@@ -3,25 +3,32 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Search, ShoppingBag, User, Menu } from "lucide-react";
+import Image from "next/image";
+import { Search, ShoppingBag, User, Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useCartStore } from "@/store/cart-store";
 import Drawer from "@/components/ui/Drawer";
 
 const navLinks = [
-  { href: "/shop", label: "Shop" },
-  { href: "/shop?category=skin-care", label: "Skin Care" },
-  { href: "/shop?category=hair-care", label: "Hair Care" },
-  { href: "/about", label: "Our Story" },
+  { href: "/", label: "Home" },
+  { href: "/shop", label: "Catalog" },
+  { href: "/why-jaison", label: "Why Jaison" },
+  { href: "/about", label: "About Us" },
   { href: "/contact", label: "Contact" },
 ];
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [announcementDismissed, setAnnouncementDismissed] = useState(true);
   const pathname = usePathname();
   const { toggleCart, itemCount } = useCartStore();
   const count = itemCount();
+
+  useEffect(() => {
+    const dismissed = localStorage.getItem("announcement-dismissed");
+    setAnnouncementDismissed(dismissed === "true");
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -31,97 +38,71 @@ export default function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const isHome = pathname === "/";
+  const handleDismissAnnouncement = () => {
+    setAnnouncementDismissed(true);
+    localStorage.setItem("announcement-dismissed", "true");
+  };
 
   return (
     <>
       <header
         className={cn(
           "fixed top-0 left-0 right-0 z-40 transition-all duration-500",
-          isScrolled || !isHome
-            ? "bg-cream/95 backdrop-blur-md border-b border-border/50 shadow-sm"
-            : "bg-transparent"
+          isScrolled
+            ? "bg-cream/95 backdrop-blur-md shadow-sm"
+            : "bg-cream"
         )}
       >
-        <div className="container-brand">
-          <div className="flex items-center justify-between h-16 md:h-20">
-            {/* Mobile menu button */}
+        {/* Announcement Bar */}
+        {!announcementDismissed && (
+          <div className="bg-bark text-cream/90 text-center py-2 px-4 relative">
+            <p className="text-xs font-accent tracking-[0.12em]">
+              Pure Ayurvedic Skincare for Naturally Healthy Skin
+            </p>
             <button
-              onClick={() => setIsMobileMenuOpen(true)}
-              className="md:hidden p-2 text-bark/70 hover:text-bark transition-colors"
-              aria-label="Open menu"
+              onClick={handleDismissAnnouncement}
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-cream/50 hover:text-cream transition-colors"
+              aria-label="Dismiss"
             >
-              <Menu className="h-5 w-5" />
+              <X className="h-3.5 w-3.5" />
             </button>
+          </div>
+        )}
 
-            {/* Desktop nav — left */}
-            <nav className="hidden md:flex items-center gap-8">
-              {navLinks.slice(0, 3).map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className={cn(
-                    "gold-underline text-sm font-body font-medium tracking-wide transition-colors duration-200",
-                    isScrolled || !isHome
-                      ? "text-bark/70 hover:text-bark"
-                      : "text-bark/80 hover:text-bark"
-                  )}
-                >
-                  {link.label}
-                </Link>
-              ))}
-            </nav>
-
-            {/* Logo — center */}
-            <Link
-              href="/"
-              className="absolute left-1/2 -translate-x-1/2 md:static md:translate-x-0 md:mx-auto"
-            >
-              <div className="text-center">
-                {/* Leaf motif */}
-                <svg
-                  width="20"
-                  height="16"
-                  viewBox="0 0 24 20"
-                  className="mx-auto mb-0.5 text-sage"
-                  fill="currentColor"
-                >
-                  <ellipse cx="12" cy="7" rx="3" ry="7" opacity="0.8" />
-                  <ellipse cx="7" cy="9" rx="2.5" ry="5.5" transform="rotate(-25 7 9)" opacity="0.6" />
-                  <ellipse cx="17" cy="9" rx="2.5" ry="5.5" transform="rotate(25 17 9)" opacity="0.6" />
-                </svg>
-                <span className="font-heading text-2xl md:text-3xl text-bark tracking-wide">
-                  jaison
-                </span>
-              </div>
-            </Link>
-
-            {/* Desktop nav — right */}
-            <nav className="hidden md:flex items-center gap-8">
-              {navLinks.slice(3).map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className={cn(
-                    "gold-underline text-sm font-body font-medium tracking-wide transition-colors duration-200",
-                    isScrolled || !isHome
-                      ? "text-bark/70 hover:text-bark"
-                      : "text-bark/80 hover:text-bark"
-                  )}
-                >
-                  {link.label}
-                </Link>
-              ))}
-            </nav>
-
-            {/* Actions — right */}
-            <div className="flex items-center gap-3">
+        {/* Main Header — Logo centered with actions */}
+        <div className="container-brand">
+          <div className="flex items-center justify-between py-3 md:py-4">
+            {/* Left: Mobile menu / Desktop search */}
+            <div className="flex items-center gap-3 w-[100px]">
+              <button
+                onClick={() => setIsMobileMenuOpen(true)}
+                className="md:hidden p-2 text-bark/70 hover:text-bark transition-colors"
+                aria-label="Open menu"
+              >
+                <Menu className="h-5 w-5" />
+              </button>
               <button
                 className="p-2 text-bark/70 hover:text-bark transition-colors hidden md:block"
                 aria-label="Search"
               >
                 <Search className="h-5 w-5" />
               </button>
+            </div>
+
+            {/* Center: Logo */}
+            <Link href="/" className="flex-shrink-0">
+              <Image
+                src="/images/logo.png"
+                alt="jaison"
+                width={220}
+                height={80}
+                className="h-16 md:h-24 w-auto mix-blend-multiply"
+                priority
+              />
+            </Link>
+
+            {/* Right: Account + Cart */}
+            <div className="flex items-center gap-3 w-[100px] justify-end">
               <Link
                 href="/account"
                 className="p-2 text-bark/70 hover:text-bark transition-colors hidden md:block"
@@ -144,6 +125,26 @@ export default function Header() {
             </div>
           </div>
         </div>
+
+        {/* Navigation Bar — below logo */}
+        <nav className="hidden md:block border-t border-bark/10">
+          <div className="container-brand">
+            <div className="flex items-center justify-center gap-8 py-2.5">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={cn(
+                    "gold-underline text-sm font-body font-medium tracking-wide transition-colors duration-200 text-bark/70 hover:text-bark",
+                    pathname === link.href && "text-bark"
+                  )}
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </div>
+          </div>
+        </nav>
       </header>
 
       {/* Mobile Menu Drawer */}

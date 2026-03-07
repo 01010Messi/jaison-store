@@ -1,6 +1,8 @@
 import { Resend } from "resend";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+function getResend() {
+  return new Resend(process.env.RESEND_API_KEY);
+}
 
 const FROM = process.env.EMAIL_FROM || "orders@jaisonskincare.com";
 const APP_NAME = "jaison";
@@ -134,7 +136,7 @@ export async function sendOrderConfirmation(data: OrderEmailData) {
 </body>
 </html>`;
 
-  const { error } = await resend.emails.send({
+  const { error } = await getResend().emails.send({
     from: `${APP_NAME} <${FROM}>`,
     to: data.customerEmail,
     subject: `Order Confirmed — #${data.orderNumber}`,
@@ -186,7 +188,7 @@ export async function sendShippingUpdate(data: {
 </body>
 </html>`;
 
-  const { error } = await resend.emails.send({
+  const { error } = await getResend().emails.send({
     from: `${APP_NAME} <${FROM}>`,
     to: data.customerEmail,
     subject: `Your order #${data.orderNumber} has been shipped!`,
@@ -235,7 +237,7 @@ export async function sendWelcomeEmail(data: {
 </body>
 </html>`;
 
-  const { error } = await resend.emails.send({
+  const { error } = await getResend().emails.send({
     from: `${APP_NAME} <${FROM}>`,
     to: data.email,
     subject: `Welcome to jaison, ${data.name}!`,

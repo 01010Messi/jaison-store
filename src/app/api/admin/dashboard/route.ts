@@ -69,7 +69,7 @@ export async function GET() {
         orderNumber: o.orderNumber,
         status: o.status,
         total: Number(o.total),
-        customerName: o.user.name || o.user.email,
+        customerName: o.user?.name || o.user?.email || o.guestEmail || "Guest",
         itemCount: o.items.length,
         createdAt: o.createdAt,
       })),

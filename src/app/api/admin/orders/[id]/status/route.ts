@@ -62,7 +62,7 @@ export async function PATCH(
           orderDate: order.createdAt.toISOString().split("T")[0],
           customerName: order.shippingAddress.fullName,
           customerPhone: order.shippingAddress.phone,
-          customerEmail: order.user.email,
+          customerEmail: order.user?.email || order.guestEmail || "",
           addressLine1: order.shippingAddress.addressLine1,
           addressLine2: order.shippingAddress.addressLine2 || undefined,
           city: order.shippingAddress.city,
@@ -98,8 +98,8 @@ export async function PATCH(
 
       // Send shipping email
       sendShippingUpdate({
-        customerName: order.user.name || order.shippingAddress.fullName,
-        customerEmail: order.user.email,
+        customerName: order.user?.name || order.shippingAddress.fullName,
+        customerEmail: order.user?.email || order.guestEmail || "",
         orderNumber: order.orderNumber,
         trackingNumber: body.trackingNumber,
         trackingUrl:

@@ -168,6 +168,7 @@ function ShopContent() {
                 slug: product.slug,
                 price: product.price,
                 image: product.image,
+                images: product.images,
                 category: product.category,
                 stock: 50,
               }}

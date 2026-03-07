@@ -6,9 +6,9 @@ import OrnamentalBorder from "@/components/decorative/OrnamentalBorder";
 import SectionDivider from "@/components/decorative/SectionDivider";
 
 export const metadata: Metadata = {
-  title: "Our Story | jaison Natural Herbals",
+  title: "About Us | jaison Skincare",
   description:
-    "Learn about jaison — our journey from ancient ayurvedic wisdom to modern, natural skincare and haircare products crafted with pure ingredients.",
+    "Jaison Herbals began in Nashik with a simple vision — bringing ancient Ayurvedic wisdom into modern lives. 100% natural, chemical-free products crafted with care.",
 };
 
 const values = [
@@ -20,7 +20,7 @@ const values = [
   {
     title: "Ayurvedic Heritage",
     description:
-      "Our formulations are rooted in centuries-old ayurvedic wisdom, refined for the modern lifestyle without losing their traditional essence.",
+      "Our formulations are rooted in centuries-old Ayurvedic wisdom, refined for the modern lifestyle without losing their traditional essence.",
   },
   {
     title: "Handcrafted Quality",
@@ -40,78 +40,81 @@ export default function AboutPage() {
       {/* Hero */}
       <section className="bg-surface-warm py-16 md:py-24">
         <div className="container-brand text-center max-w-3xl mx-auto">
-          <p className="section-label text-sage mb-3">Our Story</p>
           <h1 className="font-heading text-3xl md:text-5xl text-bark font-light tracking-wide leading-tight">
-            Rooted in Tradition,
-            <br />
-            <span className="text-terracotta">Made for Today</span>
+            About Us
           </h1>
           <div className="flex justify-center mt-4">
             <GoldRule variant="leaf" width="w-32" />
           </div>
-          <p className="mt-6 text-bark/60 font-body leading-relaxed">
-            jaison was born from a simple belief — that the ancient wisdom of
-            Ayurveda holds the key to truly effective, truly natural beauty care.
-            In a world overwhelmed by chemical-laden products, we set out to
-            create something different: honest, pure, and powerful herbal
-            products that honor centuries of Indian tradition.
-          </p>
         </div>
       </section>
 
-      {/* Story section */}
+      {/* Born from Nature's Wisdom */}
       <section className="py-16 md:py-24">
         <div className="container-brand">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div>
+              <h2 className="font-heading text-2xl md:text-3xl text-bark mb-6">
+                Born from Nature&apos;s Wisdom
+              </h2>
+              <div className="space-y-4 text-bark/70 font-body text-base leading-relaxed">
+                <p>
+                  <strong className="text-bark">Jaison Herbals began in Nashik with a simple vision</strong> — bringing
+                  ancient Ayurvedic wisdom into modern lives.
+                </p>
+                <p>
+                  Rooted in tradition, we honor this heritage through 100% natural,
+                  chemical-free products crafted with care.
+                </p>
+                <p>
+                  Every ingredient is thoughtfully selected from nature&apos;s bounty,
+                  ensuring authentic wellness reaches you in its purest form — where
+                  traditional knowledge meets mindful craftsmanship.
+                </p>
+              </div>
+            </div>
+
             <OrnamentalBorder variant="full" className="p-3">
               <div className="relative aspect-[4/5] overflow-hidden rounded-sm">
                 <Image
                   src="/images/brand-story.jpg"
-                  alt="jaison products styled"
+                  alt="jaison herbals natural products"
                   fill
                   className="object-cover"
                   sizes="(max-width: 768px) 100vw, 50vw"
                 />
               </div>
             </OrnamentalBorder>
-
-            <div>
-              <p className="section-label text-sage mb-3">The Beginning</p>
-              <h2 className="font-heading text-2xl md:text-3xl text-bark mb-4">
-                From Kitchen Recipes to Craft Herbals
-              </h2>
-              <GoldRule variant="simple" width="w-16" className="mb-6" />
-              <div className="space-y-4 text-bark/60 font-body text-sm leading-relaxed">
-                <p>
-                  The jaison journey began with family — with grandmothers who
-                  knew the power of turmeric for glowing skin, of amla for
-                  lustrous hair, of neem for clear complexions. These weren&apos;t
-                  just ingredients to them; they were rituals passed down
-                  through generations.
-                </p>
-                <p>
-                  We took these time-tested recipes and refined them with care,
-                  ensuring the finest quality ingredients, the right proportions,
-                  and the perfect grain size for comfortable application. The
-                  result is a range of products that are as effective as they are
-                  pure.
-                </p>
-                <p>
-                  Today, jaison serves thousands of customers who have chosen to
-                  return to nature for their beauty care needs. Every pouch and
-                  jar that leaves our facility carries the promise of purity,
-                  potency, and the power of Ayurveda.
-                </p>
-              </div>
-            </div>
           </div>
         </div>
       </section>
 
       <SectionDivider variant="gold" />
 
-      {/* Values */}
+      {/* Our Philosophy */}
       <section className="py-16 md:py-24 bg-surface-warm">
+        <div className="container-brand max-w-3xl mx-auto">
+          <div className="text-center mb-10">
+            <p className="text-2xl mb-2">🌿</p>
+            <h2 className="font-heading text-2xl md:text-3xl text-bark mb-4">
+              Our Philosophy
+            </h2>
+            <GoldRule variant="simple" width="w-16 mx-auto" className="mb-6" />
+          </div>
+          <div className="space-y-4 text-bark/70 font-body text-base leading-relaxed text-center">
+            <p>
+              We believe true skincare does not need harsh chemicals or shortcuts.
+            </p>
+            <p>
+              Our approach focuses on <strong className="text-bark">purity, simplicity, and time-tested
+              Ayurvedic practices</strong> that support healthy skin naturally.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Values */}
+      <section className="py-16 md:py-24">
         <div className="container-brand text-center">
           <p className="section-label text-sage mb-3">What We Stand For</p>
           <h2 className="font-heading text-2xl md:text-3xl text-bark mb-12">
@@ -135,9 +138,8 @@ export default function AboutPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-16 md:py-24 text-center">
+      <section className="py-16 md:py-24 text-center bg-surface-warm">
         <div className="container-brand max-w-xl mx-auto">
-          <p className="section-label text-sage mb-3">Experience the Difference</p>
           <h2 className="font-heading text-2xl md:text-3xl text-bark mb-6">
             Ready to Go Natural?
           </h2>

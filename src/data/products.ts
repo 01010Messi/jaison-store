@@ -17,6 +17,7 @@ export interface ProductData {
   howToUse: string;
   benefits: string;
   image: string;
+  images: string[];
   tags: string[];
   isFeatured: boolean;
 }
@@ -47,7 +48,7 @@ export const categories = [
 
 export const products: ProductData[] = [
   {
-    name: "Ubtan Face Pack",
+    name: "Ubtan Powder",
     slug: "ubtan",
     sku: "JAIS-UBTAN-001",
     price: 550,
@@ -57,7 +58,7 @@ export const products: ProductData[] = [
     shortDescription:
       "A luxurious blend of turmeric, sandalwood, and gram flour for glowing skin.",
     description:
-      "Our Ubtan Face Pack is a time-tested ayurvedic formulation that has been used for centuries to achieve naturally glowing, blemish-free skin. This premium blend combines the brightening power of turmeric with the cooling properties of sandalwood, the cleansing action of gram flour, and the nourishing benefits of almond powder.\n\nUnlike chemical-laden products, this ubtan works gently with your skin's natural processes. It removes dead skin cells, unclogs pores, evens out skin tone, and leaves your face feeling soft, smooth, and luminous. The traditional recipe has been refined to ensure the finest grain size for comfortable application and maximum effectiveness.\n\nPacked in a jar to preserve freshness and potency, our Ubtan Face Pack is your daily gateway to the radiant complexion that generations of women have cherished.",
+      "Our Ubtan Powder is a time-tested ayurvedic formulation that has been used for centuries to achieve naturally glowing, blemish-free skin. This premium blend combines the brightening power of turmeric with the cooling properties of sandalwood, the cleansing action of gram flour, and the nourishing benefits of almond powder.\n\nUnlike chemical-laden products, this ubtan works gently with your skin's natural processes. It removes dead skin cells, unclogs pores, evens out skin tone, and leaves your face feeling soft, smooth, and luminous. The traditional recipe has been refined to ensure the finest grain size for comfortable application and maximum effectiveness.\n\nPacked in a jar to preserve freshness and potency, our Ubtan Powder is your daily gateway to the radiant complexion that generations of women have cherished.",
     ingredients:
       "Turmeric (Curcuma longa), Sandalwood Powder (Santalum album), Gram Flour (Cicer arietinum), Almond Powder (Prunus dulcis), Rose Petal Powder (Rosa centifolia), Saffron Extract (Crocus sativus), Milk Powder, Camphor (trace)",
     howToUse:
@@ -65,6 +66,12 @@ export const products: ProductData[] = [
     benefits:
       "Brightens complexion naturally\nReduces tan and pigmentation\nExfoliates dead skin cells gently\nUnclogs pores and prevents acne\nImproves skin texture and elasticity\nAnti-inflammatory and antibacterial\nSuitable for all skin types",
     image: "/images/products/ubtan.jpg",
+    images: [
+      "/images/products/ubtan.jpg",
+      "/images/products/ubtan-styled.jpg",
+      "/images/products/ubtan-styled2.jpg",
+      "/images/products/ubtan-styled3.jpg",
+    ],
     tags: ["bestseller", "skin-brightening", "anti-tan", "face-pack"],
     isFeatured: true,
   },
@@ -85,7 +92,12 @@ export const products: ProductData[] = [
       "For hair mask: Mix 3-4 tablespoons with warm water or coconut oil to form a paste. Apply to scalp and hair. Leave for 30-45 minutes, then wash with mild shampoo. For hair rinse: Soak 2 tablespoons in water overnight, strain, and use as a final rinse after washing. For consumption: Mix 1 teaspoon in warm water with honey. Use 2-3 times a week for best results.",
     benefits:
       "Strengthens hair follicles and reduces hair fall\nPrevents premature greying\nPromotes hair growth and thickness\nNatural conditioner for soft, shiny hair\nRich in Vitamin C and antioxidants\nFights dandruff and scalp infections\nCan be used on skin for brightening",
-    image: "/images/products/amla.jpg",
+    image: "/images/products/amla-front.jpg",
+    images: [
+      "/images/products/amla-front.jpg",
+      "/images/products/amla-back.jpg",
+      "/images/products/amla-styled.jpg",
+    ],
     tags: ["hair-growth", "anti-greying", "vitamin-c", "natural-conditioner"],
     isFeatured: true,
   },
@@ -106,7 +118,12 @@ export const products: ProductData[] = [
       "For face pack: Mix 2 tablespoons with rose water or yogurt. Apply on face, leave for 15-20 minutes, wash off. For spot treatment: Make a thick paste with water and apply on pimples overnight. For hair: Mix with coconut oil and apply on scalp to fight dandruff. For bath: Add 2-3 tablespoons to bath water for antibacterial cleansing. Use 2-3 times a week.",
     benefits:
       "Powerful antibacterial and antifungal properties\nClears acne and prevents breakouts\nReduces inflammation and redness\nTreats dandruff and scalp infections\nPurifies and detoxifies skin\nHelps fade acne scars and dark spots\nSuitable for oily and combination skin",
-    image: "/images/products/neem.jpg",
+    image: "/images/products/neem-front.jpg",
+    images: [
+      "/images/products/neem-front.jpg",
+      "/images/products/neem-back.jpg",
+      "/images/products/neem-styled.jpg",
+    ],
     tags: ["anti-acne", "antibacterial", "skin-purifying", "face-pack"],
     isFeatured: true,
   },
@@ -127,7 +144,13 @@ export const products: ProductData[] = [
       "As natural shampoo: Mix 3-4 tablespoons with warm water to form a paste. Apply to wet hair and scalp, massage gently for 2-3 minutes, then rinse thoroughly. No additional shampoo needed. As hair pack: Mix with amla and reetha powder in equal parts for a complete hair treatment. Leave for 20 minutes, then wash off. Use 2-3 times a week for best results.",
     benefits:
       "Gentle, sulfate-free hair cleansing\nMaintains scalp's natural pH balance\nNatural detangler — reduces knots and breakage\nStrengthens hair roots and reduces hair fall\nAdds natural shine and volume\nFights dandruff without drying the scalp\nSafe for colour-treated hair",
-    image: "/images/products/shikakai.jpg",
+    image: "/images/products/shikakai-front.jpg",
+    images: [
+      "/images/products/shikakai-front.jpg",
+      "/images/products/shikakai-back.jpg",
+      "/images/products/shikakai-styled.jpg",
+      "/images/products/shikakai-styled2.jpg",
+    ],
     tags: [
       "natural-shampoo",
       "hair-cleansing",
@@ -154,7 +177,12 @@ export const products: ProductData[] = [
       "Mix 2-3 tablespoons with rose water, yogurt, or honey to form a smooth paste. Apply evenly on face and neck. Leave for 15-20 minutes until it dries. Wash off with lukewarm water using gentle circular motions. Follow with a light moisturizer. For oily skin, use 2-3 times a week. For dry skin, add honey or milk and use once a week.",
     benefits:
       "Deep cleanses pores and removes impurities\nControls excess oil and sebum production\nTightens and tones skin naturally\nReduces appearance of pores\nImproves blood circulation to the face\nNatural cooling effect — soothes irritated skin\nIdeal for oily and combination skin types",
-    image: "/images/products/multani.jpg",
+    image: "/images/products/multani-front.jpg",
+    images: [
+      "/images/products/multani-front.jpg",
+      "/images/products/multani-back.jpg",
+      "/images/products/multani-styled.jpg",
+    ],
     tags: ["face-pack", "oil-control", "deep-cleansing", "clay-mask"],
     isFeatured: true,
   },
@@ -175,7 +203,12 @@ export const products: ProductData[] = [
       "For face pack: Mix 2 tablespoons with yogurt or honey. Apply on face and neck, leave for 15-20 minutes, wash off. For scrub: Mix with a little water and gently exfoliate in circular motions. For tan removal: Mix with lemon juice and apply on tanned areas for 10 minutes. For lip care: Mix with honey and scrub lips gently. Use 2-3 times a week.",
     benefits:
       "Rich in Vitamin C for skin brightening\nNatural bleaching agent — reduces tan\nFades dark spots and pigmentation\nStimulates collagen production\nGentle exfoliation removes dead skin cells\nAnti-ageing — fights fine lines and wrinkles\nControls acne and blackheads",
-    image: "/images/products/orange.jpg",
+    image: "/images/products/orange-front.jpg",
+    images: [
+      "/images/products/orange-front.jpg",
+      "/images/products/orange-back.jpg",
+      "/images/products/orange-styled.jpg",
+    ],
     tags: ["vitamin-c", "skin-brightening", "anti-tan", "exfoliating"],
     isFeatured: true,
   },
@@ -197,7 +230,11 @@ export const products: ProductData[] = [
       "Mix the desired amount with warm water (or black tea for richer colour) to form a yogurt-like paste. Let it sit for 6-8 hours or overnight for maximum colour release. Apply to clean, dry hair section by section. Cover with a shower cap and leave for 2-4 hours depending on desired intensity. Rinse thoroughly with plain water — do not shampoo for 24 hours. For conditioning without colour, mix with yogurt and apply for 30 minutes.",
     benefits:
       "100% natural hair colouring — no chemicals\nDeep conditions and softens hair\nStrengthens hair strands and reduces breakage\nCovers grey hair effectively\nAdds volume and body to fine hair\nCools the scalp and prevents dandruff\nSafe for regular use — no side effects",
-    image: "/images/products/mhendi.jpg",
+    image: "/images/products/mhendi-front.jpg",
+    images: [
+      "/images/products/mhendi-front.jpg",
+      "/images/products/mhendi-back.jpg",
+    ],
     tags: ["hair-colour", "natural-dye", "deep-conditioning", "henna"],
     isFeatured: false,
   },
@@ -218,7 +255,13 @@ export const products: ProductData[] = [
       "As natural shampoo: Soak 3-4 tablespoons in warm water for 30 minutes. Apply the soapy solution to wet hair, massage well, and rinse. As hair pack: Mix with shikakai and amla in equal parts. Add water to make a paste, apply on hair for 20 minutes, then wash off. For laundry/cleaning: Mix with warm water for a natural, eco-friendly cleanser. Use 2-3 times a week.",
     benefits:
       "Natural saponins provide gentle, chemical-free cleansing\nDoesn't strip hair of natural oils\nAdds natural shine and softness\nAnti-dandruff and anti-lice properties\nEnvironmentally friendly — 100% biodegradable\nSuitable for sensitive scalps\nCan be combined with shikakai and amla for complete hair care",
-    image: "/images/products/reetha.jpg",
+    image: "/images/products/reetha-front.jpg",
+    images: [
+      "/images/products/reetha-front.jpg",
+      "/images/products/reetha-back.jpg",
+      "/images/products/reetha-styled.jpg",
+      "/images/products/reetha-styled2.jpg",
+    ],
     tags: ["natural-cleanser", "soapnut", "eco-friendly", "gentle-shampoo"],
     isFeatured: false,
   },
@@ -239,30 +282,14 @@ export const products: ProductData[] = [
       "For face pack: Mix 1-2 tablespoons with multani mitti and rose water. Apply for 15-20 minutes, wash off. For body powder: Mix with sandalwood and gram flour for a fragrant body powder. For bath: Add to bathing water for aromatic, skin-softening bath. For massage oil: Infuse in coconut oil for 2 weeks, strain, and use as body oil. Use 2-3 times a week.",
     benefits:
       "Natural skin lightening and brightening\nAnti-ageing — reduces fine lines and wrinkles\nPleasant, earthy natural fragrance\nAnti-inflammatory — soothes irritated skin\nAntioxidant protection against environmental damage\nPromotes even skin tone\nTraditional ingredient in natural perfumery",
-    image: "/images/products/nagmotha.jpg",
+    image: "/images/products/nagmotha-front.jpg",
+    images: [
+      "/images/products/nagmotha-front.jpg",
+      "/images/products/nagmotha-back.jpg",
+      "/images/products/nagmotha-styled.jpg",
+      "/images/products/nagmotha-styled2.jpg",
+    ],
     tags: ["skin-lightening", "anti-ageing", "aromatic", "rare-herb"],
-    isFeatured: false,
-  },
-  {
-    name: "Silkeshine Hair Serum",
-    slug: "silkeshine",
-    sku: "JAIS-SILK-001",
-    price: 250,
-    weight: 100,
-    category: "Hair Care",
-    categorySlug: "hair-care",
-    shortDescription:
-      "Lightweight herbal hair serum for instant shine, smoothness, and frizz control.",
-    description:
-      "jaison Silkeshine is our signature hair serum formulated with a blend of precious ayurvedic oils and herbal extracts. This lightweight, non-greasy formula tames frizz, adds brilliant shine, and protects your hair from heat and environmental damage.\n\nUnlike silicone-based serums that merely coat the hair surface, Silkeshine uses natural plant oils that penetrate the hair shaft to nourish from within. The result is hair that's genuinely healthier — not just temporarily smoothed. Each application delivers deep conditioning, split-end repair, and a lustrous finish.\n\nThe unique blend includes cold-pressed argan oil, bhringraj extract, and jojoba oil — each chosen for their proven hair-transforming properties.",
-    ingredients:
-      "Argan Oil (Argania spinosa), Bhringraj Extract (Eclipta alba), Jojoba Oil (Simmondsia chinensis), Almond Oil (Prunus dulcis), Vitamin E (Tocopherol), Rose Essential Oil",
-    howToUse:
-      "Take 2-3 drops (more for longer hair) on palms. Rub palms together and apply through damp or dry hair, focusing on mid-lengths and ends. Do not apply to roots unless scalp is very dry. Can be used before heat styling for protection, or after styling for finishing shine. Use daily or as needed.",
-    benefits:
-      "Instant frizz control and smoothness\nAdds brilliant, natural shine\nProtects from heat styling damage\nRepairs split ends\nLightweight, non-greasy formula\nDeep nourishment with natural oils\nPleasant, subtle rose fragrance",
-    image: "/images/products/ubtan.jpg", // Placeholder — no styled image for Silkeshine
-    tags: ["hair-serum", "frizz-control", "shine", "heat-protection"],
     isFeatured: false,
   },
 ];

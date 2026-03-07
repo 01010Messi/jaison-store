@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useSession } from "next-auth/react";
 import {
   MapPin,
   CreditCard,
@@ -13,6 +14,7 @@ import {
   Check,
   ShoppingBag,
   ArrowLeft,
+  Mail,
 } from "lucide-react";
 import { useCartStore } from "@/store/cart-store";
 import { formatPrice, cn } from "@/lib/utils";
@@ -31,6 +33,7 @@ const steps: { key: Step; label: string; icon: typeof MapPin }[] = [
 ];
 
 interface AddressForm {
+  email: string;
   fullName: string;
   phone: string;
   addressLine1: string;
@@ -51,6 +54,9 @@ const indianStates = [
 ];
 
 export default function CheckoutPage() {
+  const { data: session } = useSession();
+  const isLoggedIn = !!session?.user;
+
   const { items, subtotal, clearCart } = useCartStore();
   const [currentStep, setCurrentStep] = useState<Step>("address");
   const [paymentMethod, setPaymentMethod] = useState<"RAZORPAY" | "COD">("RAZORPAY");
@@ -59,7 +65,8 @@ export default function CheckoutPage() {
   const [orderNumber, setOrderNumber] = useState("");
 
   const [address, setAddress] = useState<AddressForm>({
-    fullName: "",
+    email: session?.user?.email || "",
+    fullName: session?.user?.name || "",
     phone: "",
     addressLine1: "",
     addressLine2: "",
@@ -79,6 +86,11 @@ export default function CheckoutPage() {
   const validateAddress = (): boolean => {
     const newErrors: Partial<Record<keyof AddressForm, string>> = {};
 
+    if (!address.email.trim()) {
+      newErrors.email = "Email is required";
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(address.email)) {
+      newErrors.email = "Enter a valid email address";
+    }
     if (!address.fullName.trim()) newErrors.fullName = "Name is required";
     if (!address.phone.trim()) {
       newErrors.phone = "Phone is required";
@@ -110,21 +122,37 @@ export default function CheckoutPage() {
     setIsProcessing(true);
 
     try {
+      const orderPayload = {
+        items: items.map((i) => ({
+          productId: i.productId,
+          name: i.name,
+          quantity: i.quantity,
+          price: i.price,
+          image: i.image,
+        })),
+        address: {
+          fullName: address.fullName,
+          phone: address.phone,
+          addressLine1: address.addressLine1,
+          addressLine2: address.addressLine2,
+          city: address.city,
+          state: address.state,
+          pincode: address.pincode,
+          landmark: address.landmark,
+        },
+        ...(!isLoggedIn && {
+          guestEmail: address.email,
+          guestPhone: address.phone,
+        }),
+      };
+
       if (paymentMethod === "RAZORPAY") {
-        // Create Razorpay order
         const res = await fetch("/api/payment/create-order", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             amount: grandTotal,
-            items: items.map((i) => ({
-              productId: i.productId,
-              name: i.name,
-              quantity: i.quantity,
-              price: i.price,
-              image: i.image,
-            })),
-            address,
+            ...orderPayload,
           }),
         });
 
@@ -136,7 +164,6 @@ export default function CheckoutPage() {
           return;
         }
 
-        // Open Razorpay checkout
         const options = {
           key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID,
           amount: data.amount,
@@ -149,7 +176,6 @@ export default function CheckoutPage() {
             razorpay_order_id: string;
             razorpay_signature: string;
           }) => {
-            // Verify payment
             const verifyRes = await fetch("/api/payment/verify", {
               method: "POST",
               headers: { "Content-Type": "application/json" },
@@ -174,10 +200,11 @@ export default function CheckoutPage() {
           },
           prefill: {
             name: address.fullName,
+            email: address.email,
             contact: address.phone,
           },
           theme: {
-            color: "#C1714F",
+            color: "#1A3C34",
           },
           modal: {
             ondismiss: () => {
@@ -186,7 +213,6 @@ export default function CheckoutPage() {
           },
         };
 
-        // Load Razorpay script
         const script = document.createElement("script");
         script.src = "https://checkout.razorpay.com/v1/checkout.js";
         script.onload = () => {
@@ -196,19 +222,11 @@ export default function CheckoutPage() {
         };
         document.body.appendChild(script);
       } else {
-        // COD order
         const res = await fetch("/api/orders", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
-            items: items.map((i) => ({
-              productId: i.productId,
-              name: i.name,
-              quantity: i.quantity,
-              price: i.price,
-              image: i.image,
-            })),
-            address,
+            ...orderPayload,
             paymentMethod: "COD",
             subtotal: total,
             shippingCost: shipping,
@@ -263,7 +281,7 @@ export default function CheckoutPage() {
     );
   }
 
-  // Empty cart redirect
+  // Empty cart
   if (items.length === 0) {
     return (
       <div className="min-h-[60vh] flex flex-col items-center justify-center px-4">
@@ -342,11 +360,49 @@ export default function CheckoutPage() {
               {/* Step 1: Address */}
               {currentStep === "address" && (
                 <div>
+                  {/* Guest login prompt */}
+                  {!isLoggedIn && (
+                    <div className="flex items-center gap-3 p-4 bg-parchment/30 border border-border/50 rounded-sm mb-6">
+                      <Mail className="h-4 w-4 text-sage flex-shrink-0" />
+                      <p className="text-xs text-bark/60 font-body">
+                        Checking out as a guest.{" "}
+                        <Link
+                          href="/login?redirect=/checkout"
+                          className="text-terracotta font-medium hover:underline"
+                        >
+                          Log in
+                        </Link>{" "}
+                        for a faster checkout experience.
+                      </p>
+                    </div>
+                  )}
+
                   <h2 className="font-heading text-xl text-bark mb-6">
-                    Shipping Address
+                    {isLoggedIn ? "Shipping Address" : "Contact & Shipping"}
                   </h2>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    {/* Email */}
+                    <div className="md:col-span-2">
+                      <Input
+                        label="Email Address"
+                        type="email"
+                        value={address.email}
+                        onChange={(e) =>
+                          setAddress({ ...address, email: e.target.value })
+                        }
+                        error={errors.email}
+                        required
+                        placeholder="your@email.com"
+                        disabled={isLoggedIn}
+                      />
+                      {!isLoggedIn && (
+                        <p className="mt-1 text-[11px] text-bark/40 font-body">
+                          Order confirmation will be sent to this email
+                        </p>
+                      )}
+                    </div>
+
                     <Input
                       label="Full Name"
                       value={address.fullName}
@@ -472,7 +528,6 @@ export default function CheckoutPage() {
                   </h2>
 
                   <div className="space-y-3">
-                    {/* Razorpay option */}
                     <button
                       onClick={() => setPaymentMethod("RAZORPAY")}
                       className={cn(
@@ -496,16 +551,13 @@ export default function CheckoutPage() {
                       </div>
                       <CreditCard className="h-5 w-5 text-bark/50" />
                       <div className="text-left">
-                        <p className="font-heading text-sm text-bark">
-                          Pay Online
-                        </p>
+                        <p className="font-heading text-sm text-bark">Pay Online</p>
                         <p className="text-[11px] text-bark/40 font-body">
                           UPI, Credit/Debit Card, Net Banking, Wallets
                         </p>
                       </div>
                     </button>
 
-                    {/* COD option */}
                     <button
                       onClick={() => setPaymentMethod("COD")}
                       className={cn(
@@ -529,9 +581,7 @@ export default function CheckoutPage() {
                       </div>
                       <Banknote className="h-5 w-5 text-bark/50" />
                       <div className="text-left">
-                        <p className="font-heading text-sm text-bark">
-                          Cash on Delivery
-                        </p>
+                        <p className="font-heading text-sm text-bark">Cash on Delivery</p>
                         <p className="text-[11px] text-bark/40 font-body">
                           Pay when you receive your order (+₹40 COD fee)
                         </p>
@@ -540,17 +590,10 @@ export default function CheckoutPage() {
                   </div>
 
                   <div className="mt-8 flex gap-3">
-                    <Button
-                      variant="ghost"
-                      onClick={() => setCurrentStep("address")}
-                    >
+                    <Button variant="ghost" onClick={() => setCurrentStep("address")}>
                       Back
                     </Button>
-                    <Button
-                      variant="primary"
-                      size="lg"
-                      onClick={handleNextStep}
-                    >
+                    <Button variant="primary" size="lg" onClick={handleNextStep}>
                       Review Order
                     </Button>
                   </div>
@@ -564,7 +607,28 @@ export default function CheckoutPage() {
                     Review Your Order
                   </h2>
 
-                  {/* Shipping address summary */}
+                  {/* Contact info (for guests) */}
+                  {!isLoggedIn && (
+                    <div className="border border-border rounded-sm p-4 mb-6">
+                      <div className="flex items-center justify-between mb-2">
+                        <div className="flex items-center gap-2">
+                          <Mail className="h-4 w-4 text-sage" />
+                          <span className="font-accent text-xs uppercase tracking-wider text-bark/60">
+                            Contact
+                          </span>
+                        </div>
+                        <button
+                          onClick={() => setCurrentStep("address")}
+                          className="text-xs text-terracotta font-accent uppercase tracking-wider"
+                        >
+                          Edit
+                        </button>
+                      </div>
+                      <p className="text-xs text-bark/60 font-body">{address.email}</p>
+                    </div>
+                  )}
+
+                  {/* Shipping address */}
                   <div className="border border-border rounded-sm p-4 mb-6">
                     <div className="flex items-center justify-between mb-2">
                       <div className="flex items-center gap-2">
@@ -580,9 +644,7 @@ export default function CheckoutPage() {
                         Edit
                       </button>
                     </div>
-                    <p className="font-heading text-sm text-bark">
-                      {address.fullName}
-                    </p>
+                    <p className="font-heading text-sm text-bark">{address.fullName}</p>
                     <p className="text-xs text-bark/60 font-body leading-relaxed mt-1">
                       {address.addressLine1}
                       {address.addressLine2 && `, ${address.addressLine2}`}
@@ -593,7 +655,7 @@ export default function CheckoutPage() {
                     </p>
                   </div>
 
-                  {/* Payment method summary */}
+                  {/* Payment method */}
                   <div className="border border-border rounded-sm p-4 mb-6">
                     <div className="flex items-center justify-between mb-2">
                       <div className="flex items-center gap-2">
@@ -626,10 +688,7 @@ export default function CheckoutPage() {
                     </div>
                     <div className="space-y-3">
                       {items.map((item) => (
-                        <div
-                          key={item.productId}
-                          className="flex items-center gap-3"
-                        >
+                        <div key={item.productId} className="flex items-center gap-3">
                           <div className="relative w-12 h-14 bg-parchment rounded-sm overflow-hidden shrink-0">
                             {item.image && (
                               <Image
@@ -642,12 +701,8 @@ export default function CheckoutPage() {
                             )}
                           </div>
                           <div className="flex-1 min-w-0">
-                            <p className="font-heading text-sm text-bark truncate">
-                              {item.name}
-                            </p>
-                            <p className="text-xs text-bark/40 font-body">
-                              Qty: {item.quantity}
-                            </p>
+                            <p className="font-heading text-sm text-bark truncate">{item.name}</p>
+                            <p className="text-xs text-bark/40 font-body">Qty: {item.quantity}</p>
                           </div>
                           <p className="font-body text-sm font-semibold text-bark">
                             {formatPrice(item.price * item.quantity)}
@@ -670,8 +725,7 @@ export default function CheckoutPage() {
                   </Button>
 
                   <p className="text-center text-[11px] text-bark/40 font-body mt-3">
-                    By placing this order, you agree to our Terms of Service and
-                    Privacy Policy.
+                    By placing this order, you agree to our Terms of Service and Privacy Policy.
                   </p>
                 </div>
               )}
@@ -681,18 +735,12 @@ export default function CheckoutPage() {
           {/* Order summary sidebar */}
           <div className="lg:col-span-1">
             <div className="bg-surface-warm p-6 rounded-sm border border-border/50 sticky top-24">
-              <h3 className="font-heading text-lg text-bark mb-4">
-                Order Summary
-              </h3>
+              <h3 className="font-heading text-lg text-bark mb-4">Order Summary</h3>
               <GoldRule variant="simple" width="w-full" className="mb-4" />
 
-              {/* Items preview */}
               <div className="space-y-2 mb-4">
                 {items.map((item) => (
-                  <div
-                    key={item.productId}
-                    className="flex justify-between text-sm"
-                  >
+                  <div key={item.productId} className="flex justify-between text-sm">
                     <span className="text-bark/60 font-body truncate mr-2">
                       {item.name} x{item.quantity}
                     </span>

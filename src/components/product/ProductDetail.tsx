@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -12,6 +12,7 @@ import {
   Shield,
   Leaf,
   ChevronRight,
+  ChevronLeft,
   Check,
 } from "lucide-react";
 import { products } from "@/data/products";
@@ -47,8 +48,17 @@ export default function ProductDetail({ product }: ProductDetailProps) {
   const [quantity, setQuantity] = useState(1);
   const [activeTab, setActiveTab] = useState<TabKey>("description");
   const [addedToCart, setAddedToCart] = useState(false);
+  const [activeImageIndex, setActiveImageIndex] = useState(0);
+  const [isZoomed, setIsZoomed] = useState(false);
+  const [zoomPosition, setZoomPosition] = useState({ x: 50, y: 50 });
+  const imageContainerRef = useRef<HTMLDivElement>(null);
   const addItem = useCartStore((s) => s.addItem);
   const openCart = useCartStore((s) => s.openCart);
+
+  const allImages =
+    product.images && product.images.length > 0
+      ? product.images
+      : [product.image];
 
   const handleAddToCart = () => {
     addItem({
@@ -82,8 +92,45 @@ export default function ProductDetail({ product }: ProductDetailProps) {
     openCart();
   };
 
+  const goToPrevImage = useCallback(() => {
+    setActiveImageIndex((prev) =>
+      prev === 0 ? allImages.length - 1 : prev - 1
+    );
+  }, [allImages.length]);
+
+  const goToNextImage = useCallback(() => {
+    setActiveImageIndex((prev) =>
+      prev === allImages.length - 1 ? 0 : prev + 1
+    );
+  }, [allImages.length]);
+
+  const handleMouseMove = useCallback(
+    (e: React.MouseEvent<HTMLDivElement>) => {
+      if (!imageContainerRef.current) return;
+      const rect = imageContainerRef.current.getBoundingClientRect();
+      const x = ((e.clientX - rect.left) / rect.width) * 100;
+      const y = ((e.clientY - rect.top) / rect.height) * 100;
+      setZoomPosition({ x, y });
+    },
+    []
+  );
+
+  // Keyboard navigation
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "ArrowLeft") goToPrevImage();
+      if (e.key === "ArrowRight") goToNextImage();
+      if (e.key === "Escape") setIsZoomed(false);
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [goToPrevImage, goToNextImage]);
+
   const relatedProducts = products
-    .filter((p) => p.categorySlug === product.categorySlug && p.slug !== product.slug)
+    .filter(
+      (p) =>
+        p.categorySlug === product.categorySlug && p.slug !== product.slug
+    )
     .slice(0, 4);
 
   const tabContent: Record<TabKey, string> = {
@@ -125,18 +172,102 @@ export default function ProductDetail({ product }: ProductDetailProps) {
           {/* Image Gallery */}
           <ScrollReveal animation="fade-up">
             <div className="relative">
+              {/* Main image */}
               <OrnamentalBorder variant="simple" className="p-2 md:p-3">
-                <div className="relative aspect-square overflow-hidden rounded-sm bg-parchment">
-                  <Image
-                    src={product.image}
-                    alt={product.name}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                    priority
-                  />
+                <div
+                  ref={imageContainerRef}
+                  className="relative aspect-square overflow-hidden rounded-sm bg-parchment cursor-crosshair"
+                  onMouseEnter={() => setIsZoomed(true)}
+                  onMouseLeave={() => setIsZoomed(false)}
+                  onMouseMove={handleMouseMove}
+                >
+                  {allImages.map((img, i) => (
+                    <Image
+                      key={img}
+                      src={img}
+                      alt={`${product.name}${i > 0 ? ` - view ${i + 1}` : ""}`}
+                      fill
+                      className={cn(
+                        "object-cover transition-all duration-500 ease-out",
+                        i === activeImageIndex
+                          ? "opacity-100 scale-100"
+                          : "opacity-0 scale-[1.02]",
+                        isZoomed && i === activeImageIndex && "scale-150"
+                      )}
+                      style={
+                        isZoomed && i === activeImageIndex
+                          ? {
+                              transformOrigin: `${zoomPosition.x}% ${zoomPosition.y}%`,
+                            }
+                          : undefined
+                      }
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                      priority={i === 0}
+                    />
+                  ))}
+
+                  {/* Arrow navigation on main image */}
+                  {allImages.length > 1 && (
+                    <>
+                      <button
+                        onClick={(e) => {
+                          e.preventDefault();
+                          goToPrevImage();
+                        }}
+                        className="absolute left-3 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full bg-cream/80 backdrop-blur-sm flex items-center justify-center text-bark/60 hover:text-bark hover:bg-cream transition-all duration-300 opacity-0 group-hover:opacity-100 hover:opacity-100 shadow-warm"
+                        style={{ opacity: 1 }}
+                        aria-label="Previous image"
+                      >
+                        <ChevronLeft className="h-4 w-4" />
+                      </button>
+                      <button
+                        onClick={(e) => {
+                          e.preventDefault();
+                          goToNextImage();
+                        }}
+                        className="absolute right-3 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full bg-cream/80 backdrop-blur-sm flex items-center justify-center text-bark/60 hover:text-bark hover:bg-cream transition-all duration-300 opacity-0 group-hover:opacity-100 hover:opacity-100 shadow-warm"
+                        style={{ opacity: 1 }}
+                        aria-label="Next image"
+                      >
+                        <ChevronRight className="h-4 w-4" />
+                      </button>
+
+                      {/* Image counter */}
+                      <div className="absolute bottom-3 left-1/2 -translate-x-1/2 z-10 bg-cream/80 backdrop-blur-sm px-3 py-1 rounded-full">
+                        <span className="font-accent text-[11px] text-bark/60 tracking-wider">
+                          {activeImageIndex + 1} / {allImages.length}
+                        </span>
+                      </div>
+                    </>
+                  )}
                 </div>
               </OrnamentalBorder>
+
+              {/* Thumbnail strip */}
+              {allImages.length > 1 && (
+                <div className="flex gap-2 mt-3 overflow-x-auto scrollbar-hide pb-1">
+                  {allImages.map((img, i) => (
+                    <button
+                      key={img}
+                      onClick={() => setActiveImageIndex(i)}
+                      className={cn(
+                        "relative flex-shrink-0 w-16 h-16 md:w-20 md:h-20 rounded-sm overflow-hidden border-2 transition-all duration-300",
+                        i === activeImageIndex
+                          ? "border-gold shadow-gold ring-1 ring-gold/20"
+                          : "border-transparent opacity-60 hover:opacity-100 hover:border-border"
+                      )}
+                    >
+                      <Image
+                        src={img}
+                        alt={`${product.name} - thumbnail ${i + 1}`}
+                        fill
+                        className="object-cover"
+                        sizes="80px"
+                      />
+                    </button>
+                  ))}
+                </div>
+              )}
 
               {/* Weight badge */}
               <div className="absolute top-6 right-6 md:top-7 md:right-7 bg-cream/90 backdrop-blur-sm px-3 py-1 rounded-sm">
@@ -183,7 +314,7 @@ export default function ProductDetail({ product }: ProductDetailProps) {
                 <div className="flex items-center border border-border rounded-sm">
                   <button
                     onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                    className="px-3 py-2.5 text-bark/50 hover:text-bark transition-colors"
+                    className="px-3 py-2.5 text-bark/50 hover:text-bark transition-colors duration-200"
                     aria-label="Decrease quantity"
                   >
                     <Minus className="h-4 w-4" />
@@ -193,7 +324,7 @@ export default function ProductDetail({ product }: ProductDetailProps) {
                   </span>
                   <button
                     onClick={() => setQuantity(Math.min(10, quantity + 1))}
-                    className="px-3 py-2.5 text-bark/50 hover:text-bark transition-colors"
+                    className="px-3 py-2.5 text-bark/50 hover:text-bark transition-colors duration-200"
                     aria-label="Increase quantity"
                   >
                     <Plus className="h-4 w-4" />
@@ -206,7 +337,7 @@ export default function ProductDetail({ product }: ProductDetailProps) {
                     "flex-1 flex items-center justify-center gap-2 px-6 py-2.5 rounded-sm font-accent text-sm uppercase tracking-wider transition-all duration-300",
                     addedToCart
                       ? "bg-sage text-cream"
-                      : "bg-bark text-cream hover:bg-bark/90 active:translate-y-px"
+                      : "bg-bark text-cream hover:bg-bark-light active:translate-y-px"
                   )}
                 >
                   {addedToCart ? (
@@ -225,7 +356,7 @@ export default function ProductDetail({ product }: ProductDetailProps) {
 
               <button
                 onClick={handleBuyNow}
-                className="mt-3 flex items-center justify-center gap-2 px-6 py-2.5 rounded-sm font-accent text-sm uppercase tracking-wider bg-terracotta text-cream hover:bg-terracotta/90 active:translate-y-px transition-all duration-300"
+                className="mt-3 flex items-center justify-center gap-2 px-6 py-2.5 rounded-sm font-accent text-sm uppercase tracking-wider bg-terracotta text-cream hover:bg-terracotta-dark active:translate-y-px transition-all duration-300"
               >
                 <Zap className="h-4 w-4" />
                 Buy Now
@@ -268,7 +399,7 @@ export default function ProductDetail({ product }: ProductDetailProps) {
                 >
                   {tab.label}
                   {activeTab === tab.key && (
-                    <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-terracotta" />
+                    <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-terracotta transition-all duration-300" />
                   )}
                 </button>
               ))}
@@ -310,7 +441,9 @@ export default function ProductDetail({ product }: ProductDetailProps) {
           <div className="container-brand">
             <ScrollReveal animation="fade-up">
               <div className="text-center mb-10">
-                <p className="section-label text-sage mb-3">You May Also Like</p>
+                <p className="section-label text-sage mb-3">
+                  You May Also Like
+                </p>
                 <h2 className="font-heading text-2xl md:text-3xl text-bark">
                   Related Products
                 </h2>
@@ -334,6 +467,7 @@ export default function ProductDetail({ product }: ProductDetailProps) {
                       slug: rp.slug,
                       price: rp.price,
                       image: rp.image,
+                      images: rp.images,
                       category: rp.category,
                       stock: 50,
                     }}
