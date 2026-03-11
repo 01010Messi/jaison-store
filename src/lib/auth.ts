@@ -20,7 +20,7 @@ export const authOptions: NextAuthOptions = {
 
         // Check for admin login
         if (
-          credentials.email === process.env.ADMIN_EMAIL &&
+          credentials.email.toLowerCase() === process.env.ADMIN_EMAIL?.toLowerCase() &&
           credentials.password === process.env.ADMIN_PASSWORD
         ) {
           // Find or create admin user
