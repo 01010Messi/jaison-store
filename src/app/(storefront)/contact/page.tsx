@@ -46,14 +46,14 @@ export default function ContactPage() {
     {
       icon: Mail,
       label: "Email",
-      value: "hello@jaisonskincare.com",
-      href: "mailto:hello@jaisonskincare.com",
+      value: "Jaisonskincare@gmail.com",
+      href: "mailto:Jaisonskincare@gmail.com",
     },
     {
       icon: Phone,
       label: "WhatsApp",
-      value: "+91 98765 43210",
-      href: "https://wa.me/919876543210",
+      value: "+91 86001 51677",
+      href: "https://wa.me/918600151677",
     },
     {
       icon: MapPin,

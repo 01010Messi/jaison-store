@@ -14,7 +14,7 @@ const faqs = [
   { id: "7", title: "Are your products suitable for sensitive skin?", content: "Our products are made from gentle, natural ingredients and are generally suitable for sensitive skin. However, we always recommend doing a patch test before first use, especially if you have known allergies." },
   { id: "8", title: "How long will I see results?", content: "Most customers notice a visible difference within 2-3 weeks of regular use. However, for best results, we recommend consistent use for at least 4-6 weeks as natural ingredients work gradually with your skin and hair." },
   { id: "9", title: "Do you ship internationally?", content: "Currently, we ship within India only. We are working on expanding to international markets. Subscribe to our newsletter to be the first to know when we launch international shipping." },
-  { id: "10", title: "How can I contact customer support?", content: "You can reach us via WhatsApp, email at hello@jaisonskincare.com, or through the Contact page on our website. We respond to all queries within 24 hours." },
+  { id: "10", title: "How can I contact customer support?", content: "You can reach us via WhatsApp, email at Jaisonskincare@gmail.com, or through the Contact page on our website. We respond to all queries within 24 hours." },
 ];
 
 export default function FAQPage() {

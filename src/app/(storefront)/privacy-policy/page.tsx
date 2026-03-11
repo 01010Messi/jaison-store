@@ -66,7 +66,7 @@ export default function PrivacyPolicyPage() {
           <h2 className="font-heading text-xl text-bark">Your Rights</h2>
           <p>
             You have the right to access, correct, or delete your personal
-            information at any time. Contact us at hello@jaisonskincare.com to
+            information at any time. Contact us at Jaisonskincare@gmail.com to
             exercise these rights.
           </p>
 
