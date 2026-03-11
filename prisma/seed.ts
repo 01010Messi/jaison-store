@@ -63,14 +63,12 @@ async function main() {
         metaDescription: product.shortDescription,
         tags: product.tags,
         images: {
-          create: [
-            {
-              url: product.image,
-              publicId: product.slug,
-              altText: product.name,
-              sortOrder: 0,
-            },
-          ],
+          create: product.images.map((imgUrl, idx) => ({
+            url: imgUrl,
+            publicId: `${product.slug}-${idx}`,
+            altText: product.name,
+            sortOrder: idx,
+          })),
         },
         categories: {
           create: [

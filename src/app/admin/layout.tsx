@@ -12,6 +12,8 @@ import {
   Star,
   Tag,
   MessageSquare,
+  Users,
+  Layers,
   ArrowLeft,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -20,7 +22,9 @@ const adminLinks = [
   { href: "/admin", icon: LayoutDashboard, label: "Dashboard" },
   { href: "/admin/orders", icon: ShoppingCart, label: "Orders" },
   { href: "/admin/products", icon: Package, label: "Products" },
+  { href: "/admin/categories", icon: Layers, label: "Categories" },
   { href: "/admin/reviews", icon: Star, label: "Reviews" },
+  { href: "/admin/customers", icon: Users, label: "Customers" },
   { href: "/admin/coupons", icon: Tag, label: "Coupons" },
   { href: "/admin/messages", icon: MessageSquare, label: "Messages" },
 ];

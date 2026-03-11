@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState, useCallback } from "react";
-import { Tag, Plus } from "lucide-react";
+import { Tag, Plus, Power, Pencil, Trash2 } from "lucide-react";
 import Badge from "@/components/ui/Badge";
 import Modal from "@/components/ui/Modal";
 import Button from "@/components/ui/Button";
@@ -23,21 +23,34 @@ interface Coupon {
   validUntil: string | null;
 }
 
+const emptyForm = {
+  code: "",
+  description: "",
+  discountType: "PERCENTAGE",
+  discountValue: "",
+  minOrderAmount: "",
+  maxDiscount: "",
+  usageLimit: "",
+  validUntil: "",
+};
+
 export default function AdminCouponsPage() {
   const [coupons, setCoupons] = useState<Coupon[]>([]);
   const [loading, setLoading] = useState(true);
   const [showCreate, setShowCreate] = useState(false);
   const [creating, setCreating] = useState(false);
-  const [form, setForm] = useState({
-    code: "",
-    description: "",
-    discountType: "PERCENTAGE",
-    discountValue: "",
-    minOrderAmount: "",
-    maxDiscount: "",
-    usageLimit: "",
-    validUntil: "",
-  });
+  const [form, setForm] = useState(emptyForm);
+
+  // Edit state
+  const [editCoupon, setEditCoupon] = useState<Coupon | null>(null);
+  const [showEdit, setShowEdit] = useState(false);
+  const [editForm, setEditForm] = useState(emptyForm);
+  const [saving, setSaving] = useState(false);
+  const [deleting, setDeleting] = useState(false);
+  const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
+
+  // Toggle loading state - track by coupon id
+  const [togglingId, setTogglingId] = useState<string | null>(null);
 
   const fetchCoupons = useCallback(async () => {
     try {
@@ -85,21 +98,141 @@ export default function AdminCouponsPage() {
       if (!res.ok) throw new Error();
       toast.success("Coupon created");
       setShowCreate(false);
-      setForm({
-        code: "",
-        description: "",
-        discountType: "PERCENTAGE",
-        discountValue: "",
-        minOrderAmount: "",
-        maxDiscount: "",
-        usageLimit: "",
-        validUntil: "",
-      });
+      setForm(emptyForm);
       fetchCoupons();
     } catch {
       toast.error("Failed to create coupon");
     } finally {
       setCreating(false);
+    }
+  };
+
+  const openEditModal = (coupon: Coupon) => {
+    setEditCoupon(coupon);
+    setEditForm({
+      code: coupon.code,
+      description: coupon.description || "",
+      discountType: coupon.discountType,
+      discountValue: String(coupon.discountValue),
+      minOrderAmount: coupon.minOrderAmount
+        ? String(coupon.minOrderAmount)
+        : "",
+      maxDiscount: coupon.maxDiscount ? String(coupon.maxDiscount) : "",
+      usageLimit: coupon.usageLimit ? String(coupon.usageLimit) : "",
+      validUntil: coupon.validUntil
+        ? new Date(coupon.validUntil).toISOString().split("T")[0]
+        : "",
+    });
+    setShowEdit(true);
+    setShowDeleteConfirm(false);
+  };
+
+  const closeEditModal = () => {
+    setShowEdit(false);
+    setEditCoupon(null);
+    setShowDeleteConfirm(false);
+  };
+
+  const handleUpdate = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!editCoupon) return;
+    if (!editForm.code || !editForm.discountValue) {
+      toast.error("Code and discount value are required");
+      return;
+    }
+    setSaving(true);
+    try {
+      const res = await fetch(`/api/admin/coupons/${editCoupon.id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          code: editForm.code,
+          description: editForm.description || null,
+          discountType: editForm.discountType,
+          discountValue: Number(editForm.discountValue),
+          minOrderAmount: editForm.minOrderAmount
+            ? Number(editForm.minOrderAmount)
+            : null,
+          maxDiscount: editForm.maxDiscount
+            ? Number(editForm.maxDiscount)
+            : null,
+          usageLimit: editForm.usageLimit
+            ? Number(editForm.usageLimit)
+            : null,
+          validUntil: editForm.validUntil || null,
+        }),
+      });
+      if (!res.ok) throw new Error();
+      toast.success("Coupon updated");
+      closeEditModal();
+      fetchCoupons();
+    } catch {
+      toast.error("Failed to update coupon");
+    } finally {
+      setSaving(false);
+    }
+  };
+
+  const handleDelete = async () => {
+    if (!editCoupon) return;
+    setDeleting(true);
+    try {
+      const res = await fetch(`/api/admin/coupons/${editCoupon.id}`, {
+        method: "DELETE",
+      });
+      if (!res.ok) throw new Error();
+      toast.success("Coupon deleted");
+      closeEditModal();
+      fetchCoupons();
+    } catch {
+      toast.error("Failed to delete coupon");
+    } finally {
+      setDeleting(false);
+    }
+  };
+
+  const handleToggleActive = async (
+    e: React.MouseEvent,
+    coupon: Coupon
+  ) => {
+    e.stopPropagation();
+    setTogglingId(coupon.id);
+    try {
+      const res = await fetch(`/api/admin/coupons/${coupon.id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ isActive: !coupon.isActive }),
+      });
+      if (!res.ok) throw new Error();
+      toast.success(
+        coupon.isActive ? "Coupon deactivated" : "Coupon activated"
+      );
+      fetchCoupons();
+    } catch {
+      toast.error("Failed to toggle coupon");
+    } finally {
+      setTogglingId(null);
+    }
+  };
+
+  const handleToggleActiveInModal = async () => {
+    if (!editCoupon) return;
+    setSaving(true);
+    try {
+      const newIsActive = !editCoupon.isActive;
+      const res = await fetch(`/api/admin/coupons/${editCoupon.id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ isActive: newIsActive }),
+      });
+      if (!res.ok) throw new Error();
+      toast.success(newIsActive ? "Coupon activated" : "Coupon deactivated");
+      setEditCoupon({ ...editCoupon, isActive: newIsActive });
+      fetchCoupons();
+    } catch {
+      toast.error("Failed to toggle coupon status");
+    } finally {
+      setSaving(false);
     }
   };
 
@@ -145,7 +278,8 @@ export default function AdminCouponsPage() {
             {coupons.map((coupon) => (
               <div
                 key={coupon.id}
-                className="flex items-center gap-4 p-4 hover:bg-parchment/20 transition-colors"
+                onClick={() => openEditModal(coupon)}
+                className="flex items-center gap-4 p-4 hover:bg-parchment/20 transition-colors cursor-pointer group"
               >
                 <div className="w-10 h-10 bg-parchment/50 rounded-full flex items-center justify-center">
                   <Tag className="h-4 w-4 text-bark/50" />
@@ -168,26 +302,52 @@ export default function AdminCouponsPage() {
                     </p>
                   )}
                 </div>
-                <div className="text-right shrink-0">
-                  <p className="font-body font-semibold text-sm text-bark">
-                    {coupon.discountType === "PERCENTAGE"
-                      ? `${coupon.discountValue}%`
-                      : `₹${coupon.discountValue}`}
-                  </p>
-                  {coupon.minOrderAmount && (
-                    <p className="text-xs text-bark/40">
-                      Min. ₹{coupon.minOrderAmount}
+                <div className="flex items-center gap-3">
+                  <div className="text-right shrink-0">
+                    <p className="font-body font-semibold text-sm text-bark">
+                      {coupon.discountType === "PERCENTAGE"
+                        ? `${coupon.discountValue}%`
+                        : `₹${coupon.discountValue}`}
                     </p>
-                  )}
-                  {coupon.validUntil && (
-                    <p className="text-xs text-bark/30">
-                      Expires{" "}
-                      {new Date(coupon.validUntil).toLocaleDateString("en-IN", {
-                        day: "numeric",
-                        month: "short",
-                      })}
-                    </p>
-                  )}
+                    {coupon.minOrderAmount && (
+                      <p className="text-xs text-bark/40">
+                        Min. ₹{coupon.minOrderAmount}
+                      </p>
+                    )}
+                    {coupon.validUntil && (
+                      <p className="text-xs text-bark/30">
+                        Expires{" "}
+                        {new Date(coupon.validUntil).toLocaleDateString(
+                          "en-IN",
+                          {
+                            day: "numeric",
+                            month: "short",
+                          }
+                        )}
+                      </p>
+                    )}
+                  </div>
+                  <button
+                    onClick={(e) => handleToggleActive(e, coupon)}
+                    disabled={togglingId === coupon.id}
+                    title={
+                      coupon.isActive
+                        ? "Deactivate coupon"
+                        : "Activate coupon"
+                    }
+                    className={`p-1.5 rounded-sm transition-colors shrink-0 ${
+                      coupon.isActive
+                        ? "text-sage-dark hover:bg-sage-dark/10"
+                        : "text-bark/30 hover:bg-bark/5"
+                    } ${
+                      togglingId === coupon.id
+                        ? "opacity-50 cursor-not-allowed"
+                        : ""
+                    }`}
+                  >
+                    <Power className="h-4 w-4" />
+                  </button>
+                  <Pencil className="h-3.5 w-3.5 text-bark/20 opacity-0 group-hover:opacity-100 transition-opacity shrink-0" />
                 </div>
               </div>
             ))}
@@ -298,6 +458,223 @@ export default function AdminCouponsPage() {
             </Button>
           </div>
         </form>
+      </Modal>
+
+      {/* Edit coupon modal */}
+      <Modal
+        isOpen={showEdit}
+        onClose={closeEditModal}
+        title="Edit Coupon"
+      >
+        {editCoupon && (
+          <>
+            {/* Active status toggle bar */}
+            <div className="flex items-center justify-between mb-5 p-3 rounded-sm bg-parchment/30 border border-border/30">
+              <div className="flex items-center gap-2">
+                <Power className="h-4 w-4 text-bark/50" />
+                <span className="text-sm font-body text-bark/70">
+                  Status
+                </span>
+                <Badge
+                  variant={editCoupon.isActive ? "sage" : "default"}
+                >
+                  {editCoupon.isActive ? "Active" : "Inactive"}
+                </Badge>
+              </div>
+              <button
+                onClick={handleToggleActiveInModal}
+                disabled={saving}
+                className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
+                  editCoupon.isActive ? "bg-sage-dark" : "bg-bark/20"
+                } ${saving ? "opacity-50 cursor-not-allowed" : "cursor-pointer"}`}
+              >
+                <span
+                  className={`inline-block h-4 w-4 transform rounded-full bg-cream transition-transform shadow-sm ${
+                    editCoupon.isActive ? "translate-x-6" : "translate-x-1"
+                  }`}
+                />
+              </button>
+            </div>
+
+            <form onSubmit={handleUpdate} className="space-y-4">
+              <Input
+                label="Coupon Code"
+                value={editForm.code}
+                onChange={(e) =>
+                  setEditForm((f) => ({
+                    ...f,
+                    code: e.target.value.toUpperCase(),
+                  }))
+                }
+                placeholder="e.g. SUMMER20"
+              />
+              <Input
+                label="Description"
+                value={editForm.description}
+                onChange={(e) =>
+                  setEditForm((f) => ({
+                    ...f,
+                    description: e.target.value,
+                  }))
+                }
+                placeholder="Optional description"
+              />
+              <div className="grid grid-cols-2 gap-3">
+                <div>
+                  <label className="block text-xs font-accent uppercase tracking-wider text-bark/40 mb-1.5">
+                    Type
+                  </label>
+                  <select
+                    value={editForm.discountType}
+                    onChange={(e) =>
+                      setEditForm((f) => ({
+                        ...f,
+                        discountType: e.target.value,
+                      }))
+                    }
+                    className="w-full px-3 py-2.5 bg-cream border border-border rounded-sm text-sm text-bark font-body focus:border-bark focus:ring-0 outline-none"
+                  >
+                    <option value="PERCENTAGE">Percentage</option>
+                    <option value="FIXED">Fixed Amount</option>
+                  </select>
+                </div>
+                <Input
+                  label="Value"
+                  type="number"
+                  value={editForm.discountValue}
+                  onChange={(e) =>
+                    setEditForm((f) => ({
+                      ...f,
+                      discountValue: e.target.value,
+                    }))
+                  }
+                  placeholder={
+                    editForm.discountType === "PERCENTAGE"
+                      ? "e.g. 10"
+                      : "e.g. 50"
+                  }
+                />
+              </div>
+              <div className="grid grid-cols-2 gap-3">
+                <Input
+                  label="Min Order (₹)"
+                  type="number"
+                  value={editForm.minOrderAmount}
+                  onChange={(e) =>
+                    setEditForm((f) => ({
+                      ...f,
+                      minOrderAmount: e.target.value,
+                    }))
+                  }
+                  placeholder="Optional"
+                />
+                <Input
+                  label="Max Discount (₹)"
+                  type="number"
+                  value={editForm.maxDiscount}
+                  onChange={(e) =>
+                    setEditForm((f) => ({
+                      ...f,
+                      maxDiscount: e.target.value,
+                    }))
+                  }
+                  placeholder="Optional"
+                />
+              </div>
+              <div className="grid grid-cols-2 gap-3">
+                <Input
+                  label="Usage Limit"
+                  type="number"
+                  value={editForm.usageLimit}
+                  onChange={(e) =>
+                    setEditForm((f) => ({
+                      ...f,
+                      usageLimit: e.target.value,
+                    }))
+                  }
+                  placeholder="Unlimited"
+                />
+                <Input
+                  label="Expires On"
+                  type="date"
+                  value={editForm.validUntil}
+                  onChange={(e) =>
+                    setEditForm((f) => ({
+                      ...f,
+                      validUntil: e.target.value,
+                    }))
+                  }
+                />
+              </div>
+
+              {/* Usage info (read-only) */}
+              <div className="text-xs text-bark/40 font-body pt-1">
+                Used {editCoupon.usedCount} time
+                {editCoupon.usedCount !== 1 ? "s" : ""}
+                {editCoupon.usageLimit
+                  ? ` out of ${editCoupon.usageLimit}`
+                  : ""}
+              </div>
+
+              {/* Action buttons */}
+              <div className="flex items-center justify-between pt-2 border-t border-border/30">
+                {!showDeleteConfirm ? (
+                  <button
+                    type="button"
+                    onClick={() => setShowDeleteConfirm(true)}
+                    className="flex items-center gap-1.5 text-xs font-accent uppercase tracking-wider text-terracotta hover:text-terracotta-dark transition-colors"
+                  >
+                    <Trash2 className="h-3.5 w-3.5" />
+                    Delete
+                  </button>
+                ) : (
+                  <div className="flex items-center gap-2">
+                    <span className="text-xs text-terracotta font-body">
+                      Are you sure?
+                    </span>
+                    <Button
+                      type="button"
+                      variant="ghost"
+                      size="sm"
+                      onClick={() => setShowDeleteConfirm(false)}
+                    >
+                      Cancel
+                    </Button>
+                    <button
+                      type="button"
+                      onClick={handleDelete}
+                      disabled={deleting}
+                      className="flex items-center gap-1.5 px-3 py-1.5 bg-terracotta text-cream rounded-sm text-xs font-accent uppercase tracking-wider hover:bg-terracotta-dark transition-colors disabled:opacity-50"
+                    >
+                      {deleting ? (
+                        <div className="animate-spin rounded-full h-3 w-3 border border-cream/30 border-t-cream" />
+                      ) : (
+                        <Trash2 className="h-3 w-3" />
+                      )}
+                      Confirm Delete
+                    </button>
+                  </div>
+                )}
+                <div className="flex gap-3">
+                  <Button
+                    type="button"
+                    variant="ghost"
+                    onClick={closeEditModal}
+                  >
+                    Cancel
+                  </Button>
+                  <Button
+                    type="submit"
+                    variant="primary"
+                    isLoading={saving}
+                  >
+                    Save Changes
+                  </Button>
+                </div>
+              </div>
+            </form>
+          </>
+        )}
       </Modal>
     </div>
   );

@@ -2,7 +2,8 @@
 
 import { useEffect, useState, useCallback } from "react";
 import Image from "next/image";
-import { Plus, Package } from "lucide-react";
+import Link from "next/link";
+import { Plus, Package, Pencil } from "lucide-react";
 import GoldRule from "@/components/decorative/GoldRule";
 import { formatPrice } from "@/lib/utils";
 import Badge from "@/components/ui/Badge";
@@ -60,10 +61,13 @@ export default function AdminProductsPage() {
             Manage your product catalog
           </p>
         </div>
-        <button className="flex items-center gap-2 px-4 py-2 bg-bark text-cream rounded-sm text-xs font-accent uppercase tracking-wider hover:bg-bark/90 transition-colors">
+        <Link
+          href="/admin/products/new"
+          className="flex items-center gap-2 px-4 py-2 bg-bark text-cream rounded-sm text-xs font-accent uppercase tracking-wider hover:bg-bark/90 transition-colors"
+        >
           <Plus className="h-4 w-4" />
           Add Product
-        </button>
+        </Link>
       </div>
 
       {products.length === 0 ? (
@@ -74,6 +78,13 @@ export default function AdminProductsPage() {
             <p className="text-xs text-bark/30 font-body mt-1">
               Add your first product to get started
             </p>
+            <Link
+              href="/admin/products/new"
+              className="mt-4 flex items-center gap-2 px-4 py-2 bg-terracotta text-cream rounded-sm text-xs font-accent uppercase tracking-wider hover:bg-terracotta/90 transition-colors"
+            >
+              <Plus className="h-4 w-4" />
+              Add Product
+            </Link>
           </div>
         </div>
       ) : (
@@ -86,9 +97,10 @@ export default function AdminProductsPage() {
 
           <div className="divide-y divide-border-light">
             {products.map((product) => (
-              <div
+              <Link
                 key={product.id}
-                className="flex items-center gap-4 p-4 hover:bg-parchment/20 transition-colors"
+                href={`/admin/products/${product.id}`}
+                className="flex items-center gap-4 p-4 hover:bg-parchment/30 transition-colors cursor-pointer group"
               >
                 <div className="relative w-12 h-14 bg-parchment rounded-sm overflow-hidden shrink-0">
                   {product.images[0] ? (
@@ -106,7 +118,7 @@ export default function AdminProductsPage() {
                   )}
                 </div>
                 <div className="flex-1 min-w-0">
-                  <p className="font-heading text-sm text-bark truncate">
+                  <p className="font-heading text-sm text-bark truncate group-hover:text-terracotta transition-colors">
                     {product.name}
                   </p>
                   <p className="text-xs text-bark/40 font-body">
@@ -136,7 +148,8 @@ export default function AdminProductsPage() {
                     {product.stock} in stock
                   </p>
                 </div>
-              </div>
+                <Pencil className="h-4 w-4 text-bark/20 group-hover:text-terracotta transition-colors shrink-0" />
+              </Link>
             ))}
           </div>
         </div>
