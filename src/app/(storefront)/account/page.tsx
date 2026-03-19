@@ -11,6 +11,7 @@ import {
   LogOut,
   ChevronRight,
   ShoppingBag,
+  Shield,
 } from "lucide-react";
 import ScrollReveal from "@/components/decorative/ScrollReveal";
 import GoldRule from "@/components/decorative/GoldRule";
@@ -57,6 +58,8 @@ export default function AccountPage() {
 
   if (!session) return null;
 
+  const isAdmin = (session.user as { role?: string })?.role === "ADMIN";
+
   return (
     <div className="min-h-screen">
       <div className="bg-surface-warm py-8 md:py-12">
@@ -75,6 +78,28 @@ export default function AccountPage() {
 
       <div className="container-brand py-8 md:py-12">
         <div className="max-w-2xl">
+          {isAdmin && (
+            <ScrollReveal animation="fade-up">
+              <Link
+                href="/admin"
+                className="flex items-center gap-4 p-4 mb-6 bg-bark text-cream rounded-sm border border-bark hover:bg-bark/90 transition-all duration-300 group"
+              >
+                <div className="w-10 h-10 bg-cream/10 rounded-full flex items-center justify-center">
+                  <Shield className="h-5 w-5 text-gold" />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <p className="font-heading text-sm text-cream">
+                    Admin Dashboard
+                  </p>
+                  <p className="text-xs text-cream/60 font-body">
+                    Manage products, orders, customers, and store settings
+                  </p>
+                </div>
+                <ChevronRight className="h-4 w-4 text-cream/40 group-hover:text-cream/70 transition-colors" />
+              </Link>
+            </ScrollReveal>
+          )}
+
           <div className="space-y-3">
             {accountLinks.map((link) => {
               const Icon = link.icon;
