@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
 import {
   MapPin,
@@ -54,6 +55,7 @@ const indianStates = [
 ];
 
 export default function CheckoutPage() {
+  const router = useRouter();
   const { data: session } = useSession();
   const isLoggedIn = !!session?.user;
 
@@ -61,8 +63,6 @@ export default function CheckoutPage() {
   const [currentStep, setCurrentStep] = useState<Step>("address");
   const [paymentMethod, setPaymentMethod] = useState<"RAZORPAY" | "COD">("RAZORPAY");
   const [isProcessing, setIsProcessing] = useState(false);
-  const [orderPlaced, setOrderPlaced] = useState(false);
-  const [orderNumber, setOrderNumber] = useState("");
 
   const [address, setAddress] = useState<AddressForm>({
     email: session?.user?.email || "",
@@ -190,10 +190,11 @@ export default function CheckoutPage() {
             const verifyData = await verifyRes.json();
 
             if (verifyRes.ok) {
-              setOrderNumber(verifyData.orderNumber);
-              setOrderPlaced(true);
               clearCart();
               toast.success("Order placed successfully!");
+              router.push(
+                `/order-success?order=${verifyData.orderNumber}&total=${grandTotal}&method=RAZORPAY`
+              );
             } else {
               toast.error("Payment verification failed");
             }
@@ -238,10 +239,11 @@ export default function CheckoutPage() {
         const data = await res.json();
 
         if (res.ok) {
-          setOrderNumber(data.orderNumber);
-          setOrderPlaced(true);
           clearCart();
           toast.success("Order placed successfully!");
+          router.push(
+            `/order-success?order=${data.orderNumber}&total=${grandTotal}&method=COD`
+          );
         } else {
           toast.error(data.message || "Failed to place order");
         }
@@ -252,34 +254,6 @@ export default function CheckoutPage() {
       setIsProcessing(false);
     }
   };
-
-  // Order success screen
-  if (orderPlaced) {
-    return (
-      <div className="min-h-[70vh] flex flex-col items-center justify-center px-4 text-center">
-        <div className="w-16 h-16 bg-sage/10 rounded-full flex items-center justify-center mb-6">
-          <Check className="h-8 w-8 text-sage" />
-        </div>
-        <h1 className="font-heading text-2xl md:text-3xl text-bark mb-3">
-          Order Confirmed!
-        </h1>
-        <p className="text-bark/60 font-body text-sm mb-2 max-w-md">
-          Thank you for your order. We&apos;ll send you a confirmation email
-          with your order details shortly.
-        </p>
-        <p className="font-accent text-xs uppercase tracking-wider text-bark/40 mb-8">
-          Order Number: {orderNumber}
-        </p>
-        <div className="flex gap-3">
-          <Link href="/shop">
-            <Button variant="primary" size="md">
-              Continue Shopping
-            </Button>
-          </Link>
-        </div>
-      </div>
-    );
-  }
 
   // Empty cart
   if (items.length === 0) {
