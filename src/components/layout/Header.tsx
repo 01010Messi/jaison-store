@@ -75,7 +75,7 @@ export default function Header() {
 
         {/* Main Header — Logo centered with actions */}
         <div className="container-brand">
-          <div className="flex items-center justify-between py-3 md:py-4">
+          <div className="flex items-center justify-between py-1 md:py-1.5">
             {/* Left: Mobile menu / Desktop search */}
             <div className="flex items-center gap-3 w-[100px]">
               <button
@@ -95,13 +95,13 @@ export default function Header() {
             </div>
 
             {/* Center: Logo */}
-            <Link href="/" className="flex-shrink-0">
+            <Link href="/" className="flex-shrink-0 overflow-hidden h-12 md:h-16 flex items-center">
               <Image
                 src="/images/logo.png"
                 alt="jaison"
                 width={260}
                 height={96}
-                className="h-20 md:h-28 w-auto mix-blend-multiply"
+                className="h-20 md:h-28 w-auto mix-blend-multiply -my-4"
                 priority
               />
             </Link>
