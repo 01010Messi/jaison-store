@@ -204,6 +204,10 @@ export default function CheckoutPage() {
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             amount: grandTotal,
+            subtotal: total,
+            shippingCost: shipping,
+            discount,
+            couponCode,
             ...orderPayload,
           }),
         });

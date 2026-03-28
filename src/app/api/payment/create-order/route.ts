@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
+import prisma from "@/lib/prisma";
 import Razorpay from "razorpay";
 import { generateOrderNumber } from "@/lib/utils";
 
@@ -15,7 +16,17 @@ export async function POST(req: Request) {
   try {
     const session = await getServerSession(authOptions);
     const body = await req.json();
-    const { amount, items, address, guestEmail } = body;
+    const {
+      amount,
+      items,
+      address,
+      guestEmail,
+      guestPhone,
+      subtotal,
+      shippingCost,
+      discount,
+      couponCode,
+    } = body;
 
     // Must be logged in OR provide guest email
     const customerEmail = session?.user?.email || guestEmail;
@@ -33,9 +44,72 @@ export async function POST(req: Request) {
       );
     }
 
+    // Determine user
+    let userId: string | null = null;
+    if (session?.user?.email) {
+      const user = await prisma.user.findUnique({
+        where: { email: session.user.email },
+      });
+      if (user) userId = user.id;
+    }
+
+    // Save shipping address
+    const savedAddress = await prisma.address.create({
+      data: {
+        ...(userId ? { userId } : {}),
+        fullName: address.fullName,
+        phone: address.phone,
+        addressLine1: address.addressLine1,
+        addressLine2: address.addressLine2 || null,
+        city: address.city,
+        state: address.state,
+        pincode: address.pincode,
+        landmark: address.landmark || null,
+      },
+    });
+
+    const orderNumber = generateOrderNumber();
+
+    // Create DB order with PENDING payment status
+    await prisma.order.create({
+      data: {
+        orderNumber,
+        ...(userId ? { userId } : {}),
+        ...(!userId && guestEmail
+          ? { guestEmail, guestPhone: guestPhone || address.phone }
+          : {}),
+        shippingAddressId: savedAddress.id,
+        status: "PENDING",
+        paymentMethod: "RAZORPAY",
+        paymentStatus: "PENDING",
+        subtotal: subtotal || amount,
+        shippingCost: shippingCost || 0,
+        codFee: 0,
+        discount: discount || 0,
+        total: amount,
+        couponCode: couponCode || null,
+        items: {
+          create: items.map(
+            (item: {
+              productId: string;
+              name: string;
+              price: number;
+              quantity: number;
+              image?: string;
+            }) => ({
+              productId: item.productId,
+              name: item.name,
+              price: item.price,
+              quantity: item.quantity,
+              image: item.image || null,
+            })
+          ),
+        },
+      },
+    });
+
     // Amount should be in paise for Razorpay
     const amountInPaise = Math.round(amount * 100);
-    const orderNumber = generateOrderNumber();
 
     const razorpayOrder = await getRazorpay().orders.create({
       amount: amountInPaise,
