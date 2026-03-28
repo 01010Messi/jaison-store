@@ -6,9 +6,12 @@ import OrnamentalBorder from "@/components/decorative/OrnamentalBorder";
 import SectionDivider from "@/components/decorative/SectionDivider";
 
 export const metadata: Metadata = {
-  title: "About Us | jaison Skincare",
+  title: "About Us — Our Story & Ayurvedic Heritage",
   description:
-    "Jaison Herbals began in Nashik with a simple vision — bringing ancient Ayurvedic wisdom into modern lives. 100% natural, chemical-free products crafted with care.",
+    "Jaison Herbals began in Nashik with a simple vision — bringing ancient Ayurvedic wisdom into modern lives. 100% natural, chemical-free herbal skincare & haircare products crafted with care.",
+  alternates: {
+    canonical: "https://jaisonskincare.com/about",
+  },
 };
 
 const values = [

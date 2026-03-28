@@ -2,6 +2,12 @@ import type { Metadata } from "next";
 import { Cormorant_Garamond, DM_Sans, Inter } from "next/font/google";
 import { Toaster } from "react-hot-toast";
 import SessionProvider from "@/components/providers/SessionProvider";
+import GoogleAnalytics from "@/components/GoogleAnalytics";
+import {
+  OrganizationJsonLd,
+  WebsiteJsonLd,
+  LocalBusinessJsonLd,
+} from "@/components/seo/JsonLd";
 import "./globals.css";
 
 const cormorant = Cormorant_Garamond({
@@ -27,43 +33,70 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: {
-    default: "jaison | Natural Ayurvedic Beauty",
+    default: "jaison | Natural Ayurvedic Beauty — Herbal Skincare & Haircare",
     template: "%s | jaison",
   },
   description:
-    "Discover the ancient wisdom of Ayurvedic beauty care. 100% natural herbal powders for skin and hair — handcrafted with love in India.",
+    "Shop 100% natural Ayurvedic herbal powders for skin & hair care. Ubtan, Amla, Neem, Multani Mitti, Shikakai & more — handcrafted in Nashik, India. Free from chemicals. Buy online at Jaison Herbals.",
   keywords: [
     "ayurvedic skincare",
-    "natural beauty",
-    "herbal powder",
-    "ubtan",
-    "amla powder",
-    "neem powder",
-    "multani mitti",
+    "natural beauty products",
+    "herbal powder for skin",
+    "herbal powder for hair",
+    "ubtan powder",
+    "amla powder for hair",
+    "neem powder for face",
+    "multani mitti face pack",
+    "shikakai powder",
+    "orange peel powder",
+    "reetha powder",
+    "mehendi powder",
+    "nagarmotha powder",
     "jaison herbals",
     "indian skincare",
+    "ayurvedic hair care",
+    "natural face pack",
+    "chemical free skincare",
+    "buy herbal products online India",
+    "ayurvedic beauty products online",
   ],
   authors: [{ name: "Jaison Herbals" }],
   creator: "Jaison Herbals",
+  publisher: "Jaison Herbals",
   openGraph: {
     type: "website",
     locale: "en_IN",
     url: "https://jaisonskincare.com",
     siteName: "jaison",
-    title: "jaison | Natural Ayurvedic Beauty",
+    title: "jaison | Natural Ayurvedic Beauty — Herbal Skincare & Haircare",
     description:
-      "Discover the ancient wisdom of Ayurvedic beauty care. 100% natural herbal powders for skin and hair.",
+      "Shop 100% natural Ayurvedic herbal powders for skin & hair. Ubtan, Amla, Neem, Multani Mitti & more — handcrafted in India.",
+    images: [
+      {
+        url: "/images/og/og-default.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Jaison Herbals — Natural Ayurvedic Beauty Products",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "jaison | Natural Ayurvedic Beauty",
     description:
-      "Discover the ancient wisdom of Ayurvedic beauty care. 100% natural herbal powders for skin and hair.",
+      "Shop 100% natural Ayurvedic herbal powders for skin & hair care. Handcrafted in India.",
+    images: ["/images/og/og-default.jpg"],
+  },
+  alternates: {
+    canonical: "https://jaisonskincare.com",
   },
   manifest: "/manifest.json",
   metadataBase: new URL(
     process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000"
   ),
+  verification: {
+    google: "mU8vVHJA27GXJPoYXaC0cVlNS8XT_3idnqLk6Eue9n0",
+  },
 };
 
 export default function RootLayout({
@@ -76,7 +109,13 @@ export default function RootLayout({
       lang="en"
       className={`${cormorant.variable} ${dmSans.variable} ${inter.variable}`}
     >
+      <head>
+        <OrganizationJsonLd />
+        <WebsiteJsonLd />
+        <LocalBusinessJsonLd />
+      </head>
       <body className="antialiased">
+        <GoogleAnalytics />
         <SessionProvider>
           {children}
         </SessionProvider>
