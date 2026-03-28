@@ -49,22 +49,22 @@ export const categories = [
 export const products: ProductData[] = [
   {
     name: "Ubtan Powder",
-    slug: "ubtan",
+    slug: "ubtan-powder",
     sku: "JAIS-UBTAN-001",
     price: 550,
     weight: 100,
     category: "Skin Care",
     categorySlug: "skin-care",
     shortDescription:
-      "A luxurious blend of turmeric, sandalwood, and gram flour for glowing skin.",
+      "An ancient ritual, a modern skin essential. A generational legacy of timeless beauty.",
     description:
-      "Our Ubtan Powder is a time-tested ayurvedic formulation that has been used for centuries to achieve naturally glowing, blemish-free skin. This premium blend combines the brightening power of turmeric with the cooling properties of sandalwood, the cleansing action of gram flour, and the nourishing benefits of almond powder.\n\nUnlike chemical-laden products, this ubtan works gently with your skin's natural processes. It removes dead skin cells, unclogs pores, evens out skin tone, and leaves your face feeling soft, smooth, and luminous. The traditional recipe has been refined to ensure the finest grain size for comfortable application and maximum effectiveness.\n\nPacked in a jar to preserve freshness and potency, our Ubtan Powder is your daily gateway to the radiant complexion that generations of women have cherished.",
+      "Ubtan Powder by Jaison Herbals is your 100% natural skincare remedy, cherished and trusted across generations, for healthy, luminous skin. Bakuchi promotes collagen and evens skin tone, while Haritaki\u2019s natural AHAs provide gentle exfoliation for a brighter, smoother complexion. Exfoliating that regularly increases cellular turnover, flattens fine lines and wrinkles, and reduces hyperpigmentation. This is the perfect Ayurvedic formula for your timeless radiant skin.",
     ingredients:
       "Turmeric (Curcuma longa), Sandalwood Powder (Santalum album), Gram Flour (Cicer arietinum), Almond Powder (Prunus dulcis), Rose Petal Powder (Rosa centifolia), Saffron Extract (Crocus sativus), Milk Powder, Camphor (trace)",
     howToUse:
-      "Mix 2 tablespoons of Ubtan with rose water, milk, or curd to form a smooth paste. Apply evenly on face and neck, avoiding the eye area. Leave on for 15-20 minutes until semi-dry. Gently scrub in circular motions while washing off with lukewarm water. Use 2-3 times a week for best results. For bridal glow, mix with raw milk and a pinch of saffron.",
+      "Step 1: For best results, mix our ubtan powder with rose water, milk or warm water.\nStep 2: Mix it well and apply on your skin and/or body.\nStep 3: Scrub well to clean out your pores.\nStep 4: Rinse well with warm water to discover the secret to petal-like soft and bright skin.",
     benefits:
-      "Brightens complexion naturally\nReduces tan and pigmentation\nExfoliates dead skin cells gently\nUnclogs pores and prevents acne\nImproves skin texture and elasticity\nAnti-inflammatory and antibacterial\nSuitable for all skin types",
+      "This clarifying scrub eliminates dirt and impurities that block pores and cause outbreaks.\nIt gently exfoliates and revitalizes the skin, giving you a glowing look.\nBrightens your skin by reducing pigmentation, dark spots, and blemishes.\nThe power of Ayurveda reduces fine lines and visibly diminishes signs of aging.\nIts anti-inflammatory properties soothe and protect the skin, providing antioxidants for rejuvenation.",
     image: "/images/products/ubtan.jpg",
     images: [
       "/images/products/ubtan.jpg",
@@ -76,22 +76,22 @@ export const products: ProductData[] = [
     isFeatured: true,
   },
   {
-    name: "Amla Powder",
-    slug: "amla-powder",
+    name: "Aamla Powder",
+    slug: "aamla-powder",
     sku: "JAIS-AMLA-001",
     price: 250,
     weight: 100,
     category: "Hair Care",
     categorySlug: "hair-care",
     shortDescription:
-      "Pure Indian gooseberry powder for stronger, thicker, and healthier hair.",
+      "Your one-stop natural dandruff solution. Rich in essential fatty acids, proteins, and flavonoids for natural shine and bounce.",
     description:
-      "jaison Amla Powder is sourced from premium Indian gooseberries (Phyllanthus emblica), sun-dried and stone-ground to preserve their rich vitamin C content and natural potency. Amla has been the cornerstone of ayurvedic hair care for millennia — revered as the single most effective herb for hair health.\n\nThis versatile powder strengthens hair from root to tip, reduces premature greying, promotes new growth, and adds a natural shine that no synthetic product can match. Rich in antioxidants, tannins, and gallic acid, it conditions the scalp, fights dandruff, and creates the ideal environment for healthy hair growth.\n\nOur Amla Powder is 100% pure with no additives, fillers, or preservatives. Each pouch is sealed fresh to lock in the tangy aroma and potent nutrients.",
+      "Packed with pure Aamla goodness, Jaison\u2019s Aamla Powder can be your one-stop natural dandruff solution. This essential fatty acid, protein, and flavonoid rich powder gives your hair a natural shine and bounce. Made from fresh crops and zero chemicals, this age old remedy is key to giving you long, thick, and beautiful hair.\n\nKeep dandruff and hairfall at bay with this Vitamin C rich excellent hair tonic minimising hair loss and greying of hair and stimulates natural strong and healthy volume of hair. This powder wonder does not only fight hair problems, it promotes gorgeous and healthy hair. Whether you are battling annoying damaged hair or just want to double up on the TLC of your hair, this Aamla powder is your best bet!",
     ingredients: "100% Pure Amla (Phyllanthus emblica) powder",
     howToUse:
-      "For hair mask: Mix 3-4 tablespoons with warm water or coconut oil to form a paste. Apply to scalp and hair. Leave for 30-45 minutes, then wash with mild shampoo. For hair rinse: Soak 2 tablespoons in water overnight, strain, and use as a final rinse after washing. For consumption: Mix 1 teaspoon in warm water with honey. Use 2-3 times a week for best results.",
+      "For Hair:\nMix 2 tablespoons of Aamla powder with 5 tablespoons of water and mix properly.\nApply this paste to your hair and leave it for 20-30 minutes.\nRinse your hair with water. For best results use it 3-4 times a week.\n\nFor Skin:\nMix Aamla powder with some rose water (for toning) OR curd & honey (for hydration) and prepare a smooth paste.\nApply it to your face. Keep it for 10-15 minutes.\nWash it off with water. For best results use it 3-4 times a week.",
     benefits:
-      "Strengthens hair follicles and reduces hair fall\nPrevents premature greying\nPromotes hair growth and thickness\nNatural conditioner for soft, shiny hair\nRich in Vitamin C and antioxidants\nFights dandruff and scalp infections\nCan be used on skin for brightening",
+      "Promotes healthy hair growth.\nImproves the tone of henna hair dyes.\nTreats head lice.\nHelps in preventing premature greying of the hair.\nRich in Vitamin C and antioxidants for hair strength.\nHelps combat dandruff and soothes dry, itchy scalp.\nAdds natural shine and improves hair texture.",
     image: "/images/products/amla-front.jpg",
     images: [
       "/images/products/amla-front.jpg",
@@ -110,14 +110,14 @@ export const products: ProductData[] = [
     category: "Skin Care",
     categorySlug: "skin-care",
     shortDescription:
-      "Pure neem leaf powder — nature's most powerful antibacterial for clear skin.",
+      "A gentle, natural way to achieve radiant, clear and healthy skin. Packed with antibacterial goodness for a youthful glow.",
     description:
-      "jaison Neem Powder is made from shade-dried neem leaves (Azadirachta indica), carefully ground to a fine consistency that's perfect for face packs and skin treatments. Known as the \"village pharmacy\" in India, neem has been the go-to remedy for skin problems for thousands of years.\n\nThis potent antibacterial, antifungal, and anti-inflammatory powder works wonders on acne-prone skin, helping to clear breakouts, reduce redness, and prevent future blemishes. It purifies the blood, detoxifies the skin, and promotes a clear, healthy complexion without any harsh chemicals.\n\nOur Neem Powder is ethically sourced from mature neem trees and processed without heat to retain maximum bioactive compounds including nimbin, nimbidin, and azadirachtin.",
+      "Neem Powder is a gentle, natural way to achieve radiant, clear and healthy skin. Packed with antibacterial goodness, it soothes acne, blackheads, and eczema while keeping your skin hydrated and balanced. Doubles as a refreshing toner, it pampers your skin with a burst of softness and smoothness, unveiling a youthful charm and radiant glow with every use.\n\nOur Neem Powder is a potent natural remedy packed with antibacterial properties, making it an excellent choice for addressing common skin concerns such as acne, blackheads, eczema, and psoriasis. Its nourishing qualities deeply hydrate the skin, helping to combat dryness while restoring the natural pH balance. This versatile powder serves as an incredible toner and revitalises your skin and enhances its youthful appearance. Perfect for all skin types, our Neem Powder is your go-to for vibrant, refreshed skin!",
     ingredients: "100% Pure Neem Leaf (Azadirachta indica) powder",
     howToUse:
-      "For face pack: Mix 2 tablespoons with rose water or yogurt. Apply on face, leave for 15-20 minutes, wash off. For spot treatment: Make a thick paste with water and apply on pimples overnight. For hair: Mix with coconut oil and apply on scalp to fight dandruff. For bath: Add 2-3 tablespoons to bath water for antibacterial cleansing. Use 2-3 times a week.",
+      "In a clean bowl, take 2-3 spoons of Neem Powder and mix it with rose water to create a smooth, semi-thick paste.\nEvenly apply the paste to your face, covering all areas.\nLet it sit for 10-15 minutes.\nRinse off with water and enjoy the refreshed, clean feeling.\nFor added nourishment, you can also mix Neem Powder with aloe vera gel, yogurt, or honey.\n\nFor the best results, use this treatment twice a week.",
     benefits:
-      "Powerful antibacterial and antifungal properties\nClears acne and prevents breakouts\nReduces inflammation and redness\nTreats dandruff and scalp infections\nPurifies and detoxifies skin\nHelps fade acne scars and dark spots\nSuitable for oily and combination skin",
+      "Purifying and Healing: Rich in antibacterial properties to combat acne, blackheads and skin irritation.\nDeep Nourishment: Hydrates and restores the skin\u2019s natural moisture and pH levels for a healthy glow.\nProtective and Soothing: Shields against environmental damage while calming inflamed and sensitive skin.\nVersatile skincare essential: Can be used as a toner, face mask, or skincare booster for all skin types.\nYouthful Radiance: Helps reduce signs of premature aging, promoting a smooth and even complexion.",
     image: "/images/products/neem-front.jpg",
     images: [
       "/images/products/neem-front.jpg",
@@ -136,14 +136,14 @@ export const products: ProductData[] = [
     category: "Hair Care",
     categorySlug: "hair-care",
     shortDescription:
-      "Nature's own shampoo — gentle, chemical-free cleansing for silky hair.",
+      "The secret to bouncy locks. Packed with natural vitamins and antioxidants for healthy, lustrous hair the herbal way.",
     description:
-      "jaison Shikakai Powder is the ultimate natural hair cleanser, made from the dried pods of the Acacia concinna tree. Known as \"fruit for hair\" in Sanskrit, Shikakai has been India's favourite hair wash for centuries — long before shampoos existed.\n\nUnlike commercial shampoos that strip your hair of natural oils, Shikakai cleanses gently while maintaining the scalp's natural pH balance. It creates a mild, natural lather that removes dirt and excess oil without the harshness of sulfates. The result is hair that's clean, soft, bouncy, and full of life.\n\nRich in vitamins A, C, D, E, and K, our Shikakai powder also acts as a natural detangler and strengthener, reducing breakage and promoting longer, healthier hair growth.",
+      "Find the secret to bouncy locks with Jaison\u2019s Shikakai Powder. Packed with natural vitamins and antioxidants, our pure Shikakai formula nourishes your hair from its roots to the very tip. With regular use of the powder, you can part ways with split ends, premature greying, and dandruff, and get used to healthy, lustrous hair the herbal way!\n\nShikakai, known as the \u201Cfruit for hair,\u201D has been a staple in Ayurvedic hair care for centuries. Our Shikakai Powder is rich in vitamins C, D, and antioxidants that nourish and protect your hair. Infused with micro-nutrients that strengthen hair from within. Suitable for all hair types for men, women, and children equally. Anti-bacterial and anti-fungal properties combat scalp issues like dandruff and lice. Reach dark, thick and shiny hair with regular use.",
     ingredients: "100% Pure Shikakai (Acacia concinna) pod powder",
     howToUse:
-      "As natural shampoo: Mix 3-4 tablespoons with warm water to form a paste. Apply to wet hair and scalp, massage gently for 2-3 minutes, then rinse thoroughly. No additional shampoo needed. As hair pack: Mix with amla and reetha powder in equal parts for a complete hair treatment. Leave for 20 minutes, then wash off. Use 2-3 times a week for best results.",
+      "In a bowl, mix 2-3 tablespoons of Shikakai Powder with warm water to create a smooth paste.\nApply the paste evenly to your hair, working it in from the roots to the tips.\nGently massage your scalp to stimulate blood flow, and wet your hair for 10 minutes to allow the nutrients to seep in.\nRinse thoroughly with normal water and follow with a mild shampoo if desired.\nFor best results, use once or twice a week as part of your regular hair care routine.",
     benefits:
-      "Gentle, sulfate-free hair cleansing\nMaintains scalp's natural pH balance\nNatural detangler — reduces knots and breakage\nStrengthens hair roots and reduces hair fall\nAdds natural shine and volume\nFights dandruff without drying the scalp\nSafe for colour-treated hair",
+      "Purifies and Protects Scalp: Its antibacterial properties keep dandruff, lice, and infections at bay.\nStimulates Hair Growth: Strengthens roots and revitalizes the scalp for thicker, fuller hair.\nPacked with Hair-Loving Antioxidants: Prevents damage, split ends, and premature greying for healthier hair.\nNaturally Smooth & Tangle-Free: Softens hair, reducing frizz and making detangling effortless.\nPure & Chemical-Free Care: A safe, natural alternative to harsh hair products.",
     image: "/images/products/shikakai-front.jpg",
     images: [
       "/images/products/shikakai-front.jpg",
@@ -168,15 +168,15 @@ export const products: ProductData[] = [
     category: "Skin Care",
     categorySlug: "skin-care",
     shortDescription:
-      "Premium fuller's earth — deep-cleansing clay for oil control and glowing skin.",
+      "Purify your skin with our triple filtered multani mitti for skin and hair nourishment. 100% natural, ayurvedic formula free from harsh chemicals.",
     description:
-      "jaison Multani Mitti is premium-grade fuller's earth, finely ground to a silky, lump-free consistency that glides onto skin effortlessly. This mineral-rich clay has been a beauty staple across India for generations, prized for its unmatched ability to absorb excess oil, draw out impurities, and leave skin feeling clean, fresh, and tightened.\n\nOur Multani Mitti is sourced from the finest deposits, tested for purity, and processed to achieve the perfect texture — fine enough for smooth application yet potent enough for deep cleansing. It's rich in magnesium chloride and calcium bentonite, which work together to detoxify, tone, and rejuvenate your skin.\n\nWhether used alone or blended with rose water, turmeric, or neem, this versatile clay adapts to your skin's needs for a customized at-home facial experience.",
+      "Seek out the natural radiance from your skin with Jaison Herbals. Our triple-filtered microfine multani mitti cleanses and purifies your skin and gives the nourishment to your hair that they deserve. Packed with natural goodness, welcome clearer skin and healthier hair \u2013 the ayurvedic way!\n\nThis Multani Mitti acts as a wonder clay cleaning out excess oil and keeping acne at bay! With regular use of the product you can guard your skin from unwanted acne and adapt to a natural way of glowing up. When used as a scrub, multani mitti can sweep away dead skin cells and reveal a radiant glow hiding underneath. For hair, this multani mitti also doubles up as a hair nourishment and washes away impurities, allows better circulation, conditions your hair, and keeps your scalp toxin free.",
     ingredients:
       "100% Pure Fuller's Earth (Multani Mitti / Calcium Bentonite clay)",
     howToUse:
-      "Mix 2-3 tablespoons with rose water, yogurt, or honey to form a smooth paste. Apply evenly on face and neck. Leave for 15-20 minutes until it dries. Wash off with lukewarm water using gentle circular motions. Follow with a light moisturizer. For oily skin, use 2-3 times a week. For dry skin, add honey or milk and use once a week.",
+      "For Skin:\nAdd 2-3 tablespoons of our multani mitti powder with a few drops of rose water and form a thick paste that can be applied evenly on the skin.\nApply the paste on your skin and let the paste dry naturally for about 15 minutes.\nRinse off the paste gently with just water.\nFor improved results, you can mix it with aloe vera gel, yoghourt, or honey.\n\nFor Hair:\nCreate a runny paste with the multani mitti, tap water and a few drops of rose water.\nMassage the paste gently into your scalp and hair.\nWait for 15 to 20 minutes.\nRinse out the paste from the scalp and hair thoroughly and see the results!",
     benefits:
-      "Deep cleanses pores and removes impurities\nControls excess oil and sebum production\nTightens and tones skin naturally\nReduces appearance of pores\nImproves blood circulation to the face\nNatural cooling effect — soothes irritated skin\nIdeal for oily and combination skin types",
+      "Triple-filtered microfine powder for maximum effectiveness.\nNatural cleanser and purifier for both skin and hair.\nAbsorbs excess oil and helps combat acne.\nGently exfoliates to reveal radiant, glowing skin.\nRemoves dead skin cells, blackheads, and whiteheads.\nImproves scalp circulation and removes impurities from hair.\nActs as a natural hair conditioner for smoother, healthier locks.\n100% natural, ayurvedic formula free from harsh chemicals.",
     image: "/images/products/multani-front.jpg",
     images: [
       "/images/products/multani-front.jpg",
@@ -195,14 +195,14 @@ export const products: ProductData[] = [
     category: "Skin Care",
     categorySlug: "skin-care",
     shortDescription:
-      "Vitamin C-rich orange peel powder for bright, youthful, and even-toned skin.",
+      "Awaken your skin\u2019s natural glow with our pure, triple-filtered Orange Peel Powder. Brightens, exfoliates, and rejuvenates both skin and hair.",
     description:
-      "jaison Orange Peel Powder is made from sun-dried Nagpur orange peels, carefully dehydrated and ground to retain maximum vitamin C and citric acid content. This zesty, aromatic powder is a powerhouse of natural brightening agents that work to even out skin tone, reduce dark spots, and give you a fresh, radiant glow.\n\nOrange peel contains three times more vitamin C than the fruit's flesh, making it an exceptional ingredient for stimulating collagen production, fighting free radical damage, and reversing the signs of ageing. The natural citric acid acts as a gentle chemical exfoliant, removing dead cells to reveal brighter skin beneath.\n\nOur Orange Peel Powder has a pleasant citrus aroma that makes your skincare routine feel like an indulgent spa experience.",
+      "Revitalize your skin and hair with Jaison Herbals Ayurvedic Orange Peel Powder. Carefully crafted from sun-dried orange peels and finely milled, this natural powerhouse is rich in Vitamin C and antioxidants, delivering brightening and rejuvenating effects to both skin and hair. Its gentle exfoliating action clears dead skin cells, unclogs pores, and reveals a radiant complexion, while its nourishing properties help improve hair texture and boost shine. Free from chemicals, this 100% natural formula restores your skin\u2019s youthful glow and leaves your hair soft, vibrant, and full of life.\n\nJaison Herbals Ayurvedic Orange Peel Powder is a natural exfoliant and brightening agent. It helps reduce pigmentation, dark spots, and blemishes while imparting a youthful glow. For hair, the powder helps improve scalp health, stimulates circulation, and leaves hair feeling soft and refreshed. Packed with antioxidants, it naturally tightens skin, reduces acne, and gives your hair a vibrant shine.",
     ingredients: "100% Pure Orange Peel (Citrus sinensis) powder",
     howToUse:
-      "For face pack: Mix 2 tablespoons with yogurt or honey. Apply on face and neck, leave for 15-20 minutes, wash off. For scrub: Mix with a little water and gently exfoliate in circular motions. For tan removal: Mix with lemon juice and apply on tanned areas for 10 minutes. For lip care: Mix with honey and scrub lips gently. Use 2-3 times a week.",
+      "For Skin:\nMix 2-3 tablespoons of orange peel powder with a few drops of water or rose water to form a smooth paste.\nApply evenly on your skin and leave it on for about 15 minutes.\nRinse off gently with water.\nFor enhanced results, mix with honey, yogurt, or aloe vera gel for extra hydration.\n\nFor Hair:\nCombine the orange peel powder with water to create a thin paste.\nMassage into your scalp and hair, ensuring even coverage.\nLeave it on for 15-20 minutes before rinsing thoroughly.",
     benefits:
-      "Rich in Vitamin C for skin brightening\nNatural bleaching agent — reduces tan\nFades dark spots and pigmentation\nStimulates collagen production\nGentle exfoliation removes dead skin cells\nAnti-ageing — fights fine lines and wrinkles\nControls acne and blackheads",
+      "Triple-Filtered Microfine Powder ensures maximum absorption and effectiveness.\nGently Exfoliates and Renews: Removes dead skin cells and clears clogged pores.\nCalms and Soothes: Anti-inflammatory properties help alleviate skin irritation.\nRich in Antioxidants: Packed with Vitamin C, combats free radicals and boosts natural radiance.\nFights Acne-Causing Bacteria: Naturally antibacterial for clearer skin.\nEvens Out Skin Tone: Reduces the appearance of uneven pigmentation.\nActs as a Natural Toner: Cleanses and minimizes the appearance of pores.",
     image: "/images/products/orange-front.jpg",
     images: [
       "/images/products/orange-front.jpg",
@@ -213,23 +213,23 @@ export const products: ProductData[] = [
     isFeatured: true,
   },
   {
-    name: "Mhendi Powder",
-    slug: "mhendi-powder",
+    name: "Mehendi Powder",
+    slug: "mehendi-powder",
     sku: "JAIS-MHND-001",
     price: 250,
     weight: 100,
     category: "Hair Care",
     categorySlug: "hair-care",
     shortDescription:
-      "Triple-sifted henna powder for rich colour, deep conditioning, and healthy hair.",
+      "A natural beauty ingredient from Henna leaves for deep conditioning, dandruff prevention, and scalp health.",
     description:
-      "jaison Mhendi Powder is made from the finest Rajasthani henna leaves (Lawsonia inermis), triple-sifted to achieve an ultra-fine consistency that ensures smooth paste preparation and even colour distribution. This 100% natural hair dye has been trusted for centuries to deliver rich, vibrant colour without any of the damage caused by chemical dyes.\n\nBeyond colour, our Mhendi deeply conditions hair, strengthens each strand from within, and creates a protective coating that shields against environmental damage. The natural lawsone molecule binds with the hair's keratin to deliver long-lasting colour that doesn't fade into unnatural tones.\n\nEach pouch of our Mhendi Powder is sealed immediately after grinding to lock in the colour-releasing compounds and ensure you get the richest, most vibrant results every time.",
+      "Mehendi powder is a natural beauty ingredient made from Henna leaves that deeply conditions hair, prevents dandruff and supports scalp health. It also has soothing effects to help brighten the skin and reduce irritation.",
     ingredients:
       "100% Pure Henna Leaf (Lawsonia inermis) powder — no PPD, no metallic salts, no chemicals",
     howToUse:
-      "Mix the desired amount with warm water (or black tea for richer colour) to form a yogurt-like paste. Let it sit for 6-8 hours or overnight for maximum colour release. Apply to clean, dry hair section by section. Cover with a shower cap and leave for 2-4 hours depending on desired intensity. Rinse thoroughly with plain water — do not shampoo for 24 hours. For conditioning without colour, mix with yogurt and apply for 30 minutes.",
+      "For Natural Hair Color: Mix Mehendi powder with water or tea, apply to hair, leave for 2-3 hours, then rinse for rich color and shine.\nFor a Healthy Scalp: Blend with coconut oil or curd, massage onto the scalp, leave for 1 hour, and wash for a nourished, dandruff-free scalp.\nFor Beautiful Hand Designs: Prepare a smooth paste, let it sit for a few hours, then apply designs for deep, long-lasting color.",
     benefits:
-      "100% natural hair colouring — no chemicals\nDeep conditions and softens hair\nStrengthens hair strands and reduces breakage\nCovers grey hair effectively\nAdds volume and body to fine hair\nCools the scalp and prevents dandruff\nSafe for regular use — no side effects",
+      "Multipurpose Beauty Essential: Easily transforms into a smooth paste for hand designs and natural beauty treatment.\nCool and Calming Effect: Soothes the scalp and skin, providing a refreshing and relaxing sensation.\nColor-Enhancing Formula: Boosts natural hair color while adding depth and long-lasting shine.\nNatural Hair Protector: Forms a protective layer to shield from environmental damage.",
     image: "/images/products/mhendi-front.jpg",
     images: [
       "/images/products/mhendi-front.jpg",
@@ -247,14 +247,14 @@ export const products: ProductData[] = [
     category: "Hair Care",
     categorySlug: "hair-care",
     shortDescription:
-      "Natural soapnut powder — the gentle, eco-friendly hair cleanser with built-in conditioning.",
+      "A natural cleanser for soft, fresh, and healthy hair. Reduces dandruff, soothes the scalp, and promotes silky, shiny hair.",
     description:
-      "jaison Reetha Powder is made from premium-quality soapnut berries (Sapindus mukorossi), dried and ground to create a natural, plant-based cleanser that's gentle enough for daily use yet effective enough to replace your shampoo entirely.\n\nReetha contains natural saponins — plant-derived surfactants that produce a gentle lather to cleanse hair and scalp without stripping natural oils. This makes it the perfect choice for anyone looking to transition away from chemical shampoos. It cleanses, conditions, and adds shine in one simple step.\n\nOur Reetha is sourced from the foothills of the Himalayas, where the soapnut trees grow in their natural habitat, producing berries with the highest saponin content.",
+      "Reetha powder is a natural cleanser that leaves your hair feeling soft, fresh, and healthy. Known for its ability to reduce dandruff and soothe the scalp, it also promotes silky, shiny hair. Paired with ingredients like Shikakai or Amla for a nourishing boost\u2014or even use it to gently clean your favourite gold and silver jewellery!\n\nReetha Powder is a natural treasure for hair care, brimming with nutrients and antioxidants that nourish the scalp and protect hair from damage. Suitable for all hair types, it works wonders for addressing split ends, hair fall, dandruff, and greying. Beyond controlling excess oil, Reetha actively promotes hair growth, leaving your hair feeling soft, shiny, and full of vitality. Enriched with vitamins A, D, E, and K, it helps smooth and manage hair, enhancing its natural shine.",
     ingredients: "100% Pure Reetha (Sapindus mukorossi) powder",
     howToUse:
-      "As natural shampoo: Soak 3-4 tablespoons in warm water for 30 minutes. Apply the soapy solution to wet hair, massage well, and rinse. As hair pack: Mix with shikakai and amla in equal parts. Add water to make a paste, apply on hair for 20 minutes, then wash off. For laundry/cleaning: Mix with warm water for a natural, eco-friendly cleanser. Use 2-3 times a week.",
+      "Take the desired amount of Reetha Powder in a bowl.\nAdd lukewarm water and mix until it forms a smooth, thick paste.\nApply the paste evenly to your hair and scalp.\nLet it sit for 45 minutes to an hour.\nRinse thoroughly with water for soft, shiny hair.",
     benefits:
-      "Natural saponins provide gentle, chemical-free cleansing\nDoesn't strip hair of natural oils\nAdds natural shine and softness\nAnti-dandruff and anti-lice properties\nEnvironmentally friendly — 100% biodegradable\nSuitable for sensitive scalps\nCan be combined with shikakai and amla for complete hair care",
+      "Gentle and Natural Cleanser: Effectively removes impurities while restoring scalp health.\nFights Dandruff and Hairfall: Antifungal and antimicrobial properties to reduce split ends, dandruff and hairfall.\nVitamin-Powered Care: Enriched with vitamins A, D, E, and K to nourish the scalp and strengthen hair.\nBalances Scalp Oil: Regulates excess oil production for a fresh, non-greasy feel.\nStrengthens & Thickens: Nourishes hair follicles for stronger, fuller, and bouncier hair.",
     image: "/images/products/reetha-front.jpg",
     images: [
       "/images/products/reetha-front.jpg",
@@ -266,22 +266,22 @@ export const products: ProductData[] = [
     isFeatured: false,
   },
   {
-    name: "Nagmotha Powder",
-    slug: "nagmotha-powder",
+    name: "Nagarmotha Powder",
+    slug: "nagarmotha-powder",
     sku: "JAIS-NAGM-001",
     price: 250,
     weight: 100,
     category: "Skin Care",
     categorySlug: "skin-care",
     shortDescription:
-      "Rare ayurvedic herb for skin whitening, anti-ageing, and natural fragrance.",
+      "Nagarmotha powder is an Ayurvedic remedy known for reducing dandruff, strengthening roots and promoting a healthier scalp. Packed with astringent properties, it also brightens skin and fixes unwanted dark spots.",
     description:
-      "jaison Nagmotha Powder is made from the dried rhizomes of Cyperus rotundus (Nagarmotha/Mustak), a prized herb in Ayurveda known for its remarkable skin-enhancing and aromatic properties. This lesser-known gem has been a closely guarded secret of traditional Indian beauty care.\n\nNagmotha is one of the few herbs that offers both cosmetic and therapeutic benefits. It naturally lightens skin tone, fights signs of ageing, and imparts a subtle, earthy fragrance that has made it a traditional ingredient in natural attars and body powders. Its anti-inflammatory and antioxidant properties soothe irritated skin while promoting cell regeneration.\n\nOur Nagmotha is carefully sourced, cleaned, and ground to a fine powder that blends easily into face packs, body scrubs, and bath powders.",
+      "With Jaison\u2019s multipurpose Nagarmotha wonder powder that fights dandruff causing bacteria and provides a clean and healthy scalp. Packed with potent astringent properties, our pure Nagarmotha formula also fixes unwanted dark spots and balances the natural tone of your skin.",
     ingredients: "100% Pure Nagarmotha (Cyperus rotundus) rhizome powder",
     howToUse:
-      "For face pack: Mix 1-2 tablespoons with multani mitti and rose water. Apply for 15-20 minutes, wash off. For body powder: Mix with sandalwood and gram flour for a fragrant body powder. For bath: Add to bathing water for aromatic, skin-softening bath. For massage oil: Infuse in coconut oil for 2 weeks, strain, and use as body oil. Use 2-3 times a week.",
+      "For Glowing Skin: Mix Nagarmotha powder with rose water, apply to the face, let dry, and rinse for a radiant glow.\nFor Dark Spot Reduction: Blend with coconut oil, apply to spots, leave for 20-30 minutes, then wash gently.\nFor Dandruff & Hair Fall: Mix with hair oil, apply to the scalp, leave overnight, and wash 2-3 times a week.\nFor Strong, Healthy Hair: Combine with amla powder, apply for 1-2 hours, then rinse for nourished hair.",
     benefits:
-      "Natural skin lightening and brightening\nAnti-ageing — reduces fine lines and wrinkles\nPleasant, earthy natural fragrance\nAnti-inflammatory — soothes irritated skin\nAntioxidant protection against environmental damage\nPromotes even skin tone\nTraditional ingredient in natural perfumery",
+      "Ayurvedic Detox: Purifies scalp buildup and deeply cleanses skin for a balanced look.\npH Balancer: Regulates scalp oil, creating the ideal environment for healthy hair growth.\nStrengthens Hair: Fortifies roots, prevents breakage and promotes stronger hair.\nNatural Skin Enhancer: Tightens pores, evens skin tone and boosts radiance naturally.",
     image: "/images/products/nagmotha-front.jpg",
     images: [
       "/images/products/nagmotha-front.jpg",

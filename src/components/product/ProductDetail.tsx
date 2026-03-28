@@ -20,6 +20,7 @@ import ScrollReveal from "@/components/decorative/ScrollReveal";
 import GoldRule from "@/components/decorative/GoldRule";
 import OrnamentalBorder from "@/components/decorative/OrnamentalBorder";
 import ProductCard from "@/components/product/ProductCard";
+import SocialShare from "@/components/ui/SocialShare";
 import { useCartStore } from "@/store/cart-store";
 import { formatPrice, cn } from "@/lib/utils";
 import toast from "react-hot-toast";
@@ -375,6 +376,16 @@ export default function ProductDetail({ product }: ProductDetailProps) {
                     </div>
                   );
                 })}
+              </div>
+
+              {/* Social Share */}
+              <div className="mt-6 pt-5 border-t border-border">
+                <SocialShare
+                  url={`https://jaisonskincare.com/shop/${product.slug}`}
+                  title={product.name}
+                  description={product.shortDescription}
+                  image={product.image}
+                />
               </div>
             </div>
           </ScrollReveal>

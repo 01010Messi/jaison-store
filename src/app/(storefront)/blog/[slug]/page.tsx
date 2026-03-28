@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Clock, ArrowLeft, ArrowRight } from "lucide-react";
 import GoldRule from "@/components/decorative/GoldRule";
+import SocialShare from "@/components/ui/SocialShare";
 import { BreadcrumbJsonLd } from "@/components/seo/JsonLd";
 import { ArticleJsonLd } from "@/components/seo/JsonLd";
 import { blogPosts, getBlogPostBySlug, getRelatedPosts } from "@/data/blog";
@@ -236,6 +237,15 @@ export default function BlogPostPage({ params }: Props) {
                 <Clock className="h-3 w-3" />
                 {post.readTime} min read
               </span>
+            </div>
+
+            <div className="mt-6">
+              <SocialShare
+                url={`https://jaisonskincare.com/blog/${post.slug}`}
+                title={post.title}
+                description={post.excerpt}
+                image={post.image}
+              />
             </div>
           </div>
         </div>

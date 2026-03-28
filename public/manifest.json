@@ -1,16 +1,27 @@
 {
   "name": "jaison — Natural Ayurvedic Beauty",
   "short_name": "jaison",
-  "description": "Discover the ancient wisdom of Ayurvedic beauty care. 100% natural herbal powders for skin and hair.",
+  "description": "Shop 100% natural Ayurvedic herbal powders for skin & hair care. Ubtan, Amla, Neem, Multani Mitti & more — handcrafted in Nashik, India.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#FDFAF5",
   "theme_color": "#3D2B1F",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "en-IN",
+  "categories": ["shopping", "beauty", "health"],
   "icons": [
     {
-      "src": "/favicon.ico",
-      "sizes": "48x48",
-      "type": "image/x-icon"
+      "src": "/images/logo.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/images/logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
     }
   ]
 }

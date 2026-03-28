@@ -1,0 +1,27 @@
+# Jaison Skincare — robots.txt
+# https://jaisonskincare.com
+
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://jaisonskincare.com/sitemap.xml
+
+# Disallow admin and API routes
+Disallow: /admin
+Disallow: /admin/
+Disallow: /api/
+Disallow: /login
+Disallow: /register
+
+# Disallow internal/utility pages
+Disallow: /_next/
+Disallow: /checkout
+
+# Allow search engines to crawl all public content
+Allow: /shop
+Allow: /blog
+Allow: /about
+Allow: /contact
+Allow: /faq
+Allow: /why-jaison

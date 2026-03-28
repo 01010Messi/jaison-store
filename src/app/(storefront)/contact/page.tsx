@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Mail, Phone, MapPin, Send } from "lucide-react";
+import { Mail, Phone, MapPin, Send, Instagram } from "lucide-react";
 import ScrollReveal from "@/components/decorative/ScrollReveal";
 import GoldRule from "@/components/decorative/GoldRule";
 import Input from "@/components/ui/Input";
@@ -54,6 +54,12 @@ export default function ContactPage() {
       label: "WhatsApp",
       value: "+91 86001 51677",
       href: "https://wa.me/918600151677",
+    },
+    {
+      icon: Instagram,
+      label: "Instagram",
+      value: "@jaison_skincare",
+      href: "https://www.instagram.com/jaison_skincare/",
     },
     {
       icon: MapPin,
