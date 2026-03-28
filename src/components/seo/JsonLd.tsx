@@ -1,4 +1,5 @@
 import { products } from "@/data/products";
+import { blogPosts } from "@/data/blog";
 
 const BASE_URL = "https://jaisonskincare.com";
 
@@ -185,6 +186,44 @@ export function FAQPageJsonLd({
         text: faq.answer,
       },
     })),
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    />
+  );
+}
+
+export function ArticleJsonLd({ slug }: { slug: string }) {
+  const post = blogPosts.find((p) => p.slug === slug);
+  if (!post) return null;
+
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: post.title,
+    description: post.excerpt,
+    image: `${BASE_URL}${post.image}`,
+    datePublished: post.publishedAt,
+    author: {
+      "@type": "Organization",
+      name: "Jaison Herbals",
+      url: BASE_URL,
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "Jaison Herbals",
+      logo: {
+        "@type": "ImageObject",
+        url: `${BASE_URL}/images/logo.png`,
+      },
+    },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `${BASE_URL}/blog/${post.slug}`,
+    },
   };
 
   return (

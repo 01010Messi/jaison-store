@@ -5,19 +5,20 @@ import SectionDivider from "@/components/decorative/SectionDivider";
 
 const footerLinks = {
   "Skin Care": [
-    { href: "/shop/ubtan", label: "Ubtan Powder" },
+    { href: "/shop/ubtan-powder", label: "Ubtan Powder" },
     { href: "/shop/multani-mitti", label: "Multani Mitti" },
     { href: "/shop/neem-powder", label: "Neem Powder" },
     { href: "/shop/orange-peel-powder", label: "Orange Peel" },
-    { href: "/shop/nagmotha-powder", label: "Nagmotha" },
+    { href: "/shop/nagarmotha-powder", label: "Nagarmotha" },
   ],
   "Hair Care": [
-    { href: "/shop/amla-powder", label: "Amla Powder" },
-    { href: "/shop/mhendi-powder", label: "Mhendi" },
+    { href: "/shop/aamla-powder", label: "Aamla Powder" },
+    { href: "/shop/mehendi-powder", label: "Mehendi" },
     { href: "/shop/reetha-powder", label: "Reetha" },
     { href: "/shop/shikakai-powder", label: "Shikakai" },
   ],
   Help: [
+    { href: "/blog", label: "Blog" },
     { href: "/faq", label: "FAQs" },
     { href: "/returns-policy", label: "Returns & Refunds" },
     { href: "/contact", label: "Contact Us" },

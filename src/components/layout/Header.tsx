@@ -12,6 +12,7 @@ import Drawer from "@/components/ui/Drawer";
 const navLinks = [
   { href: "/", label: "Home" },
   { href: "/shop", label: "Catalog" },
+  { href: "/blog", label: "Blog" },
   { href: "/why-jaison", label: "Why Jaison" },
   { href: "/about", label: "About Us" },
   { href: "/contact", label: "Contact" },
