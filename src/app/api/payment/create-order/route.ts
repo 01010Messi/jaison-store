@@ -70,6 +70,35 @@ export async function POST(req: Request) {
 
     const orderNumber = generateOrderNumber();
 
+    // Resolve SKU-based productIds to actual DB product IDs
+    const resolvedItems = await Promise.all(
+      items.map(
+        async (item: {
+          productId: string;
+          name: string;
+          price: number;
+          quantity: number;
+          image?: string;
+        }) => {
+          let dbProductId = item.productId;
+          const productById = await prisma.product.findUnique({
+            where: { id: item.productId },
+            select: { id: true },
+          });
+          if (!productById) {
+            const productBySku = await prisma.product.findUnique({
+              where: { sku: item.productId },
+              select: { id: true },
+            });
+            if (productBySku) {
+              dbProductId = productBySku.id;
+            }
+          }
+          return { ...item, productId: dbProductId };
+        }
+      )
+    );
+
     // Create DB order with PENDING payment status
     await prisma.order.create({
       data: {
@@ -89,21 +118,13 @@ export async function POST(req: Request) {
         total: amount,
         couponCode: couponCode || null,
         items: {
-          create: items.map(
-            (item: {
-              productId: string;
-              name: string;
-              price: number;
-              quantity: number;
-              image?: string;
-            }) => ({
-              productId: item.productId,
-              name: item.name,
-              price: item.price,
-              quantity: item.quantity,
-              image: item.image || null,
-            })
-          ),
+          create: resolvedItems.map((item) => ({
+            productId: item.productId,
+            name: item.name,
+            price: item.price,
+            quantity: item.quantity,
+            image: item.image || null,
+          })),
         },
       },
     });

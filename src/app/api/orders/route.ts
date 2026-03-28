@@ -79,6 +79,37 @@ export async function POST(req: Request) {
 
     const orderNumber = generateOrderNumber();
 
+    // Resolve SKU-based productIds to actual DB product IDs
+    const resolvedItems = await Promise.all(
+      items.map(
+        async (item: {
+          productId: string;
+          name: string;
+          price: number;
+          quantity: number;
+          image?: string;
+        }) => {
+          let dbProductId = item.productId;
+          // Check if productId is a SKU (not a valid Product.id)
+          const productById = await prisma.product.findUnique({
+            where: { id: item.productId },
+            select: { id: true },
+          });
+          if (!productById) {
+            // Try looking up by SKU
+            const productBySku = await prisma.product.findUnique({
+              where: { sku: item.productId },
+              select: { id: true },
+            });
+            if (productBySku) {
+              dbProductId = productBySku.id;
+            }
+          }
+          return { ...item, productId: dbProductId };
+        }
+      )
+    );
+
     // Create order
     const order = await prisma.order.create({
       data: {
@@ -98,21 +129,13 @@ export async function POST(req: Request) {
         total,
         couponCode: couponCode || null,
         items: {
-          create: items.map(
-            (item: {
-              productId: string;
-              name: string;
-              price: number;
-              quantity: number;
-              image?: string;
-            }) => ({
-              productId: item.productId,
-              name: item.name,
-              price: item.price,
-              quantity: item.quantity,
-              image: item.image || null,
-            })
-          ),
+          create: resolvedItems.map((item) => ({
+            productId: item.productId,
+            name: item.name,
+            price: item.price,
+            quantity: item.quantity,
+            image: item.image || null,
+          })),
         },
       },
       include: {
@@ -122,7 +145,7 @@ export async function POST(req: Request) {
     });
 
     // Update product stock
-    for (const item of items) {
+    for (const item of resolvedItems) {
       await prisma.product.update({
         where: { id: item.productId },
         data: { stock: { decrement: item.quantity } },
