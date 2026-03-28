@@ -68,11 +68,17 @@ export function WebsiteJsonLd() {
   );
 }
 
-export function ProductJsonLd({ slug }: { slug: string }) {
+export function ProductJsonLd({
+  slug,
+  aggregateRating,
+}: {
+  slug: string;
+  aggregateRating?: { ratingValue: number; reviewCount: number };
+}) {
   const product = products.find((p) => p.slug === slug);
   if (!product) return null;
 
-  const schema = {
+  const schema: Record<string, unknown> = {
     "@context": "https://schema.org",
     "@type": "Product",
     name: product.name,
@@ -109,6 +115,16 @@ export function ProductJsonLd({ slug }: { slug: string }) {
     },
     material: product.ingredients,
   };
+
+  if (aggregateRating && aggregateRating.reviewCount > 0) {
+    schema.aggregateRating = {
+      "@type": "AggregateRating",
+      ratingValue: aggregateRating.ratingValue,
+      reviewCount: aggregateRating.reviewCount,
+      bestRating: 5,
+      worstRating: 1,
+    };
+  }
 
   return (
     <script

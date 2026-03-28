@@ -3,7 +3,11 @@ import GoldRule from "@/components/decorative/GoldRule";
 
 export const metadata: Metadata = {
   title: "Privacy Policy | jaison Natural Herbals",
-  description: "Learn how jaison collects, uses, and protects your personal information.",
+  description:
+    "Learn how Jaison Herbals collects, uses, and protects your personal information. Data security, cookies, and your rights explained.",
+  alternates: {
+    canonical: "https://jaisonskincare.com/privacy-policy",
+  },
 };
 
 export default function PrivacyPolicyPage() {

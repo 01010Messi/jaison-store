@@ -91,6 +91,10 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://jaisonskincare.com",
   },
+  icons: {
+    icon: "/icon.svg",
+    apple: "/images/logo.png",
+  },
   manifest: "/manifest.json",
   metadataBase: new URL(
     process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000"

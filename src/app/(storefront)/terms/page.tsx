@@ -3,7 +3,11 @@ import GoldRule from "@/components/decorative/GoldRule";
 
 export const metadata: Metadata = {
   title: "Terms of Service | jaison Natural Herbals",
-  description: "Terms and conditions for using jaisonskincare.com and purchasing jaison products.",
+  description:
+    "Terms and conditions for using jaisonskincare.com and purchasing Jaison Herbals natural Ayurvedic skincare products. Orders, shipping, returns, and more.",
+  alternates: {
+    canonical: "https://jaisonskincare.com/terms",
+  },
 };
 
 export default function TermsPage() {

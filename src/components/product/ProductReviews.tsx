@@ -88,6 +88,32 @@ export default function ProductReviews({
     }
   };
 
+  // Inject AggregateRating JSON-LD when reviews are loaded
+  useEffect(() => {
+    if (count > 0) {
+      const schema = {
+        "@context": "https://schema.org",
+        "@type": "Product",
+        name: productName,
+        aggregateRating: {
+          "@type": "AggregateRating",
+          ratingValue: averageRating,
+          reviewCount: count,
+          bestRating: 5,
+          worstRating: 1,
+        },
+      };
+      const script = document.createElement("script");
+      script.type = "application/ld+json";
+      script.setAttribute("data-review-schema", "true");
+      script.textContent = JSON.stringify(schema);
+      document.head.appendChild(script);
+      return () => {
+        script.remove();
+      };
+    }
+  }, [count, averageRating, productName]);
+
   return (
     <section className="mt-12 pt-10 border-t border-border-light">
       {/* Header */}

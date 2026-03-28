@@ -3,7 +3,11 @@ import GoldRule from "@/components/decorative/GoldRule";
 
 export const metadata: Metadata = {
   title: "Returns & Refunds | jaison Natural Herbals",
-  description: "Learn about our returns and refund policy for jaison products.",
+  description:
+    "7-day hassle-free returns on Jaison Herbals products. Learn about eligibility, return process, and refund timelines for your order.",
+  alternates: {
+    canonical: "https://jaisonskincare.com/returns-policy",
+  },
 };
 
 export default function ReturnsPage() {
