@@ -35,8 +35,8 @@ export default function HeroSection() {
         <GoldRule variant="leaf" width="w-24 md:w-32 mx-auto" className="mt-5 mb-4" />
 
         <p className="font-body text-bark/60 text-sm md:text-base lg:text-lg max-w-xl mx-auto animate-fade-up delay-200">
-          100% natural, chemical-free and gentle on all skin types.
-          Ancient Ayurvedic wisdom for naturally healthy skin & hair.
+          The Essence of Herbs in Every Gram — 100% natural, chemical-free
+          and gentle on all skin types.
         </p>
 
         <div className="flex flex-col sm:flex-row gap-3 mt-6 md:mt-8 justify-center animate-fade-up delay-400">

@@ -345,6 +345,16 @@ export default function ProductDetail({ product }: ProductDetailProps) {
                 <span className="font-heading text-2xl md:text-3xl text-terracotta">
                   {formatPrice(product.price)}
                 </span>
+                {product.compareAtPrice && product.compareAtPrice > product.price && (
+                  <span className="text-base text-bark/40 line-through font-body">
+                    {formatPrice(product.compareAtPrice)}
+                  </span>
+                )}
+                {product.compareAtPrice && product.compareAtPrice > product.price && (
+                  <span className="text-xs font-accent uppercase tracking-wider bg-terracotta/10 text-terracotta px-2 py-0.5 rounded-sm">
+                    {Math.round((1 - product.price / product.compareAtPrice) * 100)}% Off
+                  </span>
+                )}
                 <span className="text-xs text-bark/40 font-accent uppercase tracking-wider">
                   Incl. of all taxes
                 </span>
@@ -617,6 +627,7 @@ export default function ProductDetail({ product }: ProductDetailProps) {
                       name: rp.name,
                       slug: rp.slug,
                       price: rp.price,
+                      compareAtPrice: rp.compareAtPrice,
                       image: rp.image,
                       images: rp.images,
                       category: rp.category,

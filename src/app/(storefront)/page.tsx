@@ -15,12 +15,12 @@ export default function HomePage() {
   return (
     <>
       <HeroSection />
+      <FeaturedProducts />
+      <SectionDivider variant="gold" />
       <ShippingGuarantees />
       <TrustPillars />
       <SectionDivider variant="botanical" />
       <CategoryShowcase />
-      <SectionDivider variant="gold" />
-      <FeaturedProducts />
       <BrandStory />
       <SectionDivider variant="mandala" />
       <HowToUseGuide />

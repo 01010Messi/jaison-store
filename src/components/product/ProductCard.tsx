@@ -123,7 +123,7 @@ export default function ProductCard({ product }: ProductCardProps) {
         {product.compareAtPrice &&
           product.compareAtPrice > product.price && (
             <span className="absolute top-2 left-2 bg-terracotta text-cream text-[10px] font-accent uppercase tracking-wider px-2 py-0.5 rounded-sm z-10">
-              Sale
+              {Math.round((1 - product.price / product.compareAtPrice) * 100)}% Off
             </span>
           )}
 

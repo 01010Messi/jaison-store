@@ -75,7 +75,7 @@ export default function Footer() {
             className="h-14 w-auto mx-auto mb-2 brightness-[1.8] contrast-[0.9]"
           />
           <p className="text-sm text-cream/50 mt-2 font-body">
-            The Essence of Herbs in Every Grain
+            The Essence of Herbs in Every Gram
           </p>
         </div>
 

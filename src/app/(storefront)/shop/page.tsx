@@ -202,6 +202,7 @@ function ShopContent() {
                 name: product.name,
                 slug: product.slug,
                 price: product.price,
+                compareAtPrice: product.compareAtPrice,
                 image: product.image,
                 images: product.images,
                 category: product.category,

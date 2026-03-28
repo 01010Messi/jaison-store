@@ -111,16 +111,19 @@ export default function Header() {
               </button>
             </div>
 
-            {/* Center: Logo */}
-            <Link href="/" className="flex-shrink-0">
+            {/* Center: Logo + Tagline */}
+            <Link href="/" className="flex-shrink-0 text-center">
               <Image
                 src="/images/logo.png"
                 alt="jaison"
                 width={220}
                 height={80}
-                className="h-16 md:h-24 w-auto mix-blend-multiply"
+                className="h-16 md:h-24 w-auto mix-blend-multiply mx-auto"
                 priority
               />
+              <p className="text-[9px] md:text-[10px] font-accent uppercase tracking-[0.15em] text-bark/50 -mt-1">
+                Essence of Herbs in Every Gram
+              </p>
             </Link>
 
             {/* Right: Account + Cart */}
