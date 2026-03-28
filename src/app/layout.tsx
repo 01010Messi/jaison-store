@@ -3,6 +3,7 @@ import { Cormorant_Garamond, DM_Sans, Inter } from "next/font/google";
 import { Toaster } from "react-hot-toast";
 import SessionProvider from "@/components/providers/SessionProvider";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
+import MetaPixel from "@/components/MetaPixel";
 import {
   OrganizationJsonLd,
   WebsiteJsonLd,
@@ -116,6 +117,7 @@ export default function RootLayout({
       </head>
       <body className="antialiased">
         <GoogleAnalytics />
+        <MetaPixel />
         <SessionProvider>
           {children}
         </SessionProvider>
