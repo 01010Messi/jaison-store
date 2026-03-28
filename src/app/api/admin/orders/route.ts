@@ -37,7 +37,11 @@ export async function GET() {
         shiprocketOrderId: o.shiprocketOrderId,
         invoiceUrl: o.invoiceUrl,
         createdAt: o.createdAt,
-        customer: o.user,
+        customer: o.user || {
+          name: o.guestEmail?.split("@")[0] || "Guest",
+          email: o.guestEmail || "—",
+          phone: o.guestPhone || null,
+        },
         items: o.items.map((i) => ({
           name: i.name,
           quantity: i.quantity,
