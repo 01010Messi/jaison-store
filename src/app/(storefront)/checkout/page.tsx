@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -59,7 +59,7 @@ export default function CheckoutPage() {
   const { data: session } = useSession();
   const isLoggedIn = !!session?.user;
 
-  const { items, subtotal, clearCart } = useCartStore();
+  const { items, subtotal, clearCart, couponCode, discount } = useCartStore();
   const [currentStep, setCurrentStep] = useState<Step>("address");
   const [paymentMethod, setPaymentMethod] = useState<"RAZORPAY" | "COD">("RAZORPAY");
   const [isProcessing, setIsProcessing] = useState(false);
@@ -77,11 +77,63 @@ export default function CheckoutPage() {
   });
 
   const [errors, setErrors] = useState<Partial<Record<keyof AddressForm, string>>>({});
+  const [savedAddresses, setSavedAddresses] = useState<
+    { id: string; fullName: string; phone: string; addressLine1: string; addressLine2: string | null; city: string; state: string; pincode: string; landmark: string | null; isDefault: boolean }[]
+  >([]);
+  const [selectedAddressId, setSelectedAddressId] = useState<string | null>(null);
+
+  // Fetch saved addresses for logged-in users
+  useEffect(() => {
+    if (isLoggedIn) {
+      fetch("/api/account/addresses")
+        .then((r) => r.json())
+        .then((data) => {
+          if (data.addresses?.length > 0) {
+            setSavedAddresses(data.addresses);
+            // Auto-select default address
+            const defaultAddr = data.addresses.find((a: { isDefault: boolean }) => a.isDefault) || data.addresses[0];
+            selectSavedAddress(defaultAddr);
+          }
+        })
+        .catch(() => {});
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isLoggedIn]);
+
+  const selectSavedAddress = (addr: typeof savedAddresses[0]) => {
+    setSelectedAddressId(addr.id);
+    setAddress({
+      email: session?.user?.email || "",
+      fullName: addr.fullName,
+      phone: addr.phone,
+      addressLine1: addr.addressLine1,
+      addressLine2: addr.addressLine2 || "",
+      city: addr.city,
+      state: addr.state,
+      pincode: addr.pincode,
+      landmark: addr.landmark || "",
+    });
+  };
+
+  const useNewAddress = () => {
+    setSelectedAddressId(null);
+    setAddress({
+      email: session?.user?.email || "",
+      fullName: session?.user?.name || "",
+      phone: "",
+      addressLine1: "",
+      addressLine2: "",
+      city: "",
+      state: "",
+      pincode: "",
+      landmark: "",
+    });
+  };
 
   const total = subtotal();
   const shipping = total >= 499 ? 0 : 49;
   const codFee = paymentMethod === "COD" ? 40 : 0;
-  const grandTotal = total + shipping + codFee;
+  const grandTotal = total - discount + shipping + codFee;
 
   const validateAddress = (): boolean => {
     const newErrors: Partial<Record<keyof AddressForm, string>> = {};
@@ -232,6 +284,8 @@ export default function CheckoutPage() {
             subtotal: total,
             shippingCost: shipping,
             codFee,
+            discount,
+            couponCode,
             total: grandTotal,
           }),
         });
@@ -354,6 +408,54 @@ export default function CheckoutPage() {
                   <h2 className="font-heading text-xl text-bark mb-6">
                     {isLoggedIn ? "Shipping Address" : "Contact & Shipping"}
                   </h2>
+
+                  {/* Saved Addresses */}
+                  {savedAddresses.length > 0 && (
+                    <div className="mb-6">
+                      <p className="text-xs font-accent uppercase tracking-wider text-bark/50 mb-3">
+                        Saved Addresses
+                      </p>
+                      <div className="space-y-2">
+                        {savedAddresses.map((addr) => (
+                          <button
+                            key={addr.id}
+                            type="button"
+                            onClick={() => selectSavedAddress(addr)}
+                            className={`w-full text-left p-3 rounded-sm border transition-colors ${
+                              selectedAddressId === addr.id
+                                ? "border-bark bg-parchment/30"
+                                : "border-border hover:border-bark/30"
+                            }`}
+                          >
+                            <p className="text-sm font-body text-bark">
+                              {addr.fullName}
+                              {addr.isDefault && (
+                                <span className="ml-2 text-[10px] font-accent uppercase tracking-wider text-sage bg-sage/10 px-1.5 py-0.5 rounded-sm">
+                                  Default
+                                </span>
+                              )}
+                            </p>
+                            <p className="text-xs text-bark/50 font-body mt-0.5">
+                              {addr.addressLine1}, {addr.city}, {addr.state} — {addr.pincode}
+                            </p>
+                          </button>
+                        ))}
+                        <button
+                          type="button"
+                          onClick={useNewAddress}
+                          className={`w-full text-left p-3 rounded-sm border transition-colors ${
+                            selectedAddressId === null
+                              ? "border-bark bg-parchment/30"
+                              : "border-border hover:border-bark/30"
+                          }`}
+                        >
+                          <p className="text-sm font-body text-bark/60">
+                            + Use a new address
+                          </p>
+                        </button>
+                      </div>
+                    </div>
+                  )}
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     {/* Email */}
@@ -732,6 +834,12 @@ export default function CheckoutPage() {
                   <span>Subtotal</span>
                   <span>{formatPrice(total)}</span>
                 </div>
+                {discount > 0 && (
+                  <div className="flex justify-between text-sage">
+                    <span>Discount{couponCode ? ` (${couponCode})` : ""}</span>
+                    <span>-{formatPrice(discount)}</span>
+                  </div>
+                )}
                 <div className="flex justify-between text-bark/60">
                   <span>Shipping</span>
                   <span>

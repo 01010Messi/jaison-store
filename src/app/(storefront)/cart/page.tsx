@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Minus, Plus, Trash2, ShoppingBag, Tag, ArrowRight } from "lucide-react";
+import { Minus, Plus, Trash2, ShoppingBag, Tag, ArrowRight, Truck } from "lucide-react";
 import { useCartStore } from "@/store/cart-store";
 import { formatPrice } from "@/lib/utils";
 import ScrollReveal from "@/components/decorative/ScrollReveal";
@@ -12,32 +12,30 @@ import Button from "@/components/ui/Button";
 import toast from "react-hot-toast";
 
 export default function CartPage() {
-  const { items, updateQuantity, removeItem, subtotal, clearCart } = useCartStore();
-  const [couponCode, setCouponCode] = useState("");
+  const { items, updateQuantity, removeItem, subtotal, clearCart, couponCode: appliedCoupon, discount, setCoupon, clearCoupon } = useCartStore();
+  const [couponInput, setCouponInput] = useState("");
   const [couponLoading, setCouponLoading] = useState(false);
-  const [discount, setDiscount] = useState(0);
-  const [appliedCoupon, setAppliedCoupon] = useState<string | null>(null);
 
   const total = subtotal();
   const shipping = total >= 499 ? 0 : 49;
   const grandTotal = total - discount + shipping;
 
   const handleApplyCoupon = async () => {
-    if (!couponCode.trim()) return;
+    if (!couponInput.trim()) return;
     setCouponLoading(true);
 
     try {
       const res = await fetch("/api/coupons/validate", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ code: couponCode, orderAmount: total }),
+        body: JSON.stringify({ code: couponInput, orderAmount: total }),
       });
 
       const data = await res.json();
 
       if (res.ok && data.valid) {
-        setDiscount(data.discount);
-        setAppliedCoupon(couponCode);
+        setCoupon(couponInput.toUpperCase(), data.discount);
+        setCouponInput("");
         toast.success(`Coupon applied! You save ${formatPrice(data.discount)}`);
       } else {
         toast.error(data.message || "Invalid coupon code");
@@ -50,9 +48,8 @@ export default function CartPage() {
   };
 
   const removeCoupon = () => {
-    setDiscount(0);
-    setAppliedCoupon(null);
-    setCouponCode("");
+    clearCoupon();
+    setCouponInput("");
     toast.success("Coupon removed");
   };
 
@@ -213,6 +210,30 @@ export default function CartPage() {
               </h2>
               <GoldRule variant="simple" width="w-full" className="mb-4" />
 
+              {/* Free Shipping Progress */}
+              <div className="mb-4 p-3 bg-cream rounded-sm border border-border/50">
+                <div className="flex items-center gap-2 mb-2">
+                  <Truck className="h-3.5 w-3.5 text-bark/50" />
+                  {total >= 499 ? (
+                    <p className="text-xs font-body text-sage font-medium">
+                      You&apos;ve unlocked free shipping!
+                    </p>
+                  ) : (
+                    <p className="text-xs font-body text-bark/60">
+                      Add <span className="font-medium text-bark">{formatPrice(499 - total)}</span> more for free shipping
+                    </p>
+                  )}
+                </div>
+                <div className="h-1.5 bg-parchment rounded-full overflow-hidden">
+                  <div
+                    className={`h-full rounded-full transition-all duration-500 ${
+                      total >= 499 ? "bg-sage" : "bg-gold"
+                    }`}
+                    style={{ width: `${Math.min((total / 499) * 100, 100)}%` }}
+                  />
+                </div>
+              </div>
+
               {/* Coupon */}
               <div className="mb-4">
                 {appliedCoupon ? (
@@ -234,14 +255,14 @@ export default function CartPage() {
                   <div className="flex gap-2">
                     <input
                       type="text"
-                      value={couponCode}
-                      onChange={(e) => setCouponCode(e.target.value.toUpperCase())}
+                      value={couponInput}
+                      onChange={(e) => setCouponInput(e.target.value.toUpperCase())}
                       placeholder="Coupon code"
                       className="flex-1 px-3 py-2 border border-border rounded-sm text-xs font-accent uppercase tracking-wider bg-cream focus:border-gold focus:ring-0 focus:outline-none transition-colors placeholder:text-bark/30"
                     />
                     <button
                       onClick={handleApplyCoupon}
-                      disabled={couponLoading || !couponCode.trim()}
+                      disabled={couponLoading || !couponInput.trim()}
                       className="px-4 py-2 bg-bark text-cream text-xs font-accent uppercase tracking-wider rounded-sm hover:bg-bark/90 disabled:opacity-50 transition-all"
                     >
                       {couponLoading ? "..." : "Apply"}

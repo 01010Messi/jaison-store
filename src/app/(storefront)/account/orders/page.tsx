@@ -115,9 +115,12 @@ export default function OrdersPage() {
                 <div className="bg-cream border border-border rounded-sm p-5">
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
                     <div>
-                      <h3 className="font-accent text-sm font-semibold text-bark">
+                      <Link
+                        href={`/account/orders/${order.id}`}
+                        className="font-accent text-sm font-semibold text-bark hover:text-terracotta transition-colors"
+                      >
                         #{order.orderNumber}
-                      </h3>
+                      </Link>
                       <p className="text-xs text-bark/40 font-body mt-0.5">
                         {new Date(order.createdAt).toLocaleDateString("en-IN", {
                           day: "numeric",
@@ -155,30 +158,34 @@ export default function OrdersPage() {
                     ))}
                   </div>
 
-                  {(order.trackingUrl || order.invoiceUrl) && (
-                    <div className="flex gap-3 mt-4 pt-3 border-t border-border">
-                      {order.trackingUrl && (
-                        <a
-                          href={order.trackingUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-xs font-accent uppercase tracking-wider text-terracotta hover:text-terracotta/80 transition-colors"
-                        >
-                          Track Order
-                        </a>
-                      )}
-                      {order.invoiceUrl && (
-                        <a
-                          href={order.invoiceUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-xs font-accent uppercase tracking-wider text-bark/50 hover:text-bark transition-colors"
-                        >
-                          Download Invoice
-                        </a>
-                      )}
-                    </div>
-                  )}
+                  <div className="flex gap-3 mt-4 pt-3 border-t border-border">
+                    <Link
+                      href={`/account/orders/${order.id}`}
+                      className="text-xs font-accent uppercase tracking-wider text-terracotta hover:text-terracotta/80 transition-colors"
+                    >
+                      View Details
+                    </Link>
+                    {order.trackingUrl && (
+                      <a
+                        href={order.trackingUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-xs font-accent uppercase tracking-wider text-bark/50 hover:text-bark transition-colors"
+                      >
+                        Track Order
+                      </a>
+                    )}
+                    {order.invoiceUrl && (
+                      <a
+                        href={order.invoiceUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-xs font-accent uppercase tracking-wider text-bark/50 hover:text-bark transition-colors"
+                      >
+                        Download Invoice
+                      </a>
+                    )}
+                  </div>
                 </div>
               </ScrollReveal>
             ))}

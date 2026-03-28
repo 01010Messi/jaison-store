@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect, useCallback } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import {
   Minus,
   Plus,
@@ -14,6 +15,7 @@ import {
   ChevronRight,
   ChevronLeft,
   Check,
+  MapPin,
 } from "lucide-react";
 import { products } from "@/data/products";
 import { getBlogPostsForProduct } from "@/data/blog";
@@ -21,6 +23,7 @@ import ScrollReveal from "@/components/decorative/ScrollReveal";
 import GoldRule from "@/components/decorative/GoldRule";
 import OrnamentalBorder from "@/components/decorative/OrnamentalBorder";
 import ProductCard from "@/components/product/ProductCard";
+import ProductReviews from "@/components/product/ProductReviews";
 import SocialShare from "@/components/ui/SocialShare";
 import { useCartStore } from "@/store/cart-store";
 import { formatPrice, cn } from "@/lib/utils";
@@ -47,15 +50,30 @@ interface ProductDetailProps {
 }
 
 export default function ProductDetail({ product }: ProductDetailProps) {
+  const router = useRouter();
   const [quantity, setQuantity] = useState(1);
   const [activeTab, setActiveTab] = useState<TabKey>("description");
   const [addedToCart, setAddedToCart] = useState(false);
   const [activeImageIndex, setActiveImageIndex] = useState(0);
   const [isZoomed, setIsZoomed] = useState(false);
   const [zoomPosition, setZoomPosition] = useState({ x: 50, y: 50 });
+  const [pincode, setPincode] = useState("");
+  const [pincodeResult, setPincodeResult] = useState<{
+    serviceable: boolean;
+    estimatedDays?: string;
+    codAvailable?: boolean;
+    message?: string;
+  } | null>(null);
+  const [pincodeLoading, setPincodeLoading] = useState(false);
   const imageContainerRef = useRef<HTMLDivElement>(null);
   const addItem = useCartStore((s) => s.addItem);
   const openCart = useCartStore((s) => s.openCart);
+
+  // Load saved pincode
+  useEffect(() => {
+    const saved = localStorage.getItem("delivery-pincode");
+    if (saved) setPincode(saved);
+  }, []);
 
   const allImages =
     product.images && product.images.length > 0
@@ -90,8 +108,29 @@ export default function ProductDetail({ product }: ProductDetailProps) {
       stock: 50,
       quantity,
     });
-    toast.success("Proceeding to checkout...");
-    openCart();
+    router.push("/checkout");
+  };
+
+  const checkPincode = async () => {
+    if (!/^\d{6}$/.test(pincode)) {
+      toast.error("Enter a valid 6-digit PIN code");
+      return;
+    }
+    setPincodeLoading(true);
+    try {
+      const res = await fetch("/api/shipping/check-serviceability", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ pincode }),
+      });
+      const data = await res.json();
+      setPincodeResult(data);
+      localStorage.setItem("delivery-pincode", pincode);
+    } catch {
+      toast.error("Failed to check delivery");
+    } finally {
+      setPincodeLoading(false);
+    }
   };
 
   const goToPrevImage = useCallback(() => {
@@ -381,6 +420,46 @@ export default function ProductDetail({ product }: ProductDetailProps) {
                 })}
               </div>
 
+              {/* PIN Code Check */}
+              <div className="mt-5 pt-4 border-t border-border">
+                <div className="flex items-center gap-2 mb-2">
+                  <MapPin className="h-3.5 w-3.5 text-bark/40" />
+                  <span className="text-xs font-accent uppercase tracking-wider text-bark/50">
+                    Check Delivery
+                  </span>
+                </div>
+                <div className="flex gap-2">
+                  <input
+                    type="text"
+                    value={pincode}
+                    onChange={(e) => {
+                      setPincode(e.target.value.replace(/\D/g, "").slice(0, 6));
+                      setPincodeResult(null);
+                    }}
+                    placeholder="Enter PIN code"
+                    className="flex-1 px-3 py-2 border border-border rounded-sm text-sm font-body bg-cream focus:border-gold focus:outline-none transition-colors placeholder:text-bark/30"
+                  />
+                  <button
+                    onClick={checkPincode}
+                    disabled={pincodeLoading || pincode.length !== 6}
+                    className="px-4 py-2 text-xs font-accent uppercase tracking-wider border border-border rounded-sm text-bark/70 hover:border-bark hover:text-bark disabled:opacity-40 transition-colors"
+                  >
+                    {pincodeLoading ? "..." : "Check"}
+                  </button>
+                </div>
+                {pincodeResult && (
+                  <div className={`mt-2 text-xs font-body ${pincodeResult.serviceable ? "text-sage" : "text-terracotta"}`}>
+                    <p>{pincodeResult.message}</p>
+                    {pincodeResult.serviceable && pincodeResult.estimatedDays && (
+                      <p className="text-bark/50 mt-0.5">
+                        Estimated delivery: {pincodeResult.estimatedDays} days
+                        {pincodeResult.codAvailable && " · COD available"}
+                      </p>
+                    )}
+                  </div>
+                )}
+              </div>
+
               {/* Social Share */}
               <div className="mt-6 pt-5 border-t border-border">
                 <SocialShare
@@ -446,6 +525,13 @@ export default function ProductDetail({ product }: ProductDetailProps) {
               )}
             </div>
           </ScrollReveal>
+        </div>
+      </section>
+
+      {/* Customer Reviews */}
+      <section className="py-4">
+        <div className="container-brand">
+          <ProductReviews productId={product.sku} productName={product.name} />
         </div>
       </section>
 

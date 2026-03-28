@@ -7,6 +7,8 @@ export const useCartStore = create<CartState>()(
     (set, get) => ({
       items: [],
       isOpen: false,
+      couponCode: null,
+      discount: 0,
 
       addItem: (item) => {
         const items = get().items;
@@ -49,7 +51,10 @@ export const useCartStore = create<CartState>()(
         });
       },
 
-      clearCart: () => set({ items: [] }),
+      clearCart: () => set({ items: [], couponCode: null, discount: 0 }),
+
+      setCoupon: (code, discount) => set({ couponCode: code, discount }),
+      clearCoupon: () => set({ couponCode: null, discount: 0 }),
 
       toggleCart: () => set({ isOpen: !get().isOpen }),
       openCart: () => set({ isOpen: true }),
@@ -62,7 +67,7 @@ export const useCartStore = create<CartState>()(
     }),
     {
       name: "jaison-cart",
-      partialize: (state) => ({ items: state.items }),
+      partialize: (state) => ({ items: state.items, couponCode: state.couponCode, discount: state.discount }),
     }
   )
 );

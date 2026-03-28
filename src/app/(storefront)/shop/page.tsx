@@ -2,7 +2,7 @@
 
 import { Suspense, useState, useMemo } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
-import { SlidersHorizontal, ChevronDown } from "lucide-react";
+import { SlidersHorizontal, ChevronDown, X } from "lucide-react";
 import ScrollReveal from "@/components/decorative/ScrollReveal";
 import GoldRule from "@/components/decorative/GoldRule";
 import ProductCard from "@/components/product/ProductCard";
@@ -27,6 +27,7 @@ function ShopContent() {
 
   const activeCategory = searchParams.get("category") || "all";
   const activeSort = (searchParams.get("sort") as SortOption) || "featured";
+  const searchQuery = searchParams.get("q") || "";
 
   const setFilter = (key: string, value: string) => {
     const params = new URLSearchParams(searchParams.toString());
@@ -38,8 +39,25 @@ function ShopContent() {
     router.push(`/shop?${params.toString()}`, { scroll: false });
   };
 
+  const clearSearch = () => {
+    const params = new URLSearchParams(searchParams.toString());
+    params.delete("q");
+    router.push(`/shop?${params.toString()}`, { scroll: false });
+  };
+
   const filteredProducts = useMemo(() => {
     let filtered = [...products];
+
+    if (searchQuery) {
+      const q = searchQuery.toLowerCase();
+      filtered = filtered.filter(
+        (p) =>
+          p.name.toLowerCase().includes(q) ||
+          p.category.toLowerCase().includes(q) ||
+          p.shortDescription.toLowerCase().includes(q) ||
+          p.tags.some((t) => t.toLowerCase().includes(q))
+      );
+    }
 
     if (activeCategory !== "all") {
       filtered = filtered.filter((p) => p.categorySlug === activeCategory);
@@ -65,10 +83,27 @@ function ShopContent() {
     }
 
     return filtered;
-  }, [activeCategory, activeSort]);
+  }, [activeCategory, activeSort, searchQuery]);
 
   return (
     <>
+      {/* Search Results Banner */}
+      {searchQuery && (
+        <div className="flex items-center gap-2 mb-6 px-4 py-3 bg-parchment/50 rounded-sm">
+          <p className="text-sm font-body text-bark/70">
+            Results for &ldquo;<span className="font-medium text-bark">{searchQuery}</span>&rdquo;
+            <span className="text-bark/40 ml-1">({filteredProducts.length})</span>
+          </p>
+          <button
+            onClick={clearSearch}
+            className="ml-auto flex items-center gap-1 text-xs font-accent uppercase tracking-wider text-bark/50 hover:text-bark transition-colors"
+          >
+            <X className="h-3.5 w-3.5" />
+            Clear
+          </button>
+        </div>
+      )}
+
       {/* Filters Bar */}
       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-8">
         {/* Category pills */}
@@ -182,10 +217,15 @@ function ShopContent() {
       {filteredProducts.length === 0 && (
         <div className="text-center py-16">
           <p className="text-bark/50 font-body">
-            No products found in this category.
+            {searchQuery
+              ? `No products found for "${searchQuery}".`
+              : "No products found in this category."}
           </p>
           <button
-            onClick={() => setFilter("category", "all")}
+            onClick={() => {
+              if (searchQuery) clearSearch();
+              else setFilter("category", "all");
+            }}
             className="mt-4 text-terracotta font-accent text-sm uppercase tracking-wider gold-underline pb-1"
           >
             View All Products

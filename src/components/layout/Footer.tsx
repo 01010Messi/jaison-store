@@ -1,7 +1,11 @@
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Instagram, Mail, Phone } from "lucide-react";
+import { Instagram, Mail, Phone, MapPin } from "lucide-react";
 import SectionDivider from "@/components/decorative/SectionDivider";
+import toast from "react-hot-toast";
 
 const footerLinks = {
   "Skin Care": [
@@ -28,6 +32,35 @@ const footerLinks = {
 };
 
 export default function Footer() {
+  const [email, setEmail] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleNewsletterSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email.trim()) return;
+
+    setIsLoading(true);
+    try {
+      const res = await fetch("/api/newsletter", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      });
+
+      if (res.ok) {
+        toast.success("Welcome to the jaison family!");
+        setEmail("");
+      } else {
+        const data = await res.json();
+        toast.error(data.error || "Something went wrong");
+      }
+    } catch {
+      toast.error("Failed to subscribe. Please try again.");
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   return (
     <footer className="bg-bark text-cream/80">
       {/* Main footer */}
@@ -108,6 +141,17 @@ export default function Footer() {
                 </a>
               </li>
             </ul>
+
+            {/* Business Address */}
+            <div className="mt-5 pt-4 border-t border-cream/10">
+              <div className="flex gap-2 text-[11px] text-cream/40 font-body leading-relaxed">
+                <MapPin className="h-3.5 w-3.5 flex-shrink-0 mt-0.5" />
+                <span>
+                  60, Floor 6, Business Bay, Shree Hari Kute Marg, Mumbai Naka,
+                  Nashik 422002, Maharashtra, India
+                </span>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -120,17 +164,21 @@ export default function Footer() {
             <p className="text-sm text-cream/50 mb-5 font-body">
               Subscribe for Ayurvedic tips and exclusive offers
             </p>
-            <form className="flex gap-2">
+            <form onSubmit={handleNewsletterSubmit} className="flex gap-2">
               <input
                 type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 placeholder="your@email.com"
+                required
                 className="flex-1 px-4 py-2.5 bg-cream/10 border border-cream/20 rounded-sm text-cream text-sm font-body placeholder:text-cream/30 focus:outline-none focus:border-gold/50"
               />
               <button
                 type="submit"
-                className="px-6 py-2.5 bg-gold text-cream text-sm font-body font-medium uppercase tracking-wider rounded-sm hover:bg-gold-dark transition-colors"
+                disabled={isLoading}
+                className="px-6 py-2.5 bg-gold text-cream text-sm font-body font-medium uppercase tracking-wider rounded-sm hover:bg-gold-dark transition-colors disabled:opacity-50"
               >
-                Subscribe
+                {isLoading ? "..." : "Subscribe"}
               </button>
             </form>
           </div>
@@ -143,14 +191,29 @@ export default function Footer() {
           <p className="text-xs text-cream/40 font-body">
             &copy; {new Date().getFullYear()} Jaison Herbals. Handcrafted with love in India.
           </p>
-          <div className="flex items-center gap-4 text-xs text-cream/40 font-body">
-            <span>UPI</span>
-            <span>&bull;</span>
-            <span>Cards</span>
-            <span>&bull;</span>
-            <span>Netbanking</span>
-            <span>&bull;</span>
-            <span>COD</span>
+          <div className="flex items-center gap-3">
+            {/* UPI */}
+            <svg viewBox="0 0 40 16" className="h-4 w-auto opacity-40">
+              <text x="0" y="13" fill="currentColor" className="text-cream" fontSize="12" fontWeight="600" fontFamily="system-ui">UPI</text>
+            </svg>
+            {/* Visa */}
+            <svg viewBox="0 0 48 16" className="h-4 w-auto opacity-40">
+              <text x="0" y="13" fill="currentColor" className="text-cream" fontSize="11" fontWeight="700" fontFamily="system-ui" fontStyle="italic">VISA</text>
+            </svg>
+            {/* Mastercard */}
+            <svg viewBox="0 0 24 16" className="h-4 w-auto opacity-40">
+              <circle cx="8" cy="8" r="7" fill="none" stroke="currentColor" className="text-cream" strokeWidth="1.5" />
+              <circle cx="16" cy="8" r="7" fill="none" stroke="currentColor" className="text-cream" strokeWidth="1.5" />
+            </svg>
+            {/* RuPay */}
+            <svg viewBox="0 0 52 16" className="h-4 w-auto opacity-40">
+              <text x="0" y="13" fill="currentColor" className="text-cream" fontSize="10" fontWeight="600" fontFamily="system-ui">RuPay</text>
+            </svg>
+            <span className="text-cream/20">&bull;</span>
+            {/* COD */}
+            <span className="text-[10px] text-cream/40 font-accent uppercase tracking-wider border border-cream/20 px-1.5 py-0.5 rounded-sm">
+              COD
+            </span>
           </div>
         </div>
       </div>

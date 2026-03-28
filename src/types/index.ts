@@ -82,6 +82,8 @@ export interface CartItem {
 export interface CartState {
   items: CartItem[];
   isOpen: boolean;
+  couponCode: string | null;
+  discount: number;
   addItem: (item: Omit<CartItem, "quantity"> & { quantity?: number }) => void;
   removeItem: (productId: string) => void;
   updateQuantity: (productId: string, quantity: number) => void;
@@ -91,6 +93,8 @@ export interface CartState {
   closeCart: () => void;
   itemCount: () => number;
   subtotal: () => number;
+  setCoupon: (code: string, discount: number) => void;
+  clearCoupon: () => void;
 }
 
 // ─── Order Types ───────────────────────────────────────────────

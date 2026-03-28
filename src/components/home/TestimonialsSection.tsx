@@ -1,36 +1,63 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { Star, Quote } from "lucide-react";
 import ScrollReveal from "@/components/decorative/ScrollReveal";
 
-const testimonials = [
+interface ReviewData {
+  id: string;
+  rating: number;
+  body: string;
+  userName: string;
+  productName: string;
+}
+
+const fallbackTestimonials = [
   {
-    name: "Priya",
+    id: "fallback-1",
     rating: 5,
-    text: "The ubtan has transformed my skin! My complexion looks brighter and feels so smooth after just two weeks of use.",
-    product: "Ubtan Face Pack",
+    body: "The ubtan has transformed my skin! My complexion looks brighter and feels so smooth after just two weeks of use.",
+    userName: "Priya",
+    productName: "Ubtan Face Pack",
   },
   {
-    name: "Ananya",
+    id: "fallback-2",
     rating: 5,
-    text: "Finally found a natural alternative for my hair. The shikakai powder leaves my hair so soft and bouncy without any chemicals.",
-    product: "Shikakai Powder",
+    body: "Finally found a natural alternative for my hair. The shikakai powder leaves my hair so soft and bouncy without any chemicals.",
+    userName: "Ananya",
+    productName: "Shikakai Powder",
   },
   {
-    name: "Meera",
+    id: "fallback-3",
     rating: 5,
-    text: "Love the quality and packaging! The amla powder has noticeably reduced my hair fall. Highly recommend jaison products.",
-    product: "Amla Powder",
+    body: "Love the quality and packaging! The amla powder has noticeably reduced my hair fall. Highly recommend jaison products.",
+    userName: "Meera",
+    productName: "Amla Powder",
   },
   {
-    name: "Ritu",
+    id: "fallback-4",
     rating: 4,
-    text: "The multani mitti is so pure and finely ground. Makes the best face masks. My skin feels clean and refreshed every time.",
-    product: "Multani Mitti",
+    body: "The multani mitti is so pure and finely ground. Makes the best face masks. My skin feels clean and refreshed every time.",
+    userName: "Ritu",
+    productName: "Multani Mitti",
   },
 ];
 
 export default function TestimonialsSection() {
+  const [testimonials, setTestimonials] =
+    useState<ReviewData[]>(fallbackTestimonials);
+
+  useEffect(() => {
+    fetch("/api/reviews?featured=true&limit=4")
+      .then((r) => r.json())
+      .then((data) => {
+        if (data.reviews?.length >= 4) {
+          setTestimonials(data.reviews);
+        }
+      })
+      .catch(() => {});
+  }, []);
+
   return (
     <section className="py-16 md:py-24 bg-surface-warm">
       <div className="container-brand">
@@ -46,7 +73,7 @@ export default function TestimonialsSection() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {testimonials.map((testimonial, index) => (
             <ScrollReveal
-              key={testimonial.name}
+              key={testimonial.id}
               animation="fade-up"
               delay={index * 100}
             >
@@ -70,16 +97,16 @@ export default function TestimonialsSection() {
 
                 {/* Text */}
                 <p className="text-sm text-bark/70 font-body leading-relaxed flex-1 mb-4">
-                  &ldquo;{testimonial.text}&rdquo;
+                  &ldquo;{testimonial.body}&rdquo;
                 </p>
 
                 {/* Author */}
                 <div className="pt-3 border-t border-border-light">
                   <p className="font-heading text-sm text-bark">
-                    {testimonial.name}
+                    {testimonial.userName}
                   </p>
                   <p className="text-[11px] text-bark/40 font-body">
-                    Verified Purchase &bull; {testimonial.product}
+                    Verified Purchase &bull; {testimonial.productName}
                   </p>
                 </div>
               </div>

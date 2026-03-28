@@ -1,8 +1,8 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import Image from "next/image";
 import { Search, ShoppingBag, User, Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -23,7 +23,11 @@ export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [announcementDismissed, setAnnouncementDismissed] = useState(true);
   const [mounted, setMounted] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+  const searchInputRef = useRef<HTMLInputElement>(null);
   const pathname = usePathname();
+  const router = useRouter();
   const { toggleCart, itemCount } = useCartStore();
   const count = mounted ? itemCount() : 0;
 
@@ -45,6 +49,20 @@ export default function Header() {
     setAnnouncementDismissed(true);
     localStorage.setItem("announcement-dismissed", "true");
   };
+
+  const handleSearchSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!searchQuery.trim()) return;
+    router.push(`/shop?q=${encodeURIComponent(searchQuery.trim())}`);
+    setSearchOpen(false);
+    setSearchQuery("");
+  };
+
+  useEffect(() => {
+    if (searchOpen && searchInputRef.current) {
+      searchInputRef.current.focus();
+    }
+  }, [searchOpen]);
 
   return (
     <>
@@ -85,6 +103,7 @@ export default function Header() {
                 <Menu className="h-5 w-5" />
               </button>
               <button
+                onClick={() => setSearchOpen(true)}
                 className="p-2 text-bark/70 hover:text-bark transition-colors hidden md:block"
                 aria-label="Search"
               >
@@ -149,6 +168,38 @@ export default function Header() {
           </div>
         </nav>
       </header>
+
+      {/* Search Overlay */}
+      {searchOpen && (
+        <div className="fixed inset-0 z-50 bg-bark/40 backdrop-blur-sm" onClick={() => setSearchOpen(false)}>
+          <div
+            className="bg-cream shadow-lg"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="container-brand py-4">
+              <form onSubmit={handleSearchSubmit} className="flex items-center gap-3">
+                <Search className="h-5 w-5 text-bark/40 flex-shrink-0" />
+                <input
+                  ref={searchInputRef}
+                  type="text"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  placeholder="Search products..."
+                  className="flex-1 bg-transparent text-bark font-body text-lg outline-none placeholder:text-bark/30"
+                />
+                <button
+                  type="button"
+                  onClick={() => setSearchOpen(false)}
+                  className="p-2 text-bark/50 hover:text-bark transition-colors"
+                  aria-label="Close search"
+                >
+                  <X className="h-5 w-5" />
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Mobile Menu Drawer */}
       <Drawer
