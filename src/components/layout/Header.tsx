@@ -21,7 +21,6 @@ const navLinks = [
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [announcementDismissed, setAnnouncementDismissed] = useState(true);
   const [mounted, setMounted] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
@@ -33,8 +32,6 @@ export default function Header() {
 
   useEffect(() => {
     setMounted(true);
-    const dismissed = localStorage.getItem("announcement-dismissed");
-    setAnnouncementDismissed(dismissed === "true");
   }, []);
 
   useEffect(() => {
@@ -44,11 +41,6 @@ export default function Header() {
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  const handleDismissAnnouncement = () => {
-    setAnnouncementDismissed(true);
-    localStorage.setItem("announcement-dismissed", "true");
-  };
 
   const handleSearchSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -74,21 +66,12 @@ export default function Header() {
             : "bg-cream"
         )}
       >
-        {/* Announcement Bar */}
-        {mounted && !announcementDismissed && (
-          <div className="bg-bark text-cream/90 text-center py-2 px-4 relative">
-            <p className="text-xs font-accent tracking-[0.12em]">
-              Pure Ayurvedic Skincare for Naturally Healthy Skin
-            </p>
-            <button
-              onClick={handleDismissAnnouncement}
-              className="absolute right-3 top-1/2 -translate-y-1/2 text-cream/50 hover:text-cream transition-colors"
-              aria-label="Dismiss"
-            >
-              <X className="h-3.5 w-3.5" />
-            </button>
-          </div>
-        )}
+        {/* Tagline Bar */}
+        <div className="bg-bark text-cream/90 text-center py-2 px-4">
+          <p className="text-xs font-accent tracking-[0.15em] uppercase">
+            Essence of Herbs in Every Gram
+          </p>
+        </div>
 
         {/* Main Header — Logo centered with actions */}
         <div className="container-brand">
@@ -111,19 +94,16 @@ export default function Header() {
               </button>
             </div>
 
-            {/* Center: Logo + Tagline */}
-            <Link href="/" className="flex-shrink-0 text-center">
+            {/* Center: Logo */}
+            <Link href="/" className="flex-shrink-0">
               <Image
                 src="/images/logo.png"
                 alt="jaison"
-                width={220}
-                height={80}
-                className="h-16 md:h-24 w-auto mix-blend-multiply mx-auto"
+                width={260}
+                height={96}
+                className="h-20 md:h-28 w-auto mix-blend-multiply"
                 priority
               />
-              <p className="text-[9px] md:text-[10px] font-accent uppercase tracking-[0.15em] text-bark/50 -mt-1">
-                Essence of Herbs in Every Gram
-              </p>
             </Link>
 
             {/* Right: Account + Cart */}
