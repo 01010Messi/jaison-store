@@ -16,6 +16,7 @@ import {
   Check,
 } from "lucide-react";
 import { products } from "@/data/products";
+import { getBlogPostsForProduct } from "@/data/blog";
 import ScrollReveal from "@/components/decorative/ScrollReveal";
 import GoldRule from "@/components/decorative/GoldRule";
 import OrnamentalBorder from "@/components/decorative/OrnamentalBorder";
@@ -133,6 +134,8 @@ export default function ProductDetail({ product }: ProductDetailProps) {
         p.categorySlug === product.categorySlug && p.slug !== product.slug
     )
     .slice(0, 4);
+
+  const relatedBlogPosts = getBlogPostsForProduct(product.slug);
 
   const tabContent: Record<TabKey, string> = {
     description: product.description,
@@ -445,6 +448,57 @@ export default function ProductDetail({ product }: ProductDetailProps) {
           </ScrollReveal>
         </div>
       </section>
+
+      {/* Related Blog Posts */}
+      {relatedBlogPosts.length > 0 && (
+        <section className="py-10 md:py-14">
+          <div className="container-brand">
+            <ScrollReveal animation="fade-up">
+              <div className="text-center mb-8">
+                <p className="section-label text-sage mb-2">From Our Blog</p>
+                <h2 className="font-heading text-xl md:text-2xl text-bark font-light">
+                  Learn More About {product.name}
+                </h2>
+                <div className="flex justify-center mt-3">
+                  <GoldRule variant="simple" width="w-16" />
+                </div>
+              </div>
+            </ScrollReveal>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+              {relatedBlogPosts.map((post, index) => (
+                <ScrollReveal
+                  key={post.slug}
+                  animation="fade-up"
+                  delay={index * 100}
+                >
+                  <Link
+                    href={`/blog/${post.slug}`}
+                    className="group flex gap-4 p-4 border border-border rounded-sm hover:border-gold/40 transition-colors"
+                  >
+                    <div className="relative w-20 h-20 rounded-sm overflow-hidden flex-shrink-0">
+                      <Image
+                        src={post.image}
+                        alt={post.title}
+                        fill
+                        className="object-cover"
+                        sizes="80px"
+                      />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <h3 className="font-heading text-sm text-bark group-hover:text-terracotta transition-colors line-clamp-2 leading-snug">
+                        {post.title}
+                      </h3>
+                      <p className="text-[11px] text-bark/40 font-accent uppercase tracking-wider mt-1.5">
+                        {post.readTime} min read
+                      </p>
+                    </div>
+                  </Link>
+                </ScrollReveal>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Related Products */}
       {relatedProducts.length > 0 && (

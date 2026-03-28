@@ -234,6 +234,54 @@ export function ArticleJsonLd({ slug }: { slug: string }) {
   );
 }
 
+export function ProductFAQJsonLd({ slug }: { slug: string }) {
+  const product = products.find((p) => p.slug === slug);
+  if (!product) return null;
+
+  const faqs = [
+    {
+      question: `What are the ingredients in ${product.name}?`,
+      answer: product.ingredients,
+    },
+    {
+      question: `How do I use ${product.name}?`,
+      answer: product.howToUse.replace(/\n/g, " "),
+    },
+    {
+      question: `What are the benefits of ${product.name}?`,
+      answer: product.benefits.replace(/\n/g, " "),
+    },
+    {
+      question: `Is ${product.name} 100% natural?`,
+      answer: `Yes, ${product.name} by Jaison Herbals is made from 100% natural ingredients with zero chemicals, preservatives, or artificial additives. It is handcrafted in Nashik, India using traditional Ayurvedic formulations.`,
+    },
+    {
+      question: `What is the weight and price of ${product.name}?`,
+      answer: `${product.name} comes in a ${product.weight}g pack priced at ₹${product.price}. Free shipping is available on orders above ₹499.`,
+    },
+  ];
+
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.answer,
+      },
+    })),
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    />
+  );
+}
+
 export function LocalBusinessJsonLd() {
   const schema = {
     "@context": "https://schema.org",

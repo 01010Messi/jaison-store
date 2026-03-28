@@ -2,7 +2,11 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getProductBySlug, products } from "@/data/products";
 import ProductDetail from "@/components/product/ProductDetail";
-import { ProductJsonLd, BreadcrumbJsonLd } from "@/components/seo/JsonLd";
+import {
+  ProductJsonLd,
+  BreadcrumbJsonLd,
+  ProductFAQJsonLd,
+} from "@/components/seo/JsonLd";
 
 interface Props {
   params: { slug: string };
@@ -41,6 +45,13 @@ export function generateMetadata({ params }: Props): Metadata {
       type: "website",
       url: `https://jaisonskincare.com/shop/${product.slug}`,
     },
+    other: {
+      "product:price:amount": String(product.price),
+      "product:price:currency": "INR",
+      "product:availability": "in stock",
+      "product:brand": "Jaison Herbals",
+      "product:condition": "new",
+    },
     twitter: {
       card: "summary_large_image",
       title: `${product.name} — jaison Herbals`,
@@ -67,6 +78,7 @@ export default function ProductDetailPage({ params }: Props) {
   return (
     <>
       <ProductJsonLd slug={params.slug} />
+      <ProductFAQJsonLd slug={params.slug} />
       <BreadcrumbJsonLd
         items={[
           { name: "Home", url: "https://jaisonskincare.com" },

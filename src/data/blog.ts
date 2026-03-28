@@ -653,6 +653,438 @@ Ayurvedic skincare isn't about perfection — it's about consistency and simplic
 
 Start simple, be patient, and let the herbs do what they've been doing for thousands of years. Your skin already knows how to be beautiful — it just needs the right support.`,
   },
+  {
+    title: "Orange Peel Powder for Face: 6 Benefits You Didn't Know",
+    slug: "orange-peel-powder-benefits-for-face",
+    excerpt:
+      "Orange peel powder is a Vitamin C powerhouse that brightens skin, fights acne, and removes tan naturally. Discover 6 surprising benefits and easy DIY recipes.",
+    category: "Skin Care",
+    author: "Jaison Herbals",
+    publishedAt: "2026-02-10",
+    readTime: 5,
+    image: "/images/products/orange-styled.jpg",
+    metaTitle: "6 Benefits of Orange Peel Powder for Face — DIY Recipes & Tips",
+    metaDescription:
+      "Discover 6 amazing benefits of orange peel powder for face. DIY face packs for tan removal, acne, dark spots & glowing skin. Natural Vitamin C skincare at home.",
+    keywords: [
+      "orange peel powder for face",
+      "orange peel face pack",
+      "orange peel benefits for skin",
+      "vitamin c face pack",
+      "tan removal face pack",
+      "orange peel powder for dark spots",
+      "natural skin brightening",
+    ],
+    relatedProducts: ["orange-peel-powder", "multani-mitti", "ubtan-powder"],
+    content: `We throw away orange peels every day without realising we're discarding one of nature's most potent skincare ingredients. Orange peel contains even more Vitamin C than the fruit itself, along with natural AHAs, antioxidants, and essential oils that can transform your skin.
+
+## Why Orange Peel Powder Is a Skincare Superstar
+
+Orange peel is rich in **polymethoxylated flavones (PMFs)** — powerful plant compounds that research shows can reduce inflammation, fight free radicals, and even inhibit melanin production (the pigment responsible for dark spots and uneven skin tone).
+
+When dried and powdered, orange peel becomes a gentle, effective skincare ingredient that delivers concentrated benefits with every use.
+
+## 6 Amazing Benefits of Orange Peel Powder for Face
+
+### 1. Natural Skin Brightening
+
+The high Vitamin C content in orange peel powder boosts collagen production and inhibits melanin synthesis. This means brighter, more even-toned skin with regular use. Unlike chemical brightening agents, orange peel works gradually and naturally, without the risk of irritation or rebound darkening.
+
+### 2. Effective Tan Removal
+
+Spent too much time in the sun? Orange peel powder is one of the best natural de-tanning agents. The citric acid gently exfoliates the top layer of tanned skin, while Vitamin C repairs UV-damaged cells beneath. Mix it with yoghurt for a powerful tan-removal pack.
+
+### 3. Fights Acne and Blackheads
+
+Orange peel has natural antibacterial properties that fight acne-causing bacteria. Its citric acid content helps unclog pores, removing the blackheads and whiteheads that lead to breakouts. Unlike harsh chemical acne treatments, orange peel works without over-drying your skin.
+
+### 4. Reduces Dark Spots and Pigmentation
+
+The combination of Vitamin C and natural AHAs in orange peel makes it excellent for fading dark spots, post-acne marks, and hyperpigmentation. With consistent use (2-3 times a week), most people notice visible lightening of dark spots within 3-4 weeks.
+
+### 5. Controls Excess Oil
+
+If you have oily skin, orange peel powder can help regulate sebum production. Its mild astringent properties tighten pores and reduce oiliness without stripping your skin's natural moisture barrier. This makes it ideal for oily and combination skin types.
+
+### 6. Anti-Ageing Properties
+
+The antioxidants in orange peel — particularly Vitamin C and flavonoids — fight the free radicals responsible for premature ageing. Regular use helps maintain skin elasticity, reduces fine lines, and gives your skin a youthful, healthy glow.
+
+## DIY Orange Peel Face Pack Recipes
+
+### Brightening Pack (For Dull Skin)
+- 2 tbsp orange peel powder
+- 1 tbsp honey
+- Rose water (to make paste)
+
+Apply for 15 minutes, rinse with cool water. Use 2-3 times per week.
+
+### Tan Removal Pack
+- 2 tbsp orange peel powder
+- 2 tbsp yoghurt
+- 1 tsp lemon juice
+
+Apply on tanned areas for 20 minutes. Gently scrub while removing.
+
+### Acne Control Pack
+- 1 tbsp orange peel powder
+- 1 tbsp neem powder
+- Rose water
+
+Apply on acne-prone areas for 15 minutes. Rinse gently.
+
+### Anti-Ageing Pack
+- 2 tbsp orange peel powder
+- 1 tbsp Multani Mitti
+- Milk (to make paste)
+
+Apply for 15-20 minutes. This combination firms, brightens, and deeply cleanses.
+
+## Tips for Best Results
+
+- **Use food-grade, finely ground orange peel powder** for the smoothest application
+- **Always do a patch test** — citric acid can irritate very sensitive skin
+- **Don't use on broken or irritated skin** — wait for any active breakouts to calm down
+- **Follow with moisturiser** — especially if you have dry skin
+- **Be consistent** — natural results take 2-4 weeks of regular use to become visible
+- **Avoid sun exposure** after using orange peel packs — Vitamin C can increase photosensitivity. Apply sunscreen if going outdoors.
+
+## A Simple Addition to Your Routine
+
+Orange peel powder is one of the most versatile and affordable natural skincare ingredients available. Whether you're dealing with tan, dullness, acne, or signs of ageing, this citrus powerhouse has a solution. Add it to your weekly skincare routine and experience the difference that pure, natural Vitamin C can make for your skin.`,
+  },
+  {
+    title: "Bhringraj Powder for Hair: The King of Herbs for Hair Growth",
+    slug: "bhringraj-powder-for-hair-growth",
+    excerpt:
+      "Known as the 'King of Herbs' in Ayurveda, Bhringraj is one of the most powerful natural remedies for hair growth, thickness, and preventing premature greying.",
+    category: "Hair Care",
+    author: "Jaison Herbals",
+    publishedAt: "2026-02-05",
+    readTime: 6,
+    image: "/images/products/ubtan-styled3.jpg",
+    metaTitle:
+      "Bhringraj Powder for Hair Growth — Benefits, Uses & DIY Recipes",
+    metaDescription:
+      "Learn how Bhringraj powder promotes hair growth, prevents greying, and reduces hair fall. DIY hair masks and oil recipes. The King of Herbs for your hair.",
+    keywords: [
+      "bhringraj powder for hair",
+      "bhringraj benefits",
+      "bhringraj for hair growth",
+      "bhringraj hair mask",
+      "king of herbs for hair",
+      "bhringraj for grey hair",
+      "ayurvedic hair growth remedy",
+    ],
+    relatedProducts: ["aamla-powder", "shikakai-powder", "reetha-powder"],
+    content: `In the world of Ayurvedic hair care, one herb reigns supreme — Bhringraj, literally meaning "King of Hair." This unassuming plant, scientifically known as *Eclipta alba*, has been used for over 5,000 years in traditional Indian medicine specifically for hair health. Modern science is now confirming what Ayurvedic practitioners have known all along: Bhringraj is one of the most effective natural remedies for hair growth.
+
+## Why Bhringraj Is Called the "King of Herbs"
+
+Bhringraj earned its royal title because of its remarkable ability to address virtually every hair concern. Research published in the *Journal of Ethnopharmacology* has shown that Bhringraj extract can promote hair growth by stimulating hair follicles and extending the growth phase of the hair cycle.
+
+The herb contains wedelolactone, ecliptine, and other bioactive compounds that work at the cellular level to strengthen hair roots and promote new growth.
+
+## Key Benefits of Bhringraj for Hair
+
+### Promotes New Hair Growth
+
+Bhringraj stimulates blood circulation to the scalp, delivering more nutrients and oxygen to hair follicles. This revives dormant follicles and promotes the growth of new, healthy hair. Many users report noticeable new growth along the hairline and parting within 6-8 weeks of consistent use.
+
+### Prevents and Reverses Premature Greying
+
+One of Bhringraj's most celebrated benefits is its ability to maintain natural hair colour. The wedelolactone in Bhringraj supports melanin production in hair follicles, helping to prevent premature greying and even darken existing grey hairs over time.
+
+### Reduces Hair Fall Dramatically
+
+By strengthening hair roots and improving scalp health, Bhringraj significantly reduces hair fall. The nutrients in Bhringraj nourish weak, brittle hair from the roots, making it more resistant to breakage during combing, styling, and washing.
+
+### Treats Dandruff and Scalp Issues
+
+Bhringraj has natural antifungal and antibacterial properties that combat the microorganisms causing dandruff and scalp infections. It also soothes an itchy, irritated scalp and reduces inflammation.
+
+### Adds Thickness and Volume
+
+Regular use of Bhringraj thickens individual hair strands and increases overall hair volume. The proteins and iron in Bhringraj strengthen the hair shaft, making each strand more robust.
+
+## How to Use Bhringraj Powder
+
+### Bhringraj Hair Mask
+- 3 tablespoons Bhringraj powder
+- Warm water (or coconut milk for extra conditioning)
+- Mix to form a smooth paste
+
+Apply to scalp and hair, leave for 30-45 minutes, then wash off with a mild cleanser or Shikakai-Reetha mix. Use twice a week.
+
+### Bhringraj + Amla Power Mask
+- 2 tablespoons Bhringraj powder
+- 2 tablespoons Amla powder
+- Yoghurt (enough to make paste)
+
+This combination doubles the anti-greying and growth-boosting benefits. Apply for 30 minutes, rinse thoroughly.
+
+### Bhringraj Oil (Hot Oil Treatment)
+- 4 tablespoons Bhringraj powder
+- 1 cup coconut oil
+- Heat gently on low flame for 10 minutes
+- Strain and let cool
+
+Massage the warm oil into your scalp before bed. Leave overnight. Wash out in the morning. Do this once a week for best results.
+
+## What Results to Expect
+
+- **Week 2-3:** Reduced hair fall during washing and combing
+- **Week 4-6:** Scalp feels healthier, less itchy, dandruff reduces
+- **Week 6-8:** New baby hair visible along hairline and parting
+- **Month 3:** Noticeable increase in hair thickness and volume
+- **Month 4-6:** Visible improvement in hair colour (less greying)
+
+## Tips for Maximum Results
+
+- **Consistency is key** — Bhringraj works cumulatively. Don't expect overnight miracles, but do expect steady, lasting improvement.
+- **Combine with a healthy diet** — Hair health starts from within. Include protein, iron, and Vitamin C in your diet.
+- **Massage thoroughly** — When applying Bhringraj, spend 5 minutes massaging your scalp. This boosts blood circulation and enhances absorption.
+- **Be patient with greying** — Colour restoration takes the longest. Give it at least 3-4 months of consistent use.
+- **Use with Amla and Shikakai** — These three herbs together form the ultimate Ayurvedic hair care trinity.
+
+## The Natural Path to Thicker, Stronger Hair
+
+In a world of expensive hair transplants, chemical treatments, and miracle serums, Bhringraj stands as a humble yet incredibly effective alternative. It doesn't promise instant results — it delivers lasting transformation. The same transformation that Indian royalty relied on centuries ago is available to you today in the form of pure, natural Bhringraj powder. Give your hair the royal treatment it deserves.`,
+  },
+  {
+    title: "Reetha (Soapnut) for Hair: Nature's Gentlest Cleanser",
+    slug: "reetha-soapnut-benefits-for-hair",
+    excerpt:
+      "Reetha is nature's own soap — a chemical-free cleanser that cleans your hair while keeping it soft, shiny, and healthy. Learn how to use this Ayurvedic wonder.",
+    category: "Hair Care",
+    author: "Jaison Herbals",
+    publishedAt: "2026-01-28",
+    readTime: 5,
+    image: "/images/products/reetha-styled.jpg",
+    metaTitle:
+      "Reetha (Soapnut) for Hair: Benefits, Uses & Natural Hair Wash Recipes",
+    metaDescription:
+      "Learn how reetha (soapnut) cleanses hair naturally without chemicals. Benefits, DIY recipes, and tips for using reetha powder as a natural shampoo alternative.",
+    keywords: [
+      "reetha for hair",
+      "soapnut for hair wash",
+      "reetha powder benefits",
+      "natural shampoo alternative",
+      "reetha hair wash",
+      "soapnut benefits for hair",
+      "chemical free hair wash",
+    ],
+    relatedProducts: ["reetha-powder", "shikakai-powder", "aamla-powder"],
+    content: `Before shampoo bottles lined supermarket shelves, Indian households had a simple, brilliant solution for clean hair — Reetha, also known as soapnut. This small, unassuming fruit has been used for centuries not just for hair care, but as a natural soap for washing clothes, utensils, and even jewellery. Its secret? Natural saponins — plant-based compounds that create a gentle lather and cleanse without any chemicals.
+
+## What Makes Reetha Special?
+
+Reetha fruit shells contain approximately **10-12% saponin content** — one of the highest concentrations found in any natural source. These saponins are nature's surfactants: they lower the surface tension of water, allowing it to lift and carry away dirt, oil, and impurities.
+
+But unlike synthetic surfactants like SLS (sodium lauryl sulfate) found in commercial shampoos, reetha's natural saponins are incredibly gentle. They clean thoroughly without stripping your hair's protective natural oil layer.
+
+## Benefits of Reetha for Hair
+
+### Chemical-Free Cleansing
+
+The biggest advantage of reetha is what it *doesn't* contain — no sulfates, no parabens, no silicones, no artificial fragrances. It cleans your hair purely through the power of natural saponins, making it safe for all hair types including colour-treated and chemically processed hair.
+
+### Maintains Natural Oil Balance
+
+Commercial shampoos strip all oils from your hair, forcing your scalp to overcompensate by producing even more oil. Reetha breaks this cycle by cleansing selectively — removing dirt and excess oil while preserving the natural oils your hair needs for moisture and protection.
+
+### Natural Conditioner
+
+Unlike shampoo that leaves hair dry and tangled (which is why you need a separate conditioner), reetha leaves hair naturally soft, smooth, and easy to manage. Many users find they don't need a conditioner at all after switching to reetha.
+
+### Prevents Hair Fall
+
+The gentle nature of reetha means less mechanical stress on your hair during washing. Combined with its ability to maintain scalp health, reetha significantly reduces hair fall. Many users report a visible reduction in hair fall within the first month of switching.
+
+### Fights Dandruff Naturally
+
+Reetha's natural antifungal properties combat *Malassezia*, the fungus responsible for dandruff. Regular use helps keep your scalp clean, flake-free, and healthy without the harshness of medicated anti-dandruff shampoos.
+
+### Safe for Sensitive Scalps
+
+If you have a sensitive scalp that reacts to commercial shampoos with itching, redness, or irritation, reetha is your answer. Its pH-neutral, gentle cleansing action is unlikely to cause any adverse reactions.
+
+## How to Use Reetha Powder for Hair
+
+### Simple Reetha Hair Wash
+- 3 tablespoons reetha powder
+- 1 cup warm water
+- Mix well and let it sit for 10 minutes
+- Apply to wet hair, massage into scalp for 2-3 minutes
+- Rinse thoroughly with water
+
+### Reetha + Shikakai Cleansing Mix
+- 2 tablespoons reetha powder
+- 2 tablespoons shikakai powder
+- Warm water to make a paste
+
+This is the classic Ayurvedic hair wash. Shikakai adds extra cleansing power and nutrients. Apply, massage, leave for 5 minutes, rinse.
+
+### Reetha + Amla Nourishing Wash
+- 2 tablespoons reetha powder
+- 2 tablespoons amla powder
+- Warm water
+
+Amla adds conditioning, anti-greying, and hair-strengthening benefits. Perfect for dry or damaged hair.
+
+### Reetha Rinse Water
+- 2 tablespoons reetha powder
+- 2 cups warm water
+- Soak for 2-4 hours or overnight
+- Strain the liquid
+
+Use this as a final rinse after your regular wash for extra shine and softness.
+
+## Tips for Switching to Reetha
+
+- **Expect a transition period** — Your hair and scalp need 2-3 weeks to adjust from chemical shampoo to natural cleansing. During this time, your hair may feel different, but it's rebalancing.
+- **Don't expect heavy lather** — Reetha creates a mild, gentle lather. Less lather doesn't mean less cleansing.
+- **Rinse thoroughly** — Make sure to wash out all the powder. Any residue can make hair feel gritty.
+- **Use lukewarm water** — Hot water can make hair dry. Lukewarm water activates saponins effectively.
+- **Combine with other herbs** — Reetha works best as part of the Shikakai-Reetha-Amla trio. Each herb brings complementary benefits.
+
+## Reetha Beyond Hair
+
+Fun fact: Reetha is so versatile that it's used as a natural laundry detergent, dish soap, and even a pest repellent in organic farming. It's completely biodegradable and eco-friendly — so by switching to reetha for your hair, you're also making a greener choice for the planet.
+
+## Make the Natural Switch
+
+Reetha represents the simplest, purest form of hair care — a single natural ingredient that cleans, conditions, and protects your hair simultaneously. No complicated ingredient lists, no harsh chemicals, no plastic waste. Just a fruit that nature designed to be the perfect cleanser. Your hair — and the planet — will thank you for making the switch.`,
+  },
+  {
+    title: "Mehendi (Henna) for Hair: Complete Guide to Natural Hair Colour",
+    slug: "mehendi-henna-natural-hair-colour-guide",
+    excerpt:
+      "Mehendi isn't just for weddings — it's one of the best natural hair dyes and conditioners. Learn how to use henna powder for beautiful, naturally coloured hair.",
+    category: "Hair Care",
+    author: "Jaison Herbals",
+    publishedAt: "2026-01-20",
+    readTime: 7,
+    image: "/images/products/ubtan-styled2.jpg",
+    metaTitle:
+      "Mehendi (Henna) for Hair: How to Use Henna for Natural Hair Colour",
+    metaDescription:
+      "Complete guide to using mehendi (henna) for hair colour and conditioning. DIY recipes for different shades, application tips, and benefits of natural henna for hair.",
+    keywords: [
+      "mehendi for hair",
+      "henna for hair colour",
+      "natural hair dye",
+      "mehendi powder for hair",
+      "henna hair mask",
+      "how to apply mehendi on hair",
+      "natural hair colouring at home",
+      "henna benefits for hair",
+    ],
+    relatedProducts: ["mehendi-powder", "aamla-powder", "shikakai-powder"],
+    content: `Mehendi — or henna, as it's known worldwide — is one of the oldest cosmetics in human history. Cleopatra used it. Indian brides have adorned their hands with it for millennia. But beyond its decorative use, mehendi is one of the most effective natural hair dyes and conditioners available. In a world where chemical hair colours cause damage, dryness, and allergic reactions, mehendi stands out as a safe, nourishing alternative that actually *improves* your hair while colouring it.
+
+## How Mehendi Colours Hair
+
+The magic of mehendi lies in a molecule called **lawsone** (2-hydroxy-1,4-naphthoquinone). When mehendi paste is applied to hair, lawsone molecules bind to the keratin proteins in your hair, creating a permanent colour that doesn't wash out — it grows out.
+
+Unlike chemical dyes that open up the hair cuticle and deposit artificial pigments inside (damaging the hair structure in the process), lawsone bonds to the *outside* of the hair shaft. This means mehendi adds colour *while* adding a protective coating that makes hair stronger and shinier.
+
+## Benefits of Mehendi for Hair
+
+### Natural, Chemical-Free Colour
+
+Pure mehendi produces a rich, reddish-copper colour on hair. When combined with other natural ingredients, you can achieve shades ranging from deep brown to burgundy to jet black. All without a single synthetic chemical.
+
+### Deep Conditioning
+
+Mehendi has a natural conditioning effect. After a mehendi treatment, your hair will feel thicker, smoother, and more manageable. The lawsone coating fills in gaps in the hair cuticle, making each strand stronger and more resistant to damage.
+
+### Covers Grey Hair Naturally
+
+Mehendi is exceptionally good at covering grey hair. The colour payoff is actually *better* on grey hair because the lighter base allows the mehendi colour to show more vibrantly.
+
+### Reduces Dandruff
+
+Mehendi has antifungal properties that help control the fungus causing dandruff. It also has a cooling effect on the scalp, reducing itchiness and irritation.
+
+### Strengthens Hair
+
+The protein-binding properties of lawsone strengthen hair from the outside, reducing breakage, split ends, and damage from heat and pollution.
+
+## Colour Guide: Getting the Shade You Want
+
+### Copper-Red (Pure Mehendi)
+Use mehendi powder mixed with water or tea only. This gives the classic reddish-copper colour.
+
+### Brown (Mehendi + Coffee)
+- 100g mehendi powder
+- Strong black coffee (use as mixing liquid instead of water)
+- 2 tablespoons coffee powder
+- This produces a warm brown shade
+
+### Dark Brown (Mehendi + Amla)
+- 100g mehendi powder
+- 2 tablespoons amla powder
+- Mix with tea water
+- Amla tones down the red and deepens the colour to dark brown
+
+### Burgundy (Mehendi + Beetroot)
+- 100g mehendi powder
+- Mix with beetroot juice instead of water
+- This produces a beautiful burgundy-wine shade
+
+### Black (Two-Step Process)
+For jet black hair, a two-step process works best:
+1. Apply pure mehendi, leave for 2 hours, rinse
+2. Next day, apply a paste of indigo powder + water, leave for 1 hour, rinse
+This gives a natural, deep black colour.
+
+## Step-by-Step Application Guide
+
+### Preparation (Night Before)
+1. Mix mehendi powder with your chosen liquid (water, tea, or coffee)
+2. Add 1 tablespoon lemon juice (helps release more lawsone)
+3. Cover and leave overnight at room temperature
+4. The paste will darken — this means the dye is releasing
+
+### Application
+1. Wear old clothes and gloves (mehendi stains!)
+2. Apply coconut oil along your hairline and ears to prevent skin staining
+3. Section your hair into 4-6 parts
+4. Starting from the roots, apply mehendi generously to each section
+5. Make sure every strand is covered — don't skimp
+6. Pile hair on top of your head
+7. Cover with a shower cap or plastic wrap
+
+### Processing Time
+- **For conditioning only:** 1-2 hours
+- **For light colour:** 2-3 hours
+- **For intense colour:** 4-5 hours
+- **For maximum coverage of greys:** 5-6 hours
+
+### Rinsing
+1. Rinse with water only — no shampoo for 24-48 hours
+2. The colour will deepen over the next 2-3 days as lawsone oxidises
+3. Don't judge the final colour until day 3
+
+## Common Mistakes to Avoid
+
+- **Using hot water to mix** — Heat destroys lawsone. Use room temperature or lukewarm liquid.
+- **Not letting the paste rest** — Mehendi needs 6-12 hours for dye release. Applying fresh paste gives minimal colour.
+- **Washing too soon after** — Shampooing within 24 hours strips the fresh colour. Wait at least 48 hours.
+- **Expecting instant results** — The colour develops over 2-3 days. Be patient.
+- **Using "black henna"** — If a product claims to be "black henna," it likely contains PPD (a chemical allergen). Pure henna is always greenish-brown powder that gives reddish tones.
+
+## How Often to Apply
+
+- **For colour maintenance:** Every 3-4 weeks on roots, full length every 2-3 months
+- **For conditioning:** Once a month
+- **For grey coverage:** Every 2-3 weeks on roots as needed
+
+## The Natural Choice for Beautiful Hair
+
+Mehendi is proof that the best beauty solutions are often the oldest ones. While chemical dyes damage your hair with every application, mehendi strengthens it. While chemical dyes fade and need frequent touch-ups, mehendi builds upon itself, getting richer with each application. It's not just a hair dye — it's a complete hair treatment that colours, conditions, and protects in one step. Embrace this ancient beauty secret and enjoy naturally beautiful, chemical-free hair colour.`,
+  },
 ];
 
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
@@ -662,5 +1094,14 @@ export function getBlogPostBySlug(slug: string): BlogPost | undefined {
 export function getRelatedPosts(currentSlug: string, limit = 3): BlogPost[] {
   return blogPosts
     .filter((post) => post.slug !== currentSlug)
+    .slice(0, limit);
+}
+
+export function getBlogPostsForProduct(
+  productSlug: string,
+  limit = 2
+): BlogPost[] {
+  return blogPosts
+    .filter((post) => post.relatedProducts.includes(productSlug))
     .slice(0, limit);
 }
