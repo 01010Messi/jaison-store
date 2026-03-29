@@ -5,11 +5,11 @@
     <!-- Oval frame -->
     <ellipse cx="0" cy="5" rx="38" ry="48" fill="none" stroke="#BCA480" stroke-width="3"/>
     <!-- Center leaf -->
-    <ellipse cx="0" cy="-5" rx="11" ry="35" fill="#7A9E7E" opacity="0.9"/>
+    <ellipse cx="0" cy="-5" rx="11" ry="35" fill="#898f65" opacity="0.9"/>
     <!-- Left leaf -->
-    <ellipse cx="-18" cy="5" rx="9" ry="26" fill="#7A9E7E" opacity="0.7" transform="rotate(-20 -18 5)"/>
+    <ellipse cx="-18" cy="5" rx="9" ry="26" fill="#898f65" opacity="0.7" transform="rotate(-20 -18 5)"/>
     <!-- Right leaf -->
-    <ellipse cx="18" cy="5" rx="9" ry="26" fill="#7A9E7E" opacity="0.7" transform="rotate(20 18 5)"/>
+    <ellipse cx="18" cy="5" rx="9" ry="26" fill="#898f65" opacity="0.7" transform="rotate(20 18 5)"/>
     <!-- Gold diamond accent -->
     <polygon points="0,-45 5,-40 0,-35 -5,-40" fill="#BCA480"/>
   </g>
