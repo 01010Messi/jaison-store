@@ -108,7 +108,7 @@ export async function generateInvoice(data: InvoiceData): Promise<Buffer> {
 
     // --- Horizontal Line ---
     doc
-      .strokeColor("#3D2B1F")
+      .strokeColor("#1a3c34")
       .lineWidth(1)
       .moveTo(50, doc.y)
       .lineTo(545, doc.y)
@@ -137,7 +137,7 @@ export async function generateInvoice(data: InvoiceData): Promise<Buffer> {
 
     // --- Line ---
     doc
-      .strokeColor("#E8D5B7")
+      .strokeColor("#cfc7ad")
       .lineWidth(0.5)
       .moveTo(50, doc.y)
       .lineTo(545, doc.y)
@@ -169,7 +169,7 @@ export async function generateInvoice(data: InvoiceData): Promise<Buffer> {
 
     doc
       .moveDown(0.5)
-      .strokeColor("#3D2B1F")
+      .strokeColor("#1a3c34")
       .lineWidth(0.5)
       .moveTo(50, doc.y)
       .lineTo(545, doc.y)
@@ -201,7 +201,7 @@ export async function generateInvoice(data: InvoiceData): Promise<Buffer> {
 
     // Line after items
     doc
-      .strokeColor("#E8D5B7")
+      .strokeColor("#cfc7ad")
       .lineWidth(0.5)
       .moveTo(50, y + 4)
       .lineTo(545, y + 4)
@@ -272,7 +272,7 @@ export async function generateInvoice(data: InvoiceData): Promise<Buffer> {
 
     // Grand total line
     doc
-      .strokeColor("#3D2B1F")
+      .strokeColor("#1a3c34")
       .lineWidth(1)
       .moveTo(totalX, y)
       .lineTo(545, y)
@@ -299,14 +299,14 @@ export async function generateInvoice(data: InvoiceData): Promise<Buffer> {
 
     // --- Footer ---
     doc
-      .strokeColor("#E8D5B7")
+      .strokeColor("#cfc7ad")
       .lineWidth(0.5)
       .moveTo(50, y)
       .lineTo(545, y)
       .stroke();
     y += 12;
 
-    doc.fontSize(8).fillColor("#888888");
+    doc.fontSize(8).fillColor("#6f7271");
     doc.text(
       "This is a computer-generated invoice and does not require a physical signature.",
       50,

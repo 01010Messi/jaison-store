@@ -10,23 +10,23 @@ const config: Config = {
     extend: {
       colors: {
         cream: {
-          DEFAULT: "#FDFAF5",
-          50: "#FEFDF9",
-          100: "#FBF6EC",
+          DEFAULT: "#ede8d6",
+          50: "#f5f2e6",
+          100: "#e8e3d0",
         },
         parchment: {
-          DEFAULT: "#F5ECD7",
-          dark: "#E8D5B7",
+          DEFAULT: "#e0d9c3",
+          dark: "#cfc7ad",
         },
         terracotta: {
-          DEFAULT: "#A0885C",
-          light: "#BCA480",
-          dark: "#8A7346",
+          DEFAULT: "#006241",
+          light: "#1a7a56",
+          dark: "#004d33",
         },
         sage: {
-          DEFAULT: "#7A9E7E",
-          light: "#9BB89E",
-          dark: "#5C7E60",
+          DEFAULT: "#898f65",
+          light: "#a0a580",
+          dark: "#6e7350",
         },
         bark: {
           DEFAULT: "#1A3C34",
@@ -38,11 +38,12 @@ const config: Config = {
           light: "#D2BA96",
           dark: "#A08A64",
         },
-        surface: "#FDFAF5",
-        "surface-warm": "#F5ECD7",
+        neutral: "#6f7271",
+        surface: "#ede8d6",
+        "surface-warm": "#e0d9c3",
         "surface-dark": "#1A3C34",
-        border: "#E8D5B7",
-        "border-light": "#F0E6D0",
+        border: "#cfc7ad",
+        "border-light": "#ddd6c0",
       },
       fontFamily: {
         heading: ["var(--font-heading)", "Georgia", "serif"],
