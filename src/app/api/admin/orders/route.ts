@@ -31,6 +31,8 @@ export async function GET() {
         paymentStatus: o.paymentStatus,
         subtotal: Number(o.subtotal),
         shippingCost: Number(o.shippingCost),
+        codFee: Number(o.codFee),
+        discount: Number(o.discount),
         total: Number(o.total),
         couponCode: o.couponCode,
         trackingNumber: o.trackingNumber,

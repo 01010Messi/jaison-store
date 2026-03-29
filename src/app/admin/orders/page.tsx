@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState, useCallback } from "react";
-import { ShoppingCart, Eye, Truck, X } from "lucide-react";
+import { ShoppingCart, Eye, Truck, X, Search } from "lucide-react";
 import GoldRule from "@/components/decorative/GoldRule";
 import { formatPrice, cn } from "@/lib/utils";
 import Badge from "@/components/ui/Badge";
@@ -35,6 +35,8 @@ interface Order {
   paymentStatus: string;
   subtotal: number;
   shippingCost: number;
+  codFee: number;
+  discount: number;
   total: number;
   couponCode?: string;
   trackingNumber?: string;
@@ -68,6 +70,7 @@ export default function AdminOrdersPage() {
   const [loading, setLoading] = useState(true);
   const [selectedOrder, setSelectedOrder] = useState<Order | null>(null);
   const [statusFilter, setStatusFilter] = useState("ALL");
+  const [searchQuery, setSearchQuery] = useState("");
   const [updatingStatus, setUpdatingStatus] = useState(false);
   const [trackingNumber, setTrackingNumber] = useState("");
 
@@ -114,10 +117,16 @@ export default function AdminOrdersPage() {
     }
   };
 
-  const filteredOrders =
-    statusFilter === "ALL"
-      ? orders
-      : orders.filter((o) => o.status === statusFilter);
+  const filteredOrders = orders.filter((o) => {
+    const matchesStatus = statusFilter === "ALL" || o.status === statusFilter;
+    const q = searchQuery.toLowerCase();
+    const matchesSearch =
+      !q ||
+      o.orderNumber.toLowerCase().includes(q) ||
+      (o.customer.name || "").toLowerCase().includes(q) ||
+      o.customer.email.toLowerCase().includes(q);
+    return matchesStatus && matchesSearch;
+  });
 
   if (loading) {
     return (
@@ -134,6 +143,18 @@ export default function AdminOrdersPage() {
         <p className="text-sm text-bark/50 font-body mt-1">
           Manage customer orders and shipments
         </p>
+      </div>
+
+      {/* Search */}
+      <div className="relative mb-4">
+        <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-bark/30" />
+        <input
+          type="text"
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          placeholder="Search by order number, name, or email..."
+          className="w-full pl-9 pr-4 py-2 bg-cream border border-border rounded-sm text-sm font-body text-bark placeholder:text-bark/30 focus:outline-none focus:border-gold"
+        />
       </div>
 
       {/* Filters */}
@@ -304,6 +325,24 @@ export default function AdminOrdersPage() {
                       : "Free"}
                   </span>
                 </div>
+                {selectedOrder.codFee > 0 && (
+                  <div className="flex justify-between text-sm font-body">
+                    <span className="text-bark/50">COD Fee</span>
+                    <span className="text-bark">
+                      {formatPrice(selectedOrder.codFee)}
+                    </span>
+                  </div>
+                )}
+                {selectedOrder.discount > 0 && (
+                  <div className="flex justify-between text-sm font-body">
+                    <span className="text-sage">
+                      Discount{selectedOrder.couponCode ? ` (${selectedOrder.couponCode})` : ""}
+                    </span>
+                    <span className="text-sage">
+                      -{formatPrice(selectedOrder.discount)}
+                    </span>
+                  </div>
+                )}
                 <div className="flex justify-between text-sm font-heading">
                   <span className="text-bark">Total</span>
                   <span className="text-terracotta">
