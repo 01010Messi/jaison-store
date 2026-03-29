@@ -6,6 +6,7 @@ function getResend() {
 
 const FROM = process.env.EMAIL_FROM || "orders@jaisonskincare.com";
 const APP_NAME = "jaison";
+const OWNER_EMAIL = process.env.ADMIN_EMAIL || "Jaisonskincare@gmail.com";
 
 interface OrderEmailData {
   orderNumber: string;
@@ -139,6 +140,7 @@ export async function sendOrderConfirmation(data: OrderEmailData) {
   const { error } = await getResend().emails.send({
     from: `${APP_NAME} <${FROM}>`,
     to: data.customerEmail,
+    bcc: OWNER_EMAIL,
     subject: `Order Confirmed — #${data.orderNumber}`,
     html,
   });
@@ -191,6 +193,7 @@ export async function sendShippingUpdate(data: {
   const { error } = await getResend().emails.send({
     from: `${APP_NAME} <${FROM}>`,
     to: data.customerEmail,
+    bcc: OWNER_EMAIL,
     subject: `Your order #${data.orderNumber} has been shipped!`,
     html,
   });

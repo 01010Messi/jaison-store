@@ -96,8 +96,8 @@ export async function PATCH(
         body.trackingUrl ||
         `https://www.shiprocket.in/shipment-tracking/${body.trackingNumber}`;
 
-      // Send shipping email
-      sendShippingUpdate({
+      // Send shipping email (must await on Vercel serverless)
+      await sendShippingUpdate({
         customerName: order.user?.name || order.shippingAddress.fullName,
         customerEmail: order.user?.email || order.guestEmail || "",
         orderNumber: order.orderNumber,

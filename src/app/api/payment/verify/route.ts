@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import crypto from "crypto";
 import prisma from "@/lib/prisma";
 import { sendOrderConfirmation } from "@/lib/email";
+import { sendOwnerOrderWhatsApp } from "@/lib/whatsapp";
 
 export async function POST(req: Request) {
   try {
@@ -76,34 +77,66 @@ export async function POST(req: Request) {
             )?.email
           : null);
 
+      // Send notifications (must await on Vercel serverless)
+      const notifications: Promise<void>[] = [];
+
       if (customerEmail && order.shippingAddress) {
-        sendOrderConfirmation({
-          orderNumber: order.orderNumber,
-          customerName: order.shippingAddress.fullName,
-          customerEmail,
-          items: order.items.map((i) => ({
-            name: i.name,
-            quantity: i.quantity,
-            price: Number(i.price),
-            image: i.image || undefined,
-          })),
-          subtotal: Number(order.subtotal),
-          shippingCost: Number(order.shippingCost),
-          codFee: Number(order.codFee),
-          discount: Number(order.discount),
-          total: Number(order.total),
-          paymentMethod: order.paymentMethod,
-          shippingAddress: {
-            fullName: order.shippingAddress.fullName,
-            addressLine1: order.shippingAddress.addressLine1,
-            addressLine2: order.shippingAddress.addressLine2 || undefined,
+        notifications.push(
+          sendOrderConfirmation({
+            orderNumber: order.orderNumber,
+            customerName: order.shippingAddress.fullName,
+            customerEmail,
+            items: order.items.map((i) => ({
+              name: i.name,
+              quantity: i.quantity,
+              price: Number(i.price),
+              image: i.image || undefined,
+            })),
+            subtotal: Number(order.subtotal),
+            shippingCost: Number(order.shippingCost),
+            codFee: Number(order.codFee),
+            discount: Number(order.discount),
+            total: Number(order.total),
+            paymentMethod: order.paymentMethod,
+            shippingAddress: {
+              fullName: order.shippingAddress.fullName,
+              addressLine1: order.shippingAddress.addressLine1,
+              addressLine2: order.shippingAddress.addressLine2 || undefined,
+              city: order.shippingAddress.city,
+              state: order.shippingAddress.state,
+              pincode: order.shippingAddress.pincode,
+              phone: order.shippingAddress.phone,
+            },
+          })
+        );
+      }
+
+      if (order.shippingAddress) {
+        notifications.push(
+          sendOwnerOrderWhatsApp({
+            orderNumber: order.orderNumber,
+            customerName: order.shippingAddress.fullName,
+            customerPhone: order.shippingAddress.phone,
+            items: order.items.map((i) => ({
+              name: i.name,
+              quantity: i.quantity,
+              price: Number(i.price),
+            })),
+            total: Number(order.total),
+            paymentMethod: order.paymentMethod,
             city: order.shippingAddress.city,
             state: order.shippingAddress.state,
-            pincode: order.shippingAddress.pincode,
-            phone: order.shippingAddress.phone,
-          },
-        }).catch((err) => console.error("Email send failed:", err));
+          })
+        );
       }
+
+      await Promise.allSettled(notifications).then((results) => {
+        results.forEach((r, i) => {
+          if (r.status === "rejected") {
+            console.error(`Notification ${i} failed:`, r.reason);
+          }
+        });
+      });
     }
 
     return NextResponse.json({

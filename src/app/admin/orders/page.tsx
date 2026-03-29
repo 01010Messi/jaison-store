@@ -318,10 +318,10 @@ export default function AdminOrdersPage() {
               <h3 className="text-xs font-accent uppercase tracking-wider text-bark/40 mb-2">
                 Update Status
               </h3>
-              {selectedOrder.status === "PROCESSING" && (
+              {!["SHIPPED", "DELIVERED", "CANCELLED"].includes(selectedOrder.status) && (
                 <div className="mb-3">
                   <Input
-                    label="Tracking Number (optional)"
+                    label="Tracking Number (for shipping)"
                     value={trackingNumber}
                     onChange={(e) => setTrackingNumber(e.target.value)}
                     placeholder="Enter tracking number"

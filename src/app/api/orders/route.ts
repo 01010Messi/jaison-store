@@ -4,6 +4,7 @@ import { authOptions } from "@/lib/auth";
 import prisma from "@/lib/prisma";
 import { generateOrderNumber } from "@/lib/utils";
 import { sendOrderConfirmation } from "@/lib/email";
+import { sendOwnerOrderWhatsApp } from "@/lib/whatsapp";
 
 export async function POST(req: Request) {
   try {
@@ -152,8 +153,8 @@ export async function POST(req: Request) {
       });
     }
 
-    // Send order confirmation email
-    sendOrderConfirmation({
+    // Send notifications (must await on Vercel serverless)
+    const emailData = {
       orderNumber: order.orderNumber,
       customerName,
       customerEmail,
@@ -178,7 +179,31 @@ export async function POST(req: Request) {
         pincode: savedAddress.pincode,
         phone: savedAddress.phone,
       },
-    }).catch((err) => console.error("Email send failed:", err));
+    };
+
+    await Promise.allSettled([
+      sendOrderConfirmation(emailData),
+      sendOwnerOrderWhatsApp({
+        orderNumber: order.orderNumber,
+        customerName,
+        customerPhone: address.phone,
+        items: order.items.map((i) => ({
+          name: i.name,
+          quantity: i.quantity,
+          price: Number(i.price),
+        })),
+        total: Number(order.total),
+        paymentMethod: order.paymentMethod,
+        city: address.city,
+        state: address.state,
+      }),
+    ]).then((results) => {
+      results.forEach((r, i) => {
+        if (r.status === "rejected") {
+          console.error(`Notification ${i} failed:`, r.reason);
+        }
+      });
+    });
 
     return NextResponse.json({
       orderNumber: order.orderNumber,
