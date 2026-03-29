@@ -65,7 +65,7 @@ export async function sendOrderConfirmation(data: OrderEmailData) {
 
     <!-- Confirmation -->
     <div style="text-align: center; padding: 32px 0;">
-      <h2 style="margin: 0; color: #898f65; font-size: 22px;">Order Confirmed!</h2>
+      <h2 style="margin: 0; color: #7A9E7E; font-size: 22px;">Order Confirmed!</h2>
       <p style="color: #6f7271; margin: 8px 0 0;">Thank you for your order, ${data.customerName}.</p>
       <p style="color: #1a3c34; font-size: 18px; margin: 16px 0 0;">
         Order <strong>#${data.orderNumber}</strong>
@@ -92,7 +92,7 @@ export async function sendOrderConfirmation(data: OrderEmailData) {
         <td style="padding: 4px 0; text-align: right; color: #1a3c34;">${data.shippingCost === 0 ? "Free" : `₹${data.shippingCost}`}</td>
       </tr>
       ${data.codFee > 0 ? `<tr><td style="padding: 4px 0; color: #6f7271;">COD Fee</td><td style="padding: 4px 0; text-align: right; color: #1a3c34;">₹${data.codFee}</td></tr>` : ""}
-      ${data.discount > 0 ? `<tr><td style="padding: 4px 0; color: #898f65;">Discount</td><td style="padding: 4px 0; text-align: right; color: #898f65;">-₹${data.discount}</td></tr>` : ""}
+      ${data.discount > 0 ? `<tr><td style="padding: 4px 0; color: #7A9E7E;">Discount</td><td style="padding: 4px 0; text-align: right; color: #7A9E7E;">-₹${data.discount}</td></tr>` : ""}
       <tr>
         <td style="padding: 12px 0; border-top: 2px solid #1a3c34; font-weight: bold; font-size: 18px; color: #006241;">Total</td>
         <td style="padding: 12px 0; border-top: 2px solid #1a3c34; font-weight: bold; font-size: 18px; color: #006241; text-align: right;">₹${data.total}</td>
@@ -173,14 +173,14 @@ export async function sendShippingUpdate(data: {
       <h1 style="margin: 0; font-size: 28px; color: #1a3c34; letter-spacing: 2px;">jaison</h1>
     </div>
     <div style="text-align: center; padding: 32px 0;">
-      <h2 style="margin: 0; color: #898f65; font-size: 22px;">Your Order Has Been Shipped!</h2>
+      <h2 style="margin: 0; color: #7A9E7E; font-size: 22px;">Your Order Has Been Shipped!</h2>
       <p style="color: #6f7271; margin: 8px 0 0;">Hi ${data.customerName}, your order <strong>#${data.orderNumber}</strong> is on its way.</p>
     </div>
     <div style="padding: 20px; background: #e0d9c3; border-radius: 4px; text-align: center;">
       <p style="margin: 0 0 4px; color: #6f7271; font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">Tracking Number</p>
       <p style="margin: 0; color: #1a3c34; font-size: 20px; font-weight: bold;">${data.trackingNumber}</p>
       <p style="margin: 8px 0 0; color: #6f7271; font-size: 14px;">Via ${data.courierName}</p>
-      ${data.estimatedDelivery ? `<p style="margin: 8px 0 0; color: #898f65; font-size: 14px;">Estimated delivery: ${data.estimatedDelivery}</p>` : ""}
+      ${data.estimatedDelivery ? `<p style="margin: 8px 0 0; color: #7A9E7E; font-size: 14px;">Estimated delivery: ${data.estimatedDelivery}</p>` : ""}
       <a href="${data.trackingUrl}" style="display: inline-block; margin-top: 16px; padding: 12px 24px; background: #006241; color: #ede8d6; text-decoration: none; font-size: 14px; letter-spacing: 1px; text-transform: uppercase;">Track Order</a>
     </div>
     <div style="text-align: center; padding: 32px 0; margin-top: 32px; border-top: 1px solid #cfc7ad;">
