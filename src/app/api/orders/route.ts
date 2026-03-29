@@ -4,7 +4,6 @@ import { authOptions } from "@/lib/auth";
 import prisma from "@/lib/prisma";
 import { generateOrderNumber } from "@/lib/utils";
 import { sendOrderConfirmation } from "@/lib/email";
-import { sendOwnerOrderWhatsApp } from "@/lib/whatsapp";
 
 export async function POST(req: Request) {
   try {
@@ -181,29 +180,9 @@ export async function POST(req: Request) {
       },
     };
 
-    await Promise.allSettled([
-      sendOrderConfirmation(emailData),
-      sendOwnerOrderWhatsApp({
-        orderNumber: order.orderNumber,
-        customerName,
-        customerPhone: address.phone,
-        items: order.items.map((i) => ({
-          name: i.name,
-          quantity: i.quantity,
-          price: Number(i.price),
-        })),
-        total: Number(order.total),
-        paymentMethod: order.paymentMethod,
-        city: address.city,
-        state: address.state,
-      }),
-    ]).then((results) => {
-      results.forEach((r, i) => {
-        if (r.status === "rejected") {
-          console.error(`Notification ${i} failed:`, r.reason);
-        }
-      });
-    });
+    await sendOrderConfirmation(emailData).catch((err) =>
+      console.error("Email send failed:", err)
+    );
 
     return NextResponse.json({
       orderNumber: order.orderNumber,
