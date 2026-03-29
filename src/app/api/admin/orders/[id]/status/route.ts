@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 import prisma from "@/lib/prisma";
-import { createShiprocketOrder } from "@/lib/shiprocket";
+import { createShiprocketOrder, generateAWB } from "@/lib/shiprocket";
 import { sendShippingUpdate } from "@/lib/email";
 
 export async function PATCH(
@@ -73,8 +73,29 @@ export async function PATCH(
       }
     }
 
-    // If shipping, create Shiprocket shipment
+    // If shipping, create Shiprocket shipment + generate AWB
     if (status === "SHIPPED" && !order.shiprocketOrderId) {
+      // Calculate total weight from product weights
+      const productIds = order.items.map((i) => i.productId);
+      const products = await prisma.product.findMany({
+        where: { id: { in: productIds } },
+        select: { id: true, weight: true, weightUnit: true },
+      });
+      const weightMap = new Map(products.map((p) => [p.id, p]));
+      let totalWeightKg = 0;
+      for (const item of order.items) {
+        const product = weightMap.get(item.productId);
+        if (product?.weight) {
+          const wGrams =
+            product.weightUnit === "kg"
+              ? Number(product.weight) * 1000
+              : Number(product.weight);
+          totalWeightKg += (wGrams * item.quantity) / 1000;
+        }
+      }
+      // Minimum 0.5kg for Shiprocket
+      if (totalWeightKg < 0.5) totalWeightKg = 0.5;
+
       try {
         const shiprocketResult = await createShiprocketOrder({
           orderNumber: order.orderNumber,
@@ -96,20 +117,54 @@ export async function PATCH(
             units: i.quantity,
             sellingPrice: Number(i.price),
           })),
-          weight: 0.5,
+          weight: totalWeightKg,
         });
 
         updateData.shiprocketOrderId = shiprocketResult.shiprocketOrderId;
         updateData.shiprocketShipmentId =
           shiprocketResult.shiprocketShipmentId;
+
+        // Auto-generate AWB (tracking number)
+        if (shiprocketResult.shiprocketShipmentId) {
+          try {
+            const awbResult = await generateAWB(
+              shiprocketResult.shiprocketShipmentId
+            );
+            if (awbResult.awbCode) {
+              updateData.trackingNumber = awbResult.awbCode;
+              updateData.trackingUrl = `https://www.shiprocket.in/shipment-tracking/${awbResult.awbCode}`;
+
+              // Send shipping email with auto-generated tracking
+              await sendShippingUpdate({
+                customerName:
+                  order.user?.name || order.shippingAddress.fullName,
+                customerEmail:
+                  order.user?.email || order.guestEmail || "",
+                orderNumber: order.orderNumber,
+                trackingNumber: awbResult.awbCode,
+                trackingUrl: updateData.trackingUrl as string,
+                courierName:
+                  awbResult.courierName || "Our Shipping Partner",
+              }).catch((err) =>
+                console.error("Shipping email failed:", err)
+              );
+            }
+          } catch (awbErr) {
+            console.error("AWB generation failed:", awbErr);
+            // Shipment created but AWB pending — admin can retry or enter manually
+          }
+        }
       } catch (err) {
         console.error("Shiprocket order creation failed:", err);
-        // Continue with status update even if Shiprocket fails
+        return NextResponse.json(
+          { message: "Shiprocket shipment creation failed. Please try again." },
+          { status: 502 }
+        );
       }
     }
 
-    // If tracking number is provided
-    if (body.trackingNumber) {
+    // If tracking number is manually provided (and not already set by AWB)
+    if (body.trackingNumber && !updateData.trackingNumber) {
       updateData.trackingNumber = body.trackingNumber;
       updateData.trackingUrl =
         body.trackingUrl ||

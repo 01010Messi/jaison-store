@@ -1,8 +1,7 @@
 import { NextResponse } from "next/server";
 import { checkServiceability } from "@/lib/shiprocket";
 
-// Pickup PIN code (your warehouse)
-const PICKUP_PINCODE = "400001"; // Update with your actual warehouse pincode
+const PICKUP_PINCODE = process.env.SHIPROCKET_PICKUP_PINCODE || "422002";
 
 export async function POST(req: Request) {
   try {

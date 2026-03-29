@@ -762,7 +762,7 @@ Orange peel powder is one of the most versatile and affordable natural skincare 
     author: "Jaison Herbals",
     publishedAt: "2026-02-05",
     readTime: 6,
-    image: "/images/products/ubtan-styled3.jpg",
+    image: "/images/products/nagmotha-front.jpg",
     metaTitle:
       "Bhringraj Powder for Hair Growth — Benefits, Uses & DIY Recipes",
     metaDescription:
@@ -965,7 +965,7 @@ Reetha represents the simplest, purest form of hair care — a single natural in
     author: "Jaison Herbals",
     publishedAt: "2026-01-20",
     readTime: 7,
-    image: "/images/products/ubtan-styled2.jpg",
+    image: "/images/products/mhendi-front.jpg",
     metaTitle:
       "Mehendi (Henna) for Hair: How to Use Henna for Natural Hair Colour",
     metaDescription:
