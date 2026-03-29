@@ -6,10 +6,10 @@
 
 @layer base {
   :root {
-    --color-cream: #fdfaf5;
-    --color-parchment: #f5ecd7;
-    --color-terracotta: #a0885c;
-    --color-sage: #7a9e7e;
+    --color-cream: #ede8d6;
+    --color-parchment: #e0d9c3;
+    --color-terracotta: #006241;
+    --color-sage: #898f65;
     --color-bark: #1a3c34;
     --color-gold: #bca480;
   }
@@ -108,9 +108,9 @@
   .skeleton-shimmer {
     background: linear-gradient(
       90deg,
-      #f5ecd7 25%,
-      #fdfaf5 37%,
-      #f5ecd7 63%
+      #e0d9c3 25%,
+      #ede8d6 37%,
+      #e0d9c3 63%
     );
     background-size: 200% 100%;
     animation: shimmer 2s linear infinite;
