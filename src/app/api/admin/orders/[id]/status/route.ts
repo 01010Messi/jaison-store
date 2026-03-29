@@ -54,6 +54,25 @@ export async function PATCH(
 
     const updateData: Record<string, unknown> = { status };
 
+    // Auto-mark COD as PAID on delivery
+    if (status === "DELIVERED" && order.paymentMethod === "COD" && order.paymentStatus !== "PAID") {
+      updateData.paymentStatus = "PAID";
+    }
+
+    // Restore stock on cancellation (if not already cancelled)
+    if (status === "CANCELLED" && order.status !== "CANCELLED") {
+      for (const item of order.items) {
+        await prisma.product.update({
+          where: { id: item.productId },
+          data: { stock: { increment: item.quantity } },
+        });
+      }
+      // Mark payment as REFUNDED if it was paid (online orders)
+      if (order.paymentStatus === "PAID" && order.paymentMethod === "RAZORPAY") {
+        updateData.paymentStatus = "REFUNDED";
+      }
+    }
+
     // If shipping, create Shiprocket shipment
     if (status === "SHIPPED" && !order.shiprocketOrderId) {
       try {

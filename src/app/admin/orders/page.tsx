@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState, useCallback } from "react";
-import { ShoppingCart, Eye, Truck, X, Search } from "lucide-react";
+import { ShoppingCart, Eye, Truck, X, Search, Download } from "lucide-react";
 import GoldRule from "@/components/decorative/GoldRule";
 import { formatPrice, cn } from "@/lib/utils";
 import Badge from "@/components/ui/Badge";
@@ -138,11 +138,20 @@ export default function AdminOrdersPage() {
 
   return (
     <div>
-      <div className="mb-8">
-        <h1 className="font-heading text-2xl text-bark">Orders</h1>
-        <p className="text-sm text-bark/50 font-body mt-1">
-          Manage customer orders and shipments
-        </p>
+      <div className="flex items-start justify-between mb-8">
+        <div>
+          <h1 className="font-heading text-2xl text-bark">Orders</h1>
+          <p className="text-sm text-bark/50 font-body mt-1">
+            Manage customer orders and shipments
+          </p>
+        </div>
+        <a
+          href="/api/admin/orders/export"
+          className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-accent uppercase tracking-wider border border-border rounded-sm text-bark/60 hover:border-bark hover:text-bark transition-colors"
+        >
+          <Download className="h-3.5 w-3.5" />
+          Export CSV
+        </a>
       </div>
 
       {/* Search */}

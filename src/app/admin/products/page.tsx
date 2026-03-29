@@ -3,7 +3,7 @@
 import { useEffect, useState, useCallback } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Plus, Package, Pencil } from "lucide-react";
+import { Plus, Package, Pencil, Download } from "lucide-react";
 import GoldRule from "@/components/decorative/GoldRule";
 import { formatPrice } from "@/lib/utils";
 import Badge from "@/components/ui/Badge";
@@ -61,13 +61,22 @@ export default function AdminProductsPage() {
             Manage your product catalog
           </p>
         </div>
-        <Link
-          href="/admin/products/new"
-          className="flex items-center gap-2 px-4 py-2 bg-bark text-cream rounded-sm text-xs font-accent uppercase tracking-wider hover:bg-bark/90 transition-colors"
-        >
-          <Plus className="h-4 w-4" />
-          Add Product
-        </Link>
+        <div className="flex items-center gap-2">
+          <a
+            href="/api/admin/products/export"
+            className="flex items-center gap-1.5 px-3 py-2 text-xs font-accent uppercase tracking-wider border border-border rounded-sm text-bark/60 hover:border-bark hover:text-bark transition-colors"
+          >
+            <Download className="h-3.5 w-3.5" />
+            Export
+          </a>
+          <Link
+            href="/admin/products/new"
+            className="flex items-center gap-2 px-4 py-2 bg-bark text-cream rounded-sm text-xs font-accent uppercase tracking-wider hover:bg-bark/90 transition-colors"
+          >
+            <Plus className="h-4 w-4" />
+            Add Product
+          </Link>
+        </div>
       </div>
 
       {products.length === 0 ? (
