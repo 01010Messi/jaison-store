@@ -49,24 +49,20 @@ jaison-store/
 - **Review** (PENDING/APPROVED/REJECTED), **Address**, **Coupon**, **Newsletter**, **ContactMessage**
 - **Enums:** OrderStatus (7 states), PaymentStatus (4 states), PaymentMethod (RAZORPAY/COD), ReviewStatus
 
-## Admin Credentials
-- **Email:** Jaisonskincare@gmail.com
-- **Password:** Sample@77
-- Admin auto-created on first login if not exists
+## Admin
+- Admin auto-created on first login from ADMIN_EMAIL / ADMIN_PASSWORD env vars
 
 ## Key Integrations
 
 ### Razorpay (LIVE)
-- Key ID: rzp_live_SOI4Jr3ed5xHod
 - Flow: create-order → frontend checkout → verify signature (HMAC-SHA256)
 - Supports: Razorpay & COD payment methods
 - Guest checkout supported
 
 ### Shiprocket
-- Account: Jaisonskincare@gmail.com
 - Token cached with 9-day expiry
-- Pickup: 60, Floor 6, Business Bay, Mumbai Naka, Nashik 422002, Maharashtra
 - Features: serviceability check, order creation, AWB generation, tracking
+- Pickup address configured via SHIPROCKET_PICKUP_* env vars
 
 ### Cloudinary
 - Used for product images and category images
