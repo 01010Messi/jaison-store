@@ -362,10 +362,8 @@ export const products: ProductData[] = [
       "For Natural Hair Wash: Mix Aamla + Reetha + Shikakai in equal parts with warm water. Apply to scalp, massage gently, leave for 10-15 minutes, and rinse.\n\nFor Dandruff Treatment: Mix Nagarmotha powder with coconut oil, apply to scalp, leave overnight, and wash 2-3 times a week.\n\nFor Hair Colour & Conditioning: Mix Mehendi with warm water and a few drops of lemon juice. Apply to hair, leave for 1-2 hours, and rinse for rich colour and deep conditioning.\n\nFor Complete Care: Alternate between the hair wash (2-3x/week) and Mehendi treatment (1-2x/month) for best results.",
     benefits:
       "Complete 5-in-1 Ayurvedic hair care system.\nReplaces shampoo, conditioner, anti-dandruff treatment, hair colour, and scalp therapy.\nAamla strengthens and prevents greying.\nReetha gently cleanses without chemicals.\nShikakai conditions and adds natural shine.\nNagarmotha purifies scalp and fights dandruff.\nMehendi colours naturally and deeply conditions.\nSave 35% compared to individual purchases.",
-    image: "/images/products/combo-premium-hair-banner.png",
+    image: "/images/products/combo-premium-hair-2.png",
     images: [
-      "/images/products/combo-premium-hair-banner.png",
-      "/images/products/combo-premium-hair-1.png",
       "/images/products/combo-premium-hair-2.png",
     ],
     tags: ["combo", "hair-care", "premium", "complete-care", "value-pack", "bestseller"],
