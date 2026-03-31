@@ -45,6 +45,13 @@ export const categories = [
       "Holistic body care solutions made from earth's finest herbs for complete wellness.",
     image: "/images/categories/body-care.jpg",
   },
+  {
+    name: "Combos",
+    slug: "combos",
+    description:
+      "Curated herbal powder combos at unbeatable prices. Save more with our specially bundled Ayurvedic care sets.",
+    image: "/images/products/combo-jaison-special.png",
+  },
 ];
 
 export const products: ProductData[] = [
@@ -307,6 +314,114 @@ export const products: ProductData[] = [
     ],
     tags: ["skin-lightening", "anti-ageing", "aromatic", "rare-herb"],
     isFeatured: false,
+  },
+
+  // ── Combos ──────────────────────────────────────────────────────────
+  {
+    name: "Hair Care Trio",
+    slug: "hair-care-trio",
+    sku: "JAIS-COMBO-HAIRTRIO",
+    price: 489,
+    compareAtPrice: 750,
+    weight: 300,
+    category: "Combos",
+    categorySlug: "combos",
+    shortDescription:
+      "The essential trio for stronger, shinier hair. Aamla, Reetha & Shikakai — together at 35% off.",
+    description:
+      "Give your hair the complete herbal treatment it deserves. This curated trio brings together three time-tested Ayurvedic powders — Aamla for strength and shine, Reetha for gentle cleansing, and Shikakai for natural conditioning. Used together, they form a powerful hair care ritual that reduces hair fall, fights dandruff, and adds natural bounce without any chemicals. Save 35% compared to buying individually.",
+    ingredients:
+      "Includes: Aamla Powder (100g) — 100% Pure Amla (Phyllanthus emblica)\nReetha Powder (100g) — 100% Pure Reetha (Sapindus mukorossi)\nShikakai Powder (100g) — 100% Pure Shikakai (Acacia concinna)",
+    howToUse:
+      "For a Natural Hair Wash:\nMix equal parts of all three powders (1 tbsp each) with warm water to form a paste.\nApply evenly to wet hair and scalp.\nGently massage for 2-3 minutes.\nLeave on for 10-15 minutes.\nRinse thoroughly with water. No shampoo needed!\n\nFor a Hair Mask:\nMix 2 tbsp of the combined powders with curd or coconut milk.\nApply to hair from root to tip.\nLeave for 30-45 minutes.\nWash off with plain water for silky, nourished hair.",
+    benefits:
+      "Complete herbal hair wash — replaces chemical shampoos.\nAamla strengthens roots and prevents premature greying.\nReetha naturally cleanses without stripping oils.\nShikakai conditions and detangles for smooth, manageable hair.\nFights dandruff and soothes itchy scalp.\nPromotes healthy hair growth with regular use.\nSave 35% compared to individual purchases.",
+    image: "/images/products/combo-hair-trio.png",
+    images: [
+      "/images/products/combo-hair-trio.png",
+    ],
+    tags: ["combo", "hair-care", "natural-shampoo", "anti-dandruff", "value-pack"],
+    isFeatured: false,
+  },
+  {
+    name: "Premium Herbal Hair Care Combo",
+    slug: "premium-hair-care-combo",
+    sku: "JAIS-COMBO-PREMHAIR",
+    price: 815,
+    compareAtPrice: 1250,
+    weight: 500,
+    category: "Combos",
+    categorySlug: "combos",
+    shortDescription:
+      "The ultimate 5-powder hair care ritual. Aamla, Reetha, Shikakai, Nagarmotha & Mehendi — 35% off.",
+    description:
+      "Our most comprehensive hair care bundle — five premium herbal powders for every hair need. Aamla and Reetha cleanse and strengthen, Shikakai conditions naturally, Nagarmotha fights dandruff at the root, and Mehendi adds rich colour and deep conditioning. Together, they form a complete Ayurvedic hair care system that replaces multiple chemical products. Save 35% on this premium bundle.",
+    ingredients:
+      "Includes: Aamla Powder (100g) — 100% Pure Amla (Phyllanthus emblica)\nReetha Powder (100g) — 100% Pure Reetha (Sapindus mukorossi)\nShikakai Powder (100g) — 100% Pure Shikakai (Acacia concinna)\nNagarmotha Powder (100g) — 100% Pure Nagarmotha (Cyperus rotundus)\nMehendi Powder (100g) — 100% Pure Mehendi (Lawsonia inermis)",
+    howToUse:
+      "For Natural Hair Wash: Mix Aamla + Reetha + Shikakai in equal parts with warm water. Apply to scalp, massage gently, leave for 10-15 minutes, and rinse.\n\nFor Dandruff Treatment: Mix Nagarmotha powder with coconut oil, apply to scalp, leave overnight, and wash 2-3 times a week.\n\nFor Hair Colour & Conditioning: Mix Mehendi with warm water and a few drops of lemon juice. Apply to hair, leave for 1-2 hours, and rinse for rich colour and deep conditioning.\n\nFor Complete Care: Alternate between the hair wash (2-3x/week) and Mehendi treatment (1-2x/month) for best results.",
+    benefits:
+      "Complete 5-in-1 Ayurvedic hair care system.\nReplaces shampoo, conditioner, anti-dandruff treatment, hair colour, and scalp therapy.\nAamla strengthens and prevents greying.\nReetha gently cleanses without chemicals.\nShikakai conditions and adds natural shine.\nNagarmotha purifies scalp and fights dandruff.\nMehendi colours naturally and deeply conditions.\nSave 35% compared to individual purchases.",
+    image: "/images/products/combo-premium-hair-banner.png",
+    images: [
+      "/images/products/combo-premium-hair-banner.png",
+      "/images/products/combo-premium-hair-1.png",
+      "/images/products/combo-premium-hair-2.png",
+    ],
+    tags: ["combo", "hair-care", "premium", "complete-care", "value-pack", "bestseller"],
+    isFeatured: true,
+  },
+  {
+    name: "Scalp Care Combo",
+    slug: "scalp-care-combo",
+    sku: "JAIS-COMBO-SCALP",
+    price: 489,
+    compareAtPrice: 750,
+    weight: 300,
+    category: "Combos",
+    categorySlug: "combos",
+    shortDescription:
+      "Target dandruff, itchiness & hair fall at the root. Aamla, Nagarmotha & Neem — 35% off.",
+    description:
+      "A focused trio for anyone battling scalp issues. Neem's powerful antibacterial properties tackle dandruff and infections, Nagarmotha's astringent action purifies and detoxifies the scalp, and Aamla nourishes follicles for stronger regrowth. This combo addresses the root cause of hair fall — an unhealthy scalp. Save 35% compared to buying individually.",
+    ingredients:
+      "Includes: Aamla Powder (100g) — 100% Pure Amla (Phyllanthus emblica)\nNagarmotha Powder (100g) — 100% Pure Nagarmotha (Cyperus rotundus)\nNeem Powder (100g) — 100% Pure Neem (Azadirachta indica)",
+    howToUse:
+      "For Scalp Detox Mask:\nMix 1 tbsp each of Neem and Nagarmotha powder with curd to form a paste.\nApply directly to the scalp, parting hair in sections.\nLeave for 20-30 minutes.\nRinse with an Aamla wash (1 tbsp Aamla + water).\n\nFor Anti-Dandruff Oil Treatment:\nMix Nagarmotha and Neem powder with warm coconut oil.\nApply to scalp, leave overnight.\nWash 2-3 times a week for best results.\n\nFor Hair Strengthening Rinse:\nMix Aamla powder with warm water, apply after washing hair as a final rinse for added strength and shine.",
+    benefits:
+      "Targets the root cause of dandruff — scalp bacteria and fungus.\nNeem's antibacterial properties soothe itchy, irritated scalp.\nNagarmotha purifies scalp buildup and regulates oil.\nAamla strengthens follicles and promotes regrowth.\nReduces hair fall caused by scalp issues.\nNatural alternative to medicated anti-dandruff shampoos.\nSave 35% compared to individual purchases.",
+    image: "/images/products/combo-scalp-care.png",
+    images: [
+      "/images/products/combo-scalp-care.png",
+    ],
+    tags: ["combo", "scalp-care", "anti-dandruff", "hair-fall", "value-pack"],
+    isFeatured: false,
+  },
+  {
+    name: "Jaison Special Combo",
+    slug: "jaison-special-combo",
+    sku: "JAIS-COMBO-SPECIAL",
+    price: 859,
+    compareAtPrice: 1565,
+    weight: 500,
+    category: "Combos",
+    categorySlug: "combos",
+    shortDescription:
+      "Our best value bundle — hair care meets skin care. Shikakai, Aamla, Neem, Multani Mitti & Ubtan — 45% off.",
+    description:
+      "The ultimate Jaison experience — five of our best products bundled together at our biggest discount. Shikakai and Aamla deliver complete hair nourishment, Neem purifies both skin and scalp, Multani Mitti deep-cleanses and tightens pores, and our signature Ubtan (powered by 18 Ayurvedic herbs) gives you visible glow from the very first use. One combo for head-to-toe herbal care. Save a massive 45% compared to buying individually.",
+    ingredients:
+      "Includes: Shikakai Powder (100g) — 100% Pure Shikakai (Acacia concinna)\nAamla Powder (100g) — 100% Pure Amla (Phyllanthus emblica)\nNeem Powder (100g) — 100% Pure Neem (Azadirachta indica)\nMultani Mitti (100g) — 100% Pure Fuller's Earth\nUbtan (50g jar) — Turmeric, Sandalwood, Gram Flour, Almond, Rose Petal, Saffron & more",
+    howToUse:
+      "For Hair (2-3x/week): Mix Shikakai + Aamla with warm water, apply to hair and scalp, leave 10-15 minutes, rinse.\n\nFor Scalp Treatment: Mix Neem powder with coconut oil, apply to scalp, leave overnight, wash off.\n\nFor Skin Cleansing: Mix Multani Mitti with rose water, apply to face, let dry 10-15 minutes, rinse for clean, tight pores.\n\nFor Glowing Skin: Mix Ubtan with rose water or milk, apply to face and neck, scrub gently, rinse after 10-15 minutes for radiant skin.\n\nFor best results, use the hair care routine 2-3 times a week and the skin care routine 3-4 times a week.",
+    benefits:
+      "Complete head-to-toe herbal care in one bundle.\nShikakai conditions hair naturally without chemicals.\nAamla strengthens roots and prevents premature greying.\nNeem fights dandruff, acne, and skin infections.\nMultani Mitti deep-cleanses pores and controls oil.\nUbtan brightens skin, reduces tan, and gives instant glow.\nOur biggest discount — save 45% on 5 premium products.\nPerfect gift for someone starting their Ayurvedic journey.",
+    image: "/images/products/combo-jaison-special.png",
+    images: [
+      "/images/products/combo-jaison-special.png",
+    ],
+    tags: ["combo", "special", "hair-care", "skin-care", "complete-care", "value-pack", "bestseller"],
+    isFeatured: true,
   },
 ];
 
