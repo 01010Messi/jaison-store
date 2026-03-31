@@ -101,6 +101,9 @@ export const products: ProductData[] = [
     image: "/images/products/amla-front.jpg",
     images: [
       "/images/products/amla-front.jpg",
+      "/images/products/amla-vitamin-c.png",
+      "/images/products/amla-benefits.png",
+      "/images/products/amla-how-to-use.png",
       "/images/products/amla-back.jpg",
       "/images/products/amla-styled.jpg",
     ],
