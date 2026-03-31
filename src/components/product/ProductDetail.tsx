@@ -16,6 +16,8 @@ import {
   ChevronLeft,
   Check,
   MapPin,
+  ZoomIn,
+  ZoomOut,
 } from "lucide-react";
 import { products } from "@/data/products";
 import { getBlogPostsForProduct } from "@/data/blog";
@@ -55,8 +57,11 @@ export default function ProductDetail({ product }: ProductDetailProps) {
   const [activeTab, setActiveTab] = useState<TabKey>("description");
   const [addedToCart, setAddedToCart] = useState(false);
   const [activeImageIndex, setActiveImageIndex] = useState(0);
-  const [isZoomed, setIsZoomed] = useState(false);
-  const [zoomPosition, setZoomPosition] = useState({ x: 50, y: 50 });
+  const [zoomLevel, setZoomLevel] = useState(0); // 0 = no zoom, 1-3 = zoom steps
+  const [panOffset, setPanOffset] = useState({ x: 0, y: 0 });
+  const [isPanning, setIsPanning] = useState(false);
+  const panStartRef = useRef({ x: 0, y: 0 });
+  const panOffsetStartRef = useRef({ x: 0, y: 0 });
   const [pincode, setPincode] = useState("");
   const [pincodeResult, setPincodeResult] = useState<{
     serviceable: boolean;
@@ -133,35 +138,66 @@ export default function ProductDetail({ product }: ProductDetailProps) {
     }
   };
 
+  const resetView = useCallback(() => {
+    setZoomLevel(0);
+    setPanOffset({ x: 0, y: 0 });
+  }, []);
+
   const goToPrevImage = useCallback(() => {
+    resetView();
     setActiveImageIndex((prev) =>
       prev === 0 ? allImages.length - 1 : prev - 1
     );
-  }, [allImages.length]);
+  }, [allImages.length, resetView]);
 
   const goToNextImage = useCallback(() => {
+    resetView();
     setActiveImageIndex((prev) =>
       prev === allImages.length - 1 ? 0 : prev + 1
     );
-  }, [allImages.length]);
+  }, [allImages.length, resetView]);
 
-  const handleMouseMove = useCallback(
-    (e: React.MouseEvent<HTMLDivElement>) => {
-      if (!imageContainerRef.current) return;
-      const rect = imageContainerRef.current.getBoundingClientRect();
-      const x = ((e.clientX - rect.left) / rect.width) * 100;
-      const y = ((e.clientY - rect.top) / rect.height) * 100;
-      setZoomPosition({ x, y });
+  // Pan handlers for dragging when zoomed
+  const handlePanStart = useCallback(
+    (e: React.MouseEvent | React.TouchEvent) => {
+      if (zoomLevel === 0) return;
+      e.preventDefault();
+      setIsPanning(true);
+      const clientX = "touches" in e ? e.touches[0].clientX : e.clientX;
+      const clientY = "touches" in e ? e.touches[0].clientY : e.clientY;
+      panStartRef.current = { x: clientX, y: clientY };
+      panOffsetStartRef.current = { ...panOffset };
     },
-    []
+    [zoomLevel, panOffset]
   );
+
+  const handlePanMove = useCallback(
+    (e: React.MouseEvent | React.TouchEvent) => {
+      if (!isPanning) return;
+      const clientX = "touches" in e ? e.touches[0].clientX : e.clientX;
+      const clientY = "touches" in e ? e.touches[0].clientY : e.clientY;
+      const scale = 1 + zoomLevel * 0.5;
+      const maxPan = ((scale - 1) / scale) * 50; // limit pan to zoomed area
+      const dx = clientX - panStartRef.current.x;
+      const dy = clientY - panStartRef.current.y;
+      setPanOffset({
+        x: Math.max(-maxPan, Math.min(maxPan, panOffsetStartRef.current.x + (dx / (imageContainerRef.current?.clientWidth || 1)) * 100)),
+        y: Math.max(-maxPan, Math.min(maxPan, panOffsetStartRef.current.y + (dy / (imageContainerRef.current?.clientHeight || 1)) * 100)),
+      });
+    },
+    [isPanning, zoomLevel]
+  );
+
+  const handlePanEnd = useCallback(() => {
+    setIsPanning(false);
+  }, []);
 
   // Keyboard navigation
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "ArrowLeft") goToPrevImage();
       if (e.key === "ArrowRight") goToNextImage();
-      if (e.key === "Escape") setIsZoomed(false);
+      if (e.key === "Escape") resetView();
     };
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
@@ -219,10 +255,18 @@ export default function ProductDetail({ product }: ProductDetailProps) {
               <OrnamentalBorder variant="simple" className="p-2 md:p-3">
                 <div
                   ref={imageContainerRef}
-                  className="relative aspect-square overflow-hidden rounded-sm bg-parchment cursor-crosshair"
-                  onMouseEnter={() => setIsZoomed(true)}
-                  onMouseLeave={() => setIsZoomed(false)}
-                  onMouseMove={handleMouseMove}
+                  className={cn(
+                    "relative aspect-square overflow-hidden rounded-sm bg-parchment select-none",
+                    zoomLevel > 0 ? "cursor-grab" : "",
+                    isPanning && "cursor-grabbing"
+                  )}
+                  onMouseDown={handlePanStart}
+                  onMouseMove={handlePanMove}
+                  onMouseUp={handlePanEnd}
+                  onMouseLeave={handlePanEnd}
+                  onTouchStart={handlePanStart}
+                  onTouchMove={handlePanMove}
+                  onTouchEnd={handlePanEnd}
                 >
                   {allImages.map((img, i) => (
                     <Image
@@ -231,16 +275,16 @@ export default function ProductDetail({ product }: ProductDetailProps) {
                       alt={`${product.name}${i > 0 ? ` - view ${i + 1}` : ""}`}
                       fill
                       className={cn(
-                        "object-cover transition-all duration-500 ease-out",
+                        "object-contain",
+                        isPanning ? "transition-none" : "transition-all duration-500 ease-out",
                         i === activeImageIndex
-                          ? "opacity-100 scale-100"
-                          : "opacity-0 scale-[1.02]",
-                        isZoomed && i === activeImageIndex && "scale-150"
+                          ? "opacity-100"
+                          : "opacity-0 scale-[1.02]"
                       )}
                       style={
-                        isZoomed && i === activeImageIndex
+                        i === activeImageIndex
                           ? {
-                              transformOrigin: `${zoomPosition.x}% ${zoomPosition.y}%`,
+                              transform: `scale(${1 + zoomLevel * 0.5}) translate(${panOffset.x}%, ${panOffset.y}%)`,
                             }
                           : undefined
                       }
@@ -248,6 +292,40 @@ export default function ProductDetail({ product }: ProductDetailProps) {
                       priority={i === 0}
                     />
                   ))}
+
+                  {/* Zoom +/- controls */}
+                  <div className="absolute top-3 right-3 z-10 flex flex-col gap-1.5">
+                    <button
+                      onClick={(e) => {
+                        e.preventDefault();
+                        setZoomLevel((prev) => {
+                          const next = Math.min(3, prev + 1);
+                          if (next !== prev) setPanOffset({ x: 0, y: 0 });
+                          return next;
+                        });
+                      }}
+                      disabled={zoomLevel >= 3}
+                      className="w-8 h-8 rounded-full bg-cream/80 backdrop-blur-sm flex items-center justify-center text-bark/60 hover:text-bark hover:bg-cream transition-all duration-300 shadow-warm disabled:opacity-30 disabled:cursor-not-allowed"
+                      aria-label="Zoom in"
+                    >
+                      <ZoomIn className="h-3.5 w-3.5" />
+                    </button>
+                    <button
+                      onClick={(e) => {
+                        e.preventDefault();
+                        setZoomLevel((prev) => {
+                          const next = Math.max(0, prev - 1);
+                          if (next === 0) setPanOffset({ x: 0, y: 0 });
+                          return next;
+                        });
+                      }}
+                      disabled={zoomLevel <= 0}
+                      className="w-8 h-8 rounded-full bg-cream/80 backdrop-blur-sm flex items-center justify-center text-bark/60 hover:text-bark hover:bg-cream transition-all duration-300 shadow-warm disabled:opacity-30 disabled:cursor-not-allowed"
+                      aria-label="Zoom out"
+                    >
+                      <ZoomOut className="h-3.5 w-3.5" />
+                    </button>
+                  </div>
 
                   {/* Arrow navigation on main image */}
                   {allImages.length > 1 && (
@@ -294,7 +372,7 @@ export default function ProductDetail({ product }: ProductDetailProps) {
                       key={img}
                       onClick={() => setActiveImageIndex(i)}
                       className={cn(
-                        "relative flex-shrink-0 w-16 h-16 md:w-20 md:h-20 rounded-sm overflow-hidden border-2 transition-all duration-300",
+                        "relative flex-shrink-0 w-16 h-16 md:w-20 md:h-20 rounded-sm overflow-hidden border-2 transition-all duration-300 bg-parchment",
                         i === activeImageIndex
                           ? "border-gold shadow-gold ring-1 ring-gold/20"
                           : "border-transparent opacity-60 hover:opacity-100 hover:border-border"
@@ -304,7 +382,7 @@ export default function ProductDetail({ product }: ProductDetailProps) {
                         src={img}
                         alt={`${product.name} - thumbnail ${i + 1}`}
                         fill
-                        className="object-cover"
+                        className="object-contain"
                         sizes="80px"
                       />
                     </button>

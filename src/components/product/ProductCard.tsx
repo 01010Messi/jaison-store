@@ -93,7 +93,7 @@ export default function ProductCard({ product }: ProductCardProps) {
             src={img}
             alt={`${product.name}${i > 0 ? ` - view ${i + 1}` : ""}`}
             fill
-            className={`object-cover transition-all duration-700 ease-out ${
+            className={`object-contain transition-all duration-700 ease-out ${
               i === currentImageIndex
                 ? "opacity-100 scale-100"
                 : "opacity-0 scale-[1.03]"
