@@ -289,6 +289,10 @@ export const products: ProductData[] = [
     image: "/images/products/reetha-front.jpg",
     images: [
       "/images/products/reetha-front.jpg",
+      "/images/products/reetha-hero.png",
+      "/images/products/reetha-product.png",
+      "/images/products/reetha-lifestyle.png",
+      "/images/products/reetha-benefits.png",
       "/images/products/reetha-back.jpg",
       "/images/products/reetha-styled.jpg",
       "/images/products/reetha-styled2.jpg",
