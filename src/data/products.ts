@@ -138,6 +138,9 @@ export const products: ProductData[] = [
     image: "/images/products/neem-front.jpg",
     images: [
       "/images/products/neem-front.jpg",
+      "/images/products/neem-hero.png",
+      "/images/products/neem-benefits.png",
+      "/images/products/neem-how-to-use.png",
       "/images/products/neem-back.jpg",
       "/images/products/neem-styled.jpg",
     ],
@@ -199,6 +202,9 @@ export const products: ProductData[] = [
     image: "/images/products/multani-front.jpg",
     images: [
       "/images/products/multani-front.jpg",
+      "/images/products/multani-hero.png",
+      "/images/products/multani-benefits.png",
+      "/images/products/multani-how-to-use.png",
       "/images/products/multani-back.jpg",
       "/images/products/multani-styled.jpg",
     ],
@@ -226,6 +232,9 @@ export const products: ProductData[] = [
     image: "/images/products/orange-front.jpg",
     images: [
       "/images/products/orange-front.jpg",
+      "/images/products/orange-hero.png",
+      "/images/products/orange-benefits.png",
+      "/images/products/orange-ingredients.png",
       "/images/products/orange-back.jpg",
       "/images/products/orange-styled.jpg",
     ],
@@ -308,6 +317,9 @@ export const products: ProductData[] = [
     image: "/images/products/nagmotha-front.jpg",
     images: [
       "/images/products/nagmotha-front.jpg",
+      "/images/products/nagmotha-hero.png",
+      "/images/products/nagmotha-benefits.png",
+      "/images/products/nagmotha-ingredients.png",
       "/images/products/nagmotha-back.jpg",
       "/images/products/nagmotha-styled.jpg",
       "/images/products/nagmotha-styled2.jpg",
