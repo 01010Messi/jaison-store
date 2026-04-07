@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import crypto from "crypto";
 import prisma from "@/lib/prisma";
 import { sendOrderConfirmation } from "@/lib/email";
+import { sendTelegramOrderNotification } from "@/lib/telegram";
 
 export async function POST(req: Request) {
   try {
@@ -104,6 +105,32 @@ export async function POST(req: Request) {
             phone: order.shippingAddress.phone,
           },
         }).catch((err) => console.error("Email send failed:", err));
+      }
+
+      // Send Telegram notification to admin
+      if (order.shippingAddress) {
+        await sendTelegramOrderNotification({
+          orderNumber: order.orderNumber,
+          customerName: order.shippingAddress.fullName,
+          customerEmail: customerEmail || "N/A",
+          paymentMethod: order.paymentMethod,
+          paymentStatus: "PAID",
+          items: order.items.map((i) => ({
+            name: i.name,
+            quantity: i.quantity,
+            price: Number(i.price),
+          })),
+          total: Number(order.total),
+          shippingAddress: {
+            fullName: order.shippingAddress.fullName,
+            addressLine1: order.shippingAddress.addressLine1,
+            addressLine2: order.shippingAddress.addressLine2 || undefined,
+            city: order.shippingAddress.city,
+            state: order.shippingAddress.state,
+            pincode: order.shippingAddress.pincode,
+            phone: order.shippingAddress.phone,
+          },
+        }).catch((err) => console.error("Telegram notification failed:", err));
       }
     }
 

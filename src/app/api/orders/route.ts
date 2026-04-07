@@ -4,6 +4,7 @@ import { authOptions } from "@/lib/auth";
 import prisma from "@/lib/prisma";
 import { generateOrderNumber } from "@/lib/utils";
 import { sendOrderConfirmation } from "@/lib/email";
+import { sendTelegramOrderNotification } from "@/lib/telegram";
 
 export async function POST(req: Request) {
   try {
@@ -183,6 +184,30 @@ export async function POST(req: Request) {
     await sendOrderConfirmation(emailData).catch((err) =>
       console.error("Email send failed:", err)
     );
+
+    // Send Telegram notification to admin
+    await sendTelegramOrderNotification({
+      orderNumber: order.orderNumber,
+      customerName,
+      customerEmail,
+      paymentMethod: order.paymentMethod,
+      paymentStatus: order.paymentStatus,
+      items: order.items.map((i) => ({
+        name: i.name,
+        quantity: i.quantity,
+        price: Number(i.price),
+      })),
+      total: Number(order.total),
+      shippingAddress: {
+        fullName: savedAddress.fullName,
+        addressLine1: savedAddress.addressLine1,
+        addressLine2: savedAddress.addressLine2 || undefined,
+        city: savedAddress.city,
+        state: savedAddress.state,
+        pincode: savedAddress.pincode,
+        phone: savedAddress.phone,
+      },
+    }).catch((err) => console.error("Telegram notification failed:", err));
 
     return NextResponse.json({
       orderNumber: order.orderNumber,
