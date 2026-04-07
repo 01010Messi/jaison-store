@@ -29,21 +29,21 @@ export const categories = [
     slug: "skin-care",
     description:
       "Natural, herbal skin care products crafted from pure ayurvedic ingredients for radiant, healthy skin.",
-    image: "/images/categories/skin-care.jpg",
+    image: "/images/categories/skin-care.png",
   },
   {
     name: "Hair Care",
     slug: "hair-care",
     description:
       "Traditional hair care powders and treatments to nourish, strengthen, and revitalize your hair naturally.",
-    image: "/images/categories/hair-care.jpg",
+    image: "/images/categories/hair-care.png",
   },
   {
-    name: "Body Care",
-    slug: "body-care",
+    name: "Face Care",
+    slug: "face-care",
     description:
-      "Holistic body care solutions made from earth's finest herbs for complete wellness.",
-    image: "/images/categories/body-care.jpg",
+      "Holistic face care solutions made from earth's finest herbs for complete wellness.",
+    image: "/images/categories/face-care.png",
   },
   {
     name: "Combos",
