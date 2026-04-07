@@ -18,6 +18,10 @@ import {
   MapPin,
   ZoomIn,
   ZoomOut,
+  Rabbit,
+  FlaskConical,
+  Sprout,
+  Heart,
 } from "lucide-react";
 import { products } from "@/data/products";
 import { getBlogPostsForProduct } from "@/data/blog";
@@ -546,6 +550,31 @@ export default function ProductDetail({ product }: ProductDetailProps) {
                     )}
                   </div>
                 )}
+              </div>
+
+              {/* Product Trust Icons */}
+              <div className="mt-6 pt-5 border-t border-border">
+                <div className="grid grid-cols-3 sm:grid-cols-5 gap-3">
+                  {[
+                    { icon: Leaf, label: "100% Natural", color: "text-sage" },
+                    { icon: Rabbit, label: "Cruelty Free", color: "text-terracotta" },
+                    { icon: FlaskConical, label: "No Parabens", color: "text-bark/70" },
+                    { icon: Sprout, label: "Organic", color: "text-sage" },
+                    { icon: Heart, label: "Vegan", color: "text-terracotta" },
+                  ].map((item) => {
+                    const Icon = item.icon;
+                    return (
+                      <div key={item.label} className="flex flex-col items-center text-center gap-1.5">
+                        <div className="w-10 h-10 rounded-full bg-surface-warm flex items-center justify-center">
+                          <Icon className={`h-5 w-5 ${item.color}`} />
+                        </div>
+                        <span className="text-[10px] font-accent uppercase tracking-wider text-bark/60 leading-tight">
+                          {item.label}
+                        </span>
+                      </div>
+                    );
+                  })}
+                </div>
               </div>
 
               {/* Social Share */}

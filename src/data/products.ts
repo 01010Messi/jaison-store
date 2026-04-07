@@ -29,21 +29,21 @@ export const categories = [
     slug: "skin-care",
     description:
       "Natural, herbal skin care products crafted from pure ayurvedic ingredients for radiant, healthy skin.",
-    image: "/images/categories/skin-care.jpg",
+    image: "/images/categories/skin-care.png",
   },
   {
     name: "Hair Care",
     slug: "hair-care",
     description:
       "Traditional hair care powders and treatments to nourish, strengthen, and revitalize your hair naturally.",
-    image: "/images/categories/hair-care.jpg",
+    image: "/images/categories/hair-care.png",
   },
   {
-    name: "Body Care",
-    slug: "body-care",
+    name: "Face Care",
+    slug: "face-care",
     description:
-      "Holistic body care solutions made from earth's finest herbs for complete wellness.",
-    image: "/images/categories/body-care.jpg",
+      "Holistic face care solutions made from earth's finest herbs for complete wellness.",
+    image: "/images/categories/face-care.png",
   },
   {
     name: "Combos",
@@ -138,6 +138,9 @@ export const products: ProductData[] = [
     image: "/images/products/neem-front.jpg",
     images: [
       "/images/products/neem-front.jpg",
+      "/images/products/neem-hero.png",
+      "/images/products/neem-benefits.png",
+      "/images/products/neem-how-to-use.png",
       "/images/products/neem-back.jpg",
       "/images/products/neem-styled.jpg",
     ],
@@ -199,6 +202,9 @@ export const products: ProductData[] = [
     image: "/images/products/multani-front.jpg",
     images: [
       "/images/products/multani-front.jpg",
+      "/images/products/multani-hero.png",
+      "/images/products/multani-benefits.png",
+      "/images/products/multani-how-to-use.png",
       "/images/products/multani-back.jpg",
       "/images/products/multani-styled.jpg",
     ],
@@ -226,6 +232,9 @@ export const products: ProductData[] = [
     image: "/images/products/orange-front.jpg",
     images: [
       "/images/products/orange-front.jpg",
+      "/images/products/orange-hero.png",
+      "/images/products/orange-benefits.png",
+      "/images/products/orange-ingredients.png",
       "/images/products/orange-back.jpg",
       "/images/products/orange-styled.jpg",
     ],
@@ -280,6 +289,10 @@ export const products: ProductData[] = [
     image: "/images/products/reetha-front.jpg",
     images: [
       "/images/products/reetha-front.jpg",
+      "/images/products/reetha-hero.png",
+      "/images/products/reetha-product.png",
+      "/images/products/reetha-lifestyle.png",
+      "/images/products/reetha-benefits.png",
       "/images/products/reetha-back.jpg",
       "/images/products/reetha-styled.jpg",
       "/images/products/reetha-styled2.jpg",
@@ -308,6 +321,9 @@ export const products: ProductData[] = [
     image: "/images/products/nagmotha-front.jpg",
     images: [
       "/images/products/nagmotha-front.jpg",
+      "/images/products/nagmotha-hero.png",
+      "/images/products/nagmotha-benefits.png",
+      "/images/products/nagmotha-ingredients.png",
       "/images/products/nagmotha-back.jpg",
       "/images/products/nagmotha-styled.jpg",
       "/images/products/nagmotha-styled2.jpg",

@@ -8,20 +8,20 @@ const categories = [
   {
     name: "Skin Care",
     slug: "skin-care",
-    description: "Reveal your natural glow",
-    image: "/images/categories/skin-care.jpg",
+    description: "Pamper your whole self",
+    image: "/images/categories/skin-care.png",
   },
   {
     name: "Hair Care",
     slug: "hair-care",
     description: "Nourish from root to tip",
-    image: "/images/categories/hair-care.jpg",
+    image: "/images/categories/hair-care.png",
   },
   {
-    name: "Body Care",
-    slug: "body-care",
-    description: "Pamper your whole self",
-    image: "/images/categories/body-care.jpg",
+    name: "Face Care",
+    slug: "face-care",
+    description: "Reveal your natural glow",
+    image: "/images/categories/face-care.png",
   },
 ];
 
