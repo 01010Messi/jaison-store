@@ -554,14 +554,13 @@ export default function ProductDetail({ product }: ProductDetailProps) {
 
               {/* Product Trust Icons */}
               <div className="mt-6 pt-5 border-t border-border">
-                <div className="grid grid-cols-3 sm:grid-cols-6 gap-3">
+                <div className="grid grid-cols-3 sm:grid-cols-5 gap-3">
                   {[
                     { icon: Leaf, label: "100% Natural", color: "text-sage" },
                     { icon: Rabbit, label: "Cruelty Free", color: "text-terracotta" },
                     { icon: FlaskConical, label: "No Parabens", color: "text-bark/70" },
                     { icon: Sprout, label: "Organic", color: "text-sage" },
                     { icon: Heart, label: "Vegan", color: "text-terracotta" },
-                    { icon: Shield, label: "Lab Tested", color: "text-gold" },
                   ].map((item) => {
                     const Icon = item.icon;
                     return (
