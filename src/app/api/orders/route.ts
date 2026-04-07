@@ -4,6 +4,7 @@ import { authOptions } from "@/lib/auth";
 import prisma from "@/lib/prisma";
 import { generateOrderNumber } from "@/lib/utils";
 import { sendOrderConfirmation } from "@/lib/email";
+import { notifyAdminNewOrder } from "@/lib/notifications";
 
 export async function POST(req: Request) {
   try {
@@ -183,6 +184,24 @@ export async function POST(req: Request) {
     await sendOrderConfirmation(emailData).catch((err) =>
       console.error("Email send failed:", err)
     );
+
+    // Notify admin via email + WhatsApp
+    await notifyAdminNewOrder({
+      orderNumber: order.orderNumber,
+      customerName,
+      customerEmail,
+      customerPhone: address.phone || guestPhone || "",
+      total: Number(order.total),
+      paymentMethod: order.paymentMethod,
+      items: order.items.map((i) => ({
+        name: i.name,
+        quantity: i.quantity,
+        price: Number(i.price),
+      })),
+      city: savedAddress.city,
+      state: savedAddress.state,
+      pincode: savedAddress.pincode,
+    });
 
     return NextResponse.json({
       orderNumber: order.orderNumber,

@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import crypto from "crypto";
 import prisma from "@/lib/prisma";
 import { sendOrderConfirmation } from "@/lib/email";
+import { notifyAdminNewOrder } from "@/lib/notifications";
 
 export async function POST(req: Request) {
   try {
@@ -105,6 +106,24 @@ export async function POST(req: Request) {
           },
         }).catch((err) => console.error("Email send failed:", err));
       }
+
+      // Notify admin via email + WhatsApp
+      await notifyAdminNewOrder({
+        orderNumber: order.orderNumber,
+        customerName: order.shippingAddress?.fullName || "Customer",
+        customerEmail: customerEmail || "",
+        customerPhone: order.shippingAddress?.phone || "",
+        total: Number(order.total),
+        paymentMethod: order.paymentMethod,
+        items: order.items.map((i) => ({
+          name: i.name,
+          quantity: i.quantity,
+          price: Number(i.price),
+        })),
+        city: order.shippingAddress?.city || "",
+        state: order.shippingAddress?.state || "",
+        pincode: order.shippingAddress?.pincode || "",
+      });
     }
 
     return NextResponse.json({
