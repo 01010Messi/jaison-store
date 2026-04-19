@@ -16,6 +16,8 @@ declare global {
 
 const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
 const META_PIXEL_ID = process.env.NEXT_PUBLIC_META_PIXEL_ID;
+const GOOGLE_ADS_ID = process.env.NEXT_PUBLIC_GOOGLE_ADS_ID;
+const GOOGLE_ADS_CONVERSION_LABEL = process.env.NEXT_PUBLIC_GOOGLE_ADS_CONVERSION_LABEL;
 
 function OrderSuccessContent() {
   const searchParams = useSearchParams();
@@ -42,6 +44,16 @@ function OrderSuccessContent() {
         value: parseFloat(total) || 0,
         currency: "INR",
         content_type: "product",
+      });
+    }
+
+    // Fire Google Ads conversion
+    if (GOOGLE_ADS_ID && GOOGLE_ADS_CONVERSION_LABEL && typeof window !== "undefined" && window.gtag) {
+      window.gtag("event", "conversion", {
+        send_to: `${GOOGLE_ADS_ID}/${GOOGLE_ADS_CONVERSION_LABEL}`,
+        value: parseFloat(total) || 0,
+        currency: "INR",
+        transaction_id: orderNumber,
       });
     }
   }, [orderNumber, total, method]);
