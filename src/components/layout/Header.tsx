@@ -4,18 +4,37 @@ import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import Image from "next/image";
-import { Search, ShoppingBag, User, Menu, X } from "lucide-react";
+import { Search, ShoppingBag, User, Menu, X, ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useCartStore } from "@/store/cart-store";
 import Drawer from "@/components/ui/Drawer";
+import AnnouncementBar from "@/components/layout/AnnouncementBar";
+
+const skinCareProducts = [
+  { href: "/shop/neem-powder", label: "Neem" },
+  { href: "/shop/multani-mitti-powder", label: "Multani Mitti" },
+  { href: "/shop/orange-peel-powder", label: "Orange Peel" },
+  { href: "/shop/ubtan-powder", label: "Ubtan" },
+  { href: "/shop/nagarmotha-powder", label: "Nagarmotha" },
+  { href: "/shop/rose-petal-powder", label: "Rose Petal" },
+];
+
+const hairCareProducts = [
+  { href: "/shop/amla-powder", label: "Amla" },
+  { href: "/shop/shikakai-powder", label: "Shikakai" },
+  { href: "/shop/reetha-powder", label: "Reetha" },
+  { href: "/shop/bhringraj-powder", label: "Bhringraj" },
+  { href: "/shop/mehendi-powder", label: "Mehendi" },
+];
 
 const navLinks = [
   { href: "/", label: "Home" },
-  { href: "/shop", label: "Catalog" },
-  { href: "/blog", label: "Blog" },
-  { href: "/why-jaison", label: "Why Jaison" },
-  { href: "/about", label: "About Us" },
-  { href: "/contact", label: "Contact" },
+  { href: "/shop", label: "Skin Care", dropdown: skinCareProducts },
+  { href: "/shop", label: "Hair Care", dropdown: hairCareProducts },
+  { href: "/our-story", label: "Our Story" },
+  { href: "/why-powder", label: "Why Powder" },
+  { href: "/find-your-ritual", label: "Find Your Ritual" },
+  { href: "/shop", label: "Shop All" },
 ];
 
 export default function Header() {
@@ -24,7 +43,10 @@ export default function Header() {
   const [mounted, setMounted] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
+  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
   const searchInputRef = useRef<HTMLInputElement>(null);
+  const dropdownTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const pathname = usePathname();
   const router = useRouter();
   const { toggleCart, itemCount } = useCartStore();
@@ -41,6 +63,15 @@ export default function Header() {
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const handleDropdownEnter = (label: string) => {
+    if (dropdownTimerRef.current) clearTimeout(dropdownTimerRef.current);
+    setActiveDropdown(label);
+  };
+
+  const handleDropdownLeave = () => {
+    dropdownTimerRef.current = setTimeout(() => setActiveDropdown(null), 150);
+  };
 
   const handleSearchSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -66,12 +97,7 @@ export default function Header() {
             : "bg-cream"
         )}
       >
-        {/* Tagline Bar */}
-        <div className="bg-bark text-cream/90 text-center py-2 px-4">
-          <p className="text-xs font-accent tracking-[0.15em] uppercase">
-            Essence of Herbs in Every Gram
-          </p>
-        </div>
+        <AnnouncementBar />
 
         {/* Main Header — Logo centered with actions */}
         <div className="container-brand">
@@ -106,7 +132,7 @@ export default function Header() {
               />
             </Link>
 
-            {/* Right: Account + Cart */}
+            {/* Right: Account + POTLI */}
             <div className="flex items-center gap-3 w-[100px] justify-end">
               <Link
                 href="/account"
@@ -117,12 +143,13 @@ export default function Header() {
               </Link>
               <button
                 onClick={toggleCart}
-                className="relative p-2 text-bark/70 hover:text-bark transition-colors"
-                aria-label="Cart"
+                className="relative flex items-center gap-1.5 bg-bark text-cream rounded-full px-3.5 py-1.5 text-[11px] font-accent tracking-[0.12em] uppercase hover:bg-bark-light transition-colors"
+                aria-label="Open potli"
               >
-                <ShoppingBag className="h-5 w-5" />
+                <ShoppingBag className="h-3.5 w-3.5" />
+                <span>POTLI</span>
                 {count > 0 && (
-                  <span className="absolute -top-0.5 -right-0.5 flex items-center justify-center w-4.5 h-4.5 min-w-[18px] text-[10px] font-accent font-bold bg-terracotta text-cream rounded-full">
+                  <span className="flex items-center justify-center min-w-[16px] h-4 text-[9px] font-bold bg-gold text-bark rounded-full px-1">
                     {count}
                   </span>
                 )}
@@ -136,16 +163,46 @@ export default function Header() {
           <div className="container-brand">
             <div className="flex items-center justify-center gap-8 py-2.5">
               {navLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className={cn(
-                    "gold-underline text-sm font-body font-medium tracking-wide transition-colors duration-200 text-bark/70 hover:text-bark",
-                    pathname === link.href && "text-bark"
-                  )}
+                <div
+                  key={link.label}
+                  className="relative"
+                  onMouseEnter={() => link.dropdown && handleDropdownEnter(link.label)}
+                  onMouseLeave={() => link.dropdown && handleDropdownLeave()}
                 >
-                  {link.label}
-                </Link>
+                  <Link
+                    href={link.href}
+                    className={cn(
+                      "flex items-center gap-0.5 text-[13px] font-body font-medium tracking-wide transition-colors duration-200 text-bark/70 hover:text-bark gold-underline",
+                      pathname === link.href && "text-bark"
+                    )}
+                  >
+                    {link.label}
+                    {link.dropdown && (
+                      <ChevronDown className={cn(
+                        "h-3 w-3 transition-transform duration-200",
+                        activeDropdown === link.label && "rotate-180"
+                      )} />
+                    )}
+                  </Link>
+
+                  {link.dropdown && activeDropdown === link.label && (
+                    <div
+                      className="absolute top-full left-1/2 -translate-x-1/2 mt-1 bg-cream border border-bark/10 shadow-warm rounded-sm min-w-[160px] py-2 z-50"
+                      onMouseEnter={() => handleDropdownEnter(link.label)}
+                      onMouseLeave={handleDropdownLeave}
+                    >
+                      {link.dropdown.map((item) => (
+                        <Link
+                          key={item.href}
+                          href={item.href}
+                          className="block px-4 py-2 text-[12px] font-body text-bark/70 hover:text-bark hover:bg-parchment transition-colors"
+                        >
+                          {item.label}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
               ))}
             </div>
           </div>
@@ -192,7 +249,70 @@ export default function Header() {
         side="left"
       >
         <nav className="px-6 py-8 space-y-1">
-          {navLinks.map((link) => (
+          <Link
+            href="/"
+            onClick={() => setIsMobileMenuOpen(false)}
+            className="block py-3 font-heading text-xl text-bark hover:text-terracotta transition-colors border-b border-border-light"
+          >
+            Home
+          </Link>
+
+          {/* Skin Care accordion */}
+          <div className="border-b border-border-light">
+            <button
+              onClick={() => setMobileExpanded(mobileExpanded === "Skin Care" ? null : "Skin Care")}
+              className="flex items-center justify-between w-full py-3 font-heading text-xl text-bark hover:text-terracotta transition-colors"
+            >
+              Skin Care
+              <ChevronDown className={cn("h-4 w-4 transition-transform duration-200", mobileExpanded === "Skin Care" && "rotate-180")} />
+            </button>
+            {mobileExpanded === "Skin Care" && (
+              <div className="pb-2 space-y-0.5">
+                {skinCareProducts.map((item) => (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="block py-2 pl-4 text-sm font-body text-bark/70 hover:text-bark transition-colors"
+                  >
+                    {item.label}
+                  </Link>
+                ))}
+              </div>
+            )}
+          </div>
+
+          {/* Hair Care accordion */}
+          <div className="border-b border-border-light">
+            <button
+              onClick={() => setMobileExpanded(mobileExpanded === "Hair Care" ? null : "Hair Care")}
+              className="flex items-center justify-between w-full py-3 font-heading text-xl text-bark hover:text-terracotta transition-colors"
+            >
+              Hair Care
+              <ChevronDown className={cn("h-4 w-4 transition-transform duration-200", mobileExpanded === "Hair Care" && "rotate-180")} />
+            </button>
+            {mobileExpanded === "Hair Care" && (
+              <div className="pb-2 space-y-0.5">
+                {hairCareProducts.map((item) => (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="block py-2 pl-4 text-sm font-body text-bark/70 hover:text-bark transition-colors"
+                  >
+                    {item.label}
+                  </Link>
+                ))}
+              </div>
+            )}
+          </div>
+
+          {[
+            { href: "/our-story", label: "Our Story" },
+            { href: "/why-powder", label: "Why Powder" },
+            { href: "/find-your-ritual", label: "Find Your Ritual" },
+            { href: "/shop", label: "Shop All" },
+          ].map((link) => (
             <Link
               key={link.href}
               href={link.href}
@@ -202,28 +322,22 @@ export default function Header() {
               {link.label}
             </Link>
           ))}
+
           <div className="pt-6 space-y-1">
-            <Link
-              href="/account"
-              onClick={() => setIsMobileMenuOpen(false)}
-              className="block py-3 font-body text-sm text-bark/70 hover:text-bark transition-colors"
-            >
-              My Account
-            </Link>
-            <Link
-              href="/faq"
-              onClick={() => setIsMobileMenuOpen(false)}
-              className="block py-3 font-body text-sm text-bark/70 hover:text-bark transition-colors"
-            >
-              FAQ
-            </Link>
-            <Link
-              href="/returns-policy"
-              onClick={() => setIsMobileMenuOpen(false)}
-              className="block py-3 font-body text-sm text-bark/70 hover:text-bark transition-colors"
-            >
-              Returns & Refunds
-            </Link>
+            {[
+              { href: "/account", label: "My Account" },
+              { href: "/faq", label: "FAQ" },
+              { href: "/returns-policy", label: "Returns & Refunds" },
+            ].map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="block py-3 font-body text-sm text-bark/70 hover:text-bark transition-colors"
+              >
+                {link.label}
+              </Link>
+            ))}
           </div>
         </nav>
       </Drawer>
