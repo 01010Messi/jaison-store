@@ -73,6 +73,7 @@ const config: Config = {
         shimmer: "shimmer 2s linear infinite",
         "pulse-soft": "pulseSoft 2s ease-in-out infinite",
         "gold-border": "goldBorder 0.4s ease-out forwards",
+        marquee: "marquee 30s linear infinite",
       },
       keyframes: {
         fadeUp: {
@@ -119,6 +120,10 @@ const config: Config = {
         goldBorder: {
           "0%": { borderColor: "transparent" },
           "100%": { borderColor: "#BCA480" },
+        },
+        marquee: {
+          "0%": { transform: "translateX(0%)" },
+          "100%": { transform: "translateX(-50%)" },
         },
       },
       spacing: {

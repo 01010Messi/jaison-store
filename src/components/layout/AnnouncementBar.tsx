@@ -1,35 +1,27 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { X } from "lucide-react";
+const items = [
+  "55 YEARS",
+  "ONE FORMAT",
+  "ZERO COMPROMISES",
+  "Free shipping over ₹499",
+  "CASH ON DELIVERY ACROSS INDIA",
+];
+
+const tickerContent = items.map((item, i) => (
+  <span key={i} className="inline-flex items-center">
+    <span className="text-[10px] md:text-xs tracking-[0.15em] md:tracking-[0.18em] px-4 md:px-6">{item}</span>
+    <span className="text-gold text-[7px] md:text-[8px]">◆</span>
+  </span>
+));
 
 export default function AnnouncementBar() {
-  const [isDismissed, setIsDismissed] = useState(true); // Start hidden to avoid flash
-
-  useEffect(() => {
-    const dismissed = localStorage.getItem("announcement-dismissed");
-    setIsDismissed(dismissed === "true");
-  }, []);
-
-  const handleDismiss = () => {
-    setIsDismissed(true);
-    localStorage.setItem("announcement-dismissed", "true");
-  };
-
-  if (isDismissed) return null;
-
   return (
-    <div className="bg-bark text-cream/90 text-center py-2 px-4 relative z-50">
-      <p className="text-xs font-accent tracking-wide">
-        Free Shipping on orders above &#8377;499 &bull; 100% Natural Products
-      </p>
-      <button
-        onClick={handleDismiss}
-        className="absolute right-3 top-1/2 -translate-y-1/2 text-cream/50 hover:text-cream transition-colors"
-        aria-label="Dismiss"
-      >
-        <X className="h-3.5 w-3.5" />
-      </button>
+    <div className="bg-bark text-cream overflow-hidden py-2 md:py-2.5 z-50 relative">
+      <div className="flex animate-marquee whitespace-nowrap">
+        <span className="inline-flex items-center">{tickerContent}</span>
+        <span className="inline-flex items-center" aria-hidden="true">{tickerContent}</span>
+      </div>
     </div>
   );
 }

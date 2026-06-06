@@ -13,7 +13,7 @@ export default function StorefrontLayout({
     <>
       <Header />
       <CartDrawer />
-      <main className="min-h-screen pt-[130px] md:pt-[160px] pb-20 md:pb-0">
+      <main className="min-h-screen pt-[100px] md:pt-[164px] pb-20 md:pb-0">
         {children}
       </main>
       <Footer />
