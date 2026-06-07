@@ -38,6 +38,7 @@ const config: Config = {
           light: "#D2BA96",
           dark: "#A08A64",
         },
+        manifesto: "#6B3A28",
         surface: "#FDFAF5",
         "surface-warm": "#F5ECD7",
         "surface-dark": "#1A3C34",
@@ -74,6 +75,7 @@ const config: Config = {
         "pulse-soft": "pulseSoft 2s ease-in-out infinite",
         "gold-border": "goldBorder 0.4s ease-out forwards",
         marquee: "marquee 30s linear infinite",
+        "marquee-botanical": "marquee 40s linear infinite",
       },
       keyframes: {
         fadeUp: {

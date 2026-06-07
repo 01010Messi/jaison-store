@@ -1,15 +1,12 @@
 import type { Metadata } from "next";
 import HomeCatalogue from "@/components/home/HomeCatalogue";
+import StatsBar from "@/components/home/StatsBar";
+import BotanicalTicker from "@/components/home/BotanicalTicker";
+import ManifestoSection from "@/components/home/ManifestoSection";
 import TrustPillars from "@/components/home/TrustPillars";
 import ShippingGuarantees from "@/components/home/ShippingGuarantees";
-import CategoryShowcase from "@/components/home/CategoryShowcase";
-import BrandStory from "@/components/home/BrandStory";
-import HowToUseGuide from "@/components/home/HowToUseGuide";
-import TestimonialsSection from "@/components/home/TestimonialsSection";
 import BlogPreview from "@/components/home/BlogPreview";
-import InstagramSection from "@/components/home/InstagramSection";
 import NewsletterSection from "@/components/home/NewsletterSection";
-import SectionDivider from "@/components/decorative/SectionDivider";
 
 export const metadata: Metadata = {
   title: "jaison | Natural Ayurvedic Beauty — Herbal Skincare & Haircare",
@@ -24,18 +21,12 @@ export default function HomePage() {
   return (
     <>
       <HomeCatalogue />
-      <SectionDivider variant="gold" />
+      <StatsBar />
+      <BotanicalTicker />
+      <ManifestoSection />
       <ShippingGuarantees />
       <TrustPillars />
-      <SectionDivider variant="botanical" />
-      <CategoryShowcase />
-      <BrandStory />
-      <SectionDivider variant="mandala" />
-      <HowToUseGuide />
-      <TestimonialsSection />
-      <SectionDivider variant="gold" />
       <BlogPreview />
-      <InstagramSection />
       <NewsletterSection />
     </>
   );
