@@ -127,8 +127,8 @@ export default function ProductCard({ product }: ProductCardProps) {
   };
 
   return (
-    <Link href={`/shop/${product.slug}`} className="group block">
-      <div className={`relative rounded-2xl overflow-hidden ${cardColor} flex flex-col`}>
+    <Link href={`/shop/${product.slug}`} className="group block h-full">
+      <div className={`relative rounded-2xl overflow-hidden ${cardColor} flex flex-col h-full`}>
         {/* Badge top left */}
         {discountPct && (
           <span className="absolute top-3 left-3 z-10 px-3 py-1 text-[10px] font-accent tracking-widest uppercase bg-bark text-cream rounded-full">

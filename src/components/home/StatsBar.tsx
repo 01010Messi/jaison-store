@@ -9,13 +9,13 @@ export default function StatsBar() {
     <section className="bg-cream">
       <div className="h-px bg-bark/15 mx-6 md:mx-16" />
 
-      <div className="grid grid-cols-3 max-w-4xl mx-auto text-center px-6 md:px-16 py-8 md:py-10">
+      <div className="grid grid-cols-3 max-w-5xl mx-auto text-center px-4 md:px-16 py-10 md:py-14">
         {stats.map((stat) => (
-          <div key={stat.number} className="flex flex-col items-center gap-2 px-2">
-            <span className={`font-heading text-5xl md:text-7xl leading-none ${stat.colour}`}>
+          <div key={stat.number} className="flex flex-col items-center gap-3 px-2">
+            <span className={`font-heading text-6xl md:text-9xl leading-none ${stat.colour}`}>
               {stat.number}
             </span>
-            <span className="font-accent text-[9px] md:text-[10px] tracking-[0.15em] uppercase text-bark/50 leading-snug max-w-[80px] md:max-w-none">
+            <span className="font-accent text-[10px] md:text-xs tracking-[0.18em] uppercase text-bark/50 leading-snug">
               {stat.label}
             </span>
           </div>

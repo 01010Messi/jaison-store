@@ -85,7 +85,7 @@ export default function HomeCatalogue() {
         <div className="container-brand">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-5">
             {filtered.map((product, index) => (
-              <ScrollReveal key={product.slug} animation="fade-up" delay={index * 80}>
+              <ScrollReveal key={product.slug} animation="fade-up" delay={index * 80} className="h-full">
                 <ProductCard
                   product={{
                     id: product.sku,
