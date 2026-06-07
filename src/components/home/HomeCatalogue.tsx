@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useMemo } from "react";
-import Image from "next/image";
 import ScrollReveal from "@/components/decorative/ScrollReveal";
 import ProductCard from "@/components/product/ProductCard";
 import { getFeaturedProducts } from "@/data/products";
@@ -37,19 +36,8 @@ export default function HomeCatalogue() {
 
   return (
     <>
-      {/* Hero / Catalogue intro */}
+      {/* Catalogue intro — no image, just headline + filter */}
       <section className="w-full">
-        <div className="relative w-full aspect-[16/7] md:aspect-[16/6]">
-          <Image
-            src="/images/hero-group.jpg"
-            alt="jaison herbals — natural ayurvedic herbal powders collection"
-            fill
-            className="object-cover"
-            sizes="100vw"
-            priority
-          />
-        </div>
-
         <div className="bg-surface px-6 pt-10 pb-8 md:pt-14 md:pb-10">
           <p className="font-accent text-[10px] md:text-xs uppercase tracking-widest text-bark/50 mb-5">
             THE CATALOGUE · NINE POWDERS
