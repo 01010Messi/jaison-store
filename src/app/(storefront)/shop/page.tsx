@@ -46,7 +46,7 @@ function ShopContent() {
   };
 
   const filteredProducts = useMemo(() => {
-    let filtered = [...products];
+    let filtered = products.filter((p) => p.slug !== "shikakai-powder");
 
     if (searchQuery) {
       const q = searchQuery.toLowerCase();
@@ -189,7 +189,7 @@ function ShopContent() {
       </p>
 
       {/* Product Grid */}
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
         {filteredProducts.map((product, index) => (
           <ScrollReveal
             key={product.slug}

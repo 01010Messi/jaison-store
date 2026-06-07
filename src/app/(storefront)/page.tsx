@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
-import HeroSection from "@/components/home/HeroSection";
+import HomeCatalogue from "@/components/home/HomeCatalogue";
 import TrustPillars from "@/components/home/TrustPillars";
 import ShippingGuarantees from "@/components/home/ShippingGuarantees";
 import CategoryShowcase from "@/components/home/CategoryShowcase";
-import FeaturedProducts from "@/components/home/FeaturedProducts";
 import BrandStory from "@/components/home/BrandStory";
 import HowToUseGuide from "@/components/home/HowToUseGuide";
 import TestimonialsSection from "@/components/home/TestimonialsSection";
@@ -24,8 +23,7 @@ export const metadata: Metadata = {
 export default function HomePage() {
   return (
     <>
-      <HeroSection />
-      <FeaturedProducts />
+      <HomeCatalogue />
       <SectionDivider variant="gold" />
       <ShippingGuarantees />
       <TrustPillars />

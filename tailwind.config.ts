@@ -147,6 +147,16 @@ const config: Config = {
       },
     },
   },
+  safelist: [
+    "bg-card-neem",
+    "bg-card-ubtan",
+    "bg-card-multani",
+    "bg-card-orange",
+    "bg-card-nagarmotha",
+    "bg-card-mehendi",
+    "bg-card-rose",
+    "bg-card-bhringraj",
+  ],
   plugins: [],
 };
 export default config;
