@@ -23,6 +23,36 @@ const botanicalNames: Record<string, string> = {
   "shikakai-powder": "Acacia concinna",
 };
 
+const textColors: Record<string, string> = {
+  "ubtan-powder":       "text-[#7A5C2E]",
+  "neem-powder":        "text-[#2D5A3D]",
+  "multani-mitti":      "text-[#8B4A3C]",
+  "orange-peel-powder": "text-[#8B5A1E]",
+  "nagarmotha-powder":  "text-[#5A4A7A]",
+  "mehendi-powder":     "text-[#3D5A2D]",
+  "rose-petal-powder":  "text-[#7A3A5A]",
+  "amla-powder":        "text-[#2D5A3D]",
+  "aamla-powder":       "text-[#2D5A3D]",
+  "reetha-powder":      "text-[#8B4A6A]",
+  "bhringraj-powder":   "text-[#3D5A2D]",
+  "shikakai-powder":    "text-[#6B4A2E]",
+};
+
+const buttonColors: Record<string, string> = {
+  "ubtan-powder":       "bg-[#A0885C] hover:bg-[#8A7346]",
+  "neem-powder":        "bg-[#3D6B4A] hover:bg-[#2D5A3D]",
+  "multani-mitti":      "bg-[#A0604A] hover:bg-[#8B4A3C]",
+  "orange-peel-powder": "bg-[#C47830] hover:bg-[#A06020]",
+  "nagarmotha-powder":  "bg-[#7A5AAA] hover:bg-[#5A4A7A]",
+  "mehendi-powder":     "bg-[#5A7A3A] hover:bg-[#3D5A2D]",
+  "rose-petal-powder":  "bg-[#9A4A7A] hover:bg-[#7A3A5A]",
+  "amla-powder":        "bg-[#3D6B4A] hover:bg-[#2D5A3D]",
+  "aamla-powder":       "bg-[#3D6B4A] hover:bg-[#2D5A3D]",
+  "reetha-powder":      "bg-[#9A5A8A] hover:bg-[#7A3A6A]",
+  "bhringraj-powder":   "bg-[#5A7A3A] hover:bg-[#3D5A2D]",
+  "shikakai-powder":    "bg-[#8B6A3A] hover:bg-[#6B4A2E]",
+};
+
 const cardColors: Record<string, string> = {
   "ubtan-powder": "bg-card-ubtan",
   "neem-powder": "bg-card-neem",
@@ -61,6 +91,8 @@ export default function ProductCard({ product }: ProductCardProps) {
   const [added, setAdded] = useState(false);
 
   const cardColor = cardColors[product.slug] ?? "bg-parchment";
+  const textColor = textColors[product.slug] ?? "text-bark";
+  const buttonColor = buttonColors[product.slug] ?? "bg-bark hover:bg-bark/85";
   const botanicalName = botanicalNames[product.slug] ?? "";
 
   const discountPct =
@@ -128,22 +160,22 @@ export default function ProductCard({ product }: ProductCardProps) {
 
         {/* Info */}
         <div className="flex flex-col gap-1 px-4 pt-3 pb-4 flex-1">
-          <span className="text-[10px] font-accent tracking-widest uppercase text-bark/50">
+          <span className={`text-[10px] font-accent tracking-widest uppercase opacity-70 ${textColor}`}>
             {product.category}
           </span>
-          <h3 className="font-heading text-xl md:text-2xl text-bark leading-tight">
+          <h3 className={`font-heading text-xl md:text-2xl leading-tight ${textColor}`}>
             {product.name}
           </h3>
           {botanicalName && (
-            <p className="font-body text-xs italic text-bark/50">{botanicalName}</p>
+            <p className={`font-body text-xs italic opacity-60 ${textColor}`}>{botanicalName}</p>
           )}
           <div className="flex items-center justify-between mt-auto pt-3">
             <div className="flex items-center gap-2">
-              <span className="font-heading text-lg text-bark">
+              <span className={`font-heading text-xl md:text-2xl ${textColor}`}>
                 {formatPrice(product.price)}
               </span>
               {product.compareAtPrice && product.compareAtPrice > product.price && (
-                <span className="text-xs text-bark/40 line-through font-body">
+                <span className={`text-sm opacity-40 line-through font-body ${textColor}`}>
                   {formatPrice(product.compareAtPrice)}
                 </span>
               )}
@@ -151,7 +183,7 @@ export default function ProductCard({ product }: ProductCardProps) {
             {product.stock > 0 && (
               <button
                 onClick={handleAddToPotli}
-                className="w-9 h-9 rounded-full bg-bark text-cream flex items-center justify-center hover:bg-bark/85 transition-colors"
+                className={`w-9 h-9 rounded-full text-cream flex items-center justify-center transition-colors ${buttonColor}`}
                 aria-label="Add to potli"
               >
                 {added ? (
