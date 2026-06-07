@@ -159,19 +159,19 @@ export default function ProductCard({ product }: ProductCardProps) {
         </div>
 
         {/* Info */}
-        <div className="flex flex-col gap-1 px-4 pt-3 pb-4 flex-1">
-          <span className={`text-[10px] font-accent tracking-widest uppercase opacity-70 ${textColor}`}>
+        <div className="flex flex-col gap-1 px-4 pt-3 pb-4 flex-1 min-h-[120px]">
+          <span className={`text-[10px] font-accent tracking-widest uppercase ${textColor}`}>
             {product.category}
           </span>
-          <h3 className={`font-heading text-xl md:text-2xl leading-tight ${textColor}`}>
+          <h3 className={`font-heading text-lg leading-tight line-clamp-2 ${textColor}`}>
             {product.name}
           </h3>
           {botanicalName && (
-            <p className={`font-body text-xs italic opacity-60 ${textColor}`}>{botanicalName}</p>
+            <p className={`font-body text-xs italic opacity-50 ${textColor}`}>{botanicalName}</p>
           )}
-          <div className="flex items-center justify-between mt-auto pt-3">
+          <div className="flex items-center justify-between mt-auto pt-2">
             <div className="flex items-center gap-2">
-              <span className={`font-heading text-xl md:text-2xl ${textColor}`}>
+              <span className={`font-heading text-xl ${textColor}`}>
                 {formatPrice(product.price)}
               </span>
               {product.compareAtPrice && product.compareAtPrice > product.price && (

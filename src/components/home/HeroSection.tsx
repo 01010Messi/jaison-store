@@ -61,23 +61,23 @@ export default function HeroSection() {
           </p>
         </div>
 
-        {/* Sub-copy + CTAs — flush left */}
-        <div className="mt-10 md:mt-16">
-          <p className="font-body text-bark/60 text-sm md:text-base leading-relaxed mb-6 md:mb-8 max-w-lg">
+        {/* Sub-copy + CTAs — right aligned */}
+        <div className="mt-8 md:mt-12 flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+          <p className="font-body text-bark/60 text-sm md:text-base leading-relaxed max-w-md">
             Most skincare needs preservatives, stabilisers and synthetic fragrance to sit on a
-            shelf. Ours needs none of that. Single-ingredient herbal powders for face, skin and
-            hair — just the plant, ground and sifted. Mix at home. Use. Rinse.
+            shelf. Ours needs none of that. Single-ingredient herbal powders — just the plant,
+            ground and sifted.
           </p>
-          <div className="flex items-center gap-3 flex-wrap">
+          <div className="flex items-center gap-3 flex-wrap md:flex-nowrap md:justify-end flex-shrink-0">
             <Link
               href="/shop"
-              className="inline-flex items-center gap-2 px-7 py-3.5 bg-bark text-cream font-accent tracking-widest text-xs rounded-full hover:bg-bark/90 transition-colors"
+              className="inline-flex items-center gap-2 px-7 py-3.5 bg-bark text-cream font-accent tracking-widest text-xs rounded-full hover:bg-bark/90 transition-colors whitespace-nowrap"
             >
-              SHOP THE CATALOGUE <span aria-hidden="true">→</span>
+              SHOP THE CATALOGUE →
             </Link>
             <Link
               href="/why-powder"
-              className="inline-flex items-center px-7 py-3.5 border border-bark/30 text-bark font-accent tracking-widest text-xs rounded-full hover:bg-bark/5 transition-colors"
+              className="inline-flex items-center px-7 py-3.5 border border-bark/30 text-bark font-accent tracking-widest text-xs rounded-full hover:bg-bark/5 transition-colors whitespace-nowrap"
             >
               READ WHY POWDER
             </Link>
