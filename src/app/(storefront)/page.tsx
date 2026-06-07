@@ -5,10 +5,8 @@ import HomeCatalogue from "@/components/home/HomeCatalogue";
 import BotanicalTicker from "@/components/home/BotanicalTicker";
 import ManifestoSection from "@/components/home/ManifestoSection";
 import ShippingGuarantees from "@/components/home/ShippingGuarantees";
-import TrustPillars from "@/components/home/TrustPillars";
 import TestimonialsSection from "@/components/home/TestimonialsSection";
 import BlogPreview from "@/components/home/BlogPreview";
-import NewsletterSection from "@/components/home/NewsletterSection";
 
 export const metadata: Metadata = {
   title: "Jaison — Single-Ingredient Herbal Powders for Skin & Hair | Since 1970",
@@ -28,10 +26,8 @@ export default function HomePage() {
       <BotanicalTicker />
       <ManifestoSection />
       <ShippingGuarantees />
-      <TrustPillars />
       <TestimonialsSection />
       <BlogPreview />
-      <NewsletterSection />
     </>
   );
 }
