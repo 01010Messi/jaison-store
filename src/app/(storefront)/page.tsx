@@ -4,7 +4,6 @@ import StatsBar from "@/components/home/StatsBar";
 import HomeCatalogue from "@/components/home/HomeCatalogue";
 import BotanicalTicker from "@/components/home/BotanicalTicker";
 import ManifestoSection from "@/components/home/ManifestoSection";
-import ShippingGuarantees from "@/components/home/ShippingGuarantees";
 import TestimonialsSection from "@/components/home/TestimonialsSection";
 import BlogPreview from "@/components/home/BlogPreview";
 
@@ -25,7 +24,6 @@ export default function HomePage() {
       <HomeCatalogue />
       <BotanicalTicker />
       <ManifestoSection />
-      <ShippingGuarantees />
       <TestimonialsSection />
       <BlogPreview />
     </>
