@@ -81,7 +81,7 @@ export default function HomeCatalogue() {
       </section>
 
       {/* Product grid */}
-      <section className="py-12 md:py-20">
+      <section className="pt-4 pb-12 md:pb-20">
         <div className="container-brand">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-5">
             {filtered.map((product, index) => (
