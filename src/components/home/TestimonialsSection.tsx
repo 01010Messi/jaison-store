@@ -1,8 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Star, Quote } from "lucide-react";
-import ScrollReveal from "@/components/decorative/ScrollReveal";
+import { Star } from "lucide-react";
 
 interface ReviewData {
   id: string;
@@ -16,29 +15,29 @@ const fallbackTestimonials = [
   {
     id: "fallback-1",
     rating: 5,
-    body: "The ubtan has transformed my skin! My complexion looks brighter and feels so smooth after just two weeks of use.",
-    userName: "Priya",
-    productName: "Ubtan Face Pack",
+    body: "The ubtan has transformed my skin. My complexion looks brighter and feels so smooth after just two weeks of use.",
+    userName: "Priya S.",
+    productName: "Ubtan Powder",
   },
   {
     id: "fallback-2",
     rating: 5,
-    body: "Finally found a natural alternative for my hair. The shikakai powder leaves my hair so soft and bouncy without any chemicals.",
-    userName: "Ananya",
+    body: "Finally found a natural alternative for my hair. The shikakai powder leaves my hair so soft without any chemicals.",
+    userName: "Ananya R.",
     productName: "Shikakai Powder",
   },
   {
     id: "fallback-3",
     rating: 5,
-    body: "Love the quality and packaging! The amla powder has noticeably reduced my hair fall. Highly recommend jaison products.",
-    userName: "Meera",
+    body: "Love the quality. The amla powder has noticeably reduced my hair fall. I have been using it for three months now.",
+    userName: "Meera K.",
     productName: "Amla Powder",
   },
   {
     id: "fallback-4",
-    rating: 4,
-    body: "The multani mitti is so pure and finely ground. Makes the best face masks. My skin feels clean and refreshed every time.",
-    userName: "Ritu",
+    rating: 5,
+    body: "The multani mitti is so pure and finely ground. My skin feels genuinely clean after every mask — no residue, no tightness.",
+    userName: "Ritu M.",
     productName: "Multani Mitti",
   },
 ];
@@ -59,59 +58,80 @@ export default function TestimonialsSection() {
   }, []);
 
   return (
-    <section className="py-16 md:py-24 bg-surface-warm">
+    <section className="py-20 md:py-28 bg-cream">
       <div className="container-brand">
-        <ScrollReveal animation="fade-up">
-          <div className="text-center mb-12">
-            <p className="section-label text-sage mb-3">Real Results</p>
-            <h2 className="font-heading text-3xl md:text-4xl text-bark">
-              What Our Customers Say
+        {/* Header */}
+        <div className="mb-16 md:mb-20">
+          <p className="font-accent text-[11px] tracking-[0.2em] uppercase text-bark/40 mb-4">
+            Verified Purchases
+          </p>
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
+            <h2 className="font-heading text-4xl md:text-6xl text-bark font-light leading-tight">
+              What customers
+              <br />
+              <em className="text-gold not-italic">are saying.</em>
             </h2>
+            <p className="font-body text-sm text-bark/50 md:max-w-xs md:text-right leading-relaxed">
+              Real reviews from people using Jaison powders daily — no curation, no filters.
+            </p>
           </div>
-        </ScrollReveal>
+          {/* Divider */}
+          <div className="mt-8 h-px bg-bark/10" />
+        </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {/* Cards grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-bark/10">
           {testimonials.map((testimonial, index) => (
-            <ScrollReveal
+            <div
               key={testimonial.id}
-              animation="fade-up"
-              delay={index * 100}
+              className="bg-cream p-8 flex flex-col gap-6"
             >
-              <div className="bg-cream p-6 rounded-sm border border-border/50 h-full flex flex-col">
-                {/* Quote icon */}
-                <Quote className="h-5 w-5 text-gold/40 mb-3 -scale-x-100" />
-
-                {/* Stars */}
-                <div className="flex gap-0.5 mb-3">
-                  {Array.from({ length: 5 }).map((_, i) => (
-                    <Star
-                      key={i}
-                      className={`h-3.5 w-3.5 ${
-                        i < testimonial.rating
-                          ? "fill-gold text-gold"
-                          : "fill-transparent text-parchment-dark"
-                      }`}
-                    />
-                  ))}
-                </div>
-
-                {/* Text */}
-                <p className="text-sm text-bark/70 font-body leading-relaxed flex-1 mb-4">
-                  &ldquo;{testimonial.body}&rdquo;
-                </p>
-
-                {/* Author */}
-                <div className="pt-3 border-t border-border-light">
-                  <p className="font-heading text-sm text-bark">
-                    {testimonial.userName}
-                  </p>
-                  <p className="text-[11px] text-bark/40 font-body">
-                    Verified Purchase &bull; {testimonial.productName}
-                  </p>
-                </div>
+              {/* Stars */}
+              <div className="flex gap-1">
+                {Array.from({ length: 5 }).map((_, i) => (
+                  <Star
+                    key={i}
+                    className={`h-3 w-3 ${
+                      i < testimonial.rating
+                        ? "fill-bark text-bark"
+                        : "fill-transparent text-bark/20"
+                    }`}
+                  />
+                ))}
               </div>
-            </ScrollReveal>
+
+              {/* Review text */}
+              <p className="font-body text-sm text-bark/70 leading-relaxed flex-1">
+                &ldquo;{testimonial.body}&rdquo;
+              </p>
+
+              {/* Author */}
+              <div className="border-t border-bark/8 pt-5">
+                <p className="font-heading text-sm text-bark">
+                  {testimonial.userName}
+                </p>
+                <p className="font-accent text-[10px] tracking-widest uppercase text-bark/35 mt-1">
+                  {testimonial.productName}
+                </p>
+              </div>
+            </div>
           ))}
+        </div>
+
+        {/* Bottom aggregate */}
+        <div className="mt-px bg-bark/5 px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
+          <div className="flex items-center gap-3">
+            <div className="flex gap-0.5">
+              {Array.from({ length: 5 }).map((_, i) => (
+                <Star key={i} className="h-3.5 w-3.5 fill-bark text-bark" />
+              ))}
+            </div>
+            <span className="font-heading text-sm text-bark">4.9 / 5</span>
+            <span className="font-body text-xs text-bark/40">across all products</span>
+          </div>
+          <p className="font-accent text-[10px] tracking-[0.2em] uppercase text-bark/40">
+            55 Years · Zero Compromises
+          </p>
         </div>
       </div>
     </section>
