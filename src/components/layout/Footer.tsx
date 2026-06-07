@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { Instagram, Mail, Phone, MapPin } from "lucide-react";
 import toast from "react-hot-toast";
 
@@ -80,9 +79,10 @@ export default function Footer() {
               Real rituals, real ingredients, real seasons. No marketing. Unsubscribe in one click.
             </p>
           </div>
+          {/* Single pill — input + button inside one container */}
           <form
             onSubmit={handleNewsletterSubmit}
-            className="flex gap-0 md:min-w-[400px]"
+            className="flex items-center md:min-w-[420px] bg-cream/8 border border-cream/20 rounded-full p-1.5 focus-within:border-cream/40 transition-colors"
           >
             <input
               type="email"
@@ -90,12 +90,12 @@ export default function Footer() {
               onChange={(e) => setEmail(e.target.value)}
               placeholder="your@email.com"
               required
-              className="flex-1 px-5 py-3.5 bg-cream/8 border border-cream/20 rounded-l-full text-cream text-sm font-body placeholder:text-cream/30 focus:outline-none focus:border-gold/50"
+              className="flex-1 px-4 py-2 bg-transparent text-cream text-sm font-body placeholder:text-cream/30 focus:outline-none"
             />
             <button
               type="submit"
               disabled={isLoading}
-              className="px-6 py-3.5 bg-terracotta text-cream text-sm font-accent uppercase tracking-wider rounded-r-full hover:bg-terracotta/90 transition-colors disabled:opacity-50 whitespace-nowrap"
+              className="px-6 py-2.5 bg-terracotta text-cream text-sm font-accent uppercase tracking-wider rounded-full hover:bg-terracotta/90 transition-colors disabled:opacity-50 whitespace-nowrap flex-shrink-0"
             >
               {isLoading ? "..." : "Subscribe →"}
             </button>
@@ -105,24 +105,7 @@ export default function Footer() {
 
       {/* Main footer */}
       <div className="container-brand pt-10 pb-8">
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-8">
-          {/* Logo column */}
-          <div className="col-span-2 md:col-span-1 flex flex-col items-start gap-2">
-            <Image
-              src="/images/logo.png"
-              alt="jaison"
-              width={64}
-              height={64}
-              className="h-16 w-auto brightness-[1.8] contrast-[0.9]"
-            />
-            <p className="font-heading text-lg text-cream tracking-wide">
-              Jaison Herbals
-            </p>
-            <p className="text-xs text-cream/40 font-body leading-relaxed">
-              The Essence of Herbs in Every Gram
-            </p>
-          </div>
-
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
           {/* Links */}
           {Object.entries(footerLinks).map(([category, links]) => (
             <div key={category}>
