@@ -1,52 +1,62 @@
-"use client";
-
-import Image from "next/image";
 import Link from "next/link";
-import Button from "@/components/ui/Button";
 
 export default function HeroSection() {
   return (
-    <section className="w-full">
-      {/* Full-width banner image */}
-      <div className="relative w-full aspect-[16/7] md:aspect-[16/6]">
-        <Image
-          src="/images/hero-group.jpg"
-          alt="jaison herbals — natural ayurvedic herbal powders collection"
-          fill
-          className="object-cover"
-          sizes="100vw"
-          priority
+    <section
+      className="relative min-h-screen -mt-[100px] md:-mt-[164px]"
+      aria-label="Hero"
+    >
+      {/* Background layer */}
+      <div className="absolute inset-0">
+        {/* Video — auto-activates when /public/videos/hero.mp4 is dropped in */}
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          poster="/images/hero-group.jpg"
+          className="absolute inset-0 w-full h-full object-cover"
+        >
+          <source src="/videos/hero.mp4" type="video/mp4" />
+        </video>
+        {/* Static image fallback (visible until video loads / when no video file) */}
+        <div
+          className="absolute inset-0 w-full h-full bg-cover bg-center"
+          style={{ backgroundImage: "url('/images/hero-group.jpg')" }}
         />
+        {/* Light cream overlay for text legibility */}
+        <div className="absolute inset-0 bg-cream/40" />
       </div>
 
-      {/* Text section below banner */}
-      <div className="bg-surface px-6 pt-10 pb-8 md:pt-14 md:pb-10">
-        <p className="font-accent text-[10px] md:text-xs uppercase tracking-widest text-bark/50 mb-5">
-          THE CATALOGUE · NINE POWDERS
-        </p>
-
-        <h1 className="font-heading text-5xl md:text-7xl text-bark font-light leading-[1.1] mb-2">
-          If nature had
+      {/* Content — bottom-left */}
+      <div className="absolute bottom-0 left-0 px-6 md:px-16 pb-16 md:pb-20 max-w-4xl">
+        <h1 className="font-heading text-4xl md:text-8xl lg:text-9xl leading-[0.9] text-bark">
+          Your bottle lists a
           <br />
-          a skincare lab,
-          <br />
-          <span className="italic" style={{ color: "#A0885C" }}>this would be it.</span>
+          dozen ingredients.
         </h1>
-
-        <p className="font-body text-bark/60 text-sm md:text-base max-w-lg mt-5 mb-7">
-          Nine single-ingredient herbal powders for face, skin and hair — neem, multani mitti, ubtan, amla and more. One herb per jar. Nothing synthetic, nothing added.
+        <p className="font-heading text-4xl md:text-8xl lg:text-9xl leading-[0.9] italic text-terracotta mt-2">
+          Our product lists one.
         </p>
 
-        <div className="flex flex-col sm:flex-row gap-3">
-          <Link href="/shop">
-            <Button variant="primary" size="lg">
-              Shop Collection
-            </Button>
+        <p className="mt-6 font-body text-bark/70 text-sm md:text-lg max-w-xl leading-relaxed">
+          Most skincare needs preservatives, stabilisers and synthetic fragrance to sit on a shelf.
+          Ours needs none of that. Single-ingredient herbal powders for face, skin and hair — just
+          the plant, ground and sifted. Mix at home. Use. Rinse.
+        </p>
+
+        <div className="mt-8 flex items-center gap-4 flex-wrap">
+          <Link
+            href="/shop"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-terracotta text-cream font-accent tracking-widest text-sm rounded-full hover:bg-terracotta/90 transition-colors"
+          >
+            SHOP THE CATALOGUE <span aria-hidden="true">→</span>
           </Link>
-          <Link href="/our-story">
-            <Button variant="outline" size="lg">
-              Our Story
-            </Button>
+          <Link
+            href="/why-powder"
+            className="inline-flex items-center px-6 py-3 border border-bark/40 text-bark font-accent tracking-widest text-sm rounded-full hover:bg-bark/5 transition-colors"
+          >
+            READ WHY POWDER
           </Link>
         </div>
       </div>

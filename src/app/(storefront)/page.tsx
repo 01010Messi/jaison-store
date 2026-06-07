@@ -1,17 +1,18 @@
 import type { Metadata } from "next";
-import HomeCatalogue from "@/components/home/HomeCatalogue";
+import HeroSection from "@/components/home/HeroSection";
 import StatsBar from "@/components/home/StatsBar";
+import HomeCatalogue from "@/components/home/HomeCatalogue";
 import BotanicalTicker from "@/components/home/BotanicalTicker";
 import ManifestoSection from "@/components/home/ManifestoSection";
-import TrustPillars from "@/components/home/TrustPillars";
 import ShippingGuarantees from "@/components/home/ShippingGuarantees";
+import TrustPillars from "@/components/home/TrustPillars";
 import BlogPreview from "@/components/home/BlogPreview";
 import NewsletterSection from "@/components/home/NewsletterSection";
 
 export const metadata: Metadata = {
-  title: "jaison | Natural Ayurvedic Beauty — Herbal Skincare & Haircare",
+  title: "Jaison — Single-Ingredient Herbal Powders for Skin & Hair | Since 1970",
   description:
-    "Shop 100% natural Ayurvedic herbal powders for skin & hair care. Ubtan, Amla, Neem, Multani Mitti, Shikakai & more — handcrafted in Nashik, India. Free from chemicals. Free shipping over ₹499.",
+    "100% natural Ayurvedic herbal powders. One herb. One jar. No preservatives. No fillers. Trusted since 1970. Free shipping over ₹499.",
   alternates: {
     canonical: "https://jaisonskincare.com",
   },
@@ -20,8 +21,9 @@ export const metadata: Metadata = {
 export default function HomePage() {
   return (
     <>
-      <HomeCatalogue />
+      <HeroSection />
       <StatsBar />
+      <HomeCatalogue />
       <BotanicalTicker />
       <ManifestoSection />
       <ShippingGuarantees />

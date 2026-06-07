@@ -2,8 +2,6 @@
 
 import { useState, useMemo } from "react";
 import Image from "next/image";
-import Link from "next/link";
-import Button from "@/components/ui/Button";
 import ScrollReveal from "@/components/decorative/ScrollReveal";
 import ProductCard from "@/components/product/ProductCard";
 import { getFeaturedProducts } from "@/data/products";
@@ -71,14 +69,6 @@ export default function HomeCatalogue() {
                 Nine single-ingredient herbal powders for face, skin and hair — neem, multani mitti, ubtan, amla and more. One herb per jar. Nothing synthetic, nothing added.
               </p>
 
-              <div className="flex flex-col sm:flex-row gap-3">
-                <Link href="/shop">
-                  <Button variant="primary" size="lg">Shop Collection</Button>
-                </Link>
-                <Link href="/our-story">
-                  <Button variant="outline" size="lg">Our Story</Button>
-                </Link>
-              </div>
             </div>
 
             {/* Filter pills — bottom-right of intro */}
