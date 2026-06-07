@@ -1,26 +1,25 @@
 const stats = [
-  { number: "1970", label: "YEAR WE STARTED GRINDING" },
-  { number: "55", label: "YEARS, ONE FORMAT" },
-  { number: "1", label: "INGREDIENT PER JAR" },
-  { number: "0", label: "PRESERVATIVES. EVER." },
+  { number: "1970", label: "YEAR WE STARTED GRINDING", colour: "text-terracotta" },
+  { number: "55", label: "YEARS, ONE FORMAT", colour: "text-[#6B3A28]" },
+  { number: "0", label: "PRESERVATIVES. EVER.", colour: "text-bark" },
 ];
 
 export default function StatsBar() {
   return (
-    <section className="bg-cream py-16 md:py-24">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-4">
-          {stats.map((stat) => (
-            <div key={stat.number} className="text-center">
-              <div className="font-heading text-7xl md:text-9xl text-bark/20 leading-none select-none">
-                {stat.number}
-              </div>
-              <div className="font-accent text-xs tracking-widest text-bark/60 uppercase mt-2">
-                {stat.label}
-              </div>
-            </div>
-          ))}
-        </div>
+    <section className="bg-cream py-20 md:py-28 px-6 md:px-16">
+      <div className="grid grid-cols-3 gap-4 md:gap-16 max-w-5xl mx-auto text-center">
+        {stats.map((stat) => (
+          <div key={stat.number} className="flex flex-col items-center gap-3">
+            <span
+              className={`font-heading text-5xl md:text-9xl leading-none ${stat.colour}`}
+            >
+              {stat.number}
+            </span>
+            <span className="font-accent text-[11px] tracking-[0.2em] uppercase text-bark/50">
+              {stat.label}
+            </span>
+          </div>
+        ))}
       </div>
     </section>
   );
