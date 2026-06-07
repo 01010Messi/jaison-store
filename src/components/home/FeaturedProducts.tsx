@@ -32,33 +32,41 @@ export default function FeaturedProducts() {
   }, [activeFilter]);
 
   return (
-    <section className="py-16 md:py-24">
+    <section className="py-12 md:py-20">
       <div className="container-brand">
         <ScrollReveal animation="fade-up">
-          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-10">
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-8">
             <div>
-              <p className="section-label text-sage mb-3">Bestsellers</p>
+              <p className="section-label text-sage mb-2">Bestsellers</p>
               <h2 className="font-heading text-3xl md:text-4xl text-bark">
                 Featured Products
               </h2>
             </div>
 
-            {/* Filter tabs */}
-            <div className="flex items-center gap-2 overflow-x-auto scrollbar-hide pb-1 md:pb-0 flex-nowrap">
-              {(["all", "skin", "hair"] as Filter[]).map((f) => (
-                <button
-                  key={f}
-                  onClick={() => setActiveFilter(f)}
-                  className={cn(
-                    "flex-shrink-0 px-4 py-1.5 text-xs font-accent tracking-widest uppercase transition-all duration-200 rounded-full",
-                    activeFilter === f
-                      ? "bg-bark text-cream"
-                      : "border border-bark/20 text-bark/60 hover:border-bark/40"
-                  )}
-                >
-                  {f === "all" ? "All" : f === "skin" ? "Skin Care" : "Hair Care"}
-                </button>
-              ))}
+            {/* Segmented filter control */}
+            <div className="flex items-center gap-1 bg-bark/10 rounded-full p-1 self-start md:self-auto">
+              <button
+                onClick={() => setActiveFilter(activeFilter === "skin" ? "all" : "skin")}
+                className={cn(
+                  "px-4 py-1.5 text-xs font-accent tracking-widest uppercase rounded-full transition-all duration-200",
+                  activeFilter === "skin"
+                    ? "bg-bark text-cream"
+                    : "text-bark/60 hover:text-bark"
+                )}
+              >
+                FACE &amp; SKIN
+              </button>
+              <button
+                onClick={() => setActiveFilter(activeFilter === "hair" ? "all" : "hair")}
+                className={cn(
+                  "px-4 py-1.5 text-xs font-accent tracking-widest uppercase rounded-full transition-all duration-200",
+                  activeFilter === "hair"
+                    ? "bg-bark text-cream"
+                    : "text-bark/60 hover:text-bark"
+                )}
+              >
+                HAIR
+              </button>
             </div>
 
             <Link
@@ -70,8 +78,8 @@ export default function FeaturedProducts() {
           </div>
         </ScrollReveal>
 
-        {/* Product grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
+        {/* Product grid — 2 col mobile, 4 col desktop */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-5">
           {filtered.map((product, index) => (
             <ScrollReveal key={product.slug} animation="fade-up" delay={index * 80}>
               <ProductCard

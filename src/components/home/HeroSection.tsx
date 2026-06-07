@@ -3,12 +3,11 @@
 import Image from "next/image";
 import Link from "next/link";
 import Button from "@/components/ui/Button";
-import GoldRule from "@/components/decorative/GoldRule";
 
 export default function HeroSection() {
   return (
     <section className="w-full">
-      {/* Full-width banner image on top */}
+      {/* Full-width banner image */}
       <div className="relative w-full aspect-[16/7] md:aspect-[16/6]">
         <Image
           src="/images/hero-group.jpg"
@@ -21,31 +20,30 @@ export default function HeroSection() {
       </div>
 
       {/* Text section below banner */}
-      <div className="bg-surface text-center py-10 md:py-14 px-6">
-        <p className="font-accent text-[11px] md:text-xs uppercase tracking-[0.2em] text-gold mb-4 animate-fade-in">
-          100% Natural &bull; Chemical-Free &bull; Ayurvedic
+      <div className="bg-surface px-6 pt-10 pb-8 md:pt-14 md:pb-10">
+        <p className="font-accent text-[10px] md:text-xs uppercase tracking-widest text-bark/50 mb-5">
+          THE CATALOGUE · NINE POWDERS
         </p>
 
-        <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-bark font-light tracking-wide leading-[1.15] animate-fade-up">
-          Herbal Powders
+        <h1 className="font-heading text-5xl md:text-7xl text-bark font-light leading-[1.1] mb-2">
+          If nature had
           <br />
-          Crafted with Care
+          a skincare lab,
+          <br />
+          <span className="italic" style={{ color: "#A0885C" }}>this would be it.</span>
         </h1>
 
-        <GoldRule variant="leaf" width="w-24 md:w-32 mx-auto" className="mt-5 mb-4" />
-
-        <p className="font-body text-bark/60 text-sm md:text-base lg:text-lg max-w-xl mx-auto animate-fade-up delay-200">
-          The Essence of Herbs in Every Gram — 100% natural, chemical-free
-          and gentle on all skin types.
+        <p className="font-body text-bark/60 text-sm md:text-base max-w-lg mt-5 mb-7">
+          Nine single-ingredient herbal powders for face, skin and hair — neem, multani mitti, ubtan, amla and more. One herb per jar. Nothing synthetic, nothing added.
         </p>
 
-        <div className="flex flex-col sm:flex-row gap-3 mt-6 md:mt-8 justify-center animate-fade-up delay-400">
+        <div className="flex flex-col sm:flex-row gap-3">
           <Link href="/shop">
             <Button variant="primary" size="lg">
               Shop Collection
             </Button>
           </Link>
-          <Link href="/about">
+          <Link href="/our-story">
             <Button variant="outline" size="lg">
               Our Story
             </Button>
