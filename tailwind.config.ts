@@ -61,6 +61,7 @@ const config: Config = {
         "paper-texture": "url('/images/patterns/paper-texture.png')",
       },
       animation: {
+        marquee: "marquee 35s linear infinite",
         "fade-up": "fadeUp 0.8s cubic-bezier(0.19, 1, 0.22, 1) forwards",
         "fade-in": "fadeIn 1s cubic-bezier(0.19, 1, 0.22, 1) forwards",
         "fade-in-fast": "fadeIn 0.4s cubic-bezier(0.19, 1, 0.22, 1) forwards",
@@ -119,6 +120,10 @@ const config: Config = {
         goldBorder: {
           "0%": { borderColor: "transparent" },
           "100%": { borderColor: "#BCA480" },
+        },
+        marquee: {
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(-50%)" },
         },
       },
       spacing: {

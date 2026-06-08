@@ -2,30 +2,66 @@
 
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import Image from "next/image";
-import { Search, ShoppingBag, User, Menu, X } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { Search, User, Menu, X, ShoppingBag, ChevronDown } from "lucide-react";
 import { useCartStore } from "@/store/cart-store";
+import AnnouncementBar from "@/components/layout/AnnouncementBar";
 import Drawer from "@/components/ui/Drawer";
 
-const navLinks = [
-  { href: "/", label: "Home" },
-  { href: "/shop", label: "Catalog" },
-  { href: "/blog", label: "Blog" },
-  { href: "/why-jaison", label: "Why Jaison" },
-  { href: "/about", label: "About Us" },
-  { href: "/contact", label: "Contact" },
+const skinCareItems = [
+  { label: "Ubtan Powder", href: "/shop/ubtan-powder", dot: "#D4A843" },
+  { label: "Neem Powder", href: "/shop/neem-powder", dot: "#4A7C59" },
+  { label: "Multani Mitti", href: "/shop/multani-mitti", dot: "#C17A5A" },
+  { label: "Orange Peel", href: "/shop/orange-peel-powder", dot: "#E8793A" },
+  { label: "Rose Petal", href: "/shop/rose-petal-powder", dot: "#D4748C" },
+  { label: "Nagarmotha", href: "/shop/nagarmotha-powder", dot: "#8B7355" },
 ];
 
+const hairCareItems = [
+  { label: "Amla Powder", href: "/shop/aamla-powder", dot: "#6B9E5E" },
+  { label: "Bhringraj", href: "/shop/bhringraj-powder", dot: "#2D6B4A" },
+  { label: "Mehendi", href: "/shop/mehendi-powder", dot: "#5C8A3C" },
+  { label: "Reetha", href: "/shop/reetha-powder", dot: "#8B5E3C" },
+  { label: "Shikakai", href: "/shop/shikakai-powder", dot: "#A07840" },
+];
+
+interface DropdownMenuProps {
+  items: { label: string; href: string; dot: string }[];
+  onClose: () => void;
+}
+
+function DropdownMenu({ items, onClose }: DropdownMenuProps) {
+  return (
+    <div className="absolute top-full left-1/2 -translate-x-1/2 mt-1 z-50 bg-cream border border-bark/10 rounded-xl shadow-sm py-2 px-1 min-w-[180px]">
+      {items.map((item) => (
+        <Link
+          key={item.href}
+          href={item.href}
+          onClick={onClose}
+          className="flex items-center gap-2.5 px-3 py-2 hover:bg-parchment rounded-lg text-sm text-bark transition-colors"
+        >
+          <span
+            className="w-2.5 h-2.5 rounded-full flex-shrink-0"
+            style={{ backgroundColor: item.dot }}
+          />
+          {item.label}
+        </Link>
+      ))}
+    </div>
+  );
+}
+
 export default function Header() {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState<"skin" | "hair" | null>(null);
+  const [skinAccordionOpen, setSkinAccordionOpen] = useState(false);
+  const [hairAccordionOpen, setHairAccordionOpen] = useState(false);
+  const closeTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const searchInputRef = useRef<HTMLInputElement>(null);
-  const pathname = usePathname();
   const router = useRouter();
   const { toggleCart, itemCount } = useCartStore();
   const count = mounted ? itemCount() : 0;
@@ -35,12 +71,24 @@ export default function Header() {
   }, []);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+    if (searchOpen && searchInputRef.current) {
+      searchInputRef.current.focus();
+    }
+  }, [searchOpen]);
+
+  const handleDropdownEnter = (menu: "skin" | "hair") => {
+    if (closeTimeoutRef.current) {
+      clearTimeout(closeTimeoutRef.current);
+      closeTimeoutRef.current = null;
+    }
+    setOpenDropdown(menu);
+  };
+
+  const handleDropdownLeave = () => {
+    closeTimeoutRef.current = setTimeout(() => {
+      setOpenDropdown(null);
+    }, 150);
+  };
 
   const handleSearchSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -50,117 +98,175 @@ export default function Header() {
     setSearchQuery("");
   };
 
-  useEffect(() => {
-    if (searchOpen && searchInputRef.current) {
-      searchInputRef.current.focus();
-    }
-  }, [searchOpen]);
-
   return (
     <>
-      <header
-        className={cn(
-          "fixed top-0 left-0 right-0 z-40 transition-all duration-500",
-          isScrolled
-            ? "bg-cream/95 backdrop-blur-md shadow-sm"
-            : "bg-cream"
-        )}
-      >
-        {/* Tagline Bar */}
-        <div className="bg-bark text-cream/90 text-center py-2 px-4">
-          <p className="text-xs font-accent tracking-[0.15em] uppercase">
-            Essence of Herbs in Every Gram
+      <header className="fixed top-0 left-0 right-0 z-50 bg-cream/95 backdrop-blur-sm">
+        {/* Row 1 — Announcement marquee */}
+        <AnnouncementBar />
+
+        {/* Row 2 — Logo + tagline */}
+        <div className="bg-cream py-3 flex flex-col items-center">
+          <Link href="/" className="flex-shrink-0 overflow-hidden h-12 md:h-16 flex items-center">
+            <Image
+              src="/images/logo.png"
+              alt="Jaison Skincare"
+              width={260}
+              height={96}
+              className="h-20 md:h-28 w-auto mix-blend-multiply -my-4"
+              priority
+            />
+          </Link>
+          <p className="font-accent text-[11px] tracking-[0.25em] uppercase text-bark/50 mt-1">
+            ESSENCE OF HERBS IN EVERY GRAM
           </p>
         </div>
 
-        {/* Main Header — Logo centered with actions */}
-        <div className="container-brand">
-          <div className="flex items-center justify-between py-1 md:py-1.5">
-            {/* Left: Mobile menu / Desktop search */}
-            <div className="flex items-center gap-3 w-[100px]">
-              <button
-                onClick={() => setIsMobileMenuOpen(true)}
-                className="md:hidden p-2 text-bark/70 hover:text-bark transition-colors"
-                aria-label="Open menu"
+        {/* Row 3 — Navigation (desktop) / Hamburger row (mobile) */}
+        <div className="bg-cream border-b border-bark/10">
+          {/* Desktop nav */}
+          <div className="hidden md:block relative">
+            <div className="flex items-center justify-center gap-6 py-2">
+              <Link
+                href="/"
+                className="font-accent text-[11px] tracking-widest uppercase text-bark/70 hover:text-bark transition-colors"
               >
-                <Menu className="h-5 w-5" />
-              </button>
-              <button
-                onClick={() => setSearchOpen(true)}
-                className="p-2 text-bark/70 hover:text-bark transition-colors hidden md:block"
-                aria-label="Search"
+                Home
+              </Link>
+
+              {/* Skin Care dropdown */}
+              <div
+                className="relative"
+                onMouseEnter={() => handleDropdownEnter("skin")}
+                onMouseLeave={handleDropdownLeave}
               >
-                <Search className="h-5 w-5" />
-              </button>
+                <button className="flex items-center gap-1 font-accent text-[11px] tracking-widest uppercase text-bark/70 hover:text-bark transition-colors py-2">
+                  Skin Care
+                  <ChevronDown className="h-3 w-3" />
+                </button>
+                {openDropdown === "skin" && (
+                  <DropdownMenu
+                    items={skinCareItems}
+                    onClose={() => setOpenDropdown(null)}
+                  />
+                )}
+              </div>
+
+              {/* Hair Care dropdown */}
+              <div
+                className="relative"
+                onMouseEnter={() => handleDropdownEnter("hair")}
+                onMouseLeave={handleDropdownLeave}
+              >
+                <button className="flex items-center gap-1 font-accent text-[11px] tracking-widest uppercase text-bark/70 hover:text-bark transition-colors py-2">
+                  Hair Care
+                  <ChevronDown className="h-3 w-3" />
+                </button>
+                {openDropdown === "hair" && (
+                  <DropdownMenu
+                    items={hairCareItems}
+                    onClose={() => setOpenDropdown(null)}
+                  />
+                )}
+              </div>
+
+              <Link
+                href="/our-story"
+                className="font-accent text-[11px] tracking-widest uppercase text-bark/70 hover:text-bark transition-colors"
+              >
+                Our Story
+              </Link>
+              <Link
+                href="/why-powder"
+                className="font-accent text-[11px] tracking-widest uppercase text-bark/70 hover:text-bark transition-colors"
+              >
+                Why Powder
+              </Link>
+              <Link
+                href="/find-your-ritual"
+                className="font-accent text-[11px] tracking-widest uppercase text-bark/70 hover:text-bark transition-colors"
+              >
+                Find Your Ritual
+              </Link>
+              <Link
+                href="/shop"
+                className="font-accent text-[11px] tracking-widest uppercase text-bark/70 hover:text-bark transition-colors"
+              >
+                Shop All
+              </Link>
             </div>
 
-            {/* Center: Logo */}
-            <Link href="/" className="flex-shrink-0 overflow-hidden h-12 md:h-16 flex items-center">
-              <Image
-                src="/images/logo.png"
-                alt="jaison"
-                width={260}
-                height={96}
-                className="h-20 md:h-28 w-auto mix-blend-multiply -my-4"
-                priority
-              />
-            </Link>
-
-            {/* Right: Account + Cart */}
-            <div className="flex items-center gap-3 w-[100px] justify-end">
+            {/* Right actions — absolute */}
+            <div className="absolute right-4 top-1/2 -translate-y-1/2 flex items-center gap-3">
+              <button
+                onClick={() => setSearchOpen(true)}
+                className="p-1.5 text-bark/60 hover:text-bark transition-colors"
+                aria-label="Search"
+              >
+                <Search className="h-4 w-4" />
+              </button>
               <Link
                 href="/account"
-                className="p-2 text-bark/70 hover:text-bark transition-colors hidden md:block"
+                className="p-1.5 text-bark/60 hover:text-bark transition-colors"
                 aria-label="Account"
               >
-                <User className="h-5 w-5" />
+                <User className="h-4 w-4" />
               </Link>
               <button
                 onClick={toggleCart}
-                className="relative p-2 text-bark/70 hover:text-bark transition-colors"
+                className="flex items-center gap-1.5 bg-bark text-cream rounded-full px-3 py-1.5 hover:bg-bark/90 transition-colors relative"
                 aria-label="Cart"
               >
-                <ShoppingBag className="h-5 w-5" />
+                <ShoppingBag className="h-4 w-4" />
+                <span className="font-accent text-[11px] tracking-widest">POTLI</span>
                 {count > 0 && (
-                  <span className="absolute -top-0.5 -right-0.5 flex items-center justify-center w-4.5 h-4.5 min-w-[18px] text-[10px] font-accent font-bold bg-terracotta text-cream rounded-full">
+                  <span className="absolute -top-1.5 -right-1.5 flex items-center justify-center w-4 h-4 text-[9px] font-accent font-bold bg-gold text-bark rounded-full">
                     {count}
                   </span>
                 )}
               </button>
             </div>
           </div>
-        </div>
 
-        {/* Navigation Bar — below logo */}
-        <nav className="hidden md:block border-t border-bark/10">
-          <div className="container-brand">
-            <div className="flex items-center justify-center gap-8 py-2.5">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className={cn(
-                    "gold-underline text-sm font-body font-medium tracking-wide transition-colors duration-200 text-bark/70 hover:text-bark",
-                    pathname === link.href && "text-bark"
-                  )}
-                >
-                  {link.label}
-                </Link>
-              ))}
-            </div>
+          {/* Mobile row: hamburger | gap | POTLI */}
+          <div className="md:hidden flex items-center justify-between px-4 py-2">
+            <button
+              onClick={() => setIsMobileMenuOpen(true)}
+              className="p-1.5 text-bark/70 hover:text-bark transition-colors"
+              aria-label="Open menu"
+            >
+              <Menu className="h-5 w-5" />
+            </button>
+            <button
+              onClick={toggleCart}
+              className="flex items-center gap-1.5 bg-bark text-cream rounded-full px-3 py-1.5 hover:bg-bark/90 transition-colors relative"
+              aria-label="Cart"
+            >
+              <ShoppingBag className="h-4 w-4" />
+              {count > 0 && (
+                <span className="absolute -top-1.5 -right-1.5 flex items-center justify-center w-4 h-4 text-[9px] font-accent font-bold bg-gold text-bark rounded-full">
+                  {count}
+                </span>
+              )}
+            </button>
           </div>
-        </nav>
+        </div>
       </header>
 
-      {/* Search Overlay */}
+      {/* Search overlay */}
       {searchOpen && (
-        <div className="fixed inset-0 z-50 bg-bark/40 backdrop-blur-sm" onClick={() => setSearchOpen(false)}>
+        <div
+          className="fixed inset-0 z-50 bg-bark/40 backdrop-blur-sm"
+          onClick={() => setSearchOpen(false)}
+        >
           <div
             className="bg-cream shadow-lg"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="container-brand py-4">
-              <form onSubmit={handleSearchSubmit} className="flex items-center gap-3">
+            <div className="max-w-screen-lg mx-auto px-4 py-4">
+              <form
+                onSubmit={handleSearchSubmit}
+                className="flex items-center gap-3"
+              >
                 <Search className="h-5 w-5 text-bark/40 flex-shrink-0" />
                 <input
                   ref={searchInputRef}
@@ -184,45 +290,133 @@ export default function Header() {
         </div>
       )}
 
-      {/* Mobile Menu Drawer */}
+      {/* Mobile drawer */}
       <Drawer
         isOpen={isMobileMenuOpen}
         onClose={() => setIsMobileMenuOpen(false)}
-        title="Menu"
-        side="left"
+        className="w-[280px] max-w-[280px]"
       >
-        <nav className="px-6 py-8 space-y-1">
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              onClick={() => setIsMobileMenuOpen(false)}
-              className="block py-3 font-heading text-xl text-bark hover:text-terracotta transition-colors border-b border-border-light"
+        <nav className="px-4 py-6">
+          <Link
+            href="/"
+            onClick={() => setIsMobileMenuOpen(false)}
+            className="block py-3 border-b border-bark/5 font-accent text-sm tracking-widest uppercase text-bark"
+          >
+            Home
+          </Link>
+
+          {/* Skin Care accordion */}
+          <div className="border-b border-bark/5">
+            <button
+              onClick={() => setSkinAccordionOpen((v) => !v)}
+              className="flex items-center justify-between w-full py-3 font-accent text-sm tracking-widest uppercase text-bark"
             >
-              {link.label}
-            </Link>
-          ))}
-          <div className="pt-6 space-y-1">
+              Skin Care
+              <ChevronDown
+                className={`h-4 w-4 transition-transform duration-200 ${skinAccordionOpen ? "rotate-180" : ""}`}
+              />
+            </button>
+            {skinAccordionOpen && (
+              <div className="pb-2 pl-3 flex flex-col gap-1">
+                {skinCareItems.map((item) => (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="flex items-center gap-2.5 py-2 text-sm text-bark/70 hover:text-bark transition-colors"
+                  >
+                    <span
+                      className="w-2 h-2 rounded-full flex-shrink-0"
+                      style={{ backgroundColor: item.dot }}
+                    />
+                    {item.label}
+                  </Link>
+                ))}
+              </div>
+            )}
+          </div>
+
+          {/* Hair Care accordion */}
+          <div className="border-b border-bark/5">
+            <button
+              onClick={() => setHairAccordionOpen((v) => !v)}
+              className="flex items-center justify-between w-full py-3 font-accent text-sm tracking-widest uppercase text-bark"
+            >
+              Hair Care
+              <ChevronDown
+                className={`h-4 w-4 transition-transform duration-200 ${hairAccordionOpen ? "rotate-180" : ""}`}
+              />
+            </button>
+            {hairAccordionOpen && (
+              <div className="pb-2 pl-3 flex flex-col gap-1">
+                {hairCareItems.map((item) => (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="flex items-center gap-2.5 py-2 text-sm text-bark/70 hover:text-bark transition-colors"
+                  >
+                    <span
+                      className="w-2 h-2 rounded-full flex-shrink-0"
+                      style={{ backgroundColor: item.dot }}
+                    />
+                    {item.label}
+                  </Link>
+                ))}
+              </div>
+            )}
+          </div>
+
+          <Link
+            href="/our-story"
+            onClick={() => setIsMobileMenuOpen(false)}
+            className="block py-3 border-b border-bark/5 font-accent text-sm tracking-widest uppercase text-bark"
+          >
+            Our Story
+          </Link>
+          <Link
+            href="/why-powder"
+            onClick={() => setIsMobileMenuOpen(false)}
+            className="block py-3 border-b border-bark/5 font-accent text-sm tracking-widest uppercase text-bark"
+          >
+            Why Powder
+          </Link>
+          <Link
+            href="/find-your-ritual"
+            onClick={() => setIsMobileMenuOpen(false)}
+            className="block py-3 border-b border-bark/5 font-accent text-sm tracking-widest uppercase text-bark"
+          >
+            Find Your Ritual
+          </Link>
+          <Link
+            href="/shop"
+            onClick={() => setIsMobileMenuOpen(false)}
+            className="block py-3 border-b border-bark/5 font-accent text-sm tracking-widest uppercase text-bark"
+          >
+            Shop All
+          </Link>
+
+          <div className="pt-4 flex flex-col gap-1">
             <Link
               href="/account"
               onClick={() => setIsMobileMenuOpen(false)}
-              className="block py-3 font-body text-sm text-bark/70 hover:text-bark transition-colors"
+              className="block py-2 font-accent text-xs tracking-widest uppercase text-bark/50 hover:text-bark transition-colors"
             >
               My Account
             </Link>
             <Link
               href="/faq"
               onClick={() => setIsMobileMenuOpen(false)}
-              className="block py-3 font-body text-sm text-bark/70 hover:text-bark transition-colors"
+              className="block py-2 font-accent text-xs tracking-widest uppercase text-bark/50 hover:text-bark transition-colors"
             >
               FAQ
             </Link>
             <Link
-              href="/returns-policy"
+              href="/contact"
               onClick={() => setIsMobileMenuOpen(false)}
-              className="block py-3 font-body text-sm text-bark/70 hover:text-bark transition-colors"
+              className="block py-2 font-accent text-xs tracking-widest uppercase text-bark/50 hover:text-bark transition-colors"
             >
-              Returns & Refunds
+              Contact
             </Link>
           </div>
         </nav>

@@ -1,13 +1,9 @@
 "use client";
 
-import { useState, useCallback, useRef } from "react";
-import Image from "next/image";
+import { useState } from "react";
 import Link from "next/link";
-import { ShoppingBag } from "lucide-react";
-import GoldRule from "@/components/decorative/GoldRule";
-import { formatPrice } from "@/lib/utils";
+import { Plus, Check } from "lucide-react";
 import { useCartStore } from "@/store/cart-store";
-import toast from "react-hot-toast";
 
 interface ProductCardProps {
   product: {
@@ -26,44 +22,81 @@ interface ProductCardProps {
   index?: number;
 }
 
+const cardBgColors: Record<string, string> = {
+  "ubtan-powder": "#F5E6C8",
+  "neem-powder": "#D4E8D0",
+  "multani-mitti": "#F0D9CC",
+  "orange-peel-powder": "#FCE8CC",
+  "nagarmotha-powder": "#E8DCC8",
+  "mehendi-powder": "#D8E8C8",
+  "rose-petal-powder": "#F5D8DC",
+  "amla-powder": "#D4E8D0",
+  "aamla-powder": "#D4E8D0",
+  "reetha-powder": "#EDE0D4",
+  "bhringraj-powder": "#C8D8C0",
+  "shikakai-powder": "#E8DCC8",
+};
+
+const accentColors: Record<string, string> = {
+  "ubtan-powder": "#C17A3A",
+  "neem-powder": "#4A7C59",
+  "multani-mitti": "#B85C38",
+  "orange-peel-powder": "#C86820",
+  "nagarmotha-powder": "#7A6040",
+  "mehendi-powder": "#4A7020",
+  "rose-petal-powder": "#B84060",
+  "amla-powder": "#4A7C59",
+  "aamla-powder": "#4A7C59",
+  "reetha-powder": "#8B4020",
+  "bhringraj-powder": "#2D5A30",
+  "shikakai-powder": "#8B6020",
+};
+
+const botanicalNames: Record<string, string> = {
+  "ubtan-powder": "Curcuma longa + 7 herbs",
+  "neem-powder": "Azadirachta indica",
+  "multani-mitti": "Calcium bentonite clay",
+  "orange-peel-powder": "Citrus sinensis peel",
+  "nagarmotha-powder": "Cyperus rotundus",
+  "mehendi-powder": "Lawsonia inermis",
+  "rose-petal-powder": "Rosa centifolia",
+  "amla-powder": "Phyllanthus emblica",
+  "aamla-powder": "Phyllanthus emblica",
+  "reetha-powder": "Sapindus mukorossi",
+  "bhringraj-powder": "Eclipta prostrata",
+  "shikakai-powder": "Acacia concinna",
+};
+
+const categoryLabels: Record<string, string> = {
+  "ubtan-powder": "Skin Care",
+  "neem-powder": "Skin Care",
+  "multani-mitti": "Skin Care",
+  "orange-peel-powder": "Skin Care",
+  "nagarmotha-powder": "Skin Care",
+  "rose-petal-powder": "Skin Care",
+  "amla-powder": "Hair Care",
+  "aamla-powder": "Hair Care",
+  "mehendi-powder": "Hair Care",
+  "reetha-powder": "Hair Care",
+  "bhringraj-powder": "Hair Care",
+  "shikakai-powder": "Hair Care",
+};
+
 export default function ProductCard({ product }: ProductCardProps) {
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [isHovered, setIsHovered] = useState(false);
-  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const [added, setAdded] = useState(false);
   const addItem = useCartStore((s) => s.addItem);
-  const openCart = useCartStore((s) => s.openCart);
 
-  const allImages =
-    product.images && product.images.length > 1
-      ? product.images
-      : [product.image];
+  const bg = cardBgColors[product.slug] ?? "#F5ECD7";
+  const accent = accentColors[product.slug] ?? "#A0885C";
+  const botanical = botanicalNames[product.slug] ?? "";
+  const category = categoryLabels[product.slug] ?? product.category;
+  const badge =
+    product.compareAtPrice && product.compareAtPrice > product.price
+      ? `${Math.round((1 - product.price / product.compareAtPrice) * 100)}% OFF`
+      : null;
 
-  const handleMouseEnter = useCallback(() => {
-    setIsHovered(true);
-    if (allImages.length <= 1) return;
-    intervalRef.current = setInterval(() => {
-      setCurrentImageIndex((prev) => (prev + 1) % allImages.length);
-    }, 1500);
-  }, [allImages.length]);
-
-  const handleMouseLeave = useCallback(() => {
-    setIsHovered(false);
-    if (intervalRef.current) {
-      clearInterval(intervalRef.current);
-      intervalRef.current = null;
-    }
-    setCurrentImageIndex(0);
-  }, []);
-
-  const handleQuickAdd = (e: React.MouseEvent) => {
+  const handleAddToPotli = (e: React.MouseEvent) => {
     e.preventDefault();
-    e.stopPropagation();
-
-    if (product.stock <= 0) {
-      toast.error("Out of stock");
-      return;
-    }
-
     addItem({
       id: product.id,
       productId: product.id,
@@ -74,99 +107,67 @@ export default function ProductCard({ product }: ProductCardProps) {
       stock: product.stock,
       quantity: 1,
     });
-    toast.success(`${product.name} added to cart`);
-    openCart();
+    setAdded(true);
+    setTimeout(() => setAdded(false), 2000);
   };
 
   return (
-    <Link
-      href={`/shop/${product.slug}`}
-      className="group block"
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
+    <div
+      className="rounded-xl overflow-hidden flex flex-col shadow-sm hover:shadow-md transition-shadow duration-200 cursor-pointer"
+      style={{ backgroundColor: bg }}
     >
-      {/* Image */}
-      <div className="relative aspect-product overflow-hidden rounded-sm bg-parchment mb-3 border border-transparent transition-all duration-700 ease-out group-hover:border-gold/50 group-hover:shadow-warm">
-        {allImages.map((img, i) => (
-          <Image
-            key={img}
-            src={img}
-            alt={`${product.name}${i > 0 ? ` - view ${i + 1}` : ""}`}
-            fill
-            className={`object-contain transition-all duration-700 ease-out ${
-              i === currentImageIndex
-                ? "opacity-100 scale-100"
-                : "opacity-0 scale-[1.03]"
-            } ${isHovered && i === currentImageIndex ? "scale-[1.05]" : ""}`}
-            sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
-            priority={i === 0}
+      <Link href={`/shop/${product.slug}`} className="block">
+        <div className="relative w-full aspect-[4/3] overflow-hidden">
+          {badge && (
+            <span className="absolute top-3 left-3 z-10 px-2.5 py-0.5 text-[9px] font-accent tracking-widest uppercase bg-bark text-cream rounded-full">
+              {badge}
+            </span>
+          )}
+          <img
+            src={product.images?.[0] ?? product.image}
+            alt={product.name}
+            className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
           />
-        ))}
-
-        {/* Image dots indicator */}
-        {allImages.length > 1 && (
-          <div className="absolute bottom-2.5 left-1/2 -translate-x-1/2 flex gap-1.5 z-10">
-            {allImages.map((_, i) => (
-              <span
-                key={i}
-                className={`h-1.5 rounded-full transition-all duration-500 ease-out ${
-                  i === currentImageIndex
-                    ? "bg-gold w-4"
-                    : "bg-cream/50 w-1.5"
-                }`}
-              />
-            ))}
-          </div>
-        )}
-
-        {/* Sale badge */}
-        {product.compareAtPrice &&
-          product.compareAtPrice > product.price && (
-            <span className="absolute top-2 left-2 bg-terracotta text-cream text-[10px] font-accent uppercase tracking-wider px-2 py-0.5 rounded-sm z-10">
-              {Math.round((1 - product.price / product.compareAtPrice) * 100)}% Off
+        </div>
+      </Link>
+      <div className="px-3 pt-2.5 pb-3 flex flex-col gap-0.5 flex-1 min-h-[120px]">
+        <span
+          className="text-[10px] font-accent tracking-widest uppercase"
+          style={{ color: accent }}
+        >
+          {category}
+        </span>
+        <Link href={`/shop/${product.slug}`}>
+          <h3 className="font-heading text-base leading-snug text-bark hover:opacity-70 transition-opacity">
+            {product.name}
+          </h3>
+        </Link>
+        <p className="text-[10px] italic text-bark/50 truncate">{botanical}</p>
+        <div className="flex items-center justify-between mt-auto pt-2">
+          <div className="flex items-baseline gap-1.5">
+            <span className="font-heading text-base text-bark">
+              ₹{product.price}
             </span>
-          )}
-
-        {/* Out of stock overlay */}
-        {product.stock <= 0 && (
-          <div className="absolute inset-0 bg-cream/60 flex items-center justify-center z-10">
-            <span className="font-accent text-xs uppercase tracking-wider text-bark/70 bg-cream/80 px-3 py-1 rounded-sm">
-              Sold Out
-            </span>
+            {product.compareAtPrice && product.compareAtPrice > product.price && (
+              <span className="text-xs text-bark/40 line-through">
+                ₹{product.compareAtPrice}
+              </span>
+            )}
           </div>
-        )}
-
-        {/* Quick add overlay */}
-        {product.stock > 0 && (
           <button
-            onClick={handleQuickAdd}
-            className="absolute bottom-0 left-0 right-0 p-3 bg-cream/90 backdrop-blur-sm opacity-0 translate-y-3 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 ease-out cursor-pointer z-10"
+            onClick={handleAddToPotli}
+            className="w-8 h-8 rounded-full flex items-center justify-center transition-opacity hover:opacity-80"
+            style={{ backgroundColor: accent, color: "white" }}
+            aria-label="Add to cart"
           >
-            <div className="flex items-center justify-center gap-2 text-xs font-accent uppercase tracking-wider text-bark">
-              <ShoppingBag className="h-3.5 w-3.5" />
-              Quick Add
-            </div>
+            {added ? (
+              <Check className="h-3.5 w-3.5" />
+            ) : (
+              <Plus className="h-3.5 w-3.5" />
+            )}
           </button>
-        )}
+        </div>
       </div>
-
-      {/* Info */}
-      <p className="section-label text-sage/70 mb-1 transition-colors duration-500">
-        {product.category}
-      </p>
-      <GoldRule variant="simple" width="w-8" className="mb-1.5" />
-      <h3 className="font-heading text-base md:text-lg text-bark transition-colors duration-500 group-hover:text-sage-dark leading-snug">
-        {product.name}
-      </h3>
-      <div className="flex items-center gap-2 mt-1">
-        <p className="price-display text-sm">{formatPrice(product.price)}</p>
-        {product.compareAtPrice &&
-          product.compareAtPrice > product.price && (
-            <p className="text-xs text-bark/40 line-through font-body">
-              {formatPrice(product.compareAtPrice)}
-            </p>
-          )}
-      </div>
-    </Link>
+    </div>
   );
 }

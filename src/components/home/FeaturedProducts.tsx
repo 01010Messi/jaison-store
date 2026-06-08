@@ -1,97 +1,115 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { ShoppingBag } from "lucide-react";
-import ScrollReveal from "@/components/decorative/ScrollReveal";
 import ProductCard from "@/components/product/ProductCard";
-import { useCartStore } from "@/store/cart-store";
 import { getFeaturedProducts } from "@/data/products";
-import toast from "react-hot-toast";
 
 const featuredProducts = getFeaturedProducts();
 
-export default function FeaturedProducts() {
-  const router = useRouter();
-  const addItem = useCartStore((s) => s.addItem);
+const skinSlugs = [
+  "ubtan-powder",
+  "neem-powder",
+  "multani-mitti",
+  "orange-peel-powder",
+  "nagarmotha-powder",
+  "rose-petal-powder",
+];
+const hairSlugs = [
+  "amla-powder",
+  "aamla-powder",
+  "bhringraj-powder",
+  "mehendi-powder",
+  "reetha-powder",
+  "shikakai-powder",
+];
 
-  const handleBuyNow = (product: (typeof featuredProducts)[0]) => {
-    addItem({
-      id: product.sku,
-      productId: product.sku,
-      name: product.name,
-      slug: product.slug,
-      price: product.price,
-      image: product.image,
-      stock: 50,
-      quantity: 1,
-    });
-    toast.success(`${product.name} added to cart`);
-    router.push("/checkout");
-  };
+type FilterTab = "all" | "skin" | "hair";
+
+export default function FeaturedProducts() {
+  const [filter, setFilter] = useState<FilterTab>("all");
+
+  const filtered = featuredProducts.filter((p) => {
+    if (filter === "skin") return skinSlugs.includes(p.slug);
+    if (filter === "hair") return hairSlugs.includes(p.slug);
+    return true;
+  });
 
   return (
     <section className="py-16 md:py-24">
       <div className="container-brand">
-        <ScrollReveal animation="fade-up">
-          <div className="flex items-end justify-between mb-12">
-            <div>
-              <p className="section-label text-sage mb-3">Bestsellers</p>
-              <h2 className="font-heading text-3xl md:text-4xl text-bark">
-                Featured Products
-              </h2>
-            </div>
-            <Link
-              href="/shop"
-              className="hidden md:block gold-underline font-body text-sm text-bark/70 hover:text-bark transition-colors pb-1"
-            >
-              View All Products
-            </Link>
+        {/* Header row: title left, filter tabs right */}
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10">
+          <div>
+            <p className="font-accent text-[10px] tracking-widest uppercase text-bark/40 mb-1">
+              Bestsellers
+            </p>
+            <h2 className="font-heading text-3xl md:text-4xl text-bark">
+              Our Powders
+            </h2>
           </div>
-        </ScrollReveal>
+          <div className="flex items-center gap-2">
+            <button
+              onClick={() => setFilter("all")}
+              className={
+                filter === "all"
+                  ? "bg-bark text-cream rounded-full px-3 py-1 text-[11px] font-accent tracking-widest"
+                  : "border border-bark/20 text-bark/50 rounded-full px-3 py-1 text-[11px] font-accent tracking-widest hover:border-bark/40 transition-colors"
+              }
+            >
+              All Powders
+            </button>
+            <button
+              onClick={() => setFilter("skin")}
+              className={
+                filter === "skin"
+                  ? "bg-bark text-cream rounded-full px-3 py-1 text-[11px] font-accent tracking-widest"
+                  : "border border-bark/20 text-bark/50 rounded-full px-3 py-1 text-[11px] font-accent tracking-widest hover:border-bark/40 transition-colors"
+              }
+            >
+              Skin Care
+            </button>
+            <button
+              onClick={() => setFilter("hair")}
+              className={
+                filter === "hair"
+                  ? "bg-bark text-cream rounded-full px-3 py-1 text-[11px] font-accent tracking-widest"
+                  : "border border-bark/20 text-bark/50 rounded-full px-3 py-1 text-[11px] font-accent tracking-widest hover:border-bark/40 transition-colors"
+              }
+            >
+              Hair Care
+            </button>
+          </div>
+        </div>
 
         {/* Product grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
-          {featuredProducts.map((product, index) => (
-            <ScrollReveal
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          {filtered.map((product) => (
+            <ProductCard
               key={product.slug}
-              animation="fade-up"
-              delay={index * 80}
-            >
-              <div>
-                <ProductCard
-                  product={{
-                    id: product.sku,
-                    name: product.name,
-                    slug: product.slug,
-                    price: product.price,
-                    compareAtPrice: product.compareAtPrice,
-                    image: product.image,
-                    images: product.images,
-                    category: product.category,
-                    stock: 50,
-                  }}
-                  index={index}
-                />
-                <button
-                  onClick={() => handleBuyNow(product)}
-                  className="mt-2 w-full flex items-center justify-center gap-2 px-4 py-2.5 bg-bark text-cream text-xs font-accent uppercase tracking-wider rounded-sm hover:bg-bark/90 transition-colors"
-                >
-                  <ShoppingBag className="h-3.5 w-3.5" />
-                  Buy Now
-                </button>
-              </div>
-            </ScrollReveal>
+              product={{
+                id: product.sku,
+                name: product.name,
+                slug: product.slug,
+                price: product.price,
+                compareAtPrice: product.compareAtPrice,
+                image: product.image,
+                images: product.images,
+                category: product.category,
+                stock: 50,
+              }}
+            />
           ))}
         </div>
 
-        {/* Mobile "View All" link */}
-        <div className="mt-8 text-center md:hidden">
+        {/* View full catalogue CTA */}
+        <div className="flex justify-center mt-10 mb-4">
           <Link
             href="/shop"
-            className="gold-underline font-body text-sm text-bark/70 hover:text-bark transition-colors pb-1"
+            className="inline-flex items-center gap-3 px-10 py-3.5 border border-bark rounded-full font-accent text-[11px] tracking-[0.2em] uppercase text-bark hover:bg-bark hover:text-cream transition-all duration-200"
           >
-            View All Products
+            VIEW THE FULL CATALOGUE
+            <span>→</span>
           </Link>
         </div>
       </div>

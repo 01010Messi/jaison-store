@@ -1,35 +1,41 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { X } from "lucide-react";
+const marqueeItems = [
+  { text: "55 YEARS", italic: false },
+  { text: "ONE FORMAT", italic: false },
+  { text: "ZERO COMPROMISES", italic: false },
+  { text: "CASH ON DELIVERY ACROSS INDIA", italic: false },
+  { text: "ESSENCE OF HERBS IN EVERY GRAM", italic: true },
+];
+
+function MarqueeStrip({ prefix }: { prefix: string }) {
+  return (
+    <span className="flex items-center whitespace-nowrap">
+      {marqueeItems.map((item, i) => (
+        <span key={`${prefix}-${i}`} className="flex items-center">
+          {item.italic ? (
+            <span className="font-accent text-[10px] md:text-[10px] text-[9px] tracking-widest uppercase text-gold italic">
+              {item.text}
+            </span>
+          ) : (
+            <span className="font-accent text-[10px] md:text-[10px] text-[9px] tracking-widest uppercase text-cream">
+              {item.text}
+            </span>
+          )}
+          <span className="text-gold/60 text-[8px] mx-3">◆</span>
+        </span>
+      ))}
+    </span>
+  );
+}
 
 export default function AnnouncementBar() {
-  const [isDismissed, setIsDismissed] = useState(true); // Start hidden to avoid flash
-
-  useEffect(() => {
-    const dismissed = localStorage.getItem("announcement-dismissed");
-    setIsDismissed(dismissed === "true");
-  }, []);
-
-  const handleDismiss = () => {
-    setIsDismissed(true);
-    localStorage.setItem("announcement-dismissed", "true");
-  };
-
-  if (isDismissed) return null;
-
   return (
-    <div className="bg-bark text-cream/90 text-center py-2 px-4 relative z-50">
-      <p className="text-xs font-accent tracking-wide">
-        Free Shipping on orders above &#8377;499 &bull; 100% Natural Products
-      </p>
-      <button
-        onClick={handleDismiss}
-        className="absolute right-3 top-1/2 -translate-y-1/2 text-cream/50 hover:text-cream transition-colors"
-        aria-label="Dismiss"
-      >
-        <X className="h-3.5 w-3.5" />
-      </button>
+    <div className="bg-bark overflow-hidden py-2">
+      <div className="flex animate-marquee" style={{ width: "max-content" }}>
+        <MarqueeStrip prefix="a" />
+        <MarqueeStrip prefix="b" />
+      </div>
     </div>
   );
 }

@@ -7,7 +7,7 @@ import ScrollReveal from "@/components/decorative/ScrollReveal";
 import GoldRule from "@/components/decorative/GoldRule";
 import ProductCard from "@/components/product/ProductCard";
 import { ProductGridSkeleton } from "@/components/ui/Skeleton";
-import { products, categories } from "@/data/products";
+import { products } from "@/data/products";
 import { cn } from "@/lib/utils";
 
 type SortOption = "featured" | "price-asc" | "price-desc" | "name-asc" | "name-desc";
@@ -19,6 +19,13 @@ const sortLabels: Record<SortOption, string> = {
   "name-asc": "Name: A to Z",
   "name-desc": "Name: Z to A",
 };
+
+const filterButtons = [
+  { label: "ALL PRODUCTS", value: "all" },
+  { label: "SKIN CARE", value: "skin-care" },
+  { label: "HAIR CARE", value: "hair-care" },
+  { label: "COMBOS", value: "combos" },
+];
 
 function ShopContent() {
   const searchParams = useSearchParams();
@@ -59,7 +66,11 @@ function ShopContent() {
       );
     }
 
-    if (activeCategory !== "all") {
+    if (activeCategory === "skin-care") {
+      filtered = filtered.filter(
+        (p) => p.categorySlug === "skin-care" || p.categorySlug === "face-care"
+      );
+    } else if (activeCategory !== "all") {
       filtered = filtered.filter((p) => p.categorySlug === activeCategory);
     }
 
@@ -91,7 +102,8 @@ function ShopContent() {
       {searchQuery && (
         <div className="flex items-center gap-2 mb-6 px-4 py-3 bg-parchment/50 rounded-sm">
           <p className="text-sm font-body text-bark/70">
-            Results for &ldquo;<span className="font-medium text-bark">{searchQuery}</span>&rdquo;
+            Results for &ldquo;
+            <span className="font-medium text-bark">{searchQuery}</span>&rdquo;
             <span className="text-bark/40 ml-1">({filteredProducts.length})</span>
           </p>
           <button
@@ -109,29 +121,18 @@ function ShopContent() {
         {/* Category pills */}
         <div className="flex items-center gap-2 overflow-x-auto scrollbar-hide pb-2 md:pb-0">
           <SlidersHorizontal className="h-4 w-4 text-bark/40 flex-shrink-0 hidden md:block" />
-          <button
-            onClick={() => setFilter("category", "all")}
-            className={cn(
-              "flex-shrink-0 px-4 py-1.5 rounded-full text-xs font-accent uppercase tracking-wider transition-all duration-300",
-              activeCategory === "all"
-                ? "bg-bark text-cream"
-                : "bg-parchment/50 text-bark/60 hover:bg-parchment hover:text-bark"
-            )}
-          >
-            All Products
-          </button>
-          {categories.map((cat) => (
+          {filterButtons.map((btn) => (
             <button
-              key={cat.slug}
-              onClick={() => setFilter("category", cat.slug)}
+              key={btn.value}
+              onClick={() => setFilter("category", btn.value)}
               className={cn(
                 "flex-shrink-0 px-4 py-1.5 rounded-full text-xs font-accent uppercase tracking-wider transition-all duration-300",
-                activeCategory === cat.slug
+                activeCategory === btn.value
                   ? "bg-bark text-cream"
                   : "bg-parchment/50 text-bark/60 hover:bg-parchment hover:text-bark"
               )}
             >
-              {cat.name}
+              {btn.label}
             </button>
           ))}
         </div>
@@ -139,7 +140,8 @@ function ShopContent() {
         {/* Sort dropdown */}
         <div className="relative flex items-center gap-3">
           <span className="text-xs text-bark/40 font-accent uppercase tracking-wider hidden md:block">
-            {filteredProducts.length} product{filteredProducts.length !== 1 ? "s" : ""}
+            {filteredProducts.length} product
+            {filteredProducts.length !== 1 ? "s" : ""}
           </span>
           <div className="relative">
             <button
@@ -147,10 +149,12 @@ function ShopContent() {
               className="flex items-center gap-2 px-4 py-1.5 border border-border rounded-sm text-xs font-accent uppercase tracking-wider text-bark/70 hover:border-gold transition-colors"
             >
               {sortLabels[activeSort]}
-              <ChevronDown className={cn(
-                "h-3.5 w-3.5 transition-transform",
-                showSortMenu && "rotate-180"
-              )} />
+              <ChevronDown
+                className={cn(
+                  "h-3.5 w-3.5 transition-transform",
+                  showSortMenu && "rotate-180"
+                )}
+              />
             </button>
             {showSortMenu && (
               <>
@@ -189,13 +193,9 @@ function ShopContent() {
       </p>
 
       {/* Product Grid */}
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         {filteredProducts.map((product, index) => (
-          <ScrollReveal
-            key={product.slug}
-            animation="fade-up"
-            delay={index * 60}
-          >
+          <ScrollReveal key={product.slug} animation="fade-up" delay={index * 60}>
             <ProductCard
               product={{
                 id: product.sku,

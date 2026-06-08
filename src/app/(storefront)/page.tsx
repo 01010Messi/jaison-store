@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import HeroSection from "@/components/home/HeroSection";
-import TrustPillars from "@/components/home/TrustPillars";
 import ShippingGuarantees from "@/components/home/ShippingGuarantees";
-import CategoryShowcase from "@/components/home/CategoryShowcase";
 import FeaturedProducts from "@/components/home/FeaturedProducts";
 import BrandStory from "@/components/home/BrandStory";
 import HowToUseGuide from "@/components/home/HowToUseGuide";
@@ -28,9 +26,6 @@ export default function HomePage() {
       <FeaturedProducts />
       <SectionDivider variant="gold" />
       <ShippingGuarantees />
-      <TrustPillars />
-      <SectionDivider variant="botanical" />
-      <CategoryShowcase />
       <BrandStory />
       <SectionDivider variant="mandala" />
       <HowToUseGuide />
