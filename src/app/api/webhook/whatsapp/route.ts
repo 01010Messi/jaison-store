@@ -1,4 +1,3 @@
-import { NextResponse } from "next/server";
 import prisma from "@/lib/prisma";
 import { isAdminSender, parseStatusReply, sendToAdmin } from "@/lib/whatsapp";
 import { createShiprocketOrder, generateAWB } from "@/lib/shiprocket";
@@ -33,7 +32,7 @@ export async function POST(req: Request) {
       // Admin just typed the tracking number
       const trackingNumber = msgBody.replace(/\s+/g, "");
 
-      if (!/^\d{5,20}$/.test(trackingNumber)) {
+      if (!/^[A-Za-z0-9]{5,25}$/.test(trackingNumber)) {
         await sendToAdmin(
           "❌ That doesn't look like a valid AWB number.\nPlease send only the numeric tracking number (e.g. 173450012345)."
         );
