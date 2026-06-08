@@ -3,6 +3,7 @@ import crypto from "crypto";
 import prisma from "@/lib/prisma";
 import { sendOrderConfirmation } from "@/lib/email";
 import { sendTelegramOrderNotification } from "@/lib/telegram";
+import { sendOrderNotification } from "@/lib/whatsapp";
 
 export async function POST(req: Request) {
   try {
@@ -131,6 +132,46 @@ export async function POST(req: Request) {
             phone: order.shippingAddress.phone,
           },
         }).catch((err) => console.error("Telegram notification failed:", err));
+
+        // Send WhatsApp notification and set session context
+        const adminPhone = process.env.ADMIN_WHATSAPP_NUMBER;
+        if (adminPhone && order.shippingAddress) {
+          const customerEmail2 =
+            order.guestEmail ||
+            (order.userId
+              ? (await prisma.user.findUnique({ where: { id: order.userId } }))?.email
+              : null) || "N/A";
+
+          await Promise.all([
+            sendOrderNotification({
+              orderId: order.id,
+              orderNumber: order.orderNumber,
+              customerName: order.shippingAddress.fullName,
+              customerPhone: order.shippingAddress.phone,
+              customerEmail: customerEmail2,
+              paymentMethod: order.paymentMethod,
+              paymentStatus: "PAID",
+              items: order.items.map((i) => ({
+                name: i.name,
+                quantity: i.quantity,
+                price: Number(i.price),
+              })),
+              total: Number(order.total),
+              shippingAddress: {
+                addressLine1: order.shippingAddress.addressLine1,
+                addressLine2: order.shippingAddress.addressLine2,
+                city: order.shippingAddress.city,
+                state: order.shippingAddress.state,
+                pincode: order.shippingAddress.pincode,
+              },
+            }).catch((err) => console.error("WhatsApp notification failed:", err)),
+            prisma.whatsAppSession.upsert({
+              where: { phone: adminPhone },
+              create: { phone: adminPhone, orderId: order.id, orderNumber: order.orderNumber },
+              update: { orderId: order.id, orderNumber: order.orderNumber, awaitingLrn: false },
+            }).catch((err) => console.error("WhatsApp session upsert failed:", err)),
+          ]);
+        }
       }
     }
 

@@ -335,3 +335,18 @@ model ContactMessage {
 
   createdAt DateTime @default(now())
 }
+
+// ─── WhatsApp Admin Session ────────────────────────────────────
+// Tracks which order the admin is currently managing via WhatsApp.
+// Keyed by admin phone; only one active context at a time.
+
+model WhatsAppSession {
+  id          String  @id @default(cuid())
+  phone       String  @unique
+  orderId     String
+  orderNumber String
+  awaitingLrn Boolean @default(false)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}

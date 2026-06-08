@@ -5,6 +5,7 @@ import prisma from "@/lib/prisma";
 import { generateOrderNumber } from "@/lib/utils";
 import { sendOrderConfirmation } from "@/lib/email";
 import { sendTelegramOrderNotification } from "@/lib/telegram";
+import { sendOrderNotification } from "@/lib/whatsapp";
 
 export async function POST(req: Request) {
   try {
@@ -208,6 +209,43 @@ export async function POST(req: Request) {
         phone: savedAddress.phone,
       },
     }).catch((err) => console.error("Telegram notification failed:", err));
+
+    // Send WhatsApp notification to admin and set session context
+    const waPayload = {
+      orderId: order.id,
+      orderNumber: order.orderNumber,
+      customerName,
+      customerPhone: savedAddress.phone,
+      customerEmail,
+      paymentMethod: order.paymentMethod,
+      paymentStatus: order.paymentStatus,
+      items: order.items.map((i) => ({
+        name: i.name,
+        quantity: i.quantity,
+        price: Number(i.price),
+      })),
+      total: Number(order.total),
+      shippingAddress: {
+        addressLine1: savedAddress.addressLine1,
+        addressLine2: savedAddress.addressLine2,
+        city: savedAddress.city,
+        state: savedAddress.state,
+        pincode: savedAddress.pincode,
+      },
+    };
+    const adminPhone = process.env.ADMIN_WHATSAPP_NUMBER;
+    if (adminPhone) {
+      await Promise.all([
+        sendOrderNotification(waPayload).catch((err) =>
+          console.error("WhatsApp notification failed:", err)
+        ),
+        prisma.whatsAppSession.upsert({
+          where: { phone: adminPhone },
+          create: { phone: adminPhone, orderId: order.id, orderNumber: order.orderNumber },
+          update: { orderId: order.id, orderNumber: order.orderNumber, awaitingLrn: false },
+        }).catch((err) => console.error("WhatsApp session upsert failed:", err)),
+      ]);
+    }
 
     return NextResponse.json({
       orderNumber: order.orderNumber,
