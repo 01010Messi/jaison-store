@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import OrnamentalBorder from "@/components/decorative/OrnamentalBorder";
-import ScrollReveal from "@/components/decorative/ScrollReveal";
 
 export const metadata: Metadata = {
   title: "Our Story | Jaison Herbals",
@@ -58,32 +57,30 @@ export default function OurStoryPage() {
               </OrnamentalBorder>
             </div>
 
-            {/* Right: Copy */}
-            <ScrollReveal animation="fade-up">
-              <div className="space-y-6">
-                <p
-                  className="font-accent text-[10px] tracking-[0.2em] uppercase"
-                  style={{ color: "rgba(26,60,52,0.4)" }}
-                >
-                  How it started
-                </p>
-                <p className="font-body text-bark/70 text-base leading-relaxed">
-                  In every Indian home, there is a grandmother who knows exactly
-                  which powder to mix with milk for glowing skin, and which herb
-                  to boil for strong hair. That knowledge is old. It predates the
-                  skincare industry by thousands of years.
-                </p>
-                <p className="font-body text-bark/70 text-base leading-relaxed">
-                  Jaison Herbals was born from that knowledge. We source single
-                  Ayurvedic herbs — neem, amla, shikakai, rose petal — mill them
-                  into fine powder, and put them in a jar. No blending. No
-                  additives. No marketing ingredients.
-                </p>
-                <p className="font-body text-bark/70 text-base leading-relaxed">
-                  You mix. You apply. You rinse. That is the whole process.
-                </p>
-              </div>
-            </ScrollReveal>
+            {/* Right: Copy — no scroll animation so text is always visible */}
+            <div className="space-y-6">
+              <p
+                className="font-accent text-[10px] tracking-[0.2em] uppercase"
+                style={{ color: "rgba(26,60,52,0.4)" }}
+              >
+                How it started
+              </p>
+              <p className="font-body text-bark/70 text-base leading-relaxed">
+                In every Indian home, there is a grandmother who knows exactly
+                which powder to mix with milk for glowing skin, and which herb
+                to boil for strong hair. That knowledge is old. It predates the
+                skincare industry by thousands of years.
+              </p>
+              <p className="font-body text-bark/70 text-base leading-relaxed">
+                Jaison Herbals was born from that knowledge. We source single
+                Ayurvedic herbs — neem, amla, shikakai, rose petal — mill them
+                into fine powder, and put them in a jar. No blending. No
+                additives. No marketing ingredients.
+              </p>
+              <p className="font-body text-bark/70 text-base leading-relaxed">
+                You mix. You apply. You rinse. That is the whole process.
+              </p>
+            </div>
           </div>
         </div>
       </section>
