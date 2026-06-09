@@ -1,11 +1,10 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import ScrollReveal from "@/components/decorative/ScrollReveal";
+import GlowPillLink from "@/components/ui/GlowPillLink";
 
 export const metadata: Metadata = {
-  title: "Why Powder? | Jaison Herbals",
+  title: "Why Powder? The Case Against Liquid Skincare | Jaison Herbals",
   description:
-    "Most skincare is 70% water and 20% preservatives. Discover why single-ingredient Ayurvedic powders are the honest alternative.",
+    "An essay on why Jaison has never made a liquid, never added a preservative, and never will. Single-ingredient herbal powders — the honest alternative.",
   alternates: {
     canonical: "https://jaisonskincare.com/why-powder",
   },
@@ -14,238 +13,304 @@ export const metadata: Metadata = {
 export default function WhyPowderPage() {
   return (
     <div className="min-h-screen">
-      {/* Section 1 — Hero */}
-      <section className="bg-parchment pt-20 pb-16">
-        <div className="container-brand text-center">
-          <p className="section-label text-sage mb-6">— THE PHILOSOPHY</p>
-          <h1 className="font-heading text-[2.75rem] md:text-[3.5rem] lg:text-[4.5rem] text-bark font-light leading-[1.08] tracking-[-0.01em]">
-            Why a powder?
+
+      {/* ── SECTION 1 — Hero ── */}
+      <section
+        className="relative overflow-hidden pt-36 md:pt-44 pb-20 md:pb-28"
+        style={{ backgroundColor: "#1A3C34", minHeight: "92vh" }}
+      >
+        {/* Background watermark */}
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden"
+        >
+          <span
+            className="font-heading font-light leading-none"
+            style={{
+              fontSize: "clamp(200px, 40vw, 500px)",
+              color: "rgba(188,164,128,0.12)",
+              fontStyle: "italic",
+              userSelect: "none",
+            }}
+          >
+            why?
+          </span>
+        </div>
+
+        {/* Hero content */}
+        <div className="relative z-10 container-brand">
+          <p
+            className="font-accent text-[10px] tracking-[0.25em] uppercase mb-6"
+            style={{ color: "#BCA480" }}
+          >
+            — THE POWDER PHILOSOPHY
+          </p>
+          <h1
+            className="font-heading font-light leading-[1.02] tracking-[-0.02em]"
+            style={{ fontSize: "clamp(3rem, 8vw, 6.5rem)", color: "#FDFAF5" }}
+          >
+            Just the herb.
             <span
               className="block"
-              style={{ color: "#A0885C", fontStyle: "italic", fontWeight: 300 }}
+              style={{ color: "#BCA480", fontStyle: "italic" }}
             >
-              And not a cream.
+              Nothing synthetic.
             </span>
           </h1>
           <p
-            className="mt-6 max-w-md mx-auto font-body text-base leading-relaxed"
-            style={{ color: "rgba(26,60,52,0.5)" }}
+            className="mt-8 max-w-xl font-body text-base md:text-lg leading-relaxed"
+            style={{ color: "rgba(253,250,245,0.6)" }}
           >
-            Most skincare is 70% water and 20% preservatives. You are paying
-            premium prices for a jar of stabilised liquid. We think there is a
-            better way.
+            An essay on why we have never made a liquid, never added a
+            preservative, and never will. Written by the makers at Jaison.
           </p>
         </div>
       </section>
 
-      {/* Section 2 — The problem with creams */}
-      <section className="bg-cream py-20">
-        <div className="container-brand">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
-            {/* Left: copy */}
-            <ScrollReveal animation="fade-up">
-              <div className="space-y-5">
-                <p
-                  className="font-accent text-[10px] tracking-[0.2em] uppercase"
-                  style={{ color: "rgba(26,60,52,0.4)" }}
-                >
-                  What&apos;s really in that bottle
-                </p>
-                <p className="font-body text-bark/70 text-base leading-relaxed">
-                  Pick up any moisturiser and read the ingredients. The first item
-                  is almost always &ldquo;Aqua&rdquo; — water. Then come the
-                  emulsifiers to stop the water and oil from separating. Then the
-                  preservatives to stop it going mouldy. Then the thickeners,
-                  stabilisers, and fragrance. By the time you reach an actual
-                  botanical ingredient, it appears at less than 1% concentration.
-                </p>
-                <p className="font-body text-bark/70 text-base leading-relaxed">
-                  We are not against skincare innovation. We are against paying
-                  ₹800 for a product that is mostly water and needs twelve
-                  additives to stay shelf-stable.
-                </p>
-              </div>
-            </ScrollReveal>
+      {/* ── SECTION 2 — Essay body ── */}
+      <section
+        className="py-20 md:py-28"
+        style={{ backgroundColor: "#FDFAF5" }}
+      >
+        <div className="container-brand max-w-3xl mx-auto">
 
-            {/* Right: ingredient comparison */}
-            <div className="grid grid-cols-2 gap-4">
-              <div
-                className="rounded-sm p-6"
-                style={{
-                  border: "1px solid rgba(26,60,52,0.2)",
-                  backgroundColor: "rgba(245,236,215,0.5)",
-                }}
-              >
-                <p
-                  className="font-accent text-[10px] tracking-widest uppercase mb-4"
-                  style={{ color: "rgba(26,60,52,0.4)" }}
-                >
-                  Typical face cream
-                </p>
-                <ul className="space-y-2">
-                  {[
-                    "Aqua",
-                    "Glycerin",
-                    "Emulsifying Wax",
-                    "Preservatives",
-                    "Fragrance",
-                    "Niacinamide (2%)",
-                    "Vitamin C (0.5%)",
-                  ].map((item) => (
-                    <li
-                      key={item}
-                      className="font-body text-sm flex items-start gap-2"
-                      style={{ color: "rgba(26,60,52,0.6)" }}
-                    >
-                      <span>·</span>
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div
-                className="rounded-sm p-6"
-                style={{
-                  border: "1px solid rgba(26,60,52,0.2)",
-                  backgroundColor: "rgba(245,236,215,0.5)",
-                }}
-              >
-                <p
-                  className="font-accent text-[10px] tracking-widest uppercase mb-4"
-                  style={{ color: "rgba(160,136,92,0.6)" }}
-                >
-                  Jaison Ubtan Powder
-                </p>
-                <ul className="space-y-2">
-                  {[
-                    "Turmeric",
-                    "Chickpea Flour",
-                    "Sandalwood",
-                    "Rose Petal",
-                    "That’s it.",
-                  ].map((item) => (
-                    <li
-                      key={item}
-                      className="font-body text-sm flex items-start gap-2"
-                      style={{ color: "rgba(26,60,52,0.6)" }}
-                    >
-                      <span>·</span>
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Section 3 — The powder advantage */}
-      <section className="bg-surface-warm py-20">
-        <div className="container-brand">
-          <h2 className="font-heading text-[2.75rem] md:text-[3.5rem] text-bark font-light leading-[1.08] tracking-[-0.01em] text-center mb-14">
-            The powder difference.
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {[
-              {
-                title: "Shelf-stable without preservatives",
-                body: "Dry powder does not need preservatives. It lasts 18–24 months in a cool, dry place.",
-              },
-              {
-                title: "You control the formula",
-                body: "Mix with rose water for dry skin, with curd for oily skin, with milk for brightening. One powder, multiple rituals.",
-              },
-              {
-                title: "100% active ingredients",
-                body: "There is no water or filler diluting the herb. Every gram is the ingredient.",
-              },
-              {
-                title: "Transparent by design",
-                body: "One ingredient. You can trace it, research it, and know exactly what it does.",
-              },
-            ].map((card) => (
-              <div
-                key={card.title}
-                className="rounded-sm p-6"
-                style={{
-                  backgroundColor: "#FDFAF5",
-                  border: "1px solid rgba(26,60,52,0.1)",
-                }}
-              >
-                <h3 className="font-heading text-lg text-bark mb-3">
-                  {card.title}
-                </h3>
-                <p
-                  className="font-body text-sm"
-                  style={{ color: "rgba(26,60,52,0.6)" }}
-                >
-                  {card.body}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Section 4 — The mixing ritual */}
-      <section className="bg-bark py-20 text-center">
-        <div className="container-brand">
-          <h2 className="font-heading text-[2.75rem] md:text-[3.5rem] font-light leading-[1.08] tracking-[-0.01em] text-cream mb-14">
-            The ritual is simple.
-            <span
-              className="block"
-              style={{ color: "#BCA480", fontStyle: "italic", fontWeight: 300 }}
+          {/* 01 */}
+          <div className="mb-16 md:mb-20">
+            <h2
+              className="font-heading font-light leading-[1.1] mb-5"
+              style={{ fontSize: "clamp(1.75rem, 4vw, 2.75rem)", color: "#A0885C" }}
             >
-              Stupidly simple.
+              01 · The preservative problem.
+            </h2>
+            <p
+              className="font-body text-base md:text-lg leading-relaxed mb-4"
+              style={{ color: "rgba(26,60,52,0.75)" }}
+            >
+              Pick up any liquid skincare in your bathroom and read the
+              ingredient list. Past the actives you&apos;ll find a preservative
+              system — phenoxyethanol, sodium benzoate, parabens, or one of
+              about a dozen others — plus stabilisers, emulsifiers and
+              synthetic fragrance. A shelf-stable formula needs them to last. A
+              dry, single-herb powder does not. That is the whole difference.
+            </p>
+          </div>
+
+          {/* 02 */}
+          <div className="mb-16 md:mb-20">
+            <h2
+              className="font-heading font-light leading-[1.1] mb-5"
+              style={{ fontSize: "clamp(1.75rem, 4vw, 2.75rem)", color: "#A0885C" }}
+            >
+              02 · What that costs you.
+            </h2>
+            <p
+              className="font-body text-base md:text-lg leading-relaxed mb-4"
+              style={{ color: "rgba(26,60,52,0.75)" }}
+            >
+              Preservatives are not benign. They are not &lsquo;natural
+              alternatives to harsher things.&rsquo; Even the well-tolerated
+              ones — phenoxyethanol, for example — are skin sensitisers for a
+              real percentage of people, and the percentage rises with repeated
+              daily exposure. Most ingredient-conscious consumers know this;
+              most of the industry pretends they don&apos;t.
+            </p>
+          </div>
+
+          {/* 03 */}
+          <div className="mb-16 md:mb-20">
+            <h2
+              className="font-heading font-light leading-[1.1] mb-5"
+              style={{ fontSize: "clamp(1.75rem, 4vw, 2.75rem)", color: "#A0885C" }}
+            >
+              03 · What we do instead.
+            </h2>
+            <p
+              className="font-body text-base md:text-lg leading-relaxed mb-4"
+              style={{ color: "rgba(26,60,52,0.75)" }}
+            >
+              We never added a preservative, a stabiliser or a synthetic
+              anything. A single dried herb doesn&apos;t need them. The idea is
+              simple; the execution is hard — it requires a dry workflow,
+              sealed jars, batch-level quality control, and the discipline to
+              never reformulate. We have made one format for fifty-five years.
+            </p>
+          </div>
+
+          {/* 04 */}
+          <div className="mb-16 md:mb-20">
+            <h2
+              className="font-heading font-light leading-[1.1] mb-5"
+              style={{ fontSize: "clamp(1.75rem, 4vw, 2.75rem)", color: "#A0885C" }}
+            >
+              04 · Read the label.
+            </h2>
+            <p
+              className="font-body text-base md:text-lg leading-relaxed mb-4"
+              style={{ color: "rgba(26,60,52,0.75)" }}
+            >
+              When a brand says &lsquo;natural,&rsquo; count the ingredients. A
+              true single-ingredient product has one. If the list runs to a
+              dozen names you can&apos;t pronounce, most of them are doing a
+              job a dried herb simply doesn&apos;t require — preserving,
+              emulsifying, stabilising, colouring. The longer the label, the
+              less of the plant is actually doing the work.
+            </p>
+          </div>
+
+          {/* 05 */}
+          <div className="mb-16 md:mb-20">
+            <h2
+              className="font-heading font-light leading-[1.1] mb-5"
+              style={{ fontSize: "clamp(1.75rem, 4vw, 2.75rem)", color: "#A0885C" }}
+            >
+              05 · What changes.
+            </h2>
+            <p
+              className="font-body text-base md:text-lg leading-relaxed mb-4"
+              style={{ color: "rgba(26,60,52,0.75)" }}
+            >
+              You become the formulator. You take 1 tbsp of one herb and add
+              2 tsp of one mixer — rose water, raw milk, plain curd — and you
+              have a mask or a hair pack calibrated to your skin, your week,
+              your season. The lower price, the smaller environmental
+              footprint, the absence of plastic — that is a side effect.
+            </p>
+          </div>
+
+          {/* 06 */}
+          <div className="mb-0">
+            <h2
+              className="font-heading font-light leading-[1.1] mb-5"
+              style={{ fontSize: "clamp(1.75rem, 4vw, 2.75rem)", color: "#A0885C" }}
+            >
+              06 · The closing line.
+            </h2>
+            <p
+              className="font-body text-base md:text-lg leading-relaxed"
+              style={{ color: "rgba(26,60,52,0.75)" }}
+            >
+              We are not against liquid skincare. We just don&apos;t make it.
+              We never will. If you are looking for a bottle of something, this
+              is not your brand. If you are looking for the herb — the actual,
+              unprocessed, unpreserved, single-ingredient herb — you have
+              arrived at the right place.
+            </p>
+          </div>
+
+          {/* Divider */}
+          <hr style={{ borderColor: "rgba(26,60,52,0.1)" }} className="my-12" />
+
+          {/* Signature */}
+          <div>
+            <p
+              className="font-heading italic text-xl md:text-2xl"
+              style={{ color: "#1A3C34" }}
+            >
+              — The makers at Jaison
+            </p>
+            <p
+              className="font-accent text-[10px] tracking-[0.2em] uppercase mt-2"
+              style={{ color: "rgba(26,60,52,0.4)" }}
+            >
+              MADE IN INDIA · SINCE 1970
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* ── SECTION 3 — Mid-page CTA ── */}
+      <section
+        className="py-20 md:py-24 text-center"
+        style={{ backgroundColor: "#F5ECD7" }}
+      >
+        <div className="container-brand max-w-2xl mx-auto">
+          <h2
+            className="font-heading font-light"
+            style={{ fontSize: "clamp(2rem, 5vw, 3.5rem)", color: "#1A3C34", lineHeight: 1.08 }}
+          >
+            Don&apos;t know where to start?
+          </h2>
+          <p
+            className="font-body text-base md:text-lg mt-4"
+            style={{ color: "rgba(26,60,52,0.55)" }}
+          >
+            Four questions. We will pick two powders for your skin.
+          </p>
+          <div className="mt-8">
+            <GlowPillLink
+              href="/find-your-ritual"
+              className="text-cream"
+              style={{ backgroundColor: "#A0885C" }}
+              hoverShadow="0 0 0 3px rgba(160,136,92,0.25), 0 8px 28px rgba(160,136,92,0.35)"
+            >
+              FIND YOUR RITUAL
+              <span style={{ fontSize: "1rem" }}>→</span>
+            </GlowPillLink>
+          </div>
+        </div>
+      </section>
+
+      {/* ── SECTION 4 — Bottom CTA ("The Promise") ── */}
+      <section
+        className="relative overflow-hidden py-20 md:py-28 text-center"
+        style={{ backgroundColor: "#1A3C34" }}
+      >
+        {/* Background "55" watermark */}
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden"
+        >
+          <span
+            className="font-heading font-light"
+            style={{
+              fontSize: "clamp(250px, 50vw, 600px)",
+              color: "rgba(188,164,128,0.08)",
+              lineHeight: 1,
+              userSelect: "none",
+            }}
+          >
+            55
+          </span>
+        </div>
+
+        {/* Content */}
+        <div className="relative z-10 container-brand max-w-3xl mx-auto">
+          <p
+            className="font-accent text-[10px] tracking-[0.25em] uppercase mb-6"
+            style={{ color: "rgba(188,164,128,0.7)" }}
+          >
+            — THE PROMISE
+          </p>
+          <h2
+            className="font-heading font-light"
+            style={{ fontSize: "clamp(2.25rem, 6vw, 4.5rem)", color: "#FDFAF5", lineHeight: 1.05 }}
+          >
+            Purity isn&apos;t a feature.{" "}
+            <span style={{ color: "#BCA480", fontStyle: "italic" }}>
+              It&apos;s the starting point.
             </span>
           </h2>
-          <div className="flex flex-col md:flex-row justify-center gap-8 md:gap-16 mb-14">
-            {[
-              {
-                num: "01",
-                title: "Pick a powder",
-                body: "Choose the herb your skin or hair needs most.",
-              },
-              {
-                num: "02",
-                title: "Mix your base",
-                body: "Rose water, milk, curd, or plain water. No rules — just what feels right.",
-              },
-              {
-                num: "03",
-                title: "Apply and rinse",
-                body: "Five to ten minutes. Rinse clean. That is the whole process.",
-              },
-            ].map((step) => (
-              <div key={step.num} className="flex-1 max-w-xs mx-auto">
-                <p
-                  className="font-heading text-7xl font-light leading-none mb-3"
-                  style={{ color: "rgba(253,250,245,0.15)" }}
-                >
-                  {step.num}
-                </p>
-                <h3 className="font-heading text-xl text-cream mb-2">
-                  {step.title}
-                </h3>
-                <p
-                  className="font-body text-sm"
-                  style={{ color: "rgba(253,250,245,0.5)" }}
-                >
-                  {step.body}
-                </p>
-              </div>
-            ))}
-          </div>
-          <Link
-            href="/shop"
-            className="inline-block rounded-full border px-8 py-3 font-accent text-[11px] tracking-[0.15em] uppercase transition-colors hover:bg-cream/10"
-            style={{ borderColor: "rgba(253,250,245,0.4)", color: "#FDFAF5" }}
+          <p
+            className="mt-6 max-w-xl mx-auto font-body text-base md:text-lg leading-relaxed"
+            style={{ color: "rgba(253,250,245,0.55)" }}
           >
-            START YOUR RITUAL →
-          </Link>
+            One herbal ingredient per jar. Mixed at home. Used twice a week.
+            No preservatives, no synthetics, no fillers — that is the entire
+            ritual.
+          </p>
+          <div className="mt-10">
+            <GlowPillLink
+              href="/shop"
+              style={{ backgroundColor: "#FDFAF5", color: "#1A3C34" }}
+              hoverShadow="0 0 0 3px rgba(253,250,245,0.2), 0 8px 32px rgba(253,250,245,0.25)"
+            >
+              SHOP THE CATALOGUE
+              <span style={{ fontSize: "1rem" }}>→</span>
+            </GlowPillLink>
+          </div>
         </div>
       </section>
+
     </div>
   );
 }
