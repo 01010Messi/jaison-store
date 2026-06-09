@@ -50,7 +50,7 @@ export default function BrandStory() {
                 </p>
               </div>
               <div className="mt-8">
-                <Link href="/about">
+                <Link href="/our-story">
                   <Button variant="outline" size="md">
                     Read Our Story
                   </Button>

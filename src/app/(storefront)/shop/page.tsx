@@ -4,7 +4,6 @@ import { Suspense, useState, useMemo } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import { SlidersHorizontal, ChevronDown, X } from "lucide-react";
 import ScrollReveal from "@/components/decorative/ScrollReveal";
-import GoldRule from "@/components/decorative/GoldRule";
 import ProductCard from "@/components/product/ProductCard";
 import { ProductGridSkeleton } from "@/components/ui/Skeleton";
 import { products } from "@/data/products";
@@ -21,9 +20,9 @@ const sortLabels: Record<SortOption, string> = {
 };
 
 const filterButtons = [
-  { label: "ALL PRODUCTS", value: "all" },
-  { label: "SKIN CARE", value: "skin-care" },
-  { label: "HAIR CARE", value: "hair-care" },
+  { label: "ALL POWDERS", value: "all" },
+  { label: "FACE & SKIN", value: "skin-care" },
+  { label: "HAIR", value: "hair-care" },
   { label: "COMBOS", value: "combos" },
 ];
 
@@ -241,21 +240,21 @@ export default function ShopPage() {
   return (
     <div className="min-h-screen">
       {/* Page Header */}
-      <div className="bg-surface-warm py-12 md:py-16">
-        <div className="container-brand text-center">
-          <ScrollReveal animation="fade-up">
-            <p className="section-label text-sage mb-3">Our Collection</p>
-            <h1 className="font-heading text-3xl md:text-4xl lg:text-5xl text-bark font-light tracking-wide">
-              Shop All Products
-            </h1>
-            <div className="flex justify-center mt-4">
-              <GoldRule variant="leaf" width="w-32" />
-            </div>
-            <p className="mt-4 text-bark/60 font-body text-sm md:text-base max-w-lg mx-auto">
-              Handcrafted ayurvedic formulations made from the purest natural
-              ingredients, for your skin and hair.
-            </p>
-          </ScrollReveal>
+      <div className="bg-parchment pt-16 pb-12 md:pt-20 md:pb-14">
+        <div className="container-brand">
+          <p className="font-accent text-[10px] tracking-[0.2em] uppercase text-bark/40 mb-4">
+            — SHOP ALL
+          </p>
+          <h1 className="font-heading text-[2.75rem] md:text-[3.5rem] lg:text-[4.5rem] text-bark font-light leading-[1.08] tracking-[-0.01em]">
+            Pick a powder.
+            <span className="block" style={{ color: "#A0885C", fontStyle: "italic", fontWeight: 300 }}>
+              Build your ritual.
+            </span>
+          </h1>
+          <p className="font-body text-sm md:text-base text-bark/50 max-w-md mt-5 leading-relaxed">
+            Each jar holds exactly one herb. Mix with rose water, milk or curd.
+            Use. Rinse. That is the whole process.
+          </p>
         </div>
       </div>
 

@@ -117,7 +117,7 @@ export default function ProductCard({ product }: ProductCardProps) {
       style={{ backgroundColor: bg }}
     >
       <Link href={`/shop/${product.slug}`} className="block">
-        <div className="relative w-full aspect-[4/3] overflow-hidden">
+        <div className="relative w-full aspect-square overflow-hidden">
           {badge && (
             <span className="absolute top-3 left-3 z-10 px-2.5 py-0.5 text-[9px] font-accent tracking-widest uppercase bg-bark text-cream rounded-full">
               {badge}

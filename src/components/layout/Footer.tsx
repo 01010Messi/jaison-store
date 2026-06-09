@@ -63,6 +63,47 @@ export default function Footer() {
 
   return (
     <footer className="bg-bark text-cream/80">
+      {/* Newsletter strip */}
+      <div className="border-b border-cream/10">
+        <div className="container-brand py-14 md:py-20 flex flex-col md:flex-row md:items-center justify-between gap-8">
+          {/* Left: copy */}
+          <div className="max-w-sm">
+            <p className="font-accent text-[11px] tracking-[0.2em] uppercase mb-4" style={{ color: "#BCA480" }}>
+              — The Journal
+            </p>
+            <h3 className="font-heading text-3xl md:text-4xl lg:text-5xl text-cream font-light leading-[1.1] mb-3">
+              Once a month.{" "}
+              <span style={{ color: "#A0885C", fontStyle: "italic", fontWeight: 300 }}>
+                That is it.
+              </span>
+            </h3>
+            <p className="text-sm md:text-base text-cream/45 font-body leading-relaxed">
+              Real rituals, real ingredients, real seasons.
+              No marketing. Unsubscribe in one click.
+            </p>
+          </div>
+          {/* Right: form */}
+          <form onSubmit={handleNewsletterSubmit} className="flex items-center gap-3 w-full md:max-w-lg">
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="your@email.com"
+              required
+              className="flex-1 px-6 py-4 rounded-full border border-cream/25 text-cream text-sm font-body placeholder:text-cream/35 focus:outline-none focus:border-cream/50"
+              style={{ backgroundColor: "rgba(255,255,255,0.08)" }}
+            />
+            <button
+              type="submit"
+              disabled={isLoading}
+              className="flex-shrink-0 flex items-center gap-2 px-8 py-4 rounded-full text-cream text-sm font-accent tracking-wider uppercase transition-opacity hover:opacity-90 disabled:opacity-50"
+              style={{ backgroundColor: "#A0885C" }}
+            >
+              {isLoading ? "..." : "Subscribe"} {!isLoading && "→"}
+            </button>
+          </form>
+        </div>
+      </div>
       {/* Main footer */}
       <div className="container-brand pt-16 pb-12">
         {/* Logo section */}
@@ -70,11 +111,14 @@ export default function Footer() {
           <Image
             src="/images/logo.png"
             alt="jaison"
-            width={180}
-            height={64}
-            className="h-14 w-auto mx-auto mb-2 brightness-[1.8] contrast-[0.9]"
+            width={240}
+            height={80}
+            className="h-20 md:h-24 w-auto mx-auto mb-3 brightness-[1.8] contrast-[0.9]"
           />
-          <p className="text-sm text-cream/50 mt-2 font-body">
+          <p className="font-heading text-base text-cream/80 tracking-wide mb-1">
+            Jaison Herbals
+          </p>
+          <p className="text-xs text-cream/40 font-body">
             The Essence of Herbs in Every Gram
           </p>
         </div>
@@ -155,34 +199,6 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Newsletter */}
-        <div className="mt-14 pt-10 border-t border-cream/10">
-          <div className="max-w-md mx-auto text-center">
-            <h3 className="font-heading text-xl text-cream mb-2">
-              Ancient Beauty Wisdom
-            </h3>
-            <p className="text-sm text-cream/50 mb-5 font-body">
-              Subscribe for Ayurvedic tips and exclusive offers
-            </p>
-            <form onSubmit={handleNewsletterSubmit} className="flex gap-2">
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="your@email.com"
-                required
-                className="flex-1 px-4 py-2.5 bg-cream/10 border border-cream/20 rounded-sm text-cream text-sm font-body placeholder:text-cream/30 focus:outline-none focus:border-gold/50"
-              />
-              <button
-                type="submit"
-                disabled={isLoading}
-                className="px-6 py-2.5 bg-gold text-cream text-sm font-body font-medium uppercase tracking-wider rounded-sm hover:bg-gold-dark transition-colors disabled:opacity-50"
-              >
-                {isLoading ? "..." : "Subscribe"}
-              </button>
-            </form>
-          </div>
-        </div>
       </div>
 
       {/* Bottom bar */}

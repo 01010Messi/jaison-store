@@ -1,13 +1,11 @@
 import type { Metadata } from "next";
 import HeroSection from "@/components/home/HeroSection";
-import ShippingGuarantees from "@/components/home/ShippingGuarantees";
 import FeaturedProducts from "@/components/home/FeaturedProducts";
 import BrandStory from "@/components/home/BrandStory";
 import HowToUseGuide from "@/components/home/HowToUseGuide";
 import TestimonialsSection from "@/components/home/TestimonialsSection";
 import BlogPreview from "@/components/home/BlogPreview";
 import InstagramSection from "@/components/home/InstagramSection";
-import NewsletterSection from "@/components/home/NewsletterSection";
 import SectionDivider from "@/components/decorative/SectionDivider";
 
 export const metadata: Metadata = {
@@ -24,8 +22,6 @@ export default function HomePage() {
     <>
       <HeroSection />
       <FeaturedProducts />
-      <SectionDivider variant="gold" />
-      <ShippingGuarantees />
       <BrandStory />
       <SectionDivider variant="mandala" />
       <HowToUseGuide />
@@ -33,7 +29,6 @@ export default function HomePage() {
       <SectionDivider variant="gold" />
       <BlogPreview />
       <InstagramSection />
-      <NewsletterSection />
     </>
   );
 }

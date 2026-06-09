@@ -1,118 +1,141 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { Star, Quote } from "lucide-react";
-import ScrollReveal from "@/components/decorative/ScrollReveal";
-
-interface ReviewData {
-  id: string;
-  rating: number;
-  body: string;
-  userName: string;
-  productName: string;
-}
-
-const fallbackTestimonials = [
+const testimonials = [
   {
-    id: "fallback-1",
-    rating: 5,
-    body: "The ubtan has transformed my skin! My complexion looks brighter and feels so smooth after just two weeks of use.",
-    userName: "Priya",
-    productName: "Ubtan Face Pack",
+    initial: "L",
+    name: "Lakshmi",
+    age: 67,
+    city: "Jaipur",
+    product: "Ubtan",
+    avatarBg: "#C9A84C",
+    quote:
+      "I have used this since 1979. Nothing on the shelf has ever tempted me to switch.",
   },
   {
-    id: "fallback-2",
-    rating: 5,
-    body: "Finally found a natural alternative for my hair. The shikakai powder leaves my hair so soft and bouncy without any chemicals.",
-    userName: "Ananya",
-    productName: "Shikakai Powder",
+    initial: "P",
+    name: "Priya",
+    age: 38,
+    city: "Bengaluru",
+    product: "Neem",
+    avatarBg: "#4A7C59",
+    quote:
+      "I spent twelve years on serums. Neem powder did more in six weeks than all of them combined.",
   },
   {
-    id: "fallback-3",
-    rating: 5,
-    body: "Love the quality and packaging! The amla powder has noticeably reduced my hair fall. Highly recommend jaison products.",
-    userName: "Meera",
-    productName: "Amla Powder",
+    initial: "A",
+    name: "Anika",
+    age: 22,
+    city: "Pune",
+    product: "Ubtan Powder",
+    avatarBg: "#C17A3A",
+    quote:
+      "My grandmother made ubtan for my mother's wedding. The smell took me straight back to her kitchen.",
   },
   {
-    id: "fallback-4",
-    rating: 4,
-    body: "The multani mitti is so pure and finely ground. Makes the best face masks. My skin feels clean and refreshed every time.",
-    userName: "Ritu",
-    productName: "Multani Mitti",
+    initial: "M",
+    name: "Meera",
+    age: 51,
+    city: "Hyderabad",
+    product: "Amla",
+    avatarBg: "#5C8A6A",
+    quote:
+      "Shampooed for fifteen years. Switched to reetha and shikakai. I have not bought a bottle since.",
+  },
+  {
+    initial: "S",
+    name: "Sunita",
+    age: 74,
+    city: "Indore",
+    product: "Mehendi",
+    avatarBg: "#6B8A5A",
+    quote:
+      "No PPD. No chemicals. Just leaves. My grey stays covered for six weeks at a time.",
   },
 ];
 
 export default function TestimonialsSection() {
-  const [testimonials, setTestimonials] =
-    useState<ReviewData[]>(fallbackTestimonials);
-
-  useEffect(() => {
-    fetch("/api/reviews?featured=true&limit=4")
-      .then((r) => r.json())
-      .then((data) => {
-        if (data.reviews?.length >= 4) {
-          setTestimonials(data.reviews);
-        }
-      })
-      .catch(() => {});
-  }, []);
-
   return (
-    <section className="py-16 md:py-24 bg-surface-warm">
+    <section className="py-16 md:py-24 bg-parchment overflow-hidden">
       <div className="container-brand">
-        <ScrollReveal animation="fade-up">
-          <div className="text-center mb-12">
-            <p className="section-label text-sage mb-3">Real Results</p>
-            <h2 className="font-heading text-3xl md:text-4xl text-bark">
-              What Our Customers Say
+
+        {/* Section header — two columns */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 md:mb-16">
+          <div className="flex-1 max-w-2xl">
+            <p className="font-accent text-[10px] tracking-[0.2em] uppercase text-bark/40 mb-4">
+              — Real Rituals · Across India
+            </p>
+            <h2
+              className="font-heading text-[2.75rem] md:text-[3.5rem] lg:text-[4rem] text-bark font-light leading-[1.08] tracking-[-0.01em]"
+            >
+              People who mix
+              <span
+                className="block"
+                style={{ color: "#A0885C", fontStyle: "italic", fontWeight: 300 }}
+              >
+                their own skincare.
+              </span>
             </h2>
           </div>
-        </ScrollReveal>
+          <p className="font-body text-sm text-bark/50 max-w-xs leading-relaxed md:self-end">
+            Real customers, real routines. From oily-skin acne fixes to herbal
+            hair washes — one person&apos;s bathroom ritual, unfiltered.
+          </p>
+        </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {testimonials.map((testimonial, index) => (
-            <ScrollReveal
-              key={testimonial.id}
-              animation="fade-up"
-              delay={index * 100}
+        {/* Cards — horizontal scroll on mobile, 5-col grid on desktop */}
+        <div className="flex gap-4 overflow-x-auto pb-4 -mx-4 px-4 md:grid md:grid-cols-5 md:overflow-visible md:mx-0 md:px-0 scrollbar-hide">
+          {testimonials.map((t) => (
+            <div
+              key={t.name}
+              className="flex-shrink-0 w-[220px] md:w-auto h-[420px] rounded-2xl flex flex-col justify-between p-5 relative overflow-hidden"
+              style={{
+                background: "linear-gradient(165deg, #6B3A20 0%, #261008 100%)",
+              }}
             >
-              <div className="bg-cream p-6 rounded-sm border border-border/50 h-full flex flex-col">
-                {/* Quote icon */}
-                <Quote className="h-5 w-5 text-gold/40 mb-3 -scale-x-100" />
-
-                {/* Stars */}
-                <div className="flex gap-0.5 mb-3">
-                  {Array.from({ length: 5 }).map((_, i) => (
-                    <Star
-                      key={i}
-                      className={`h-3.5 w-3.5 ${
-                        i < testimonial.rating
-                          ? "fill-gold text-gold"
-                          : "fill-transparent text-parchment-dark"
-                      }`}
-                    />
-                  ))}
+              {/* Avatar + name pill */}
+              <div className="flex items-center gap-2">
+                <div
+                  className="w-7 h-7 rounded-full flex items-center justify-center flex-shrink-0"
+                  style={{ backgroundColor: t.avatarBg }}
+                >
+                  <span className="text-[11px] font-accent font-semibold text-white">
+                    {t.initial}
+                  </span>
                 </div>
-
-                {/* Text */}
-                <p className="text-sm text-bark/70 font-body leading-relaxed flex-1 mb-4">
-                  &ldquo;{testimonial.body}&rdquo;
-                </p>
-
-                {/* Author */}
-                <div className="pt-3 border-t border-border-light">
-                  <p className="font-heading text-sm text-bark">
-                    {testimonial.userName}
-                  </p>
-                  <p className="text-[11px] text-bark/40 font-body">
-                    Verified Purchase &bull; {testimonial.productName}
-                  </p>
-                </div>
+                <span className="text-xs font-accent text-white/70 tracking-wide">
+                  {t.name}, {t.age}
+                </span>
               </div>
-            </ScrollReveal>
+
+              {/* Quote — centred in remaining space */}
+              <p
+                className="font-heading text-[1.05rem] leading-snug text-white/90 flex-1 flex items-center py-4"
+                style={{ fontStyle: "italic", fontWeight: 300 }}
+              >
+                &ldquo;{t.quote}&rdquo;
+              </p>
+
+              {/* City + product */}
+              <div className="flex items-center justify-between">
+                <span className="text-[10px] font-accent uppercase tracking-widest text-white/35">
+                  {t.city}
+                </span>
+                <span
+                  className="px-2.5 py-1 rounded-full text-[9px] font-accent uppercase tracking-wider text-white/75"
+                  style={{ backgroundColor: "rgba(255,255,255,0.12)" }}
+                >
+                  {t.product}
+                </span>
+              </div>
+            </div>
           ))}
         </div>
+
+        {/* Footer caption */}
+        <p className="text-center font-accent text-[10px] uppercase tracking-[0.25em] text-bark/30 mt-8">
+          Real customers. Real results. Unfiltered.
+        </p>
+
       </div>
     </section>
   );

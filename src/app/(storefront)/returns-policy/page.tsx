@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import GoldRule from "@/components/decorative/GoldRule";
 
 export const metadata: Metadata = {
-  title: "Returns & Refunds | jaison Natural Herbals",
+  title: "Returns & Refunds | Jaison Herbals",
   description:
-    "7-day hassle-free returns on Jaison Herbals products. Learn about eligibility, return process, and refund timelines for your order.",
+    "Jaison Herbals replacement policy for damaged or wrong items. Contact us within 48 hours of delivery with your order number and a photo.",
   alternates: {
     canonical: "https://jaisonskincare.com/returns-policy",
   },
@@ -27,46 +27,39 @@ export default function ReturnsPage() {
 
       <div className="container-brand py-12 md:py-16 max-w-3xl mx-auto">
         <div className="prose-brand space-y-6 text-bark/70 font-body text-sm leading-relaxed">
-          <h2 className="font-heading text-xl text-bark">Return Policy</h2>
+          <h2 className="font-heading text-xl text-bark">Our Policy</h2>
           <p>
-            At jaison, we want you to be completely satisfied with your purchase.
-            If you&apos;re not happy with your order, we offer a hassle-free return
-            policy within 7 days of delivery.
+            We do not accept returns or exchanges for change of mind. All sales are
+            final once dispatched.
           </p>
 
-          <h3 className="font-heading text-lg text-bark">Eligibility</h3>
-          <ul className="list-disc list-inside space-y-1">
-            <li>Products must be unused, unopened, and in original packaging</li>
-            <li>Return request must be made within 7 days of delivery</li>
-            <li>Products damaged during transit are eligible for immediate replacement</li>
-            <li>Quality-related issues are eligible for full replacement</li>
-          </ul>
+          <h3 className="font-heading text-lg text-bark">
+            Damaged, Defective, or Wrong Items
+          </h3>
+          <p>
+            If you receive a damaged, defective, or incorrect item, please contact
+            us within <strong>48 hours of delivery</strong> via WhatsApp or email.
+            Include your order number and a clear photo of the issue.
+          </p>
+          <p>
+            We will send a replacement at no extra cost. No questions asked.
+          </p>
 
-          <h3 className="font-heading text-lg text-bark">How to Return</h3>
-          <ol className="list-decimal list-inside space-y-1">
-            <li>Contact us via WhatsApp or email with your order number</li>
-            <li>Share photos of the product (if damaged/quality issue)</li>
-            <li>We&apos;ll arrange a pickup or provide return shipping details</li>
-            <li>Refund or replacement will be processed within 5-7 business days</li>
-          </ol>
+          <h3 className="font-heading text-lg text-bark">How to Reach Us</h3>
+          <ul className="list-disc list-inside space-y-1">
+            <li>WhatsApp: +91 86001 51677</li>
+            <li>Email: hello@jaisonskincare.com</li>
+            <li>Include: order number + photo of the damaged or wrong item</li>
+          </ul>
 
           <h3 className="font-heading text-lg text-bark">Refunds</h3>
           <p>
-            Refunds are processed to the original payment method within 5-7
-            business days after we receive and inspect the returned product.
-            COD orders are refunded via bank transfer.
+            We do not issue refunds to the original payment method. We send a
+            replacement product instead. This applies to both Razorpay and COD
+            orders.
           </p>
 
-          <h3 className="font-heading text-lg text-bark">Non-Returnable Items</h3>
-          <ul className="list-disc list-inside space-y-1">
-            <li>Opened or used products (unless quality issue)</li>
-            <li>Products returned after 7 days of delivery</li>
-            <li>Free gifts or promotional items</li>
-          </ul>
-
-          <p className="text-bark/40 text-xs mt-8">
-            Last updated: March 2026
-          </p>
+          <p className="text-bark/40 text-xs mt-8">Last updated: June 2026</p>
         </div>
       </div>
     </div>
