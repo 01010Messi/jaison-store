@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import HeroSection from "@/components/home/HeroSection";
 import FeaturedProducts from "@/components/home/FeaturedProducts";
-import BrandStory from "@/components/home/BrandStory";
 import HowToUseGuide from "@/components/home/HowToUseGuide";
 import TestimonialsSection from "@/components/home/TestimonialsSection";
 import BlogPreview from "@/components/home/BlogPreview";
@@ -22,7 +21,6 @@ export default function HomePage() {
     <>
       <HeroSection />
       <FeaturedProducts />
-      <BrandStory />
       <SectionDivider variant="mandala" />
       <HowToUseGuide />
       <TestimonialsSection />
