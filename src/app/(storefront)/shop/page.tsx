@@ -20,9 +20,9 @@ const sortLabels: Record<SortOption, string> = {
 };
 
 const filterButtons = [
-  { label: "ALL POWDERS", value: "all" },
-  { label: "FACE & SKIN", value: "skin-care" },
-  { label: "HAIR", value: "hair-care" },
+  { label: "ALL", value: "all" },
+  { label: "SKIN CARE", value: "skin-care" },
+  { label: "HAIR CARE", value: "hair-care" },
   { label: "COMBOS", value: "combos" },
 ];
 
