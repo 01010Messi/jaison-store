@@ -1,22 +1,17 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import Image from "next/image";
-import { Clock, ArrowRight } from "lucide-react";
-import GoldRule from "@/components/decorative/GoldRule";
 import { BreadcrumbJsonLd } from "@/components/seo/JsonLd";
-import { blogPosts } from "@/data/blog";
+import BlogContent from "./BlogContent";
 
 export const metadata: Metadata = {
-  title: "Blog — Ayurvedic Beauty Tips & Natural Skincare Guides",
+  title: "The Journal — Ayurvedic Beauty & Natural Skincare Reads | Jaison Herbals",
   description:
-    "Discover Ayurvedic beauty tips, natural skincare routines, DIY face pack recipes, and herbal hair care guides. Expert advice from Jaison Herbals.",
+    "Reads worth your time. How to mix our powders, how to use them, and why one ingredient is enough. Real rituals, real ingredients — no marketing claims.",
   alternates: {
     canonical: "https://jaisonskincare.com/blog",
   },
   openGraph: {
-    title: "Blog — Ayurvedic Beauty Tips & Natural Skincare Guides | jaison",
-    description:
-      "Discover Ayurvedic beauty tips, natural skincare routines, DIY face pack recipes, and herbal hair care guides.",
+    title: "The Journal | Jaison Herbals",
+    description: "Real rituals. Real ingredients. Monthly reads on Ayurvedic herbs for skin and hair.",
     type: "website",
     url: "https://jaisonskincare.com/blog",
   },
@@ -28,83 +23,69 @@ export default function BlogPage() {
       <BreadcrumbJsonLd
         items={[
           { name: "Home", url: "https://jaisonskincare.com" },
-          { name: "Blog", url: "https://jaisonskincare.com/blog" },
+          { name: "The Journal", url: "https://jaisonskincare.com/blog" },
         ]}
       />
 
-      <div className="min-h-screen">
-        {/* Header */}
-        <div className="bg-surface-warm py-12 md:py-16">
-          <div className="container-brand text-center">
-            <p className="section-label text-sage mb-3">Ancient Wisdom, Modern Beauty</p>
-            <h1 className="font-heading text-3xl md:text-4xl lg:text-5xl text-bark font-light tracking-wide">
-              The Jaison Journal
-            </h1>
-            <div className="flex justify-center mt-4">
-              <GoldRule variant="leaf" width="w-32" />
-            </div>
-            <p className="mt-4 text-bark/60 font-body text-sm md:text-base max-w-lg mx-auto">
-              Ayurvedic beauty tips, DIY recipes, and natural skincare guides
-              to help you glow from within.
-            </p>
-          </div>
-        </div>
+      <div className="min-h-screen" style={{ backgroundColor: "#FDFAF5" }}>
 
-        {/* Blog Grid */}
-        <div className="container-brand py-10 md:py-16">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {blogPosts.map((post) => (
-              <article key={post.slug} className="group">
-                <Link href={`/blog/${post.slug}`} className="block">
-                  <div className="relative aspect-[4/3] overflow-hidden rounded-sm mb-4">
-                    <Image
-                      src={post.image}
-                      alt={post.title}
-                      fill
-                      className="object-cover transition-transform duration-500 group-hover:scale-105"
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    />
-                    <div className="absolute top-3 left-3">
-                      <span className="px-3 py-1 bg-cream/90 backdrop-blur-sm text-[10px] font-accent uppercase tracking-[0.15em] text-bark/70 rounded-sm">
-                        {post.category}
-                      </span>
-                    </div>
-                  </div>
-
-                  <div className="space-y-2">
-                    <div className="flex items-center gap-3 text-[11px] font-accent uppercase tracking-wider text-bark/40">
-                      <time dateTime={post.publishedAt}>
-                        {new Date(post.publishedAt).toLocaleDateString("en-IN", {
-                          day: "numeric",
-                          month: "long",
-                          year: "numeric",
-                        })}
-                      </time>
-                      <span>&bull;</span>
-                      <span className="flex items-center gap-1">
-                        <Clock className="h-3 w-3" />
-                        {post.readTime} min read
-                      </span>
-                    </div>
-
-                    <h2 className="font-heading text-xl md:text-2xl text-bark font-medium leading-snug group-hover:text-terracotta transition-colors">
-                      {post.title}
-                    </h2>
-
-                    <p className="text-sm text-bark/60 font-body line-clamp-2 leading-relaxed">
-                      {post.excerpt}
-                    </p>
-
-                    <span className="inline-flex items-center gap-1.5 text-xs font-accent uppercase tracking-wider text-terracotta pt-1 group-hover:gap-2.5 transition-all">
-                      Read Article
-                      <ArrowRight className="h-3.5 w-3.5" />
-                    </span>
-                  </div>
-                </Link>
-              </article>
+        {/* ── Hero ── */}
+        <section
+          className="relative overflow-hidden px-6 md:px-14 lg:px-24 pt-28 pb-14"
+          style={{ backgroundColor: "#FDFAF5" }}
+        >
+          {/* Watermark: 3 faint card rectangles */}
+          <div
+            className="absolute inset-0 pointer-events-none select-none"
+            aria-hidden="true"
+            style={{ display: "flex", alignItems: "center", gap: "24px", paddingLeft: "8%", paddingTop: "8%" }}
+          >
+            {[0, 1, 2].map((i) => (
+              <div
+                key={i}
+                style={{
+                  width: "180px",
+                  height: "240px",
+                  border: "1px solid rgba(26,60,52,0.06)",
+                  borderRadius: "16px",
+                  backgroundColor: "rgba(245,236,215,0.35)",
+                  flexShrink: 0,
+                }}
+              />
             ))}
           </div>
-        </div>
+
+          <p
+            className="relative font-accent text-[10px] tracking-[0.22em] uppercase mb-8 flex items-center gap-3"
+            style={{ color: "rgba(26,60,52,0.4)" }}
+          >
+            <span style={{ display: "inline-block", width: "28px", height: "1px", backgroundColor: "rgba(26,60,52,0.3)" }} />
+            THE JOURNAL · REAL RITUALS · REAL INGREDIENTS
+          </p>
+
+          <h1
+            className="relative font-heading font-light leading-[1.05]"
+            style={{ fontSize: "clamp(2.75rem, 7vw, 5.5rem)", letterSpacing: "-0.02em" }}
+          >
+            <span style={{ color: "#1A3C34" }}>Reads worth </span>
+            <span style={{ color: "#A0885C", fontStyle: "italic" }}>your time.</span>
+          </h1>
+
+          <p
+            className="relative mt-6 font-body text-base leading-relaxed"
+            style={{ color: "rgba(26,60,52,0.52)", maxWidth: "520px" }}
+          >
+            Once a month we write about the herbs we grind — how to mix them, how to
+            use them, and why one ingredient is enough. No marketing. No miracle claims.
+            Just the powder and the method.
+          </p>
+        </section>
+
+        {/* ── Content (filter + grid) ── */}
+        <section className="px-6 md:px-14 lg:px-24 pb-24 pt-4">
+          <BlogContent />
+        </section>
+
       </div>
     </>
   );

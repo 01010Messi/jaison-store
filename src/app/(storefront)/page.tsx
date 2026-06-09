@@ -3,8 +3,8 @@ import HeroSection from "@/components/home/HeroSection";
 import FeaturedProducts from "@/components/home/FeaturedProducts";
 import HowToUseGuide from "@/components/home/HowToUseGuide";
 import TestimonialsSection from "@/components/home/TestimonialsSection";
-import BlogPreview from "@/components/home/BlogPreview";
 import InstagramSection from "@/components/home/InstagramSection";
+import BlogSection from "@/components/home/BlogSection";
 import SectionDivider from "@/components/decorative/SectionDivider";
 
 export const metadata: Metadata = {
@@ -25,8 +25,8 @@ export default function HomePage() {
       <HowToUseGuide />
       <TestimonialsSection />
       <SectionDivider variant="gold" />
-      <BlogPreview />
       <InstagramSection />
+      <BlogSection />
     </>
   );
 }
