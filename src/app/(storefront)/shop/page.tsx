@@ -3,6 +3,7 @@
 import { Suspense, useState, useMemo } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import { ChevronDown, X } from "lucide-react";
+import Image from "next/image";
 import ScrollReveal from "@/components/decorative/ScrollReveal";
 import ProductCard from "@/components/product/ProductCard";
 import { ProductGridSkeleton } from "@/components/ui/Skeleton";
@@ -240,18 +241,32 @@ export default function ShopPage() {
   return (
     <div className="min-h-screen">
       {/* Page Header */}
-      <div className="bg-parchment pt-16 pb-12 md:pt-20 md:pb-14">
-        <div className="container-brand">
-          <p className="font-accent text-[10px] tracking-[0.2em] uppercase text-bark/40 mb-4">
+      <div className="relative overflow-hidden pt-16 pb-12 md:pt-20 md:pb-14" style={{ minHeight: "340px" }}>
+        <Image
+          src="/images/hero-group.jpg"
+          alt=""
+          fill
+          className="object-cover object-center"
+          priority
+        />
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(170deg, rgba(254,250,224,0.72) 0%, rgba(254,250,224,0.42) 35%, rgba(254,250,224,0.62) 65%, rgba(254,250,224,0.92) 100%)",
+          }}
+        />
+        <div className="container-brand relative z-10">
+          <p className="font-accent text-[10px] tracking-[0.2em] uppercase mb-4" style={{ color: "rgba(26,60,52,0.5)" }}>
             — SHOP ALL
           </p>
-          <h1 className="font-heading text-[2.75rem] md:text-[3.5rem] lg:text-[4.5rem] text-bark font-light leading-[1.08] tracking-[-0.01em]">
+          <h1 className="font-heading font-light leading-[1.08] tracking-[-0.01em]" style={{ fontSize: "clamp(2.75rem, 6vw, 4.5rem)", color: "#1A3C34" }}>
             Pick a powder.
             <span className="block" style={{ color: "#834316", fontStyle: "italic", fontWeight: 300 }}>
               Build your ritual.
             </span>
           </h1>
-          <p className="font-body text-sm md:text-base text-bark/50 max-w-md mt-5 leading-relaxed">
+          <p className="font-body text-sm md:text-base max-w-md mt-5 leading-relaxed" style={{ color: "rgba(26,60,52,0.5)" }}>
             Each jar holds exactly one herb. Mix with rose water, milk or curd.
             Use. Rinse. That is the whole process.
           </p>
