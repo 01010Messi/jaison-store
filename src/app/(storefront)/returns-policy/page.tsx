@@ -22,15 +22,15 @@ export default function ReturnsPage() {
       />
 
       <div className="container-brand py-10 md:py-12 max-w-3xl mx-auto">
-        <div className="space-y-10 font-body text-bark/70 text-sm leading-relaxed">
+        <div className="space-y-10 font-body text-bark/70 text-base leading-relaxed">
 
           <div>
-            <h2 className="font-heading text-lg text-bark font-light mb-3">Our Policy</h2>
+            <h2 className="font-heading text-xl md:text-2xl text-bark font-light mb-3">Our Policy</h2>
             <p>We do not accept returns or exchanges for change of mind. All sales are final once dispatched.</p>
           </div>
 
           <div className="pt-6 border-t border-border-light">
-            <h2 className="font-heading text-lg text-bark font-light mb-3">Damaged, Defective, or Wrong Items</h2>
+            <h2 className="font-heading text-xl md:text-2xl text-bark font-light mb-3">Damaged, Defective, or Wrong Items</h2>
             <p className="mb-3">
               If you receive a damaged, defective, or incorrect item, please contact us within{" "}
               <strong className="text-bark font-medium">48 hours of delivery</strong> via email. Include your order number and a clear photo of the issue.
@@ -39,7 +39,7 @@ export default function ReturnsPage() {
           </div>
 
           <div className="pt-6 border-t border-border-light">
-            <h2 className="font-heading text-lg text-bark font-light mb-3">How to Reach Us</h2>
+            <h2 className="font-heading text-xl md:text-2xl text-bark font-light mb-3">How to Reach Us</h2>
             <ul className="space-y-2">
               <li className="flex items-baseline gap-3">
                 <span className="font-heading text-terracotta font-light">01</span>
@@ -53,7 +53,7 @@ export default function ReturnsPage() {
           </div>
 
           <div className="pt-6 border-t border-border-light">
-            <h2 className="font-heading text-lg text-bark font-light mb-3">Refunds</h2>
+            <h2 className="font-heading text-xl md:text-2xl text-bark font-light mb-3">Refunds</h2>
             <p>We do not issue refunds to the original payment method. We send a replacement product instead. This applies to both Razorpay and COD orders.</p>
           </div>
 

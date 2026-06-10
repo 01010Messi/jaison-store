@@ -31,7 +31,7 @@ export default function HeroSection() {
       {/* Background image — fills entire section height */}
       <div className="absolute inset-0">
         <Image
-          src="/images/hero-group.jpg"
+          src="/images/hero-group.webp"
           alt="Jaison herbals — natural ayurvedic herbal powders"
           fill
           className="object-cover object-center"

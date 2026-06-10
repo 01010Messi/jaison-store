@@ -20,7 +20,7 @@ export default function PolicyHero({
     >
       {/* Watermark */}
       <div
-        className="absolute inset-0 flex items-end pointer-events-none select-none overflow-hidden"
+        className="absolute inset-0 flex items-end justify-end pointer-events-none select-none overflow-hidden"
         aria-hidden="true"
       >
         <span
@@ -30,7 +30,7 @@ export default function PolicyHero({
             color: "rgba(26,60,52,0.045)",
             letterSpacing: "-0.04em",
             marginBottom: "-0.15em",
-            marginLeft: "-0.04em",
+            marginRight: "-0.06em",
           }}
         >
           {watermark}
@@ -47,7 +47,7 @@ export default function PolicyHero({
       <h1
         className="relative font-heading font-light leading-[1.06]"
         style={{
-          fontSize: "clamp(2.75rem, 7vw, 5.5rem)",
+          fontSize: "clamp(3.25rem, 8vw, 6.5rem)",
           letterSpacing: "-0.02em",
           color: "#1A3C34",
         }}
