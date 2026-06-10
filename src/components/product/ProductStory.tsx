@@ -127,29 +127,10 @@ export default function ProductStory({ product }: ProductStoryProps) {
       {/* ── The Ritual — card grid ── */}
       {activeTab === "ritual" && (
         <section
-          className="relative overflow-hidden py-12 md:py-16 mt-6"
-          style={{ backgroundColor: "#FEFAE0" }}
+          className="py-12 md:py-16 mt-6"
+          style={{ backgroundColor: "#EFE4C5" }}
         >
-          {/* Watermark */}
-          <div
-            className="absolute inset-0 flex items-end justify-end pointer-events-none select-none overflow-hidden"
-            aria-hidden="true"
-          >
-            <span
-              className="font-heading font-light italic leading-none whitespace-nowrap"
-              style={{
-                fontSize: "clamp(6rem, 18vw, 14rem)",
-                color: "rgba(26,60,52,0.04)",
-                letterSpacing: "-0.04em",
-                marginBottom: "-0.18em",
-                marginRight: "-0.04em",
-              }}
-            >
-              ritual
-            </span>
-          </div>
-
-          <div className="container-brand relative">
+          <div className="container-brand">
             <p className="font-accent text-[11px] tracking-[0.22em] uppercase mb-5 flex items-center gap-3" style={{ color: "#A56843" }}>
               <span style={{ color: "#B89968" }}>—</span>
               The Ritual · {product.name}
@@ -180,8 +161,8 @@ export default function ProductStory({ product }: ProductStoryProps) {
                       key={si}
                       className="rounded-xl p-5 flex flex-col"
                       style={{
-                        backgroundColor: "#FDFAF5",
-                        border: "1px solid rgba(26,60,52,0.08)",
+                        backgroundColor: "#FAF3E4",
+                        border: "1px solid rgba(26,60,52,0.10)",
                       }}
                     >
                       <span
@@ -213,7 +194,7 @@ export default function ProductStory({ product }: ProductStoryProps) {
       {activeTab === "inside" && (
         <section
           className="py-12 md:py-16 mt-6"
-          style={{ backgroundColor: "#FEFAE0" }}
+          style={{ backgroundColor: "#EFE4C5" }}
         >
           <div className="container-brand">
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8 md:mb-10">
@@ -275,8 +256,8 @@ export default function ProductStory({ product }: ProductStoryProps) {
       {/* ── Why It Works ── */}
       {activeTab === "why" && (
         <section
-          className="relative overflow-hidden py-12 md:py-16 mt-6"
-          style={{ backgroundColor: "#FEFAE0" }}
+          className="py-12 md:py-16 mt-6"
+          style={{ backgroundColor: "#EFE4C5" }}
         >
           <div className="container-brand relative">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-20">
