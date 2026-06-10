@@ -24,7 +24,7 @@ export const blogPosts: BlogPost[] = [
     author: "Jaison Herbals",
     publishedAt: "2026-03-15",
     readTime: 6,
-    image: "/images/products/ubtan-styled.jpg",
+    image: "/images/blog/ubtan-styled.webp",
     metaTitle: "How to Use Ubtan for Glowing Skin — DIY Recipes & Tips",
     metaDescription:
       "Learn how to use ubtan powder for glowing skin with easy DIY face pack recipes. Brighten skin, reduce tan & get a natural glow with this ancient Ayurvedic remedy.",
@@ -125,7 +125,7 @@ Ubtan isn't just a face pack — it's a self-care ritual that connects you to ce
     author: "Jaison Herbals",
     publishedAt: "2026-03-10",
     readTime: 5,
-    image: "/images/products/amla-styled.jpg",
+    image: "/images/blog/amla-styled.webp",
     metaTitle:
       "5 Benefits of Amla Powder for Hair Growth — How to Use Amla for Hair",
     metaDescription:
@@ -211,7 +211,7 @@ In a world of chemical treatments and salon procedures, amla powder remains one 
     author: "Jaison Herbals",
     publishedAt: "2026-03-05",
     readTime: 7,
-    image: "/images/products/multani-styled.jpg",
+    image: "/images/blog/multani-styled.webp",
     metaTitle:
       "Multani Mitti Face Pack: 7 DIY Recipes for Oily, Dry & Combination Skin",
     metaDescription:
@@ -317,7 +317,7 @@ The beauty of Multani Mitti is its versatility. Whether you're battling oily ski
     author: "Jaison Herbals",
     publishedAt: "2026-02-28",
     readTime: 6,
-    image: "/images/products/shikakai-styled.jpg",
+    image: "/images/blog/shikakai-styled.webp",
     metaTitle:
       "Natural Hair Wash with Shikakai, Reetha & Amla — Complete Guide",
     metaDescription:
@@ -428,7 +428,7 @@ Switching to natural hair care is one of the best decisions you can make for you
     author: "Jaison Herbals",
     publishedAt: "2026-02-20",
     readTime: 5,
-    image: "/images/products/neem-styled.jpg",
+    image: "/images/blog/neem-styled.webp",
     metaTitle:
       "Neem Powder for Acne: How to Use Neem for Clear Skin Naturally",
     metaDescription:
@@ -532,7 +532,7 @@ Your skin has an incredible ability to heal itself when given the right tools. N
     author: "Jaison Herbals",
     publishedAt: "2026-02-15",
     readTime: 7,
-    image: "/images/products/ubtan-styled2.jpg",
+    image: "/images/blog/ubtan-styled2.webp",
     metaTitle:
       "Ayurvedic Skincare Routine for Beginners — 5 Simple Steps",
     metaDescription:
@@ -662,7 +662,7 @@ Start simple, be patient, and let the herbs do what they've been doing for thous
     author: "Jaison Herbals",
     publishedAt: "2026-02-10",
     readTime: 5,
-    image: "/images/products/orange-styled.jpg",
+    image: "/images/blog/orange-styled.webp",
     metaTitle: "6 Benefits of Orange Peel Powder for Face — DIY Recipes & Tips",
     metaDescription:
       "Discover 6 amazing benefits of orange peel powder for face. DIY face packs for tan removal, acne, dark spots & glowing skin. Natural Vitamin C skincare at home.",
@@ -762,7 +762,7 @@ Orange peel powder is one of the most versatile and affordable natural skincare 
     author: "Jaison Herbals",
     publishedAt: "2026-02-05",
     readTime: 6,
-    image: "/images/products/nagmotha-front.jpg",
+    image: "/images/blog/nagmotha-front.webp",
     metaTitle:
       "Bhringraj Powder for Hair Growth — Benefits, Uses & DIY Recipes",
     metaDescription:
@@ -860,7 +860,7 @@ In a world of expensive hair transplants, chemical treatments, and miracle serum
     author: "Jaison Herbals",
     publishedAt: "2026-01-28",
     readTime: 5,
-    image: "/images/products/reetha-styled.jpg",
+    image: "/images/blog/reetha-styled.webp",
     metaTitle:
       "Reetha (Soapnut) for Hair: Benefits, Uses & Natural Hair Wash Recipes",
     metaDescription:
@@ -965,7 +965,7 @@ Reetha represents the simplest, purest form of hair care — a single natural in
     author: "Jaison Herbals",
     publishedAt: "2026-01-20",
     readTime: 7,
-    image: "/images/products/mhendi-front.jpg",
+    image: "/images/blog/mhendi-front.webp",
     metaTitle:
       "Mehendi (Henna) for Hair: How to Use Henna for Natural Hair Colour",
     metaDescription:

@@ -2,46 +2,8 @@
 
 import { useRef } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { blogPosts } from "@/data/blog";
-
-const cardStyles: Record<string, { bg: string; illustration?: "leaf" | "oval" | "leaf-green" | "none" }> = {
-  "how-to-use-ubtan-for-glowing-skin":       { bg: "#EDE0C8", illustration: "oval" },
-  "amla-powder-benefits-for-hair-growth":    { bg: "#DDD0B4", illustration: "leaf" },
-  "multani-mitti-face-pack-recipes":         { bg: "#8B4A2B", illustration: "none" },
-  "natural-hair-wash-shikakai-reetha-amla":  { bg: "#C8D8B0", illustration: "leaf-green" },
-  "neem-powder-for-acne-clear-skin":         { bg: "#B8C8A0", illustration: "leaf-green" },
-  "ayurvedic-skincare-routine-for-beginners":{ bg: "#EDE8DC", illustration: "oval" },
-  "orange-peel-powder-benefits-for-face":    { bg: "#E8C89A", illustration: "oval" },
-  "bhringraj-powder-for-hair-growth":        { bg: "#2A4A38", illustration: "leaf-green" },
-  "reetha-soapnut-benefits-for-hair":        { bg: "#D8C8A8", illustration: "leaf" },
-};
-
-function LeafIllustration() {
-  return (
-    <svg viewBox="0 0 120 140" className="w-16 h-20" aria-hidden="true">
-      <ellipse cx="60" cy="70" rx="34" ry="52" fill="#A07840" opacity="0.85" transform="rotate(-15 60 70)" />
-      <line x1="38" y1="105" x2="82" y2="35" stroke="rgba(255,255,255,0.5)" strokeWidth="2" strokeLinecap="round" />
-    </svg>
-  );
-}
-
-function LeafGreenIllustration() {
-  return (
-    <svg viewBox="0 0 120 140" className="w-16 h-20" aria-hidden="true">
-      <ellipse cx="60" cy="70" rx="34" ry="52" fill="#5C8040" opacity="0.75" transform="rotate(-15 60 70)" />
-      <line x1="38" y1="105" x2="82" y2="35" stroke="rgba(255,255,255,0.45)" strokeWidth="2" strokeLinecap="round" />
-    </svg>
-  );
-}
-
-function OvalIllustration() {
-  return (
-    <svg viewBox="0 0 140 160" className="w-20 h-24" aria-hidden="true">
-      <ellipse cx="70" cy="95" rx="45" ry="55" fill="#5C3A1E" opacity="0.88" />
-      <ellipse cx="70" cy="72" rx="22" ry="14" fill="#C8940A" opacity="0.75" />
-    </svg>
-  );
-}
 
 export default function BlogSection() {
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -110,9 +72,7 @@ export default function BlogSection() {
             ref={scrollRef}
             className="blog-scroll flex gap-6 overflow-x-auto pb-2"
           >
-            {blogPosts.map((post) => {
-              const style = cardStyles[post.slug] ?? { bg: "#EDE8DC", illustration: "none" };
-              return (
+            {blogPosts.map((post) => (
                 <Link
                   key={post.slug}
                   href={`/blog/${post.slug}`}
@@ -120,12 +80,16 @@ export default function BlogSection() {
                   style={{ width: "280px" }}
                 >
                   <div
-                    className="rounded-xl flex items-center justify-center overflow-hidden"
-                    style={{ height: "360px", backgroundColor: style.bg }}
+                    className="relative rounded-xl overflow-hidden"
+                    style={{ height: "360px" }}
                   >
-                    {style.illustration === "leaf"       && <LeafIllustration />}
-                    {style.illustration === "leaf-green" && <LeafGreenIllustration />}
-                    {style.illustration === "oval"       && <OvalIllustration />}
+                    <Image
+                      src={post.image}
+                      alt={post.title}
+                      fill
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                      sizes="280px"
+                    />
                   </div>
                   <div className="mt-4">
                     <p
@@ -148,8 +112,7 @@ export default function BlogSection() {
                     </p>
                   </div>
                 </Link>
-              );
-            })}
+            ))}
           </div>
 
           {/* View all button */}
