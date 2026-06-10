@@ -15,7 +15,7 @@ export default function BrandStory() {
               <OrnamentalBorder variant="full" className="p-4">
                 <div className="relative aspect-square overflow-hidden rounded-sm">
                   <Image
-                    src="/images/brand-story.jpg"
+                    src="/images/brand-story.webp"
                     alt="jaison herbals - traditional ayurvedic preparation"
                     fill
                     className="object-cover"

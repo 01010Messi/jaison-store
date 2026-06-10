@@ -11,7 +11,7 @@ function BlogCard({ post }: { post: typeof blogPosts[0] }) {
       {/* Image */}
       <div
         className="relative w-full rounded-xl overflow-hidden"
-        style={{ aspectRatio: "3/4" }}
+        style={{ aspectRatio: "4/3" }}
       >
         <Image
           src={post.image}

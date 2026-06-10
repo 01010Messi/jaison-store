@@ -243,7 +243,7 @@ export default function ShopPage() {
       {/* Page Header */}
       <div className="relative overflow-hidden pt-16 pb-12 md:pt-20 md:pb-14" style={{ minHeight: "340px" }}>
         <Image
-          src="/images/hero-group.jpg"
+          src="/images/hero-group.webp"
           alt=""
           fill
           className="object-cover object-center"

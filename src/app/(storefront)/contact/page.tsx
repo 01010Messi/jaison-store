@@ -115,7 +115,7 @@ export default function ContactPage() {
         >
           {/* Watermark */}
           <div
-            className="absolute inset-0 flex items-end pointer-events-none select-none overflow-hidden"
+            className="absolute inset-0 flex items-end justify-end pointer-events-none select-none overflow-hidden"
             aria-hidden="true"
           >
             <span
@@ -125,7 +125,7 @@ export default function ContactPage() {
                 color: "rgba(26,60,52,0.04)",
                 letterSpacing: "-0.04em",
                 marginBottom: "-0.18em",
-                marginLeft: "-0.04em",
+                marginRight: "-0.04em",
               }}
             >
               say hello
@@ -395,24 +395,6 @@ export default function ContactPage() {
           className="relative overflow-hidden px-6 md:px-14 lg:px-24 pt-16 md:pt-20 pb-20 md:pb-28"
           style={{ backgroundColor: "#FEFAE0" }}
         >
-          {/* Watermark */}
-          <div
-            className="absolute inset-0 flex items-end pointer-events-none select-none overflow-hidden"
-            aria-hidden="true"
-          >
-            <span
-              className="font-heading font-light italic leading-none whitespace-nowrap"
-              style={{
-                fontSize: "clamp(7rem, 20vw, 16rem)",
-                color: "rgba(26,60,52,0.04)",
-                letterSpacing: "-0.04em",
-                marginBottom: "-0.18em",
-              }}
-            >
-              hello
-            </span>
-          </div>
-
           <p
             className="relative font-accent text-[10px] tracking-[0.22em] uppercase mb-8"
             style={{ color: "rgba(26,60,52,0.42)" }}

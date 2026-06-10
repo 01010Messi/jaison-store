@@ -80,7 +80,7 @@ export default function AboutPage() {
             <OrnamentalBorder variant="full" className="p-3">
               <div className="relative aspect-[4/5] overflow-hidden rounded-sm">
                 <Image
-                  src="/images/brand-story.jpg"
+                  src="/images/brand-story.webp"
                   alt="jaison herbals natural products"
                   fill
                   className="object-cover"

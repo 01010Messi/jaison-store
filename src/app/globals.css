@@ -69,9 +69,8 @@
     @apply bg-gold;
   }
 
-  /* Focus ring — gold */
   *:focus-visible {
-    @apply outline-none ring-2 ring-gold ring-offset-2 ring-offset-cream;
+    outline: none;
   }
 }
 
