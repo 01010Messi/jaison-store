@@ -48,7 +48,7 @@ export default function Accordion({
               onClick={() => toggleItem(item.id)}
               className="flex items-center justify-between w-full py-4 text-left group"
             >
-              <span className="font-heading text-lg text-bark group-hover:text-terracotta transition-colors">
+              <span className="font-heading text-xl text-bark group-hover:text-terracotta transition-colors">
                 {item.title}
               </span>
               <ChevronDown
@@ -67,7 +67,7 @@ export default function Accordion({
                   transition={{ duration: 0.3, ease: "easeInOut" }}
                   className="overflow-hidden"
                 >
-                  <div className="pb-4 text-sm text-bark/70 font-body leading-relaxed">
+                  <div className="pb-4 text-base text-bark/70 font-body leading-relaxed">
                     {item.content}
                   </div>
                 </motion.div>

@@ -20,7 +20,6 @@ export default function FAQPage() {
   return (
     <div className="min-h-screen">
       <PolicyHero
-        watermark="FAQ"
         eyebrow="— Help Center · Common Questions"
         title="Questions,"
         accent="answered."

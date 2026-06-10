@@ -45,7 +45,6 @@ export default function TermsPage() {
   return (
     <div className="min-h-screen">
       <PolicyHero
-        watermark="Terms"
         eyebrow="— Legal · Terms of Service"
         title="Using our site,"
         accent="your agreement."
@@ -53,10 +52,10 @@ export default function TermsPage() {
       />
 
       <div className="container-brand py-10 md:py-12 max-w-3xl mx-auto">
-        <div className="space-y-0 font-body text-bark/70 text-sm leading-relaxed">
+        <div className="space-y-0 font-body text-bark/70 text-base leading-relaxed">
           {sections.map((section, i) => (
             <div key={i} className={i > 0 ? "pt-8 mt-8 border-t border-border-light" : ""}>
-              <h2 className="font-heading text-lg text-bark font-light mb-3">{section.heading}</h2>
+              <h2 className="font-heading text-xl md:text-2xl text-bark font-light mb-3">{section.heading}</h2>
               <p>{section.body}</p>
             </div>
           ))}

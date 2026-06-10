@@ -1,5 +1,4 @@
 interface PolicyHeroProps {
-  watermark: string;
   eyebrow: string;
   title: string;
   accent: string;
@@ -7,7 +6,6 @@ interface PolicyHeroProps {
 }
 
 export default function PolicyHero({
-  watermark,
   eyebrow,
   title,
   accent,
@@ -16,27 +14,8 @@ export default function PolicyHero({
   return (
     <section
       style={{ backgroundColor: "#EFE4C5" }}
-      className="relative overflow-hidden pt-24 pb-14 px-6 md:px-14 lg:px-24"
+      className="pt-24 pb-14 px-6 md:px-14 lg:px-24"
     >
-      {/* Watermark */}
-      <div
-        className="absolute inset-0 flex items-end justify-end pointer-events-none select-none overflow-hidden"
-        aria-hidden="true"
-      >
-        <span
-          className="font-heading font-light leading-none whitespace-nowrap"
-          style={{
-            fontSize: "clamp(6rem, 20vw, 15rem)",
-            color: "rgba(26,60,52,0.045)",
-            letterSpacing: "-0.04em",
-            marginBottom: "-0.15em",
-            marginRight: "-0.06em",
-          }}
-        >
-          {watermark}
-        </span>
-      </div>
-
       <p
         className="relative font-accent text-[10px] tracking-[0.22em] uppercase mb-8"
         style={{ color: "rgba(26,60,52,0.42)" }}

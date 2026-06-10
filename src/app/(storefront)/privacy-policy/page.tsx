@@ -14,7 +14,6 @@ export default function PrivacyPolicyPage() {
   return (
     <div className="min-h-screen">
       <PolicyHero
-        watermark="Privacy"
         eyebrow="— Legal · Privacy Policy"
         title="Your data,"
         accent="your rights."
@@ -22,15 +21,15 @@ export default function PrivacyPolicyPage() {
       />
 
       <div className="container-brand py-10 md:py-12 max-w-3xl mx-auto">
-        <div className="space-y-10 font-body text-bark/70 text-sm leading-relaxed">
+        <div className="space-y-10 font-body text-bark/70 text-base leading-relaxed">
 
           <div>
-            <h2 className="font-heading text-lg text-bark font-light mb-3">Information We Collect</h2>
+            <h2 className="font-heading text-xl md:text-2xl text-bark font-light mb-3">Information We Collect</h2>
             <p>We collect personal information you provide when creating an account, placing an order, subscribing to our newsletter, or contacting us — including your name, email address, phone number, shipping address, and payment information.</p>
           </div>
 
           <div className="pt-6 border-t border-border-light">
-            <h2 className="font-heading text-lg text-bark font-light mb-3">How We Use Your Information</h2>
+            <h2 className="font-heading text-xl md:text-2xl text-bark font-light mb-3">How We Use Your Information</h2>
             <ul className="space-y-2">
               {[
                 "Process and fulfill your orders",
@@ -48,22 +47,22 @@ export default function PrivacyPolicyPage() {
           </div>
 
           <div className="pt-6 border-t border-border-light">
-            <h2 className="font-heading text-lg text-bark font-light mb-3">Data Protection</h2>
+            <h2 className="font-heading text-xl md:text-2xl text-bark font-light mb-3">Data Protection</h2>
             <p>We implement industry-standard security measures to protect your personal data. Payment transactions are processed through Razorpay&apos;s secure payment gateway. We never store your card details on our servers.</p>
           </div>
 
           <div className="pt-6 border-t border-border-light">
-            <h2 className="font-heading text-lg text-bark font-light mb-3">Cookies</h2>
+            <h2 className="font-heading text-xl md:text-2xl text-bark font-light mb-3">Cookies</h2>
             <p>Our website uses cookies to enhance your browsing experience and remember your preferences. You can disable cookies in your browser settings, though this may affect site functionality.</p>
           </div>
 
           <div className="pt-6 border-t border-border-light">
-            <h2 className="font-heading text-lg text-bark font-light mb-3">Third-Party Services</h2>
+            <h2 className="font-heading text-xl md:text-2xl text-bark font-light mb-3">Third-Party Services</h2>
             <p>We share your shipping information with our logistics partners (Shiprocket) to deliver your orders. Payment processing is handled by Razorpay. We do not sell or share your data with any other third parties.</p>
           </div>
 
           <div className="pt-6 border-t border-border-light">
-            <h2 className="font-heading text-lg text-bark font-light mb-3">Your Rights</h2>
+            <h2 className="font-heading text-xl md:text-2xl text-bark font-light mb-3">Your Rights</h2>
             <p>You have the right to access, correct, or delete your personal information at any time. Contact us at Jaisonskincare@gmail.com to exercise these rights.</p>
           </div>
 

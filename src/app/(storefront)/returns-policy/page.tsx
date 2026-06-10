@@ -14,7 +14,6 @@ export default function ReturnsPage() {
   return (
     <div className="min-h-screen">
       <PolicyHero
-        watermark="Returns"
         eyebrow="— Policies · Returns & Refunds"
         title="Simple policy,"
         accent="no surprises."
