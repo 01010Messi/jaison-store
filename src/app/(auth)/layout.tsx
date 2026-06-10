@@ -50,7 +50,23 @@ export default function AuthLayout({
 
         {/* Auth form */}
         <main className="flex-1 flex items-center justify-center px-4 pb-14">
-          <div className="w-full max-w-md">{children}</div>
+          <div className="w-full max-w-md">
+            {/* Back pill — sits above the card */}
+            <div className="mb-4">
+              <Link
+                href="/"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-full font-accent text-[10px] tracking-[0.12em] uppercase transition-opacity hover:opacity-70"
+                style={{
+                  border: "1px solid rgba(26,60,52,0.25)",
+                  color: "rgba(26,60,52,0.55)",
+                  backgroundColor: "rgba(254,250,224,0.5)",
+                }}
+              >
+                ← Back to Home
+              </Link>
+            </div>
+            {children}
+          </div>
         </main>
       </div>
     </div>

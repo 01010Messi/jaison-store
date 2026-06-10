@@ -28,21 +28,47 @@ export default function HeroSection() {
   return (
     <>
       <style>{`
-        @keyframes heroKenBurns {
-          0%   { transform: scale(1.0) translate(0%, 0%); }
-          50%  { transform: scale(1.07) translate(-1%, -0.5%); }
-          100% { transform: scale(1.0) translate(0%, 0%); }
+        /* Lateral slide — 12s, scale locked so no zoom pulse */
+        @keyframes heroSlide {
+          0%   { transform: scale(1.10) translateX(3.5%); }
+          100% { transform: scale(1.10) translateX(-3.5%); }
         }
         .hero-video {
-          animation: heroKenBurns 24s ease-in-out infinite;
+          animation: heroSlide 12s ease-in-out infinite alternate;
         }
+
+        /* Letter glow — each word span gets this, staggered delays create the sweep */
+        @keyframes letterGlow {
+          0%, 12%, 88%, 100% { text-shadow: none; }
+          30%, 55% {
+            text-shadow:
+              0 0 16px rgba(255,248,215,0.85),
+              0 0 32px rgba(254,236,185,0.50),
+              0 0 56px rgba(254,228,160,0.25);
+          }
+        }
+        @keyframes letterGlowWarm {
+          0%, 12%, 88%, 100% { text-shadow: none; }
+          30%, 55% {
+            text-shadow:
+              0 0 16px rgba(220,150,80,0.70),
+              0 0 32px rgba(210,130,60,0.40),
+              0 0 56px rgba(200,110,40,0.20);
+          }
+        }
+        .gw1 { animation: letterGlow     12s 0.0s ease-in-out infinite; }
+        .gw2 { animation: letterGlow     12s 1.0s ease-in-out infinite; }
+        .gw3 { animation: letterGlow     12s 2.0s ease-in-out infinite; }
+        .gw4 { animation: letterGlow     12s 3.0s ease-in-out infinite; }
+        .gw5 { animation: letterGlow     12s 4.0s ease-in-out infinite; }
+        .gw6 { animation: letterGlowWarm 12s 5.0s ease-in-out infinite; }
       `}</style>
 
       <section
         className="relative flex flex-col overflow-hidden min-h-screen"
         style={{ backgroundColor: "#FEFAE0" }}
       >
-        {/* Background video — Ken Burns via CSS, no zoompan overhead */}
+        {/* Background video */}
         <div className="absolute inset-0">
           <video
             autoPlay
@@ -55,12 +81,12 @@ export default function HeroSection() {
             <source src="/images/hero-group.mp4" type="video/mp4" />
           </video>
 
-          {/* Overlay — transparent at top for image clarity, fades to denser cream at bottom for text legibility */}
+          {/* Uniform overlay — no seam between hero body and stats */}
           <div
             className="absolute inset-0"
             style={{
               background:
-                "linear-gradient(170deg, rgba(254,250,224,0.28) 0%, rgba(254,250,224,0.06) 28%, rgba(254,250,224,0.38) 62%, rgba(254,250,224,0.72) 85%, rgba(254,250,224,0.80) 100%)",
+                "linear-gradient(170deg, rgba(254,250,224,0.22) 0%, rgba(254,250,224,0.08) 25%, rgba(254,250,224,0.28) 60%, rgba(254,250,224,0.44) 85%, rgba(254,250,224,0.50) 100%)",
             }}
           />
         </div>
@@ -87,13 +113,13 @@ export default function HeroSection() {
         <div
           className="relative z-10 w-full px-6 md:px-10 lg:px-14 flex flex-col flex-1"
           style={{
-            paddingTop: "clamp(80px, 10vh, 110px)",
+            paddingTop: "clamp(56px, 6vh, 76px)",
             paddingBottom: 0,
           }}
         >
-          {/* Top-right tagline */}
+          {/* Top-right tagline — normal weight */}
           <span
-            className="self-end font-accent font-semibold uppercase mb-8 md:mb-10"
+            className="self-end font-accent font-normal uppercase mb-6 md:mb-8"
             style={{
               fontSize: "clamp(12px, 1.05vw, 14px)",
               letterSpacing: "0.18em",
@@ -103,7 +129,7 @@ export default function HeroSection() {
             55 Years&nbsp;&nbsp;·&nbsp;&nbsp;One Format&nbsp;&nbsp;·&nbsp;&nbsp;Zero Compromises
           </span>
 
-          {/* Headline */}
+          {/* Headline — letter glow sweeps word by word */}
           <h2
             ref={headlineRef}
             className="font-heading font-light"
@@ -113,14 +139,14 @@ export default function HeroSection() {
               letterSpacing: "-0.02em",
             }}
           >
-            <span style={{ color: "#1A3C34" }}>Your </span>
-            <span style={{ color: "rgba(26,60,52,0.40)" }}>bottle </span>
-            <span style={{ color: "rgba(26,60,52,0.26)" }}>lists a</span>
+            <span className="gw1" style={{ color: "#1A3C34" }}>Your </span>
+            <span className="gw2" style={{ color: "rgba(26,60,52,0.72)" }}>bottle </span>
+            <span className="gw3" style={{ color: "rgba(26,60,52,0.56)" }}>lists a</span>
             <br />
-            <span style={{ color: "rgba(26,60,52,0.14)" }}>dozen </span>
-            <span style={{ color: "#1A3C34" }}>ingredients.</span>
+            <span className="gw4" style={{ color: "rgba(26,60,52,0.40)" }}>dozen </span>
+            <span className="gw5" style={{ color: "#1A3C34" }}>ingredients.</span>
             <br />
-            <span style={{ fontStyle: "italic", fontWeight: 300, color: "#834316" }}>
+            <span className="gw6" style={{ fontStyle: "italic", fontWeight: 300, color: "#834316" }}>
               Our product lists one.
             </span>
           </h2>
@@ -130,9 +156,10 @@ export default function HeroSection() {
             <p
               className="font-body leading-relaxed"
               style={{
-                fontSize: "clamp(0.8125rem, 1.15vw, 0.9375rem)",
-                color: "rgba(26,60,52,0.55)",
-                maxWidth: "310px",
+                fontSize: "clamp(1rem, 1.3vw, 1.125rem)",
+                color: "rgba(26,60,52,0.88)",
+                maxWidth: "380px",
+                textShadow: "0 1px 4px rgba(239,228,197,0.55)",
               }}
             >
               Most skincare needs preservatives, stabilisers and synthetic
@@ -163,8 +190,9 @@ export default function HeroSection() {
                   padding: "13px 28px",
                   fontSize: "11px",
                   letterSpacing: "0.14em",
-                  borderColor: "rgba(26,60,52,0.28)",
+                  borderColor: "rgba(26,60,52,0.55)",
                   color: "#1A3C34",
+                  backgroundColor: "rgba(254,250,224,0.22)",
                 }}
               >
                 Read Why Powder
@@ -173,19 +201,12 @@ export default function HeroSection() {
           </div>
         </div>
 
-        {/* ── STATS STRIP — image/video continues behind it ───────── */}
+        {/* ── STATS STRIP — no local overlay, same video shows through ─ */}
         <div
           className="relative z-10 border-t"
-          style={{ borderColor: "rgba(26,60,52,0.12)" }}
+          style={{ borderColor: "rgba(26,60,52,0.10)" }}
         >
-          {/* Subtle gradient so stats text reads against the video */}
-          <div
-            className="absolute inset-0"
-            style={{
-              background: "linear-gradient(to bottom, rgba(239,228,197,0.55) 0%, rgba(239,228,197,0.72) 100%)",
-            }}
-          />
-          <div className="relative container-brand py-8 md:py-10">
+          <div className="container-brand py-8 md:py-10">
             <div className="grid grid-cols-3 gap-6 md:gap-12 lg:gap-16 text-center">
               {stats.map((s) => (
                 <div key={s.num}>
@@ -205,7 +226,7 @@ export default function HeroSection() {
                     style={{
                       fontSize: "clamp(11px, 1vw, 13px)",
                       letterSpacing: "0.18em",
-                      color: "rgba(26,60,52,0.65)",
+                      color: "rgba(26,60,52,0.70)",
                     }}
                   >
                     {s.label}
