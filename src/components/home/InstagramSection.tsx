@@ -8,6 +8,7 @@ const tiles = [
     handle: "@sneha.ahuja",
     caption: "First time using Multani. Cracked = too thick. Lesson learned.",
     motif: "figure",
+    aspect: "4/5",
   },
   {
     bg: "#1A3C34",
@@ -15,6 +16,7 @@ const tiles = [
     handle: "@aarav.makes",
     caption: "Cold-process Shikakai foam. No sulphates. Look at the lather.",
     motif: "glow",
+    aspect: "1/1",
   },
   {
     bg: "#EDE0C8",
@@ -22,6 +24,7 @@ const tiles = [
     handle: "@radhika.mehra",
     caption: "Mum's wedding ubtan. Found her 1989 jar today.",
     motif: "jar",
+    aspect: "3/4",
   },
   {
     bg: "#7B5534",
@@ -29,6 +32,7 @@ const tiles = [
     handle: "@oilskin.diaries",
     caption: "Week 6 on Neem. Side-by-side photos.",
     motif: "sphere",
+    aspect: "4/5",
   },
   {
     bg: "#D4C4A8",
@@ -36,6 +40,7 @@ const tiles = [
     handle: "@hairhouse.bangalore",
     caption: "Three-powder wash, 90s technique, 2026 lighting.",
     motif: "drop",
+    aspect: "3/4",
   },
   {
     bg: "#4A2810",
@@ -43,6 +48,7 @@ const tiles = [
     handle: "@bombay.beautyclub",
     caption: "Using Reetha as a facial cleanser. Wild idea. It worked.",
     motif: "crescent",
+    aspect: "4/5",
   },
   {
     bg: "#241408",
@@ -50,6 +56,7 @@ const tiles = [
     handle: "@maithili.green",
     caption: "Day one of switching from chemical henna.",
     motif: "leaf",
+    aspect: "1/1",
   },
   {
     bg: "#834316",
@@ -57,6 +64,7 @@ const tiles = [
     handle: "@the.herb.kitchen",
     caption: "Rose petal powder mixed with honey. 20 minutes, weekly.",
     motif: "oval",
+    aspect: "3/4",
   },
 ];
 
@@ -156,20 +164,22 @@ export default function InstagramSection() {
           </em>
         </h2>
         <p
-          className="font-body text-sm leading-relaxed mt-4"
-          style={{ color: "rgba(26,60,52,0.50)", maxWidth: "340px" }}
+          className="font-body text-base md:text-lg leading-snug mt-4"
+          style={{ color: "rgba(26,60,52,0.55)" }}
         >
-          Tag #jaisonritual on Instagram. We feature one a day.
+          Tag{" "}
+          <strong style={{ fontWeight: 700, color: "#1A3C34" }}>#jaisonherbals</strong>{" "}
+          on Instagram. We feature one a day.
         </p>
       </div>
 
       {/* Grid */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-3 px-4 md:px-8 lg:px-14" aria-hidden="true">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-3 px-4 md:px-8 lg:px-14 items-start" aria-hidden="true">
         {tiles.map((tile) => (
           <div
             key={tile.handle}
             className="relative overflow-hidden rounded-2xl"
-            style={{ backgroundColor: tile.bg, aspectRatio: "4/5" }}
+            style={{ backgroundColor: tile.bg, aspectRatio: tile.aspect }}
           >
             <Motif type={tile.motif} bg={tile.bg} />
 
@@ -209,7 +219,7 @@ export default function InstagramSection() {
       </div>
 
       {/* CTA */}
-      <div className="container-brand mt-10">
+      <div className="container-brand mt-10 flex justify-center">
         <Link
           href="https://www.instagram.com/jaison_skincare/"
           className="inline-flex items-center gap-2 font-accent uppercase transition-opacity duration-200 hover:opacity-85"
