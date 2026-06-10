@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -11,8 +11,6 @@ import {
   ChevronLeft,
   Check,
   MapPin,
-  ZoomIn,
-  ZoomOut,
 } from "lucide-react";
 import { products } from "@/data/products";
 import { getBlogPostsForProduct } from "@/data/blog";
@@ -35,11 +33,7 @@ export default function ProductDetail({ product }: ProductDetailProps) {
   const [quantity, setQuantity] = useState(1);
   const [addedToCart, setAddedToCart] = useState(false);
   const [activeImageIndex, setActiveImageIndex] = useState(0);
-  const [zoomLevel, setZoomLevel] = useState(0); // 0 = no zoom, 1-3 = zoom steps
-  const [panOffset, setPanOffset] = useState({ x: 0, y: 0 });
-  const [isPanning, setIsPanning] = useState(false);
-  const panStartRef = useRef({ x: 0, y: 0 });
-  const panOffsetStartRef = useRef({ x: 0, y: 0 });
+  const [lensPos, setLensPos] = useState<{ x: number; y: number } | null>(null);
   const [pincode, setPincode] = useState("");
   const [pincodeResult, setPincodeResult] = useState<{
     serviceable: boolean;
@@ -48,7 +42,6 @@ export default function ProductDetail({ product }: ProductDetailProps) {
     message?: string;
   } | null>(null);
   const [pincodeLoading, setPincodeLoading] = useState(false);
-  const imageContainerRef = useRef<HTMLDivElement>(null);
   const addItem = useCartStore((s) => s.addItem);
   const openCart = useCartStore((s) => s.openCart);
 
@@ -102,66 +95,37 @@ export default function ProductDetail({ product }: ProductDetailProps) {
     }
   };
 
-  const resetView = useCallback(() => {
-    setZoomLevel(0);
-    setPanOffset({ x: 0, y: 0 });
-  }, []);
-
   const goToPrevImage = useCallback(() => {
-    resetView();
+    setLensPos(null);
     setActiveImageIndex((prev) =>
       prev === 0 ? allImages.length - 1 : prev - 1
     );
-  }, [allImages.length, resetView]);
+  }, [allImages.length]);
 
   const goToNextImage = useCallback(() => {
-    resetView();
+    setLensPos(null);
     setActiveImageIndex((prev) =>
       prev === allImages.length - 1 ? 0 : prev + 1
     );
-  }, [allImages.length, resetView]);
+  }, [allImages.length]);
 
-  // Pan handlers for dragging when zoomed
-  const handlePanStart = useCallback(
-    (e: React.MouseEvent | React.TouchEvent) => {
-      if (zoomLevel === 0) return;
-      e.preventDefault();
-      setIsPanning(true);
-      const clientX = "touches" in e ? e.touches[0].clientX : e.clientX;
-      const clientY = "touches" in e ? e.touches[0].clientY : e.clientY;
-      panStartRef.current = { x: clientX, y: clientY };
-      panOffsetStartRef.current = { ...panOffset };
-    },
-    [zoomLevel, panOffset]
-  );
-
-  const handlePanMove = useCallback(
-    (e: React.MouseEvent | React.TouchEvent) => {
-      if (!isPanning) return;
-      const clientX = "touches" in e ? e.touches[0].clientX : e.clientX;
-      const clientY = "touches" in e ? e.touches[0].clientY : e.clientY;
-      const scale = 1 + zoomLevel * 0.5;
-      const maxPan = ((scale - 1) / scale) * 50; // limit pan to zoomed area
-      const dx = clientX - panStartRef.current.x;
-      const dy = clientY - panStartRef.current.y;
-      setPanOffset({
-        x: Math.max(-maxPan, Math.min(maxPan, panOffsetStartRef.current.x + (dx / (imageContainerRef.current?.clientWidth || 1)) * 100)),
-        y: Math.max(-maxPan, Math.min(maxPan, panOffsetStartRef.current.y + (dy / (imageContainerRef.current?.clientHeight || 1)) * 100)),
+  const handleImageMouseMove = useCallback(
+    (e: React.MouseEvent<HTMLDivElement>) => {
+      const rect = e.currentTarget.getBoundingClientRect();
+      setLensPos({
+        x: ((e.clientX - rect.left) / rect.width) * 100,
+        y: ((e.clientY - rect.top) / rect.height) * 100,
       });
     },
-    [isPanning, zoomLevel]
+    []
   );
-
-  const handlePanEnd = useCallback(() => {
-    setIsPanning(false);
-  }, []);
 
   // Keyboard navigation
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "ArrowLeft") goToPrevImage();
       if (e.key === "ArrowRight") goToNextImage();
-      if (e.key === "Escape") resetView();
+      if (e.key === "Escape") setLensPos(null);
     };
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
@@ -199,19 +163,9 @@ export default function ProductDetail({ product }: ProductDetailProps) {
             {/* Main image — thin warm border replacing OrnamentalBorder */}
             <div className="border border-[#E8D5B7] rounded-sm p-2 md:p-3">
               <div
-                ref={imageContainerRef}
-                className={cn(
-                  "relative aspect-square overflow-hidden rounded-sm bg-[#F5ECD7] select-none",
-                  zoomLevel > 0 ? "cursor-grab" : "",
-                  isPanning && "cursor-grabbing"
-                )}
-                onMouseDown={handlePanStart}
-                onMouseMove={handlePanMove}
-                onMouseUp={handlePanEnd}
-                onMouseLeave={handlePanEnd}
-                onTouchStart={handlePanStart}
-                onTouchMove={handlePanMove}
-                onTouchEnd={handlePanEnd}
+                className="relative aspect-square overflow-hidden rounded-sm bg-[#F5ECD7] select-none cursor-crosshair"
+                onMouseMove={handleImageMouseMove}
+                onMouseLeave={() => setLensPos(null)}
               >
                 {allImages.map((img, i) => (
                   <Image
@@ -220,19 +174,11 @@ export default function ProductDetail({ product }: ProductDetailProps) {
                     alt={`${product.name}${i > 0 ? ` - view ${i + 1}` : ""}`}
                     fill
                     className={cn(
-                      "object-contain",
-                      isPanning ? "transition-none" : "transition-all duration-500 ease-out",
+                      "object-contain transition-all duration-500 ease-out",
                       i === activeImageIndex
                         ? "opacity-100"
                         : "opacity-0 scale-[1.02]"
                     )}
-                    style={
-                      i === activeImageIndex
-                        ? {
-                            transform: `scale(${1 + zoomLevel * 0.5}) translate(${panOffset.x}%, ${panOffset.y}%)`,
-                          }
-                        : undefined
-                    }
                     sizes="(max-width: 768px) 100vw, 50vw"
                     priority={i === 0}
                   />
@@ -250,40 +196,6 @@ export default function ProductDetail({ product }: ProductDetailProps) {
                   >
                     Photo
                   </span>
-                </div>
-
-                {/* Zoom +/- controls */}
-                <div className="absolute top-3 right-3 z-10 flex flex-col gap-1.5">
-                  <button
-                    onClick={(e) => {
-                      e.preventDefault();
-                      setZoomLevel((prev) => {
-                        const next = Math.min(3, prev + 1);
-                        if (next !== prev) setPanOffset({ x: 0, y: 0 });
-                        return next;
-                      });
-                    }}
-                    disabled={zoomLevel >= 3}
-                    className="w-8 h-8 rounded-full bg-cream/80 backdrop-blur-sm flex items-center justify-center text-bark/60 hover:text-bark hover:bg-cream transition-all duration-300 shadow-warm disabled:opacity-30 disabled:cursor-not-allowed"
-                    aria-label="Zoom in"
-                  >
-                    <ZoomIn className="h-3.5 w-3.5" />
-                  </button>
-                  <button
-                    onClick={(e) => {
-                      e.preventDefault();
-                      setZoomLevel((prev) => {
-                        const next = Math.max(0, prev - 1);
-                        if (next === 0) setPanOffset({ x: 0, y: 0 });
-                        return next;
-                      });
-                    }}
-                    disabled={zoomLevel <= 0}
-                    className="w-8 h-8 rounded-full bg-cream/80 backdrop-blur-sm flex items-center justify-center text-bark/60 hover:text-bark hover:bg-cream transition-all duration-300 shadow-warm disabled:opacity-30 disabled:cursor-not-allowed"
-                    aria-label="Zoom out"
-                  >
-                    <ZoomOut className="h-3.5 w-3.5" />
-                  </button>
                 </div>
 
                 {/* Arrow navigation on main image */}
@@ -322,6 +234,24 @@ export default function ProductDetail({ product }: ProductDetailProps) {
                 )}
               </div>
             </div>
+
+            {/* Side zoom lens panel — appears to the right on hover */}
+            {lensPos && (
+              <div
+                className="absolute top-0 hidden md:block rounded-2xl overflow-hidden border border-[#E8D5B7] z-50"
+                style={{
+                  left: "calc(100% + 16px)",
+                  width: "300px",
+                  aspectRatio: "1/1",
+                  backgroundImage: `url(${allImages[activeImageIndex]})`,
+                  backgroundSize: "280%",
+                  backgroundRepeat: "no-repeat",
+                  backgroundPosition: `${lensPos.x}% ${lensPos.y}%`,
+                  backgroundColor: "#F5ECD7",
+                  boxShadow: "0 8px 32px rgba(26,60,52,0.12)",
+                }}
+              />
+            )}
 
             {/* Thumbnail strip */}
             {allImages.length > 1 && (
