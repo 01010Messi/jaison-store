@@ -3,54 +3,35 @@
 import { useState, useRef, useEffect, useCallback } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import {
   Minus,
   Plus,
   ShoppingBag,
-  Zap,
-  Truck,
-  Shield,
-  Leaf,
   ChevronRight,
   ChevronLeft,
   Check,
   MapPin,
   ZoomIn,
   ZoomOut,
-  Rabbit,
-  FlaskConical,
-  Sprout,
-  Heart,
 } from "lucide-react";
 import { products } from "@/data/products";
 import { getBlogPostsForProduct } from "@/data/blog";
 import ScrollReveal from "@/components/decorative/ScrollReveal";
-import GoldRule from "@/components/decorative/GoldRule";
-import OrnamentalBorder from "@/components/decorative/OrnamentalBorder";
 import ProductCard from "@/components/product/ProductCard";
 import ProductReviews from "@/components/product/ProductReviews";
 import ProductStory from "@/components/product/ProductStory";
 import ProductFAQ from "@/components/product/ProductFAQ";
 import { getProductFaqs } from "@/data/productFaqs";
-import SocialShare from "@/components/ui/SocialShare";
 import { useCartStore } from "@/store/cart-store";
 import { formatPrice, cn } from "@/lib/utils";
 import toast from "react-hot-toast";
 import type { Product } from "@/data/products";
-
-const trustBadges = [
-  { icon: Truck, label: "Free shipping above ₹499" },
-  { icon: Shield, label: "Cash on Delivery available" },
-  { icon: Leaf, label: "100% Natural & Pure" },
-];
 
 interface ProductDetailProps {
   product: Product;
 }
 
 export default function ProductDetail({ product }: ProductDetailProps) {
-  const router = useRouter();
   const [quantity, setQuantity] = useState(1);
   const [addedToCart, setAddedToCart] = useState(false);
   const [activeImageIndex, setActiveImageIndex] = useState(0);
@@ -97,20 +78,6 @@ export default function ProductDetail({ product }: ProductDetailProps) {
     toast.success(`${product.name} added to your potli`);
     setTimeout(() => setAddedToCart(false), 2000);
     openCart();
-  };
-
-  const handleBuyNow = () => {
-    addItem({
-      id: product.sku,
-      productId: product.sku,
-      name: product.name,
-      slug: product.slug,
-      price: product.price,
-      image: product.image,
-      stock: 50,
-      quantity,
-    });
-    router.push("/checkout");
   };
 
   const checkPincode = async () => {
@@ -241,341 +208,389 @@ export default function ProductDetail({ product }: ProductDetailProps) {
       <section className="container-brand py-8 md:py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 lg:gap-16">
           {/* Image Gallery */}
-          <ScrollReveal animation="fade-up">
-            <div className="relative">
-              {/* Main image */}
-              <OrnamentalBorder variant="simple" className="p-2 md:p-3">
-                <div
-                  ref={imageContainerRef}
-                  className={cn(
-                    "relative aspect-square overflow-hidden rounded-sm bg-parchment select-none",
-                    zoomLevel > 0 ? "cursor-grab" : "",
-                    isPanning && "cursor-grabbing"
-                  )}
-                  onMouseDown={handlePanStart}
-                  onMouseMove={handlePanMove}
-                  onMouseUp={handlePanEnd}
-                  onMouseLeave={handlePanEnd}
-                  onTouchStart={handlePanStart}
-                  onTouchMove={handlePanMove}
-                  onTouchEnd={handlePanEnd}
-                >
-                  {allImages.map((img, i) => (
-                    <Image
-                      key={img}
-                      src={img}
-                      alt={`${product.name}${i > 0 ? ` - view ${i + 1}` : ""}`}
-                      fill
-                      className={cn(
-                        "object-contain",
-                        isPanning ? "transition-none" : "transition-all duration-500 ease-out",
-                        i === activeImageIndex
-                          ? "opacity-100"
-                          : "opacity-0 scale-[1.02]"
-                      )}
-                      style={
-                        i === activeImageIndex
-                          ? {
-                              transform: `scale(${1 + zoomLevel * 0.5}) translate(${panOffset.x}%, ${panOffset.y}%)`,
-                            }
-                          : undefined
-                      }
-                      sizes="(max-width: 768px) 100vw, 50vw"
-                      priority={i === 0}
-                    />
-                  ))}
+          <div className="relative">
+            {/* Main image — thin warm border replacing OrnamentalBorder */}
+            <div className="border border-[#E8D5B7] rounded-sm p-2 md:p-3">
+              <div
+                ref={imageContainerRef}
+                className={cn(
+                  "relative aspect-square overflow-hidden rounded-sm bg-[#F5ECD7] select-none",
+                  zoomLevel > 0 ? "cursor-grab" : "",
+                  isPanning && "cursor-grabbing"
+                )}
+                onMouseDown={handlePanStart}
+                onMouseMove={handlePanMove}
+                onMouseUp={handlePanEnd}
+                onMouseLeave={handlePanEnd}
+                onTouchStart={handlePanStart}
+                onTouchMove={handlePanMove}
+                onTouchEnd={handlePanEnd}
+              >
+                {allImages.map((img, i) => (
+                  <Image
+                    key={img}
+                    src={img}
+                    alt={`${product.name}${i > 0 ? ` - view ${i + 1}` : ""}`}
+                    fill
+                    className={cn(
+                      "object-contain",
+                      isPanning ? "transition-none" : "transition-all duration-500 ease-out",
+                      i === activeImageIndex
+                        ? "opacity-100"
+                        : "opacity-0 scale-[1.02]"
+                    )}
+                    style={
+                      i === activeImageIndex
+                        ? {
+                            transform: `scale(${1 + zoomLevel * 0.5}) translate(${panOffset.x}%, ${panOffset.y}%)`,
+                          }
+                        : undefined
+                    }
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    priority={i === 0}
+                  />
+                ))}
 
-                  {/* Zoom +/- controls */}
-                  <div className="absolute top-3 right-3 z-10 flex flex-col gap-1.5">
+                {/* PHOTO pill badge — top-left */}
+                <div className="absolute top-3 left-3 z-10">
+                  <span
+                    className="font-accent text-[10px] uppercase tracking-[0.18em] px-2 py-0.5 rounded-full"
+                    style={{
+                      background: "rgba(253,250,245,0.85)",
+                      color: "#6B4226",
+                      backdropFilter: "blur(4px)",
+                    }}
+                  >
+                    Photo
+                  </span>
+                </div>
+
+                {/* Zoom +/- controls */}
+                <div className="absolute top-3 right-3 z-10 flex flex-col gap-1.5">
+                  <button
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setZoomLevel((prev) => {
+                        const next = Math.min(3, prev + 1);
+                        if (next !== prev) setPanOffset({ x: 0, y: 0 });
+                        return next;
+                      });
+                    }}
+                    disabled={zoomLevel >= 3}
+                    className="w-8 h-8 rounded-full bg-cream/80 backdrop-blur-sm flex items-center justify-center text-bark/60 hover:text-bark hover:bg-cream transition-all duration-300 shadow-warm disabled:opacity-30 disabled:cursor-not-allowed"
+                    aria-label="Zoom in"
+                  >
+                    <ZoomIn className="h-3.5 w-3.5" />
+                  </button>
+                  <button
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setZoomLevel((prev) => {
+                        const next = Math.max(0, prev - 1);
+                        if (next === 0) setPanOffset({ x: 0, y: 0 });
+                        return next;
+                      });
+                    }}
+                    disabled={zoomLevel <= 0}
+                    className="w-8 h-8 rounded-full bg-cream/80 backdrop-blur-sm flex items-center justify-center text-bark/60 hover:text-bark hover:bg-cream transition-all duration-300 shadow-warm disabled:opacity-30 disabled:cursor-not-allowed"
+                    aria-label="Zoom out"
+                  >
+                    <ZoomOut className="h-3.5 w-3.5" />
+                  </button>
+                </div>
+
+                {/* Arrow navigation on main image */}
+                {allImages.length > 1 && (
+                  <>
                     <button
                       onClick={(e) => {
                         e.preventDefault();
-                        setZoomLevel((prev) => {
-                          const next = Math.min(3, prev + 1);
-                          if (next !== prev) setPanOffset({ x: 0, y: 0 });
-                          return next;
-                        });
+                        goToPrevImage();
                       }}
-                      disabled={zoomLevel >= 3}
-                      className="w-8 h-8 rounded-full bg-cream/80 backdrop-blur-sm flex items-center justify-center text-bark/60 hover:text-bark hover:bg-cream transition-all duration-300 shadow-warm disabled:opacity-30 disabled:cursor-not-allowed"
-                      aria-label="Zoom in"
+                      className="absolute left-3 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full bg-cream/80 backdrop-blur-sm flex items-center justify-center text-bark/60 hover:text-bark hover:bg-cream transition-all duration-300 opacity-0 group-hover:opacity-100 hover:opacity-100 shadow-warm"
+                      style={{ opacity: 1 }}
+                      aria-label="Previous image"
                     >
-                      <ZoomIn className="h-3.5 w-3.5" />
+                      <ChevronLeft className="h-4 w-4" />
                     </button>
                     <button
                       onClick={(e) => {
                         e.preventDefault();
-                        setZoomLevel((prev) => {
-                          const next = Math.max(0, prev - 1);
-                          if (next === 0) setPanOffset({ x: 0, y: 0 });
-                          return next;
-                        });
+                        goToNextImage();
                       }}
-                      disabled={zoomLevel <= 0}
-                      className="w-8 h-8 rounded-full bg-cream/80 backdrop-blur-sm flex items-center justify-center text-bark/60 hover:text-bark hover:bg-cream transition-all duration-300 shadow-warm disabled:opacity-30 disabled:cursor-not-allowed"
-                      aria-label="Zoom out"
+                      className="absolute right-3 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full bg-cream/80 backdrop-blur-sm flex items-center justify-center text-bark/60 hover:text-bark hover:bg-cream transition-all duration-300 opacity-0 group-hover:opacity-100 hover:opacity-100 shadow-warm"
+                      style={{ opacity: 1 }}
+                      aria-label="Next image"
                     >
-                      <ZoomOut className="h-3.5 w-3.5" />
+                      <ChevronRight className="h-4 w-4" />
                     </button>
-                  </div>
 
-                  {/* Arrow navigation on main image */}
-                  {allImages.length > 1 && (
-                    <>
-                      <button
-                        onClick={(e) => {
-                          e.preventDefault();
-                          goToPrevImage();
-                        }}
-                        className="absolute left-3 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full bg-cream/80 backdrop-blur-sm flex items-center justify-center text-bark/60 hover:text-bark hover:bg-cream transition-all duration-300 opacity-0 group-hover:opacity-100 hover:opacity-100 shadow-warm"
-                        style={{ opacity: 1 }}
-                        aria-label="Previous image"
-                      >
-                        <ChevronLeft className="h-4 w-4" />
-                      </button>
-                      <button
-                        onClick={(e) => {
-                          e.preventDefault();
-                          goToNextImage();
-                        }}
-                        className="absolute right-3 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full bg-cream/80 backdrop-blur-sm flex items-center justify-center text-bark/60 hover:text-bark hover:bg-cream transition-all duration-300 opacity-0 group-hover:opacity-100 hover:opacity-100 shadow-warm"
-                        style={{ opacity: 1 }}
-                        aria-label="Next image"
-                      >
-                        <ChevronRight className="h-4 w-4" />
-                      </button>
-
-                      {/* Image counter */}
-                      <div className="absolute bottom-3 left-1/2 -translate-x-1/2 z-10 bg-cream/80 backdrop-blur-sm px-3 py-1 rounded-full">
-                        <span className="font-accent text-[11px] text-bark/60 tracking-wider">
-                          {activeImageIndex + 1} / {allImages.length}
-                        </span>
-                      </div>
-                    </>
-                  )}
-                </div>
-              </OrnamentalBorder>
-
-              {/* Thumbnail strip */}
-              {allImages.length > 1 && (
-                <div className="flex gap-2 mt-3 overflow-x-auto scrollbar-hide pb-1">
-                  {allImages.map((img, i) => (
-                    <button
-                      key={img}
-                      onClick={() => setActiveImageIndex(i)}
-                      className={cn(
-                        "relative flex-shrink-0 w-16 h-16 md:w-20 md:h-20 rounded-sm overflow-hidden border-2 transition-all duration-300 bg-parchment",
-                        i === activeImageIndex
-                          ? "border-gold shadow-gold ring-1 ring-gold/20"
-                          : "border-transparent opacity-60 hover:opacity-100 hover:border-border"
-                      )}
-                    >
-                      <Image
-                        src={img}
-                        alt={`${product.name} - thumbnail ${i + 1}`}
-                        fill
-                        className="object-contain"
-                        sizes="80px"
-                      />
-                    </button>
-                  ))}
-                </div>
-              )}
-
-              {/* Weight badge */}
-              <div className="absolute top-6 right-6 md:top-7 md:right-7 bg-cream/90 backdrop-blur-sm px-3 py-1 rounded-sm">
-                <span className="font-accent text-[11px] uppercase tracking-wider text-bark/60">
-                  {product.weight}g
-                </span>
+                    {/* Image counter — bottom-right */}
+                    <div className="absolute bottom-3 right-3 z-10 bg-cream/80 backdrop-blur-sm px-3 py-1 rounded-full">
+                      <span className="font-accent text-[11px] text-bark/60 tracking-wider">
+                        {activeImageIndex + 1} / {allImages.length}
+                      </span>
+                    </div>
+                  </>
+                )}
               </div>
             </div>
-          </ScrollReveal>
+
+            {/* Thumbnail strip */}
+            {allImages.length > 1 && (
+              <div className="flex gap-2 mt-3 overflow-x-auto scrollbar-hide pb-1">
+                {allImages.map((img, i) => (
+                  <button
+                    key={img}
+                    onClick={() => setActiveImageIndex(i)}
+                    className={cn(
+                      "relative flex-shrink-0 w-16 h-16 md:w-20 md:h-20 rounded-sm overflow-hidden border-2 transition-all duration-300 bg-parchment",
+                      i === activeImageIndex
+                        ? "border-gold shadow-gold ring-1 ring-gold/20"
+                        : "border-transparent opacity-60 hover:opacity-100 hover:border-border"
+                    )}
+                  >
+                    <Image
+                      src={img}
+                      alt={`${product.name} - thumbnail ${i + 1}`}
+                      fill
+                      className="object-contain"
+                      sizes="80px"
+                    />
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
 
           {/* Product Info */}
-          <ScrollReveal animation="fade-up" delay={100}>
-            <div className="flex flex-col">
-              <Link
-                href={`/shop?category=${product.categorySlug}`}
-                className="section-label text-sage hover:text-sage/80 transition-colors mb-2 w-fit"
+          <div className="flex flex-col">
+            {/* 1. Eyebrow — category */}
+            <Link
+              href={`/shop?category=${product.categorySlug}`}
+              className="font-accent hover:opacity-70 transition-opacity w-fit"
+              style={{
+                fontSize: "11px",
+                letterSpacing: "0.22em",
+                textTransform: "uppercase",
+                color: "#6B4226",
+              }}
+            >
+              {product.category}
+            </Link>
+
+            {/* 2. Product name */}
+            <h1
+              className="font-heading font-light mt-2"
+              style={{
+                fontSize: "clamp(40px, 5.5vw, 72px)",
+                lineHeight: 0.95,
+                letterSpacing: "-0.01em",
+                color: "#1A3C34",
+              }}
+            >
+              {product.name}
+            </h1>
+
+            {/* 3. Short description — italic pull-quote */}
+            <p
+              className="font-heading italic font-light mt-4"
+              style={{
+                fontSize: "clamp(18px, 2vw, 22px)",
+                lineHeight: 1.25,
+                color: "#A56843",
+              }}
+            >
+              {product.shortDescription}
+            </p>
+
+            {/* 4. WHAT'S INSIDE block */}
+            <div
+              className="mt-5 pl-4"
+              style={{ borderLeft: "1.5px solid #6B4226" }}
+            >
+              <p
+                className="font-accent uppercase"
+                style={{
+                  fontSize: "10px",
+                  letterSpacing: "0.22em",
+                  color: "rgba(107,66,38,0.70)",
+                }}
               >
-                {product.category}
-              </Link>
-
-              <GoldRule variant="simple" width="w-12" className="mb-3" />
-
-              <h1 className="font-heading text-2xl md:text-3xl lg:text-4xl text-bark font-light tracking-wide leading-tight">
-                {product.name}
-              </h1>
-
-              <p className="mt-3 text-bark/60 font-body text-sm md:text-base leading-relaxed">
-                {product.shortDescription}
+                What&apos;s Inside
               </p>
+              <p
+                className="font-heading italic text-lg mt-1"
+                style={{ color: "#1A3C34" }}
+              >
+                {product.ingredients}
+              </p>
+            </div>
 
-              <div className="mt-4 flex items-baseline gap-3">
-                <span className="font-heading text-2xl md:text-3xl text-terracotta">
-                  {formatPrice(product.price)}
-                </span>
-                {product.compareAtPrice && product.compareAtPrice > product.price && (
-                  <span className="text-base text-bark/40 line-through font-body">
-                    {formatPrice(product.compareAtPrice)}
-                  </span>
-                )}
-                {product.compareAtPrice && product.compareAtPrice > product.price && (
-                  <span className="text-xs font-accent uppercase tracking-wider bg-terracotta/10 text-terracotta px-2 py-0.5 rounded-sm">
-                    {Math.round((1 - product.price / product.compareAtPrice) * 100)}% Off
-                  </span>
-                )}
-                <span className="text-xs text-bark/40 font-accent uppercase tracking-wider">
-                  Incl. of all taxes
-                </span>
-              </div>
-
-              <GoldRule variant="diamond" width="w-full" className="my-5" />
-
-              {/* Quantity + Add to Potli */}
-              <div className="flex flex-col sm:flex-row gap-3">
-                <div className="flex items-center border border-border rounded-sm">
-                  <button
-                    onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                    className="px-3 py-2.5 text-bark/50 hover:text-bark transition-colors duration-200"
-                    aria-label="Decrease quantity"
-                  >
-                    <Minus className="h-4 w-4" />
-                  </button>
-                  <span className="px-4 py-2.5 font-accent text-sm text-bark min-w-[3rem] text-center border-x border-border">
-                    {quantity}
-                  </span>
-                  <button
-                    onClick={() => setQuantity(Math.min(10, quantity + 1))}
-                    className="px-3 py-2.5 text-bark/50 hover:text-bark transition-colors duration-200"
-                    aria-label="Increase quantity"
-                  >
-                    <Plus className="h-4 w-4" />
-                  </button>
-                </div>
-
-                <button
-                  onClick={handleAddToCart}
-                  className={cn(
-                    "flex-1 flex items-center justify-center gap-2 px-6 py-2.5 rounded-sm font-accent text-sm uppercase tracking-wider transition-all duration-300",
-                    addedToCart
-                      ? "bg-sage text-cream"
-                      : "bg-bark text-cream hover:bg-bark-light active:translate-y-px"
-                  )}
+            {/* 5. Price row */}
+            <div className="mt-6 flex items-baseline gap-3 flex-wrap">
+              <span
+                className="font-heading font-light"
+                style={{
+                  fontSize: "clamp(32px, 4vw, 48px)",
+                  color: "#1A3C34",
+                }}
+              >
+                ₹{product.price}
+              </span>
+              {product.compareAtPrice && product.compareAtPrice > product.price && (
+                <span
+                  className="font-body text-base"
+                  style={{
+                    color: "rgba(26,60,52,0.4)",
+                    textDecoration: "line-through",
+                  }}
                 >
-                  {addedToCart ? (
-                    <>
-                      <Check className="h-4 w-4" />
-                      Added to Potli
-                    </>
-                  ) : (
-                    <>
-                      <ShoppingBag className="h-4 w-4" />
-                      Add to Potli
-                    </>
-                  )}
+                  {formatPrice(product.compareAtPrice)}
+                </span>
+              )}
+              {product.compareAtPrice && product.compareAtPrice > product.price && (
+                <span
+                  className="font-accent uppercase px-2 py-0.5 rounded-sm"
+                  style={{
+                    fontSize: "10px",
+                    letterSpacing: "0.18em",
+                    background: "rgba(165,104,67,0.10)",
+                    color: "#A56843",
+                  }}
+                >
+                  {Math.round((1 - product.price / product.compareAtPrice) * 100)}% Off
+                </span>
+              )}
+            </div>
+
+            {/* 6. Quantity + Add to Potli */}
+            <div className="mt-4 flex gap-3">
+              {/* Qty stepper */}
+              <div
+                className="flex items-center rounded-sm"
+                style={{ border: "1px solid #E8D5B7" }}
+              >
+                <button
+                  onClick={() => setQuantity(Math.max(1, quantity - 1))}
+                  className="px-3 py-3 transition-colors duration-200"
+                  style={{ color: "#1A3C34" }}
+                  aria-label="Decrease quantity"
+                >
+                  <Minus className="h-4 w-4" />
+                </button>
+                <span
+                  className="px-4 py-3 font-body text-sm"
+                  style={{
+                    color: "#1A3C34",
+                    borderLeft: "1px solid #E8D5B7",
+                    borderRight: "1px solid #E8D5B7",
+                  }}
+                >
+                  {quantity}
+                </span>
+                <button
+                  onClick={() => setQuantity(Math.min(10, quantity + 1))}
+                  className="px-3 py-3 transition-colors duration-200"
+                  style={{ color: "#1A3C34" }}
+                  aria-label="Increase quantity"
+                >
+                  <Plus className="h-4 w-4" />
                 </button>
               </div>
 
+              {/* ADD TO POTLI button */}
               <button
-                onClick={handleBuyNow}
-                className="mt-3 flex items-center justify-center gap-2 px-6 py-2.5 rounded-sm font-accent text-sm uppercase tracking-wider bg-terracotta text-cream hover:bg-terracotta-dark active:translate-y-px transition-all duration-300"
-              >
-                <Zap className="h-4 w-4" />
-                Buy Now
-              </button>
-
-              <div className="mt-5 grid grid-cols-1 sm:grid-cols-3 gap-3">
-                {trustBadges.map((badge) => {
-                  const Icon = badge.icon;
-                  return (
-                    <div
-                      key={badge.label}
-                      className="flex items-center gap-2 text-xs text-bark/50 font-body"
-                    >
-                      <Icon className="h-4 w-4 text-sage flex-shrink-0" />
-                      {badge.label}
-                    </div>
-                  );
-                })}
-              </div>
-
-              {/* PIN Code Check */}
-              <div className="mt-5 pt-4 border-t border-border">
-                <div className="flex items-center gap-2 mb-2">
-                  <MapPin className="h-3.5 w-3.5 text-bark/40" />
-                  <span className="text-xs font-accent uppercase tracking-wider text-bark/50">
-                    Check Delivery
-                  </span>
-                </div>
-                <div className="flex gap-2">
-                  <input
-                    type="text"
-                    value={pincode}
-                    onChange={(e) => {
-                      setPincode(e.target.value.replace(/\D/g, "").slice(0, 6));
-                      setPincodeResult(null);
-                    }}
-                    placeholder="Enter PIN code"
-                    className="flex-1 px-3 py-2 border border-border rounded-sm text-sm font-body bg-cream focus:border-gold focus:outline-none transition-colors placeholder:text-bark/30"
-                  />
-                  <button
-                    onClick={checkPincode}
-                    disabled={pincodeLoading || pincode.length !== 6}
-                    className="px-4 py-2 text-xs font-accent uppercase tracking-wider border border-border rounded-sm text-bark/70 hover:border-bark hover:text-bark disabled:opacity-40 transition-colors"
-                  >
-                    {pincodeLoading ? "..." : "Check"}
-                  </button>
-                </div>
-                {pincodeResult && (
-                  <div className={`mt-2 text-xs font-body ${pincodeResult.serviceable ? "text-sage" : "text-terracotta"}`}>
-                    <p>{pincodeResult.message}</p>
-                    {pincodeResult.serviceable && pincodeResult.estimatedDays && (
-                      <p className="text-bark/50 mt-0.5">
-                        Estimated delivery: {pincodeResult.estimatedDays} days
-                        {pincodeResult.codAvailable && " · COD available"}
-                      </p>
-                    )}
-                  </div>
+                onClick={handleAddToCart}
+                className={cn(
+                  "flex-1 flex items-center justify-between px-5 py-3 rounded-sm font-body text-[13px] font-medium uppercase tracking-[0.18em] transition-all active:translate-y-px",
+                  addedToCart ? "opacity-80" : ""
                 )}
-              </div>
-
-              {/* Product Trust Icons */}
-              <div className="mt-5 pt-4 border-t border-border">
-                <div className="grid grid-cols-3 sm:grid-cols-5 gap-3">
-                  {[
-                    { icon: Leaf, label: "100% Natural", color: "text-sage" },
-                    { icon: Rabbit, label: "Cruelty Free", color: "text-terracotta" },
-                    { icon: FlaskConical, label: "No Parabens", color: "text-bark/70" },
-                    { icon: Sprout, label: "Organic", color: "text-sage" },
-                    { icon: Heart, label: "Vegan", color: "text-terracotta" },
-                  ].map((item) => {
-                    const Icon = item.icon;
-                    return (
-                      <div key={item.label} className="flex flex-col items-center text-center gap-1.5">
-                        <div className="w-10 h-10 rounded-full bg-surface-warm flex items-center justify-center">
-                          <Icon className={`h-5 w-5 ${item.color}`} />
-                        </div>
-                        <span className="text-[10px] font-accent uppercase tracking-wider text-bark/60 leading-tight">
-                          {item.label}
-                        </span>
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
-
-              {/* Social Share */}
-              <div className="mt-5 pt-4 border-t border-border">
-                <SocialShare
-                  url={`https://jaisonskincare.com/shop/${product.slug}`}
-                  title={product.name}
-                  description={product.shortDescription}
-                  image={product.image}
-                />
-              </div>
+                style={{
+                  background: "#606C38",
+                  color: "#FDFAF5",
+                }}
+              >
+                <span className="flex items-center gap-2">
+                  {addedToCart ? (
+                    <Check className="h-4 w-4" />
+                  ) : (
+                    <ShoppingBag className="h-4 w-4" />
+                  )}
+                  {addedToCart ? "Added" : "Add to Potli"}
+                </span>
+                <span>₹{product.price} →</span>
+              </button>
             </div>
-          </ScrollReveal>
+
+            {/* 7. Trust badges */}
+            <div className="mt-5 grid grid-cols-3 gap-3">
+              {[
+                { main: "Free over ₹499", sub: "Ships across India" },
+                { main: "7-day returns", sub: "If a powder is wrong for you" },
+                { main: "Cash on delivery", sub: "Available at checkout" },
+              ].map((badge) => (
+                <div
+                  key={badge.main}
+                  className="pt-3"
+                  style={{ borderTop: "1px solid #E8D5B7" }}
+                >
+                  <p
+                    className="font-body text-sm font-medium"
+                    style={{ color: "#1A3C34" }}
+                  >
+                    {badge.main}
+                  </p>
+                  <p
+                    className="font-body text-xs mt-0.5"
+                    style={{ color: "rgba(26,60,52,0.5)" }}
+                  >
+                    {badge.sub}
+                  </p>
+                </div>
+              ))}
+            </div>
+
+            {/* 8. PIN Code Check — kept exactly as-is */}
+            <div className="mt-5 pt-4 border-t border-border">
+              <div className="flex items-center gap-2 mb-2">
+                <MapPin className="h-3.5 w-3.5 text-bark/40" />
+                <span className="text-xs font-accent uppercase tracking-wider text-bark/50">
+                  Check Delivery
+                </span>
+              </div>
+              <div className="flex gap-2">
+                <input
+                  type="text"
+                  value={pincode}
+                  onChange={(e) => {
+                    setPincode(e.target.value.replace(/\D/g, "").slice(0, 6));
+                    setPincodeResult(null);
+                  }}
+                  placeholder="Enter PIN code"
+                  className="flex-1 px-3 py-2 border border-border rounded-sm text-sm font-body bg-cream focus:border-gold focus:outline-none transition-colors placeholder:text-bark/30"
+                />
+                <button
+                  onClick={checkPincode}
+                  disabled={pincodeLoading || pincode.length !== 6}
+                  className="px-4 py-2 text-xs font-accent uppercase tracking-wider border border-border rounded-sm text-bark/70 hover:border-bark hover:text-bark disabled:opacity-40 transition-colors"
+                >
+                  {pincodeLoading ? "..." : "Check"}
+                </button>
+              </div>
+              {pincodeResult && (
+                <div className={`mt-2 text-xs font-body ${pincodeResult.serviceable ? "text-sage" : "text-terracotta"}`}>
+                  <p>{pincodeResult.message}</p>
+                  {pincodeResult.serviceable && pincodeResult.estimatedDays && (
+                    <p className="text-bark/50 mt-0.5">
+                      Estimated delivery: {pincodeResult.estimatedDays} days
+                      {pincodeResult.codAvailable && " · COD available"}
+                    </p>
+                  )}
+                </div>
+              )}
+            </div>
+          </div>
         </div>
       </section>
 
