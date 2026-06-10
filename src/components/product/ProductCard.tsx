@@ -86,8 +86,8 @@ export default function ProductCard({ product }: ProductCardProps) {
   const [added, setAdded] = useState(false);
   const addItem = useCartStore((s) => s.addItem);
 
-  const bg = cardBgColors[product.slug] ?? "#F5ECD7";
-  const accent = accentColors[product.slug] ?? "#A0885C";
+  const bg = cardBgColors[product.slug] ?? "#EFE4C5";
+  const accent = accentColors[product.slug] ?? "#834316";
   const botanical = botanicalNames[product.slug] ?? "";
   const category = categoryLabels[product.slug] ?? product.category;
   const badge =
@@ -158,7 +158,7 @@ export default function ProductCard({ product }: ProductCardProps) {
             onClick={handleAddToPotli}
             className="w-8 h-8 rounded-full flex items-center justify-center transition-opacity hover:opacity-80"
             style={{ backgroundColor: accent, color: "white" }}
-            aria-label="Add to cart"
+            aria-label="Add to potli"
           >
             {added ? (
               <Check className="h-3.5 w-3.5" />

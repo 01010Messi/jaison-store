@@ -2,7 +2,7 @@
 
 import { Suspense, useState, useMemo } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
-import { SlidersHorizontal, ChevronDown, X } from "lucide-react";
+import { ChevronDown, X } from "lucide-react";
 import ScrollReveal from "@/components/decorative/ScrollReveal";
 import ProductCard from "@/components/product/ProductCard";
 import { ProductGridSkeleton } from "@/components/ui/Skeleton";
@@ -118,18 +118,17 @@ function ShopContent() {
       {/* Filters Bar */}
       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-8">
         {/* Category pills */}
-        <div className="flex items-center gap-2 overflow-x-auto scrollbar-hide pb-2 md:pb-0">
-          <SlidersHorizontal className="h-4 w-4 text-bark/40 flex-shrink-0 hidden md:block" />
+        <div className="flex items-center gap-2 overflow-x-auto scrollbar-hide pb-1 md:pb-0">
           {filterButtons.map((btn) => (
             <button
               key={btn.value}
               onClick={() => setFilter("category", btn.value)}
-              className={cn(
-                "flex-shrink-0 px-4 py-1.5 rounded-full text-xs font-accent uppercase tracking-wider transition-all duration-300",
+              className="flex-shrink-0 px-5 py-2 rounded-full font-accent text-[11px] uppercase tracking-wider transition-all duration-200 border"
+              style={
                 activeCategory === btn.value
-                  ? "bg-bark text-cream"
-                  : "bg-parchment/50 text-bark/60 hover:bg-parchment hover:text-bark"
-              )}
+                  ? { backgroundColor: "#36541F", color: "#FEFAE0", borderColor: "#36541F" }
+                  : { backgroundColor: "transparent", color: "rgba(40,54,24,0.55)", borderColor: "#EFE4C5" }
+              }
             >
               {btn.label}
             </button>
@@ -145,12 +144,13 @@ function ShopContent() {
           <div className="relative">
             <button
               onClick={() => setShowSortMenu(!showSortMenu)}
-              className="flex items-center gap-2 px-4 py-1.5 border border-border rounded-sm text-xs font-accent uppercase tracking-wider text-bark/70 hover:border-gold transition-colors"
+              className="flex items-center gap-2 px-4 py-2 border rounded-full font-accent text-[11px] uppercase tracking-wider transition-colors"
+              style={{ borderColor: "#EFE4C5", color: "rgba(40,54,24,0.6)" }}
             >
               {sortLabels[activeSort]}
               <ChevronDown
                 className={cn(
-                  "h-3.5 w-3.5 transition-transform",
+                  "h-3 w-3 transition-transform",
                   showSortMenu && "rotate-180"
                 )}
               />
@@ -161,7 +161,7 @@ function ShopContent() {
                   className="fixed inset-0 z-10"
                   onClick={() => setShowSortMenu(false)}
                 />
-                <div className="absolute right-0 top-full mt-1 z-20 bg-cream border border-border rounded-sm shadow-warm py-1 min-w-[180px]">
+                <div className="absolute right-0 top-full mt-2 z-20 bg-cream border border-border rounded-xl shadow-warm-lg py-1.5 min-w-[190px]">
                   {Object.entries(sortLabels).map(([key, label]) => (
                     <button
                       key={key}
@@ -170,9 +170,9 @@ function ShopContent() {
                         setShowSortMenu(false);
                       }}
                       className={cn(
-                        "w-full text-left px-4 py-2 text-xs font-accent uppercase tracking-wider transition-colors",
+                        "w-full text-left px-4 py-2.5 text-xs font-accent uppercase tracking-wider transition-colors",
                         activeSort === key
-                          ? "text-terracotta bg-parchment/30"
+                          ? "text-[#36541F] bg-[#EFE4C5]/40"
                           : "text-bark/60 hover:text-bark hover:bg-parchment/20"
                       )}
                     >
@@ -247,7 +247,7 @@ export default function ShopPage() {
           </p>
           <h1 className="font-heading text-[2.75rem] md:text-[3.5rem] lg:text-[4.5rem] text-bark font-light leading-[1.08] tracking-[-0.01em]">
             Pick a powder.
-            <span className="block" style={{ color: "#A0885C", fontStyle: "italic", fontWeight: 300 }}>
+            <span className="block" style={{ color: "#834316", fontStyle: "italic", fontWeight: 300 }}>
               Build your ritual.
             </span>
           </h1>

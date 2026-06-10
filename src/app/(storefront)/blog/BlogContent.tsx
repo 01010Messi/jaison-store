@@ -62,19 +62,19 @@ function BlogCard({ post }: { post: typeof blogPosts[0] }) {
       <div className="mt-4">
         <p
           className="font-accent text-[9px] tracking-[0.2em] uppercase mb-2"
-          style={{ color: "#A0885C" }}
+          style={{ color: "#834316" }}
         >
           {post.category.toUpperCase()}
         </p>
         <h2
           className="font-heading font-light leading-snug blog-card-title"
-          style={{ fontSize: "1.2rem", color: "#1A3C34" }}
+          style={{ fontSize: "1.2rem", color: "#283618" }}
         >
           {post.title}
         </h2>
         <p
           className="mt-1.5 font-accent text-[10px] tracking-widest"
-          style={{ color: "rgba(26,60,52,0.38)" }}
+          style={{ color: "rgba(40,54,24,0.38)" }}
         >
           {post.readTime} min read
         </p>
@@ -97,11 +97,11 @@ export default function BlogContent() {
           transition: background-color 0.2s, color 0.2s, box-shadow 0.2s;
         }
         .blog-filter-pill:hover {
-          box-shadow: 0 0 14px rgba(26,60,52,0.15);
+          box-shadow: 0 0 14px rgba(40,54,24,0.15);
         }
         .blog-card { transition: transform 0.25s; }
         .blog-card:hover { transform: translateY(-4px); }
-        .blog-card:hover .blog-card-title { color: #A0885C !important; }
+        .blog-card:hover .blog-card-title { color: #834316 !important; }
       `}</style>
 
       {/* Filter pills */}
@@ -114,9 +114,9 @@ export default function BlogContent() {
               onClick={() => setFilter(f)}
               className="blog-filter-pill rounded-full px-5 py-2 font-accent text-[10px] tracking-[0.15em] uppercase border"
               style={{
-                backgroundColor: active ? "#1A3C34" : "transparent",
-                color:           active ? "#FDFAF5" : "#1A3C34",
-                borderColor:     active ? "#1A3C34" : "rgba(26,60,52,0.25)",
+                backgroundColor: active ? "#283618" : "transparent",
+                color:           active ? "#FEFAE0" : "#283618",
+                borderColor:     active ? "#283618" : "rgba(40,54,24,0.25)",
               }}
             >
               {f === "all" ? "ALL" : f === "skin care" ? "SKIN CARE" : "HAIR CARE"}

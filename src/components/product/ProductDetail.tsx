@@ -30,20 +30,14 @@ import GoldRule from "@/components/decorative/GoldRule";
 import OrnamentalBorder from "@/components/decorative/OrnamentalBorder";
 import ProductCard from "@/components/product/ProductCard";
 import ProductReviews from "@/components/product/ProductReviews";
+import ProductStory from "@/components/product/ProductStory";
+import ProductFAQ from "@/components/product/ProductFAQ";
+import { getProductFaqs } from "@/data/productFaqs";
 import SocialShare from "@/components/ui/SocialShare";
 import { useCartStore } from "@/store/cart-store";
 import { formatPrice, cn } from "@/lib/utils";
 import toast from "react-hot-toast";
 import type { Product } from "@/data/products";
-
-type TabKey = "description" | "ingredients" | "how-to-use" | "benefits";
-
-const tabs: { key: TabKey; label: string }[] = [
-  { key: "description", label: "Description" },
-  { key: "ingredients", label: "Ingredients" },
-  { key: "how-to-use", label: "How to Use" },
-  { key: "benefits", label: "Benefits" },
-];
 
 const trustBadges = [
   { icon: Truck, label: "Free shipping above ₹499" },
@@ -58,7 +52,6 @@ interface ProductDetailProps {
 export default function ProductDetail({ product }: ProductDetailProps) {
   const router = useRouter();
   const [quantity, setQuantity] = useState(1);
-  const [activeTab, setActiveTab] = useState<TabKey>("description");
   const [addedToCart, setAddedToCart] = useState(false);
   const [activeImageIndex, setActiveImageIndex] = useState(0);
   const [zoomLevel, setZoomLevel] = useState(0); // 0 = no zoom, 1-3 = zoom steps
@@ -101,7 +94,7 @@ export default function ProductDetail({ product }: ProductDetailProps) {
       quantity,
     });
     setAddedToCart(true);
-    toast.success(`${product.name} added to cart`);
+    toast.success(`${product.name} added to your potli`);
     setTimeout(() => setAddedToCart(false), 2000);
     openCart();
   };
@@ -216,12 +209,7 @@ export default function ProductDetail({ product }: ProductDetailProps) {
 
   const relatedBlogPosts = getBlogPostsForProduct(product.slug);
 
-  const tabContent: Record<TabKey, string> = {
-    description: product.description,
-    ingredients: product.ingredients,
-    "how-to-use": product.howToUse,
-    benefits: product.benefits,
-  };
+  const faqs = getProductFaqs(product);
 
   return (
     <div className="min-h-screen">
@@ -442,9 +430,9 @@ export default function ProductDetail({ product }: ProductDetailProps) {
                 </span>
               </div>
 
-              <GoldRule variant="diamond" width="w-full" className="my-6" />
+              <GoldRule variant="diamond" width="w-full" className="my-5" />
 
-              {/* Quantity + Add to Cart */}
+              {/* Quantity + Add to Potli */}
               <div className="flex flex-col sm:flex-row gap-3">
                 <div className="flex items-center border border-border rounded-sm">
                   <button
@@ -478,12 +466,12 @@ export default function ProductDetail({ product }: ProductDetailProps) {
                   {addedToCart ? (
                     <>
                       <Check className="h-4 w-4" />
-                      Added to Cart
+                      Added to Potli
                     </>
                   ) : (
                     <>
                       <ShoppingBag className="h-4 w-4" />
-                      Add to Cart
+                      Add to Potli
                     </>
                   )}
                 </button>
@@ -497,7 +485,7 @@ export default function ProductDetail({ product }: ProductDetailProps) {
                 Buy Now
               </button>
 
-              <div className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-3">
+              <div className="mt-5 grid grid-cols-1 sm:grid-cols-3 gap-3">
                 {trustBadges.map((badge) => {
                   const Icon = badge.icon;
                   return (
@@ -553,7 +541,7 @@ export default function ProductDetail({ product }: ProductDetailProps) {
               </div>
 
               {/* Product Trust Icons */}
-              <div className="mt-6 pt-5 border-t border-border">
+              <div className="mt-5 pt-4 border-t border-border">
                 <div className="grid grid-cols-3 sm:grid-cols-5 gap-3">
                   {[
                     { icon: Leaf, label: "100% Natural", color: "text-sage" },
@@ -578,7 +566,7 @@ export default function ProductDetail({ product }: ProductDetailProps) {
               </div>
 
               {/* Social Share */}
-              <div className="mt-6 pt-5 border-t border-border">
+              <div className="mt-5 pt-4 border-t border-border">
                 <SocialShare
                   url={`https://jaisonskincare.com/shop/${product.slug}`}
                   title={product.name}
@@ -591,59 +579,8 @@ export default function ProductDetail({ product }: ProductDetailProps) {
         </div>
       </section>
 
-      {/* Product Details Tabs */}
-      <section className="bg-surface-warm py-12 md:py-16">
-        <div className="container-brand">
-          <ScrollReveal animation="fade-up">
-            <div className="flex overflow-x-auto scrollbar-hide border-b border-border gap-0">
-              {tabs.map((tab) => (
-                <button
-                  key={tab.key}
-                  onClick={() => setActiveTab(tab.key)}
-                  className={cn(
-                    "flex-shrink-0 px-4 md:px-6 py-3 font-accent text-xs uppercase tracking-wider transition-all duration-300 relative",
-                    activeTab === tab.key
-                      ? "text-terracotta"
-                      : "text-bark/40 hover:text-bark/70"
-                  )}
-                >
-                  {tab.label}
-                  {activeTab === tab.key && (
-                    <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-terracotta transition-all duration-300" />
-                  )}
-                </button>
-              ))}
-            </div>
-
-            <div className="py-8 md:py-10 max-w-3xl">
-              {activeTab === "benefits" ? (
-                <ul className="space-y-2">
-                  {tabContent[activeTab].split("\n").map((benefit, i) => (
-                    <li
-                      key={i}
-                      className="flex items-start gap-2 text-bark/70 font-body text-sm leading-relaxed"
-                    >
-                      <Check className="h-4 w-4 text-sage mt-0.5 flex-shrink-0" />
-                      {benefit}
-                    </li>
-                  ))}
-                </ul>
-              ) : (
-                <div className="space-y-4">
-                  {tabContent[activeTab].split("\n\n").map((paragraph, i) => (
-                    <p
-                      key={i}
-                      className="text-bark/70 font-body text-sm md:text-base leading-relaxed"
-                    >
-                      {paragraph}
-                    </p>
-                  ))}
-                </div>
-              )}
-            </div>
-          </ScrollReveal>
-        </div>
-      </section>
+      {/* Ritual · Ingredients · Why It Works */}
+      <ProductStory product={product} />
 
       {/* Customer Reviews */}
       <section className="py-4">
@@ -652,19 +589,24 @@ export default function ProductDetail({ product }: ProductDetailProps) {
         </div>
       </section>
 
+      {/* FAQ */}
+      <ProductFAQ productName={product.name} faqs={faqs} />
+
       {/* Related Blog Posts */}
       {relatedBlogPosts.length > 0 && (
-        <section className="py-10 md:py-14">
+        <section className="py-10 md:py-12">
           <div className="container-brand">
             <ScrollReveal animation="fade-up">
-              <div className="text-center mb-8">
-                <p className="section-label text-sage mb-2">From Our Blog</p>
-                <h2 className="font-heading text-xl md:text-2xl text-bark font-light">
-                  Learn More About {product.name}
+              <div className="mb-8 max-w-3xl mx-auto">
+                <p className="font-accent text-[10px] tracking-[0.2em] uppercase text-bark/40 mb-4">
+                  — From the Journal
+                </p>
+                <h2 className="font-heading text-[1.75rem] md:text-[2.25rem] text-bark font-light leading-[1.08] tracking-[-0.01em]">
+                  Go deeper on{" "}
+                  <span style={{ color: "#834316", fontStyle: "italic" }}>
+                    {product.name}.
+                  </span>
                 </h2>
-                <div className="flex justify-center mt-3">
-                  <GoldRule variant="simple" width="w-16" />
-                </div>
               </div>
             </ScrollReveal>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
@@ -705,19 +647,19 @@ export default function ProductDetail({ product }: ProductDetailProps) {
 
       {/* Related Products */}
       {relatedProducts.length > 0 && (
-        <section className="py-12 md:py-16">
+        <section className="py-10 md:py-14">
           <div className="container-brand">
             <ScrollReveal animation="fade-up">
-              <div className="text-center mb-10">
-                <p className="section-label text-sage mb-3">
-                  You May Also Like
+              <div className="mb-10">
+                <p className="font-accent text-[10px] tracking-[0.2em] uppercase text-bark/40 mb-4">
+                  — Pairs Well With · {product.category}
                 </p>
-                <h2 className="font-heading text-2xl md:text-3xl text-bark">
-                  Related Products
+                <h2 className="font-heading text-[2.25rem] md:text-[3rem] text-bark font-light leading-[1.08] tracking-[-0.01em]">
+                  Complete the{" "}
+                  <span style={{ color: "#834316", fontStyle: "italic" }}>
+                    ritual.
+                  </span>
                 </h2>
-                <div className="flex justify-center mt-3">
-                  <GoldRule variant="simple" width="w-16" />
-                </div>
               </div>
             </ScrollReveal>
 

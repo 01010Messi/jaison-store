@@ -70,7 +70,7 @@ export default function TestimonialsSection() {
               People who mix
               <span
                 className="block"
-                style={{ color: "#A0885C", fontStyle: "italic", fontWeight: 300 }}
+                style={{ color: "#834316", fontStyle: "italic", fontWeight: 300 }}
               >
                 their own skincare.
               </span>

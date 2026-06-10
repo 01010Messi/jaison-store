@@ -10,39 +10,39 @@ const config: Config = {
     extend: {
       colors: {
         cream: {
-          DEFAULT: "#FDFAF5",
-          50: "#FEFDF9",
-          100: "#FBF6EC",
+          DEFAULT: "#FEFAE0",
+          50: "#FFFDF0",
+          100: "#FBF4D8",
         },
         parchment: {
-          DEFAULT: "#F5ECD7",
-          dark: "#E8D5B7",
+          DEFAULT: "#EFE4C5",
+          dark: "#E0CFA6",
         },
         terracotta: {
-          DEFAULT: "#A0885C",
-          light: "#BCA480",
-          dark: "#8A7346",
+          DEFAULT: "#834316",
+          light: "#A4622B",
+          dark: "#6B370F",
         },
         sage: {
-          DEFAULT: "#7A9E7E",
-          light: "#9BB89E",
-          dark: "#5C7E60",
+          DEFAULT: "#606C38",
+          light: "#87964F",
+          dark: "#36541F",
         },
         bark: {
-          DEFAULT: "#1A3C34",
-          light: "#2B5248",
-          50: "#3D685C",
+          DEFAULT: "#283618",
+          light: "#3A4D24",
+          50: "#4C6230",
         },
         gold: {
           DEFAULT: "#BCA480",
           light: "#D2BA96",
           dark: "#A08A64",
         },
-        surface: "#FDFAF5",
-        "surface-warm": "#F5ECD7",
-        "surface-dark": "#1A3C34",
-        border: "#E8D5B7",
-        "border-light": "#F0E6D0",
+        surface: "#FEFAE0",
+        "surface-warm": "#EFE4C5",
+        "surface-dark": "#283618",
+        border: "#E0CFA6",
+        "border-light": "#F2E9CC",
       },
       fontFamily: {
         heading: ["var(--font-heading)", "Georgia", "serif"],
@@ -50,10 +50,10 @@ const config: Config = {
         accent: ["var(--font-accent)", "system-ui", "sans-serif"],
       },
       boxShadow: {
-        warm: "0 4px 20px rgba(26, 60, 52, 0.08)",
-        "warm-lg": "0 8px 40px rgba(26, 60, 52, 0.12)",
-        "warm-xl": "0 12px 60px rgba(26, 60, 52, 0.16)",
-        gold: "0 2px 12px rgba(188, 164, 128, 0.3)",
+        warm: "0 4px 20px rgba(40, 54, 24, 0.08)",
+        "warm-lg": "0 8px 40px rgba(40, 54, 24, 0.12)",
+        "warm-xl": "0 12px 60px rgba(40, 54, 24, 0.16)",
+        gold: "0 2px 12px rgba(226, 103, 19, 0.3)",
       },
       backgroundImage: {
         "botanical-pattern": "url('/images/patterns/botanical-tile.svg')",
@@ -140,7 +140,7 @@ const config: Config = {
       typography: {
         DEFAULT: {
           css: {
-            color: "#1A3C34",
+            color: "#283618",
             maxWidth: "65ch",
           },
         },

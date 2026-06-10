@@ -114,6 +114,12 @@ export default function ProductReviews({
     }
   }, [count, averageRating, productName]);
 
+  // Per design decision: the reviews section is hidden entirely until the
+  // product has at least one approved review.
+  if (reviews.length === 0) {
+    return null;
+  }
+
   return (
     <section className="mt-12 pt-10 border-t border-border-light">
       {/* Header */}

@@ -1,0 +1,69 @@
+interface PolicyHeroProps {
+  watermark: string;
+  eyebrow: string;
+  title: string;
+  accent: string;
+  sub?: string;
+}
+
+export default function PolicyHero({
+  watermark,
+  eyebrow,
+  title,
+  accent,
+  sub,
+}: PolicyHeroProps) {
+  return (
+    <section
+      style={{ backgroundColor: "#EFE4C5" }}
+      className="relative overflow-hidden pt-24 pb-14 px-6 md:px-14 lg:px-24"
+    >
+      {/* Watermark */}
+      <div
+        className="absolute inset-0 flex items-end pointer-events-none select-none overflow-hidden"
+        aria-hidden="true"
+      >
+        <span
+          className="font-heading font-light leading-none whitespace-nowrap"
+          style={{
+            fontSize: "clamp(6rem, 20vw, 15rem)",
+            color: "rgba(40,54,24,0.045)",
+            letterSpacing: "-0.04em",
+            marginBottom: "-0.15em",
+            marginLeft: "-0.04em",
+          }}
+        >
+          {watermark}
+        </span>
+      </div>
+
+      <p
+        className="relative font-accent text-[10px] tracking-[0.22em] uppercase mb-8"
+        style={{ color: "rgba(40,54,24,0.42)" }}
+      >
+        {eyebrow}
+      </p>
+
+      <h1
+        className="relative font-heading font-light leading-[1.06]"
+        style={{
+          fontSize: "clamp(2.5rem, 6vw, 4.5rem)",
+          letterSpacing: "-0.02em",
+          color: "#283618",
+        }}
+      >
+        {title}{" "}
+        <span style={{ color: "#834316", fontStyle: "italic" }}>{accent}</span>
+      </h1>
+
+      {sub && (
+        <p
+          className="relative mt-6 font-body text-base leading-relaxed"
+          style={{ color: "rgba(40,54,24,0.52)", maxWidth: "520px" }}
+        >
+          {sub}
+        </p>
+      )}
+    </section>
+  );
+}

@@ -58,16 +58,16 @@ export default function BlogSection() {
         .blog-scroll { scrollbar-width: none; }
         .blog-home-card { transition: transform 0.25s; flex-shrink: 0; }
         .blog-home-card:hover { transform: translateY(-4px); }
-        .blog-home-card:hover .blog-home-title { color: #A0885C !important; }
+        .blog-home-card:hover .blog-home-title { color: #834316 !important; }
         .arrow-btn { transition: background-color 0.2s, box-shadow 0.2s; }
-        .arrow-btn:hover { background-color: rgba(26,60,52,0.06); box-shadow: 0 0 12px rgba(26,60,52,0.1); }
+        .arrow-btn:hover { background-color: rgba(40,54,24,0.06); box-shadow: 0 0 12px rgba(40,54,24,0.1); }
         .view-all-btn { transition: box-shadow 0.2s, background-color 0.2s; }
-        .view-all-btn:hover { box-shadow: 0 0 18px rgba(26,60,52,0.12); }
+        .view-all-btn:hover { box-shadow: 0 0 18px rgba(40,54,24,0.12); }
       `}</style>
 
       <section
         className="py-16 md:py-24"
-        style={{ backgroundColor: "#FDFAF5" }}
+        style={{ backgroundColor: "#FEFAE0" }}
       >
         <div className="px-6 md:px-14 lg:px-24">
 
@@ -75,7 +75,7 @@ export default function BlogSection() {
           <div className="flex items-end justify-between mb-10">
             <h2
               className="font-heading font-light leading-[1.05]"
-              style={{ fontSize: "clamp(2rem, 5vw, 3.5rem)", letterSpacing: "-0.02em", color: "#1A3C34" }}
+              style={{ fontSize: "clamp(2rem, 5vw, 3.5rem)", letterSpacing: "-0.02em", color: "#283618" }}
             >
               Reads worth your time.
             </h2>
@@ -85,7 +85,7 @@ export default function BlogSection() {
               <button
                 onClick={() => scroll("left")}
                 className="arrow-btn w-9 h-9 rounded-full border flex items-center justify-center"
-                style={{ borderColor: "rgba(26,60,52,0.2)", color: "#1A3C34" }}
+                style={{ borderColor: "rgba(40,54,24,0.2)", color: "#283618" }}
                 aria-label="Scroll left"
               >
                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
@@ -95,7 +95,7 @@ export default function BlogSection() {
               <button
                 onClick={() => scroll("right")}
                 className="arrow-btn w-9 h-9 rounded-full border flex items-center justify-center"
-                style={{ borderColor: "rgba(26,60,52,0.2)", color: "#1A3C34" }}
+                style={{ borderColor: "rgba(40,54,24,0.2)", color: "#283618" }}
                 aria-label="Scroll right"
               >
                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
@@ -130,19 +130,19 @@ export default function BlogSection() {
                   <div className="mt-4">
                     <p
                       className="font-accent text-[9px] tracking-[0.2em] uppercase mb-1.5"
-                      style={{ color: "#A0885C" }}
+                      style={{ color: "#834316" }}
                     >
                       {post.category.toUpperCase()}
                     </p>
                     <h3
                       className="blog-home-title font-heading font-light leading-snug"
-                      style={{ fontSize: "1.15rem", color: "#1A3C34" }}
+                      style={{ fontSize: "1.15rem", color: "#283618" }}
                     >
                       {post.title}
                     </h3>
                     <p
                       className="mt-1.5 font-accent text-[10px] tracking-widest"
-                      style={{ color: "rgba(26,60,52,0.35)" }}
+                      style={{ color: "rgba(40,54,24,0.35)" }}
                     >
                       {post.readTime} min read
                     </p>
@@ -157,7 +157,7 @@ export default function BlogSection() {
             <Link
               href="/blog"
               className="view-all-btn inline-flex items-center gap-2 rounded-full border px-7 py-3 font-accent text-[10px] tracking-[0.15em] uppercase"
-              style={{ borderColor: "rgba(26,60,52,0.3)", color: "#1A3C34" }}
+              style={{ borderColor: "rgba(40,54,24,0.3)", color: "#283618" }}
             >
               VIEW ALL ARTICLES →
             </Link>

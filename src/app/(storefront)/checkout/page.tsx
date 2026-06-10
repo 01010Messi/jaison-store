@@ -261,7 +261,7 @@ export default function CheckoutPage() {
             contact: address.phone,
           },
           theme: {
-            color: "#1A3C34",
+            color: "#283618",
           },
           modal: {
             ondismiss: () => {
@@ -319,7 +319,7 @@ export default function CheckoutPage() {
       <div className="min-h-[60vh] flex flex-col items-center justify-center px-4">
         <ShoppingBag className="h-16 w-16 text-bark/15 mb-6" />
         <h1 className="font-heading text-2xl text-bark mb-3">
-          Your cart is empty
+          Your potli is empty
         </h1>
         <Link href="/shop">
           <Button variant="primary" size="md">
@@ -340,7 +340,7 @@ export default function CheckoutPage() {
             className="inline-flex items-center gap-1 text-xs font-accent uppercase tracking-wider text-bark/40 hover:text-bark transition-colors mb-4"
           >
             <ArrowLeft className="h-3.5 w-3.5" />
-            Back to Cart
+            Back to Potli
           </Link>
 
           {/* Progress steps */}

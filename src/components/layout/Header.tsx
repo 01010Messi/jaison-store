@@ -214,7 +214,7 @@ export default function Header() {
               <button
                 onClick={toggleCart}
                 className="flex items-center gap-1.5 bg-bark text-cream rounded-full px-3 py-1.5 hover:bg-bark/90 transition-colors relative"
-                aria-label="Cart"
+                aria-label="Potli"
               >
                 <ShoppingBag className="h-4 w-4" />
                 <span className="font-accent text-[11px] tracking-widest">POTLI</span>
@@ -239,7 +239,7 @@ export default function Header() {
             <button
               onClick={toggleCart}
               className="flex items-center gap-1.5 bg-bark text-cream rounded-full px-3 py-1.5 hover:bg-bark/90 transition-colors relative"
-              aria-label="Cart"
+              aria-label="Potli"
             >
               <ShoppingBag className="h-4 w-4" />
               {count > 0 && (
@@ -255,36 +255,45 @@ export default function Header() {
       {/* Search overlay */}
       {searchOpen && (
         <div
-          className="fixed inset-0 z-50 bg-bark/40 backdrop-blur-sm"
+          className="fixed inset-0 z-50"
+          style={{ backgroundColor: "rgba(40,54,24,0.5)" }}
           onClick={() => setSearchOpen(false)}
         >
           <div
-            className="bg-cream shadow-lg"
             onClick={(e) => e.stopPropagation()}
+            style={{ backgroundColor: "#EFE4C5" }}
           >
-            <div className="max-w-screen-lg mx-auto px-4 py-4">
+            <div className="max-w-screen-xl mx-auto px-6 md:px-14 py-6 md:py-8">
               <form
                 onSubmit={handleSearchSubmit}
-                className="flex items-center gap-3"
+                className="flex items-center gap-4 border-b-2"
+                style={{ borderColor: "rgba(131,67,22,0.2)" }}
               >
-                <Search className="h-5 w-5 text-bark/40 flex-shrink-0" />
+                <Search
+                  className="h-5 w-5 flex-shrink-0"
+                  style={{ color: "#834316" }}
+                />
                 <input
                   ref={searchInputRef}
                   type="text"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  placeholder="Search products..."
-                  className="flex-1 bg-transparent text-bark font-body text-lg outline-none placeholder:text-bark/30"
+                  placeholder="Search — amla, neem, ubtan..."
+                  className="flex-1 bg-transparent text-bark font-heading text-2xl md:text-3xl font-light tracking-tight outline-none placeholder:text-bark/25 pb-3"
+                  style={{ fontStyle: "italic" }}
                 />
                 <button
                   type="button"
                   onClick={() => setSearchOpen(false)}
-                  className="p-2 text-bark/50 hover:text-bark transition-colors"
+                  className="pb-3 p-1 text-bark/40 hover:text-bark transition-colors"
                   aria-label="Close search"
                 >
                   <X className="h-5 w-5" />
                 </button>
               </form>
+              <p className="mt-3 font-accent text-[10px] tracking-[0.18em] uppercase" style={{ color: "rgba(40,54,24,0.35)" }}>
+                Type a herb name, skin concern, or ingredient
+              </p>
             </div>
           </div>
         </div>

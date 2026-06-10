@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Your Potli",
+  title: "My Account",
   robots: { index: false, follow: false },
 };
 
-export default function CartLayout({
+export default function AccountLayout({
   children,
 }: {
   children: React.ReactNode;

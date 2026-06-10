@@ -16,12 +16,12 @@ export default function CartDrawer() {
   const total = subtotal();
 
   return (
-    <Drawer isOpen={isOpen} onClose={closeCart} title="Your Cart" side="right">
+    <Drawer isOpen={isOpen} onClose={closeCart} title="Your Potli" side="right">
       {items.length === 0 ? (
         <div className="flex flex-col items-center justify-center h-full px-6 text-center">
           <ShoppingBag className="h-12 w-12 text-bark/20 mb-4" />
           <p className="font-heading text-xl text-bark mb-2">
-            Your cart is empty
+            Your potli is empty
           </p>
           <p className="text-sm text-bark/50 font-body mb-6">
             Discover our collection of natural herbal products
@@ -132,7 +132,7 @@ export default function CartDrawer() {
               </Link>
               <Link href="/cart" onClick={closeCart}>
                 <Button variant="ghost" fullWidth size="sm">
-                  View Cart
+                  View Potli
                 </Button>
               </Link>
             </div>

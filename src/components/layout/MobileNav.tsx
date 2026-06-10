@@ -10,7 +10,7 @@ import { useCartStore } from "@/store/cart-store";
 const navItems = [
   { href: "/", icon: Home, label: "Home" },
   { href: "/shop", icon: Grid3X3, label: "Shop" },
-  { href: "#cart", icon: ShoppingBag, label: "Cart", isCart: true },
+  { href: "#cart", icon: ShoppingBag, label: "Potli", isCart: true },
   { href: "/account", icon: User, label: "Account" },
 ];
 

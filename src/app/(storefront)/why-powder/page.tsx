@@ -17,7 +17,7 @@ export default function WhyPowderPage() {
       {/* ── SECTION 1 — Hero ── */}
       <section
         className="relative overflow-hidden pt-36 md:pt-44 pb-20 md:pb-28"
-        style={{ backgroundColor: "#1A3C34", minHeight: "92vh" }}
+        style={{ backgroundColor: "#283618", minHeight: "92vh" }}
       >
         {/* Background watermark */}
         <div
@@ -28,7 +28,7 @@ export default function WhyPowderPage() {
             className="font-heading font-light leading-none"
             style={{
               fontSize: "clamp(200px, 40vw, 500px)",
-              color: "rgba(188,164,128,0.12)",
+              color: "rgba(226,103,19,0.12)",
               fontStyle: "italic",
               userSelect: "none",
             }}
@@ -41,25 +41,25 @@ export default function WhyPowderPage() {
         <div className="relative z-10 container-brand">
           <p
             className="font-accent text-[10px] tracking-[0.25em] uppercase mb-6"
-            style={{ color: "#BCA480" }}
+            style={{ color: "#E26713" }}
           >
             — THE POWDER PHILOSOPHY
           </p>
           <h1
             className="font-heading font-light leading-[1.02] tracking-[-0.02em]"
-            style={{ fontSize: "clamp(3rem, 8vw, 6.5rem)", color: "#FDFAF5" }}
+            style={{ fontSize: "clamp(3rem, 8vw, 6.5rem)", color: "#FEFAE0" }}
           >
             Just the herb.
             <span
               className="block"
-              style={{ color: "#BCA480", fontStyle: "italic" }}
+              style={{ color: "#E26713", fontStyle: "italic" }}
             >
               Nothing synthetic.
             </span>
           </h1>
           <p
             className="mt-8 max-w-xl font-body text-base md:text-lg leading-relaxed"
-            style={{ color: "rgba(253,250,245,0.6)" }}
+            style={{ color: "rgba(254,250,224,0.6)" }}
           >
             An essay on why we have never made a liquid, never added a
             preservative, and never will. Written by the makers at Jaison.
@@ -70,7 +70,7 @@ export default function WhyPowderPage() {
       {/* ── SECTION 2 — Essay body ── */}
       <section
         className="py-20 md:py-28"
-        style={{ backgroundColor: "#FDFAF5" }}
+        style={{ backgroundColor: "#FEFAE0" }}
       >
         <div className="container-brand max-w-3xl mx-auto">
 
@@ -78,13 +78,13 @@ export default function WhyPowderPage() {
           <div className="mb-16 md:mb-20">
             <h2
               className="font-heading font-light leading-[1.1] mb-5"
-              style={{ fontSize: "clamp(1.75rem, 4vw, 2.75rem)", color: "#A0885C" }}
+              style={{ fontSize: "clamp(1.75rem, 4vw, 2.75rem)", color: "#834316" }}
             >
               01 · The preservative problem.
             </h2>
             <p
               className="font-body text-base md:text-lg leading-relaxed mb-4"
-              style={{ color: "rgba(26,60,52,0.75)" }}
+              style={{ color: "rgba(40,54,24,0.75)" }}
             >
               Pick up any liquid skincare in your bathroom and read the
               ingredient list. Past the actives you&apos;ll find a preservative
@@ -99,13 +99,13 @@ export default function WhyPowderPage() {
           <div className="mb-16 md:mb-20">
             <h2
               className="font-heading font-light leading-[1.1] mb-5"
-              style={{ fontSize: "clamp(1.75rem, 4vw, 2.75rem)", color: "#A0885C" }}
+              style={{ fontSize: "clamp(1.75rem, 4vw, 2.75rem)", color: "#834316" }}
             >
               02 · What that costs you.
             </h2>
             <p
               className="font-body text-base md:text-lg leading-relaxed mb-4"
-              style={{ color: "rgba(26,60,52,0.75)" }}
+              style={{ color: "rgba(40,54,24,0.75)" }}
             >
               Preservatives are not benign. They are not &lsquo;natural
               alternatives to harsher things.&rsquo; Even the well-tolerated
@@ -120,13 +120,13 @@ export default function WhyPowderPage() {
           <div className="mb-16 md:mb-20">
             <h2
               className="font-heading font-light leading-[1.1] mb-5"
-              style={{ fontSize: "clamp(1.75rem, 4vw, 2.75rem)", color: "#A0885C" }}
+              style={{ fontSize: "clamp(1.75rem, 4vw, 2.75rem)", color: "#834316" }}
             >
               03 · What we do instead.
             </h2>
             <p
               className="font-body text-base md:text-lg leading-relaxed mb-4"
-              style={{ color: "rgba(26,60,52,0.75)" }}
+              style={{ color: "rgba(40,54,24,0.75)" }}
             >
               We never added a preservative, a stabiliser or a synthetic
               anything. A single dried herb doesn&apos;t need them. The idea is
@@ -140,13 +140,13 @@ export default function WhyPowderPage() {
           <div className="mb-16 md:mb-20">
             <h2
               className="font-heading font-light leading-[1.1] mb-5"
-              style={{ fontSize: "clamp(1.75rem, 4vw, 2.75rem)", color: "#A0885C" }}
+              style={{ fontSize: "clamp(1.75rem, 4vw, 2.75rem)", color: "#834316" }}
             >
               04 · Read the label.
             </h2>
             <p
               className="font-body text-base md:text-lg leading-relaxed mb-4"
-              style={{ color: "rgba(26,60,52,0.75)" }}
+              style={{ color: "rgba(40,54,24,0.75)" }}
             >
               When a brand says &lsquo;natural,&rsquo; count the ingredients. A
               true single-ingredient product has one. If the list runs to a
@@ -161,13 +161,13 @@ export default function WhyPowderPage() {
           <div className="mb-16 md:mb-20">
             <h2
               className="font-heading font-light leading-[1.1] mb-5"
-              style={{ fontSize: "clamp(1.75rem, 4vw, 2.75rem)", color: "#A0885C" }}
+              style={{ fontSize: "clamp(1.75rem, 4vw, 2.75rem)", color: "#834316" }}
             >
               05 · What changes.
             </h2>
             <p
               className="font-body text-base md:text-lg leading-relaxed mb-4"
-              style={{ color: "rgba(26,60,52,0.75)" }}
+              style={{ color: "rgba(40,54,24,0.75)" }}
             >
               You become the formulator. You take 1 tbsp of one herb and add
               2 tsp of one mixer — rose water, raw milk, plain curd — and you
@@ -181,13 +181,13 @@ export default function WhyPowderPage() {
           <div className="mb-0">
             <h2
               className="font-heading font-light leading-[1.1] mb-5"
-              style={{ fontSize: "clamp(1.75rem, 4vw, 2.75rem)", color: "#A0885C" }}
+              style={{ fontSize: "clamp(1.75rem, 4vw, 2.75rem)", color: "#834316" }}
             >
               06 · The closing line.
             </h2>
             <p
               className="font-body text-base md:text-lg leading-relaxed"
-              style={{ color: "rgba(26,60,52,0.75)" }}
+              style={{ color: "rgba(40,54,24,0.75)" }}
             >
               We are not against liquid skincare. We just don&apos;t make it.
               We never will. If you are looking for a bottle of something, this
@@ -198,19 +198,19 @@ export default function WhyPowderPage() {
           </div>
 
           {/* Divider */}
-          <hr style={{ borderColor: "rgba(26,60,52,0.1)" }} className="my-12" />
+          <hr style={{ borderColor: "rgba(40,54,24,0.1)" }} className="my-12" />
 
           {/* Signature */}
           <div>
             <p
               className="font-heading italic text-xl md:text-2xl"
-              style={{ color: "#1A3C34" }}
+              style={{ color: "#283618" }}
             >
               — The makers at Jaison
             </p>
             <p
               className="font-accent text-[10px] tracking-[0.2em] uppercase mt-2"
-              style={{ color: "rgba(26,60,52,0.4)" }}
+              style={{ color: "rgba(40,54,24,0.4)" }}
             >
               MADE IN INDIA · SINCE 1970
             </p>
@@ -221,18 +221,18 @@ export default function WhyPowderPage() {
       {/* ── SECTION 3 — Mid-page CTA ── */}
       <section
         className="py-20 md:py-24 text-center"
-        style={{ backgroundColor: "#F5ECD7" }}
+        style={{ backgroundColor: "#EFE4C5" }}
       >
         <div className="container-brand max-w-2xl mx-auto">
           <h2
             className="font-heading font-light"
-            style={{ fontSize: "clamp(2rem, 5vw, 3.5rem)", color: "#1A3C34", lineHeight: 1.08 }}
+            style={{ fontSize: "clamp(2rem, 5vw, 3.5rem)", color: "#283618", lineHeight: 1.08 }}
           >
             Don&apos;t know where to start?
           </h2>
           <p
             className="font-body text-base md:text-lg mt-4"
-            style={{ color: "rgba(26,60,52,0.55)" }}
+            style={{ color: "rgba(40,54,24,0.55)" }}
           >
             Four questions. We will pick two powders for your skin.
           </p>
@@ -240,8 +240,8 @@ export default function WhyPowderPage() {
             <GlowPillLink
               href="/find-your-ritual"
               className="text-cream"
-              style={{ backgroundColor: "#A0885C" }}
-              hoverShadow="0 0 0 3px rgba(160,136,92,0.25), 0 8px 28px rgba(160,136,92,0.35)"
+              style={{ backgroundColor: "#834316" }}
+              hoverShadow="0 0 0 3px rgba(131,67,22,0.25), 0 8px 28px rgba(131,67,22,0.35)"
             >
               FIND YOUR RITUAL
               <span style={{ fontSize: "1rem" }}>→</span>
@@ -253,7 +253,7 @@ export default function WhyPowderPage() {
       {/* ── SECTION 4 — Bottom CTA ("The Promise") ── */}
       <section
         className="relative overflow-hidden py-20 md:py-28 text-center"
-        style={{ backgroundColor: "#1A3C34" }}
+        style={{ backgroundColor: "#283618" }}
       >
         {/* Background "55" watermark */}
         <div
@@ -264,7 +264,7 @@ export default function WhyPowderPage() {
             className="font-heading font-light"
             style={{
               fontSize: "clamp(250px, 50vw, 600px)",
-              color: "rgba(188,164,128,0.08)",
+              color: "rgba(226,103,19,0.08)",
               lineHeight: 1,
               userSelect: "none",
             }}
@@ -277,22 +277,22 @@ export default function WhyPowderPage() {
         <div className="relative z-10 container-brand max-w-3xl mx-auto">
           <p
             className="font-accent text-[10px] tracking-[0.25em] uppercase mb-6"
-            style={{ color: "rgba(188,164,128,0.7)" }}
+            style={{ color: "rgba(226,103,19,0.7)" }}
           >
             — THE PROMISE
           </p>
           <h2
             className="font-heading font-light"
-            style={{ fontSize: "clamp(2.25rem, 6vw, 4.5rem)", color: "#FDFAF5", lineHeight: 1.05 }}
+            style={{ fontSize: "clamp(2.25rem, 6vw, 4.5rem)", color: "#FEFAE0", lineHeight: 1.05 }}
           >
             Purity isn&apos;t a feature.{" "}
-            <span style={{ color: "#BCA480", fontStyle: "italic" }}>
+            <span style={{ color: "#E26713", fontStyle: "italic" }}>
               It&apos;s the starting point.
             </span>
           </h2>
           <p
             className="mt-6 max-w-xl mx-auto font-body text-base md:text-lg leading-relaxed"
-            style={{ color: "rgba(253,250,245,0.55)" }}
+            style={{ color: "rgba(254,250,224,0.55)" }}
           >
             One herbal ingredient per jar. Mixed at home. Used twice a week.
             No preservatives, no synthetics, no fillers — that is the entire
@@ -301,8 +301,8 @@ export default function WhyPowderPage() {
           <div className="mt-10">
             <GlowPillLink
               href="/shop"
-              style={{ backgroundColor: "#FDFAF5", color: "#1A3C34" }}
-              hoverShadow="0 0 0 3px rgba(253,250,245,0.2), 0 8px 32px rgba(253,250,245,0.25)"
+              style={{ backgroundColor: "#FEFAE0", color: "#283618" }}
+              hoverShadow="0 0 0 3px rgba(254,250,224,0.2), 0 8px 32px rgba(254,250,224,0.25)"
             >
               SHOP THE CATALOGUE
               <span style={{ fontSize: "1rem" }}>→</span>

@@ -54,7 +54,7 @@ export async function sendOrderConfirmation(data: OrderEmailData) {
 <!DOCTYPE html>
 <html>
 <head><meta charset="utf-8"/></head>
-<body style="margin: 0; padding: 0; background-color: #FDFAF5; font-family: 'Georgia', serif;">
+<body style="margin: 0; padding: 0; background-color: #FEFAE0; font-family: 'Georgia', serif;">
   <div style="max-width: 600px; margin: 0 auto; padding: 24px;">
 
     <!-- Header -->
@@ -65,7 +65,7 @@ export async function sendOrderConfirmation(data: OrderEmailData) {
 
     <!-- Confirmation -->
     <div style="text-align: center; padding: 32px 0;">
-      <h2 style="margin: 0; color: #7A9E7E; font-size: 22px;">Order Confirmed!</h2>
+      <h2 style="margin: 0; color: #606C38; font-size: 22px;">Order Confirmed!</h2>
       <p style="color: #5C5C5C; margin: 8px 0 0;">Thank you for your order, ${data.customerName}.</p>
       <p style="color: #3D2B1F; font-size: 18px; margin: 16px 0 0;">
         Order <strong>#${data.orderNumber}</strong>
@@ -92,7 +92,7 @@ export async function sendOrderConfirmation(data: OrderEmailData) {
         <td style="padding: 4px 0; text-align: right; color: #3D2B1F;">${data.shippingCost === 0 ? "Free" : `₹${data.shippingCost}`}</td>
       </tr>
       ${data.codFee > 0 ? `<tr><td style="padding: 4px 0; color: #5C5C5C;">COD Fee</td><td style="padding: 4px 0; text-align: right; color: #3D2B1F;">₹${data.codFee}</td></tr>` : ""}
-      ${data.discount > 0 ? `<tr><td style="padding: 4px 0; color: #7A9E7E;">Discount</td><td style="padding: 4px 0; text-align: right; color: #7A9E7E;">-₹${data.discount}</td></tr>` : ""}
+      ${data.discount > 0 ? `<tr><td style="padding: 4px 0; color: #606C38;">Discount</td><td style="padding: 4px 0; text-align: right; color: #606C38;">-₹${data.discount}</td></tr>` : ""}
       <tr>
         <td style="padding: 12px 0; border-top: 2px solid #3D2B1F; font-weight: bold; font-size: 18px; color: #C1714F;">Total</td>
         <td style="padding: 12px 0; border-top: 2px solid #3D2B1F; font-weight: bold; font-size: 18px; color: #C1714F; text-align: right;">₹${data.total}</td>
@@ -100,7 +100,7 @@ export async function sendOrderConfirmation(data: OrderEmailData) {
     </table>
 
     <!-- Payment & Shipping -->
-    <div style="margin-top: 24px; padding: 20px; background: #F5ECD7; border-radius: 4px;">
+    <div style="margin-top: 24px; padding: 20px; background: #EFE4C5; border-radius: 4px;">
       <table style="width: 100%;">
         <tr>
           <td style="vertical-align: top; width: 50%; padding-right: 12px;">
@@ -121,7 +121,7 @@ export async function sendOrderConfirmation(data: OrderEmailData) {
       </table>
     </div>
 
-    ${data.invoiceUrl ? `<div style="text-align: center; margin-top: 24px;"><a href="${data.invoiceUrl}" style="display: inline-block; padding: 12px 24px; background: #3D2B1F; color: #FDFAF5; text-decoration: none; font-size: 14px; letter-spacing: 1px; text-transform: uppercase;">Download Invoice</a></div>` : ""}
+    ${data.invoiceUrl ? `<div style="text-align: center; margin-top: 24px;"><a href="${data.invoiceUrl}" style="display: inline-block; padding: 12px 24px; background: #3D2B1F; color: #FEFAE0; text-decoration: none; font-size: 14px; letter-spacing: 1px; text-transform: uppercase;">Download Invoice</a></div>` : ""}
 
     <!-- Footer -->
     <div style="text-align: center; padding: 32px 0; margin-top: 32px; border-top: 1px solid #E8D5B7;">
@@ -167,21 +167,21 @@ export async function sendShippingUpdate(data: {
 <!DOCTYPE html>
 <html>
 <head><meta charset="utf-8"/></head>
-<body style="margin: 0; padding: 0; background-color: #FDFAF5; font-family: 'Georgia', serif;">
+<body style="margin: 0; padding: 0; background-color: #FEFAE0; font-family: 'Georgia', serif;">
   <div style="max-width: 600px; margin: 0 auto; padding: 24px;">
     <div style="text-align: center; padding: 32px 0; border-bottom: 2px solid #BCA480;">
       <h1 style="margin: 0; font-size: 28px; color: #3D2B1F; letter-spacing: 2px;">jaison</h1>
     </div>
     <div style="text-align: center; padding: 32px 0;">
-      <h2 style="margin: 0; color: #7A9E7E; font-size: 22px;">Your Order Has Been Shipped!</h2>
+      <h2 style="margin: 0; color: #606C38; font-size: 22px;">Your Order Has Been Shipped!</h2>
       <p style="color: #5C5C5C; margin: 8px 0 0;">Hi ${data.customerName}, your order <strong>#${data.orderNumber}</strong> is on its way.</p>
     </div>
-    <div style="padding: 20px; background: #F5ECD7; border-radius: 4px; text-align: center;">
+    <div style="padding: 20px; background: #EFE4C5; border-radius: 4px; text-align: center;">
       <p style="margin: 0 0 4px; color: #5C5C5C; font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">Tracking Number</p>
       <p style="margin: 0; color: #3D2B1F; font-size: 20px; font-weight: bold;">${data.trackingNumber}</p>
       <p style="margin: 8px 0 0; color: #5C5C5C; font-size: 14px;">Via ${data.courierName}</p>
-      ${data.estimatedDelivery ? `<p style="margin: 8px 0 0; color: #7A9E7E; font-size: 14px;">Estimated delivery: ${data.estimatedDelivery}</p>` : ""}
-      <a href="${data.trackingUrl}" style="display: inline-block; margin-top: 16px; padding: 12px 24px; background: #C1714F; color: #FDFAF5; text-decoration: none; font-size: 14px; letter-spacing: 1px; text-transform: uppercase;">Track Order</a>
+      ${data.estimatedDelivery ? `<p style="margin: 8px 0 0; color: #606C38; font-size: 14px;">Estimated delivery: ${data.estimatedDelivery}</p>` : ""}
+      <a href="${data.trackingUrl}" style="display: inline-block; margin-top: 16px; padding: 12px 24px; background: #C1714F; color: #FEFAE0; text-decoration: none; font-size: 14px; letter-spacing: 1px; text-transform: uppercase;">Track Order</a>
     </div>
     <div style="text-align: center; padding: 32px 0; margin-top: 32px; border-top: 1px solid #E8D5B7;">
       <p style="color: #BCA480; font-size: 11px;">&copy; ${new Date().getFullYear()} ${APP_NAME} Natural Herbals</p>
@@ -215,7 +215,7 @@ export async function sendWelcomeEmail(data: {
 <!DOCTYPE html>
 <html>
 <head><meta charset="utf-8"/></head>
-<body style="margin: 0; padding: 0; background-color: #FDFAF5; font-family: 'Georgia', serif;">
+<body style="margin: 0; padding: 0; background-color: #FEFAE0; font-family: 'Georgia', serif;">
   <div style="max-width: 600px; margin: 0 auto; padding: 24px;">
     <div style="text-align: center; padding: 32px 0; border-bottom: 2px solid #BCA480;">
       <h1 style="margin: 0; font-size: 28px; color: #3D2B1F; letter-spacing: 2px;">jaison</h1>
@@ -231,7 +231,7 @@ export async function sendWelcomeEmail(data: {
       <p style="color: #C1714F; margin: 20px 0 0; font-size: 16px; font-style: italic;">
         Use code <strong>WELCOME10</strong> for 10% off your first order!
       </p>
-      <a href="https://jaisonskincare.com/shop" style="display: inline-block; margin-top: 20px; padding: 14px 32px; background: #C1714F; color: #FDFAF5; text-decoration: none; font-size: 14px; letter-spacing: 1px; text-transform: uppercase;">Shop Now</a>
+      <a href="https://jaisonskincare.com/shop" style="display: inline-block; margin-top: 20px; padding: 14px 32px; background: #C1714F; color: #FEFAE0; text-decoration: none; font-size: 14px; letter-spacing: 1px; text-transform: uppercase;">Shop Now</a>
     </div>
     <div style="text-align: center; padding: 32px 0; border-top: 1px solid #E8D5B7;">
       <p style="color: #BCA480; font-size: 11px;">&copy; ${new Date().getFullYear()} ${APP_NAME} Natural Herbals &mdash; jaisonskincare.com</p>

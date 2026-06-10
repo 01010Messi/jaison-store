@@ -67,13 +67,13 @@ export default function Footer() {
       <div className="border-b border-cream/10">
         <div className="container-brand py-14 md:py-20 flex flex-col md:flex-row md:items-center justify-between gap-8">
           {/* Left: copy */}
-          <div className="max-w-sm">
-            <p className="font-accent text-[11px] tracking-[0.2em] uppercase mb-4" style={{ color: "#BCA480" }}>
+          <div className="max-w-md">
+            <p className="font-accent text-[11px] tracking-[0.2em] uppercase mb-4" style={{ color: "#E26713" }}>
               — The Journal
             </p>
-            <h3 className="font-heading text-3xl md:text-4xl lg:text-5xl text-cream font-light leading-[1.1] mb-3">
+            <h3 className="font-heading text-2xl md:text-3xl text-cream font-light leading-[1.1] mb-3 whitespace-nowrap">
               Once a month.{" "}
-              <span style={{ color: "#A0885C", fontStyle: "italic", fontWeight: 300 }}>
+              <span style={{ color: "#E26713", fontStyle: "italic", fontWeight: 300 }}>
                 That is it.
               </span>
             </h3>
@@ -97,7 +97,7 @@ export default function Footer() {
               type="submit"
               disabled={isLoading}
               className="flex-shrink-0 flex items-center gap-2 px-8 py-4 rounded-full text-cream text-sm font-accent tracking-wider uppercase transition-opacity hover:opacity-90 disabled:opacity-50"
-              style={{ backgroundColor: "#A0885C" }}
+              style={{ backgroundColor: "#834316" }}
             >
               {isLoading ? "..." : "Subscribe"} {!isLoading && "→"}
             </button>

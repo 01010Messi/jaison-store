@@ -36,7 +36,7 @@ export default function FeaturedProducts() {
   });
 
   return (
-    <section className="bg-[#FDFAF5] pt-20 md:pt-28 pb-10">
+    <section className="bg-[#FEFAE0] pt-20 md:pt-28 pb-10">
       <div className="container-brand">
         {/* Header row: copy left, filter pills right (aligned to bottom) */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-12">
@@ -48,7 +48,7 @@ export default function FeaturedProducts() {
             <h2 className="font-heading text-[2.75rem] md:text-[3.5rem] lg:text-[4.5rem] text-bark font-light leading-[1.08] tracking-[-0.01em]">
               If nature had a
               <span className="block">skincare lab,</span>
-              <span className="block" style={{ color: "#A0885C", fontStyle: "italic", fontWeight: 300 }}>
+              <span className="block" style={{ color: "#834316", fontStyle: "italic", fontWeight: 300 }}>
                 this would be it.
               </span>
             </h2>

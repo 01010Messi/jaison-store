@@ -58,11 +58,11 @@ export default function CartPage() {
       <div className="min-h-[60vh] flex flex-col items-center justify-center px-4">
         <ShoppingBag className="h-16 w-16 text-bark/15 mb-6" />
         <h1 className="font-heading text-2xl md:text-3xl text-bark mb-3">
-          Your cart is empty
+          Your potli is empty
         </h1>
         <p className="text-bark/50 font-body text-sm mb-8 text-center max-w-md">
           Looks like you haven&apos;t added any of our natural herbal products
-          to your cart yet.
+          to your potli yet.
         </p>
         <Link href="/shop">
           <Button variant="primary" size="lg">
@@ -79,9 +79,9 @@ export default function CartPage() {
       <div className="bg-surface-warm py-8 md:py-12">
         <div className="container-brand">
           <ScrollReveal animation="fade-up">
-            <p className="section-label text-sage mb-2">Shopping Cart</p>
+            <p className="section-label text-sage mb-2">The Potli</p>
             <h1 className="font-heading text-2xl md:text-3xl text-bark">
-              Your Cart ({items.length} item{items.length !== 1 ? "s" : ""})
+              Your Potli ({items.length} item{items.length !== 1 ? "s" : ""})
             </h1>
           </ScrollReveal>
         </div>
@@ -193,11 +193,11 @@ export default function CartPage() {
               <button
                 onClick={() => {
                   clearCart();
-                  toast.success("Cart cleared");
+                  toast.success("Potli emptied");
                 }}
                 className="text-xs font-accent uppercase tracking-wider text-bark/40 hover:text-terracotta transition-colors"
               >
-                Clear Cart
+                Empty Potli
               </button>
             </div>
           </div>

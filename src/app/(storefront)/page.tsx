@@ -2,9 +2,11 @@ import type { Metadata } from "next";
 import HeroSection from "@/components/home/HeroSection";
 import FeaturedProducts from "@/components/home/FeaturedProducts";
 import HowToUseGuide from "@/components/home/HowToUseGuide";
+import BrandTimeline from "@/components/home/BrandTimeline";
 import TestimonialsSection from "@/components/home/TestimonialsSection";
 import InstagramSection from "@/components/home/InstagramSection";
 import BlogSection from "@/components/home/BlogSection";
+import WhyPowderTeaser from "@/components/home/WhyPowderTeaser";
 import SectionDivider from "@/components/decorative/SectionDivider";
 
 export const metadata: Metadata = {
@@ -19,10 +21,14 @@ export const metadata: Metadata = {
 export default function HomePage() {
   return (
     <>
+      <h1 className="sr-only">
+        Jaison Herbals — Natural Ayurvedic Herbal Powders for Skin &amp; Hair
+      </h1>
       <HeroSection />
       <FeaturedProducts />
-      <SectionDivider variant="mandala" />
       <HowToUseGuide />
+      <BrandTimeline />
+      <WhyPowderTeaser />
       <TestimonialsSection />
       <SectionDivider variant="gold" />
       <InstagramSection />
