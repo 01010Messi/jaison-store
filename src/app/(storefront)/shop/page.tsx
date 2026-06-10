@@ -127,7 +127,7 @@ function ShopContent() {
               className="flex-shrink-0 px-5 py-2 rounded-full font-accent text-[11px] uppercase tracking-wider transition-all duration-200 border"
               style={
                 activeCategory === btn.value
-                  ? { backgroundColor: "#36541F", color: "#FEFAE0", borderColor: "#36541F" }
+                  ? { backgroundColor: "#834316", color: "#FEFAE0", borderColor: "#834316" }
                   : { backgroundColor: "transparent", color: "rgba(26,60,52,0.55)", borderColor: "#EFE4C5" }
               }
             >
@@ -173,7 +173,7 @@ function ShopContent() {
                       className={cn(
                         "w-full text-left px-4 py-2.5 text-xs font-accent uppercase tracking-wider transition-colors",
                         activeSort === key
-                          ? "text-[#36541F] bg-[#EFE4C5]/40"
+                          ? "text-[#834316] bg-[#EFE4C5]/40"
                           : "text-bark/60 hover:text-bark hover:bg-parchment/20"
                       )}
                     >

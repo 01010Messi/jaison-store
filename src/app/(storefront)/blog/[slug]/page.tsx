@@ -204,16 +204,18 @@ export default function BlogPostPage({ params }: Props) {
       <article className="min-h-screen">
         {/* Hero */}
         <div className="bg-surface-warm py-10 md:py-14">
-          <div className="container-brand max-w-3xl mx-auto">
+          <div className="container-brand mb-6">
             <Link
               href="/blog"
-              className="inline-flex items-center gap-1.5 text-[10px] font-accent uppercase tracking-wider text-bark/50 hover:text-bark transition-colors mb-6 rounded-full border px-4 py-2"
+              className="inline-flex items-center gap-1.5 text-[10px] font-accent uppercase tracking-wider text-bark/50 hover:text-bark transition-colors rounded-full border px-4 py-2"
               style={{ borderColor: "rgba(26,60,52,0.2)" }}
             >
               <ArrowLeft className="h-3 w-3" />
               Back to Blog
             </Link>
+          </div>
 
+          <div className="container-brand max-w-3xl mx-auto">
             <span className="inline-block px-4 py-1.5 bg-parchment text-[10px] font-accent uppercase tracking-[0.15em] text-bark/60 rounded-full mb-4">
               {post.category}
             </span>
