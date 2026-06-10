@@ -3,7 +3,6 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import { Clock, ArrowLeft, ArrowRight } from "lucide-react";
-import GoldRule from "@/components/decorative/GoldRule";
 import SocialShare from "@/components/ui/SocialShare";
 import { BreadcrumbJsonLd } from "@/components/seo/JsonLd";
 import { ArticleJsonLd } from "@/components/seo/JsonLd";
@@ -208,13 +207,14 @@ export default function BlogPostPage({ params }: Props) {
           <div className="container-brand max-w-3xl mx-auto">
             <Link
               href="/blog"
-              className="inline-flex items-center gap-1.5 text-xs font-accent uppercase tracking-wider text-bark/50 hover:text-bark transition-colors mb-6"
+              className="inline-flex items-center gap-1.5 text-[10px] font-accent uppercase tracking-wider text-bark/50 hover:text-bark transition-colors mb-6 rounded-full border px-4 py-2"
+              style={{ borderColor: "rgba(26,60,52,0.2)" }}
             >
-              <ArrowLeft className="h-3.5 w-3.5" />
+              <ArrowLeft className="h-3 w-3" />
               Back to Blog
             </Link>
 
-            <span className="inline-block px-3 py-1 bg-parchment text-[10px] font-accent uppercase tracking-[0.15em] text-bark/60 rounded-sm mb-4">
+            <span className="inline-block px-4 py-1.5 bg-parchment text-[10px] font-accent uppercase tracking-[0.15em] text-bark/60 rounded-full mb-4">
               {post.category}
             </span>
 
@@ -252,7 +252,7 @@ export default function BlogPostPage({ params }: Props) {
 
         {/* Featured Image */}
         <div className="container-brand max-w-3xl mx-auto mt-8">
-          <div className="relative aspect-[16/9] overflow-hidden rounded-sm">
+          <div className="relative aspect-[16/9] overflow-hidden rounded-xl">
             <Image
               src={post.image}
               alt={post.title}
@@ -281,9 +281,9 @@ export default function BlogPostPage({ params }: Props) {
                       <Link
                         key={product.slug}
                         href={`/shop/${product.slug}`}
-                        className="group flex items-center gap-3 p-3 border border-border rounded-sm hover:border-gold/50 transition-colors"
+                        className="group flex items-center gap-3 p-3 border border-border rounded-xl hover:border-gold/50 transition-colors"
                       >
-                        <div className="relative w-16 h-16 rounded-sm overflow-hidden flex-shrink-0">
+                        <div className="relative w-16 h-16 rounded-lg overflow-hidden flex-shrink-0">
                           <Image
                             src={product.image}
                             alt={product.name}
@@ -307,14 +307,9 @@ export default function BlogPostPage({ params }: Props) {
             </div>
           )}
 
-          {/* Divider */}
-          <div className="flex justify-center my-12">
-            <GoldRule variant="leaf" width="w-24" />
-          </div>
-
           {/* Related Posts */}
           {relatedPosts.length > 0 && (
-            <div>
+            <div className="mt-14 pt-10 border-t border-border">
               <h3 className="font-heading text-2xl text-bark mb-6">
                 Keep Reading
               </h3>
@@ -325,7 +320,7 @@ export default function BlogPostPage({ params }: Props) {
                     href={`/blog/${related.slug}`}
                     className="group"
                   >
-                    <div className="relative aspect-[4/3] overflow-hidden rounded-sm mb-3">
+                    <div className="relative aspect-[4/3] overflow-hidden rounded-xl mb-3">
                       <Image
                         src={related.image}
                         alt={related.title}
@@ -337,7 +332,7 @@ export default function BlogPostPage({ params }: Props) {
                     <h4 className="font-heading text-base text-bark group-hover:text-terracotta transition-colors leading-snug">
                       {related.title}
                     </h4>
-                    <span className="inline-flex items-center gap-1 text-[10px] font-accent uppercase tracking-wider text-terracotta mt-1.5">
+                    <span className="inline-flex items-center gap-1.5 text-[10px] font-accent uppercase tracking-wider text-bark/50 hover:text-terracotta transition-colors mt-2 border rounded-full px-3 py-1.5" style={{ borderColor: "rgba(26,60,52,0.2)" }}>
                       Read More <ArrowRight className="h-3 w-3" />
                     </span>
                   </Link>

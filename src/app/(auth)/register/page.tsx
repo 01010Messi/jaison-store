@@ -4,8 +4,6 @@ import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Eye, EyeOff } from "lucide-react";
-import Button from "@/components/ui/Button";
-import GoldRule from "@/components/decorative/GoldRule";
 import toast from "react-hot-toast";
 
 export default function RegisterPage() {
@@ -43,65 +41,85 @@ export default function RegisterPage() {
     }
   };
 
+  const inputClass = "w-full rounded-full font-body text-sm transition-colors focus:outline-none";
+  const inputStyle = {
+    padding: "14px 24px",
+    border: "1px solid rgba(26,60,52,0.18)",
+    backgroundColor: "transparent",
+    color: "#1A3C34",
+  };
+  const labelClass = "block font-accent text-[10px] tracking-[0.15em] uppercase mb-2";
+  const labelStyle = { color: "rgba(26,60,52,0.55)" };
+
   return (
-    <div className="bg-cream p-8 rounded-sm border border-border/50 shadow-warm">
-      <div className="text-center mb-6">
-        <h2 className="font-heading text-2xl text-bark">Create Account</h2>
-        <div className="flex justify-center mt-2">
-          <GoldRule variant="simple" width="w-16" />
-        </div>
-        <p className="text-sm text-bark/50 font-body mt-3">
-          Join the jaison family
+    <div
+      className="w-full rounded-2xl p-10"
+      style={{ backgroundColor: "#FEFAE0", border: "1px solid rgba(26,60,52,0.1)" }}
+    >
+      {/* Header */}
+      <div className="mb-8">
+        <p
+          className="font-accent text-[10px] tracking-[0.22em] uppercase mb-4"
+          style={{ color: "#834316" }}
+        >
+          — Create Account
+        </p>
+        <h2
+          className="font-heading font-light leading-[1.05]"
+          style={{ fontSize: "clamp(1.875rem, 4vw, 2.5rem)", color: "#1A3C34" }}
+        >
+          Join the family.
+        </h2>
+        <p
+          className="mt-2 font-body text-sm leading-relaxed"
+          style={{ color: "rgba(26,60,52,0.45)" }}
+        >
+          One account. All your orders and rituals in one place.
         </p>
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
-          <label className="block text-xs font-accent uppercase tracking-wider text-bark/60 mb-1.5">
-            Full Name
-          </label>
+          <label className={labelClass} style={labelStyle}>Full Name</label>
           <input
             type="text"
             value={name}
             onChange={(e) => setName(e.target.value)}
             required
-            className="w-full px-3 py-2.5 border border-border rounded-sm text-sm font-body bg-cream focus:border-gold focus:ring-0 focus:outline-none transition-colors"
+            className={inputClass}
+            style={inputStyle}
             placeholder="Your full name"
           />
         </div>
 
         <div>
-          <label className="block text-xs font-accent uppercase tracking-wider text-bark/60 mb-1.5">
-            Email
-          </label>
+          <label className={labelClass} style={labelStyle}>Email</label>
           <input
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
-            className="w-full px-3 py-2.5 border border-border rounded-sm text-sm font-body bg-cream focus:border-gold focus:ring-0 focus:outline-none transition-colors"
+            className={inputClass}
+            style={inputStyle}
             placeholder="your@email.com"
           />
         </div>
 
         <div>
-          <label className="block text-xs font-accent uppercase tracking-wider text-bark/60 mb-1.5">
-            Mobile Number
-          </label>
+          <label className={labelClass} style={labelStyle}>Mobile Number</label>
           <input
             type="tel"
             value={phone}
             onChange={(e) => setPhone(e.target.value.replace(/\D/g, "").slice(0, 10))}
             required
-            className="w-full px-3 py-2.5 border border-border rounded-sm text-sm font-body bg-cream focus:border-gold focus:ring-0 focus:outline-none transition-colors"
+            className={inputClass}
+            style={inputStyle}
             placeholder="10-digit mobile number"
           />
         </div>
 
         <div>
-          <label className="block text-xs font-accent uppercase tracking-wider text-bark/60 mb-1.5">
-            Password
-          </label>
+          <label className={labelClass} style={labelStyle}>Password</label>
           <div className="relative">
             <input
               type={showPassword ? "text" : "password"}
@@ -109,39 +127,45 @@ export default function RegisterPage() {
               onChange={(e) => setPassword(e.target.value)}
               required
               minLength={8}
-              className="w-full px-3 py-2.5 border border-border rounded-sm text-sm font-body bg-cream focus:border-gold focus:ring-0 focus:outline-none transition-colors pr-10"
+              className={`${inputClass} pr-12`}
+              style={inputStyle}
               placeholder="Min. 8 characters"
             />
             <button
               type="button"
               onClick={() => setShowPassword(!showPassword)}
-              className="absolute right-3 top-1/2 -translate-y-1/2 text-bark/30 hover:text-bark/60 transition-colors"
+              className="absolute right-5 top-1/2 -translate-y-1/2 transition-colors"
+              style={{ color: "rgba(26,60,52,0.3)" }}
             >
-              {showPassword ? (
-                <EyeOff className="h-4 w-4" />
-              ) : (
-                <Eye className="h-4 w-4" />
-              )}
+              {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
             </button>
           </div>
         </div>
 
-        <Button
+        <button
           type="submit"
-          variant="primary"
-          fullWidth
-          size="lg"
-          isLoading={isLoading}
+          disabled={isLoading}
+          className="w-full rounded-full font-accent text-[11px] tracking-[0.15em] uppercase transition-opacity hover:opacity-85 disabled:opacity-50"
+          style={{
+            padding: "16px 24px",
+            backgroundColor: "#1A3C34",
+            color: "#FEFAE0",
+            marginTop: "8px",
+          }}
         >
-          Create Account
-        </Button>
+          {isLoading ? "Creating account..." : "Create Account →"}
+        </button>
       </form>
 
-      <p className="text-center text-sm text-bark/50 font-body mt-6">
+      <p
+        className="text-center font-body text-sm mt-8"
+        style={{ color: "rgba(26,60,52,0.45)" }}
+      >
         Already have an account?{" "}
         <Link
           href="/login"
-          className="text-terracotta hover:text-terracotta/80 transition-colors font-medium"
+          className="font-accent text-[11px] tracking-[0.08em] uppercase transition-colors hover:opacity-70"
+          style={{ color: "#834316" }}
         >
           Sign In
         </Link>

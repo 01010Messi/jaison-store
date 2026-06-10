@@ -5,8 +5,6 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";
 import { Eye, EyeOff } from "lucide-react";
-import Button from "@/components/ui/Button";
-import GoldRule from "@/components/decorative/GoldRule";
 import toast from "react-hot-toast";
 
 export default function LoginPage() {
@@ -42,20 +40,38 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="bg-cream p-8 rounded-sm border border-border/50 shadow-warm">
-      <div className="text-center mb-6">
-        <h2 className="font-heading text-2xl text-bark">Welcome Back</h2>
-        <div className="flex justify-center mt-2">
-          <GoldRule variant="simple" width="w-16" />
-        </div>
-        <p className="text-sm text-bark/50 font-body mt-3">
-          Sign in to your account
+    <div
+      className="w-full rounded-2xl p-10"
+      style={{ backgroundColor: "#FEFAE0", border: "1px solid rgba(26,60,52,0.1)" }}
+    >
+      {/* Header */}
+      <div className="mb-8">
+        <p
+          className="font-accent text-[10px] tracking-[0.22em] uppercase mb-4"
+          style={{ color: "#834316" }}
+        >
+          — Sign In
+        </p>
+        <h2
+          className="font-heading font-light leading-[1.05]"
+          style={{ fontSize: "clamp(1.875rem, 4vw, 2.5rem)", color: "#1A3C34" }}
+        >
+          Welcome back.
+        </h2>
+        <p
+          className="mt-2 font-body text-sm leading-relaxed"
+          style={{ color: "rgba(26,60,52,0.45)" }}
+        >
+          Sign in to your account to continue.
         </p>
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
-          <label className="block text-xs font-accent uppercase tracking-wider text-bark/60 mb-1.5">
+          <label
+            className="block font-accent text-[10px] tracking-[0.15em] uppercase mb-2"
+            style={{ color: "rgba(26,60,52,0.55)" }}
+          >
             Email
           </label>
           <input
@@ -63,13 +79,22 @@ export default function LoginPage() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
-            className="w-full px-3 py-2.5 border border-border rounded-sm text-sm font-body bg-cream focus:border-gold focus:ring-0 focus:outline-none transition-colors"
+            className="w-full rounded-full font-body text-sm transition-colors focus:outline-none"
+            style={{
+              padding: "14px 24px",
+              border: "1px solid rgba(26,60,52,0.18)",
+              backgroundColor: "transparent",
+              color: "#1A3C34",
+            }}
             placeholder="your@email.com"
           />
         </div>
 
         <div>
-          <label className="block text-xs font-accent uppercase tracking-wider text-bark/60 mb-1.5">
+          <label
+            className="block font-accent text-[10px] tracking-[0.15em] uppercase mb-2"
+            style={{ color: "rgba(26,60,52,0.55)" }}
+          >
             Password
           </label>
           <div className="relative">
@@ -78,48 +103,60 @@ export default function LoginPage() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
-              className="w-full px-3 py-2.5 border border-border rounded-sm text-sm font-body bg-cream focus:border-gold focus:ring-0 focus:outline-none transition-colors pr-10"
+              className="w-full rounded-full font-body text-sm transition-colors focus:outline-none pr-12"
+              style={{
+                padding: "14px 24px",
+                border: "1px solid rgba(26,60,52,0.18)",
+                backgroundColor: "transparent",
+                color: "#1A3C34",
+              }}
               placeholder="Enter your password"
             />
             <button
               type="button"
               onClick={() => setShowPassword(!showPassword)}
-              className="absolute right-3 top-1/2 -translate-y-1/2 text-bark/30 hover:text-bark/60 transition-colors"
+              className="absolute right-5 top-1/2 -translate-y-1/2 transition-colors"
+              style={{ color: "rgba(26,60,52,0.3)" }}
             >
-              {showPassword ? (
-                <EyeOff className="h-4 w-4" />
-              ) : (
-                <Eye className="h-4 w-4" />
-              )}
+              {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
             </button>
           </div>
         </div>
 
-        <div className="flex items-center justify-end">
+        <div className="flex justify-end">
           <Link
             href="/forgot-password"
-            className="text-xs text-bark/40 hover:text-terracotta transition-colors font-accent"
+            className="font-accent text-[10px] tracking-[0.12em] uppercase transition-colors hover:opacity-70"
+            style={{ color: "rgba(26,60,52,0.4)" }}
           >
             Forgot password?
           </Link>
         </div>
 
-        <Button
+        <button
           type="submit"
-          variant="primary"
-          fullWidth
-          size="lg"
-          isLoading={isLoading}
+          disabled={isLoading}
+          className="w-full rounded-full font-accent text-[11px] tracking-[0.15em] uppercase transition-opacity hover:opacity-85 disabled:opacity-50"
+          style={{
+            padding: "16px 24px",
+            backgroundColor: "#1A3C34",
+            color: "#FEFAE0",
+            marginTop: "8px",
+          }}
         >
-          Sign In
-        </Button>
+          {isLoading ? "Signing in..." : "Sign In →"}
+        </button>
       </form>
 
-      <p className="text-center text-sm text-bark/50 font-body mt-6">
+      <p
+        className="text-center font-body text-sm mt-8"
+        style={{ color: "rgba(26,60,52,0.45)" }}
+      >
         Don&apos;t have an account?{" "}
         <Link
           href="/register"
-          className="text-terracotta hover:text-terracotta/80 transition-colors font-medium"
+          className="font-accent text-[11px] tracking-[0.08em] uppercase transition-colors hover:opacity-70"
+          style={{ color: "#834316" }}
         >
           Create Account
         </Link>

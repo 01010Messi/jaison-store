@@ -66,17 +66,20 @@ export default function Footer() {
       <div className="border-b border-cream/10">
         <div className="container-brand py-14 md:py-20 flex flex-col md:flex-row md:items-center justify-between gap-8">
           {/* Left: copy */}
-          <div className="max-w-md">
-            <p className="font-accent text-[11px] tracking-[0.2em] uppercase mb-4" style={{ color: "#E26713" }}>
+          <div className="max-w-xl">
+            <p className="font-accent text-[11px] tracking-[0.2em] uppercase mb-5" style={{ color: "#E26713" }}>
               — The Journal
             </p>
-            <h3 className="font-heading text-2xl md:text-3xl text-cream font-light leading-[1.1] mb-3 whitespace-nowrap">
+            <h3
+              className="font-heading text-cream font-light leading-[1.05] mb-4 whitespace-nowrap"
+              style={{ fontSize: "clamp(2rem, 4vw, 3.25rem)" }}
+            >
               Once a month.{" "}
               <span style={{ color: "#E26713", fontStyle: "italic", fontWeight: 300 }}>
                 That is it.
               </span>
             </h3>
-            <p className="text-sm md:text-base text-cream/45 font-body leading-relaxed">
+            <p className="text-base md:text-lg text-cream/45 font-body leading-relaxed">
               Real rituals, real ingredients, real seasons.
               No marketing. Unsubscribe in one click.
             </p>

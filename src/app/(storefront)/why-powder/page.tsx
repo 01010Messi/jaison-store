@@ -250,67 +250,6 @@ export default function WhyPowderPage() {
         </div>
       </section>
 
-      {/* ── SECTION 4 — Bottom CTA ("The Promise") ── */}
-      <section
-        className="relative overflow-hidden py-20 md:py-28 text-center"
-        style={{ backgroundColor: "#1A3C34" }}
-      >
-        {/* Background "55" watermark */}
-        <div
-          aria-hidden="true"
-          className="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden"
-        >
-          <span
-            className="font-heading font-light"
-            style={{
-              fontSize: "clamp(250px, 50vw, 600px)",
-              color: "rgba(226,103,19,0.07)",
-              lineHeight: 1,
-              userSelect: "none",
-            }}
-          >
-            55
-          </span>
-        </div>
-
-        {/* Content */}
-        <div className="relative z-10 container-brand max-w-3xl mx-auto">
-          <p
-            className="font-accent text-[10px] tracking-[0.25em] uppercase mb-6"
-            style={{ color: "rgba(226,103,19,0.7)" }}
-          >
-            — THE PROMISE
-          </p>
-          <h2
-            className="font-heading font-light"
-            style={{ fontSize: "clamp(2.75rem, 7vw, 5.5rem)", color: "#FEFAE0", lineHeight: 1.04 }}
-          >
-            Purity isn&apos;t a feature.{" "}
-            <span style={{ color: "#E26713", fontStyle: "italic" }}>
-              It&apos;s the starting point.
-            </span>
-          </h2>
-          <p
-            className="mt-6 max-w-xl mx-auto font-body text-base md:text-lg leading-relaxed"
-            style={{ color: "rgba(254,250,224,0.55)" }}
-          >
-            One herbal ingredient per jar. Mixed at home. Used twice a week.
-            No preservatives, no synthetics, no fillers — that is the entire
-            ritual.
-          </p>
-          <div className="mt-10">
-            <GlowPillLink
-              href="/shop"
-              style={{ backgroundColor: "#FEFAE0", color: "#1A3C34" }}
-              hoverShadow="0 0 0 3px rgba(254,250,224,0.2), 0 8px 32px rgba(254,250,224,0.25)"
-            >
-              SHOP THE CATALOGUE
-              <span style={{ fontSize: "1rem" }}>→</span>
-            </GlowPillLink>
-          </div>
-        </div>
-      </section>
-
     </div>
   );
 }

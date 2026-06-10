@@ -25,7 +25,7 @@ export default function AuthLayout({
       </header>
 
       {/* Auth content */}
-      <main className="flex-1 flex items-start justify-center px-4 pb-12">
+      <main className="flex-1 flex items-center justify-center px-4 pb-12">
         <div className="w-full max-w-md">{children}</div>
       </main>
     </div>

@@ -58,18 +58,18 @@ export default function OurStoryPage() {
     <>
       <style>{`
         .our-story-btn-primary:hover {
-          box-shadow: 0 0 28px rgba(254, 250, 224, 0.35);
+          box-shadow: 0 0 28px rgba(26, 60, 52, 0.18);
         }
         .our-story-btn-primary:active {
-          box-shadow: 0 0 40px rgba(254, 250, 224, 0.5);
+          box-shadow: 0 0 40px rgba(26, 60, 52, 0.28);
           transform: scale(0.98);
         }
         .our-story-btn-outline:hover {
-          box-shadow: 0 0 20px rgba(254, 250, 224, 0.18);
-          background-color: rgba(254, 250, 224, 0.06);
+          box-shadow: 0 0 20px rgba(26, 60, 52, 0.1);
+          background-color: rgba(26, 60, 52, 0.04);
         }
         .our-story-btn-outline:active {
-          box-shadow: 0 0 32px rgba(254, 250, 224, 0.28);
+          box-shadow: 0 0 32px rgba(26, 60, 52, 0.15);
           transform: scale(0.98);
         }
       `}</style>
@@ -78,7 +78,7 @@ export default function OurStoryPage() {
 
         {/* ── Hero ── */}
         <section
-          style={{ backgroundColor: "#1A3C34" }}
+          style={{ backgroundColor: "#FEFAE0" }}
           className="relative overflow-hidden pt-28 pb-20 px-6 md:px-14 lg:px-24"
         >
           {/* Watermark */}
@@ -90,7 +90,7 @@ export default function OurStoryPage() {
               className="font-heading font-light leading-none whitespace-nowrap"
               style={{
                 fontSize: "clamp(7rem, 22vw, 18rem)",
-                color: "rgba(254,250,224,0.04)",
+                color: "rgba(26,60,52,0.04)",
                 letterSpacing: "-0.04em",
                 marginBottom: "-0.15em",
                 marginLeft: "-0.04em",
@@ -102,7 +102,7 @@ export default function OurStoryPage() {
 
           <p
             className="relative font-accent text-[10px] tracking-[0.22em] uppercase mb-10"
-            style={{ color: "rgba(254,250,224,0.45)" }}
+            style={{ color: "rgba(26,60,52,0.40)" }}
           >
             — OUR STORY · MADE IN INDIA · SINCE 1970
           </p>
@@ -112,7 +112,7 @@ export default function OurStoryPage() {
             style={{
               fontSize: "clamp(3rem, 7.5vw, 6.25rem)",
               letterSpacing: "-0.02em",
-              color: "#FEFAE0",
+              color: "#1A3C34",
             }}
           >
             One format.{" "}
@@ -125,7 +125,7 @@ export default function OurStoryPage() {
 
           <p
             className="relative mt-8 font-body text-base leading-relaxed"
-            style={{ color: "rgba(254,250,224,0.55)", maxWidth: "520px" }}
+            style={{ color: "rgba(26,60,52,0.55)", maxWidth: "520px" }}
           >
             We have made one thing since 1970: single-ingredient herbal powder for skin
             and hair. No preservatives. No synthetics. No reformulations to chase a trend.
@@ -207,18 +207,18 @@ export default function OurStoryPage() {
         {/* ── CTA ── */}
         <section
           className="py-24 px-6 text-center"
-          style={{ backgroundColor: "#834316" }}
+          style={{ backgroundColor: "#FEFAE0" }}
         >
           <p
             className="font-accent text-[10px] tracking-[0.25em] uppercase mb-10 flex items-center justify-center gap-3"
-            style={{ color: "rgba(254,250,224,0.38)" }}
+            style={{ color: "rgba(26,60,52,0.40)" }}
           >
             <span
               style={{
                 display: "inline-block",
                 width: "28px",
                 height: "1px",
-                backgroundColor: "rgba(254,250,224,0.3)",
+                backgroundColor: "rgba(26,60,52,0.25)",
               }}
             />
             WHAT COMES NEXT
@@ -232,7 +232,7 @@ export default function OurStoryPage() {
               maxWidth: "880px",
             }}
           >
-            <span style={{ color: "#FEFAE0" }}>The next 55 years </span>
+            <span style={{ color: "#1A3C34" }}>The next 55 years </span>
             <span style={{ color: "#E26713", fontStyle: "italic" }}>
               look exactly the same.
             </span>
@@ -240,7 +240,7 @@ export default function OurStoryPage() {
 
           <p
             className="mt-6 font-body text-base leading-relaxed mx-auto"
-            style={{ color: "rgba(254,250,224,0.48)", maxWidth: "460px" }}
+            style={{ color: "rgba(26,60,52,0.55)", maxWidth: "460px" }}
           >
             Same kitchen. Same herbs. Same single-ingredient promise. We will keep
             grinding. You can keep mixing.
@@ -250,14 +250,14 @@ export default function OurStoryPage() {
             <Link
               href="/shop"
               className="our-story-btn-primary inline-flex items-center gap-2 rounded-full px-9 py-4 font-accent text-[11px] tracking-[0.15em] uppercase transition-all"
-              style={{ backgroundColor: "#FEFAE0", color: "#1A3C34" }}
+              style={{ backgroundColor: "#1A3C34", color: "#FEFAE0" }}
             >
               SHOP THE CATALOGUE →
             </Link>
             <Link
               href="/why-powder"
               className="our-story-btn-outline inline-flex items-center gap-2 rounded-full px-9 py-4 font-accent text-[11px] tracking-[0.15em] uppercase transition-all border"
-              style={{ borderColor: "rgba(254,250,224,0.32)", color: "#FEFAE0" }}
+              style={{ borderColor: "rgba(26,60,52,0.3)", color: "#1A3C34" }}
             >
               READ: WHY POWDER?
             </Link>
