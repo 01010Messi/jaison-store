@@ -127,7 +127,7 @@ function ShopContent() {
               style={
                 activeCategory === btn.value
                   ? { backgroundColor: "#36541F", color: "#FEFAE0", borderColor: "#36541F" }
-                  : { backgroundColor: "transparent", color: "rgba(40,54,24,0.55)", borderColor: "#EFE4C5" }
+                  : { backgroundColor: "transparent", color: "rgba(96,108,56,0.55)", borderColor: "#EFE4C5" }
               }
             >
               {btn.label}
@@ -145,7 +145,7 @@ function ShopContent() {
             <button
               onClick={() => setShowSortMenu(!showSortMenu)}
               className="flex items-center gap-2 px-4 py-2 border rounded-full font-accent text-[11px] uppercase tracking-wider transition-colors"
-              style={{ borderColor: "#EFE4C5", color: "rgba(40,54,24,0.6)" }}
+              style={{ borderColor: "#EFE4C5", color: "rgba(96,108,56,0.6)" }}
             >
               {sortLabels[activeSort]}
               <ChevronDown

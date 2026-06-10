@@ -29,9 +29,9 @@ const config: Config = {
           dark: "#36541F",
         },
         bark: {
-          DEFAULT: "#283618",
-          light: "#3A4D24",
-          50: "#4C6230",
+          DEFAULT: "#606C38",
+          light: "#7A8A4A",
+          50: "#808C50",
         },
         gold: {
           DEFAULT: "#BCA480",
@@ -40,7 +40,7 @@ const config: Config = {
         },
         surface: "#FEFAE0",
         "surface-warm": "#EFE4C5",
-        "surface-dark": "#283618",
+        "surface-dark": "#606C38",
         border: "#E0CFA6",
         "border-light": "#F2E9CC",
       },
@@ -50,9 +50,9 @@ const config: Config = {
         accent: ["var(--font-accent)", "system-ui", "sans-serif"],
       },
       boxShadow: {
-        warm: "0 4px 20px rgba(40, 54, 24, 0.08)",
-        "warm-lg": "0 8px 40px rgba(40, 54, 24, 0.12)",
-        "warm-xl": "0 12px 60px rgba(40, 54, 24, 0.16)",
+        warm: "0 4px 20px rgba(96, 108, 56, 0.08)",
+        "warm-lg": "0 8px 40px rgba(96, 108, 56, 0.12)",
+        "warm-xl": "0 12px 60px rgba(96, 108, 56, 0.16)",
         gold: "0 2px 12px rgba(226, 103, 19, 0.3)",
       },
       backgroundImage: {
@@ -140,7 +140,7 @@ const config: Config = {
       typography: {
         DEFAULT: {
           css: {
-            color: "#283618",
+            color: "#606C38",
             maxWidth: "65ch",
           },
         },

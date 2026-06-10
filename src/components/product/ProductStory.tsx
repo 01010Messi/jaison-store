@@ -106,14 +106,14 @@ export default function ProductStory({ product }: ProductStoryProps) {
                 style={
                   isActive
                     ? {
-                        backgroundColor: "#283618",
+                        backgroundColor: "#606C38",
                         color: "#FEFAE0",
-                        borderColor: "#283618",
+                        borderColor: "#606C38",
                       }
                     : {
                         backgroundColor: "transparent",
-                        color: "rgba(40,54,24,0.55)",
-                        borderColor: "rgba(40,54,24,0.2)",
+                        color: "rgba(96,108,56,0.55)",
+                        borderColor: "rgba(96,108,56,0.2)",
                       }
                 }
               >
@@ -139,7 +139,7 @@ export default function ProductStory({ product }: ProductStoryProps) {
               className="font-heading font-light italic leading-none whitespace-nowrap"
               style={{
                 fontSize: "clamp(6rem, 18vw, 14rem)",
-                color: "rgba(40,54,24,0.04)",
+                color: "rgba(96,108,56,0.04)",
                 letterSpacing: "-0.04em",
                 marginBottom: "-0.18em",
                 marginRight: "-0.04em",
@@ -176,7 +176,7 @@ export default function ProductStory({ product }: ProductStoryProps) {
                           className="font-heading font-light shrink-0 leading-none"
                           style={{
                             fontSize: "1.75rem",
-                            color: "rgba(40,54,24,0.25)",
+                            color: "rgba(96,108,56,0.25)",
                             minWidth: "2rem",
                           }}
                         >
@@ -252,7 +252,7 @@ export default function ProductStory({ product }: ProductStoryProps) {
       {activeTab === "why" && (
         <section
           className="relative overflow-hidden py-12 md:py-16 mt-6"
-          style={{ backgroundColor: "#283618" }}
+          style={{ backgroundColor: "#606C38" }}
         >
           <div className="container-brand relative">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-20">

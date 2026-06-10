@@ -27,7 +27,7 @@ export default function PolicyHero({
           className="font-heading font-light leading-none whitespace-nowrap"
           style={{
             fontSize: "clamp(6rem, 20vw, 15rem)",
-            color: "rgba(40,54,24,0.045)",
+            color: "rgba(96,108,56,0.045)",
             letterSpacing: "-0.04em",
             marginBottom: "-0.15em",
             marginLeft: "-0.04em",
@@ -39,7 +39,7 @@ export default function PolicyHero({
 
       <p
         className="relative font-accent text-[10px] tracking-[0.22em] uppercase mb-8"
-        style={{ color: "rgba(40,54,24,0.42)" }}
+        style={{ color: "rgba(96,108,56,0.42)" }}
       >
         {eyebrow}
       </p>
@@ -49,7 +49,7 @@ export default function PolicyHero({
         style={{
           fontSize: "clamp(2.5rem, 6vw, 4.5rem)",
           letterSpacing: "-0.02em",
-          color: "#283618",
+          color: "#606C38",
         }}
       >
         {title}{" "}
@@ -59,7 +59,7 @@ export default function PolicyHero({
       {sub && (
         <p
           className="relative mt-6 font-body text-base leading-relaxed"
-          style={{ color: "rgba(40,54,24,0.52)", maxWidth: "520px" }}
+          style={{ color: "rgba(96,108,56,0.52)", maxWidth: "520px" }}
         >
           {sub}
         </p>

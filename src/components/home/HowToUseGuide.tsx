@@ -59,7 +59,7 @@ export default function HowToUseGuide() {
                 className="font-heading font-light leading-none block"
                 style={{
                   fontSize: "clamp(3.5rem, 6vw, 5rem)",
-                  color: "rgba(40,54,24,0.12)",
+                  color: "rgba(96,108,56,0.12)",
                 }}
               >
                 {step.num}

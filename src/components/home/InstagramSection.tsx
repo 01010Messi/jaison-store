@@ -90,8 +90,8 @@ export default function InstagramSection() {
           <GlowPillLink
             href="https://www.instagram.com/jaison_skincare/"
             className="border-0"
-            style={{ backgroundColor: "#283618", color: "#FEFAE0" }}
-            hoverShadow="0 0 28px rgba(40, 54, 24, 0.3)"
+            style={{ backgroundColor: "#606C38", color: "#FEFAE0" }}
+            hoverShadow="0 0 28px rgba(96, 108, 56, 0.3)"
           >
             <Instagram className="h-4 w-4" />
             Follow @jaison_skincare →

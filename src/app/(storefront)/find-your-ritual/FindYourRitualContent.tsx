@@ -125,22 +125,22 @@ export default function FindYourRitualContent() {
           <div className="mb-12 flex items-center gap-4">
             <span
               className="font-accent text-[10px] tracking-[0.2em] uppercase"
-              style={{ color: "rgba(40,54,24,0.4)" }}
+              style={{ color: "rgba(96,108,56,0.4)" }}
             >
               — FIND YOUR RITUAL
             </span>
-            <div className="flex-1 h-px relative" style={{ backgroundColor: "rgba(40,54,24,0.1)" }}>
+            <div className="flex-1 h-px relative" style={{ backgroundColor: "rgba(96,108,56,0.1)" }}>
               <div
                 className="absolute inset-y-0 left-0 transition-all duration-500"
                 style={{
-                  backgroundColor: "rgba(40,54,24,0.3)",
+                  backgroundColor: "rgba(96,108,56,0.3)",
                   width: `${((step - 1) / 4) * 100}%`,
                 }}
               />
             </div>
             <span
               className="font-accent text-[11px] tracking-wider"
-              style={{ color: "rgba(40,54,24,0.4)" }}
+              style={{ color: "rgba(96,108,56,0.4)" }}
             >
               0{step} · 04
             </span>
@@ -157,7 +157,7 @@ export default function FindYourRitualContent() {
               </h2>
               <p
                 className="font-heading italic text-base md:text-lg mt-3"
-                style={{ color: "rgba(40,54,24,0.35)" }}
+                style={{ color: "rgba(96,108,56,0.35)" }}
               >
                 {q.subtitle}
               </p>
@@ -181,7 +181,7 @@ export default function FindYourRitualContent() {
                   }}
                 >
                   <div>
-                    <span className="font-heading text-xl md:text-2xl leading-snug" style={{ color: "rgba(40,54,24,0.8)" }}>
+                    <span className="font-heading text-xl md:text-2xl leading-snug" style={{ color: "rgba(96,108,56,0.8)" }}>
                       {option.label}
                     </span>
                     {option.recommended && (
@@ -210,9 +210,9 @@ export default function FindYourRitualContent() {
                 <button
                   onClick={() => setStep((s) => s - 1)}
                   className="font-accent text-[10px] tracking-[0.15em] uppercase transition-colors"
-                  style={{ color: "rgba(40,54,24,0.4)" }}
-                  onMouseEnter={(e) => (e.currentTarget.style.color = "rgba(40,54,24,0.8)")}
-                  onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(40,54,24,0.4)")}
+                  style={{ color: "rgba(96,108,56,0.4)" }}
+                  onMouseEnter={(e) => (e.currentTarget.style.color = "rgba(96,108,56,0.8)")}
+                  onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(96,108,56,0.4)")}
                 >
                   ← PREVIOUS QUESTION
                 </button>
@@ -234,7 +234,7 @@ export default function FindYourRitualContent() {
               </h2>
               <p
                 className="font-body text-base mt-4 max-w-md mx-auto"
-                style={{ color: "rgba(40,54,24,0.5)" }}
+                style={{ color: "rgba(96,108,56,0.5)" }}
               >
                 {rec.subtext}
               </p>
@@ -252,7 +252,7 @@ export default function FindYourRitualContent() {
                   {/* Badge */}
                   <span
                     className="absolute top-4 left-4 z-10 rounded-full px-3 py-1 font-accent text-[9px] tracking-[0.12em] uppercase text-cream"
-                    style={{ backgroundColor: "rgba(40,54,24,0.85)" }}
+                    style={{ backgroundColor: "rgba(96,108,56,0.85)" }}
                   >
                     {product.badge}
                   </span>
@@ -281,7 +281,7 @@ export default function FindYourRitualContent() {
                     </p>
                     <p
                       className="font-heading italic text-sm mt-0.5"
-                      style={{ color: "rgba(40,54,24,0.35)" }}
+                      style={{ color: "rgba(96,108,56,0.35)" }}
                     >
                       {product.latin}
                     </p>
@@ -293,7 +293,7 @@ export default function FindYourRitualContent() {
                         {product.compareAt && (
                           <span
                             className="font-body text-sm line-through ml-2"
-                            style={{ color: "rgba(40,54,24,0.4)" }}
+                            style={{ color: "rgba(96,108,56,0.4)" }}
                           >
                             ₹{product.compareAt}
                           </span>
@@ -314,8 +314,8 @@ export default function FindYourRitualContent() {
               <button
                 onClick={() => { setStep(1); setAnswers({}); }}
                 className="px-8 py-3 rounded-full border font-accent text-[10px] tracking-[0.15em] uppercase transition-all duration-200"
-                style={{ borderColor: "rgba(40,54,24,0.3)", color: "#283618" }}
-                onMouseEnter={(e) => { e.currentTarget.style.boxShadow = "0 4px 16px rgba(40,54,24,0.15)"; }}
+                style={{ borderColor: "rgba(96,108,56,0.3)", color: "#606C38" }}
+                onMouseEnter={(e) => { e.currentTarget.style.boxShadow = "0 4px 16px rgba(96,108,56,0.15)"; }}
                 onMouseLeave={(e) => { e.currentTarget.style.boxShadow = "none"; }}
               >
                 START OVER

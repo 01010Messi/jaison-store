@@ -104,31 +104,39 @@ export default function Header() {
         {/* Row 1 — Announcement marquee */}
         <AnnouncementBar />
 
-        {/* Row 2 — Logo + tagline */}
-        <div className="bg-cream py-3 flex flex-col items-center">
-          <Link href="/" className="flex-shrink-0 overflow-hidden h-12 md:h-16 flex items-center">
+        {/* Row 2 — Logo only */}
+        <div className="bg-cream py-2 flex flex-col items-center">
+          <Link href="/" className="flex-shrink-0 overflow-hidden h-10 md:h-14 flex items-center">
             <Image
               src="/images/logo.png"
               alt="Jaison Skincare"
               width={260}
               height={96}
-              className="h-20 md:h-28 w-auto mix-blend-multiply -my-4"
+              className="h-16 md:h-24 w-auto mix-blend-multiply -my-3"
               priority
             />
           </Link>
-          <p className="font-accent text-[11px] tracking-[0.25em] uppercase text-bark/50 mt-1">
-            ESSENCE OF HERBS IN EVERY GRAM
-          </p>
         </div>
 
         {/* Row 3 — Navigation (desktop) / Hamburger row (mobile) */}
         <div className="bg-cream border-b border-bark/10">
           {/* Desktop nav */}
           <div className="hidden md:block relative">
-            <div className="flex items-center justify-center gap-6 py-2">
+            {/* Left: Search */}
+            <div className="absolute left-4 top-1/2 -translate-y-1/2">
+              <button
+                onClick={() => setSearchOpen(true)}
+                className="p-1.5 text-bark/60 hover:text-bark transition-colors"
+                aria-label="Search"
+              >
+                <Search className="h-5 w-5" />
+              </button>
+            </div>
+
+            <div className="flex items-center justify-center gap-7 py-3">
               <Link
                 href="/"
-                className="font-accent text-[11px] tracking-widest uppercase text-bark/70 hover:text-bark transition-colors"
+                className="font-accent text-[13px] tracking-widest uppercase text-bark/70 hover:text-bark transition-colors"
               >
                 Home
               </Link>
@@ -139,9 +147,9 @@ export default function Header() {
                 onMouseEnter={() => handleDropdownEnter("skin")}
                 onMouseLeave={handleDropdownLeave}
               >
-                <button className="flex items-center gap-1 font-accent text-[11px] tracking-widest uppercase text-bark/70 hover:text-bark transition-colors py-2">
+                <button className="flex items-center gap-1 font-accent text-[13px] tracking-widest uppercase text-bark/70 hover:text-bark transition-colors py-2">
                   Skin Care
-                  <ChevronDown className="h-3 w-3" />
+                  <ChevronDown className="h-3.5 w-3.5" />
                 </button>
                 {openDropdown === "skin" && (
                   <DropdownMenu
@@ -157,9 +165,9 @@ export default function Header() {
                 onMouseEnter={() => handleDropdownEnter("hair")}
                 onMouseLeave={handleDropdownLeave}
               >
-                <button className="flex items-center gap-1 font-accent text-[11px] tracking-widest uppercase text-bark/70 hover:text-bark transition-colors py-2">
+                <button className="flex items-center gap-1 font-accent text-[13px] tracking-widest uppercase text-bark/70 hover:text-bark transition-colors py-2">
                   Hair Care
-                  <ChevronDown className="h-3 w-3" />
+                  <ChevronDown className="h-3.5 w-3.5" />
                 </button>
                 {openDropdown === "hair" && (
                   <DropdownMenu
@@ -171,53 +179,46 @@ export default function Header() {
 
               <Link
                 href="/our-story"
-                className="font-accent text-[11px] tracking-widest uppercase text-bark/70 hover:text-bark transition-colors"
+                className="font-accent text-[13px] tracking-widest uppercase text-bark/70 hover:text-bark transition-colors"
               >
                 Our Story
               </Link>
               <Link
                 href="/why-powder"
-                className="font-accent text-[11px] tracking-widest uppercase text-bark/70 hover:text-bark transition-colors"
+                className="font-accent text-[13px] tracking-widest uppercase text-bark/70 hover:text-bark transition-colors"
               >
                 Why Powder
               </Link>
               <Link
                 href="/find-your-ritual"
-                className="font-accent text-[11px] tracking-widest uppercase text-bark/70 hover:text-bark transition-colors"
+                className="font-accent text-[13px] tracking-widest uppercase text-bark/70 hover:text-bark transition-colors"
               >
                 Find Your Ritual
               </Link>
               <Link
                 href="/shop"
-                className="font-accent text-[11px] tracking-widest uppercase text-bark/70 hover:text-bark transition-colors"
+                className="font-accent text-[13px] tracking-widest uppercase text-bark/70 hover:text-bark transition-colors"
               >
                 Shop All
               </Link>
             </div>
 
-            {/* Right actions — absolute */}
+            {/* Right: Account + POTLI */}
             <div className="absolute right-4 top-1/2 -translate-y-1/2 flex items-center gap-3">
-              <button
-                onClick={() => setSearchOpen(true)}
-                className="p-1.5 text-bark/60 hover:text-bark transition-colors"
-                aria-label="Search"
-              >
-                <Search className="h-4 w-4" />
-              </button>
               <Link
                 href="/account"
                 className="p-1.5 text-bark/60 hover:text-bark transition-colors"
                 aria-label="Account"
               >
-                <User className="h-4 w-4" />
+                <User className="h-5 w-5" />
               </Link>
               <button
                 onClick={toggleCart}
-                className="flex items-center gap-1.5 bg-bark text-cream rounded-full px-3 py-1.5 hover:bg-bark/90 transition-colors relative"
+                className="flex items-center gap-1.5 bg-bark text-cream rounded-full px-4 py-2 hover:bg-bark/90 transition-colors relative"
                 aria-label="Potli"
               >
-                <ShoppingBag className="h-4 w-4" />
-                <span className="font-accent text-[11px] tracking-widest">POTLI</span>
+                <ShoppingBag className="h-5 w-5" />
+                <span className="font-accent text-[13px] tracking-widest">POTLI</span>
                 {count > 0 && (
                   <span className="absolute -top-1.5 -right-1.5 flex items-center justify-center w-4 h-4 text-[9px] font-accent font-bold bg-gold text-bark rounded-full">
                     {count}
@@ -256,7 +257,7 @@ export default function Header() {
       {searchOpen && (
         <div
           className="fixed inset-0 z-50"
-          style={{ backgroundColor: "rgba(40,54,24,0.5)" }}
+          style={{ backgroundColor: "rgba(96,108,56,0.5)" }}
           onClick={() => setSearchOpen(false)}
         >
           <div
@@ -291,7 +292,7 @@ export default function Header() {
                   <X className="h-5 w-5" />
                 </button>
               </form>
-              <p className="mt-3 font-accent text-[10px] tracking-[0.18em] uppercase" style={{ color: "rgba(40,54,24,0.35)" }}>
+              <p className="mt-3 font-accent text-[10px] tracking-[0.18em] uppercase" style={{ color: "rgba(96,108,56,0.35)" }}>
                 Type a herb name, skin concern, or ingredient
               </p>
             </div>

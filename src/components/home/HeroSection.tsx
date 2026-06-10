@@ -58,7 +58,7 @@ export default function HeroSection() {
           className="font-heading font-light"
           style={{
             fontSize: "clamp(9rem, 26vw, 24rem)",
-            color: "rgba(40,54,24,0.038)",
+            color: "rgba(96,108,56,0.038)",
             letterSpacing: "-0.05em",
             lineHeight: 1,
           }}
@@ -71,7 +71,7 @@ export default function HeroSection() {
       <div
         className="relative z-10 container-brand flex flex-col flex-1"
         style={{
-          paddingTop: "clamp(120px, 16vh, 175px)",
+          paddingTop: "clamp(90px, 12vh, 130px)",
           paddingBottom: 0,
         }}
       >
@@ -85,12 +85,12 @@ export default function HeroSection() {
             letterSpacing: "-0.02em",
           }}
         >
-          <span style={{ color: "#283618" }}>Your </span>
-          <span style={{ color: "rgba(40,54,24,0.40)" }}>bottle </span>
-          <span style={{ color: "rgba(40,54,24,0.26)" }}>lists a</span>
+          <span style={{ color: "#606C38" }}>Your </span>
+          <span style={{ color: "rgba(96,108,56,0.40)" }}>bottle </span>
+          <span style={{ color: "rgba(96,108,56,0.26)" }}>lists a</span>
           <br />
-          <span style={{ color: "rgba(40,54,24,0.14)" }}>dozen </span>
-          <span style={{ color: "#283618" }}>ingredients.</span>
+          <span style={{ color: "rgba(96,108,56,0.14)" }}>dozen </span>
+          <span style={{ color: "#606C38" }}>ingredients.</span>
           <br />
           <span style={{ fontStyle: "italic", fontWeight: 300, color: "#834316" }}>
             Our product lists one.
@@ -103,7 +103,7 @@ export default function HeroSection() {
             className="font-body leading-relaxed"
             style={{
               fontSize: "clamp(0.8125rem, 1.15vw, 0.9375rem)",
-              color: "rgba(40,54,24,0.55)",
+              color: "rgba(96,108,56,0.55)",
               maxWidth: "310px",
             }}
           >
@@ -135,8 +135,8 @@ export default function HeroSection() {
                 padding: "13px 28px",
                 fontSize: "11px",
                 letterSpacing: "0.14em",
-                borderColor: "rgba(40,54,24,0.28)",
-                color: "#283618",
+                borderColor: "rgba(96,108,56,0.28)",
+                color: "#606C38",
               }}
             >
               Read Why Powder
@@ -149,7 +149,7 @@ export default function HeroSection() {
       <div
         className="relative z-10 border-t"
         style={{
-          borderColor: "rgba(40,54,24,0.08)",
+          borderColor: "rgba(96,108,56,0.08)",
           backgroundColor: "rgba(254,250,224,0.9)",
           backdropFilter: "blur(8px)",
         }}
@@ -174,7 +174,7 @@ export default function HeroSection() {
                   style={{
                     fontSize: "10px",
                     letterSpacing: "0.18em",
-                    color: "rgba(40,54,24,0.42)",
+                    color: "rgba(96,108,56,0.42)",
                   }}
                 >
                   {s.label}

@@ -4,7 +4,6 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Instagram, Mail, Phone, MapPin } from "lucide-react";
-import SectionDivider from "@/components/decorative/SectionDivider";
 import toast from "react-hot-toast";
 
 const footerLinks = {
@@ -113,17 +112,9 @@ export default function Footer() {
             alt="jaison"
             width={240}
             height={80}
-            className="h-20 md:h-24 w-auto mx-auto mb-3 brightness-[1.8] contrast-[0.9]"
+            className="h-20 md:h-24 w-auto mx-auto brightness-[1.8] contrast-[0.9]"
           />
-          <p className="font-heading text-base text-cream/80 tracking-wide mb-1">
-            Jaison Herbals
-          </p>
-          <p className="text-xs text-cream/40 font-body">
-            The Essence of Herbs in Every Gram
-          </p>
         </div>
-
-        <SectionDivider variant="gold" className="py-4" />
 
         {/* Links grid */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-10">
