@@ -26,45 +26,7 @@ export default function HeroSection() {
   }, []);
 
   return (
-    <>
-      <style>{`
-        /* Lateral slide — 12s, scale locked so no zoom pulse */
-        @keyframes heroSlide {
-          0%   { transform: scale(1.10) translateX(3.5%); }
-          100% { transform: scale(1.10) translateX(-3.5%); }
-        }
-        .hero-video {
-          animation: heroSlide 12s ease-in-out infinite alternate;
-        }
-
-        /* Letter glow — each word span gets this, staggered delays create the sweep */
-        @keyframes letterGlow {
-          0%, 12%, 88%, 100% { text-shadow: none; }
-          30%, 55% {
-            text-shadow:
-              0 0 16px rgba(255,248,215,0.85),
-              0 0 32px rgba(254,236,185,0.50),
-              0 0 56px rgba(254,228,160,0.25);
-          }
-        }
-        @keyframes letterGlowWarm {
-          0%, 12%, 88%, 100% { text-shadow: none; }
-          30%, 55% {
-            text-shadow:
-              0 0 16px rgba(220,150,80,0.70),
-              0 0 32px rgba(210,130,60,0.40),
-              0 0 56px rgba(200,110,40,0.20);
-          }
-        }
-        .gw1 { animation: letterGlow     12s 0.0s ease-in-out infinite; }
-        .gw2 { animation: letterGlow     12s 1.0s ease-in-out infinite; }
-        .gw3 { animation: letterGlow     12s 2.0s ease-in-out infinite; }
-        .gw4 { animation: letterGlow     12s 3.0s ease-in-out infinite; }
-        .gw5 { animation: letterGlow     12s 4.0s ease-in-out infinite; }
-        .gw6 { animation: letterGlowWarm 12s 5.0s ease-in-out infinite; }
-      `}</style>
-
-      <section
+    <section
         className="relative flex flex-col overflow-hidden min-h-screen"
         style={{ backgroundColor: "#FEFAE0" }}
       >
@@ -152,7 +114,7 @@ export default function HeroSection() {
           </h2>
 
           {/* Sub-copy + CTAs */}
-          <div className="mt-auto flex flex-col md:flex-row md:items-end md:justify-between gap-6 pb-10 md:pb-14">
+          <div className="mt-auto flex flex-col md:flex-row md:items-end md:justify-between gap-6 pb-20 md:pb-24">
             <p
               className="font-body leading-relaxed"
               style={{
@@ -167,7 +129,7 @@ export default function HeroSection() {
               plant, ground and sifted. Mix at home. Use. Rinse.
             </p>
 
-            <div className="flex items-center gap-3 flex-shrink-0">
+            <div className="flex items-center gap-3 flex-shrink-0" style={{ paddingRight: "72px" }}>
               <Link
                 href="/shop"
                 className="inline-flex items-center gap-2 font-accent uppercase transition-opacity duration-200 hover:opacity-85"
@@ -237,6 +199,5 @@ export default function HeroSection() {
           </div>
         </div>
       </section>
-    </>
   );
 }
