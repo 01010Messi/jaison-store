@@ -34,3 +34,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# AI image source files (converted to webp in public/images)
+raw-images/
+
+# Cowork/Claude local settings
+.claude/

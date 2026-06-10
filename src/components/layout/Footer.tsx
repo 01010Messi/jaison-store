@@ -117,18 +117,18 @@ export default function Footer() {
         </div>
 
         {/* Links grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-10">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-10 mt-10">
           {Object.entries(footerLinks).map(([category, links]) => (
             <div key={category}>
-              <h3 className="font-accent text-[11px] uppercase tracking-[0.15em] text-gold mb-4">
+              <h3 className="font-accent text-[13px] uppercase tracking-[0.15em] text-gold mb-5">
                 {category}
               </h3>
-              <ul className="space-y-2.5">
+              <ul className="space-y-3.5">
                 {links.map((link) => (
                   <li key={link.href}>
                     <Link
                       href={link.href}
-                      className="text-sm text-cream/60 hover:text-cream transition-colors duration-200 font-body"
+                      className="text-base text-cream/70 hover:text-cream transition-colors duration-200 font-body"
                     >
                       {link.label}
                     </Link>
@@ -140,16 +140,16 @@ export default function Footer() {
 
           {/* Connect column */}
           <div>
-            <h3 className="font-accent text-[11px] uppercase tracking-[0.15em] text-gold mb-4">
+            <h3 className="font-accent text-[13px] uppercase tracking-[0.15em] text-gold mb-5">
               Connect
             </h3>
-            <ul className="space-y-2.5">
+            <ul className="space-y-3.5">
               <li>
                 <a
                   href="mailto:Jaisonskincare@gmail.com"
-                  className="flex items-center gap-2 text-sm text-cream/60 hover:text-cream transition-colors font-body"
+                  className="flex items-center gap-2.5 text-base text-cream/70 hover:text-cream transition-colors font-body"
                 >
-                  <Mail className="h-3.5 w-3.5" />
+                  <Mail className="h-4 w-4" />
                   Email Us
                 </a>
               </li>
@@ -158,9 +158,9 @@ export default function Footer() {
                   href={`https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "918600151677"}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-sm text-cream/60 hover:text-cream transition-colors font-body"
+                  className="flex items-center gap-2.5 text-base text-cream/70 hover:text-cream transition-colors font-body"
                 >
-                  <Phone className="h-3.5 w-3.5" />
+                  <Phone className="h-4 w-4" />
                   WhatsApp
                 </a>
               </li>
@@ -169,18 +169,18 @@ export default function Footer() {
                   href="https://www.instagram.com/jaison_skincare/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-sm text-cream/60 hover:text-cream transition-colors font-body"
+                  className="flex items-center gap-2.5 text-base text-cream/70 hover:text-cream transition-colors font-body"
                 >
-                  <Instagram className="h-3.5 w-3.5" />
+                  <Instagram className="h-4 w-4" />
                   Instagram
                 </a>
               </li>
             </ul>
 
             {/* Business Address */}
-            <div className="mt-5 pt-4 border-t border-cream/10">
-              <div className="flex gap-2 text-[11px] text-cream/40 font-body leading-relaxed">
-                <MapPin className="h-3.5 w-3.5 flex-shrink-0 mt-0.5" />
+            <div className="mt-6 pt-5 border-t border-cream/10">
+              <div className="flex gap-2.5 text-sm text-cream/50 font-body leading-relaxed">
+                <MapPin className="h-4 w-4 flex-shrink-0 mt-0.5" />
                 <span>
                   60, Floor 6, Business Bay, Shree Hari Kute Marg, Mumbai Naka,
                   Nashik 422002, Maharashtra, India
@@ -195,7 +195,7 @@ export default function Footer() {
       {/* Bottom bar */}
       <div className="border-t border-cream/10">
         <div className="container-brand py-5 flex flex-col md:flex-row items-center justify-between gap-3">
-          <p className="text-xs text-cream/40 font-body">
+          <p className="text-sm text-cream/50 font-body">
             &copy; {new Date().getFullYear()} Jaison Herbals. Handcrafted with love in India.
           </p>
           <div className="flex items-center gap-3">

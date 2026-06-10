@@ -128,7 +128,7 @@ export default function ProductStory({ product }: ProductStoryProps) {
       {activeTab === "ritual" && (
         <section
           className="relative overflow-hidden py-12 md:py-16 mt-6"
-          style={{ backgroundColor: "#F5ECD7" }}
+          style={{ backgroundColor: "#FEFAE0" }}
         >
           {/* Watermark */}
           <div
@@ -178,8 +178,11 @@ export default function ProductStory({ product }: ProductStoryProps) {
                   {block.steps.map((step, si) => (
                     <div
                       key={si}
-                      className="rounded-sm p-5 flex flex-col"
-                      style={{ backgroundColor: "#FDFAF5" }}
+                      className="rounded-xl p-5 flex flex-col"
+                      style={{
+                        backgroundColor: "#FDFAF5",
+                        border: "1px solid rgba(26,60,52,0.08)",
+                      }}
                     >
                       <span
                         className="font-heading font-light block leading-none mb-4"
@@ -208,7 +211,10 @@ export default function ProductStory({ product }: ProductStoryProps) {
 
       {/* ── What's Inside ── */}
       {activeTab === "inside" && (
-        <section className="py-12 md:py-16 mt-6">
+        <section
+          className="py-12 md:py-16 mt-6"
+          style={{ backgroundColor: "#FEFAE0" }}
+        >
           <div className="container-brand">
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8 md:mb-10">
               <div className="flex-1 max-w-2xl">
@@ -218,7 +224,10 @@ export default function ProductStory({ product }: ProductStoryProps) {
                     ? `${ingredients.length} Powders`
                     : `${ingredients.length} Ingredients`}
                 </p>
-                <h2 className="font-heading text-[2.25rem] md:text-[3rem] text-bark font-light leading-[1.08] tracking-[-0.01em]">
+                <h2
+                  className="font-heading text-[2.25rem] md:text-[3rem] font-light leading-[1.08] tracking-[-0.01em]"
+                  style={{ color: "#1A3C34" }}
+                >
                   The whole label,
                   <span
                     className="block"
@@ -239,9 +248,13 @@ export default function ProductStory({ product }: ProductStoryProps) {
               {ingredients.map((ing, i) => (
                 <li
                   key={i}
-                  className="flex items-baseline justify-between gap-4 py-4 border-b border-bark/10"
+                  className="flex items-baseline justify-between gap-4 py-4"
+                  style={{ borderBottom: "1px solid rgba(26,60,52,0.1)" }}
                 >
-                  <span className="font-heading text-lg md:text-xl text-bark font-light">
+                  <span
+                    className="font-heading text-lg md:text-xl font-light"
+                    style={{ color: "#1A3C34" }}
+                  >
                     {ing.name}
                   </span>
                   {ing.detail && (
@@ -263,35 +276,32 @@ export default function ProductStory({ product }: ProductStoryProps) {
       {activeTab === "why" && (
         <section
           className="relative overflow-hidden py-12 md:py-16 mt-6"
-          style={{ backgroundColor: "#1A3C34" }}
+          style={{ backgroundColor: "#FEFAE0" }}
         >
           <div className="container-brand relative">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-20">
               <div>
-                <p
-                  className="font-accent text-[10px] tracking-[0.2em] uppercase mb-4"
-                  style={{ color: "rgba(254,250,224,0.45)" }}
-                >
+                <p className="font-accent text-[10px] tracking-[0.2em] uppercase text-bark/40 mb-4">
                   — Why It Works
                 </p>
                 <h2
                   className="font-heading font-light leading-[1.08] tracking-[-0.01em]"
                   style={{
                     fontSize: "clamp(2.25rem, 4vw, 3rem)",
-                    color: "#FEFAE0",
+                    color: "#1A3C34",
                   }}
                 >
                   What it does,
                   <span
                     className="block"
-                    style={{ color: "#E26713", fontStyle: "italic", fontWeight: 300 }}
+                    style={{ color: "#834316", fontStyle: "italic", fontWeight: 300 }}
                   >
                     and why.
                   </span>
                 </h2>
                 <p
                   className="font-body text-sm md:text-base leading-relaxed mt-6"
-                  style={{ color: "rgba(254,250,224,0.6)" }}
+                  style={{ color: "rgba(26,60,52,0.65)" }}
                 >
                   {product.description}
                 </p>
@@ -304,14 +314,14 @@ export default function ProductStory({ product }: ProductStoryProps) {
                     className="flex items-baseline gap-4 py-4"
                     style={{
                       borderTop:
-                        i > 0 ? "1px solid rgba(254,250,224,0.1)" : undefined,
+                        i > 0 ? "1px solid rgba(26,60,52,0.1)" : undefined,
                     }}
                   >
                     <span
                       className="font-heading font-light shrink-0 leading-none"
                       style={{
                         fontSize: "1.25rem",
-                        color: "rgba(226,103,19,0.8)",
+                        color: "#B89968",
                         minWidth: "1.75rem",
                       }}
                     >
@@ -319,7 +329,7 @@ export default function ProductStory({ product }: ProductStoryProps) {
                     </span>
                     <span
                       className="font-body text-sm leading-relaxed"
-                      style={{ color: "rgba(254,250,224,0.75)" }}
+                      style={{ color: "rgba(26,60,52,0.7)" }}
                     >
                       {benefit}
                     </span>

@@ -180,28 +180,15 @@ export default function ProductDetail({ product }: ProductDetailProps) {
 
   return (
     <div className="min-h-screen">
-      {/* Breadcrumb */}
-      <div className="bg-surface-warm">
-        <div className="container-brand py-3">
-          <nav className="flex items-center gap-1.5 text-xs font-accent text-bark/40">
-            <Link href="/" className="hover:text-bark transition-colors">
-              Home
-            </Link>
-            <ChevronRight className="h-3 w-3" />
-            <Link href="/shop" className="hover:text-bark transition-colors">
-              Shop
-            </Link>
-            <ChevronRight className="h-3 w-3" />
-            <Link
-              href={`/shop?category=${product.categorySlug}`}
-              className="hover:text-bark transition-colors"
-            >
-              {product.category}
-            </Link>
-            <ChevronRight className="h-3 w-3" />
-            <span className="text-bark/70">{product.name}</span>
-          </nav>
-        </div>
+      {/* Back to shop */}
+      <div className="container-brand pt-6">
+        <Link
+          href="/shop"
+          className="inline-flex items-center gap-2 px-5 py-2.5 border border-bark/25 rounded-full font-accent text-[11px] tracking-[0.15em] uppercase text-bark/70 hover:border-bark hover:text-bark hover:bg-bark/5 transition-all duration-200"
+        >
+          <ChevronLeft className="h-3.5 w-3.5" />
+          Shop All
+        </Link>
       </div>
 
       {/* Product Section */}
@@ -451,7 +438,7 @@ export default function ProductDetail({ product }: ProductDetailProps) {
               )}
               {product.compareAtPrice && product.compareAtPrice > product.price && (
                 <span
-                  className="font-accent uppercase px-2 py-0.5 rounded-sm"
+                  className="font-accent uppercase px-2.5 py-0.5 rounded-full"
                   style={{
                     fontSize: "10px",
                     letterSpacing: "0.18em",
@@ -468,30 +455,26 @@ export default function ProductDetail({ product }: ProductDetailProps) {
             <div className="mt-4 flex gap-3">
               {/* Qty stepper */}
               <div
-                className="flex items-center rounded-sm"
+                className="flex items-center rounded-full"
                 style={{ border: "1px solid #E8D5B7" }}
               >
                 <button
                   onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                  className="px-3 py-3 transition-colors duration-200"
+                  className="pl-4 pr-3 py-3 transition-colors duration-200"
                   style={{ color: "#1A3C34" }}
                   aria-label="Decrease quantity"
                 >
                   <Minus className="h-4 w-4" />
                 </button>
                 <span
-                  className="px-4 py-3 font-body text-sm"
-                  style={{
-                    color: "#1A3C34",
-                    borderLeft: "1px solid #E8D5B7",
-                    borderRight: "1px solid #E8D5B7",
-                  }}
+                  className="px-3 py-3 font-body text-sm text-center min-w-[2.5rem]"
+                  style={{ color: "#1A3C34" }}
                 >
                   {quantity}
                 </span>
                 <button
                   onClick={() => setQuantity(Math.min(10, quantity + 1))}
-                  className="px-3 py-3 transition-colors duration-200"
+                  className="pl-3 pr-4 py-3 transition-colors duration-200"
                   style={{ color: "#1A3C34" }}
                   aria-label="Increase quantity"
                 >
@@ -503,7 +486,7 @@ export default function ProductDetail({ product }: ProductDetailProps) {
               <button
                 onClick={handleAddToCart}
                 className={cn(
-                  "flex-1 flex items-center justify-between px-5 py-3 rounded-sm font-body text-[13px] font-medium uppercase tracking-[0.18em] transition-all active:translate-y-px",
+                  "flex-1 flex items-center justify-between px-7 py-3 rounded-full font-body text-[13px] font-medium uppercase tracking-[0.18em] transition-all active:translate-y-px",
                   addedToCart ? "opacity-80" : ""
                 )}
                 style={{
@@ -532,8 +515,8 @@ export default function ProductDetail({ product }: ProductDetailProps) {
               ].map((badge) => (
                 <div
                   key={badge.main}
-                  className="pt-3"
-                  style={{ borderTop: "1px solid #E8D5B7" }}
+                  className="rounded-xl p-3.5"
+                  style={{ border: "1px solid #E8D5B7", backgroundColor: "#FDFAF5" }}
                 >
                   <p
                     className="font-body text-sm font-medium"
@@ -568,12 +551,12 @@ export default function ProductDetail({ product }: ProductDetailProps) {
                     setPincodeResult(null);
                   }}
                   placeholder="Enter PIN code"
-                  className="flex-1 px-3 py-2 border border-border rounded-sm text-sm font-body bg-cream focus:border-gold focus:outline-none transition-colors placeholder:text-bark/30"
+                  className="flex-1 px-4 py-2 border border-border rounded-full text-sm font-body bg-cream focus:border-gold focus:outline-none transition-colors placeholder:text-bark/30"
                 />
                 <button
                   onClick={checkPincode}
                   disabled={pincodeLoading || pincode.length !== 6}
-                  className="px-4 py-2 text-xs font-accent uppercase tracking-wider border border-border rounded-sm text-bark/70 hover:border-bark hover:text-bark disabled:opacity-40 transition-colors"
+                  className="px-5 py-2 text-xs font-accent uppercase tracking-wider border border-border rounded-full text-bark/70 hover:border-bark hover:text-bark disabled:opacity-40 transition-colors"
                 >
                   {pincodeLoading ? "..." : "Check"}
                 </button>
@@ -633,9 +616,9 @@ export default function ProductDetail({ product }: ProductDetailProps) {
                 >
                   <Link
                     href={`/blog/${post.slug}`}
-                    className="group flex gap-4 p-4 border border-border rounded-sm hover:border-gold/40 transition-colors"
+                    className="group flex gap-4 p-4 border border-border rounded-xl hover:border-gold/40 transition-colors"
                   >
-                    <div className="relative w-20 h-20 rounded-sm overflow-hidden flex-shrink-0">
+                    <div className="relative w-20 h-20 rounded-lg overflow-hidden flex-shrink-0">
                       <Image
                         src={post.image}
                         alt={post.title}
