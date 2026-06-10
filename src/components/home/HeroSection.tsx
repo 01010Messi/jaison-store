@@ -7,6 +7,7 @@ import { useEffect, useRef } from "react";
 const stats = [
   { num: "1970", label: "Year we started grinding" },
   { num: "55", label: "Years, one format" },
+  { num: "1", label: "Ingredient per jar" },
   { num: "0", label: "Preservatives. Ever." },
 ];
 
@@ -27,7 +28,7 @@ export default function HeroSection() {
   }, []);
 
   return (
-    <section className="relative flex flex-col overflow-hidden" style={{ backgroundColor: "#FEFAE0" }}>
+    <section className="relative flex flex-col overflow-hidden min-h-screen" style={{ backgroundColor: "#FEFAE0" }}>
       {/* Background image — fills entire section height */}
       <div className="absolute inset-0">
         <Image
@@ -68,28 +69,18 @@ export default function HeroSection() {
 
       {/* ── FOREGROUND CONTENT ─────────────────────────────────── */}
       <div
-        className="relative z-10 container-brand flex flex-col"
+        className="relative z-10 container-brand flex flex-col flex-1"
         style={{
           paddingTop: "clamp(120px, 16vh, 175px)",
           paddingBottom: 0,
         }}
       >
-        {/* Meta row — right-aligned above headline */}
-        <div className="flex justify-end mb-6 md:mb-8">
-          <p
-            className="font-accent uppercase tracking-[0.22em]"
-            style={{ fontSize: "10px", color: "rgba(40,54,24,0.36)" }}
-          >
-            55 Years&nbsp;&nbsp;·&nbsp;&nbsp;One Format&nbsp;&nbsp;·&nbsp;&nbsp;Zero Compromises
-          </p>
-        </div>
-
         {/* Headline */}
         <h2
           ref={headlineRef}
           className="font-heading font-light"
           style={{
-            fontSize: "clamp(2.75rem, 7vw, 8rem)",
+            fontSize: "clamp(3rem, 9vw, 11rem)",
             lineHeight: 0.96,
             letterSpacing: "-0.02em",
           }}
@@ -106,8 +97,8 @@ export default function HeroSection() {
           </span>
         </h2>
 
-        {/* Sub-copy + CTAs — side by side below the headline */}
-        <div className="mt-10 md:mt-14 flex flex-col md:flex-row md:items-end md:justify-between gap-6 pb-10 md:pb-14">
+        {/* Sub-copy + CTAs — pinned to bottom of hero */}
+        <div className="mt-auto flex flex-col md:flex-row md:items-end md:justify-between gap-6 pb-10 md:pb-14">
           <p
             className="font-body leading-relaxed"
             style={{
@@ -163,8 +154,8 @@ export default function HeroSection() {
           backdropFilter: "blur(8px)",
         }}
       >
-        <div className="container-brand py-8 md:py-10">
-          <div className="grid grid-cols-3 gap-6 md:gap-8 lg:gap-16">
+        <div className="container-brand py-5 md:py-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 lg:gap-12">
             {stats.map((s) => (
               <div key={s.num}>
                 <span

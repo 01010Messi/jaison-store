@@ -36,7 +36,7 @@ export default function FeaturedProducts() {
   });
 
   return (
-    <section className="bg-[#FEFAE0] pt-20 md:pt-28 pb-10">
+    <section className="bg-[#FEFAE0] pt-8 md:pt-10 pb-10">
       <div className="container-brand">
         {/* Header row: copy left, filter pills right (aligned to bottom) */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-12">
