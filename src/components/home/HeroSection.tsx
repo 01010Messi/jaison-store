@@ -7,7 +7,6 @@ import { useEffect, useRef } from "react";
 const stats = [
   { num: "1970", label: "Year we started grinding" },
   { num: "55", label: "Years, one format" },
-  { num: "1", label: "Ingredient per jar" },
   { num: "0", label: "Preservatives. Ever." },
 ];
 
@@ -69,12 +68,24 @@ export default function HeroSection() {
 
       {/* ── FOREGROUND CONTENT ─────────────────────────────────── */}
       <div
-        className="relative z-10 container-brand flex flex-col flex-1"
+        className="relative z-10 w-full px-6 md:px-10 lg:px-14 flex flex-col flex-1"
         style={{
-          paddingTop: "clamp(90px, 12vh, 130px)",
+          paddingTop: "clamp(80px, 10vh, 110px)",
           paddingBottom: 0,
         }}
       >
+        {/* Top-right tagline */}
+        <span
+          className="self-end font-accent font-semibold uppercase mb-8 md:mb-10"
+          style={{
+            fontSize: "clamp(12px, 1.05vw, 14px)",
+            letterSpacing: "0.18em",
+            color: "#834316",
+          }}
+        >
+          55 Years&nbsp;&nbsp;·&nbsp;&nbsp;One Format&nbsp;&nbsp;·&nbsp;&nbsp;Zero Compromises
+        </span>
+
         {/* Headline */}
         <h2
           ref={headlineRef}
@@ -150,18 +161,19 @@ export default function HeroSection() {
         className="relative z-10 border-t"
         style={{
           borderColor: "rgba(26,60,52,0.08)",
+          borderBottom: "1px solid rgba(26,60,52,0.15)",
           backgroundColor: "rgba(254,250,224,0.9)",
           backdropFilter: "blur(8px)",
         }}
       >
-        <div className="container-brand py-5 md:py-6">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 lg:gap-12">
+        <div className="container-brand py-6 md:py-8">
+          <div className="grid grid-cols-3 gap-6 md:gap-12 lg:gap-16 text-center">
             {stats.map((s) => (
               <div key={s.num}>
                 <span
                   className="font-heading font-light block"
                   style={{
-                    fontSize: "clamp(2rem, 4.5vw, 4.5rem)",
+                    fontSize: "clamp(2.5rem, 5.5vw, 5.5rem)",
                     color: "#834316",
                     letterSpacing: "-0.03em",
                     lineHeight: 1,
@@ -170,11 +182,11 @@ export default function HeroSection() {
                   {s.num}
                 </span>
                 <p
-                  className="font-accent uppercase mt-2"
+                  className="font-accent uppercase mt-3"
                   style={{
-                    fontSize: "10px",
+                    fontSize: "clamp(11px, 1vw, 13px)",
                     letterSpacing: "0.18em",
-                    color: "rgba(26,60,52,0.42)",
+                    color: "rgba(26,60,52,0.5)",
                   }}
                 >
                   {s.label}
