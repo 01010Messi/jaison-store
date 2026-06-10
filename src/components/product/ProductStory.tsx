@@ -106,14 +106,14 @@ export default function ProductStory({ product }: ProductStoryProps) {
                 style={
                   isActive
                     ? {
-                        backgroundColor: "#606C38",
+                        backgroundColor: "#1A3C34",
                         color: "#FEFAE0",
-                        borderColor: "#606C38",
+                        borderColor: "#1A3C34",
                       }
                     : {
                         backgroundColor: "transparent",
-                        color: "rgba(96,108,56,0.55)",
-                        borderColor: "rgba(96,108,56,0.2)",
+                        color: "rgba(26,60,52,0.5)",
+                        borderColor: "rgba(26,60,52,0.2)",
                       }
                 }
               >
@@ -124,11 +124,11 @@ export default function ProductStory({ product }: ProductStoryProps) {
         </div>
       </div>
 
-      {/* ── The Ritual ── */}
+      {/* ── The Ritual — card grid ── */}
       {activeTab === "ritual" && (
         <section
           className="relative overflow-hidden py-12 md:py-16 mt-6"
-          style={{ backgroundColor: "#EFE4C5" }}
+          style={{ backgroundColor: "#F5ECD7" }}
         >
           {/* Watermark */}
           <div
@@ -139,7 +139,7 @@ export default function ProductStory({ product }: ProductStoryProps) {
               className="font-heading font-light italic leading-none whitespace-nowrap"
               style={{
                 fontSize: "clamp(6rem, 18vw, 14rem)",
-                color: "rgba(96,108,56,0.04)",
+                color: "rgba(26,60,52,0.04)",
                 letterSpacing: "-0.04em",
                 marginBottom: "-0.18em",
                 marginRight: "-0.04em",
@@ -150,47 +150,58 @@ export default function ProductStory({ product }: ProductStoryProps) {
           </div>
 
           <div className="container-brand relative">
-            <p className="font-accent text-[10px] tracking-[0.2em] uppercase text-bark/40 mb-4">
-              — The Ritual · {product.name}
+            <p className="font-accent text-[11px] tracking-[0.22em] uppercase mb-5 flex items-center gap-3" style={{ color: "#A56843" }}>
+              <span style={{ color: "#B89968" }}>—</span>
+              The Ritual · {product.name}
             </p>
-            <h2 className="font-heading text-[2.25rem] md:text-[3rem] text-bark font-light leading-[1.08] tracking-[-0.01em] mb-8 md:mb-10">
+            <h2
+              className="font-heading font-light leading-[1.06] tracking-[-0.01em] mb-10 md:mb-12"
+              style={{ fontSize: "clamp(2.5rem, 5vw, 4rem)", color: "#1A3C34" }}
+            >
               How to{" "}
-              <span style={{ color: "#834316", fontStyle: "italic" }}>
+              <em style={{ color: "#834316", fontStyle: "italic" }}>
                 use it.
-              </span>
+              </em>
             </h2>
 
-            <div className="space-y-8 max-w-3xl">
-              {blocks.map((block, bi) => (
-                <div key={bi}>
-                  {block.heading && (
-                    <h3 className="font-heading text-xl text-bark font-light mb-4">
-                      {block.heading}
-                      <span style={{ color: "#834316" }}>.</span>
-                    </h3>
-                  )}
-                  <ol className="space-y-3">
-                    {block.steps.map((step, si) => (
-                      <li key={si} className="flex items-baseline gap-4">
-                        <span
-                          className="font-heading font-light shrink-0 leading-none"
-                          style={{
-                            fontSize: "1.75rem",
-                            color: "rgba(96,108,56,0.25)",
-                            minWidth: "2rem",
-                          }}
-                        >
-                          {String(si + 1).padStart(2, "0")}
-                        </span>
-                        <span className="font-body text-sm md:text-base text-bark/70 leading-relaxed">
-                          {step}
-                        </span>
-                      </li>
-                    ))}
-                  </ol>
+            {blocks.map((block, bi) => (
+              <div key={bi} className={bi > 0 ? "mt-10" : ""}>
+                {block.heading && (
+                  <h3
+                    className="font-heading font-light mb-6"
+                    style={{ fontSize: "1.25rem", color: "#834316" }}
+                  >
+                    {block.heading}.
+                  </h3>
+                )}
+                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4">
+                  {block.steps.map((step, si) => (
+                    <div
+                      key={si}
+                      className="rounded-sm p-5 flex flex-col"
+                      style={{ backgroundColor: "#FDFAF5" }}
+                    >
+                      <span
+                        className="font-heading font-light block leading-none mb-4"
+                        style={{
+                          fontSize: "clamp(28px, 4vw, 44px)",
+                          color: "#B89968",
+                          letterSpacing: "-0.03em",
+                        }}
+                      >
+                        {String(si + 1).padStart(2, "0")}
+                      </span>
+                      <p
+                        className="font-body text-sm leading-relaxed"
+                        style={{ color: "rgba(26,60,52,0.7)" }}
+                      >
+                        {step}
+                      </p>
+                    </div>
+                  ))}
                 </div>
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
         </section>
       )}
@@ -252,7 +263,7 @@ export default function ProductStory({ product }: ProductStoryProps) {
       {activeTab === "why" && (
         <section
           className="relative overflow-hidden py-12 md:py-16 mt-6"
-          style={{ backgroundColor: "#606C38" }}
+          style={{ backgroundColor: "#1A3C34" }}
         >
           <div className="container-brand relative">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-20">

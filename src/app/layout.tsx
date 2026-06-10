@@ -139,7 +139,7 @@ export default function RootLayout({
             },
             success: {
               iconTheme: {
-                primary: "#606C38",
+                primary: "#1A3C34",
                 secondary: "#FEFAE0",
               },
             },

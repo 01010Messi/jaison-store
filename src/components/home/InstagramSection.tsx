@@ -4,7 +4,7 @@ import GlowPillLink from "@/components/ui/GlowPillLink";
 /* Decorative placeholder tiles — swap for real post embeds when available */
 const tiles = [
   { bg: "#C4A882", motif: "leaf" },
-  { bg: "#606C38", motif: "oval" },
+  { bg: "#1A3C34", motif: "oval" },
   { bg: "#D4C4A8", motif: "leaf" },
   { bg: "#8B6B4A", motif: "oval" },
   { bg: "#834316", motif: "leaf" },
@@ -53,7 +53,10 @@ export default function InstagramSection() {
             <p className="font-accent text-[10px] tracking-[0.2em] uppercase text-bark/40 mb-4">
               — On Instagram · Rituals Daily
             </p>
-            <h2 className="font-heading text-[2.75rem] md:text-[3.5rem] lg:text-[4rem] text-bark font-light leading-[1.08] tracking-[-0.01em]">
+            <h2
+              className="font-heading font-light leading-[1.08] tracking-[-0.01em]"
+              style={{ fontSize: "clamp(2.75rem, 5.5vw, 4.5rem)", color: "#1A3C34" }}
+            >
               Follow the
               <span
                 className="block"
@@ -90,8 +93,8 @@ export default function InstagramSection() {
           <GlowPillLink
             href="https://www.instagram.com/jaison_skincare/"
             className="border-0"
-            style={{ backgroundColor: "#606C38", color: "#FEFAE0" }}
-            hoverShadow="0 0 28px rgba(96, 108, 56, 0.3)"
+            style={{ backgroundColor: "#1A3C34", color: "#FEFAE0" }}
+            hoverShadow="0 0 28px rgba(26, 60, 52, 0.3)"
           >
             <Instagram className="h-4 w-4" />
             Follow @jaison_skincare →

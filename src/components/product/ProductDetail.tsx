@@ -507,7 +507,7 @@ export default function ProductDetail({ product }: ProductDetailProps) {
                   addedToCart ? "opacity-80" : ""
                 )}
                 style={{
-                  background: "#606C38",
+                  background: "#1A3C34",
                   color: "#FDFAF5",
                 }}
               >

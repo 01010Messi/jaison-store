@@ -14,15 +14,15 @@ function MarqueeStrip({ prefix }: { prefix: string }) {
       {marqueeItems.map((item, i) => (
         <span key={`${prefix}-${i}`} className="flex items-center">
           {item.italic ? (
-            <span className="font-accent text-[10px] md:text-[10px] text-[9px] tracking-widest uppercase text-gold italic">
+            <span className="font-accent text-[11px] md:text-[12px] tracking-widest uppercase text-gold italic">
               {item.text}
             </span>
           ) : (
-            <span className="font-accent text-[10px] md:text-[10px] text-[9px] tracking-widest uppercase text-cream">
+            <span className="font-accent text-[11px] md:text-[12px] tracking-widest uppercase text-cream">
               {item.text}
             </span>
           )}
-          <span className="text-gold/60 text-[8px] mx-3">◆</span>
+          <span className="text-gold/60 text-[9px] mx-3">◆</span>
         </span>
       ))}
     </span>
@@ -31,7 +31,7 @@ function MarqueeStrip({ prefix }: { prefix: string }) {
 
 export default function AnnouncementBar() {
   return (
-    <div className="bg-bark overflow-hidden py-2">
+    <div className="bg-bark overflow-hidden py-2.5">
       <div className="flex animate-marquee" style={{ width: "max-content" }}>
         <MarqueeStrip prefix="a" />
         <MarqueeStrip prefix="b" />

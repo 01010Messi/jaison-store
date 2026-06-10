@@ -51,8 +51,8 @@ export default function BrandTimeline() {
             <h2
               className="font-heading font-light leading-[1.04]"
               style={{
-                fontSize: "clamp(2.75rem, 5vw, 4.25rem)",
-                color: "#606C38",
+                fontSize: "clamp(3rem, 6vw, 5rem)",
+                color: "#1A3C34",
                 letterSpacing: "-0.02em",
               }}
             >
@@ -73,16 +73,16 @@ export default function BrandTimeline() {
                 href="/our-story"
                 className="inline-flex items-center gap-2 rounded-full px-7 py-3 font-accent text-[10px] tracking-[0.15em] uppercase transition-all duration-300 border hover:shadow-md"
                 style={{
-                  borderColor: "rgba(96,108,56,0.28)",
-                  color: "#606C38",
+                  borderColor: "rgba(26,60,52,0.28)",
+                  color: "#1A3C34",
                 }}
                 onMouseEnter={(e) => {
                   (e.currentTarget as HTMLAnchorElement).style.borderColor = "#834316";
                   (e.currentTarget as HTMLAnchorElement).style.color = "#834316";
                 }}
                 onMouseLeave={(e) => {
-                  (e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(96,108,56,0.28)";
-                  (e.currentTarget as HTMLAnchorElement).style.color = "#606C38";
+                  (e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(26,60,52,0.28)";
+                  (e.currentTarget as HTMLAnchorElement).style.color = "#1A3C34";
                 }}
               >
                 Read the full story →
@@ -96,7 +96,7 @@ export default function BrandTimeline() {
               <div
                 key={m.year}
                 className={`grid grid-cols-[auto,1fr] gap-6 md:gap-10 py-8 ${i > 0 ? "border-t" : ""}`}
-                style={{ borderColor: "rgba(96,108,56,0.1)" }}
+                style={{ borderColor: "rgba(26,60,52,0.1)" }}
               >
                 <span
                   className="font-heading font-light select-none"
@@ -113,7 +113,7 @@ export default function BrandTimeline() {
                 <div className="pt-1">
                   <h3
                     className="font-heading font-light leading-tight"
-                    style={{ fontSize: "clamp(1.25rem, 2.5vw, 1.75rem)", color: "#606C38" }}
+                    style={{ fontSize: "clamp(1.25rem, 2.5vw, 1.75rem)", color: "#1A3C34" }}
                   >
                     {m.title}
                   </h3>

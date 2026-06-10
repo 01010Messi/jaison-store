@@ -46,7 +46,7 @@ export default function BlogPage() {
                 style={{
                   width: "180px",
                   height: "240px",
-                  border: "1px solid rgba(96,108,56,0.06)",
+                  border: "1px solid rgba(26,60,52,0.06)",
                   borderRadius: "16px",
                   backgroundColor: "rgba(245,236,215,0.35)",
                   flexShrink: 0,
@@ -57,9 +57,9 @@ export default function BlogPage() {
 
           <p
             className="relative font-accent text-[10px] tracking-[0.22em] uppercase mb-8 flex items-center gap-3"
-            style={{ color: "rgba(96,108,56,0.4)" }}
+            style={{ color: "rgba(26,60,52,0.4)" }}
           >
-            <span style={{ display: "inline-block", width: "28px", height: "1px", backgroundColor: "rgba(96,108,56,0.3)" }} />
+            <span style={{ display: "inline-block", width: "28px", height: "1px", backgroundColor: "rgba(26,60,52,0.3)" }} />
             THE JOURNAL · REAL RITUALS · REAL INGREDIENTS
           </p>
 
@@ -67,13 +67,13 @@ export default function BlogPage() {
             className="relative font-heading font-light leading-[1.05]"
             style={{ fontSize: "clamp(2.75rem, 7vw, 5.5rem)", letterSpacing: "-0.02em" }}
           >
-            <span style={{ color: "#606C38" }}>Reads worth </span>
+            <span style={{ color: "#1A3C34" }}>Reads worth </span>
             <span style={{ color: "#834316", fontStyle: "italic" }}>your time.</span>
           </h1>
 
           <p
             className="relative mt-6 font-body text-base leading-relaxed"
-            style={{ color: "rgba(96,108,56,0.52)", maxWidth: "520px" }}
+            style={{ color: "rgba(26,60,52,0.52)", maxWidth: "520px" }}
           >
             Once a month we write about the herbs we grind — how to mix them, how to
             use them, and why one ingredient is enough. No marketing. No miracle claims.

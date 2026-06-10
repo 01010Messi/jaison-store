@@ -106,7 +106,7 @@ export default function WhyPowderTeaser() {
         <div className="mt-12 md:mt-16">
           <GlowPillLink
             href="/why-powder"
-            style={{ backgroundColor: "#FEFAE0", color: "#606C38" }}
+            style={{ backgroundColor: "#FEFAE0", color: "#1A3C34" }}
             hoverShadow="0 0 28px rgba(254, 250, 224, 0.35)"
           >
             Read the full argument →

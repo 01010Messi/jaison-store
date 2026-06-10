@@ -261,7 +261,7 @@ export default function CheckoutPage() {
             contact: address.phone,
           },
           theme: {
-            color: "#606C38",
+            color: "#1A3C34",
           },
           modal: {
             ondismiss: () => {

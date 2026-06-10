@@ -78,7 +78,7 @@ export default function OurStoryPage() {
 
         {/* ── Hero ── */}
         <section
-          style={{ backgroundColor: "#606C38" }}
+          style={{ backgroundColor: "#1A3C34" }}
           className="relative overflow-hidden pt-28 pb-20 px-6 md:px-14 lg:px-24"
         >
           {/* Watermark */}
@@ -187,7 +187,7 @@ export default function OurStoryPage() {
                 className="font-heading font-light leading-[1.07]"
                 style={{
                   fontSize: "clamp(1.875rem, 4vw, 3.25rem)",
-                  color: "#606C38",
+                  color: "#1A3C34",
                   letterSpacing: "-0.01em",
                 }}
               >
@@ -196,7 +196,7 @@ export default function OurStoryPage() {
 
               <p
                 className="mt-6 font-body text-base leading-relaxed"
-                style={{ color: "rgba(96,108,56,0.58)", maxWidth: "420px" }}
+                style={{ color: "rgba(26,60,52,0.58)", maxWidth: "420px" }}
               >
                 {act.body}
               </p>
@@ -250,7 +250,7 @@ export default function OurStoryPage() {
             <Link
               href="/shop"
               className="our-story-btn-primary inline-flex items-center gap-2 rounded-full px-9 py-4 font-accent text-[11px] tracking-[0.15em] uppercase transition-all"
-              style={{ backgroundColor: "#FEFAE0", color: "#606C38" }}
+              style={{ backgroundColor: "#FEFAE0", color: "#1A3C34" }}
             >
               SHOP THE CATALOGUE →
             </Link>

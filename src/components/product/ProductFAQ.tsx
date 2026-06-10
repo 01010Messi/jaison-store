@@ -41,7 +41,7 @@ export default function ProductFAQ({ productName, faqs }: ProductFAQProps) {
                 <div
                   key={i}
                   className="border-b border-bark/10"
-                  style={i === 0 ? { borderTop: "1px solid rgba(96,108,56,0.1)" } : undefined}
+                  style={i === 0 ? { borderTop: "1px solid rgba(26,60,52,0.1)" } : undefined}
                 >
                   <button
                     onClick={() => setOpenIndex(isOpen ? null : i)}

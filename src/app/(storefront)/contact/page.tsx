@@ -40,8 +40,8 @@ const fieldClass =
 
 const fieldStyle = {
   border: "none",
-  borderBottom: "1px solid rgba(96,108,56,0.18)",
-  color: "#606C38",
+  borderBottom: "1px solid rgba(26,60,52,0.18)",
+  color: "#1A3C34",
   borderRadius: 0,
 } as const;
 
@@ -83,23 +83,23 @@ export default function ContactPage() {
     <>
       <style>{`
         .contact-field::placeholder {
-          color: rgba(96,108,56,0.32);
+          color: rgba(26,60,52,0.32);
         }
         .contact-field:focus {
           border-bottom-color: #834316 !important;
         }
         .contact-submit-btn:hover {
-          box-shadow: 0 0 28px rgba(96, 108, 56, 0.3);
+          box-shadow: 0 0 28px rgba(26,60,52,0.3);
         }
         .contact-submit-btn:active {
-          box-shadow: 0 0 40px rgba(96, 108, 56, 0.42);
+          box-shadow: 0 0 40px rgba(26,60,52,0.42);
           transform: scale(0.98);
         }
         .contact-wa-btn:hover {
-          box-shadow: 0 0 28px rgba(254, 250, 224, 0.35);
+          box-shadow: 0 0 28px rgba(26,60,52,0.2);
         }
         .contact-wa-btn:active {
-          box-shadow: 0 0 40px rgba(254, 250, 224, 0.5);
+          box-shadow: 0 0 40px rgba(26,60,52,0.3);
           transform: scale(0.98);
         }
         .contact-channel-link:hover .contact-channel-value {
@@ -122,7 +122,7 @@ export default function ContactPage() {
               className="font-heading font-light leading-none whitespace-nowrap"
               style={{
                 fontSize: "clamp(7rem, 22vw, 18rem)",
-                color: "rgba(96,108,56,0.045)",
+                color: "rgba(26,60,52,0.045)",
                 letterSpacing: "-0.04em",
                 marginBottom: "-0.15em",
                 marginLeft: "-0.04em",
@@ -134,7 +134,7 @@ export default function ContactPage() {
 
           <p
             className="relative font-accent text-[10px] tracking-[0.22em] uppercase mb-10"
-            style={{ color: "rgba(96,108,56,0.42)" }}
+            style={{ color: "rgba(26,60,52,0.42)" }}
           >
             — GET IN TOUCH · WE REPLY WITHIN 24 HOURS
           </p>
@@ -142,9 +142,9 @@ export default function ContactPage() {
           <h1
             className="relative font-heading font-light leading-[1.04]"
             style={{
-              fontSize: "clamp(3rem, 7.5vw, 6.25rem)",
+              fontSize: "clamp(3.5rem, 8.5vw, 7rem)",
               letterSpacing: "-0.02em",
-              color: "#606C38",
+              color: "#1A3C34",
             }}
           >
             Write to us.{" "}
@@ -155,7 +155,7 @@ export default function ContactPage() {
 
           <p
             className="relative mt-8 font-body text-base leading-relaxed"
-            style={{ color: "rgba(96,108,56,0.52)", maxWidth: "520px" }}
+            style={{ color: "rgba(26,60,52,0.52)", maxWidth: "520px" }}
           >
             A question about a powder, an order on its way, or what suits your
             skin — send it over. No bots, no ticket numbers. The people who
@@ -170,7 +170,7 @@ export default function ContactPage() {
             <div className="lg:col-span-2">
               <p
                 className="font-accent text-[10px] tracking-[0.22em] uppercase mb-8"
-                style={{ color: "rgba(96,108,56,0.42)" }}
+                style={{ color: "rgba(26,60,52,0.42)" }}
               >
                 — FOUR WAYS TO REACH US
               </p>
@@ -181,26 +181,26 @@ export default function ContactPage() {
                     <span className="flex items-baseline gap-4">
                       <span
                         className="font-heading text-sm shrink-0"
-                        style={{ color: "rgba(96,108,56,0.3)" }}
+                        style={{ color: "rgba(26,60,52,0.3)" }}
                       >
                         {ch.num}
                       </span>
                       <span>
                         <span
                           className="block font-accent text-[10px] tracking-[0.18em] uppercase"
-                          style={{ color: "rgba(96,108,56,0.42)" }}
+                          style={{ color: "rgba(26,60,52,0.42)" }}
                         >
                           {ch.label}
                         </span>
                         <span
                           className="contact-channel-value block font-heading text-xl md:text-2xl font-light mt-1 transition-colors"
-                          style={{ color: "#606C38" }}
+                          style={{ color: "#1A3C34" }}
                         >
                           {ch.value}
                         </span>
                         <span
                           className="block font-body text-xs mt-1"
-                          style={{ color: "rgba(96,108,56,0.45)" }}
+                          style={{ color: "rgba(26,60,52,0.45)" }}
                         >
                           {ch.note}
                         </span>
@@ -232,7 +232,7 @@ export default function ContactPage() {
 
               <p
                 className="mt-10 font-body text-xs leading-relaxed"
-                style={{ color: "rgba(96,108,56,0.45)" }}
+                style={{ color: "rgba(26,60,52,0.45)" }}
               >
                 Looking for shipping times or order help? Most answers are
                 already in our{" "}
@@ -253,7 +253,7 @@ export default function ContactPage() {
                 className="font-heading font-light leading-tight mb-10"
                 style={{
                   fontSize: "clamp(1.75rem, 3.5vw, 2.5rem)",
-                  color: "#606C38",
+                  color: "#1A3C34",
                 }}
               >
                 Or send it{" "}
@@ -268,7 +268,7 @@ export default function ContactPage() {
                     <label
                       htmlFor="contact-name"
                       className="block font-accent text-[10px] tracking-[0.18em] uppercase mb-1"
-                      style={{ color: "rgba(96,108,56,0.42)" }}
+                      style={{ color: "rgba(26,60,52,0.42)" }}
                     >
                       Name *
                     </label>
@@ -288,7 +288,7 @@ export default function ContactPage() {
                     <label
                       htmlFor="contact-email"
                       className="block font-accent text-[10px] tracking-[0.18em] uppercase mb-1"
-                      style={{ color: "rgba(96,108,56,0.42)" }}
+                      style={{ color: "rgba(26,60,52,0.42)" }}
                     >
                       Email *
                     </label>
@@ -311,7 +311,7 @@ export default function ContactPage() {
                     <label
                       htmlFor="contact-phone"
                       className="block font-accent text-[10px] tracking-[0.18em] uppercase mb-1"
-                      style={{ color: "rgba(96,108,56,0.42)" }}
+                      style={{ color: "rgba(26,60,52,0.42)" }}
                     >
                       Phone
                     </label>
@@ -336,7 +336,7 @@ export default function ContactPage() {
                     <label
                       htmlFor="contact-subject"
                       className="block font-accent text-[10px] tracking-[0.18em] uppercase mb-1"
-                      style={{ color: "rgba(96,108,56,0.42)" }}
+                      style={{ color: "rgba(26,60,52,0.42)" }}
                     >
                       Subject *
                     </label>
@@ -359,7 +359,7 @@ export default function ContactPage() {
                   <label
                     htmlFor="contact-message"
                     className="block font-accent text-[10px] tracking-[0.18em] uppercase mb-1"
-                    style={{ color: "rgba(96,108,56,0.42)" }}
+                    style={{ color: "rgba(26,60,52,0.42)" }}
                   >
                     Message *
                   </label>
@@ -381,7 +381,7 @@ export default function ContactPage() {
                   type="submit"
                   disabled={isSubmitting}
                   className="contact-submit-btn inline-flex items-center gap-3 px-10 py-4 rounded-full font-accent text-[11px] tracking-[0.15em] uppercase transition-all duration-200 disabled:opacity-60 disabled:cursor-not-allowed"
-                  style={{ backgroundColor: "#606C38", color: "#FEFAE0" }}
+                  style={{ backgroundColor: "#1A3C34", color: "#FEFAE0" }}
                 >
                   {isSubmitting ? "Sending…" : "Send Message →"}
                 </button>
@@ -393,7 +393,7 @@ export default function ContactPage() {
         {/* ── WhatsApp CTA ── */}
         <section
           className="relative overflow-hidden px-6 md:px-14 lg:px-24 py-20 md:py-28"
-          style={{ backgroundColor: "#606C38" }}
+          style={{ backgroundColor: "#FEFAE0" }}
         >
           {/* Watermark */}
           <div
@@ -404,7 +404,7 @@ export default function ContactPage() {
               className="font-heading font-light italic leading-none whitespace-nowrap"
               style={{
                 fontSize: "clamp(7rem, 20vw, 16rem)",
-                color: "rgba(254,250,224,0.04)",
+                color: "rgba(26,60,52,0.04)",
                 letterSpacing: "-0.04em",
                 marginBottom: "-0.18em",
               }}
@@ -415,7 +415,7 @@ export default function ContactPage() {
 
           <p
             className="relative font-accent text-[10px] tracking-[0.22em] uppercase mb-8"
-            style={{ color: "rgba(254,250,224,0.45)" }}
+            style={{ color: "rgba(26,60,52,0.42)" }}
           >
             — IN A HURRY?
           </p>
@@ -423,20 +423,20 @@ export default function ContactPage() {
           <h2
             className="relative font-heading font-light leading-[1.08]"
             style={{
-              fontSize: "clamp(2.25rem, 5vw, 4rem)",
+              fontSize: "clamp(2.75rem, 6vw, 5rem)",
               letterSpacing: "-0.02em",
-              color: "#FEFAE0",
+              color: "#1A3C34",
             }}
           >
             WhatsApp is the{" "}
-            <span style={{ color: "#E26713", fontStyle: "italic" }}>
+            <span style={{ color: "#834316", fontStyle: "italic" }}>
               fast lane.
             </span>
           </h2>
 
           <p
             className="relative mt-6 font-body text-sm leading-relaxed"
-            style={{ color: "rgba(254,250,224,0.55)", maxWidth: "440px" }}
+            style={{ color: "rgba(26,60,52,0.55)", maxWidth: "440px" }}
           >
             Order updates, ritual doubts, which powder for which skin — message
             us and we&apos;ll sort it out in chat.
@@ -446,8 +446,8 @@ export default function ContactPage() {
             href="https://wa.me/918600151677"
             target="_blank"
             rel="noopener noreferrer"
-            className="contact-wa-btn relative inline-flex items-center gap-3 px-10 py-4 mt-10 rounded-full font-accent text-[11px] tracking-[0.15em] uppercase transition-all duration-200"
-            style={{ backgroundColor: "#FEFAE0", color: "#606C38" }}
+            className="contact-wa-btn relative inline-flex items-center gap-3 px-10 py-4 mt-10 rounded-full font-accent text-[11px] tracking-[0.15em] uppercase transition-all duration-200 border"
+            style={{ backgroundColor: "transparent", color: "#1A3C34", borderColor: "rgba(26,60,52,0.25)" }}
           >
             Chat on WhatsApp →
           </a>
