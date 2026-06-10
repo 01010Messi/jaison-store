@@ -21,7 +21,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
         {label && (
           <label
             htmlFor={inputId}
-            className="block text-sm font-body font-medium text-bark/80"
+            className="block text-[11px] font-accent uppercase tracking-[0.14em] text-bark/60"
           >
             {label}
           </label>
@@ -32,7 +32,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
             id={inputId}
             type={isPassword && showPassword ? "text" : type}
             className={cn(
-              "w-full px-4 py-2.5 bg-cream border border-border rounded-sm",
+              "w-full px-4 py-2.5 bg-cream border border-border rounded-lg",
               "font-body text-bark text-sm placeholder:text-bark/40",
               "transition-all duration-200",
               "hover:border-gold/60",

@@ -394,7 +394,7 @@ export default function CheckoutPage() {
                 <div>
                   {/* Guest login prompt */}
                   {!isLoggedIn && (
-                    <div className="flex items-center gap-3 p-4 bg-parchment/30 border border-border/50 rounded-sm mb-6">
+                    <div className="flex items-center gap-3 p-4 bg-parchment/30 border border-border/50 rounded-xl mb-6">
                       <Mail className="h-4 w-4 text-sage flex-shrink-0" />
                       <p className="text-xs text-bark/60 font-body">
                         Checking out as a guest.{" "}
@@ -409,7 +409,7 @@ export default function CheckoutPage() {
                     </div>
                   )}
 
-                  <h2 className="font-heading text-xl text-bark mb-6">
+                  <h2 className="font-heading font-light text-2xl tracking-tight text-bark mb-6">
                     {isLoggedIn ? "Shipping Address" : "Contact & Shipping"}
                   </h2>
 
@@ -425,7 +425,7 @@ export default function CheckoutPage() {
                             key={addr.id}
                             type="button"
                             onClick={() => selectSavedAddress(addr)}
-                            className={`w-full text-left p-3 rounded-sm border transition-colors ${
+                            className={`w-full text-left p-3 rounded-xl border transition-colors ${
                               selectedAddressId === addr.id
                                 ? "border-bark bg-parchment/30"
                                 : "border-border hover:border-bark/30"
@@ -434,7 +434,7 @@ export default function CheckoutPage() {
                             <p className="text-sm font-body text-bark">
                               {addr.fullName}
                               {addr.isDefault && (
-                                <span className="ml-2 text-[10px] font-accent uppercase tracking-wider text-sage bg-sage/10 px-1.5 py-0.5 rounded-sm">
+                                <span className="ml-2 text-[10px] font-accent uppercase tracking-wider text-sage bg-sage/10 px-1.5 py-0.5 rounded-full">
                                   Default
                                 </span>
                               )}
@@ -447,7 +447,7 @@ export default function CheckoutPage() {
                         <button
                           type="button"
                           onClick={useNewAddress}
-                          className={`w-full text-left p-3 rounded-sm border transition-colors ${
+                          className={`w-full text-left p-3 rounded-xl border transition-colors ${
                             selectedAddressId === null
                               ? "border-bark bg-parchment/30"
                               : "border-border hover:border-bark/30"
@@ -537,7 +537,7 @@ export default function CheckoutPage() {
                       required
                     />
                     <div>
-                      <label className="block text-xs font-accent uppercase tracking-wider text-bark/60 mb-1.5">
+                      <label className="block text-[11px] font-accent uppercase tracking-[0.14em] text-bark/60 mb-1.5">
                         State <span className="text-terracotta">*</span>
                       </label>
                       <select
@@ -546,7 +546,7 @@ export default function CheckoutPage() {
                           setAddress({ ...address, state: e.target.value })
                         }
                         className={cn(
-                          "w-full px-3 py-2.5 border rounded-sm text-sm font-body bg-cream transition-colors focus:border-gold focus:ring-0 focus:outline-none appearance-none",
+                          "w-full px-4 py-2.5 border rounded-lg text-sm font-body bg-cream transition-colors focus:border-gold focus:ring-0 focus:outline-none appearance-none",
                           errors.state
                             ? "border-terracotta"
                             : "border-border"
@@ -603,7 +603,7 @@ export default function CheckoutPage() {
               {/* Step 2: Payment */}
               {currentStep === "payment" && (
                 <div>
-                  <h2 className="font-heading text-xl text-bark mb-6">
+                  <h2 className="font-heading font-light text-2xl tracking-tight text-bark mb-6">
                     Payment Method
                   </h2>
 
@@ -611,7 +611,7 @@ export default function CheckoutPage() {
                     <button
                       onClick={() => setPaymentMethod("RAZORPAY")}
                       className={cn(
-                        "w-full flex items-center gap-4 p-4 rounded-sm border transition-all duration-300",
+                        "w-full flex items-center gap-4 p-4 rounded-xl border transition-all duration-300",
                         paymentMethod === "RAZORPAY"
                           ? "border-terracotta bg-terracotta/5"
                           : "border-border hover:border-bark/30"
@@ -641,7 +641,7 @@ export default function CheckoutPage() {
                     <button
                       onClick={() => setPaymentMethod("COD")}
                       className={cn(
-                        "w-full flex items-center gap-4 p-4 rounded-sm border transition-all duration-300",
+                        "w-full flex items-center gap-4 p-4 rounded-xl border transition-all duration-300",
                         paymentMethod === "COD"
                           ? "border-terracotta bg-terracotta/5"
                           : "border-border hover:border-bark/30"
@@ -683,13 +683,13 @@ export default function CheckoutPage() {
               {/* Step 3: Review */}
               {currentStep === "review" && (
                 <div>
-                  <h2 className="font-heading text-xl text-bark mb-6">
+                  <h2 className="font-heading font-light text-2xl tracking-tight text-bark mb-6">
                     Review Your Order
                   </h2>
 
                   {/* Contact info (for guests) */}
                   {!isLoggedIn && (
-                    <div className="border border-border rounded-sm p-4 mb-6">
+                    <div className="border border-border rounded-xl p-4 mb-6">
                       <div className="flex items-center justify-between mb-2">
                         <div className="flex items-center gap-2">
                           <Mail className="h-4 w-4 text-sage" />
@@ -709,7 +709,7 @@ export default function CheckoutPage() {
                   )}
 
                   {/* Shipping address */}
-                  <div className="border border-border rounded-sm p-4 mb-6">
+                  <div className="border border-border rounded-xl p-4 mb-6">
                     <div className="flex items-center justify-between mb-2">
                       <div className="flex items-center gap-2">
                         <MapPin className="h-4 w-4 text-sage" />
@@ -736,7 +736,7 @@ export default function CheckoutPage() {
                   </div>
 
                   {/* Payment method */}
-                  <div className="border border-border rounded-sm p-4 mb-6">
+                  <div className="border border-border rounded-xl p-4 mb-6">
                     <div className="flex items-center justify-between mb-2">
                       <div className="flex items-center gap-2">
                         <CreditCard className="h-4 w-4 text-sage" />
@@ -759,7 +759,7 @@ export default function CheckoutPage() {
                   </div>
 
                   {/* Order items */}
-                  <div className="border border-border rounded-sm p-4 mb-6">
+                  <div className="border border-border rounded-xl p-4 mb-6">
                     <div className="flex items-center gap-2 mb-3">
                       <Truck className="h-4 w-4 text-sage" />
                       <span className="font-accent text-xs uppercase tracking-wider text-bark/60">
@@ -769,7 +769,7 @@ export default function CheckoutPage() {
                     <div className="space-y-3">
                       {items.map((item) => (
                         <div key={item.productId} className="flex items-center gap-3">
-                          <div className="relative w-12 h-14 bg-parchment rounded-sm overflow-hidden shrink-0">
+                          <div className="relative w-12 h-14 bg-parchment rounded-lg overflow-hidden shrink-0">
                             {item.image && (
                               <Image
                                 src={item.image}
@@ -814,8 +814,8 @@ export default function CheckoutPage() {
 
           {/* Order summary sidebar */}
           <div className="lg:col-span-1">
-            <div className="bg-surface-warm p-6 rounded-sm border border-border/50 sticky top-24">
-              <h3 className="font-heading text-lg text-bark mb-4">Order Summary</h3>
+            <div className="bg-surface-warm p-6 rounded-xl border border-border/50 sticky top-24">
+              <h3 className="font-heading font-light text-xl text-bark mb-4">Order Summary</h3>
               <GoldRule variant="simple" width="w-full" className="mb-4" />
 
               <div className="space-y-2 mb-4">
