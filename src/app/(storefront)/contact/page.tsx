@@ -119,16 +119,16 @@ export default function ContactPage() {
             aria-hidden="true"
           >
             <span
-              className="font-heading font-light leading-none whitespace-nowrap"
+              className="font-heading font-light italic leading-none whitespace-nowrap"
               style={{
                 fontSize: "clamp(7rem, 22vw, 18rem)",
-                color: "rgba(26,60,52,0.045)",
+                color: "rgba(26,60,52,0.04)",
                 letterSpacing: "-0.04em",
-                marginBottom: "-0.15em",
+                marginBottom: "-0.18em",
                 marginLeft: "-0.04em",
               }}
             >
-              SAY HELLO
+              say hello
             </span>
           </div>
 
@@ -164,7 +164,7 @@ export default function ContactPage() {
         </section>
 
         {/* ── Channels + Form ── */}
-        <section className="px-6 md:px-14 lg:px-24 py-16 md:py-24">
+        <section className="px-6 md:px-14 lg:px-24 pt-16 md:pt-24 pb-0">
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-14 lg:gap-20 max-w-6xl">
             {/* Channels */}
             <div className="lg:col-span-2">
@@ -392,7 +392,7 @@ export default function ContactPage() {
 
         {/* ── WhatsApp CTA ── */}
         <section
-          className="relative overflow-hidden px-6 md:px-14 lg:px-24 py-20 md:py-28"
+          className="relative overflow-hidden px-6 md:px-14 lg:px-24 pt-16 md:pt-20 pb-20 md:pb-28"
           style={{ backgroundColor: "#FEFAE0" }}
         >
           {/* Watermark */}
