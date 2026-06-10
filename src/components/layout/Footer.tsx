@@ -198,7 +198,7 @@ export default function Footer() {
       {/* Bottom bar */}
       <div className="border-t border-cream/10">
         <div className="container-brand py-5 flex flex-col md:flex-row items-center justify-between gap-3">
-          <p className="text-sm text-cream/50 font-body">
+          <p className="text-sm text-cream/50 font-body" suppressHydrationWarning>
             &copy; {new Date().getFullYear()} Jaison Herbals. Handcrafted with love in India.
           </p>
           <div className="flex items-center gap-3">

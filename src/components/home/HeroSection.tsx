@@ -11,6 +11,7 @@ const stats = [
 
 export default function HeroSection() {
   const headlineRef = useRef<HTMLHeadingElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
     const el = headlineRef.current;
@@ -25,6 +26,12 @@ export default function HeroSection() {
     return () => clearTimeout(t);
   }, []);
 
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.muted = true;
+    }
+  }, []);
+
   return (
     <section
         className="relative flex flex-col overflow-hidden min-h-screen"
@@ -33,8 +40,8 @@ export default function HeroSection() {
         {/* Background video */}
         <div className="absolute inset-0">
           <video
+            ref={videoRef}
             autoPlay
-            muted
             loop
             playsInline
             preload="auto"
