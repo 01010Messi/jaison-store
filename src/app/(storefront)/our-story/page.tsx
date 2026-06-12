@@ -74,11 +74,11 @@ export default function OurStoryPage() {
         }
       `}</style>
 
-      <div className="min-h-screen" style={{ backgroundColor: "#FEFAE0" }}>
+      <div className="min-h-screen" style={{ backgroundColor: "var(--color-cream)" }}>
 
         {/* ── Hero ── */}
         <section
-          style={{ backgroundColor: "#FEFAE0" }}
+          style={{ backgroundColor: "var(--color-cream)" }}
           className="relative overflow-hidden pt-28 pb-20 px-6 md:px-14 lg:px-24"
         >
           {/* Watermark */}
@@ -112,7 +112,7 @@ export default function OurStoryPage() {
             style={{
               fontSize: "clamp(3rem, 7.5vw, 6.25rem)",
               letterSpacing: "-0.02em",
-              color: "#1A3C34",
+              color: "var(--color-bark)",
             }}
           >
             One format.{" "}
@@ -161,7 +161,7 @@ export default function OurStoryPage() {
                   : "order-2 md:order-1"
               }
               style={{
-                backgroundColor: "#FEFAE0",
+                backgroundColor: "var(--color-cream)",
                 display: "flex",
                 flexDirection: "column",
                 justifyContent: "center",
@@ -170,14 +170,14 @@ export default function OurStoryPage() {
             >
               <p
                 className="font-accent text-[10px] tracking-[0.22em] uppercase flex items-center gap-3 mb-7"
-                style={{ color: "#834316" }}
+                style={{ color: "var(--color-terracotta)" }}
               >
                 <span
                   style={{
                     display: "inline-block",
                     width: "28px",
                     height: "1px",
-                    backgroundColor: "#834316",
+                    backgroundColor: "var(--color-terracotta)",
                   }}
                 />
                 ACT {act.num} · {act.year}
@@ -187,7 +187,7 @@ export default function OurStoryPage() {
                 className="font-heading font-light leading-[1.07]"
                 style={{
                   fontSize: "clamp(1.875rem, 4vw, 3.25rem)",
-                  color: "#1A3C34",
+                  color: "var(--color-bark)",
                   letterSpacing: "-0.01em",
                 }}
               >
@@ -207,7 +207,7 @@ export default function OurStoryPage() {
         {/* ── CTA ── */}
         <section
           className="py-24 px-6 text-center"
-          style={{ backgroundColor: "#FEFAE0" }}
+          style={{ backgroundColor: "var(--color-cream)" }}
         >
           <p
             className="font-accent text-[10px] tracking-[0.25em] uppercase mb-10 flex items-center justify-center gap-3"
@@ -232,7 +232,7 @@ export default function OurStoryPage() {
               maxWidth: "880px",
             }}
           >
-            <span style={{ color: "#1A3C34" }}>The next 55 years </span>
+            <span style={{ color: "var(--color-bark)" }}>The next 55 years </span>
             <span style={{ color: "#E26713", fontStyle: "italic" }}>
               look exactly the same.
             </span>
@@ -250,14 +250,14 @@ export default function OurStoryPage() {
             <Link
               href="/shop"
               className="our-story-btn-primary inline-flex items-center gap-2 rounded-full px-9 py-4 font-accent text-[11px] tracking-[0.15em] uppercase transition-all"
-              style={{ backgroundColor: "#1A3C34", color: "#FEFAE0" }}
+              style={{ backgroundColor: "var(--color-bark)", color: "var(--color-cream)" }}
             >
               SHOP THE CATALOGUE →
             </Link>
             <Link
               href="/why-powder"
               className="our-story-btn-outline inline-flex items-center gap-2 rounded-full px-9 py-4 font-accent text-[11px] tracking-[0.15em] uppercase transition-all border"
-              style={{ borderColor: "rgba(26,60,52,0.3)", color: "#1A3C34" }}
+              style={{ borderColor: "rgba(26,60,52,0.3)", color: "var(--color-bark)" }}
             >
               READ: WHY POWDER?
             </Link>

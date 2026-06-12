@@ -26,7 +26,7 @@ export default function WhatsAppButton() {
 
       {/* Tooltip */}
       <div className="absolute right-14 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none">
-        <div className="bg-bark text-cream text-xs font-body px-3 py-1.5 rounded-sm whitespace-nowrap shadow-warm">
+        <div className="bg-bark text-cream text-xs font-body px-3 py-1.5 rounded-full whitespace-nowrap shadow-warm">
           Chat with us
         </div>
       </div>

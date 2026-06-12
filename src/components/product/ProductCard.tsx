@@ -86,8 +86,8 @@ export default function ProductCard({ product }: ProductCardProps) {
   const [added, setAdded] = useState(false);
   const addItem = useCartStore((s) => s.addItem);
 
-  const bg = cardBgColors[product.slug] ?? "#EFE4C5";
-  const accent = accentColors[product.slug] ?? "#834316";
+  const bg = cardBgColors[product.slug] ?? "var(--color-parchment)";
+  const accent = accentColors[product.slug] ?? "var(--color-terracotta)";
   const botanical = botanicalNames[product.slug] ?? "";
   const category = categoryLabels[product.slug] ?? product.category;
   const badge =
@@ -142,14 +142,14 @@ export default function ProductCard({ product }: ProductCardProps) {
             {product.name}
           </h3>
         </Link>
-        <p className="text-[10px] italic text-bark/50 truncate">{botanical}</p>
+        <p className="text-[10px] italic text-bark/60 truncate">{botanical}</p>
         <div className="flex items-center justify-between mt-auto pt-2">
           <div className="flex items-baseline gap-1.5">
             <span className="font-heading text-base text-bark">
               ₹{product.price}
             </span>
             {product.compareAtPrice && product.compareAtPrice > product.price && (
-              <span className="text-xs text-bark/40 line-through">
+              <span className="text-xs text-bark/60 line-through">
                 ₹{product.compareAtPrice}
               </span>
             )}

@@ -141,7 +141,7 @@ export default function AdminOrdersPage() {
       <div className="flex items-start justify-between mb-8">
         <div>
           <h1 className="font-heading text-2xl text-bark">Orders</h1>
-          <p className="text-sm text-bark/50 font-body mt-1">
+          <p className="text-sm text-bark/60 font-body mt-1">
             Manage customer orders and shipments
           </p>
         </div>
@@ -162,7 +162,7 @@ export default function AdminOrdersPage() {
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
           placeholder="Search by order number, name, or email..."
-          className="w-full pl-9 pr-4 py-2 bg-cream border border-border rounded-sm text-sm font-body text-bark placeholder:text-bark/30 focus:outline-none focus:border-gold"
+          className="w-full pl-9 pr-4 py-2 bg-cream border border-border rounded-sm text-sm font-body text-bark placeholder:text-bark/30 focus:border-gold"
         />
       </div>
 
@@ -176,7 +176,7 @@ export default function AdminOrdersPage() {
               "px-3 py-1.5 text-xs font-accent uppercase tracking-wider rounded-full border transition-colors whitespace-nowrap",
               statusFilter === s
                 ? "bg-bark text-cream border-bark"
-                : "bg-cream text-bark/50 border-border hover:border-bark/30"
+                : "bg-cream text-bark/60 border-border hover:border-bark/30"
             )}
           >
             {s}
@@ -191,7 +191,7 @@ export default function AdminOrdersPage() {
 
       <div className="bg-cream rounded-sm border border-border/50">
         <div className="flex items-center gap-3 p-4 border-b border-border/50">
-          <span className="section-label text-bark/40">
+          <span className="section-label text-bark/60">
             {filteredOrders.length} Order{filteredOrders.length !== 1 ? "s" : ""}
           </span>
           <GoldRule variant="simple" width="w-full" />
@@ -200,7 +200,7 @@ export default function AdminOrdersPage() {
         {filteredOrders.length === 0 ? (
           <div className="flex flex-col items-center justify-center py-16 text-bark/30">
             <ShoppingCart className="h-12 w-12 mb-3 opacity-50" />
-            <p className="font-heading text-lg text-bark/40">No orders found</p>
+            <p className="font-heading text-lg text-bark/60">No orders found</p>
           </div>
         ) : (
           <div className="divide-y divide-border-light">
@@ -224,7 +224,7 @@ export default function AdminOrdersPage() {
                       <Badge variant="gold">COD</Badge>
                     )}
                   </div>
-                  <p className="text-xs text-bark/40 font-body">
+                  <p className="text-xs text-bark/60 font-body">
                     {order.customer.name || order.customer.email} &bull;{" "}
                     {order.items.length} item
                     {order.items.length !== 1 ? "s" : ""} &bull;{" "}
@@ -266,17 +266,17 @@ export default function AdminOrdersPage() {
           <div className="space-y-4">
             {/* Customer info */}
             <div>
-              <h3 className="text-xs font-accent uppercase tracking-wider text-bark/40 mb-2">
+              <h3 className="text-xs font-accent uppercase tracking-wider text-bark/60 mb-2">
                 Customer
               </h3>
               <p className="text-sm text-bark font-body">
                 {selectedOrder.customer.name || "—"}
               </p>
-              <p className="text-xs text-bark/50 font-body">
+              <p className="text-xs text-bark/60 font-body">
                 {selectedOrder.customer.email}
               </p>
               {selectedOrder.customer.phone && (
-                <p className="text-xs text-bark/50 font-body">
+                <p className="text-xs text-bark/60 font-body">
                   {selectedOrder.customer.phone}
                 </p>
               )}
@@ -284,7 +284,7 @@ export default function AdminOrdersPage() {
 
             {/* Shipping address */}
             <div>
-              <h3 className="text-xs font-accent uppercase tracking-wider text-bark/40 mb-2">
+              <h3 className="text-xs font-accent uppercase tracking-wider text-bark/60 mb-2">
                 Shipping Address
               </h3>
               <p className="text-sm text-bark/70 font-body">
@@ -304,7 +304,7 @@ export default function AdminOrdersPage() {
 
             {/* Items */}
             <div>
-              <h3 className="text-xs font-accent uppercase tracking-wider text-bark/40 mb-2">
+              <h3 className="text-xs font-accent uppercase tracking-wider text-bark/60 mb-2">
                 Items
               </h3>
               <div className="space-y-2">
@@ -321,13 +321,13 @@ export default function AdminOrdersPage() {
                 ))}
                 <GoldRule variant="simple" width="w-full" className="my-2" />
                 <div className="flex justify-between text-sm font-body">
-                  <span className="text-bark/50">Subtotal</span>
+                  <span className="text-bark/60">Subtotal</span>
                   <span className="text-bark">
                     {formatPrice(selectedOrder.subtotal)}
                   </span>
                 </div>
                 <div className="flex justify-between text-sm font-body">
-                  <span className="text-bark/50">Shipping</span>
+                  <span className="text-bark/60">Shipping</span>
                   <span className="text-bark">
                     {selectedOrder.shippingCost > 0
                       ? formatPrice(selectedOrder.shippingCost)
@@ -336,7 +336,7 @@ export default function AdminOrdersPage() {
                 </div>
                 {selectedOrder.codFee > 0 && (
                   <div className="flex justify-between text-sm font-body">
-                    <span className="text-bark/50">COD Fee</span>
+                    <span className="text-bark/60">COD Fee</span>
                     <span className="text-bark">
                       {formatPrice(selectedOrder.codFee)}
                     </span>
@@ -363,7 +363,7 @@ export default function AdminOrdersPage() {
 
             {/* Update status */}
             <div>
-              <h3 className="text-xs font-accent uppercase tracking-wider text-bark/40 mb-2">
+              <h3 className="text-xs font-accent uppercase tracking-wider text-bark/60 mb-2">
                 Update Status
               </h3>
               {!["SHIPPED", "DELIVERED", "CANCELLED"].includes(selectedOrder.status) && (

@@ -14,7 +14,7 @@ export default function ProductLoading() {
       <section className="container-brand py-8 md:py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 lg:gap-16">
           {/* Image */}
-          <Skeleton className="aspect-square w-full rounded-sm" />
+          <Skeleton className="aspect-square w-full rounded-xl" />
 
           {/* Info */}
           <div className="flex flex-col gap-4">

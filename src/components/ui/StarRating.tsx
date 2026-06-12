@@ -67,7 +67,7 @@ export default function StarRating({
         );
       })}
       {showCount && (
-        <span className="ml-1.5 text-xs text-bark/50 font-body">
+        <span className="ml-1.5 text-xs text-bark/60 font-body">
           ({count})
         </span>
       )}

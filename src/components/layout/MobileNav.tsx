@@ -65,7 +65,7 @@ export default function MobileNav() {
                 <Icon
                   className={cn(
                     "h-5 w-5 transition-colors",
-                    "text-bark/50"
+                    "text-bark/60"
                   )}
                 />
                 {count > 0 && (
@@ -73,7 +73,7 @@ export default function MobileNav() {
                     {count}
                   </span>
                 )}
-                <span className="text-[10px] font-accent text-bark/50">
+                <span className="text-[10px] font-accent text-bark/60">
                   {item.label}
                 </span>
               </button>
@@ -92,13 +92,13 @@ export default function MobileNav() {
               <Icon
                 className={cn(
                   "h-5 w-5 transition-colors",
-                  isActive ? "text-terracotta" : "text-bark/50"
+                  isActive ? "text-terracotta" : "text-bark/60"
                 )}
               />
               <span
                 className={cn(
                   "text-[10px] font-accent",
-                  isActive ? "text-terracotta" : "text-bark/50"
+                  isActive ? "text-terracotta" : "text-bark/60"
                 )}
               >
                 {item.label}

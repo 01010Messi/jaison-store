@@ -11,7 +11,7 @@ const tiles = [
     aspect: "4/5",
   },
   {
-    bg: "#1A3C34",
+    bg: "var(--color-bark)",
     avatarBg: "#2D5A48",
     handle: "@aarav.makes",
     caption: "Cold-process Shikakai foam. No sulphates. Look at the lather.",
@@ -59,7 +59,7 @@ const tiles = [
     aspect: "1/1",
   },
   {
-    bg: "#834316",
+    bg: "var(--color-terracotta)",
     avatarBg: "#C17A3A",
     handle: "@the.herb.kitchen",
     caption: "Rose petal powder mixed with honey. 20 minutes, weekly.",
@@ -156,10 +156,10 @@ export default function InstagramSection() {
         </p>
         <h2
           className="font-heading font-light leading-[1.04]"
-          style={{ fontSize: "clamp(2.5rem, 6vw, 5rem)", letterSpacing: "-0.02em", color: "#1A3C34" }}
+          style={{ fontSize: "clamp(2.5rem, 6vw, 5rem)", letterSpacing: "-0.02em", color: "var(--color-bark)" }}
         >
           Their kitchens.{" "}
-          <em style={{ color: "#834316", fontStyle: "italic", fontWeight: 300 }}>
+          <em style={{ color: "var(--color-terracotta)", fontStyle: "italic", fontWeight: 300 }}>
             Their rituals.
           </em>
         </h2>
@@ -168,7 +168,7 @@ export default function InstagramSection() {
           style={{ color: "rgba(26,60,52,0.55)" }}
         >
           Tag{" "}
-          <strong style={{ fontWeight: 700, color: "#1A3C34" }}>#jaisonherbals</strong>{" "}
+          <strong style={{ fontWeight: 700, color: "var(--color-bark)" }}>#jaisonherbals</strong>{" "}
           on Instagram. We feature one a day.
         </p>
       </div>
@@ -228,8 +228,8 @@ export default function InstagramSection() {
             padding: "12px 24px",
             fontSize: "11px",
             letterSpacing: "0.14em",
-            backgroundColor: "#1A3C34",
-            color: "#FEFAE0",
+            backgroundColor: "var(--color-bark)",
+            color: "var(--color-cream)",
           }}
         >
           <Instagram className="h-4 w-4" />

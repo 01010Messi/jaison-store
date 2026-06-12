@@ -71,7 +71,7 @@ export default function AdminLayoutClient({
         <div className="p-5 border-b border-cream/10">
           <Link href="/" className="block">
             <h1 className="font-heading text-xl tracking-wider">jaison</h1>
-            <p className="text-[10px] font-accent uppercase tracking-[0.15em] text-cream/40">
+            <p className="text-[10px] font-accent uppercase tracking-[0.15em] text-cream/70">
               Admin Panel
             </p>
           </Link>
@@ -93,7 +93,7 @@ export default function AdminLayoutClient({
                   "flex items-center gap-3 px-5 py-2.5 text-sm font-body transition-colors",
                   isActive
                     ? "bg-cream/10 text-cream"
-                    : "text-cream/50 hover:text-cream hover:bg-cream/5"
+                    : "text-cream/70 hover:text-cream hover:bg-cream/5"
                 )}
               >
                 <Icon className="h-4 w-4" />
@@ -106,7 +106,7 @@ export default function AdminLayoutClient({
         <div className="p-5 border-t border-cream/10">
           <Link
             href="/"
-            className="flex items-center gap-2 text-xs text-cream/40 hover:text-cream transition-colors font-accent uppercase tracking-wider"
+            className="flex items-center gap-2 text-xs text-cream/70 hover:text-cream transition-colors font-accent uppercase tracking-wider"
           >
             <ArrowLeft className="h-3.5 w-3.5" />
             Back to Store
@@ -153,7 +153,7 @@ export default function AdminLayoutClient({
                         "flex items-center gap-3 px-5 py-3 text-sm font-body transition-colors",
                         isActive
                           ? "bg-cream/10 text-cream"
-                          : "text-cream/50 hover:text-cream hover:bg-cream/5"
+                          : "text-cream/70 hover:text-cream hover:bg-cream/5"
                       )}
                     >
                       <Icon className="h-4 w-4" />
@@ -165,7 +165,7 @@ export default function AdminLayoutClient({
               <div className="px-5 py-4 border-t border-cream/10">
                 <Link
                   href="/"
-                  className="flex items-center gap-2 text-xs text-cream/40 hover:text-cream transition-colors font-accent uppercase tracking-wider"
+                  className="flex items-center gap-2 text-xs text-cream/70 hover:text-cream transition-colors font-accent uppercase tracking-wider"
                 >
                   <ArrowLeft className="h-3.5 w-3.5" />
                   Back to Store

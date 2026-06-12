@@ -78,7 +78,7 @@ export default function AboutPage() {
             </div>
 
             <OrnamentalBorder variant="full" className="p-3">
-              <div className="relative aspect-[4/5] overflow-hidden rounded-sm">
+              <div className="relative aspect-[4/5] overflow-hidden rounded-xl">
                 <Image
                   src="/images/brand-story.webp"
                   alt="jaison herbals natural products"
@@ -131,7 +131,7 @@ export default function AboutPage() {
                   {value.title}
                 </h3>
                 <GoldRule variant="simple" width="w-8 mx-auto" className="mb-3" />
-                <p className="text-sm text-bark/50 font-body leading-relaxed">
+                <p className="text-sm text-bark/60 font-body leading-relaxed">
                   {value.description}
                 </p>
               </div>
@@ -148,7 +148,7 @@ export default function AboutPage() {
           </h2>
           <Link
             href="/shop"
-            className="inline-flex items-center gap-2 px-8 py-3 bg-terracotta text-cream rounded-sm font-accent text-sm uppercase tracking-wider hover:bg-terracotta/90 transition-all"
+            className="inline-flex items-center gap-2 px-8 py-3 bg-terracotta text-cream rounded-full font-accent text-sm uppercase tracking-wider hover:bg-terracotta/90 transition-all"
           >
             Explore Our Products
           </Link>

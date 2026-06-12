@@ -108,9 +108,11 @@ NEXT_PUBLIC_GA_MEASUREMENT_ID
 ```
 
 ## Design System
-- **Colors:** Cream (#FDFAF5), Parchment (#F5ECD7), Terracotta (#A0885C), Sage (#7A9E7E), Bark (#1A3C34), Gold (#BCA480)
-- **Fonts:** Georgia serif (headings), System-UI sans-serif (body)
+> Full reference: **DESIGN.md** (tokens, type scale, component rules, recipes). Summary:
+- **Colors:** Cream (#FEFAE0), Parchment (#EFE4C5), Terracotta (#834316, light #A56843), Sage (#606C38), Bark (#1A3C34), Gold (#B89968)
+- **Fonts:** Cormorant Garamond (`font-heading`), DM Sans (`font-body`), Inter (`font-accent`) — loaded via next/font
 - **Theme:** Warm, earthy, Ayurvedic/herbal aesthetic
+- **Rules:** never hardcode hex in components — use token classes in `className`, `var(--color-*)` in inline styles (vars defined in globals.css). Radius: `rounded-full` interactive pills, `rounded-xl` cards/images, `rounded-lg` form fields (`rounded-sm` retired). Muted text ≥ `/60` on cream, ≥ `/70` on bark.
 
 ## API Routes
 - `POST /api/auth/register` - User registration

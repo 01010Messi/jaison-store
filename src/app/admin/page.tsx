@@ -134,7 +134,7 @@ export default function AdminDashboard() {
     <div>
       <div className="mb-8">
         <h1 className="font-heading text-2xl text-bark">Dashboard</h1>
-        <p className="text-sm text-bark/50 font-body mt-1">
+        <p className="text-sm text-bark/60 font-body mt-1">
           Welcome to the jaison admin panel
         </p>
       </div>
@@ -149,7 +149,7 @@ export default function AdminDashboard() {
               className="bg-cream p-5 rounded-sm border border-border/50"
             >
               <div className="flex items-center justify-between mb-3">
-                <span className="text-xs font-accent uppercase tracking-wider text-bark/40">
+                <span className="text-xs font-accent uppercase tracking-wider text-bark/60">
                   {stat.label}
                 </span>
                 <Icon className={`h-5 w-5 ${stat.color}`} />
@@ -179,7 +179,7 @@ export default function AdminDashboard() {
                 });
                 return (
                   <div key={day.date} className="flex-1 flex flex-col items-center gap-1">
-                    <span className="text-[10px] font-accent text-bark/50">
+                    <span className="text-[10px] font-accent text-bark/60">
                       {day.revenue > 0 ? formatPrice(day.revenue) : ""}
                     </span>
                     <div className="w-full relative flex justify-center" style={{ height: "100px" }}>
@@ -195,7 +195,7 @@ export default function AdminDashboard() {
                         }}
                       />
                     </div>
-                    <span className="text-[10px] font-accent text-bark/40 uppercase">
+                    <span className="text-[10px] font-accent text-bark/60 uppercase">
                       {dayLabel}
                     </span>
                     <span className="text-[9px] font-body text-bark/30">
@@ -233,7 +233,7 @@ export default function AdminDashboard() {
                   </span>
                   <div className="flex-1 min-w-0">
                     <p className="text-sm font-body text-bark truncate">{product.name}</p>
-                    <p className="text-[10px] text-bark/40 font-body">
+                    <p className="text-[10px] text-bark/60 font-body">
                       {product.unitsSold} sold &bull; {product.stock} in stock
                     </p>
                   </div>
@@ -278,7 +278,7 @@ export default function AdminDashboard() {
                     <p className="text-sm font-accent font-semibold text-bark">
                       #{order.orderNumber}
                     </p>
-                    <p className="text-xs text-bark/40 font-body">
+                    <p className="text-xs text-bark/60 font-body">
                       {order.customerName} &bull; {order.itemCount} item
                       {order.itemCount !== 1 ? "s" : ""}
                     </p>
@@ -290,7 +290,7 @@ export default function AdminDashboard() {
                     <p
                       className={cn(
                         "text-[10px] font-accent uppercase tracking-wider",
-                        statusColors[order.status] || "text-bark/40"
+                        statusColors[order.status] || "text-bark/60"
                       )}
                     >
                       {order.status}
@@ -312,7 +312,7 @@ export default function AdminDashboard() {
               <IndianRupee className="h-4 w-4 text-sage" />
               <div>
                 <p className="text-sm font-heading text-bark">Total Revenue</p>
-                <p className="text-xs text-bark/40 font-body">
+                <p className="text-xs text-bark/60 font-body">
                   {formatPrice(stats?.totalRevenue || 0)} lifetime
                 </p>
               </div>
@@ -325,7 +325,7 @@ export default function AdminDashboard() {
                   <p className="text-sm font-heading text-bark">
                     Pending Reviews
                   </p>
-                  <p className="text-xs text-bark/40 font-body">
+                  <p className="text-xs text-bark/60 font-body">
                     {stats?.pendingReviews} review
                     {stats?.pendingReviews !== 1 ? "s" : ""} awaiting moderation
                   </p>
@@ -339,7 +339,7 @@ export default function AdminDashboard() {
                 <p className="text-sm font-heading text-bark">
                   Today&apos;s Orders
                 </p>
-                <p className="text-xs text-bark/40 font-body">
+                <p className="text-xs text-bark/60 font-body">
                   {stats?.todayOrders || 0} orders placed today
                 </p>
               </div>
@@ -351,7 +351,7 @@ export default function AdminDashboard() {
             <div className="mt-4 pt-4 border-t border-border/30">
               <div className="flex items-center gap-2 mb-3">
                 <AlertTriangle className="h-4 w-4 text-terracotta" />
-                <h3 className="text-xs font-accent uppercase tracking-wider text-bark/50">
+                <h3 className="text-xs font-accent uppercase tracking-wider text-bark/60">
                   Low Stock ({lowStockDetails.length})
                 </h3>
               </div>

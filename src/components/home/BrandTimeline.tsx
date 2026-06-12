@@ -27,7 +27,7 @@ const milestones = [
 
 export default function BrandTimeline() {
   return (
-    <section style={{ backgroundColor: "#FEFAE0" }} className="py-14 md:py-20">
+    <section style={{ backgroundColor: "var(--color-cream)" }} className="py-14 md:py-20">
       <div className="container-brand">
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16">
 
@@ -35,14 +35,14 @@ export default function BrandTimeline() {
           <div className="lg:col-span-2 lg:sticky lg:top-[200px] self-start">
             <p
               className="font-accent text-[10px] tracking-[0.22em] uppercase flex items-center gap-3 mb-8"
-              style={{ color: "#834316" }}
+              style={{ color: "var(--color-terracotta)" }}
             >
               <span
                 style={{
                   display: "inline-block",
                   width: "28px",
                   height: "1px",
-                  backgroundColor: "#834316",
+                  backgroundColor: "var(--color-terracotta)",
                 }}
               />
               THE TIMELINE
@@ -52,18 +52,18 @@ export default function BrandTimeline() {
               className="font-heading font-light leading-[1.04]"
               style={{
                 fontSize: "clamp(3rem, 6vw, 5rem)",
-                color: "#1A3C34",
+                color: "var(--color-bark)",
                 letterSpacing: "-0.02em",
               }}
             >
               Ancient ingredients.
               <span
                 className="block"
-                style={{ fontStyle: "italic", color: "#834316", fontWeight: 300 }}
+                style={{ fontStyle: "italic", color: "var(--color-terracotta)", fontWeight: 300 }}
               >
                 Modern
               </span>
-              <span style={{ fontStyle: "italic", color: "#834316", fontWeight: 300 }}>
+              <span style={{ fontStyle: "italic", color: "var(--color-terracotta)", fontWeight: 300 }}>
                 standards.
               </span>
             </h2>
@@ -74,15 +74,15 @@ export default function BrandTimeline() {
                 className="inline-flex items-center gap-2 rounded-full px-7 py-3 font-accent text-[10px] tracking-[0.15em] uppercase transition-all duration-300 border hover:shadow-md"
                 style={{
                   borderColor: "rgba(26,60,52,0.28)",
-                  color: "#1A3C34",
+                  color: "var(--color-bark)",
                 }}
                 onMouseEnter={(e) => {
-                  (e.currentTarget as HTMLAnchorElement).style.borderColor = "#834316";
-                  (e.currentTarget as HTMLAnchorElement).style.color = "#834316";
+                  (e.currentTarget as HTMLAnchorElement).style.borderColor = "var(--color-terracotta)";
+                  (e.currentTarget as HTMLAnchorElement).style.color = "var(--color-terracotta)";
                 }}
                 onMouseLeave={(e) => {
                   (e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(26,60,52,0.28)";
-                  (e.currentTarget as HTMLAnchorElement).style.color = "#1A3C34";
+                  (e.currentTarget as HTMLAnchorElement).style.color = "var(--color-bark)";
                 }}
               >
                 Read the full story →
@@ -102,7 +102,7 @@ export default function BrandTimeline() {
                   className="font-heading font-light select-none"
                   style={{
                     fontSize: "clamp(3.5rem, 6.5vw, 5.5rem)",
-                    color: "#834316",
+                    color: "var(--color-terracotta)",
                     letterSpacing: "-0.03em",
                     lineHeight: 0.88,
                     marginTop: "0.08em",
@@ -113,11 +113,11 @@ export default function BrandTimeline() {
                 <div className="pt-1">
                   <h3
                     className="font-heading font-light leading-tight"
-                    style={{ fontSize: "clamp(1.25rem, 2.5vw, 1.75rem)", color: "#1A3C34" }}
+                    style={{ fontSize: "clamp(1.25rem, 2.5vw, 1.75rem)", color: "var(--color-bark)" }}
                   >
                     {m.title}
                   </h3>
-                  <p className="font-body text-sm text-bark/50 leading-relaxed mt-2 max-w-sm">
+                  <p className="font-body text-sm text-bark/60 leading-relaxed mt-2 max-w-sm">
                     {m.body}
                   </p>
                 </div>

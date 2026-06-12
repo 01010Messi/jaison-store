@@ -74,7 +74,7 @@ export default function OrdersPage() {
         <div className="container-brand">
           <Link
             href="/account"
-            className="inline-flex items-center gap-1 text-xs font-accent uppercase tracking-wider text-bark/40 hover:text-bark transition-colors mb-3"
+            className="inline-flex items-center gap-1 text-xs font-accent uppercase tracking-wider text-bark/60 hover:text-bark transition-colors mb-3"
           >
             <ArrowLeft className="h-3.5 w-3.5" />
             My Account
@@ -93,7 +93,7 @@ export default function OrdersPage() {
               <h2 className="font-heading text-xl text-bark mb-2">
                 No orders yet
               </h2>
-              <p className="text-sm text-bark/50 font-body mb-6 max-w-sm">
+              <p className="text-sm text-bark/60 font-body mb-6 max-w-sm">
                 When you place your first order, it will appear here with
                 tracking information.
               </p>
@@ -112,7 +112,7 @@ export default function OrdersPage() {
           <div className="space-y-4">
             {orders.map((order) => (
               <ScrollReveal key={order.id} animation="fade-up">
-                <div className="bg-cream border border-border rounded-sm p-5">
+                <div className="bg-cream border border-border rounded-xl p-5">
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
                     <div>
                       <Link
@@ -121,7 +121,7 @@ export default function OrdersPage() {
                       >
                         #{order.orderNumber}
                       </Link>
-                      <p className="text-xs text-bark/40 font-body mt-0.5">
+                      <p className="text-xs text-bark/60 font-body mt-0.5">
                         {new Date(order.createdAt).toLocaleDateString("en-IN", {
                           day: "numeric",
                           month: "long",
@@ -170,7 +170,7 @@ export default function OrdersPage() {
                         href={order.trackingUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-xs font-accent uppercase tracking-wider text-bark/50 hover:text-bark transition-colors"
+                        className="text-xs font-accent uppercase tracking-wider text-bark/60 hover:text-bark transition-colors"
                       >
                         Track Order
                       </a>
@@ -180,7 +180,7 @@ export default function OrdersPage() {
                         href={order.invoiceUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-xs font-accent uppercase tracking-wider text-bark/50 hover:text-bark transition-colors"
+                        className="text-xs font-accent uppercase tracking-wider text-bark/60 hover:text-bark transition-colors"
                       >
                         Download Invoice
                       </a>

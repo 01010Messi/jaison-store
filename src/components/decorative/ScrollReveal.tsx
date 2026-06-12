@@ -55,7 +55,7 @@ export default function ScrollReveal({
     <div
       ref={ref}
       className={cn(
-        "opacity-0",
+        "reveal-pending",
         isVisible && animations[animation],
         className
       )}

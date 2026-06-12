@@ -100,15 +100,15 @@ function ShopContent() {
     <>
       {/* Search Results Banner */}
       {searchQuery && (
-        <div className="flex items-center gap-2 mb-6 px-4 py-3 bg-parchment/50 rounded-sm">
+        <div className="flex items-center gap-2 mb-6 px-4 py-3 bg-parchment/50 rounded-xl">
           <p className="text-sm font-body text-bark/70">
             Results for &ldquo;
             <span className="font-medium text-bark">{searchQuery}</span>&rdquo;
-            <span className="text-bark/40 ml-1">({filteredProducts.length})</span>
+            <span className="text-bark/60 ml-1">({filteredProducts.length})</span>
           </p>
           <button
             onClick={clearSearch}
-            className="ml-auto flex items-center gap-1 text-xs font-accent uppercase tracking-wider text-bark/50 hover:text-bark transition-colors"
+            className="ml-auto flex items-center gap-1 text-xs font-accent uppercase tracking-wider text-bark/60 hover:text-bark transition-colors"
           >
             <X className="h-3.5 w-3.5" />
             Clear
@@ -127,8 +127,8 @@ function ShopContent() {
               className="flex-shrink-0 px-5 py-2 rounded-full font-accent text-[11px] uppercase tracking-wider transition-all duration-200 border"
               style={
                 activeCategory === btn.value
-                  ? { backgroundColor: "#1A3C34", color: "#FEFAE0", borderColor: "#1A3C34" }
-                  : { backgroundColor: "transparent", color: "rgba(26,60,52,0.55)", borderColor: "#EFE4C5" }
+                  ? { backgroundColor: "var(--color-bark)", color: "var(--color-cream)", borderColor: "var(--color-bark)" }
+                  : { backgroundColor: "transparent", color: "rgba(26,60,52,0.55)", borderColor: "var(--color-parchment)" }
               }
             >
               {btn.label}
@@ -138,7 +138,7 @@ function ShopContent() {
 
         {/* Sort dropdown */}
         <div className="relative flex items-center gap-3">
-          <span className="text-xs text-bark/40 font-accent uppercase tracking-wider hidden md:block">
+          <span className="text-xs text-bark/60 font-accent uppercase tracking-wider hidden md:block">
             {filteredProducts.length} product
             {filteredProducts.length !== 1 ? "s" : ""}
           </span>
@@ -146,7 +146,7 @@ function ShopContent() {
             <button
               onClick={() => setShowSortMenu(!showSortMenu)}
               className="flex items-center gap-2 px-4 py-2 border rounded-full font-accent text-[11px] uppercase tracking-wider transition-colors"
-              style={{ borderColor: "#EFE4C5", color: "rgba(26,60,52,0.6)" }}
+              style={{ borderColor: "var(--color-parchment)", color: "rgba(26,60,52,0.6)" }}
             >
               {sortLabels[activeSort]}
               <ChevronDown
@@ -173,7 +173,7 @@ function ShopContent() {
                       className={cn(
                         "w-full text-left px-4 py-2.5 text-xs font-accent uppercase tracking-wider transition-colors",
                         activeSort === key
-                          ? "text-bark bg-[#EFE4C5]/60"
+                          ? "text-bark bg-parchment/60"
                           : "text-bark/60 hover:text-bark hover:bg-parchment/20"
                       )}
                     >
@@ -188,7 +188,7 @@ function ShopContent() {
       </div>
 
       {/* Product count - mobile */}
-      <p className="text-xs text-bark/40 font-accent uppercase tracking-wider mb-4 md:hidden">
+      <p className="text-xs text-bark/60 font-accent uppercase tracking-wider mb-4 md:hidden">
         {filteredProducts.length} product{filteredProducts.length !== 1 ? "s" : ""}
       </p>
 
@@ -217,7 +217,7 @@ function ShopContent() {
       {/* Empty state */}
       {filteredProducts.length === 0 && (
         <div className="text-center py-16">
-          <p className="text-bark/50 font-body">
+          <p className="text-bark/60 font-body">
             {searchQuery
               ? `No products found for "${searchQuery}".`
               : "No products found in this category."}
@@ -260,9 +260,9 @@ export default function ShopPage() {
           <p className="font-accent text-[10px] tracking-[0.2em] uppercase mb-4" style={{ color: "rgba(26,60,52,0.5)" }}>
             — SHOP ALL
           </p>
-          <h1 className="font-heading font-light leading-[1.08] tracking-[-0.01em]" style={{ fontSize: "clamp(2.75rem, 6vw, 4.5rem)", color: "#1A3C34" }}>
+          <h1 className="font-heading font-light leading-[1.08] tracking-[-0.01em]" style={{ fontSize: "clamp(2.75rem, 6vw, 4.5rem)", color: "var(--color-bark)" }}>
             Pick a powder.
-            <span className="block" style={{ color: "#834316", fontStyle: "italic", fontWeight: 300 }}>
+            <span className="block" style={{ color: "var(--color-terracotta)", fontStyle: "italic", fontWeight: 300 }}>
               Build your ritual.
             </span>
           </h1>

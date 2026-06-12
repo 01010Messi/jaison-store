@@ -13,7 +13,7 @@ export default function PolicyHero({
 }: PolicyHeroProps) {
   return (
     <section
-      style={{ backgroundColor: "#EFE4C5" }}
+      style={{ backgroundColor: "var(--color-parchment)" }}
       className="pt-24 pb-14 px-6 md:px-14 lg:px-24"
     >
       <p
@@ -28,11 +28,11 @@ export default function PolicyHero({
         style={{
           fontSize: "clamp(3.25rem, 8vw, 6.5rem)",
           letterSpacing: "-0.02em",
-          color: "#1A3C34",
+          color: "var(--color-bark)",
         }}
       >
         {title}{" "}
-        <span style={{ color: "#834316", fontStyle: "italic" }}>{accent}</span>
+        <span style={{ color: "var(--color-terracotta)", fontStyle: "italic" }}>{accent}</span>
       </h1>
 
       {sub && (

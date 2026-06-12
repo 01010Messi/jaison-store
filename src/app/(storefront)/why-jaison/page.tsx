@@ -86,7 +86,7 @@ export default function WhyJaisonPage() {
           </p>
           <Link
             href="/shop"
-            className="inline-flex items-center gap-2 px-8 py-3 bg-terracotta text-cream rounded-sm font-accent text-sm uppercase tracking-wider hover:bg-terracotta/90 transition-all"
+            className="inline-flex items-center gap-2 px-8 py-3 bg-terracotta text-cream rounded-full font-accent text-sm uppercase tracking-wider hover:bg-terracotta/90 transition-all"
           >
             Shop Now
           </Link>

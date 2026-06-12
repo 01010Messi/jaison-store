@@ -11,7 +11,7 @@ export default function SectionDivider({
 }: SectionDividerProps) {
   if (variant === "gold") {
     return (
-      <div aria-hidden="true" className={cn("flex items-center justify-center py-8", className)}>
+      <div className={cn("flex items-center justify-center py-8", className)}>
         <div className="flex items-center gap-4 w-full max-w-xs">
           <div className="flex-1 h-[1px] bg-gradient-to-r from-transparent to-gold/40" />
           <div className="w-1.5 h-1.5 bg-gold/60 rotate-45" />
@@ -25,7 +25,7 @@ export default function SectionDivider({
 
   if (variant === "botanical") {
     return (
-      <div aria-hidden="true" className={cn("flex items-center justify-center py-8", className)}>
+      <div className={cn("flex items-center justify-center py-8", className)}>
         <div className="flex items-center gap-4 w-full max-w-sm">
           <div className="flex-1 h-[1px] bg-gradient-to-r from-transparent to-sage/30" />
           <svg
@@ -52,7 +52,7 @@ export default function SectionDivider({
 
   if (variant === "mandala") {
     return (
-      <div aria-hidden="true" className={cn("flex items-center justify-center py-8", className)}>
+      <div className={cn("flex items-center justify-center py-8", className)}>
         <div className="flex items-center gap-4 w-full max-w-sm">
           <div className="flex-1 h-[1px] bg-gradient-to-r from-transparent to-gold/30" />
           <svg
@@ -89,7 +89,7 @@ export default function SectionDivider({
 
   // wave variant
   return (
-    <div aria-hidden="true" className={cn("py-8", className)}>
+    <div className={cn("py-8", className)}>
       <svg
         viewBox="0 0 1200 12"
         className="w-full max-w-2xl mx-auto text-parchment-dark"

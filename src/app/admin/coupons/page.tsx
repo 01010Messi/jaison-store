@@ -249,7 +249,7 @@ export default function AdminCouponsPage() {
       <div className="flex items-center justify-between mb-8">
         <div>
           <h1 className="font-heading text-2xl text-bark">Coupons</h1>
-          <p className="text-sm text-bark/50 font-body mt-1">
+          <p className="text-sm text-bark/60 font-body mt-1">
             Manage discount coupons
           </p>
         </div>
@@ -266,7 +266,7 @@ export default function AdminCouponsPage() {
         <div className="bg-cream p-5 rounded-sm border border-border/50">
           <div className="flex flex-col items-center justify-center py-16 text-bark/30">
             <Tag className="h-12 w-12 mb-3 opacity-50" />
-            <p className="font-heading text-lg text-bark/40">No coupons yet</p>
+            <p className="font-heading text-lg text-bark/60">No coupons yet</p>
             <p className="text-xs text-bark/30 font-body mt-1">
               Create your first coupon to get started
             </p>
@@ -282,7 +282,7 @@ export default function AdminCouponsPage() {
                 className="flex items-center gap-4 p-4 hover:bg-parchment/20 transition-colors cursor-pointer group"
               >
                 <div className="w-10 h-10 bg-parchment/50 rounded-full flex items-center justify-center">
-                  <Tag className="h-4 w-4 text-bark/50" />
+                  <Tag className="h-4 w-4 text-bark/60" />
                 </div>
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-2">
@@ -293,7 +293,7 @@ export default function AdminCouponsPage() {
                       {coupon.isActive ? "Active" : "Inactive"}
                     </Badge>
                   </div>
-                  <p className="text-xs text-bark/40 font-body">
+                  <p className="text-xs text-bark/60 font-body">
                     {coupon.description || "No description"}
                   </p>
                   {coupon.usageLimit && (
@@ -310,7 +310,7 @@ export default function AdminCouponsPage() {
                         : `₹${coupon.discountValue}`}
                     </p>
                     {coupon.minOrderAmount && (
-                      <p className="text-xs text-bark/40">
+                      <p className="text-xs text-bark/60">
                         Min. ₹{coupon.minOrderAmount}
                       </p>
                     )}
@@ -380,7 +380,7 @@ export default function AdminCouponsPage() {
           />
           <div className="grid grid-cols-2 gap-3">
             <div>
-              <label className="block text-xs font-accent uppercase tracking-wider text-bark/40 mb-1.5">
+              <label className="block text-xs font-accent uppercase tracking-wider text-bark/60 mb-1.5">
                 Type
               </label>
               <select
@@ -471,7 +471,7 @@ export default function AdminCouponsPage() {
             {/* Active status toggle bar */}
             <div className="flex items-center justify-between mb-5 p-3 rounded-sm bg-parchment/30 border border-border/30">
               <div className="flex items-center gap-2">
-                <Power className="h-4 w-4 text-bark/50" />
+                <Power className="h-4 w-4 text-bark/60" />
                 <span className="text-sm font-body text-bark/70">
                   Status
                 </span>
@@ -521,7 +521,7 @@ export default function AdminCouponsPage() {
               />
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-xs font-accent uppercase tracking-wider text-bark/40 mb-1.5">
+                  <label className="block text-xs font-accent uppercase tracking-wider text-bark/60 mb-1.5">
                     Type
                   </label>
                   <select
@@ -608,7 +608,7 @@ export default function AdminCouponsPage() {
               </div>
 
               {/* Usage info (read-only) */}
-              <div className="text-xs text-bark/40 font-body pt-1">
+              <div className="text-xs text-bark/60 font-body pt-1">
                 Used {editCoupon.usedCount} time
                 {editCoupon.usedCount !== 1 ? "s" : ""}
                 {editCoupon.usageLimit

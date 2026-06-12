@@ -261,7 +261,7 @@ export default function CheckoutPage() {
             contact: address.phone,
           },
           theme: {
-            color: "#1A3C34",
+            color: "var(--color-bark)",
           },
           modal: {
             ondismiss: () => {
@@ -337,7 +337,7 @@ export default function CheckoutPage() {
         <div className="container-brand">
           <Link
             href="/cart"
-            className="inline-flex items-center gap-1 text-xs font-accent uppercase tracking-wider text-bark/40 hover:text-bark transition-colors mb-4"
+            className="inline-flex items-center gap-1 text-xs font-accent uppercase tracking-wider text-bark/60 hover:text-bark transition-colors mb-4"
           >
             <ArrowLeft className="h-3.5 w-3.5" />
             Back to Potli
@@ -416,7 +416,7 @@ export default function CheckoutPage() {
                   {/* Saved Addresses */}
                   {savedAddresses.length > 0 && (
                     <div className="mb-6">
-                      <p className="text-xs font-accent uppercase tracking-wider text-bark/50 mb-3">
+                      <p className="text-xs font-accent uppercase tracking-wider text-bark/60 mb-3">
                         Saved Addresses
                       </p>
                       <div className="space-y-2">
@@ -439,7 +439,7 @@ export default function CheckoutPage() {
                                 </span>
                               )}
                             </p>
-                            <p className="text-xs text-bark/50 font-body mt-0.5">
+                            <p className="text-xs text-bark/60 font-body mt-0.5">
                               {addr.addressLine1}, {addr.city}, {addr.state} — {addr.pincode}
                             </p>
                           </button>
@@ -477,7 +477,7 @@ export default function CheckoutPage() {
                         disabled={isLoggedIn}
                       />
                       {!isLoggedIn && (
-                        <p className="mt-1 text-[11px] text-bark/40 font-body">
+                        <p className="mt-1 text-[11px] text-bark/60 font-body">
                           Order confirmation will be sent to this email
                         </p>
                       )}
@@ -546,7 +546,7 @@ export default function CheckoutPage() {
                           setAddress({ ...address, state: e.target.value })
                         }
                         className={cn(
-                          "w-full px-4 py-2.5 border rounded-lg text-sm font-body bg-cream transition-colors focus:border-gold focus:ring-0 focus:outline-none appearance-none",
+                          "w-full px-4 py-2.5 border rounded-lg text-sm font-body bg-cream transition-colors focus:border-gold focus:ring-0 appearance-none",
                           errors.state
                             ? "border-terracotta"
                             : "border-border"
@@ -629,10 +629,10 @@ export default function CheckoutPage() {
                           <div className="w-2.5 h-2.5 rounded-full bg-terracotta" />
                         )}
                       </div>
-                      <CreditCard className="h-5 w-5 text-bark/50" />
+                      <CreditCard className="h-5 w-5 text-bark/60" />
                       <div className="text-left">
                         <p className="font-heading text-sm text-bark">Pay Online</p>
-                        <p className="text-[11px] text-bark/40 font-body">
+                        <p className="text-[11px] text-bark/60 font-body">
                           UPI, Credit/Debit Card, Net Banking, Wallets
                         </p>
                       </div>
@@ -659,10 +659,10 @@ export default function CheckoutPage() {
                           <div className="w-2.5 h-2.5 rounded-full bg-terracotta" />
                         )}
                       </div>
-                      <Banknote className="h-5 w-5 text-bark/50" />
+                      <Banknote className="h-5 w-5 text-bark/60" />
                       <div className="text-left">
                         <p className="font-heading text-sm text-bark">Cash on Delivery</p>
-                        <p className="text-[11px] text-bark/40 font-body">
+                        <p className="text-[11px] text-bark/60 font-body">
                           Pay when you receive your order (+₹40 COD fee)
                         </p>
                       </div>
@@ -782,7 +782,7 @@ export default function CheckoutPage() {
                           </div>
                           <div className="flex-1 min-w-0">
                             <p className="font-heading text-sm text-bark truncate">{item.name}</p>
-                            <p className="text-xs text-bark/40 font-body">Qty: {item.quantity}</p>
+                            <p className="text-xs text-bark/60 font-body">Qty: {item.quantity}</p>
                           </div>
                           <p className="font-body text-sm font-semibold text-bark">
                             {formatPrice(item.price * item.quantity)}
@@ -804,7 +804,7 @@ export default function CheckoutPage() {
                       : `Place Order (${formatPrice(grandTotal)})`}
                   </Button>
 
-                  <p className="text-center text-[11px] text-bark/40 font-body mt-3">
+                  <p className="text-center text-[11px] text-bark/60 font-body mt-3">
                     By placing this order, you agree to our Terms of Service and Privacy Policy.
                   </p>
                 </div>

@@ -70,7 +70,7 @@ export default function AddressesPage() {
         <div className="container-brand">
           <Link
             href="/account"
-            className="inline-flex items-center gap-1 text-xs font-accent uppercase tracking-wider text-bark/40 hover:text-bark transition-colors mb-3"
+            className="inline-flex items-center gap-1 text-xs font-accent uppercase tracking-wider text-bark/60 hover:text-bark transition-colors mb-3"
           >
             <ArrowLeft className="h-3.5 w-3.5" />
             My Account
@@ -89,13 +89,13 @@ export default function AddressesPage() {
               <h2 className="font-heading text-xl text-bark mb-2">
                 No saved addresses
               </h2>
-              <p className="text-sm text-bark/50 font-body mb-6 max-w-sm">
+              <p className="text-sm text-bark/60 font-body mb-6 max-w-sm">
                 Add a delivery address during checkout and it will appear here.
               </p>
               <GoldRule variant="simple" width="w-16" className="mb-6" />
               <Link
                 href="/shop"
-                className="flex items-center gap-2 px-6 py-2.5 rounded-sm bg-bark text-cream font-accent text-sm uppercase tracking-wider hover:bg-bark/90 transition-all"
+                className="flex items-center gap-2 px-6 py-2.5 rounded-full bg-bark text-cream font-accent text-sm uppercase tracking-wider hover:bg-bark/90 transition-all"
               >
                 <Plus className="h-4 w-4" />
                 Start Shopping
@@ -106,7 +106,7 @@ export default function AddressesPage() {
           <div className="space-y-4">
             {addresses.map((addr) => (
               <ScrollReveal key={addr.id} animation="fade-up">
-                <div className="bg-cream border border-border rounded-sm p-5">
+                <div className="bg-cream border border-border rounded-xl p-5">
                   <div className="flex items-start justify-between">
                     <div>
                       <div className="flex items-center gap-2 mb-1">
@@ -126,7 +126,7 @@ export default function AddressesPage() {
                         <br />
                         {addr.city}, {addr.state} - {addr.pincode}
                       </p>
-                      <p className="text-sm text-bark/50 font-body mt-1">
+                      <p className="text-sm text-bark/60 font-body mt-1">
                         {addr.phone}
                       </p>
                     </div>

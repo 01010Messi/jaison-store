@@ -77,7 +77,7 @@ export default function AdminReviewsPage() {
     <div>
       <div className="mb-8">
         <h1 className="font-heading text-2xl text-bark">Reviews</h1>
-        <p className="text-sm text-bark/50 font-body mt-1">
+        <p className="text-sm text-bark/60 font-body mt-1">
           Moderate customer reviews
         </p>
       </div>
@@ -92,7 +92,7 @@ export default function AdminReviewsPage() {
               "px-3 py-1.5 text-xs font-accent uppercase tracking-wider rounded-full border transition-colors whitespace-nowrap",
               filter === s
                 ? "bg-bark text-cream border-bark"
-                : "bg-cream text-bark/50 border-border hover:border-bark/30"
+                : "bg-cream text-bark/60 border-border hover:border-bark/30"
             )}
           >
             {s}
@@ -109,7 +109,7 @@ export default function AdminReviewsPage() {
         <div className="bg-cream p-5 rounded-sm border border-border/50">
           <div className="flex flex-col items-center justify-center py-16 text-bark/30">
             <Star className="h-12 w-12 mb-3 opacity-50" />
-            <p className="font-heading text-lg text-bark/40">No reviews found</p>
+            <p className="font-heading text-lg text-bark/60">No reviews found</p>
             <p className="text-xs text-bark/30 font-body mt-1">
               {filter === "PENDING"
                 ? "No reviews awaiting moderation"
@@ -154,9 +154,9 @@ export default function AdminReviewsPage() {
                       {review.body}
                     </p>
                   )}
-                  <p className="text-xs text-bark/40 font-body">
+                  <p className="text-xs text-bark/60 font-body">
                     {review.user.name || review.user.email} on{" "}
-                    <span className="text-bark/50">{review.product.name}</span>
+                    <span className="text-bark/60">{review.product.name}</span>
                     {" "}&bull;{" "}
                     {new Date(review.createdAt).toLocaleDateString("en-IN", {
                       day: "numeric",

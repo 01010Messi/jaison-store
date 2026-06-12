@@ -36,23 +36,23 @@ export default function FeaturedProducts() {
   });
 
   return (
-    <section className="bg-[#FEFAE0] pt-8 md:pt-10 pb-10">
+    <section className="bg-cream pt-8 md:pt-10 pb-10">
       <div className="container-brand">
         {/* Header row: copy left, filter pills right (aligned to bottom) */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-12">
           {/* Left column — copy */}
           <div className="flex-1 min-w-0 max-w-2xl">
-            <p className="font-accent text-[10px] tracking-[0.2em] uppercase text-bark/40 mb-3">
+            <p className="font-accent text-[10px] tracking-[0.2em] uppercase text-bark/60 mb-3">
               — THE CATALOGUE · NINE POWDERS
             </p>
             <h2 className="font-heading text-[2.75rem] md:text-[3.5rem] lg:text-[4.5rem] text-bark font-light leading-[1.08] tracking-[-0.01em]">
               If nature had a
               <span className="block">skincare lab,</span>
-              <span className="block" style={{ color: "#834316", fontStyle: "italic", fontWeight: 300 }}>
+              <span className="block" style={{ color: "var(--color-terracotta)", fontStyle: "italic", fontWeight: 300 }}>
                 this would be it.
               </span>
             </h2>
-            <p className="font-body text-sm md:text-base text-bark/50 max-w-md mt-4">
+            <p className="font-body text-sm md:text-base text-bark/60 max-w-md mt-4">
               Nine single-ingredient herbal powders for face, skin and hair —
               neem, multani mitti, ubtan, amla and more. One herb per jar.
               Nothing synthetic, nothing added.
@@ -67,7 +67,7 @@ export default function FeaturedProducts() {
                 className={
                   filter === "all"
                     ? "bg-bark text-cream rounded-full px-4 py-1.5 text-[10px] font-accent tracking-[0.12em] uppercase transition-colors"
-                    : "text-bark/50 rounded-full px-4 py-1.5 text-[10px] font-accent tracking-[0.12em] uppercase hover:text-bark transition-colors"
+                    : "text-bark/60 rounded-full px-4 py-1.5 text-[10px] font-accent tracking-[0.12em] uppercase hover:text-bark transition-colors"
                 }
               >
                 All Powders
@@ -77,7 +77,7 @@ export default function FeaturedProducts() {
                 className={
                   filter === "skin"
                     ? "bg-bark text-cream rounded-full px-4 py-1.5 text-[10px] font-accent tracking-[0.12em] uppercase transition-colors"
-                    : "text-bark/50 rounded-full px-4 py-1.5 text-[10px] font-accent tracking-[0.12em] uppercase hover:text-bark transition-colors"
+                    : "text-bark/60 rounded-full px-4 py-1.5 text-[10px] font-accent tracking-[0.12em] uppercase hover:text-bark transition-colors"
                 }
               >
                 Face &amp; Skin
@@ -87,7 +87,7 @@ export default function FeaturedProducts() {
                 className={
                   filter === "hair"
                     ? "bg-bark text-cream rounded-full px-4 py-1.5 text-[10px] font-accent tracking-[0.12em] uppercase transition-colors"
-                    : "text-bark/50 rounded-full px-4 py-1.5 text-[10px] font-accent tracking-[0.12em] uppercase hover:text-bark transition-colors"
+                    : "text-bark/60 rounded-full px-4 py-1.5 text-[10px] font-accent tracking-[0.12em] uppercase hover:text-bark transition-colors"
                 }
               >
                 Hair

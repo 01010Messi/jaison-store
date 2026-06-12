@@ -378,7 +378,7 @@ export default function ProductForm({
               {isEditing ? "Edit Product" : "New Product"}
             </h1>
             {isEditing && (
-              <p className="text-xs text-bark/40 font-body mt-0.5">
+              <p className="text-xs text-bark/60 font-body mt-0.5">
                 {product.sku}
               </p>
             )}
@@ -412,7 +412,7 @@ export default function ProductForm({
       <div className="space-y-6">
         {/* Basic Info */}
         <section className="bg-cream p-5 rounded-sm border border-border/50">
-          <h2 className="section-label text-bark/40 mb-4">Basic Information</h2>
+          <h2 className="section-label text-bark/60 mb-4">Basic Information</h2>
 
           <div className="space-y-4">
             <div>
@@ -423,7 +423,7 @@ export default function ProductForm({
                 type="text"
                 value={product.name}
                 onChange={(e) => updateField("name", e.target.value)}
-                className="w-full px-3 py-2.5 border border-border rounded-sm text-sm font-body bg-cream focus:border-gold focus:ring-0 focus:outline-none transition-colors"
+                className="w-full px-3 py-2.5 border border-border rounded-sm text-sm font-body bg-cream focus:border-gold focus:ring-0 transition-colors"
                 placeholder="e.g. Rose Glow Face Serum"
               />
             </div>
@@ -440,7 +440,7 @@ export default function ProductForm({
                     setAutoSlug(false);
                     updateField("slug", e.target.value);
                   }}
-                  className="w-full px-3 py-2.5 border border-border rounded-sm text-sm font-body bg-cream focus:border-gold focus:ring-0 focus:outline-none transition-colors"
+                  className="w-full px-3 py-2.5 border border-border rounded-sm text-sm font-body bg-cream focus:border-gold focus:ring-0 transition-colors"
                   placeholder="rose-glow-face-serum"
                 />
               </div>
@@ -452,7 +452,7 @@ export default function ProductForm({
                   type="text"
                   value={product.sku}
                   onChange={(e) => updateField("sku", e.target.value)}
-                  className="w-full px-3 py-2.5 border border-border rounded-sm text-sm font-body bg-cream focus:border-gold focus:ring-0 focus:outline-none transition-colors"
+                  className="w-full px-3 py-2.5 border border-border rounded-sm text-sm font-body bg-cream focus:border-gold focus:ring-0 transition-colors"
                   placeholder="JAIS-ROSE-001"
                 />
               </div>
@@ -468,7 +468,7 @@ export default function ProductForm({
                 onChange={(e) =>
                   updateField("shortDescription", e.target.value)
                 }
-                className="w-full px-3 py-2.5 border border-border rounded-sm text-sm font-body bg-cream focus:border-gold focus:ring-0 focus:outline-none transition-colors"
+                className="w-full px-3 py-2.5 border border-border rounded-sm text-sm font-body bg-cream focus:border-gold focus:ring-0 transition-colors"
                 placeholder="Brief description for product cards"
               />
             </div>
@@ -481,7 +481,7 @@ export default function ProductForm({
                 value={product.description}
                 onChange={(e) => updateField("description", e.target.value)}
                 rows={4}
-                className="w-full px-3 py-2.5 border border-border rounded-sm text-sm font-body bg-cream focus:border-gold focus:ring-0 focus:outline-none transition-colors resize-y"
+                className="w-full px-3 py-2.5 border border-border rounded-sm text-sm font-body bg-cream focus:border-gold focus:ring-0 transition-colors resize-y"
                 placeholder="Detailed product description..."
               />
             </div>
@@ -490,7 +490,7 @@ export default function ProductForm({
 
         {/* Images */}
         <section className="bg-cream p-5 rounded-sm border border-border/50">
-          <h2 className="section-label text-bark/40 mb-4">Product Images</h2>
+          <h2 className="section-label text-bark/60 mb-4">Product Images</h2>
 
           <div className="space-y-4">
             {/* Image grid */}
@@ -553,7 +553,7 @@ export default function ProductForm({
               {uploading ? (
                 <div className="flex flex-col items-center gap-2">
                   <div className="animate-spin rounded-full h-8 w-8 border-2 border-bark/20 border-t-terracotta" />
-                  <p className="text-xs text-bark/50 font-body">
+                  <p className="text-xs text-bark/60 font-body">
                     Uploading...
                   </p>
                 </div>
@@ -565,7 +565,7 @@ export default function ProductForm({
                     <Plus className="h-6 w-6 text-bark/30" />
                   )}
                   <div>
-                    <p className="text-sm text-bark/50 font-body">
+                    <p className="text-sm text-bark/60 font-body">
                       {product.images.length === 0
                         ? "Click to upload product images"
                         : "Add more images"}
@@ -590,7 +590,7 @@ export default function ProductForm({
 
         {/* Pricing & Inventory */}
         <section className="bg-cream p-5 rounded-sm border border-border/50">
-          <h2 className="section-label text-bark/40 mb-4">
+          <h2 className="section-label text-bark/60 mb-4">
             Pricing & Inventory
           </h2>
 
@@ -605,7 +605,7 @@ export default function ProductForm({
                 onChange={(e) => updateField("price", e.target.value)}
                 min="0"
                 step="1"
-                className="w-full px-3 py-2.5 border border-border rounded-sm text-sm font-body bg-cream focus:border-gold focus:ring-0 focus:outline-none transition-colors"
+                className="w-full px-3 py-2.5 border border-border rounded-sm text-sm font-body bg-cream focus:border-gold focus:ring-0 transition-colors"
                 placeholder="499"
               />
             </div>
@@ -621,7 +621,7 @@ export default function ProductForm({
                 }
                 min="0"
                 step="1"
-                className="w-full px-3 py-2.5 border border-border rounded-sm text-sm font-body bg-cream focus:border-gold focus:ring-0 focus:outline-none transition-colors"
+                className="w-full px-3 py-2.5 border border-border rounded-sm text-sm font-body bg-cream focus:border-gold focus:ring-0 transition-colors"
                 placeholder="699 (optional, shown as strikethrough)"
               />
             </div>
@@ -634,7 +634,7 @@ export default function ProductForm({
                 value={product.stock}
                 onChange={(e) => updateField("stock", e.target.value)}
                 min="0"
-                className="w-full px-3 py-2.5 border border-border rounded-sm text-sm font-body bg-cream focus:border-gold focus:ring-0 focus:outline-none transition-colors"
+                className="w-full px-3 py-2.5 border border-border rounded-sm text-sm font-body bg-cream focus:border-gold focus:ring-0 transition-colors"
                 placeholder="100"
               />
             </div>
@@ -649,7 +649,7 @@ export default function ProductForm({
                   onChange={(e) => updateField("weight", e.target.value)}
                   min="0"
                   step="0.01"
-                  className="w-full px-3 py-2.5 border border-border rounded-sm text-sm font-body bg-cream focus:border-gold focus:ring-0 focus:outline-none transition-colors"
+                  className="w-full px-3 py-2.5 border border-border rounded-sm text-sm font-body bg-cream focus:border-gold focus:ring-0 transition-colors"
                   placeholder="100"
                 />
               </div>
@@ -660,7 +660,7 @@ export default function ProductForm({
                 <select
                   value={product.weightUnit}
                   onChange={(e) => updateField("weightUnit", e.target.value)}
-                  className="w-full px-3 py-2.5 border border-border rounded-sm text-sm font-body bg-cream focus:border-gold focus:ring-0 focus:outline-none transition-colors"
+                  className="w-full px-3 py-2.5 border border-border rounded-sm text-sm font-body bg-cream focus:border-gold focus:ring-0 transition-colors"
                 >
                   <option value="g">Grams (g)</option>
                   <option value="ml">Millilitres (ml)</option>
@@ -674,7 +674,7 @@ export default function ProductForm({
 
         {/* Categories & Visibility */}
         <section className="bg-cream p-5 rounded-sm border border-border/50">
-          <h2 className="section-label text-bark/40 mb-4">
+          <h2 className="section-label text-bark/60 mb-4">
             Categories & Visibility
           </h2>
 
@@ -714,7 +714,7 @@ export default function ProductForm({
                   className="w-4 h-4 rounded-sm border-border text-terracotta focus:ring-gold accent-terracotta"
                 />
                 <span className="text-sm font-body text-bark/70">Active</span>
-                <span className="text-xs text-bark/40 font-body">
+                <span className="text-xs text-bark/60 font-body">
                   (visible in store)
                 </span>
               </label>
@@ -731,7 +731,7 @@ export default function ProductForm({
                 <span className="text-sm font-body text-bark/70">
                   Featured
                 </span>
-                <span className="text-xs text-bark/40 font-body">
+                <span className="text-xs text-bark/60 font-body">
                   (shown on homepage)
                 </span>
               </label>
@@ -741,7 +741,7 @@ export default function ProductForm({
 
         {/* Product Details */}
         <section className="bg-cream p-5 rounded-sm border border-border/50">
-          <h2 className="section-label text-bark/40 mb-4">Product Details</h2>
+          <h2 className="section-label text-bark/60 mb-4">Product Details</h2>
 
           <div className="space-y-4">
             <div>
@@ -752,7 +752,7 @@ export default function ProductForm({
                 value={product.ingredients}
                 onChange={(e) => updateField("ingredients", e.target.value)}
                 rows={3}
-                className="w-full px-3 py-2.5 border border-border rounded-sm text-sm font-body bg-cream focus:border-gold focus:ring-0 focus:outline-none transition-colors resize-y"
+                className="w-full px-3 py-2.5 border border-border rounded-sm text-sm font-body bg-cream focus:border-gold focus:ring-0 transition-colors resize-y"
                 placeholder="List of ingredients..."
               />
             </div>
@@ -765,7 +765,7 @@ export default function ProductForm({
                 value={product.howToUse}
                 onChange={(e) => updateField("howToUse", e.target.value)}
                 rows={3}
-                className="w-full px-3 py-2.5 border border-border rounded-sm text-sm font-body bg-cream focus:border-gold focus:ring-0 focus:outline-none transition-colors resize-y"
+                className="w-full px-3 py-2.5 border border-border rounded-sm text-sm font-body bg-cream focus:border-gold focus:ring-0 transition-colors resize-y"
                 placeholder="Usage instructions..."
               />
             </div>
@@ -778,7 +778,7 @@ export default function ProductForm({
                 value={product.benefits}
                 onChange={(e) => updateField("benefits", e.target.value)}
                 rows={3}
-                className="w-full px-3 py-2.5 border border-border rounded-sm text-sm font-body bg-cream focus:border-gold focus:ring-0 focus:outline-none transition-colors resize-y"
+                className="w-full px-3 py-2.5 border border-border rounded-sm text-sm font-body bg-cream focus:border-gold focus:ring-0 transition-colors resize-y"
                 placeholder="Key benefits of the product..."
               />
             </div>
@@ -787,7 +787,7 @@ export default function ProductForm({
 
         {/* SEO */}
         <section className="bg-cream p-5 rounded-sm border border-border/50">
-          <h2 className="section-label text-bark/40 mb-4">SEO</h2>
+          <h2 className="section-label text-bark/60 mb-4">SEO</h2>
 
           <div className="space-y-4">
             <div>
@@ -798,7 +798,7 @@ export default function ProductForm({
                 type="text"
                 value={product.metaTitle}
                 onChange={(e) => updateField("metaTitle", e.target.value)}
-                className="w-full px-3 py-2.5 border border-border rounded-sm text-sm font-body bg-cream focus:border-gold focus:ring-0 focus:outline-none transition-colors"
+                className="w-full px-3 py-2.5 border border-border rounded-sm text-sm font-body bg-cream focus:border-gold focus:ring-0 transition-colors"
                 placeholder="Auto-generated from product name"
               />
             </div>
@@ -813,7 +813,7 @@ export default function ProductForm({
                   updateField("metaDescription", e.target.value)
                 }
                 rows={2}
-                className="w-full px-3 py-2.5 border border-border rounded-sm text-sm font-body bg-cream focus:border-gold focus:ring-0 focus:outline-none transition-colors resize-y"
+                className="w-full px-3 py-2.5 border border-border rounded-sm text-sm font-body bg-cream focus:border-gold focus:ring-0 transition-colors resize-y"
                 placeholder="Auto-generated from short description"
               />
             </div>
@@ -824,7 +824,7 @@ export default function ProductForm({
         <div className="flex items-center justify-between pt-2 pb-8">
           <Link
             href="/admin/products"
-            className="text-sm text-bark/50 font-body hover:text-bark transition-colors"
+            className="text-sm text-bark/60 font-body hover:text-bark transition-colors"
           >
             Cancel
           </Link>

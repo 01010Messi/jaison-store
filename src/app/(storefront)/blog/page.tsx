@@ -27,12 +27,12 @@ export default function BlogPage() {
         ]}
       />
 
-      <div className="min-h-screen" style={{ backgroundColor: "#FEFAE0" }}>
+      <div className="min-h-screen" style={{ backgroundColor: "var(--color-cream)" }}>
 
         {/* ── Hero ── */}
         <section
           className="relative overflow-hidden px-6 md:px-14 lg:px-24 pt-28 pb-14"
-          style={{ backgroundColor: "#FEFAE0" }}
+          style={{ backgroundColor: "var(--color-cream)" }}
         >
           {/* Watermark: 3 faint card rectangles */}
           <div
@@ -67,8 +67,8 @@ export default function BlogPage() {
             className="relative font-heading font-light leading-[1.05]"
             style={{ fontSize: "clamp(2.75rem, 7vw, 5.5rem)", letterSpacing: "-0.02em" }}
           >
-            <span style={{ color: "#1A3C34" }}>Reads worth </span>
-            <span style={{ color: "#834316", fontStyle: "italic" }}>your time.</span>
+            <span style={{ color: "var(--color-bark)" }}>Reads worth </span>
+            <span style={{ color: "var(--color-terracotta)", fontStyle: "italic" }}>your time.</span>
           </h1>
 
           <p

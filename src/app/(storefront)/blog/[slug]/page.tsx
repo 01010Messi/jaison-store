@@ -207,7 +207,7 @@ export default function BlogPostPage({ params }: Props) {
           <div className="container-brand mb-6">
             <Link
               href="/blog"
-              className="inline-flex items-center gap-1.5 text-[10px] font-accent uppercase tracking-wider text-bark/50 hover:text-bark transition-colors rounded-full border px-4 py-2"
+              className="inline-flex items-center gap-1.5 text-[10px] font-accent uppercase tracking-wider text-bark/60 hover:text-bark transition-colors rounded-full border px-4 py-2"
               style={{ borderColor: "rgba(26,60,52,0.2)" }}
             >
               <ArrowLeft className="h-3 w-3" />
@@ -224,7 +224,7 @@ export default function BlogPostPage({ params }: Props) {
               {post.title}
             </h1>
 
-            <div className="flex items-center gap-4 mt-5 text-[11px] font-accent uppercase tracking-wider text-bark/40">
+            <div className="flex items-center gap-4 mt-5 text-[11px] font-accent uppercase tracking-wider text-bark/60">
               <span>By {post.author}</span>
               <span>&bull;</span>
               <time dateTime={post.publishedAt}>
@@ -298,7 +298,7 @@ export default function BlogPostPage({ params }: Props) {
                           <p className="font-heading text-sm text-bark group-hover:text-terracotta transition-colors">
                             {product.name}
                           </p>
-                          <p className="text-xs text-bark/50 font-body">
+                          <p className="text-xs text-bark/60 font-body">
                             ₹{product.price} · {product.weight}g
                           </p>
                         </div>
@@ -334,7 +334,7 @@ export default function BlogPostPage({ params }: Props) {
                     <h4 className="font-heading text-base text-bark group-hover:text-terracotta transition-colors leading-snug">
                       {related.title}
                     </h4>
-                    <span className="inline-flex items-center gap-1.5 text-[10px] font-accent uppercase tracking-wider text-bark/50 hover:text-terracotta transition-colors mt-2 border rounded-full px-3 py-1.5" style={{ borderColor: "rgba(26,60,52,0.2)" }}>
+                    <span className="inline-flex items-center gap-1.5 text-[10px] font-accent uppercase tracking-wider text-bark/60 hover:text-terracotta transition-colors mt-2 border rounded-full px-3 py-1.5" style={{ borderColor: "rgba(26,60,52,0.2)" }}>
                       Read More <ArrowRight className="h-3 w-3" />
                     </span>
                   </Link>

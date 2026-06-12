@@ -13,7 +13,7 @@ export default function BrandStory() {
           <ScrollReveal animation="fade-in">
             <div className="relative aspect-square max-w-lg mx-auto">
               <OrnamentalBorder variant="full" className="p-4">
-                <div className="relative aspect-square overflow-hidden rounded-sm">
+                <div className="relative aspect-square overflow-hidden rounded-xl">
                   <Image
                     src="/images/brand-story.webp"
                     alt="jaison herbals - traditional ayurvedic preparation"

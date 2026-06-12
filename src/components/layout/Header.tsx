@@ -268,8 +268,8 @@ export default function Header() {
               onSubmit={handleSearchSubmit}
               className="flex items-center gap-3 rounded-full px-5 py-3.5 border"
               style={{
-                backgroundColor: "#FDFAF5",
-                borderColor: "#E8D5B7",
+                backgroundColor: "var(--color-cream)",
+                borderColor: "var(--color-border)",
                 boxShadow: "0 8px 40px rgba(26,60,52,0.2)",
               }}
             >
@@ -284,7 +284,7 @@ export default function Header() {
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="amla, neem, ubtan..."
                 className="flex-1 bg-transparent font-body text-base outline-none"
-                style={{ color: "#1A3C34" }}
+                style={{ color: "var(--color-bark)" }}
               />
               <button
                 type="button"
@@ -416,21 +416,21 @@ export default function Header() {
             <Link
               href="/account"
               onClick={() => setIsMobileMenuOpen(false)}
-              className="block py-2 font-accent text-xs tracking-widest uppercase text-bark/50 hover:text-bark transition-colors"
+              className="block py-2 font-accent text-xs tracking-widest uppercase text-bark/60 hover:text-bark transition-colors"
             >
               My Account
             </Link>
             <Link
               href="/faq"
               onClick={() => setIsMobileMenuOpen(false)}
-              className="block py-2 font-accent text-xs tracking-widest uppercase text-bark/50 hover:text-bark transition-colors"
+              className="block py-2 font-accent text-xs tracking-widest uppercase text-bark/60 hover:text-bark transition-colors"
             >
               FAQ
             </Link>
             <Link
               href="/contact"
               onClick={() => setIsMobileMenuOpen(false)}
-              className="block py-2 font-accent text-xs tracking-widest uppercase text-bark/50 hover:text-bark transition-colors"
+              className="block py-2 font-accent text-xs tracking-widest uppercase text-bark/60 hover:text-bark transition-colors"
             >
               Contact
             </Link>

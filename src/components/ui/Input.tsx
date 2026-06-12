@@ -33,10 +33,10 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
             type={isPassword && showPassword ? "text" : type}
             className={cn(
               "w-full px-4 py-2.5 bg-cream border border-border rounded-lg",
-              "font-body text-bark text-sm placeholder:text-bark/40",
+              "font-body text-bark text-sm placeholder:text-bark/60",
               "transition-all duration-200",
               "hover:border-gold/60",
-              "focus:border-gold focus:ring-1 focus:ring-gold/30 focus:outline-none",
+              "focus:border-gold focus:ring-1 focus:ring-gold/30",
               error && "border-terracotta focus:border-terracotta focus:ring-terracotta/30",
               isPassword && "pr-10",
               className
@@ -47,7 +47,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
             <button
               type="button"
               onClick={() => setShowPassword(!showPassword)}
-              className="absolute right-3 top-1/2 -translate-y-1/2 text-bark/40 hover:text-bark/70 transition-colors"
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-bark/60 hover:text-bark/70 transition-colors"
               tabIndex={-1}
             >
               {showPassword ? (
@@ -62,7 +62,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
           <p className="text-xs text-terracotta font-body">{error}</p>
         )}
         {helperText && !error && (
-          <p className="text-xs text-bark/50 font-body">{helperText}</p>
+          <p className="text-xs text-bark/60 font-body">{helperText}</p>
         )}
       </div>
     );

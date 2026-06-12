@@ -66,7 +66,7 @@ export default function NewsletterSection() {
 
             <GoldRule variant="diamond" width="w-24 mx-auto" className="mb-4" />
 
-            <p className="text-sm text-cream/50 font-body mb-8">
+            <p className="text-sm text-cream/70 font-body mb-8">
               Subscribe for Ayurvedic beauty tips, new product launches,
               and exclusive offers delivered to your inbox.
             </p>
@@ -81,7 +81,7 @@ export default function NewsletterSection() {
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="your@email.com"
                 required
-                className="flex-1 px-4 py-3 bg-cream/10 border border-cream/20 rounded-sm text-cream text-sm font-body placeholder:text-cream/30 focus:outline-none focus:border-gold/50 transition-colors"
+                className="flex-1 px-4 py-3 bg-cream/10 border border-cream/20 rounded-lg text-cream text-sm font-body placeholder:text-cream/30 focus:border-gold/50 transition-colors"
               />
               <Button
                 type="submit"

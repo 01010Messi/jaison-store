@@ -25,7 +25,7 @@ export function PageSpinner() {
     <div className="flex items-center justify-center min-h-[400px]">
       <div className="text-center space-y-3">
         <Spinner size="lg" />
-        <p className="text-sm text-bark/50 font-body">Loading...</p>
+        <p className="text-sm text-bark/60 font-body">Loading...</p>
       </div>
     </div>
   );

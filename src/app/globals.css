@@ -6,12 +6,26 @@
 
 @layer base {
   :root {
+    /* Single source of truth — values mirror tailwind.config.ts tokens.
+       Use these vars in inline styles; use token classes in className. */
     --color-cream: #FEFAE0;
+    --color-cream-50: #FFFDF0;
+    --color-cream-100: #FBF4D8;
     --color-parchment: #EFE4C5;
+    --color-parchment-dark: #E0CFA6;
     --color-terracotta: #834316;
+    --color-terracotta-light: #A56843;
+    --color-terracotta-dark: #6B370F;
     --color-sage: #606C38;
+    --color-sage-light: #87964F;
+    --color-sage-dark: #36541F;
     --color-bark: #1A3C34;
-    --color-gold: #bca480;
+    --color-bark-light: #2A5C50;
+    --color-gold: #B89968;
+    --color-gold-light: #D2BA96;
+    --color-gold-dark: #A08A64;
+    --color-border: #E0CFA6;
+    --color-border-light: #F2E9CC;
   }
 
   html {
@@ -69,8 +83,33 @@
     @apply bg-gold;
   }
 
+  /* Visible keyboard focus — bark ring on light surfaces, cream ring inside dark sections */
   *:focus-visible {
-    outline: none;
+    outline: 2px solid var(--color-bark);
+    outline-offset: 2px;
+  }
+
+  .bg-bark *:focus-visible,
+  .bg-surface-dark *:focus-visible,
+  .bg-bark:focus-visible,
+  .bg-surface-dark:focus-visible {
+    outline-color: var(--color-cream);
+  }
+
+  /* Respect reduced-motion: collapse CSS animations/transitions.
+     Framer Motion is handled by <MotionProvider reducedMotion="user">. */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+
+    html {
+      scroll-behavior: auto;
+    }
   }
 }
 
@@ -167,6 +206,33 @@
   /* Safe area padding for iOS */
   .safe-bottom {
     padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+
+  /* Section rhythm — exactly two vertical paddings (see DESIGN.md) */
+  .section-rhythm {
+    @apply py-12 md:py-16;
+  }
+
+  .section-rhythm-lg {
+    @apply py-16 md:py-24;
+  }
+
+  /* ScrollReveal entrance state — content stays visible for users who
+     prefer reduced motion or have scripting disabled (SEO/no-JS safe). */
+  .reveal-pending {
+    opacity: 0;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal-pending {
+      opacity: 1;
+    }
+  }
+
+  @media (scripting: none) {
+    .reveal-pending {
+      opacity: 1;
+    }
   }
 }
 

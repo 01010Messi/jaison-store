@@ -167,7 +167,7 @@ export default function AdminMessagesPage() {
     <div>
       <div className="mb-8">
         <h1 className="font-heading text-2xl text-bark">Messages</h1>
-        <p className="text-sm text-bark/50 font-body mt-1">
+        <p className="text-sm text-bark/60 font-body mt-1">
           Contact form submissions
         </p>
       </div>
@@ -190,7 +190,7 @@ export default function AdminMessagesPage() {
                 "px-3 py-1.5 text-xs font-accent uppercase tracking-wider rounded-full border transition-colors whitespace-nowrap",
                 filterTab === tab
                   ? "bg-bark text-cream border-bark"
-                  : "bg-cream text-bark/50 border-border hover:border-bark/30"
+                  : "bg-cream text-bark/60 border-border hover:border-bark/30"
               )}
             >
               {tab}
@@ -203,7 +203,7 @@ export default function AdminMessagesPage() {
       {/* Messages list */}
       <div className="bg-cream rounded-sm border border-border/50">
         <div className="flex items-center gap-3 p-4 border-b border-border/50">
-          <span className="section-label text-bark/40">
+          <span className="section-label text-bark/60">
             {filteredMessages.length} Message
             {filteredMessages.length !== 1 ? "s" : ""}
           </span>
@@ -213,7 +213,7 @@ export default function AdminMessagesPage() {
         {filteredMessages.length === 0 ? (
           <div className="flex flex-col items-center justify-center py-16 text-bark/30">
             <MessageSquare className="h-12 w-12 mb-3 opacity-50" />
-            <p className="font-heading text-lg text-bark/40">
+            <p className="font-heading text-lg text-bark/60">
               {filterTab === "ALL"
                 ? "No messages yet"
                 : filterTab === "UNREAD"
@@ -264,7 +264,7 @@ export default function AdminMessagesPage() {
                   <p
                     className={cn(
                       "text-xs font-body truncate",
-                      !msg.isRead ? "text-bark/70" : "text-bark/40"
+                      !msg.isRead ? "text-bark/70" : "text-bark/60"
                     )}
                   >
                     <span className="font-medium">{msg.subject}</span>
@@ -307,7 +307,7 @@ export default function AdminMessagesPage() {
           <div className="space-y-5">
             {/* Sender info */}
             <div>
-              <h3 className="text-xs font-accent uppercase tracking-wider text-bark/40 mb-2">
+              <h3 className="text-xs font-accent uppercase tracking-wider text-bark/60 mb-2">
                 From
               </h3>
               <div className="space-y-1.5">
@@ -339,7 +339,7 @@ export default function AdminMessagesPage() {
                 )}
                 <div className="flex items-center gap-2">
                   <Clock className="h-3.5 w-3.5 text-bark/30" />
-                  <p className="text-sm text-bark/50 font-body">
+                  <p className="text-sm text-bark/60 font-body">
                     {formatDateTime(selectedMessage.createdAt)}
                   </p>
                 </div>
@@ -350,7 +350,7 @@ export default function AdminMessagesPage() {
 
             {/* Message body */}
             <div>
-              <h3 className="text-xs font-accent uppercase tracking-wider text-bark/40 mb-2">
+              <h3 className="text-xs font-accent uppercase tracking-wider text-bark/60 mb-2">
                 Message
               </h3>
               <div className="bg-parchment/30 rounded-sm p-4 border border-border/30">
@@ -364,7 +364,7 @@ export default function AdminMessagesPage() {
 
             {/* Actions */}
             <div>
-              <h3 className="text-xs font-accent uppercase tracking-wider text-bark/40 mb-3">
+              <h3 className="text-xs font-accent uppercase tracking-wider text-bark/60 mb-3">
                 Actions
               </h3>
 

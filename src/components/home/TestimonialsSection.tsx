@@ -61,7 +61,7 @@ export default function TestimonialsSection() {
         {/* Section header — two columns */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 md:mb-16">
           <div className="flex-1 max-w-2xl">
-            <p className="font-accent text-[10px] tracking-[0.2em] uppercase text-bark/40 mb-4">
+            <p className="font-accent text-[10px] tracking-[0.2em] uppercase text-bark/60 mb-4">
               — Real Rituals · Across India
             </p>
             <h2
@@ -70,13 +70,13 @@ export default function TestimonialsSection() {
               People who mix
               <span
                 className="block"
-                style={{ color: "#834316", fontStyle: "italic", fontWeight: 300 }}
+                style={{ color: "var(--color-terracotta)", fontStyle: "italic", fontWeight: 300 }}
               >
                 their own skincare.
               </span>
             </h2>
           </div>
-          <p className="font-body text-sm text-bark/50 max-w-xs leading-relaxed md:self-end">
+          <p className="font-body text-sm text-bark/60 max-w-xs leading-relaxed md:self-end">
             Real customers, real routines. From oily-skin acne fixes to herbal
             hair washes — one person&apos;s bathroom ritual, unfiltered.
           </p>

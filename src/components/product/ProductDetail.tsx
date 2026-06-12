@@ -4,8 +4,6 @@ import { useState, useRef, useEffect, useCallback } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import {
-  Minus,
-  Plus,
   ShoppingBag,
   ChevronRight,
   ChevronLeft,
@@ -21,6 +19,7 @@ import ProductCard from "@/components/product/ProductCard";
 import ProductReviews from "@/components/product/ProductReviews";
 import ProductStory from "@/components/product/ProductStory";
 import ProductFAQ from "@/components/product/ProductFAQ";
+import QtyStepper from "@/components/ui/QtyStepper";
 import { getProductFaqs } from "@/data/productFaqs";
 import { useCartStore } from "@/store/cart-store";
 import { formatPrice, cn } from "@/lib/utils";
@@ -197,11 +196,11 @@ export default function ProductDetail({ product }: ProductDetailProps) {
           {/* Image Gallery */}
           <div className="relative">
             {/* Main image — thin warm border replacing OrnamentalBorder */}
-            <div className="border border-[#E8D5B7] rounded-sm p-2 md:p-3">
+            <div className="border border-parchment-dark rounded-xl p-2 md:p-3">
               <div
                 ref={imageContainerRef}
                 className={cn(
-                  "relative aspect-square overflow-hidden rounded-sm bg-[#F5ECD7] select-none",
+                  "relative aspect-square overflow-hidden rounded-xl bg-[#F5ECD7] select-none",
                   zoomLevel > 0 ? "cursor-grab" : "",
                   isPanning && "cursor-grabbing"
                 )}
@@ -331,7 +330,7 @@ export default function ProductDetail({ product }: ProductDetailProps) {
                     key={img}
                     onClick={() => setActiveImageIndex(i)}
                     className={cn(
-                      "relative flex-shrink-0 w-16 h-16 md:w-20 md:h-20 rounded-sm overflow-hidden border-2 transition-all duration-300 bg-parchment",
+                      "relative flex-shrink-0 w-16 h-16 md:w-20 md:h-20 rounded-xl overflow-hidden border-2 transition-all duration-300 bg-parchment",
                       i === activeImageIndex
                         ? "border-gold shadow-gold ring-1 ring-gold/20"
                         : "border-transparent opacity-60 hover:opacity-100 hover:border-border"
@@ -373,7 +372,7 @@ export default function ProductDetail({ product }: ProductDetailProps) {
                 fontSize: "clamp(40px, 5.5vw, 72px)",
                 lineHeight: 0.95,
                 letterSpacing: "-0.01em",
-                color: "#1A3C34",
+                color: "var(--color-bark)",
               }}
             >
               {product.name}
@@ -385,7 +384,7 @@ export default function ProductDetail({ product }: ProductDetailProps) {
               style={{
                 fontSize: "clamp(18px, 2vw, 22px)",
                 lineHeight: 1.25,
-                color: "#A56843",
+                color: "var(--color-terracotta-light)",
               }}
             >
               {product.shortDescription}
@@ -408,7 +407,7 @@ export default function ProductDetail({ product }: ProductDetailProps) {
               </p>
               <p
                 className="font-heading italic text-lg mt-1"
-                style={{ color: "#1A3C34" }}
+                style={{ color: "var(--color-bark)" }}
               >
                 {product.ingredients}
               </p>
@@ -420,7 +419,7 @@ export default function ProductDetail({ product }: ProductDetailProps) {
                 className="font-heading font-light"
                 style={{
                   fontSize: "clamp(32px, 4vw, 48px)",
-                  color: "#1A3C34",
+                  color: "var(--color-bark)",
                 }}
               >
                 ₹{product.price}
@@ -443,7 +442,7 @@ export default function ProductDetail({ product }: ProductDetailProps) {
                     fontSize: "10px",
                     letterSpacing: "0.18em",
                     background: "rgba(165,104,67,0.10)",
-                    color: "#A56843",
+                    color: "var(--color-terracotta-light)",
                   }}
                 >
                   {Math.round((1 - product.price / product.compareAtPrice) * 100)}% Off
@@ -454,33 +453,7 @@ export default function ProductDetail({ product }: ProductDetailProps) {
             {/* 6. Quantity + Add to Potli */}
             <div className="mt-4 flex gap-3">
               {/* Qty stepper */}
-              <div
-                className="flex items-center rounded-full"
-                style={{ border: "1px solid #E8D5B7" }}
-              >
-                <button
-                  onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                  className="pl-4 pr-3 py-3 transition-colors duration-200"
-                  style={{ color: "#1A3C34" }}
-                  aria-label="Decrease quantity"
-                >
-                  <Minus className="h-4 w-4" />
-                </button>
-                <span
-                  className="px-3 py-3 font-body text-sm text-center min-w-[2.5rem]"
-                  style={{ color: "#1A3C34" }}
-                >
-                  {quantity}
-                </span>
-                <button
-                  onClick={() => setQuantity(Math.min(10, quantity + 1))}
-                  className="pl-3 pr-4 py-3 transition-colors duration-200"
-                  style={{ color: "#1A3C34" }}
-                  aria-label="Increase quantity"
-                >
-                  <Plus className="h-4 w-4" />
-                </button>
-              </div>
+              <QtyStepper value={quantity} onChange={setQuantity} max={10} />
 
               {/* ADD TO POTLI button */}
               <button
@@ -490,8 +463,8 @@ export default function ProductDetail({ product }: ProductDetailProps) {
                   addedToCart ? "opacity-80" : ""
                 )}
                 style={{
-                  background: "#1A3C34",
-                  color: "#FDFAF5",
+                  background: "var(--color-bark)",
+                  color: "var(--color-cream)",
                 }}
               >
                 <span className="flex items-center gap-2">
@@ -516,11 +489,11 @@ export default function ProductDetail({ product }: ProductDetailProps) {
                 <div
                   key={badge.main}
                   className="rounded-xl p-3.5"
-                  style={{ border: "1px solid #E8D5B7", backgroundColor: "#FDFAF5" }}
+                  style={{ border: "1px solid var(--color-border)", backgroundColor: "var(--color-cream)" }}
                 >
                   <p
                     className="font-body text-sm font-medium"
-                    style={{ color: "#1A3C34" }}
+                    style={{ color: "var(--color-bark)" }}
                   >
                     {badge.main}
                   </p>
@@ -537,8 +510,8 @@ export default function ProductDetail({ product }: ProductDetailProps) {
             {/* 8. PIN Code Check — kept exactly as-is */}
             <div className="mt-5 pt-4 border-t border-border">
               <div className="flex items-center gap-2 mb-2">
-                <MapPin className="h-3.5 w-3.5 text-bark/40" />
-                <span className="text-xs font-accent uppercase tracking-wider text-bark/50">
+                <MapPin className="h-3.5 w-3.5 text-bark/60" />
+                <span className="text-xs font-accent uppercase tracking-wider text-bark/60">
                   Check Delivery
                 </span>
               </div>
@@ -551,7 +524,7 @@ export default function ProductDetail({ product }: ProductDetailProps) {
                     setPincodeResult(null);
                   }}
                   placeholder="Enter PIN code"
-                  className="flex-1 px-4 py-2 border border-border rounded-full text-sm font-body bg-cream focus:border-gold focus:outline-none transition-colors placeholder:text-bark/30"
+                  className="flex-1 px-4 py-2 border border-border rounded-full text-sm font-body bg-cream focus:border-gold transition-colors placeholder:text-bark/30"
                 />
                 <button
                   onClick={checkPincode}
@@ -565,7 +538,7 @@ export default function ProductDetail({ product }: ProductDetailProps) {
                 <div className={`mt-2 text-xs font-body ${pincodeResult.serviceable ? "text-sage" : "text-terracotta"}`}>
                   <p>{pincodeResult.message}</p>
                   {pincodeResult.serviceable && pincodeResult.estimatedDays && (
-                    <p className="text-bark/50 mt-0.5">
+                    <p className="text-bark/60 mt-0.5">
                       Estimated delivery: {pincodeResult.estimatedDays} days
                       {pincodeResult.codAvailable && " · COD available"}
                     </p>
@@ -596,12 +569,12 @@ export default function ProductDetail({ product }: ProductDetailProps) {
           <div className="container-brand">
             <ScrollReveal animation="fade-up">
               <div className="mb-8 max-w-3xl mx-auto">
-                <p className="font-accent text-[10px] tracking-[0.2em] uppercase text-bark/40 mb-4">
+                <p className="font-accent text-[10px] tracking-[0.2em] uppercase text-bark/60 mb-4">
                   — From the Journal
                 </p>
                 <h2 className="font-heading text-[1.75rem] md:text-[2.25rem] text-bark font-light leading-[1.08] tracking-[-0.01em]">
                   Go deeper on{" "}
-                  <span style={{ color: "#834316", fontStyle: "italic" }}>
+                  <span style={{ color: "var(--color-terracotta)", fontStyle: "italic" }}>
                     {product.name}.
                   </span>
                 </h2>
@@ -631,7 +604,7 @@ export default function ProductDetail({ product }: ProductDetailProps) {
                       <h3 className="font-heading text-sm text-bark group-hover:text-terracotta transition-colors line-clamp-2 leading-snug">
                         {post.title}
                       </h3>
-                      <p className="text-[11px] text-bark/40 font-accent uppercase tracking-wider mt-1.5">
+                      <p className="text-[11px] text-bark/60 font-accent uppercase tracking-wider mt-1.5">
                         {post.readTime} min read
                       </p>
                     </div>
@@ -649,12 +622,12 @@ export default function ProductDetail({ product }: ProductDetailProps) {
           <div className="container-brand">
             <ScrollReveal animation="fade-up">
               <div className="mb-10">
-                <p className="font-accent text-[10px] tracking-[0.2em] uppercase text-bark/40 mb-4">
+                <p className="font-accent text-[10px] tracking-[0.2em] uppercase text-bark/60 mb-4">
                   — Pairs Well With · {product.category}
                 </p>
                 <h2 className="font-heading text-[2.25rem] md:text-[3rem] text-bark font-light leading-[1.08] tracking-[-0.01em]">
                   Complete the{" "}
-                  <span style={{ color: "#834316", fontStyle: "italic" }}>
+                  <span style={{ color: "var(--color-terracotta)", fontStyle: "italic" }}>
                     ritual.
                   </span>
                 </h2>

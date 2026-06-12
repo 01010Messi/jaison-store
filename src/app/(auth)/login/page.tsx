@@ -42,19 +42,19 @@ export default function LoginPage() {
   return (
     <div
       className="w-full rounded-2xl p-10"
-      style={{ backgroundColor: "#FEFAE0", border: "1px solid rgba(26,60,52,0.1)" }}
+      style={{ backgroundColor: "var(--color-cream)", border: "1px solid rgba(26,60,52,0.1)" }}
     >
       {/* Header */}
       <div className="mb-8">
         <p
           className="font-accent text-[10px] tracking-[0.22em] uppercase mb-4"
-          style={{ color: "#834316" }}
+          style={{ color: "var(--color-terracotta)" }}
         >
           — Sign In
         </p>
         <h2
           className="font-heading font-light leading-[1.05]"
-          style={{ fontSize: "clamp(1.875rem, 4vw, 2.5rem)", color: "#1A3C34" }}
+          style={{ fontSize: "clamp(1.875rem, 4vw, 2.5rem)", color: "var(--color-bark)" }}
         >
           Welcome back.
         </h2>
@@ -79,12 +79,12 @@ export default function LoginPage() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
-            className="w-full rounded-full font-body text-sm transition-colors focus:outline-none"
+            className="w-full rounded-full font-body text-sm transition-colors"
             style={{
               padding: "14px 24px",
               border: "1px solid rgba(26,60,52,0.18)",
               backgroundColor: "transparent",
-              color: "#1A3C34",
+              color: "var(--color-bark)",
             }}
             placeholder="your@email.com"
           />
@@ -103,12 +103,12 @@ export default function LoginPage() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
-              className="w-full rounded-full font-body text-sm transition-colors focus:outline-none pr-12"
+              className="w-full rounded-full font-body text-sm transition-colors pr-12"
               style={{
                 padding: "14px 24px",
                 border: "1px solid rgba(26,60,52,0.18)",
                 backgroundColor: "transparent",
-                color: "#1A3C34",
+                color: "var(--color-bark)",
               }}
               placeholder="Enter your password"
             />
@@ -139,8 +139,8 @@ export default function LoginPage() {
           className="w-full rounded-full font-accent text-[11px] tracking-[0.15em] uppercase transition-opacity hover:opacity-85 disabled:opacity-50"
           style={{
             padding: "16px 24px",
-            backgroundColor: "#1A3C34",
-            color: "#FEFAE0",
+            backgroundColor: "var(--color-bark)",
+            color: "var(--color-cream)",
             marginTop: "8px",
           }}
         >
@@ -156,7 +156,7 @@ export default function LoginPage() {
         <Link
           href="/register"
           className="font-accent text-[11px] tracking-[0.08em] uppercase transition-colors hover:opacity-70"
-          style={{ color: "#834316" }}
+          style={{ color: "var(--color-terracotta)" }}
         >
           Create Account
         </Link>

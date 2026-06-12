@@ -1,5 +1,6 @@
 import Link from "next/link";
-import Image from "next/image";
+import SectionHeader from "@/components/ui/SectionHeader";
+import StepCard from "@/components/ui/StepCard";
 
 const steps = [
   {
@@ -41,76 +42,32 @@ const steps = [
 
 export default function HowToUseGuide() {
   return (
-    <section className="py-12 md:py-20 overflow-hidden" style={{ backgroundColor: "#EFE4C5" }}>
+    <section className="py-12 md:py-20 overflow-hidden" style={{ backgroundColor: "var(--color-parchment)" }}>
       <div className="container-brand">
-        {/* Eyebrow */}
-        <p
-          className="font-accent text-[11px] tracking-[0.28em] uppercase mb-6 flex items-center gap-3"
-          style={{ color: "#A56843" }}
-        >
-          <span style={{ color: "#B89968" }}>—</span>
-          The Ritual · Five Steps
-        </p>
-
-        {/* Heading */}
-        <h2
-          className="font-heading font-light mb-10 md:mb-14"
-          style={{
-            fontSize: "clamp(36px, 6vw, 80px)",
-            color: "#1A3C34",
-            lineHeight: 1.0,
-            letterSpacing: "-0.01em",
-          }}
-        >
-          How to use{" "}
-          <em style={{ color: "#A56843", fontStyle: "italic" }}>our powders.</em>
-        </h2>
+        {/* Eyebrow + heading */}
+        <SectionHeader
+          eyebrow="The Ritual · Five Steps"
+          eyebrowDash
+          eyebrowTone="accent"
+          title="How to use"
+          accent="our powders."
+          accentPlacement="inline"
+          size="xl"
+          className="mb-10 md:mb-14"
+        />
 
         {/* Step cards */}
         <div className="grid grid-cols-2 md:grid-cols-5 gap-3 md:gap-4">
           {steps.map((step) => (
-            <div
+            <StepCard
               key={step.num}
-              className="rounded-xl overflow-hidden flex flex-col"
-              style={{ backgroundColor: "#FDFAF5" }}
+              number={step.num}
+              title={step.title}
+              numberSize="lg"
+              image={{ src: step.image, alt: step.alt }}
             >
-              {/* Step photo */}
-              <div className="relative w-full aspect-square">
-                <Image
-                  src={step.image}
-                  alt={step.alt}
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 768px) 50vw, 20vw"
-                />
-              </div>
-
-              {/* Step text */}
-              <div className="p-5 md:p-6 flex flex-col flex-1">
-                <span
-                  className="font-heading font-light block leading-none mb-3"
-                  style={{
-                    fontSize: "clamp(32px, 4vw, 48px)",
-                    color: "#B89968",
-                    letterSpacing: "-0.03em",
-                  }}
-                >
-                  {step.num}
-                </span>
-                <h3
-                  className="font-heading font-light mb-2"
-                  style={{ fontSize: "clamp(18px, 2vw, 22px)", color: "#1A3C34", lineHeight: 1.2 }}
-                >
-                  {step.title}
-                </h3>
-                <p
-                  className="font-body text-sm leading-relaxed"
-                  style={{ color: "rgba(26,60,52,0.6)" }}
-                >
-                  {step.body}
-                </p>
-              </div>
-            </div>
+              {step.body}
+            </StepCard>
           ))}
         </div>
 
@@ -118,14 +75,14 @@ export default function HowToUseGuide() {
         <div className="mt-8 flex flex-col sm:flex-row items-start sm:items-center gap-4">
           <span
             className="inline-flex items-center gap-2 px-5 py-3 font-body text-sm rounded-full"
-            style={{ backgroundColor: "#1A3C34", color: "#FDFAF5" }}
+            style={{ backgroundColor: "var(--color-bark)", color: "var(--color-cream)" }}
           >
             ↺ 2–3 times a week for best results
           </span>
           <Link
             href="/find-your-ritual"
             className="font-body text-sm underline underline-offset-4 transition-opacity hover:opacity-70"
-            style={{ color: "#1A3C34" }}
+            style={{ color: "var(--color-bark)" }}
           >
             Not sure which powder? Find your ritual →
           </Link>

@@ -84,7 +84,7 @@ export default function SocialShare({
 
   return (
     <div className="flex items-center gap-3">
-      <span className="text-[10px] font-accent uppercase tracking-[0.15em] text-bark/40">
+      <span className="text-[10px] font-accent uppercase tracking-[0.15em] text-bark/60">
         Share
       </span>
       {shareLinks.map((link) => (
@@ -108,7 +108,7 @@ export default function SocialShare({
           <Share2 className="h-4 w-4" />
         </button>
         {showTooltip && (
-          <span className="absolute -top-8 left-1/2 -translate-x-1/2 px-2 py-1 bg-bark text-cream text-[10px] font-accent rounded-sm whitespace-nowrap">
+          <span className="absolute -top-8 left-1/2 -translate-x-1/2 px-2 py-1 bg-bark text-cream text-[10px] font-accent rounded-full whitespace-nowrap">
             Copied!
           </span>
         )}

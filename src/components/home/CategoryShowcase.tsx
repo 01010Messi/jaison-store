@@ -47,7 +47,7 @@ export default function CategoryShowcase() {
             >
               <Link
                 href={`/shop?category=${category.slug}`}
-                className="group block relative aspect-[3/4] overflow-hidden rounded-sm"
+                className="group block relative aspect-[3/4] overflow-hidden rounded-xl"
               >
                 {/* Image */}
                 <Image
@@ -70,7 +70,7 @@ export default function CategoryShowcase() {
                     {category.name}
                   </h3>
                   <div className="mt-3 overflow-hidden h-0 group-hover:h-10 transition-all duration-300">
-                    <span className="inline-block px-6 py-2 text-xs font-accent uppercase tracking-wider text-cream border border-cream/30 rounded-sm group-hover:bg-cream/10 transition-colors">
+                    <span className="inline-block px-6 py-2 text-xs font-accent uppercase tracking-wider text-cream border border-cream/30 rounded-full group-hover:bg-cream/10 transition-colors">
                       Explore
                     </span>
                   </div>

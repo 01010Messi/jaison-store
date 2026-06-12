@@ -73,7 +73,7 @@ export default function ProfilePage() {
         <div className="container-brand">
           <Link
             href="/account"
-            className="inline-flex items-center gap-1 text-xs font-accent uppercase tracking-wider text-bark/40 hover:text-bark transition-colors mb-3"
+            className="inline-flex items-center gap-1 text-xs font-accent uppercase tracking-wider text-bark/60 hover:text-bark transition-colors mb-3"
           >
             <ArrowLeft className="h-3.5 w-3.5" />
             My Account

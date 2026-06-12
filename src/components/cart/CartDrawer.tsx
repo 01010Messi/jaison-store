@@ -2,7 +2,8 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { Minus, Plus, Trash2, ShoppingBag } from "lucide-react";
+import { Trash2, ShoppingBag } from "lucide-react";
+import QtyStepper from "@/components/ui/QtyStepper";
 import { useCartStore } from "@/store/cart-store";
 import { formatPrice } from "@/lib/utils";
 import Drawer from "@/components/ui/Drawer";
@@ -20,7 +21,7 @@ export default function CartDrawer() {
           {/* Icon in parchment circle */}
           <div
             className="w-16 h-16 rounded-full flex items-center justify-center mb-7"
-            style={{ backgroundColor: "#EFE4C5" }}
+            style={{ backgroundColor: "var(--color-parchment)" }}
           >
             <ShoppingBag
               className="h-6 w-6"
@@ -39,7 +40,7 @@ export default function CartDrawer() {
           {/* Heading */}
           <h3
             className="font-heading font-light leading-snug mb-3"
-            style={{ fontSize: "1.6rem", color: "#1A3C34" }}
+            style={{ fontSize: "1.6rem", color: "var(--color-bark)" }}
           >
             The potli is empty.
           </h3>
@@ -56,7 +57,7 @@ export default function CartDrawer() {
           <Link href="/shop" onClick={closeCart}>
             <button
               className="inline-flex items-center px-8 py-3 rounded-full font-accent text-[11px] tracking-[0.15em] uppercase transition-all duration-200"
-              style={{ backgroundColor: "#1A3C34", color: "#FEFAE0" }}
+              style={{ backgroundColor: "var(--color-bark)", color: "var(--color-cream)" }}
             >
               Explore Collection
             </button>
@@ -84,7 +85,7 @@ export default function CartDrawer() {
               >
                 {/* Image */}
                 <div className="relative w-20 h-24 overflow-hidden shrink-0 rounded-lg"
-                  style={{ backgroundColor: "#EFE4C5" }}
+                  style={{ backgroundColor: "var(--color-parchment)" }}
                 >
                   {item.image ? (
                     <Image
@@ -107,60 +108,36 @@ export default function CartDrawer() {
                     href={`/shop/${item.slug}`}
                     onClick={closeCart}
                     className="font-heading text-sm line-clamp-2 transition-colors"
-                    style={{ color: "#1A3C34" }}
-                    onMouseEnter={(e) => (e.currentTarget.style.color = "#834316")}
-                    onMouseLeave={(e) => (e.currentTarget.style.color = "#1A3C34")}
+                    style={{ color: "var(--color-bark)" }}
+                    onMouseEnter={(e) => (e.currentTarget.style.color = "var(--color-terracotta)")}
+                    onMouseLeave={(e) => (e.currentTarget.style.color = "var(--color-bark)")}
                   >
                     {item.name}
                   </Link>
                   <p
                     className="font-body font-medium text-sm mt-1"
-                    style={{ color: "#1A3C34" }}
+                    style={{ color: "var(--color-bark)" }}
                   >
                     {formatPrice(item.price)}
                   </p>
 
                   <div className="flex items-center justify-between mt-2.5">
                     {/* Quantity stepper */}
-                    <div
-                      className="flex items-center rounded-full overflow-hidden"
-                      style={{ border: "1px solid rgba(26,60,52,0.15)" }}
-                    >
-                      <button
-                        onClick={() =>
-                          updateQuantity(item.productId, item.quantity - 1)
-                        }
-                        className="px-2.5 py-1 transition-colors"
-                        style={{ color: "rgba(26,60,52,0.45)" }}
-                        aria-label="Decrease quantity"
-                      >
-                        <Minus className="h-3 w-3" />
-                      </button>
-                      <span
-                        className="px-2 text-sm font-body font-medium min-w-[24px] text-center"
-                        style={{ color: "#1A3C34" }}
-                      >
-                        {item.quantity}
-                      </span>
-                      <button
-                        onClick={() =>
-                          updateQuantity(item.productId, item.quantity + 1)
-                        }
-                        disabled={item.quantity >= item.stock}
-                        className="px-2.5 py-1 transition-colors disabled:opacity-30"
-                        style={{ color: "rgba(26,60,52,0.45)" }}
-                        aria-label="Increase quantity"
-                      >
-                        <Plus className="h-3 w-3" />
-                      </button>
-                    </div>
+                    <QtyStepper
+                      size="sm"
+                      value={item.quantity}
+                      onChange={(next) => updateQuantity(item.productId, next)}
+                      min={0}
+                      max={item.stock}
+                      className="rounded-full overflow-hidden border border-bark/15"
+                    />
 
                     {/* Remove */}
                     <button
                       onClick={() => removeItem(item.productId)}
                       className="p-1 transition-colors"
                       style={{ color: "rgba(26,60,52,0.25)" }}
-                      onMouseEnter={(e) => (e.currentTarget.style.color = "#834316")}
+                      onMouseEnter={(e) => (e.currentTarget.style.color = "var(--color-terracotta)")}
                       onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(26,60,52,0.25)")}
                       aria-label="Remove item"
                     >
@@ -187,7 +164,7 @@ export default function CartDrawer() {
               </span>
               <span
                 className="font-heading font-light"
-                style={{ fontSize: "1.35rem", color: "#1A3C34" }}
+                style={{ fontSize: "1.35rem", color: "var(--color-bark)" }}
               >
                 {formatPrice(total)}
               </span>
@@ -205,7 +182,7 @@ export default function CartDrawer() {
               <Link href="/checkout" onClick={closeCart} className="block">
                 <button
                   className="w-full py-3.5 rounded-full font-accent text-[11px] tracking-[0.15em] uppercase transition-all duration-200"
-                  style={{ backgroundColor: "#1A3C34", color: "#FEFAE0" }}
+                  style={{ backgroundColor: "var(--color-bark)", color: "var(--color-cream)" }}
                 >
                   Proceed to Checkout
                 </button>

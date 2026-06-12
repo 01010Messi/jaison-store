@@ -139,7 +139,7 @@ export default function ProductReviews({
         {session?.user ? (
           <button
             onClick={() => setShowForm(!showForm)}
-            className="flex items-center gap-2 px-4 py-2 border border-border rounded-sm text-xs font-accent uppercase tracking-wider text-bark/70 hover:border-bark hover:text-bark transition-colors"
+            className="flex items-center gap-2 px-4 py-2 border border-border rounded-full text-xs font-accent uppercase tracking-wider text-bark/70 hover:border-bark hover:text-bark transition-colors"
           >
             <MessageSquarePlus className="h-4 w-4" />
             Write a Review
@@ -147,7 +147,7 @@ export default function ProductReviews({
         ) : (
           <Link
             href="/login"
-            className="text-xs font-accent uppercase tracking-wider text-bark/50 hover:text-terracotta transition-colors"
+            className="text-xs font-accent uppercase tracking-wider text-bark/60 hover:text-terracotta transition-colors"
           >
             Login to write a review
           </Link>
@@ -158,9 +158,9 @@ export default function ProductReviews({
       {showForm && (
         <form
           onSubmit={handleSubmit}
-          className="mb-8 p-5 bg-surface-warm border border-border/50 rounded-sm"
+          className="mb-8 p-5 bg-surface-warm border border-border/50 rounded-xl"
         >
-          <p className="text-xs font-accent uppercase tracking-wider text-bark/50 mb-4">
+          <p className="text-xs font-accent uppercase tracking-wider text-bark/60 mb-4">
             Reviewing: {productName}
           </p>
 
@@ -185,7 +185,7 @@ export default function ProductReviews({
               value={title}
               onChange={(e) => setTitle(e.target.value)}
               placeholder="Summarize your experience"
-              className="w-full px-3 py-2 border border-border rounded-sm text-sm font-body bg-cream focus:border-gold focus:outline-none transition-colors placeholder:text-bark/30"
+              className="w-full px-3 py-2 border border-border rounded-lg text-sm font-body bg-cream focus:border-gold transition-colors placeholder:text-bark/30"
             />
           </div>
 
@@ -198,7 +198,7 @@ export default function ProductReviews({
               onChange={(e) => setBody(e.target.value)}
               placeholder="Share your experience with this product..."
               rows={4}
-              className="w-full px-3 py-2 border border-border rounded-sm text-sm font-body bg-cream focus:border-gold focus:outline-none transition-colors resize-none placeholder:text-bark/30"
+              className="w-full px-3 py-2 border border-border rounded-lg text-sm font-body bg-cream focus:border-gold transition-colors resize-none placeholder:text-bark/30"
             />
           </div>
 
@@ -206,14 +206,14 @@ export default function ProductReviews({
             <button
               type="submit"
               disabled={submitting}
-              className="px-6 py-2 bg-bark text-cream text-xs font-accent uppercase tracking-wider rounded-sm hover:bg-bark/90 disabled:opacity-50 transition-all"
+              className="px-6 py-2 bg-bark text-cream text-xs font-accent uppercase tracking-wider rounded-full hover:bg-bark/90 disabled:opacity-50 transition-all"
             >
               {submitting ? "Submitting..." : "Submit Review"}
             </button>
             <button
               type="button"
               onClick={() => setShowForm(false)}
-              className="px-4 py-2 text-xs font-accent uppercase tracking-wider text-bark/50 hover:text-bark transition-colors"
+              className="px-4 py-2 text-xs font-accent uppercase tracking-wider text-bark/60 hover:text-bark transition-colors"
             >
               Cancel
             </button>
@@ -237,7 +237,7 @@ export default function ProductReviews({
                   <p className="text-sm font-heading text-bark">
                     {review.userName}
                   </p>
-                  <p className="text-[11px] text-bark/40 font-body">
+                  <p className="text-[11px] text-bark/60 font-body">
                     {new Date(review.createdAt).toLocaleDateString("en-IN", {
                       year: "numeric",
                       month: "short",
@@ -273,7 +273,7 @@ export default function ProductReviews({
         </div>
       ) : (
         <div className="text-center py-8">
-          <p className="text-sm text-bark/40 font-body">
+          <p className="text-sm text-bark/60 font-body">
             No reviews yet. Be the first to review this product!
           </p>
         </div>

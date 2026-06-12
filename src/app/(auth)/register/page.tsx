@@ -41,12 +41,12 @@ export default function RegisterPage() {
     }
   };
 
-  const inputClass = "w-full rounded-full font-body text-sm transition-colors focus:outline-none";
+  const inputClass = "w-full rounded-full font-body text-sm transition-colors";
   const inputStyle = {
     padding: "14px 24px",
     border: "1px solid rgba(26,60,52,0.18)",
     backgroundColor: "transparent",
-    color: "#1A3C34",
+    color: "var(--color-bark)",
   };
   const labelClass = "block font-accent text-[10px] tracking-[0.15em] uppercase mb-2";
   const labelStyle = { color: "rgba(26,60,52,0.55)" };
@@ -54,19 +54,19 @@ export default function RegisterPage() {
   return (
     <div
       className="w-full rounded-2xl p-10"
-      style={{ backgroundColor: "#FEFAE0", border: "1px solid rgba(26,60,52,0.1)" }}
+      style={{ backgroundColor: "var(--color-cream)", border: "1px solid rgba(26,60,52,0.1)" }}
     >
       {/* Header */}
       <div className="mb-8">
         <p
           className="font-accent text-[10px] tracking-[0.22em] uppercase mb-4"
-          style={{ color: "#834316" }}
+          style={{ color: "var(--color-terracotta)" }}
         >
           — Create Account
         </p>
         <h2
           className="font-heading font-light leading-[1.05]"
-          style={{ fontSize: "clamp(1.875rem, 4vw, 2.5rem)", color: "#1A3C34" }}
+          style={{ fontSize: "clamp(1.875rem, 4vw, 2.5rem)", color: "var(--color-bark)" }}
         >
           Join the family.
         </h2>
@@ -148,8 +148,8 @@ export default function RegisterPage() {
           className="w-full rounded-full font-accent text-[11px] tracking-[0.15em] uppercase transition-opacity hover:opacity-85 disabled:opacity-50"
           style={{
             padding: "16px 24px",
-            backgroundColor: "#1A3C34",
-            color: "#FEFAE0",
+            backgroundColor: "var(--color-bark)",
+            color: "var(--color-cream)",
             marginTop: "8px",
           }}
         >
@@ -165,7 +165,7 @@ export default function RegisterPage() {
         <Link
           href="/login"
           className="font-accent text-[11px] tracking-[0.08em] uppercase transition-colors hover:opacity-70"
-          style={{ color: "#834316" }}
+          style={{ color: "var(--color-terracotta)" }}
         >
           Sign In
         </Link>

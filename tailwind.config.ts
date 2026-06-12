@@ -20,7 +20,7 @@ const config: Config = {
         },
         terracotta: {
           DEFAULT: "#834316",
-          light: "#A4622B",
+          light: "#A56843", // re-trued to shipped eyebrow/accent brown (was #A4622B)
           dark: "#6B370F",
         },
         sage: {
@@ -34,7 +34,7 @@ const config: Config = {
           50: "#3A6C5E",
         },
         gold: {
-          DEFAULT: "#BCA480",
+          DEFAULT: "#B89968", // re-trued to shipped numeral/ornament gold (was #BCA480)
           light: "#D2BA96",
           dark: "#A08A64",
         },
@@ -119,7 +119,7 @@ const config: Config = {
         },
         goldBorder: {
           "0%": { borderColor: "transparent" },
-          "100%": { borderColor: "#BCA480" },
+          "100%": { borderColor: "#B89968" },
         },
         marquee: {
           "0%": { transform: "translateX(0)" },

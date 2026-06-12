@@ -35,7 +35,7 @@ export default function HeroSection() {
   return (
     <section
         className="relative flex flex-col overflow-hidden min-h-screen"
-        style={{ backgroundColor: "#FEFAE0" }}
+        style={{ backgroundColor: "var(--color-cream)" }}
       >
         {/* Background video */}
         <div className="absolute inset-0">
@@ -92,7 +92,7 @@ export default function HeroSection() {
             style={{
               fontSize: "clamp(12px, 1.05vw, 14px)",
               letterSpacing: "0.18em",
-              color: "#834316",
+              color: "var(--color-terracotta)",
             }}
           >
             55 Years&nbsp;&nbsp;·&nbsp;&nbsp;One Format&nbsp;&nbsp;·&nbsp;&nbsp;Zero Compromises
@@ -108,14 +108,14 @@ export default function HeroSection() {
               letterSpacing: "-0.02em",
             }}
           >
-            <span className="gw1" style={{ color: "#1A3C34" }}>Your </span>
+            <span className="gw1" style={{ color: "var(--color-bark)" }}>Your </span>
             <span className="gw2" style={{ color: "rgba(26,60,52,0.72)" }}>bottle </span>
             <span className="gw3" style={{ color: "rgba(26,60,52,0.56)" }}>lists a</span>
             <br />
             <span className="gw4" style={{ color: "rgba(26,60,52,0.40)" }}>dozen </span>
-            <span className="gw5" style={{ color: "#1A3C34" }}>ingredients.</span>
+            <span className="gw5" style={{ color: "var(--color-bark)" }}>ingredients.</span>
             <br />
-            <span className="gw6" style={{ fontStyle: "italic", fontWeight: 300, color: "#834316" }}>
+            <span className="gw6" style={{ fontStyle: "italic", fontWeight: 300, color: "var(--color-terracotta)" }}>
               Our product lists one.
             </span>
           </h2>
@@ -145,8 +145,8 @@ export default function HeroSection() {
                   padding: "13px 28px",
                   fontSize: "11px",
                   letterSpacing: "0.14em",
-                  backgroundColor: "#834316",
-                  color: "#FEFAE0",
+                  backgroundColor: "var(--color-terracotta)",
+                  color: "var(--color-cream)",
                 }}
               >
                 Shop the Catalogue&nbsp;→
@@ -160,7 +160,7 @@ export default function HeroSection() {
                   fontSize: "11px",
                   letterSpacing: "0.14em",
                   borderColor: "rgba(26,60,52,0.55)",
-                  color: "#1A3C34",
+                  color: "var(--color-bark)",
                   backgroundColor: "rgba(254,250,224,0.22)",
                 }}
               >
@@ -183,7 +183,7 @@ export default function HeroSection() {
                     className="font-heading font-light block"
                     style={{
                       fontSize: "clamp(2.5rem, 5.5vw, 5.5rem)",
-                      color: "#834316",
+                      color: "var(--color-terracotta)",
                       letterSpacing: "-0.03em",
                       lineHeight: 1,
                     }}

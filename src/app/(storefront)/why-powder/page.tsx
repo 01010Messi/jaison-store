@@ -17,7 +17,7 @@ export default function WhyPowderPage() {
       {/* ── SECTION 1 — Hero ── */}
       <section
         className="relative overflow-hidden pt-36 md:pt-44 pb-20 md:pb-28"
-        style={{ backgroundColor: "#1A3C34", minHeight: "92vh" }}
+        style={{ backgroundColor: "var(--color-bark)", minHeight: "92vh" }}
       >
         {/* Background watermark */}
         <div
@@ -47,7 +47,7 @@ export default function WhyPowderPage() {
           </p>
           <h1
             className="font-heading font-light leading-[1.0] tracking-[-0.02em]"
-            style={{ fontSize: "clamp(4rem, 11vw, 9rem)", color: "#FEFAE0" }}
+            style={{ fontSize: "clamp(4rem, 11vw, 9rem)", color: "var(--color-cream)" }}
           >
             Just the herb.
             <span
@@ -70,7 +70,7 @@ export default function WhyPowderPage() {
       {/* ── SECTION 2 — Essay body ── */}
       <section
         className="py-20 md:py-28"
-        style={{ backgroundColor: "#FEFAE0" }}
+        style={{ backgroundColor: "var(--color-cream)" }}
       >
         <div className="container-brand max-w-3xl mx-auto">
 
@@ -78,7 +78,7 @@ export default function WhyPowderPage() {
           <div className="mb-16 md:mb-20">
             <h2
               className="font-heading font-light leading-[1.1] mb-5"
-              style={{ fontSize: "clamp(1.75rem, 4vw, 2.75rem)", color: "#834316" }}
+              style={{ fontSize: "clamp(1.75rem, 4vw, 2.75rem)", color: "var(--color-terracotta)" }}
             >
               I · The preservative problem.
             </h2>
@@ -99,7 +99,7 @@ export default function WhyPowderPage() {
           <div className="mb-16 md:mb-20">
             <h2
               className="font-heading font-light leading-[1.1] mb-5"
-              style={{ fontSize: "clamp(1.75rem, 4vw, 2.75rem)", color: "#834316" }}
+              style={{ fontSize: "clamp(1.75rem, 4vw, 2.75rem)", color: "var(--color-terracotta)" }}
             >
               II · What that costs you.
             </h2>
@@ -120,7 +120,7 @@ export default function WhyPowderPage() {
           <div className="mb-16 md:mb-20">
             <h2
               className="font-heading font-light leading-[1.1] mb-5"
-              style={{ fontSize: "clamp(1.75rem, 4vw, 2.75rem)", color: "#834316" }}
+              style={{ fontSize: "clamp(1.75rem, 4vw, 2.75rem)", color: "var(--color-terracotta)" }}
             >
               III · What we do instead.
             </h2>
@@ -140,7 +140,7 @@ export default function WhyPowderPage() {
           <div className="mb-16 md:mb-20">
             <h2
               className="font-heading font-light leading-[1.1] mb-5"
-              style={{ fontSize: "clamp(1.75rem, 4vw, 2.75rem)", color: "#834316" }}
+              style={{ fontSize: "clamp(1.75rem, 4vw, 2.75rem)", color: "var(--color-terracotta)" }}
             >
               IV · Read the label.
             </h2>
@@ -161,7 +161,7 @@ export default function WhyPowderPage() {
           <div className="mb-16 md:mb-20">
             <h2
               className="font-heading font-light leading-[1.1] mb-5"
-              style={{ fontSize: "clamp(1.75rem, 4vw, 2.75rem)", color: "#834316" }}
+              style={{ fontSize: "clamp(1.75rem, 4vw, 2.75rem)", color: "var(--color-terracotta)" }}
             >
               V · What changes.
             </h2>
@@ -181,7 +181,7 @@ export default function WhyPowderPage() {
           <div className="mb-0">
             <h2
               className="font-heading font-light leading-[1.1] mb-5"
-              style={{ fontSize: "clamp(1.75rem, 4vw, 2.75rem)", color: "#834316" }}
+              style={{ fontSize: "clamp(1.75rem, 4vw, 2.75rem)", color: "var(--color-terracotta)" }}
             >
               VI · The closing line.
             </h2>
@@ -204,7 +204,7 @@ export default function WhyPowderPage() {
           <div>
             <p
               className="font-heading italic text-xl md:text-2xl"
-              style={{ color: "#1A3C34" }}
+              style={{ color: "var(--color-bark)" }}
             >
               — The makers at Jaison
             </p>
@@ -221,12 +221,12 @@ export default function WhyPowderPage() {
       {/* ── SECTION 3 — Mid-page CTA ── */}
       <section
         className="py-20 md:py-24 text-center"
-        style={{ backgroundColor: "#EFE4C5" }}
+        style={{ backgroundColor: "var(--color-parchment)" }}
       >
         <div className="container-brand max-w-2xl mx-auto">
           <h2
             className="font-heading font-light"
-            style={{ fontSize: "clamp(2.5rem, 6vw, 4.5rem)", color: "#1A3C34", lineHeight: 1.06 }}
+            style={{ fontSize: "clamp(2.5rem, 6vw, 4.5rem)", color: "var(--color-bark)", lineHeight: 1.06 }}
           >
             Don&apos;t know where to start?
           </h2>
@@ -240,7 +240,7 @@ export default function WhyPowderPage() {
             <GlowPillLink
               href="/find-your-ritual"
               className="text-cream"
-              style={{ backgroundColor: "#834316" }}
+              style={{ backgroundColor: "var(--color-terracotta)" }}
               hoverShadow="0 0 0 3px rgba(131,67,22,0.25), 0 8px 28px rgba(131,67,22,0.35)"
             >
               FIND YOUR RITUAL

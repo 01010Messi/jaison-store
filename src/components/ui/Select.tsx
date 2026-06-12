@@ -29,11 +29,11 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>(
             ref={ref}
             id={selectId}
             className={cn(
-              "w-full px-4 py-2.5 bg-cream border border-border rounded-sm appearance-none",
+              "w-full px-4 py-2.5 bg-cream border border-border rounded-lg appearance-none",
               "font-body text-bark text-sm",
               "transition-all duration-200",
               "hover:border-gold/60",
-              "focus:border-gold focus:ring-1 focus:ring-gold/30 focus:outline-none",
+              "focus:border-gold focus:ring-1 focus:ring-gold/30",
               error && "border-terracotta",
               className
             )}
@@ -45,7 +45,7 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>(
               </option>
             ))}
           </select>
-          <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 h-4 w-4 text-bark/40 pointer-events-none" />
+          <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 h-4 w-4 text-bark/60 pointer-events-none" />
         </div>
         {error && (
           <p className="text-xs text-terracotta font-body">{error}</p>

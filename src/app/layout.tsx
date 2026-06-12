@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Cormorant_Garamond, DM_Sans, Inter } from "next/font/google";
 import { Toaster } from "react-hot-toast";
 import SessionProvider from "@/components/providers/SessionProvider";
+import MotionProvider from "@/components/providers/MotionProvider";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
 import MetaPixel from "@/components/MetaPixel";
 import {
@@ -124,30 +125,31 @@ export default function RootLayout({
         <GoogleAnalytics />
         <MetaPixel />
         <SessionProvider>
-          {children}
+          <MotionProvider>{children}</MotionProvider>
         </SessionProvider>
         <Toaster
           position="bottom-right"
           toastOptions={{
             duration: 3000,
             style: {
-              background: "#FEFAE0",
-              color: "#3D2B1F",
-              border: "1px solid #E8D5B7",
-              borderRadius: "2px",
+              background: "var(--color-cream)",
+              color: "var(--color-bark)",
+              border: "1px solid var(--color-border)",
+              borderRadius: "12px",
+              boxShadow: "0 8px 40px rgba(26, 60, 52, 0.12)",
               fontFamily: "var(--font-body)",
               fontSize: "14px",
             },
             success: {
               iconTheme: {
-                primary: "#1A3C34",
-                secondary: "#FEFAE0",
+                primary: "var(--color-bark)",
+                secondary: "var(--color-cream)",
               },
             },
             error: {
               iconTheme: {
                 primary: "#C1714F",
-                secondary: "#FEFAE0",
+                secondary: "var(--color-cream)",
               },
             },
           }}

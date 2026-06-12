@@ -26,13 +26,13 @@ function BlogCard({ post }: { post: typeof blogPosts[0] }) {
       <div className="mt-4">
         <p
           className="font-accent text-[9px] tracking-[0.2em] uppercase mb-2"
-          style={{ color: "#834316" }}
+          style={{ color: "var(--color-terracotta)" }}
         >
           {post.category.toUpperCase()}
         </p>
         <h2
           className="font-heading font-light leading-snug blog-card-title"
-          style={{ fontSize: "1.2rem", color: "#1A3C34" }}
+          style={{ fontSize: "1.2rem", color: "var(--color-bark)" }}
         >
           {post.title}
         </h2>
@@ -65,7 +65,7 @@ export default function BlogContent() {
         }
         .blog-card { transition: transform 0.25s; }
         .blog-card:hover { transform: translateY(-4px); }
-        .blog-card:hover .blog-card-title { color: #834316 !important; }
+        .blog-card:hover .blog-card-title { color: var(--color-terracotta) !important; }
       `}</style>
 
       {/* Filter pills */}
@@ -78,9 +78,9 @@ export default function BlogContent() {
               onClick={() => setFilter(f)}
               className="blog-filter-pill rounded-full px-5 py-2 font-accent text-[10px] tracking-[0.15em] uppercase border"
               style={{
-                backgroundColor: active ? "#1A3C34" : "transparent",
-                color:           active ? "#FEFAE0" : "#1A3C34",
-                borderColor:     active ? "#1A3C34" : "rgba(26,60,52,0.25)",
+                backgroundColor: active ? "var(--color-bark)" : "transparent",
+                color:           active ? "var(--color-cream)" : "var(--color-bark)",
+                borderColor:     active ? "var(--color-bark)" : "rgba(26,60,52,0.25)",
               }}
             >
               {f === "all" ? "ALL" : f === "skin care" ? "SKIN CARE" : "HAIR CARE"}

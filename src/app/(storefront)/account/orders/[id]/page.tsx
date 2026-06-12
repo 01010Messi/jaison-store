@@ -104,7 +104,7 @@ export default function OrderDetailPage() {
     return (
       <div className="min-h-[60vh] flex flex-col items-center justify-center px-4">
         <Package className="h-12 w-12 text-bark/15 mb-4" />
-        <p className="text-bark/50 font-body">{error || "Order not found"}</p>
+        <p className="text-bark/60 font-body">{error || "Order not found"}</p>
         <Link
           href="/account/orders"
           className="mt-4 text-terracotta text-sm font-accent uppercase tracking-wider"
@@ -126,7 +126,7 @@ export default function OrderDetailPage() {
         <div className="container-brand">
           <Link
             href="/account/orders"
-            className="inline-flex items-center gap-1 text-xs font-accent uppercase tracking-wider text-bark/40 hover:text-bark transition-colors mb-4"
+            className="inline-flex items-center gap-1 text-xs font-accent uppercase tracking-wider text-bark/60 hover:text-bark transition-colors mb-4"
           >
             <ArrowLeft className="h-3.5 w-3.5" />
             All Orders
@@ -137,7 +137,7 @@ export default function OrderDetailPage() {
               <h1 className="font-heading text-2xl text-bark">
                 Order #{order.orderNumber}
               </h1>
-              <p className="text-xs text-bark/50 font-body mt-1">
+              <p className="text-xs text-bark/60 font-body mt-1">
                 Placed on{" "}
                 {new Date(order.createdAt).toLocaleDateString("en-IN", {
                   year: "numeric",
@@ -213,7 +213,7 @@ export default function OrderDetailPage() {
                   key={item.id}
                   className="flex gap-4 py-4 border-b border-border-light"
                 >
-                  <div className="w-16 h-20 bg-parchment rounded-sm overflow-hidden shrink-0 relative">
+                  <div className="w-16 h-20 bg-parchment rounded-xl overflow-hidden shrink-0 relative">
                     {item.image ? (
                       <Image
                         src={item.image}
@@ -232,7 +232,7 @@ export default function OrderDetailPage() {
                     <p className="text-sm font-heading text-bark">
                       {item.name}
                     </p>
-                    <p className="text-xs text-bark/50 font-body mt-0.5">
+                    <p className="text-xs text-bark/60 font-body mt-0.5">
                       Qty: {item.quantity} &times; {formatPrice(item.price)}
                     </p>
                   </div>
@@ -289,10 +289,10 @@ export default function OrderDetailPage() {
           {/* Right: Details */}
           <div className="space-y-6">
             {/* Shipping Address */}
-            <div className="bg-surface-warm p-5 rounded-sm border border-border/50">
+            <div className="bg-surface-warm p-5 rounded-xl border border-border/50">
               <div className="flex items-center gap-2 mb-3">
-                <MapPin className="h-4 w-4 text-bark/40" />
-                <h3 className="text-xs font-accent uppercase tracking-wider text-bark/50">
+                <MapPin className="h-4 w-4 text-bark/60" />
+                <h3 className="text-xs font-accent uppercase tracking-wider text-bark/60">
                   Shipping Address
                 </h3>
               </div>
@@ -313,10 +313,10 @@ export default function OrderDetailPage() {
             </div>
 
             {/* Payment Info */}
-            <div className="bg-surface-warm p-5 rounded-sm border border-border/50">
+            <div className="bg-surface-warm p-5 rounded-xl border border-border/50">
               <div className="flex items-center gap-2 mb-3">
-                <CreditCard className="h-4 w-4 text-bark/40" />
-                <h3 className="text-xs font-accent uppercase tracking-wider text-bark/50">
+                <CreditCard className="h-4 w-4 text-bark/60" />
+                <h3 className="text-xs font-accent uppercase tracking-wider text-bark/60">
                   Payment
                 </h3>
               </div>
@@ -325,7 +325,7 @@ export default function OrderDetailPage() {
                   ? "Cash on Delivery"
                   : "Paid Online (Razorpay)"}
               </p>
-              <p className="text-xs text-bark/50 font-body mt-0.5">
+              <p className="text-xs text-bark/60 font-body mt-0.5">
                 Status:{" "}
                 <span
                   className={
@@ -341,10 +341,10 @@ export default function OrderDetailPage() {
 
             {/* Estimated Delivery */}
             {order.estimatedDelivery && (
-              <div className="bg-surface-warm p-5 rounded-sm border border-border/50">
+              <div className="bg-surface-warm p-5 rounded-xl border border-border/50">
                 <div className="flex items-center gap-2 mb-3">
-                  <Truck className="h-4 w-4 text-bark/40" />
-                  <h3 className="text-xs font-accent uppercase tracking-wider text-bark/50">
+                  <Truck className="h-4 w-4 text-bark/60" />
+                  <h3 className="text-xs font-accent uppercase tracking-wider text-bark/60">
                     Estimated Delivery
                   </h3>
                 </div>
@@ -361,7 +361,7 @@ export default function OrderDetailPage() {
                   href={order.trackingUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2 w-full px-4 py-2.5 bg-bark text-cream rounded-sm text-xs font-accent uppercase tracking-wider hover:bg-bark/90 transition-colors"
+                  className="flex items-center justify-center gap-2 w-full px-4 py-2.5 bg-bark text-cream rounded-full text-xs font-accent uppercase tracking-wider hover:bg-bark/90 transition-colors"
                 >
                   <ExternalLink className="h-3.5 w-3.5" />
                   Track Shipment
@@ -372,7 +372,7 @@ export default function OrderDetailPage() {
                   href={order.invoiceUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2 w-full px-4 py-2.5 border border-border rounded-sm text-xs font-accent uppercase tracking-wider text-bark/70 hover:border-bark hover:text-bark transition-colors"
+                  className="flex items-center justify-center gap-2 w-full px-4 py-2.5 border border-border rounded-full text-xs font-accent uppercase tracking-wider text-bark/70 hover:border-bark hover:text-bark transition-colors"
                 >
                   <Download className="h-3.5 w-3.5" />
                   Download Invoice

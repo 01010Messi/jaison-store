@@ -20,7 +20,7 @@ export default function BlogPreview() {
             <div className="flex justify-center mt-3">
               <GoldRule variant="leaf" width="w-24" />
             </div>
-            <p className="mt-4 text-bark/55 font-body text-sm max-w-md mx-auto">
+            <p className="mt-4 text-bark/60 font-body text-sm max-w-md mx-auto">
               DIY recipes, skincare routines, and herbal hair care guides to
               help you glow naturally.
             </p>
@@ -36,7 +36,7 @@ export default function BlogPreview() {
             >
               <article className="group">
                 <Link href={`/blog/${post.slug}`} className="block">
-                  <div className="relative aspect-[4/3] overflow-hidden rounded-sm mb-4">
+                  <div className="relative aspect-[4/3] overflow-hidden rounded-xl mb-4">
                     <Image
                       src={post.image}
                       alt={post.title}
@@ -45,20 +45,20 @@ export default function BlogPreview() {
                       sizes="(max-width: 768px) 100vw, 33vw"
                     />
                     <div className="absolute top-3 left-3">
-                      <span className="px-2.5 py-0.5 bg-cream/90 backdrop-blur-sm text-[10px] font-accent uppercase tracking-[0.12em] text-bark/70 rounded-sm">
+                      <span className="px-2.5 py-0.5 bg-cream/90 backdrop-blur-sm text-[10px] font-accent uppercase tracking-[0.12em] text-bark/70 rounded-full">
                         {post.category}
                       </span>
                     </div>
                   </div>
                   <div className="space-y-1.5">
-                    <div className="flex items-center gap-2 text-[10px] font-accent uppercase tracking-wider text-bark/40">
+                    <div className="flex items-center gap-2 text-[10px] font-accent uppercase tracking-wider text-bark/60">
                       <Clock className="h-3 w-3" />
                       {post.readTime} min read
                     </div>
                     <h3 className="font-heading text-lg text-bark font-medium leading-snug group-hover:text-terracotta transition-colors">
                       {post.title}
                     </h3>
-                    <p className="text-xs text-bark/55 font-body line-clamp-2 leading-relaxed">
+                    <p className="text-xs text-bark/60 font-body line-clamp-2 leading-relaxed">
                       {post.excerpt}
                     </p>
                   </div>

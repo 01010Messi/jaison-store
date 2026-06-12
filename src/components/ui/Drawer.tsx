@@ -1,9 +1,10 @@
 "use client";
 
-import { useEffect, useCallback } from "react";
+import { useEffect, useCallback, useId } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useFocusTrap } from "@/hooks/useFocusTrap";
 
 interface DrawerProps {
   isOpen: boolean;
@@ -22,6 +23,8 @@ export default function Drawer({
   side = "right",
   className,
 }: DrawerProps) {
+  const titleId = useId();
+  const panelRef = useFocusTrap<HTMLDivElement>(isOpen);
   const handleEscape = useCallback(
     (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
@@ -58,6 +61,12 @@ export default function Drawer({
 
           {/* Drawer Panel */}
           <motion.div
+            ref={panelRef}
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby={title ? titleId : undefined}
+            aria-label={!title ? "Drawer" : undefined}
+            tabIndex={-1}
             initial={{ x: slideFrom }}
             animate={{ x: 0 }}
             exit={{ x: slideFrom }}
@@ -74,12 +83,13 @@ export default function Drawer({
           >
             {/* Header */}
             <div className="flex items-center justify-between px-6 py-4 border-b border-border">
-              <h3 className="font-heading text-xl text-bark">
+              <h3 id={titleId} className="font-heading text-xl text-bark">
                 {title || "\u00A0"}
               </h3>
               <button
                 onClick={onClose}
-                className="text-bark/40 hover:text-bark transition-colors p-1"
+                aria-label="Close drawer"
+                className="text-bark/60 hover:text-bark transition-colors p-1"
               >
                 <X className="h-5 w-5" />
               </button>

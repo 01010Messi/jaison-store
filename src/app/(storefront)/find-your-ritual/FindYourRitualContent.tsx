@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { getProductBySlug } from "@/data/products";
 
 type ProductRec = {
   name: string;
@@ -15,14 +16,6 @@ type ProductRec = {
   image: string;
   dot: string;
   bg: string;
-};
-
-type Rec = {
-  heading: string;
-  italic: string;
-  subtext: string;
-  primary: ProductRec;
-  secondary: ProductRec;
 };
 
 const questions = [
@@ -72,35 +65,87 @@ const questions = [
   },
 ];
 
-const recs: Record<string, Rec> = {
+/* Quiz-only presentation for each recommendable product. Name, price,
+   compare-at and image come from the catalog (src/data/products.ts) so
+   they can never drift from the shop. */
+const productMeta: Record<
+  string,
+  { latin: string; badge: string; dot: string; bg: string }
+> = {
+  "ubtan-powder":       { latin: "Curcuma longa + 7 herbs", badge: "22% OFF",        dot: "#E26713", bg: "#F7F2E4" },
+  "neem-powder":        { latin: "Azadirachta indica",      badge: "ANTIBACTERIAL",  dot: "#4A7C59", bg: "#EDF2EC" },
+  "multani-mitti":      { latin: "Fuller's Earth Clay",     badge: "DEEP CLEAN",     dot: "#C16B4A", bg: "#F5EDE8" },
+  "orange-peel-powder": { latin: "Citrus sinensis peel",    badge: "VITAMIN C",      dot: "#D4784A", bg: "#FEF0E8" },
+  "nagarmotha-powder":  { latin: "Cyperus rotundus",        badge: "EVEN TONE",      dot: "#A0784A", bg: "#F2EDE8" },
+  "aamla-powder":       { latin: "Phyllanthus emblica",     badge: "STRENGTHENING",  dot: "#4A7C59", bg: "#EDF2EC" },
+  "shikakai-powder":    { latin: "Acacia concinna",         badge: "NATURAL SHINE",  dot: "#2D6B4A", bg: "#E8F0EC" },
+  "reetha-powder":      { latin: "Sapindus mukorossi",      badge: "GENTLE CLEANSE", dot: "#7B8C5A", bg: "#EFF2E8" },
+};
+
+function toProductRec(slug: string): ProductRec | null {
+  const product = getProductBySlug(slug);
+  const meta = productMeta[slug];
+  if (!product || !meta) return null;
+  return {
+    name: product.name,
+    slug: product.slug,
+    category: product.category.toUpperCase(),
+    latin: meta.latin,
+    price: product.price,
+    compareAt: product.compareAtPrice,
+    badge: meta.badge,
+    image: product.image,
+    dot: meta.dot,
+    bg: meta.bg,
+  };
+}
+
+/* Recommendation matrix: concern (Q1) picks the pool, skin type (Q2)
+   refines the pair. "default" covers any skin type without an override. */
+type Pair = [string, string];
+
+const pairs: Record<string, Record<string, Pair>> = {
   oily: {
-    heading: "Two powders.",
-    italic: "Twice a week.",
-    subtext: "Based on your answers, we'd start you on these two. Use them on alternate days. Reassess in four weeks.",
-    primary:   { name: "Multani Mitti",      slug: "multani-mitti",      category: "SKIN CARE", latin: "Fuller's Earth Clay",    price: 245,             badge: "DEEP CLEAN",    image: "/images/products/multani-mitti.webp", dot: "#C16B4A", bg: "#F5EDE8" },
-    secondary: { name: "Neem Powder",        slug: "neem-powder",        category: "SKIN CARE", latin: "Azadirachta indica",      price: 195,             badge: "ANTIBACTERIAL", image: "/images/products/neem.webp",          dot: "#4A7C59", bg: "#EDF2EC" },
+    default: ["multani-mitti", "neem-powder"],
+    dry_t:   ["neem-powder", "ubtan-powder"],
+    norm_t:  ["neem-powder", "orange-peel-powder"],
   },
   dull: {
-    heading: "Two powders.",
-    italic: "Twice a week.",
-    subtext: "Based on your answers, we'd start you on these two. Use them on alternate days. Reassess in four weeks.",
-    primary:   { name: "Ubtan Powder",       slug: "ubtan-powder",       category: "SKIN CARE", latin: "Curcuma longa + 7 herbs", price: 440, compareAt: 565, badge: "22% OFF",   image: "/images/products/ubtan.webp",         dot: "#E26713", bg: "#F7F2E4" },
-    secondary: { name: "Orange Peel Powder", slug: "orange-peel-powder", category: "SKIN CARE", latin: "Citrus sinensis peel",    price: 245,             badge: "VITAMIN C",     image: "/images/products/orange-peel.webp",   dot: "#D4784A", bg: "#FEF0E8" },
+    default: ["ubtan-powder", "orange-peel-powder"],
+    oily_t:  ["orange-peel-powder", "multani-mitti"],
+    norm_t:  ["ubtan-powder", "nagarmotha-powder"],
   },
   sensitive: {
-    heading: "Two gentle powders.",
-    italic: "Start slow.",
-    subtext: "These are the gentlest powders in the range. Begin once a week and listen to your skin.",
-    primary:   { name: "Rose Petal Powder",  slug: "rose-petal-powder",  category: "SKIN CARE", latin: "Rosa damascena",          price: 295,             badge: "SOOTHING",      image: "/images/products/rose-petal.webp",    dot: "#D4748C", bg: "#F5ECF0" },
-    secondary: { name: "Neem Powder",        slug: "neem-powder",        category: "SKIN CARE", latin: "Azadirachta indica",      price: 195,             badge: "GENTLE",        image: "/images/products/neem.webp",          dot: "#4A7C59", bg: "#EDF2EC" },
+    default: ["neem-powder", "ubtan-powder"],
+    oily_t:  ["neem-powder", "multani-mitti"],
   },
   hair: {
-    heading: "Two powders.",
-    italic: "For stronger hair.",
-    subtext: "Based on your answers, we'd start you on these two. Use them on alternate days. Reassess in four weeks.",
-    primary:   { name: "Amla Powder",        slug: "aamla-powder",       category: "HAIR CARE", latin: "Phyllanthus emblica",     price: 195,             badge: "STRENGTHENING", image: "/images/products/amla.webp",          dot: "#4A7C59", bg: "#EDF2EC" },
-    secondary: { name: "Bhringraj Powder",   slug: "bhringraj-powder",   category: "HAIR CARE", latin: "Eclipta prostrata",       price: 245,             badge: "GROWTH",        image: "/images/products/bhringraj.webp",     dot: "#2D6B4A", bg: "#E8F0EC" },
+    default: ["aamla-powder", "shikakai-powder"],
+    oily_t:  ["reetha-powder", "aamla-powder"],
   },
+};
+
+const concernHeading: Record<string, string> = {
+  oily: "Two powders.",
+  dull: "Two powders.",
+  sensitive: "Two gentle powders.",
+  hair: "Two powders.",
+};
+
+/* Frequency (Q3) drives the italic line and the usage note. */
+const frequencyCopy: Record<string, { italic: string; note: string }> = {
+  once:  { italic: "Once a week.",      note: "Alternate between the two each week." },
+  twice: { italic: "Twice a week.",     note: "Use them on alternate days." },
+  alt:   { italic: "Every other day.",  note: "Alternate between the two." },
+  daily: { italic: "A daily ritual.",   note: "Alternate them daily so each gets its turn." },
+};
+
+/* Mixer (Q4) is named in the subtext. */
+const mixerLabel: Record<string, string> = {
+  rose: "rose water",
+  milk: "raw milk",
+  yogurt: "yogurt",
+  water: "plain water",
 };
 
 export default function FindYourRitualContent() {
@@ -113,11 +158,24 @@ export default function FindYourRitualContent() {
     setTimeout(() => setStep((s) => (s === 4 ? 5 : s + 1)), 400);
   };
 
-  const rec = recs[answers[1]] ?? recs.dull;
+  // Compose the recommendation from all four answers
+  const concern = answers[1] ?? "dull";
+  const pairSet = pairs[concern] ?? pairs.dull;
+  const [primarySlug, secondarySlug] = pairSet[answers[2]] ?? pairSet.default;
+  const recProducts = [toProductRec(primarySlug), toProductRec(secondarySlug)]
+    .filter((p): p is ProductRec => p !== null);
+  const freq = frequencyCopy[answers[3]] ?? frequencyCopy.twice;
+  const mixer = mixerLabel[answers[4]] ?? "rose water";
+  const heading = concernHeading[concern] ?? "Two powders.";
+  const subtext =
+    concern === "sensitive"
+      ? `The gentlest pair in the range. Mix with ${mixer}, begin slowly, and listen to your skin. Reassess in four weeks.`
+      : `Based on your answers, we'd start you on these two, mixed with ${mixer}. ${freq.note} Reassess in four weeks.`;
+
   const q = questions[step - 1];
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: "#FEFAE0" }}>
+    <div className="min-h-screen" style={{ backgroundColor: "var(--color-cream)" }}>
       <div className="max-w-4xl mx-auto px-6 md:px-10 pt-36 md:pt-40 pb-20">
 
         {/* Progress bar — steps 1–4 */}
@@ -227,22 +285,22 @@ export default function FindYourRitualContent() {
             {/* Heading */}
             <div className="text-center mb-10">
               <h2 className="font-heading text-[2.75rem] md:text-[4rem] font-light leading-[1.05] tracking-[-0.02em] text-bark">
-                {rec.heading}{" "}
-                <span style={{ color: "#834316", fontStyle: "italic" }}>
-                  {rec.italic}
+                {heading}{" "}
+                <span style={{ color: "var(--color-terracotta)", fontStyle: "italic" }}>
+                  {freq.italic}
                 </span>
               </h2>
               <p
                 className="font-body text-base mt-4 max-w-md mx-auto"
-                style={{ color: "rgba(26,60,52,0.5)" }}
+                style={{ color: "rgba(26,60,52,0.6)" }}
               >
-                {rec.subtext}
+                {subtext}
               </p>
             </div>
 
             {/* Product cards */}
             <div className="grid grid-cols-2 gap-4 md:gap-6 mt-10 max-w-2xl mx-auto">
-              {([rec.primary, rec.secondary] as ProductRec[]).map((product) => (
+              {recProducts.map((product) => (
                 <Link
                   key={product.slug}
                   href={`/shop/${product.slug}`}
@@ -314,7 +372,7 @@ export default function FindYourRitualContent() {
               <button
                 onClick={() => { setStep(1); setAnswers({}); }}
                 className="px-8 py-3 rounded-full border font-accent text-[10px] tracking-[0.15em] uppercase transition-all duration-200"
-                style={{ borderColor: "rgba(26,60,52,0.3)", color: "#1A3C34" }}
+                style={{ borderColor: "rgba(26,60,52,0.3)", color: "var(--color-bark)" }}
                 onMouseEnter={(e) => { e.currentTarget.style.boxShadow = "0 4px 16px rgba(26,60,52,0.15)"; }}
                 onMouseLeave={(e) => { e.currentTarget.style.boxShadow = "none"; }}
               >
@@ -323,7 +381,7 @@ export default function FindYourRitualContent() {
               <Link
                 href="/shop"
                 className="px-8 py-3 rounded-full font-accent text-[10px] tracking-[0.15em] uppercase text-cream transition-all duration-200 hover:opacity-90"
-                style={{ backgroundColor: "#834316" }}
+                style={{ backgroundColor: "var(--color-terracotta)" }}
                 onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.boxShadow = "0 4px 20px rgba(131,67,22,0.45)"; }}
                 onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.boxShadow = "none"; }}
               >

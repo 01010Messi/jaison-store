@@ -79,7 +79,7 @@ export default function Footer() {
                 That is it.
               </span>
             </h3>
-            <p className="text-base md:text-lg text-cream/45 font-body leading-relaxed">
+            <p className="text-base md:text-lg text-cream/70 font-body leading-relaxed">
               Real rituals, real ingredients, real seasons.
               No marketing. Unsubscribe in one click.
             </p>
@@ -92,14 +92,14 @@ export default function Footer() {
               onChange={(e) => setEmail(e.target.value)}
               placeholder="your@email.com"
               required
-              className="flex-1 px-6 py-4 rounded-full border border-cream/25 text-cream text-sm font-body placeholder:text-cream/35 focus:outline-none focus:border-cream/50"
+              className="flex-1 px-6 py-4 rounded-full border border-cream/25 text-cream text-sm font-body placeholder:text-cream/35 focus:border-cream/50"
               style={{ backgroundColor: "rgba(255,255,255,0.08)" }}
             />
             <button
               type="submit"
               disabled={isLoading}
               className="flex-shrink-0 flex items-center gap-2 px-8 py-4 rounded-full text-cream text-sm font-accent tracking-wider uppercase transition-opacity hover:opacity-90 disabled:opacity-50"
-              style={{ backgroundColor: "#834316" }}
+              style={{ backgroundColor: "var(--color-terracotta)" }}
             >
               {isLoading ? "..." : "Subscribe"} {!isLoading && "→"}
             </button>
@@ -182,7 +182,7 @@ export default function Footer() {
 
             {/* Business Address */}
             <div className="mt-6 pt-5 border-t border-cream/10">
-              <div className="flex gap-2.5 text-sm text-cream/50 font-body leading-relaxed">
+              <div className="flex gap-2.5 text-sm text-cream/70 font-body leading-relaxed">
                 <MapPin className="h-4 w-4 flex-shrink-0 mt-0.5" />
                 <span>
                   60, Floor 6, Business Bay, Shree Hari Kute Marg, Mumbai Naka,
@@ -198,7 +198,7 @@ export default function Footer() {
       {/* Bottom bar */}
       <div className="border-t border-cream/10">
         <div className="container-brand py-5 flex flex-col md:flex-row items-center justify-between gap-3">
-          <p className="text-sm text-cream/50 font-body" suppressHydrationWarning>
+          <p className="text-sm text-cream/70 font-body" suppressHydrationWarning>
             &copy; {new Date().getFullYear()} Jaison Herbals. Handcrafted with love in India.
           </p>
           <div className="flex items-center gap-3">
@@ -221,7 +221,7 @@ export default function Footer() {
             </svg>
             <span className="text-cream/20">&bull;</span>
             {/* COD */}
-            <span className="text-[10px] text-cream/40 font-accent uppercase tracking-wider border border-cream/20 px-1.5 py-0.5 rounded-sm">
+            <span className="text-[10px] text-cream/70 font-accent uppercase tracking-wider border border-cream/20 px-1.5 py-0.5 rounded-full">
               COD
             </span>
           </div>

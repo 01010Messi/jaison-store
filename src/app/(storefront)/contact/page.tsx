@@ -41,7 +41,7 @@ const fieldClass =
 const fieldStyle = {
   border: "none",
   borderBottom: "1px solid rgba(26,60,52,0.18)",
-  color: "#1A3C34",
+  color: "var(--color-bark)",
   borderRadius: 0,
 } as const;
 
@@ -86,7 +86,7 @@ export default function ContactPage() {
           color: rgba(26,60,52,0.32);
         }
         .contact-field:focus {
-          border-bottom-color: #834316 !important;
+          border-bottom-color: var(--color-terracotta) !important;
         }
         .contact-submit-btn:hover {
           box-shadow: 0 0 28px rgba(26,60,52,0.3);
@@ -103,14 +103,14 @@ export default function ContactPage() {
           transform: scale(0.98);
         }
         .contact-channel-link:hover .contact-channel-value {
-          color: #834316;
+          color: var(--color-terracotta);
         }
       `}</style>
 
-      <div className="min-h-screen" style={{ backgroundColor: "#FEFAE0" }}>
+      <div className="min-h-screen" style={{ backgroundColor: "var(--color-cream)" }}>
         {/* ── Hero ── */}
         <section
-          style={{ backgroundColor: "#EFE4C5" }}
+          style={{ backgroundColor: "var(--color-parchment)" }}
           className="relative overflow-hidden pt-28 pb-20 px-6 md:px-14 lg:px-24"
         >
           {/* Watermark */}
@@ -144,11 +144,11 @@ export default function ContactPage() {
             style={{
               fontSize: "clamp(3.5rem, 8.5vw, 7rem)",
               letterSpacing: "-0.02em",
-              color: "#1A3C34",
+              color: "var(--color-bark)",
             }}
           >
             Write to us.{" "}
-            <span style={{ color: "#834316", fontStyle: "italic" }}>
+            <span style={{ color: "var(--color-terracotta)", fontStyle: "italic" }}>
               A person replies.
             </span>
           </h1>
@@ -194,7 +194,7 @@ export default function ContactPage() {
                         </span>
                         <span
                           className="contact-channel-value block font-heading text-xl md:text-2xl font-light mt-1 transition-colors"
-                          style={{ color: "#1A3C34" }}
+                          style={{ color: "var(--color-bark)" }}
                         >
                           {ch.value}
                         </span>
@@ -239,7 +239,7 @@ export default function ContactPage() {
                 <Link
                   href="/faq"
                   className="underline underline-offset-2"
-                  style={{ color: "#834316" }}
+                  style={{ color: "var(--color-terracotta)" }}
                 >
                   FAQ
                 </Link>
@@ -253,11 +253,11 @@ export default function ContactPage() {
                 className="font-heading font-light leading-tight mb-10"
                 style={{
                   fontSize: "clamp(1.75rem, 3.5vw, 2.5rem)",
-                  color: "#1A3C34",
+                  color: "var(--color-bark)",
                 }}
               >
                 Or send it{" "}
-                <span style={{ color: "#834316", fontStyle: "italic" }}>
+                <span style={{ color: "var(--color-terracotta)", fontStyle: "italic" }}>
                   right here.
                 </span>
               </h2>
@@ -381,7 +381,7 @@ export default function ContactPage() {
                   type="submit"
                   disabled={isSubmitting}
                   className="contact-submit-btn inline-flex items-center gap-3 px-10 py-4 rounded-full font-accent text-[11px] tracking-[0.15em] uppercase transition-all duration-200 disabled:opacity-60 disabled:cursor-not-allowed"
-                  style={{ backgroundColor: "#1A3C34", color: "#FEFAE0" }}
+                  style={{ backgroundColor: "var(--color-bark)", color: "var(--color-cream)" }}
                 >
                   {isSubmitting ? "Sending…" : "Send Message →"}
                 </button>
@@ -393,7 +393,7 @@ export default function ContactPage() {
         {/* ── WhatsApp CTA ── */}
         <section
           className="relative overflow-hidden px-6 md:px-14 lg:px-24 pt-16 md:pt-20 pb-20 md:pb-28"
-          style={{ backgroundColor: "#FEFAE0" }}
+          style={{ backgroundColor: "var(--color-cream)" }}
         >
           <p
             className="relative font-accent text-[10px] tracking-[0.22em] uppercase mb-8"
@@ -407,11 +407,11 @@ export default function ContactPage() {
             style={{
               fontSize: "clamp(2.75rem, 6vw, 5rem)",
               letterSpacing: "-0.02em",
-              color: "#1A3C34",
+              color: "var(--color-bark)",
             }}
           >
             WhatsApp is the{" "}
-            <span style={{ color: "#834316", fontStyle: "italic" }}>
+            <span style={{ color: "var(--color-terracotta)", fontStyle: "italic" }}>
               fast lane.
             </span>
           </h2>
@@ -429,7 +429,7 @@ export default function ContactPage() {
             target="_blank"
             rel="noopener noreferrer"
             className="contact-wa-btn relative inline-flex items-center gap-3 px-10 py-4 mt-10 rounded-full font-accent text-[11px] tracking-[0.15em] uppercase transition-all duration-200 border"
-            style={{ backgroundColor: "transparent", color: "#1A3C34", borderColor: "rgba(26,60,52,0.25)" }}
+            style={{ backgroundColor: "transparent", color: "var(--color-bark)", borderColor: "rgba(26,60,52,0.25)" }}
           >
             Chat on WhatsApp →
           </a>

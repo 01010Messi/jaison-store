@@ -82,7 +82,7 @@ export default function AdminCustomersPage() {
     <div>
       <div className="mb-8">
         <h1 className="font-heading text-2xl text-bark">Customers</h1>
-        <p className="text-sm text-bark/50 font-body mt-1">
+        <p className="text-sm text-bark/60 font-body mt-1">
           Manage and view customer information
         </p>
       </div>
@@ -92,7 +92,7 @@ export default function AdminCustomersPage() {
         <div className="inline-flex items-center gap-3 bg-cream rounded-sm border border-border/50 px-5 py-3">
           <Users className="h-5 w-5 text-terracotta" />
           <div>
-            <p className="text-xs font-accent uppercase tracking-wider text-bark/40">
+            <p className="text-xs font-accent uppercase tracking-wider text-bark/60">
               Total Customers
             </p>
             <p className="font-heading text-lg text-bark">
@@ -111,14 +111,14 @@ export default function AdminCustomersPage() {
             placeholder="Search by name or email..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-10 pr-4 py-2.5 text-sm font-body text-bark bg-cream border border-border/50 rounded-sm placeholder:text-bark/30 focus:outline-none focus:border-bark/30 transition-colors"
+            className="w-full pl-10 pr-4 py-2.5 text-sm font-body text-bark bg-cream border border-border/50 rounded-sm placeholder:text-bark/30 focus:border-bark/30 transition-colors"
           />
         </div>
       </div>
 
       <div className="bg-cream rounded-sm border border-border/50">
         <div className="flex items-center gap-3 p-4 border-b border-border/50">
-          <span className="section-label text-bark/40">
+          <span className="section-label text-bark/60">
             {filteredCustomers.length} Customer{filteredCustomers.length !== 1 ? "s" : ""}
             {searchQuery.trim() && ` found`}
           </span>
@@ -128,7 +128,7 @@ export default function AdminCustomersPage() {
         {filteredCustomers.length === 0 ? (
           <div className="flex flex-col items-center justify-center py-16 text-bark/30">
             <Users className="h-12 w-12 mb-3 opacity-50" />
-            <p className="font-heading text-lg text-bark/40">
+            <p className="font-heading text-lg text-bark/60">
               {searchQuery.trim() ? "No customers match your search" : "No customers yet"}
             </p>
             <p className="text-xs text-bark/30 font-body mt-1">
@@ -163,7 +163,7 @@ export default function AdminCustomersPage() {
                   <p className="font-accent text-sm font-semibold text-bark truncate">
                     {customer.name || customer.email}
                   </p>
-                  <p className="text-xs text-bark/40 font-body truncate">
+                  <p className="text-xs text-bark/60 font-body truncate">
                     {customer.name ? customer.email : ""}{" "}
                     {customer.phone && (
                       <span>
@@ -196,7 +196,7 @@ export default function AdminCustomersPage() {
 
                 {/* Member since */}
                 <div className="text-right shrink-0 hidden md:block">
-                  <p className="text-xs text-bark/40 font-body">
+                  <p className="text-xs text-bark/60 font-body">
                     {new Date(customer.createdAt).toLocaleDateString("en-IN", {
                       day: "numeric",
                       month: "short",
@@ -222,7 +222,7 @@ export default function AdminCustomersPage() {
             {/* Customer profile */}
             <div className="flex items-start gap-4">
               <div className="h-14 w-14 rounded-full bg-parchment flex items-center justify-center shrink-0">
-                <User className="h-6 w-6 text-bark/40" />
+                <User className="h-6 w-6 text-bark/60" />
               </div>
               <div className="flex-1 min-w-0">
                 <h3 className="font-heading text-lg text-bark">
@@ -259,7 +259,7 @@ export default function AdminCustomersPage() {
                 <p className="font-heading text-2xl text-bark">
                   {selectedCustomer.orderCount}
                 </p>
-                <p className="text-xs font-accent uppercase tracking-wider text-bark/40 mt-1">
+                <p className="text-xs font-accent uppercase tracking-wider text-bark/60 mt-1">
                   Total Orders
                 </p>
               </div>
@@ -267,7 +267,7 @@ export default function AdminCustomersPage() {
                 <p className="font-heading text-2xl text-terracotta">
                   {formatPrice(selectedCustomer.totalSpent)}
                 </p>
-                <p className="text-xs font-accent uppercase tracking-wider text-bark/40 mt-1">
+                <p className="text-xs font-accent uppercase tracking-wider text-bark/60 mt-1">
                   Total Spent
                 </p>
               </div>
@@ -275,7 +275,7 @@ export default function AdminCustomersPage() {
 
             {/* Recent orders */}
             <div>
-              <h3 className="text-xs font-accent uppercase tracking-wider text-bark/40 mb-3">
+              <h3 className="text-xs font-accent uppercase tracking-wider text-bark/60 mb-3">
                 Recent Orders
               </h3>
               {selectedCustomer.recentOrders.length === 0 ? (
@@ -305,7 +305,7 @@ export default function AdminCustomersPage() {
                             {order.status}
                           </Badge>
                         </div>
-                        <p className="text-xs text-bark/40 font-body mt-0.5">
+                        <p className="text-xs text-bark/60 font-body mt-0.5">
                           {new Date(order.createdAt).toLocaleDateString(
                             "en-IN",
                             {

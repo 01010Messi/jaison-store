@@ -22,7 +22,7 @@ export default function WhyPowderTeaser() {
   return (
     <section
       className="relative overflow-hidden py-20 md:py-28"
-      style={{ backgroundColor: "#834316" }}
+      style={{ backgroundColor: "var(--color-terracotta)" }}
     >
       {/* Watermark */}
       <div
@@ -56,7 +56,7 @@ export default function WhyPowderTeaser() {
           style={{
             fontSize: "clamp(2.25rem, 5vw, 4rem)",
             letterSpacing: "-0.02em",
-            color: "#FEFAE0",
+            color: "var(--color-cream)",
           }}
         >
           Anything that pours{" "}
@@ -82,7 +82,7 @@ export default function WhyPowderTeaser() {
                 className="font-heading font-light leading-none block"
                 style={{
                   fontSize: "clamp(2.5rem, 4.5vw, 3.5rem)",
-                  color: "#FEFAE0",
+                  color: "var(--color-cream)",
                 }}
               >
                 {claim.value}
@@ -106,7 +106,7 @@ export default function WhyPowderTeaser() {
         <div className="mt-12 md:mt-16">
           <GlowPillLink
             href="/why-powder"
-            style={{ backgroundColor: "#FEFAE0", color: "#1A3C34" }}
+            style={{ backgroundColor: "var(--color-cream)", color: "var(--color-bark)" }}
             hoverShadow="0 0 28px rgba(254, 250, 224, 0.35)"
           >
             Read the full argument →
