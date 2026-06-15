@@ -207,6 +207,7 @@ function ShopContent() {
                 images: product.images,
                 category: product.category,
                 stock: 50,
+                tags: product.tags,
               }}
               index={index}
             />

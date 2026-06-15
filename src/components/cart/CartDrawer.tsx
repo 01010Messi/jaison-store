@@ -2,17 +2,34 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { Trash2, ShoppingBag } from "lucide-react";
+import { Trash2, ShoppingBag, Plus } from "lucide-react";
 import QtyStepper from "@/components/ui/QtyStepper";
 import { useCartStore } from "@/store/cart-store";
 import { formatPrice } from "@/lib/utils";
 import Drawer from "@/components/ui/Drawer";
+import { products } from "@/data/products";
 
 export default function CartDrawer() {
-  const { items, isOpen, closeCart, updateQuantity, removeItem, subtotal } =
+  const { items, isOpen, closeCart, updateQuantity, removeItem, subtotal, addItem } =
     useCartStore();
 
   const total = subtotal();
+
+  // Cross-sell: find up to 3 products not already in cart, preferring same category
+  const cartSlugs = new Set(items.map((i) => i.slug));
+  const dominantCategorySlug =
+    items.length > 0
+      ? (products.find((p) => items.some((i) => i.slug === p.slug))?.categorySlug ?? "skin-care")
+      : "skin-care";
+  const suggestions = products
+    .filter((p) => !cartSlugs.has(p.slug) && p.categorySlug !== "combos")
+    .sort((a, b) => {
+      const aMatch = a.categorySlug === dominantCategorySlug ? 1 : 0;
+      const bMatch = b.categorySlug === dominantCategorySlug ? 1 : 0;
+      if (aMatch !== bMatch) return bMatch - aMatch;
+      return (b.isFeatured ? 1 : 0) - (a.isFeatured ? 1 : 0);
+    })
+    .slice(0, 3);
 
   return (
     <Drawer isOpen={isOpen} onClose={closeCart} title="Your Potli" side="right">
@@ -148,6 +165,74 @@ export default function CartDrawer() {
               </div>
             ))}
           </div>
+
+          {/* Cross-sell */}
+          {suggestions.length > 0 && (
+            <div
+              className="px-6 py-4"
+              style={{ borderTop: "1px solid rgba(26,60,52,0.08)" }}
+            >
+              <p
+                className="font-accent text-[9px] tracking-[0.2em] uppercase mb-3"
+                style={{ color: "rgba(26,60,52,0.38)" }}
+              >
+                You may also like
+              </p>
+              <div className="space-y-2.5">
+                {suggestions.map((p) => (
+                  <div key={p.slug} className="flex items-center gap-3">
+                    <Link href={`/shop/${p.slug}`} onClick={closeCart}>
+                      <div
+                        className="w-12 h-12 rounded-lg overflow-hidden shrink-0"
+                        style={{ backgroundColor: "var(--color-parchment)" }}
+                      >
+                        <img
+                          src={p.image}
+                          alt={p.name}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                    </Link>
+                    <div className="flex-1 min-w-0">
+                      <Link href={`/shop/${p.slug}`} onClick={closeCart}>
+                        <p
+                          className="font-heading text-xs leading-snug truncate"
+                          style={{ color: "var(--color-bark)" }}
+                        >
+                          {p.name}
+                        </p>
+                      </Link>
+                      <p
+                        className="font-body text-xs mt-0.5"
+                        style={{ color: "rgba(26,60,52,0.5)" }}
+                      >
+                        {formatPrice(p.price)}
+                      </p>
+                    </div>
+                    <button
+                      onClick={() =>
+                        addItem({
+                          id: p.sku,
+                          productId: p.sku,
+                          name: p.name,
+                          slug: p.slug,
+                          price: p.price,
+                          image: p.image,
+                          stock: 50,
+                          quantity: 1,
+                        })
+                      }
+                      className="w-7 h-7 rounded-full flex items-center justify-center shrink-0 transition-opacity hover:opacity-80"
+                      style={{ backgroundColor: "var(--color-bark)", color: "var(--color-cream)" }}
+                      aria-label={`Add ${p.name} to cart`}
+                    >
+                      <Plus className="h-3 w-3" />
+                    </button>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
 
           {/* Footer */}
           <div

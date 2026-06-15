@@ -18,6 +18,7 @@ interface ProductCardProps {
     stock: number;
     averageRating?: number;
     reviewCount?: number;
+    tags?: string[];
   };
   index?: number;
 }
@@ -94,6 +95,7 @@ export default function ProductCard({ product }: ProductCardProps) {
     product.compareAtPrice && product.compareAtPrice > product.price
       ? `${Math.round((1 - product.price / product.compareAtPrice) * 100)}% OFF`
       : null;
+  const isBestseller = product.tags?.includes("bestseller") ?? false;
 
   const handleAddToPotli = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -121,6 +123,14 @@ export default function ProductCard({ product }: ProductCardProps) {
           {badge && (
             <span className="absolute top-3 left-3 z-10 px-2.5 py-0.5 text-[9px] font-accent tracking-widest uppercase bg-bark text-cream rounded-full">
               {badge}
+            </span>
+          )}
+          {isBestseller && (
+            <span
+              className="absolute top-3 right-3 z-10 px-2.5 py-0.5 text-[9px] font-accent tracking-widest uppercase rounded-full"
+              style={{ backgroundColor: "var(--color-terracotta)", color: "var(--color-cream)" }}
+            >
+              Bestseller
             </span>
           )}
           <img

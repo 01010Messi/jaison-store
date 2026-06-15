@@ -114,7 +114,7 @@ export const products: ProductData[] = [
       "/images/products/amla-back.webp",
       "/images/products/amla-styled.webp",
     ],
-    tags: ["hair-growth", "anti-greying", "vitamin-c", "natural-conditioner"],
+    tags: ["bestseller", "hair-growth", "anti-greying", "vitamin-c", "natural-conditioner"],
     isFeatured: true,
   },
   {
@@ -144,7 +144,7 @@ export const products: ProductData[] = [
       "/images/products/neem-back.webp",
       "/images/products/neem-styled.webp",
     ],
-    tags: ["anti-acne", "antibacterial", "skin-purifying", "face-pack"],
+    tags: ["bestseller", "anti-acne", "antibacterial", "skin-purifying", "face-pack"],
     isFeatured: true,
   },
   {
@@ -173,6 +173,7 @@ export const products: ProductData[] = [
       "/images/products/shikakai-styled2.webp",
     ],
     tags: [
+      "bestseller",
       "natural-shampoo",
       "hair-cleansing",
       "detangler",
