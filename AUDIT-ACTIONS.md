@@ -88,8 +88,7 @@ Branch: `redesign/v2` · Last updated: June 2026
 
 ## SEO — Pending
 
-- **Deploy redesign/v2** — all above SEO fixes are in branch, not yet live
-- **Submit sitemap** to Google Search Console after deploy (`https://jaisonskincare.com/sitemap.xml`)
+- **Submit sitemap** to Google Search Console (`https://jaisonskincare.com/sitemap.xml`) — owner action
 - Expand all 10 blog posts from ~800 words to 1,500+ words
 - Add `aggregateRating` to product schema once real reviews exist in DB
 - Add `dateModified` + `wordCount` fields to `ArticleJsonLd` (`src/components/seo/JsonLd.tsx`)

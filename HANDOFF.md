@@ -39,7 +39,7 @@ Full audit at `SEO-AUDIT.md`. Health Score: **58/100**. Seven fixes applied:
 
 ## Current branch state
 
-All work is committed and pushed to `origin/redesign/v2`. **Not yet deployed to production.**
+All work is committed and pushed to `origin/redesign/v2`.
 
 ```
 Last 4 commits on redesign/v2:
@@ -68,13 +68,7 @@ AUDIT-ACTIONS.md                          ← updated
 
 ## What's next — ordered by impact
 
-### 1. Deploy to production (CRITICAL — blocks all SEO gains)
-```bash
-vercel --prod --yes
-```
-Then submit sitemap in Google Search Console: `https://jaisonskincare.com/sitemap.xml`
-
-### 2. Lead magnet PDF (owner action)
+### 1. Lead magnet PDF (owner action)
 Team to supply "Ayurvedic Skin Reset Guide" content. Once PDF exists:
 - Upload to Cloudinary or `/public/guides/`
 - Update popup body copy and the Resend welcome email to include the download link
@@ -135,14 +129,13 @@ Last session completed:
   bark card, /api/newsletter, sessionStorage guard, pill input, circular X ring)
 - SEO fixes: homepage title duplicate brand, meta description lengths, 
   sitemap cleaned, llms.txt added
-- All pushed to origin/redesign/v2, NOT yet deployed to production
+- All committed and pushed to origin/redesign/v2
 
 Most urgent next steps:
-1. Deploy redesign/v2 to production: vercel --prod --yes
-2. Submit sitemap to Google Search Console after deploy
-3. Lead magnet PDF — team supplies content, then update popup copy + welcome email
-4. Expand blog posts to 1,500+ words (all 10 are currently ~800 words)
-5. Shop page layout.tsx — add server metadata (page is use client, can't export metadata)
+1. Lead magnet PDF — team supplies content, then update popup copy + welcome email
+2. Expand blog posts to 1,500+ words (all 10 are currently ~800 words)
+3. Shop page layout.tsx — add server metadata (page is use client, can't export metadata)
+4. Submit sitemap to Google Search Console: https://jaisonskincare.com/sitemap.xml
 
 Design rules (never violate):
 - No hardcoded hex in .tsx — token classes in className, var(--color-*) in style={{}}
