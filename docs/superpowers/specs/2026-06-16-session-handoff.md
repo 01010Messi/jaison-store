@@ -34,6 +34,21 @@ Search engines and AI crawlers correctly classify all 10 blog posts as Indian-En
 
 ---
 
+### Task C — Remove background from "Shop the Ingredients" section
+
+**File:** `src/app/(storefront)/blog/[slug]/page.tsx` line 273
+
+**Why:**  
+The parchment-tinted rounded container (`bg-parchment/40 rounded-xl`) made the section look like a floating card isolated from the article. The desired effect is for the product cards to flow naturally as part of the page, visually consistent with the "Keep Reading" section directly below it.
+
+**Fix:**  
+Replaced `mt-14 -mx-4 sm:-mx-6 px-6 sm:px-8 py-10 rounded-xl bg-parchment/40` with `mt-14 pt-10 border-t border-border` — the same hairline separator pattern used by "Keep Reading".
+
+**Result expected:**  
+Section merges with the article body. Product cards retain their individual border + shadow-warm hover. Visual rhythm matches the rest of the page.
+
+---
+
 ### Task B — "Shop the Ingredients" CTA on Blog Posts
 
 **File:** `src/app/(storefront)/blog/[slug]/page.tsx` lines 273–320
