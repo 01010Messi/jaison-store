@@ -217,6 +217,8 @@ export function ArticleJsonLd({ slug }: { slug: string }) {
   const post = blogPosts.find((p) => p.slug === slug);
   if (!post) return null;
 
+  const wordCount = post.content.split(/\s+/).filter(Boolean).length;
+
   const schema = {
     "@context": "https://schema.org",
     "@type": "Article",
@@ -224,6 +226,8 @@ export function ArticleJsonLd({ slug }: { slug: string }) {
     description: post.excerpt,
     image: `${BASE_URL}${post.image}`,
     datePublished: post.publishedAt,
+    dateModified: post.dateModified,
+    wordCount: wordCount,
     author: {
       "@type": "Organization",
       name: "Jaison Herbals",
