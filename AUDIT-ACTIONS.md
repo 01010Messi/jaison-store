@@ -50,7 +50,7 @@ Branch: `redesign/v2` · Last updated: June 2026
 | Professional product photography | ❌ Pending | Macro texture shots + in-use lifestyle images |
 | Lead magnet popup (Ayurvedic Skincare Guide) | ✅ Done | 40% scroll trigger, bark card, `/api/newsletter` POST, sessionStorage guard. PDF content placeholder — team to supply actual guide |
 | Homepage trust hierarchy redesign | Partial | TrustBadgeBar built (removed per owner preference); certifications still needed |
-| 6 long-tail blog articles | ❌ Pending | 10 blog posts exist but all <1,000 words. Need expansion to 1,500+ each |
+| 6 long-tail blog articles | ✅ Done | 10 blog posts, all expanded to 1,500–2,155 words (June 2026). Science sections, dosha guides, FAQ, Key Takeaways added. |
 | Pricing tiers — raise floor to ₹249, add premium SKU | ❌ Pending | Business decision; premium "Single Origin" line at ₹550–₹699 |
 | Cart AOV upsell | ✅ Done | Cross-sell strip in CartDrawer |
 | Price-per-use framing on product pages | ✅ Done | "~20 face masks per pack" below price; derived from weight + category |
@@ -64,7 +64,7 @@ Branch: `redesign/v2` · Last updated: June 2026
 | Brand visual overhaul (custom typography, packaging) | Partial | Design system in place (`redesign/v2` branch); packaging unchanged |
 | Loyalty / subscription programme | ❌ Pending | "Refill & Save 15%" — business decision + dev work |
 | Influencer partnerships (3–5 mid-tier) | ❌ Pending | Marketing action |
-| Skin quiz lead funnel | ❌ Pending | `/find-your-ritual` page exists but quiz needs lead capture + email |
+| Skin quiz lead funnel | ⏸ Paused | `/find-your-ritual` page 404s. Quiz design needs explicit session authorization before starting. |
 | SEO content cluster (12 articles per hero product) | ❌ Pending | 6 blog posts exist; need 6+ more targeting long-tail queries |
 | Amazon / Flipkart marketplace listings | ❌ Pending | Business decision |
 
@@ -78,25 +78,29 @@ Branch: `redesign/v2` · Last updated: June 2026
 - Breadcrumb JSON-LD on all product pages
 - Article JSON-LD on all blog posts
 - Alt text audit complete — all images have descriptive, keyword-rich alt text
-- Blog: 10 articles exist at `/blog` (up from 6)
+- Blog: 10 articles at `/blog`, all expanded to 1,500+ words (June 2026)
+- Each blog post now has: opening summary (40-60 words), Key Takeaways blockquote, science section, Ayurvedic dosha guide, Indian seasonal section, 5-question FAQ
 - Homepage title fixed — no more duplicate "jaison" brand (was 71 chars, now 63)
 - Meta descriptions trimmed across homepage + about to <160 chars
 - Why Jaison + Contact page title patterns cleaned
 - Sitemap cleaned — `/shop?category=*` query-param URLs removed
 - `llms.txt` added at `/public/llms.txt` for AI crawler discoverability
 - Full SEO audit completed (Health Score: 58/100) — see `SEO-AUDIT.md`
+- `dateModified` + `wordCount` fields added to `ArticleJsonLd` (`src/components/seo/JsonLd.tsx`)
+- `inLanguage: "en-IN"` added to `ArticleJsonLd` schema — GEO locale signal for Indian-English content
+- Shop page metadata exists via `src/app/(storefront)/shop/layout.tsx`
+- Blog-to-product internal links: "Shop the Ingredients" CTA section on all 10 blog posts
 
 ## SEO — Pending
 
 - **Submit sitemap** to Google Search Console (`https://jaisonskincare.com/sitemap.xml`) — owner action
-- Expand all 10 blog posts from ~800 words to 1,500+ words
 - Add `aggregateRating` to product schema once real reviews exist in DB
-- Add `dateModified` + `wordCount` fields to `ArticleJsonLd` (`src/components/seo/JsonLd.tsx`)
-- Add shop page metadata via `src/app/(storefront)/shop/layout.tsx` (page is `use client`, can't export metadata)
+- Add `openingHoursSpecification` to `LocalBusinessJsonLd` (Mon-Sat 10am-6pm IST) — `src/components/seo/JsonLd.tsx`
 - Keyword strategy shift to long-tail (see `SEO-AUDIT.md`)
 - Comparison keywords: "Jaison Herbals vs Nat Habit neem powder"
 - Local SEO: Nashik + Maharashtra Ayurveda searches
 - 12-article SEO content cluster per hero product
+- PageSpeed Mobile audit: run Lighthouse, target LCP < 2.5s
 
 ---
 

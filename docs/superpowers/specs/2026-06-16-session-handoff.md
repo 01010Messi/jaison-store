@@ -6,7 +6,7 @@
 
 ---
 
-## Completed This Session
+## Completed This Session (Morning)
 
 | Task | Files | Status |
 |---|---|---|
@@ -14,51 +14,86 @@
 | `dateModified` field added to `BlogPost` interface + all 10 posts | `src/data/blog.ts` | ✅ done |
 | `dateModified` + `wordCount` in `ArticleJsonLd` schema | `src/components/seo/JsonLd.tsx` | ✅ done |
 | Shop `layout.tsx` with metadata | `src/app/(storefront)/shop/layout.tsx` | ✅ already existed |
-| `claude-blog` plugin installed (v1.9.1) | `~/.claude/plugins/` | ✅ done |
 
-### Blog word counts (all ✓ over 1,500)
-| Post | Words |
-|---|---|
-| ubtan (glowing skin) | 1,611 |
-| amla (hair growth) | 1,627 |
-| multani mitti (face pack) | 1,688 |
-| shikakai-reetha-amla (natural wash) | 1,727 |
-| neem (acne / clear skin) | 1,668 |
-| ayurvedic skincare routine | 1,724 |
-| orange peel (face) | 1,625 |
-| bhringraj (hair growth) | 1,655 |
-| reetha (soapnut hair) | 1,893 |
-| mehendi / henna (hair colour) | 2,155 |
+---
 
-Each post added: opening summary paragraph (40-60 words, AI-extractable), Key Takeaways blockquote with cited statistics, science section with named bioactive compounds, Ayurvedic dosha guide (Vata/Pitta/Kapha), Indian seasonal usage section, 5-question FAQ.
+## Completed This Session (Afternoon)
+
+### Task A — `inLanguage: "en-IN"` in ArticleJsonLd
+
+**File:** `src/components/seo/JsonLd.tsx` line 230
+
+**Why:**  
+The Article schema was missing the `inLanguage` field. AI systems (Google AI Overviews, ChatGPT, Perplexity) use this to understand the content's locale. For Indian-English content, setting `"en-IN"` improves discoverability in India-specific AI-generated answer surfaces. It also aligns with GEO best practices for non-US brands.
+
+**Fix:**  
+Added `inLanguage: "en-IN"` to the Article schema object, alongside the already-present `dateModified` and `wordCount` fields.
+
+**Result expected:**  
+Search engines and AI crawlers correctly classify all 10 blog posts as Indian-English content. No visual change to the site.
+
+---
+
+### Task B — "Shop the Ingredients" CTA on Blog Posts
+
+**File:** `src/app/(storefront)/blog/[slug]/page.tsx` lines 273–320
+
+**Why:**  
+All 10 blog posts have a `relatedProducts: string[]` array pointing to product slugs, but the old section was a compact thumbnail row labeled "Products Mentioned in This Article." It had:
+- 64px thumbnails (too small for engagement)
+- Horizontal list layout with no visual weight
+- No CTA framing
+
+Internal blog-to-product links pass SEO authority and reduce bounce rate. A weak CTA means users read 1,500 words about Bhringraj and then leave without discovering the product.
+
+**Fix:**  
+Replaced the thumbnail row with a visually distinct "Shop the Ingredients" CTA section:
+- Parchment-tinted (`bg-parchment/40`) background strip that visually separates the CTA from article body
+- Cormorant Garamond heading ("Shop the Ingredients") + DM Sans subtitle
+- Aspect-square product cards with full-bleed image, 5x scale zoom on hover
+- Product name (bark, terracotta on hover), price + weight in `text-bark/60`, `aria-hidden` directional arrow
+- Border lifts to `gold/60`, `shadow-warm` elevation on hover
+- Radius: `rounded-xl` on container + cards (design system compliant)
+- No hardcoded hex, no em dashes, all muted text at ≥ `/60` on cream
+
+**Result expected:**  
+Every blog post now shows 2–3 product cards directly tied to its content. Users who finish reading have a path to the shop without navigating away. Internal PageRank flows from blog content to product pages.
 
 ---
 
 ## Remaining Dev Work (Priority Order)
 
-### High
-1. **Internal linking — blog → product pages**  
-   Each blog post mentions products but never links to them. Add a CTA card at the bottom of each blog post pointing to the relevant product page. File: `src/app/(storefront)/blog/[slug]/page.tsx`.  
-   SEO value: internal links pass authority + reduce bounce rate.
+### High Priority
 
-2. **`inLanguage: "en-IN"` in ArticleJsonLd**  
-   File: `src/components/seo/JsonLd.tsx` — add one field to the Article schema.  
-   15-minute task.
+1. **PageSpeed Mobile audit**  
+   Run Lighthouse against `localhost:3000` on mobile preset. Target: LCP < 2.5s, CLS < 0.1.  
+   Likely bottlenecks: hero video autoplay, blog images without explicit sizes, unoptimized Cloudinary URLs.  
+   File: no single file — likely `globals.css` video autoplay, `Image` component sizes, Cloudinary fetch format.
 
-3. **`/find-your-ritual` skin quiz — email hook**  
-   The page exists but is a 404 in production (it's in the sitemap). It needs content + email capture wired to `/api/newsletter`. Use it as a lead magnet.
+2. **`openingHoursSpecification` + `priceRange` in `LocalBusinessJsonLd`**  
+   File: `src/components/seo/JsonLd.tsx` — add structured hours + `priceRange: "₹150 – ₹999"` to the schema.  
+   15-minute task. Improves local SEO for Nashik + Maharashtra queries.
 
-### Medium
-4. **PageSpeed Mobile audit**  
-   Run Lighthouse against localhost for mobile. Target LCP < 2.5s. Blog images and hero video are the likely bottlenecks.
+3. **`/find-your-ritual` skin quiz page**  
+   ⚠️ USER FLAGGED: do not start this task without explicit authorization in a new session.  
+   The page 404s in production but is in the sitemap. Needs a 3-4 question skin quiz ending with product recommendation + email capture wired to `/api/newsletter`.
 
-5. **`openingHoursSpecification` in `LocalBusinessJsonLd`**  
-   File: `src/components/seo/JsonLd.tsx` — add hours + `priceRange: "₹150 – ₹999"` to the schema.
+### Medium Priority
 
-6. **Google Search Console setup**  
-   Submit `https://jaisonskincare.com/sitemap.xml` after redesign/v2 is deployed to production.
+4. **Delivery/Shipping admin page**  
+   Admin page for Shiprocket order tracking, label printing.  
+   Files: `src/app/admin/` (new route), Shiprocket API already wired in `src/lib/shipping.ts`.
+
+5. **Order detail page**  
+   Single-order view with timeline, payment info, shipping status.  
+   Files: `src/app/(storefront)/account/orders/[id]/page.tsx` (new route).
+
+6. **Email — shipping update notifications**  
+   Order confirmation email exists. Need shipping-dispatched + delivery emails.  
+   Files: `src/lib/email.ts`, `src/app/api/admin/orders/route.ts`.
 
 ### Owner-Content Required (blocked)
+
 - Founder name / origin story / photo → About page
 - AYUSH / GMP license number → Trust signals
 - Before/after UGC photos
@@ -66,6 +101,7 @@ Each post added: opening summary paragraph (40-60 words, AI-extractable), Key Ta
 - Ingredient sourcing specifics (farm/region per herb)
 
 ### After Real Reviews Exist
+
 - `aggregateRating` in `ProductJsonLd` — do NOT fabricate ratings
 
 ---
@@ -87,11 +123,12 @@ Each post added: opening summary paragraph (40-60 words, AI-extractable), Key Ta
 
 ## Design System Quick Reference
 
-- **Colors:** Cream `#FEFAE0`, Parchment `#EFE4C5`, Terracotta `#834316`, Sage `#606C38`, Bark `#1A3C34`, Gold `#B89968`  
-- **Never hardcode hex** — use token classes (`bg-bark`, `text-terracotta`) or `var(--color-*)` in inline styles  
-- **Fonts:** `font-heading` (Cormorant Garamond), `font-body` (DM Sans), `font-accent` (Inter)  
-- **Radius:** `rounded-full` for interactive pills/buttons, `rounded-xl` for cards/images, `rounded-lg` for form fields  
-- **Muted text:** ≥ `/60` opacity on cream backgrounds, ≥ `/70` on bark backgrounds
+- **Colors:** Cream `#FEFAE0`, Parchment `#EFE4C5`, Terracotta `#834316`, Sage `#606C38`, Bark `#1A3C34`, Gold `#B89968`
+- **Never hardcode hex** — use token classes (`bg-bark`, `text-terracotta`) or `var(--color-*)` in inline styles
+- **Fonts:** `font-heading` (Cormorant Garamond), `font-body` (DM Sans), `font-accent` (Inter)
+- **Radius:** `rounded-full` for interactive pills/buttons, `rounded-xl` for cards/images, `rounded-lg` for form fields
+- **Muted text:** ≥ `/60` opacity on cream/parchment, ≥ `/70` on bark
+- **Shadows:** `shadow-warm` / `shadow-warm-lg` / `shadow-warm-xl` — never `shadow-md` or `shadow-lg`
 
 ---
 
@@ -101,6 +138,7 @@ Each post added: opening summary paragraph (40-60 words, AI-extractable), Key Ta
 - **No `vercel --prod`**, no `vercel deploy`, no deploy commands of any kind
 - Clear `.next` cache after any `globals.css` edit: `kill $(lsof -ti:3000) && rm -rf .next && npm run dev`
 - Never put `<style>` tags inside `"use client"` components (causes hydration errors)
+- Run `npx tsc --noEmit` after every TypeScript change — never skip
 
 ---
 
@@ -114,33 +152,35 @@ CONSTRAINT: No vercel deploy, no vercel --prod, no deploy of any kind.
 
 SKILLS TO USE:
 - Use marketing-skills:ai-seo for any SEO work (GEO / AI discoverability, schema, content structure)
-- Use claude-seo:* for technical SEO audits and structured data
 - Use frontend-design:* for any UI/component work (design tokens, component patterns)
+- Use impeccable:impeccable for design quality enforcement (run load-context.mjs first)
+- Use andrej-karpathy-skills:karpathy-guidelines for code quality (surgical changes, no over-engineering)
 - Use superpowers:brainstorming BEFORE implementing anything new — design first, code second
 
 Context docs to read first:
 - docs/superpowers/specs/2026-06-16-session-handoff.md — full handoff with what's done and what's next
 - SEO-AUDIT.md — full SEO audit findings (score 58/100)
-- DESIGN.md — design tokens and rules
+- DESIGN.md — design tokens and rules (impeccable: load via .claude/skills/impeccable/scripts/load-context.mjs)
 - AUDIT-ACTIONS.md — full audit tracker
 
 Today's priority tasks (pick up from top):
 
-1. BLOG → PRODUCT INTERNAL LINKS
-   Each of the 10 blog posts in src/data/blog.ts has a `relatedProducts` array (e.g. ["reetha-powder", "shikakai-powder"]).
-   Add a "Shop the ingredients" CTA section at the bottom of each blog post in src/app/(storefront)/blog/[slug]/page.tsx.
-   The section should show product cards (name, image, price) that link to /shop/[product-slug].
-   Match the Ayurvedic earthy design system — Bark/Terracotta colors, Cormorant Garamond headings, rounded-xl cards.
+1. PAGESPEED MOBILE AUDIT
+   Run Lighthouse in mobile mode against localhost:3000. Target: LCP < 2.5s, CLS < 0.1.
+   Identify the top 3 bottlenecks and fix them. Likely candidates: hero video autoplay,
+   blog images missing explicit sizes, Cloudinary images missing fetch_format=auto.
 
-2. inLanguage FIELD IN ArticleJsonLd
+2. openingHoursSpecification IN LocalBusinessJsonLd
    File: src/components/seo/JsonLd.tsx
-   In the ArticleJsonLd function, add `inLanguage: "en-IN"` to the schema object alongside dateModified and wordCount.
+   In the LocalBusinessJsonLd function, add openingHoursSpecification (Mon-Sat 10am-6pm IST)
+   and confirm priceRange: "₹150 - ₹999" is already present (check line ~302).
 
 3. /find-your-ritual SKIN QUIZ PAGE
-   The page currently 404s in production but is in the sitemap.
-   Build a simple skin quiz (3-4 questions: skin type, concern, routine frequency) that ends with a product recommendation + email capture.
-   Wire email capture to the existing POST /api/newsletter endpoint.
-   Design language: Parchment background, pill buttons in Bark, Cormorant heading "Find Your Ritual".
+   ⚠️ Only start this if the user explicitly says to proceed.
+   The page 404s in production but is in the sitemap.
+   Build a 3-4 question skin quiz (skin type, concern, routine frequency) ending with
+   product recommendation + email capture wired to POST /api/newsletter.
+   Design: Parchment background, pill buttons in Bark, Cormorant heading "Find Your Ritual".
 
 Run `npx tsc --noEmit` after any TypeScript changes. Never skip this check.
 ```
