@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import HeroSection from "@/components/home/HeroSection";
 import TrustBadgeBar from "@/components/home/TrustBadgeBar";
 import FeaturedProducts from "@/components/home/FeaturedProducts";
-import WhyJaisonTeaser from "@/components/home/WhyJaisonTeaser";
 import HowToUseGuide from "@/components/home/HowToUseGuide";
 import BrandTimeline from "@/components/home/BrandTimeline";
 import TestimonialsSection from "@/components/home/TestimonialsSection";
@@ -27,7 +26,6 @@ export default function HomePage() {
       <HeroSection />
       <TrustBadgeBar />
       <FeaturedProducts />
-      <WhyJaisonTeaser />
       <HowToUseGuide />
       <BrandTimeline />
       <TestimonialsSection />
