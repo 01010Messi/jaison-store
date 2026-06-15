@@ -414,39 +414,51 @@ export default function ProductDetail({ product }: ProductDetailProps) {
             </div>
 
             {/* 5. Price row */}
-            <div className="mt-6 flex items-baseline gap-3 flex-wrap">
-              <span
-                className="font-heading font-light"
-                style={{
-                  fontSize: "clamp(32px, 4vw, 48px)",
-                  color: "var(--color-bark)",
-                }}
-              >
-                ₹{product.price}
-              </span>
-              {product.compareAtPrice && product.compareAtPrice > product.price && (
+            <div className="mt-6">
+              <div className="flex items-baseline gap-3 flex-wrap">
                 <span
-                  className="font-body text-base"
+                  className="font-heading font-light"
                   style={{
-                    color: "rgba(26,60,52,0.4)",
-                    textDecoration: "line-through",
+                    fontSize: "clamp(32px, 4vw, 48px)",
+                    color: "var(--color-bark)",
                   }}
                 >
-                  {formatPrice(product.compareAtPrice)}
+                  ₹{product.price}
                 </span>
-              )}
-              {product.compareAtPrice && product.compareAtPrice > product.price && (
-                <span
-                  className="font-accent uppercase px-2.5 py-0.5 rounded-full"
-                  style={{
-                    fontSize: "10px",
-                    letterSpacing: "0.18em",
-                    background: "rgba(165,104,67,0.10)",
-                    color: "var(--color-terracotta-light)",
-                  }}
+                {product.compareAtPrice && product.compareAtPrice > product.price && (
+                  <span
+                    className="font-body text-base"
+                    style={{
+                      color: "rgba(26,60,52,0.4)",
+                      textDecoration: "line-through",
+                    }}
+                  >
+                    {formatPrice(product.compareAtPrice)}
+                  </span>
+                )}
+                {product.compareAtPrice && product.compareAtPrice > product.price && (
+                  <span
+                    className="font-accent uppercase px-2.5 py-0.5 rounded-full"
+                    style={{
+                      fontSize: "10px",
+                      letterSpacing: "0.18em",
+                      background: "rgba(165,104,67,0.10)",
+                      color: "var(--color-terracotta-light)",
+                    }}
+                  >
+                    {Math.round((1 - product.price / product.compareAtPrice) * 100)}% Off
+                  </span>
+                )}
+              </div>
+              {product.categorySlug !== "combos" && (
+                <p
+                  className="font-body text-xs mt-1"
+                  style={{ color: "rgba(26,60,52,0.45)" }}
                 >
-                  {Math.round((1 - product.price / product.compareAtPrice) * 100)}% Off
-                </span>
+                  {product.categorySlug === "hair-care"
+                    ? `~${Math.round(product.weight / 7)} hair washes per pack`
+                    : `~${Math.round(product.weight / 5)} face masks per pack`}
+                </p>
               )}
             </div>
 

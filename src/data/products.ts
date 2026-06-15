@@ -413,7 +413,7 @@ export const products: ProductData[] = [
     isFeatured: false,
   },
   {
-    name: "Jaison Special Combo",
+    name: "Complete Head-to-Toe Ritual Kit",
     slug: "jaison-special-combo",
     sku: "JAIS-COMBO-SPECIAL",
     price: 859,
@@ -422,9 +422,9 @@ export const products: ProductData[] = [
     category: "Combos",
     categorySlug: "combos",
     shortDescription:
-      "Our best value bundle — hair care meets skin care. Shikakai, Aamla, Neem, Multani Mitti & Ubtan — 45% off.",
+      "5 bestselling powders — hair care + skin care in one kit. Shikakai, Aamla, Neem, Multani Mitti & Ubtan. Save ₹706.",
     description:
-      "The ultimate Jaison experience — five of our best products bundled together at our biggest discount. Shikakai and Aamla deliver complete hair nourishment, Neem purifies both skin and scalp, Multani Mitti deep-cleanses and tightens pores, and our signature Ubtan (powered by 18 Ayurvedic herbs) gives you visible glow from the very first use. One combo for head-to-toe herbal care. Save a massive 45% compared to buying individually.",
+      "Everything you need to replace five chemical products with one Ayurvedic kit. Shikakai and Aamla cleanse and strengthen hair naturally, Neem purifies both scalp and skin, Multani Mitti deep-cleanses and tightens pores, and our signature Ubtan — crafted from turmeric, sandalwood, rose petal and 5 more herbs — gives visible glow from the very first use. One kit, head to toe, 45% off individual prices.",
     ingredients:
       "Includes: Shikakai Powder (100g) — 100% Pure Shikakai (Acacia concinna)\nAamla Powder (100g) — 100% Pure Amla (Phyllanthus emblica)\nNeem Powder (100g) — 100% Pure Neem (Azadirachta indica)\nMultani Mitti (100g) — 100% Pure Fuller's Earth\nUbtan (50g jar) — Turmeric, Sandalwood, Gram Flour, Almond, Rose Petal, Saffron & more",
     howToUse:
