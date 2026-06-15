@@ -38,7 +38,7 @@ export default function AuthLayout({
           <Link href="/" className="inline-block">
             <Image
               src="/images/logo.png"
-              alt="Jaison Skincare"
+              alt="Jaison Herbals — Natural Ayurvedic Skincare"
               width={220}
               height={80}
               className="h-14 w-auto mx-auto"

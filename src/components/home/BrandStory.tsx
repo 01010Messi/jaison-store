@@ -16,7 +16,7 @@ export default function BrandStory() {
                 <div className="relative aspect-square overflow-hidden rounded-xl">
                   <Image
                     src="/images/brand-story.webp"
-                    alt="jaison herbals - traditional ayurvedic preparation"
+                    alt="Traditional Ayurvedic herb preparation — Jaison Herbals natural herbal powders made in Nashik, India"
                     fill
                     className="object-cover"
                     sizes="(max-width: 768px) 100vw, 50vw"

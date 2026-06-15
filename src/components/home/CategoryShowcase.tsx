@@ -52,7 +52,7 @@ export default function CategoryShowcase() {
                 {/* Image */}
                 <Image
                   src={category.image}
-                  alt={category.name}
+                  alt={`${category.name} — Jaison Herbals Ayurvedic herbal powder collection`}
                   fill
                   className="object-cover transition-transform duration-700 ease-out-expo group-hover:scale-105"
                   sizes="(max-width: 768px) 100vw, 33vw"

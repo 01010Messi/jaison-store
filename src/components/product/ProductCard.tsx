@@ -135,7 +135,7 @@ export default function ProductCard({ product }: ProductCardProps) {
           )}
           <img
             src={product.images?.[0] ?? product.image}
-            alt={product.name}
+            alt={`${product.name} — 100% natural Ayurvedic ${product.category.toLowerCase()} powder | Jaison Herbals`}
             className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
           />
         </div>

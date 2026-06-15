@@ -109,7 +109,7 @@ export default function Header() {
           <Link href="/" className="flex-shrink-0 overflow-hidden h-10 md:h-14 flex items-center">
             <Image
               src="/images/logo.png"
-              alt="Jaison Skincare"
+              alt="Jaison Herbals — Natural Ayurvedic Herbal Powders for Skin and Hair"
               width={260}
               height={96}
               className="h-16 md:h-24 w-auto mix-blend-multiply -my-3"

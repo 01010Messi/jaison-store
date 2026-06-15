@@ -188,7 +188,7 @@ export default function CartDrawer() {
                       >
                         <img
                           src={p.image}
-                          alt={p.name}
+                          alt={`${p.name} — natural Ayurvedic herbal powder | Jaison Herbals`}
                           className="w-full h-full object-cover"
                         />
                       </div>

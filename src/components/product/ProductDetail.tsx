@@ -26,6 +26,19 @@ import { formatPrice, cn } from "@/lib/utils";
 import toast from "react-hot-toast";
 import type { Product } from "@/data/products";
 
+function imageAltText(productName: string, category: string, src: string, index: number): string {
+  if (index === 0) return `${productName} — ${category} herbal powder by Jaison Herbals, 100g pack`;
+  if (src.includes("back")) return `${productName} — back of pack showing ingredients list`;
+  if (src.includes("benefit")) return `${productName} — key skin and hair benefits`;
+  if (src.includes("how-to") || src.includes("howto")) return `How to use ${productName} — mixing and application guide`;
+  if (src.includes("styled") || src.includes("lifestyle")) return `${productName} — natural herbal powder lifestyle shot`;
+  if (src.includes("hero")) return `${productName} — hero product shot by Jaison Herbals`;
+  if (src.includes("essence")) return `${productName} — key herbs and botanical ingredients`;
+  if (src.includes("radiant") || src.includes("glow")) return `${productName} — visible skin results and natural glow`;
+  if (src.includes("vitamin")) return `${productName} — rich in natural vitamins and antioxidants`;
+  return `${productName} — product view ${index + 1}`;
+}
+
 interface ProductDetailProps {
   product: Product;
 }
@@ -216,7 +229,7 @@ export default function ProductDetail({ product }: ProductDetailProps) {
                   <Image
                     key={img}
                     src={img}
-                    alt={`${product.name}${i > 0 ? ` - view ${i + 1}` : ""}`}
+                    alt={imageAltText(product.name, product.category, img, i)}
                     fill
                     className={cn(
                       "object-contain",
@@ -338,7 +351,7 @@ export default function ProductDetail({ product }: ProductDetailProps) {
                   >
                     <Image
                       src={img}
-                      alt={`${product.name} - thumbnail ${i + 1}`}
+                      alt={imageAltText(product.name, product.category, img, i)}
                       fill
                       className="object-contain"
                       sizes="80px"

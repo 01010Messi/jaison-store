@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import HeroSection from "@/components/home/HeroSection";
-import TrustBadgeBar from "@/components/home/TrustBadgeBar";
 import FeaturedProducts from "@/components/home/FeaturedProducts";
 import HowToUseGuide from "@/components/home/HowToUseGuide";
 import BrandTimeline from "@/components/home/BrandTimeline";
@@ -24,7 +23,6 @@ export default function HomePage() {
         Jaison Herbals — Natural Ayurvedic Herbal Powders for Skin &amp; Hair
       </h1>
       <HeroSection />
-      <TrustBadgeBar />
       <FeaturedProducts />
       <HowToUseGuide />
       <BrandTimeline />

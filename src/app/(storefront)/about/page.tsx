@@ -81,7 +81,7 @@ export default function AboutPage() {
               <div className="relative aspect-[4/5] overflow-hidden rounded-xl">
                 <Image
                   src="/images/brand-story.webp"
-                  alt="jaison herbals natural products"
+                  alt="Jaison Herbals handcrafted Ayurvedic herbal powders — natural skincare and haircare made in Nashik, India"
                   fill
                   className="object-cover"
                   sizes="(max-width: 768px) 100vw, 50vw"

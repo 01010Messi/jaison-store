@@ -112,7 +112,7 @@ export default function Footer() {
         <div className="text-center mb-12">
           <Image
             src="/images/logo.png"
-            alt="jaison"
+            alt="Jaison Herbals — Natural Ayurvedic Herbal Powders"
             width={240}
             height={80}
             className="h-20 md:h-24 w-auto mx-auto brightness-[1.8] contrast-[0.9]"

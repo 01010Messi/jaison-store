@@ -56,7 +56,7 @@ export default function NewsletterSection() {
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/images/logo.png"
-              alt="jaison"
+              alt="Jaison Herbals"
               className="h-10 w-auto mx-auto mb-4 brightness-[1.8] contrast-[0.9]"
             />
 
