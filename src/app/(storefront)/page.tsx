@@ -8,9 +8,12 @@ import InstagramSection from "@/components/home/InstagramSection";
 import BlogSection from "@/components/home/BlogSection";
 
 export const metadata: Metadata = {
-  title: "jaison | Natural Ayurvedic Beauty — Herbal Skincare & Haircare",
+  title: {
+    absolute:
+      "Natural Ayurvedic Beauty — Herbal Skincare & Haircare | jaison",
+  },
   description:
-    "Shop 100% natural Ayurvedic herbal powders for skin & hair care. Ubtan, Amla, Neem, Multani Mitti, Shikakai & more — handcrafted in Nashik, India. Free from chemicals. Free shipping over ₹499.",
+    "Shop 100% natural Ayurvedic herbal powders for skin & hair. Ubtan, Amla, Neem, Multani Mitti, Shikakai & more — handcrafted in Nashik. Free from chemicals.",
   alternates: {
     canonical: "https://jaisonskincare.com",
   },

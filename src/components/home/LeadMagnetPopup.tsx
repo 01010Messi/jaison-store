@@ -119,7 +119,7 @@ export default function LeadMagnetPopup() {
             <button
               onClick={dismiss}
               aria-label="Close"
-              className="absolute top-4 right-4 p-1 text-cream/50 hover:text-cream transition-colors duration-200 z-10"
+              className="absolute top-4 right-4 p-1.5 rounded-full text-cream/50 hover:text-cream transition-colors duration-200 z-10"
             >
               <X size={18} strokeWidth={1.5} />
             </button>
@@ -157,7 +157,7 @@ export default function LeadMagnetPopup() {
                       onChange={(e) => setEmail(e.target.value)}
                       required
                       aria-label="Email address"
-                      className="bg-bark-light border-cream/15 text-cream placeholder:text-cream/35 hover:border-cream/30 focus:border-terracotta focus:ring-terracotta/25"
+                      className="rounded-full px-5 bg-bark-light border-cream/15 text-cream placeholder:text-cream/35 hover:border-cream/30 focus:border-terracotta focus:ring-terracotta/25"
                     />
                     {error && (
                       <p className="text-[11px] font-accent text-terracotta-light tracking-[0.08em]">

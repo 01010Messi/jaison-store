@@ -4,7 +4,7 @@ import GoldRule from "@/components/decorative/GoldRule";
 import SectionDivider from "@/components/decorative/SectionDivider";
 
 export const metadata: Metadata = {
-  title: "Why Choose Jaison | jaison Skincare",
+  title: "Why Choose Jaison — Our Skincare Philosophy",
   description:
     "We believe skincare works best when it stays close to nature and tradition. Pure ingredients, Ayurvedic wisdom, gentle formulas, made with care in India.",
   alternates: {
