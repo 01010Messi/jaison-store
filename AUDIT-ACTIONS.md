@@ -1,0 +1,119 @@
+# Jaison Herbals — Website Audit Action Tracker
+
+Source audit: `jaison-skincare-audit-report-enhanced.html` (May 2026 · Overall score: 3.8/10)  
+Branch: `redesign/v2` · Last updated: June 2026
+
+---
+
+## Overall Scores (audit baseline)
+
+| Dimension | Score | Status |
+|---|---|---|
+| Brand & Identity | 2.0/10 | Partial — visual system fixed, founder story still needed |
+| Trust & Credibility | 2.2/10 | Partial — FAQ expanded, reviews still unverified |
+| SEO / Content | 3.0/10 | Improved — schema + alt text done, keyword strategy pending |
+| Conversion (CRO) | 3.5/10 | Partial — cart cross-sell + price framing done |
+| Mobile Experience | 5.2/10 | Unchanged |
+| UX / Navigation | 5.8/10 | Improved — FAQ expanded, combo renamed |
+
+---
+
+## Phase 0 — Zero/Low Cost (Week 1–2)
+
+| Item | Status | Notes |
+|---|---|---|
+| Switch contact email to @jaisonskincare.com | ❌ Pending | Business action — set up Google Workspace (~₹150/mo) |
+| Display AYUSH/GMP/manufacturing cert in footer | ❌ Pending | Needs actual cert number from owner; slot is in footer |
+| Add INCI ingredient names to every product | ✅ Done | Already in product descriptions |
+| Rename combo products | ✅ Done | "Jaison Special Combo" → "Complete Head-to-Toe Ritual Kit" |
+| Google PageSpeed Mobile audit | ❌ Pending | Run Lighthouse on mobile; check LCP < 2.5s |
+
+---
+
+## Phase 1 — Weeks 3–6
+
+| Item | Status | Notes |
+|---|---|---|
+| Founder story on homepage + About page | ❌ Pending | Content from owner required — see CONTENT.md §Founder |
+| UGC photo reviews from past customers | ❌ Pending | Email campaign to past buyers; offer 10% off for photo review |
+| "How to use" videos (neem, multani, ubtan) | ❌ Pending | 30–60s phone-quality videos; embed on product pages |
+| FAQ expanded to 30+ questions + schema | ✅ Done | 32 questions in 7 groups; FAQ JSON-LD schema added |
+| Product schema markup | ✅ Done | ProductJsonLd + BreadcrumbJsonLd + ProductFAQJsonLd on all product pages |
+| Cart cross-sell / upsell | ✅ Done | "You may also like" strip in CartDrawer; category-matched |
+
+---
+
+## Phase 2 — Month 2–3
+
+| Item | Status | Notes |
+|---|---|---|
+| Professional product photography | ❌ Pending | Macro texture shots + in-use lifestyle images |
+| Lead magnet popup (Ayurvedic Skincare Guide) | ❌ Pending | Exit-intent or 40% scroll popup; requires PDF creation |
+| Homepage trust hierarchy redesign | Partial | TrustBadgeBar built (removed per owner preference); certifications still needed |
+| 6 long-tail blog articles | ❌ Pending | Target specific use-case queries per product; see SEO section |
+| Pricing tiers — raise floor to ₹249, add premium SKU | ❌ Pending | Business decision; premium "Single Origin" line at ₹550–₹699 |
+| Cart AOV upsell | ✅ Done | Cross-sell strip in CartDrawer |
+| Price-per-use framing on product pages | ✅ Done | "~20 face masks per pack" below price; derived from weight + category |
+
+---
+
+## Phase 3 — Month 3–6
+
+| Item | Status | Notes |
+|---|---|---|
+| Brand visual overhaul (custom typography, packaging) | Partial | Design system in place (`redesign/v2` branch); packaging unchanged |
+| Loyalty / subscription programme | ❌ Pending | "Refill & Save 15%" — business decision + dev work |
+| Influencer partnerships (3–5 mid-tier) | ❌ Pending | Marketing action |
+| Skin quiz lead funnel | ❌ Pending | `/find-your-ritual` page exists but quiz needs lead capture + email |
+| SEO content cluster (12 articles per hero product) | ❌ Pending | 6 blog posts exist; need 6+ more targeting long-tail queries |
+| Amazon / Flipkart marketplace listings | ❌ Pending | Business decision |
+
+---
+
+## SEO — Implemented
+
+- FAQ JSON-LD schema (`/faq` page) — 32 questions across 7 groups
+- Product JSON-LD on all product pages (price, availability, ratings)
+- FAQ JSON-LD on all product pages (per-product questions)
+- Breadcrumb JSON-LD on all product pages
+- Alt text audit complete — all images have descriptive, keyword-rich alt text
+- Blog: 6 articles exist at `/blog`
+
+## SEO — Pending
+
+- Keyword strategy shift to long-tail (see audit §08)
+- Comparison keywords: "Jaison Herbals vs Nat Habit neem powder"
+- Local SEO: Nashik + Maharashtra Ayurveda searches
+- 12-article SEO content cluster per hero product
+
+---
+
+## Content Gaps (owner must provide)
+
+These cannot be built until the owner supplies the raw content:
+
+| Gap | Why it matters | Priority |
+|---|---|---|
+| Founder story — who Jaison is, origin, inspiration | Single highest-impact trust signal (audit: +40–60% CR lift) | Critical |
+| AYUSH / GMP / manufacturing license number | Legal compliance + trust | Critical |
+| Ingredient sourcing specifics (farm/region for each herb) | Differentiator vs Amazon sellers | High |
+| Before/after customer photos (10–15) | Replaces text-only reviews | High |
+| "How to use" videos for Neem, Multani Mitti, Ubtan | #1 drop-off point for first-time buyers | High |
+| Supplier/manufacturing facility address (honest, specific) | Resolves "Business Bay office vs handcrafted" tension | Medium |
+
+---
+
+## What redesign/v2 Has Delivered (vs audit baseline)
+
+| Audit Criticism | Fix in redesign/v2 |
+|---|---|
+| "Generic green-on-white, no visual identity" | Terracotta/cream design system, Cormorant serif, pill buttons |
+| "Generic hero, no brand narrative" | Video hero, "Your bottle lists a dozen ingredients. Ours lists one." |
+| "Visual identity looks like a theme demo" | Full design system: tokens, radius, typography scale |
+| "Instagram section ineffective" | Rewritten with 8 illustrated SVG tiles + #jaisonherbals |
+| "Cart experience generic" | CartDrawer pill UI + cross-sell strip |
+| "FAQ nearly empty" | 10 → 32 questions in 7 themed groups with JSON-LD schema |
+| "Combo products named poorly" | "Jaison Special Combo" → "Complete Head-to-Toe Ritual Kit" |
+| "No price-per-use context" | "~20 face masks per pack" below price |
+| "Bestseller badges missing" | Terracotta "Bestseller" pill on ProductCard (4 products) |
+| "Alt text weak/missing" | All images: descriptive, keyword-rich alt text with brand + product context |

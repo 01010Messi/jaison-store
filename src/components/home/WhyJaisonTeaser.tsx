@@ -44,7 +44,7 @@ export default function WhyJaisonTeaser() {
           className="font-body mt-3 max-w-xl"
           style={{ fontSize: "15px", color: "rgba(26,60,52,0.6)", lineHeight: "1.7" }}
         >
-          In a category full of vague claims, we make one promise: exactly what you see on the label is exactly what's in the pouch.
+          In a category full of vague claims, we make one promise: exactly what you see on the label is exactly what&apos;s in the pouch.
         </p>
       </div>
 
