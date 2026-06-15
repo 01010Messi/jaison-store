@@ -48,9 +48,9 @@ Branch: `redesign/v2` · Last updated: June 2026
 | Item | Status | Notes |
 |---|---|---|
 | Professional product photography | ❌ Pending | Macro texture shots + in-use lifestyle images |
-| Lead magnet popup (Ayurvedic Skincare Guide) | ❌ Pending | Exit-intent or 40% scroll popup; requires PDF creation |
+| Lead magnet popup (Ayurvedic Skincare Guide) | ✅ Done | 40% scroll trigger, bark card, `/api/newsletter` POST, sessionStorage guard. PDF content placeholder — team to supply actual guide |
 | Homepage trust hierarchy redesign | Partial | TrustBadgeBar built (removed per owner preference); certifications still needed |
-| 6 long-tail blog articles | ❌ Pending | Target specific use-case queries per product; see SEO section |
+| 6 long-tail blog articles | ❌ Pending | 10 blog posts exist but all <1,000 words. Need expansion to 1,500+ each |
 | Pricing tiers — raise floor to ₹249, add premium SKU | ❌ Pending | Business decision; premium "Single Origin" line at ₹550–₹699 |
 | Cart AOV upsell | ✅ Done | Cross-sell strip in CartDrawer |
 | Price-per-use framing on product pages | ✅ Done | "~20 face masks per pack" below price; derived from weight + category |
@@ -76,12 +76,25 @@ Branch: `redesign/v2` · Last updated: June 2026
 - Product JSON-LD on all product pages (price, availability, ratings)
 - FAQ JSON-LD on all product pages (per-product questions)
 - Breadcrumb JSON-LD on all product pages
+- Article JSON-LD on all blog posts
 - Alt text audit complete — all images have descriptive, keyword-rich alt text
-- Blog: 6 articles exist at `/blog`
+- Blog: 10 articles exist at `/blog` (up from 6)
+- Homepage title fixed — no more duplicate "jaison" brand (was 71 chars, now 63)
+- Meta descriptions trimmed across homepage + about to <160 chars
+- Why Jaison + Contact page title patterns cleaned
+- Sitemap cleaned — `/shop?category=*` query-param URLs removed
+- `llms.txt` added at `/public/llms.txt` for AI crawler discoverability
+- Full SEO audit completed (Health Score: 58/100) — see `SEO-AUDIT.md`
 
 ## SEO — Pending
 
-- Keyword strategy shift to long-tail (see audit §08)
+- **Deploy redesign/v2** — all above SEO fixes are in branch, not yet live
+- **Submit sitemap** to Google Search Console after deploy (`https://jaisonskincare.com/sitemap.xml`)
+- Expand all 10 blog posts from ~800 words to 1,500+ words
+- Add `aggregateRating` to product schema once real reviews exist in DB
+- Add `dateModified` + `wordCount` fields to `ArticleJsonLd` (`src/components/seo/JsonLd.tsx`)
+- Add shop page metadata via `src/app/(storefront)/shop/layout.tsx` (page is `use client`, can't export metadata)
+- Keyword strategy shift to long-tail (see `SEO-AUDIT.md`)
 - Comparison keywords: "Jaison Herbals vs Nat Habit neem powder"
 - Local SEO: Nashik + Maharashtra Ayurveda searches
 - 12-article SEO content cluster per hero product
