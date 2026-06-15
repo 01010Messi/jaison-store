@@ -228,6 +228,7 @@ export function ArticleJsonLd({ slug }: { slug: string }) {
     datePublished: post.publishedAt,
     dateModified: post.dateModified,
     wordCount: wordCount,
+    inLanguage: "en-IN",
     author: {
       "@type": "Organization",
       name: "Jaison Herbals",

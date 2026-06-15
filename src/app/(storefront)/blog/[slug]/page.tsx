@@ -270,12 +270,17 @@ export default function BlogPostPage({ params }: Props) {
         <div className="container-brand max-w-3xl mx-auto py-10 md:py-14">
           <div className="space-y-4">{renderMarkdown(post.content)}</div>
 
-          {/* Related Products */}
+          {/* Shop the Ingredients CTA */}
           {relatedProducts.length > 0 && (
-            <div className="mt-14 pt-10 border-t border-border">
-              <h3 className="font-heading text-2xl text-bark mb-6">
-                Products Mentioned in This Article
-              </h3>
+            <div className="mt-14 -mx-4 sm:-mx-6 px-6 sm:px-8 py-10 rounded-xl bg-parchment/40">
+              <div className="mb-7">
+                <h3 className="font-heading text-3xl md:text-4xl text-bark font-medium tracking-wide">
+                  Shop the Ingredients
+                </h3>
+                <p className="font-body text-sm text-bark/60 mt-1.5">
+                  The herbs from this article, sourced and processed for your ritual.
+                </p>
+              </div>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 {relatedProducts.map(
                   (product) =>
@@ -283,24 +288,30 @@ export default function BlogPostPage({ params }: Props) {
                       <Link
                         key={product.slug}
                         href={`/shop/${product.slug}`}
-                        className="group flex items-center gap-3 p-3 border border-border rounded-xl hover:border-gold/50 transition-colors"
+                        className="group bg-cream rounded-xl overflow-hidden border border-border hover:border-gold/60 hover:shadow-warm transition-all duration-300"
                       >
-                        <div className="relative w-16 h-16 rounded-lg overflow-hidden flex-shrink-0">
+                        <div className="relative aspect-square overflow-hidden">
                           <Image
                             src={product.image}
                             alt={product.name}
                             fill
-                            className="object-cover"
-                            sizes="64px"
+                            className="object-cover transition-transform duration-500 group-hover:scale-105"
+                            sizes="(max-width: 640px) 100vw, 33vw"
                           />
                         </div>
-                        <div>
-                          <p className="font-heading text-sm text-bark group-hover:text-terracotta transition-colors">
-                            {product.name}
-                          </p>
-                          <p className="text-xs text-bark/60 font-body">
-                            ₹{product.price} · {product.weight}g
-                          </p>
+                        <div className="px-4 py-3 flex items-center justify-between">
+                          <div>
+                            <p className="font-heading text-[15px] text-bark group-hover:text-terracotta transition-colors leading-snug">
+                              {product.name}
+                            </p>
+                            <p className="text-xs text-bark/60 font-body mt-0.5">
+                              ₹{product.price} · {product.weight}g
+                            </p>
+                          </div>
+                          <ArrowRight
+                            className="h-4 w-4 text-bark/30 group-hover:text-terracotta group-hover:translate-x-0.5 transition-all duration-300 flex-shrink-0"
+                            aria-hidden="true"
+                          />
                         </div>
                       </Link>
                     )
