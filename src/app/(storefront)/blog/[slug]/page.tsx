@@ -272,7 +272,7 @@ export default function BlogPostPage({ params }: Props) {
 
           {/* Shop the Ingredients CTA */}
           {relatedProducts.length > 0 && (
-            <div className="mt-14 -mx-4 sm:-mx-6 px-6 sm:px-8 py-10 rounded-xl bg-parchment/40">
+            <div className="mt-14 pt-10 border-t border-border">
               <div className="mb-7">
                 <h3 className="font-heading text-3xl md:text-4xl text-bark font-medium tracking-wide">
                   Shop the Ingredients
