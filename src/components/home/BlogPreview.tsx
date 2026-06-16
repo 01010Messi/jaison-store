@@ -9,7 +9,7 @@ export default function BlogPreview() {
   const latestPosts = blogPosts.slice(0, 3);
 
   return (
-    <section className="py-14 md:py-20">
+    <section className="section-rhythm-lg">
       <div className="container-brand">
         <ScrollReveal animation="fade-up">
           <div className="text-center mb-10">

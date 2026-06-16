@@ -54,7 +54,7 @@ const pillars = [
 
 export default function TrustPillars() {
   return (
-    <section className="py-12 md:py-20 bg-surface-warm">
+    <section className="section-rhythm bg-surface-warm">
       <div className="container-brand">
         <div className="grid grid-cols-3 md:grid-cols-6 gap-6 md:gap-8">
           {pillars.map((pillar, index) => (

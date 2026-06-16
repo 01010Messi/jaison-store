@@ -27,7 +27,7 @@ const milestones = [
 
 export default function BrandTimeline() {
   return (
-    <section style={{ backgroundColor: "var(--color-cream)" }} className="py-14 md:py-20">
+    <section style={{ backgroundColor: "var(--color-cream)" }} className="section-rhythm-lg">
       <div className="container-brand">
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16">
 

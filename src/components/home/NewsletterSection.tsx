@@ -37,7 +37,7 @@ export default function NewsletterSection() {
   };
 
   return (
-    <section className="py-20 md:py-28 bg-bark relative overflow-hidden">
+    <section className="section-rhythm-lg bg-bark relative overflow-hidden">
       {/* Subtle pattern background */}
       <div className="absolute inset-0 opacity-[0.03]">
         <svg width="100%" height="100%">

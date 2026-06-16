@@ -42,7 +42,7 @@ const steps = [
 
 export default function HowToUseGuide() {
   return (
-    <section className="py-12 md:py-20 overflow-hidden" style={{ backgroundColor: "var(--color-parchment)" }}>
+    <section className="section-rhythm overflow-hidden" style={{ backgroundColor: "var(--color-parchment)" }}>
       <div className="container-brand">
         {/* Eyebrow + heading */}
         <SectionHeader

@@ -21,7 +21,7 @@ const claims = [
 export default function WhyPowderTeaser() {
   return (
     <section
-      className="relative overflow-hidden py-20 md:py-28"
+      className="relative overflow-hidden section-rhythm-lg"
       style={{ backgroundColor: "var(--color-terracotta)" }}
     >
       {/* Watermark */}

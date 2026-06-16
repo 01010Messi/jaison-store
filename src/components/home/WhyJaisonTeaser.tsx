@@ -25,7 +25,7 @@ const pillars = [
 
 export default function WhyJaisonTeaser() {
   return (
-    <section className="container-brand py-16 md:py-20">
+    <section className="container-brand section-rhythm-lg">
       {/* Header */}
       <div className="mb-10">
         <p
