@@ -1,17 +1,49 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import GlowPillLink from "@/components/ui/GlowPillLink";
+import { BreadcrumbJsonLd } from "@/components/seo/JsonLd";
 
 export const metadata: Metadata = {
-  title: "Why Powder? The Case Against Liquid Skincare | Jaison Herbals",
+  title: {
+    absolute: "Why Powder? The Case Against Liquid Skincare | Jaison Herbals",
+  },
   description:
     "An essay on why Jaison has never made a liquid, never added a preservative, and never will. Single-ingredient herbal powders — the honest alternative.",
   alternates: {
     canonical: "https://jaisonskincare.com/why-powder",
   },
+  openGraph: {
+    title: "Why Powder? The Case Against Liquid Skincare",
+    description:
+      "An essay on why Jaison has never made a liquid, never added a preservative, and never will. Single-ingredient herbal powders — the honest alternative.",
+    url: "https://jaisonskincare.com/why-powder",
+    images: [
+      {
+        url: "https://jaisonskincare.com/images/og/og-default.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Jaison Herbals — pure single-ingredient herbal powders",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Why Powder? The Case Against Liquid Skincare",
+    description:
+      "An essay on why Jaison has never made a liquid, never added a preservative, and never will. Single-ingredient herbal powders — the honest alternative.",
+    images: ["https://jaisonskincare.com/images/og/og-default.jpg"],
+  },
 };
 
 export default function WhyPowderPage() {
   return (
+    <>
+    <BreadcrumbJsonLd
+      items={[
+        { name: "Home", url: "https://jaisonskincare.com" },
+        { name: "Why Powder?", url: "https://jaisonskincare.com/why-powder" },
+      ]}
+    />
     <div className="min-h-screen">
 
       {/* ── SECTION 1 — Hero ── */}
@@ -215,6 +247,29 @@ export default function WhyPowderPage() {
               MADE IN INDIA · SINCE 1970
             </p>
           </div>
+
+          {/* Further reading */}
+          <div className="mt-10">
+            <p className="font-body text-sm leading-relaxed" style={{ color: "rgba(26,60,52,0.55)" }}>
+              Ready to try the real thing? Browse our{" "}
+              <Link
+                href="/shop"
+                className="underline underline-offset-2 transition-colors"
+                style={{ color: "var(--color-bark)" }}
+              >
+                single-ingredient herbal powders
+              </Link>
+              , or read the{" "}
+              <Link
+                href="/blog"
+                className="underline underline-offset-2 transition-colors"
+                style={{ color: "var(--color-bark)" }}
+              >
+                Jaison skincare blog
+              </Link>
+              {" "}for Ayurvedic routines and herb guides.
+            </p>
+          </div>
         </div>
       </section>
 
@@ -251,5 +306,6 @@ export default function WhyPowderPage() {
       </section>
 
     </div>
+    </>
   );
 }

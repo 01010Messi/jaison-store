@@ -1,12 +1,36 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { BreadcrumbJsonLd } from "@/components/seo/JsonLd";
 
 export const metadata: Metadata = {
-  title: "Our Story | Jaison Herbals",
+  title: {
+    absolute: "Our Story — Single-Ingredient Herbal Powders Since 1970 | Jaison Herbals",
+  },
   description:
     "One format. Fifty-five years. Zero exceptions. How Jaison Herbals has made single-ingredient Ayurvedic herbal powders since 1970 — and why we never changed.",
   alternates: {
     canonical: "https://jaisonskincare.com/our-story",
+  },
+  openGraph: {
+    title: "Our Story — Single-Ingredient Herbal Powders Since 1970",
+    description:
+      "One format. Fifty-five years. Zero exceptions. How Jaison Herbals has made single-ingredient Ayurvedic herbal powders since 1970 — and why we never changed.",
+    url: "https://jaisonskincare.com/our-story",
+    images: [
+      {
+        url: "https://jaisonskincare.com/images/og/og-default.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Jaison Herbals — handcrafted Ayurvedic herbal powders since 1970",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Our Story — Single-Ingredient Herbal Powders Since 1970",
+    description:
+      "One format. Fifty-five years. Zero exceptions. How Jaison Herbals has made single-ingredient Ayurvedic herbal powders since 1970 — and why we never changed.",
+    images: ["https://jaisonskincare.com/images/og/og-default.jpg"],
   },
 };
 
@@ -56,6 +80,12 @@ const acts = [
 export default function OurStoryPage() {
   return (
     <>
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", url: "https://jaisonskincare.com" },
+          { name: "Our Story", url: "https://jaisonskincare.com/our-story" },
+        ]}
+      />
       <style>{`
         .our-story-btn-primary:hover {
           box-shadow: 0 0 28px rgba(26, 60, 52, 0.18);
@@ -260,6 +290,13 @@ export default function OurStoryPage() {
               style={{ borderColor: "rgba(26,60,52,0.3)", color: "var(--color-bark)" }}
             >
               READ: WHY POWDER?
+            </Link>
+            <Link
+              href="/blog"
+              className="our-story-btn-outline inline-flex items-center gap-2 rounded-full px-9 py-4 font-accent text-[11px] tracking-[0.15em] uppercase transition-all border"
+              style={{ borderColor: "rgba(26,60,52,0.3)", color: "var(--color-bark)" }}
+            >
+              READ THE BLOG
             </Link>
           </div>
         </section>

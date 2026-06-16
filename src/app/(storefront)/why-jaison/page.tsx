@@ -2,13 +2,35 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import GoldRule from "@/components/decorative/GoldRule";
 import SectionDivider from "@/components/decorative/SectionDivider";
+import { BreadcrumbJsonLd } from "@/components/seo/JsonLd";
 
 export const metadata: Metadata = {
-  title: "Why Choose Jaison — Our Skincare Philosophy",
+  title: "Why Choose Jaison — Natural Ayurvedic Skincare",
   description:
     "We believe skincare works best when it stays close to nature and tradition. Pure ingredients, Ayurvedic wisdom, gentle formulas, made with care in India.",
   alternates: {
     canonical: "https://jaisonskincare.com/why-jaison",
+  },
+  openGraph: {
+    title: "Why Choose Jaison — Natural Ayurvedic Skincare",
+    description:
+      "We believe skincare works best when it stays close to nature and tradition. Pure ingredients, Ayurvedic wisdom, gentle formulas, made with care in India.",
+    url: "https://jaisonskincare.com/why-jaison",
+    images: [
+      {
+        url: "https://jaisonskincare.com/images/og/og-default.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Jaison Herbals — natural Ayurvedic herbal skincare powders",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Why Choose Jaison — Natural Ayurvedic Skincare",
+    description:
+      "We believe skincare works best when it stays close to nature and tradition. Pure ingredients, Ayurvedic wisdom, gentle formulas, made with care in India.",
+    images: ["https://jaisonskincare.com/images/og/og-default.jpg"],
   },
 };
 
@@ -37,6 +59,13 @@ const reasons = [
 
 export default function WhyJaisonPage() {
   return (
+    <>
+    <BreadcrumbJsonLd
+      items={[
+        { name: "Home", url: "https://jaisonskincare.com" },
+        { name: "Why Jaison?", url: "https://jaisonskincare.com/why-jaison" },
+      ]}
+    />
     <div className="min-h-screen">
       {/* Hero */}
       <section className="bg-surface-warm py-16 md:py-24">
@@ -84,14 +113,30 @@ export default function WhyJaisonPage() {
           <p className="text-bark/60 font-body mb-8">
             Try our range of 100% natural herbal powders and feel the difference nature makes.
           </p>
-          <Link
-            href="/shop"
-            className="inline-flex items-center gap-2 px-8 py-3 bg-terracotta text-cream rounded-full font-accent text-sm uppercase tracking-wider hover:bg-terracotta/90 transition-all"
-          >
-            Shop Now
-          </Link>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <Link
+              href="/shop"
+              className="inline-flex items-center gap-2 px-8 py-3 bg-terracotta text-cream rounded-full font-accent text-sm uppercase tracking-wider hover:bg-terracotta/90 transition-all"
+            >
+              Shop Now
+            </Link>
+            <Link
+              href="/why-powder"
+              className="inline-flex items-center gap-2 px-8 py-3 border border-bark/30 text-bark rounded-full font-accent text-sm uppercase tracking-wider hover:bg-bark/5 transition-all"
+            >
+              Why Powder?
+            </Link>
+          </div>
+          <p className="mt-8 font-body text-sm text-bark/50">
+            Learn more in our{" "}
+            <Link href="/blog" className="underline underline-offset-2 text-bark/70 hover:text-bark transition-colors">
+              Ayurvedic skincare blog
+            </Link>
+            .
+          </p>
         </div>
       </section>
     </div>
+    </>
   );
 }
