@@ -147,7 +147,7 @@ India's seasons demand different skincare, and ubtan adjusts beautifully to each
 
 **Summer** calls for a lighter application. Thin the paste with cucumber juice or extra rose water. Use in the evening after sun exposure to soothe skin and reverse the day's tan. Daily use is fine in summer since sweating and oil production are at their highest, and ubtan handles both.
 
-**Monsoon** demands antibacterial reinforcement. Add a pinch of neem powder to any ubtan recipe. Humidity-related fungal and bacterial activity spikes in the monsoon months, and neem's antimicrobial properties protect against the breakouts that tend to accompany this season.
+**Monsoon** demands antibacterial reinforcement. Add a pinch of [neem powder](/blog/neem-powder-for-acne-clear-skin) to any ubtan recipe. Humidity-related fungal and bacterial activity spikes in the monsoon months, and neem's antimicrobial properties protect against the breakouts that tend to accompany this season.
 
 **Winter** needs richer treatment. Replace water with warm milk, or add 1 tsp coconut oil to the paste. Reduce frequency to twice a week in cold months. Always follow with a light moisturiser since the air pulls moisture out faster than any other season.
 
@@ -324,7 +324,7 @@ Topical use of amla powder for hair care is generally considered safe during pre
 
 ## The Natural Path to Healthier Hair
 
-In a world of chemical treatments and salon procedures, amla powder remains one of the most effective, affordable, and safe ways to transform your hair. It's the same ingredient that Indian women have trusted for millennia — and for good reason. Give your hair the nutrition it craves with pure, natural amla powder, and watch the transformation unfold.`,
+In a world of chemical treatments and salon procedures, amla powder remains one of the most effective, affordable, and safe ways to transform your hair. It's the same ingredient that Indian women have trusted for millennia — and for good reason. Give your hair the nutrition it craves with pure, natural amla powder, and watch the transformation unfold. For the complete chemical-free wash system, pair amla with [reetha soapnut powder](/blog/reetha-soapnut-benefits-for-hair) — together they replace both shampoo and conditioner.`,
   },
   {
     title: "Multani Mitti Face Pack: 7 DIY Recipes for Every Skin Type",
@@ -437,7 +437,7 @@ One more thing worth knowing: Multani Mitti's swelling index, how much it expand
 
 **Method:** Make a slightly thick paste. Apply and leave for 10 minutes. Gently scrub in circular motions while removing. Rinse.
 
-**Why it works:** Ubtan brings its own brightening superpowers — turmeric, sandalwood, and saffron — which complement Multani Mitti's deep cleansing to reveal noticeably brighter, smoother skin in just one use.
+**Why it works:** [Ubtan](/blog/how-to-use-ubtan-for-glowing-skin) brings its own brightening superpowers — turmeric, sandalwood, and saffron — which complement Multani Mitti's deep cleansing to reveal noticeably brighter, smoother skin in just one use.
 
 ## Tips for Best Results
 
@@ -489,7 +489,7 @@ The mineral composition is identical if both are pure montmorillonite clay. The 
 
 ## Choose Your Pack and Start Today
 
-The beauty of Multani Mitti is its versatility. Whether you're battling oily skin, acne, tan, dryness, or dullness, there's a Multani Mitti recipe that's perfect for you. Start with the recipe that matches your skin concern, and don't be afraid to experiment with combinations. Your skin will thank you for choosing the natural path to beauty.`,
+The beauty of Multani Mitti is its versatility. Whether you're battling oily skin, acne, tan, dryness, or dullness, there's a Multani Mitti recipe that's perfect for you. Start with the recipe that matches your skin concern, and don't be afraid to experiment with combinations. Your skin will thank you for choosing the natural path to beauty. Multani Mitti works best as a weekly deep-cleanse step within a [complete Ayurvedic skincare routine](/blog/ayurvedic-skincare-routine-for-beginners) — each ingredient reinforces the others.`,
   },
   {
     title: "The Ultimate Natural Hair Wash: Shikakai, Reetha & Amla",
@@ -621,7 +621,7 @@ The standard 2:1:1 ratio (shikakai:reetha:amla) works for most people, but your 
 
 **Vata hair** (dry, brittle, frizzy) needs more amla. Use 2 tbsp shikakai + 1 tbsp reetha + 3 tbsp amla, and add coconut milk instead of water. The higher amla proportion provides extra conditioning to counteract dryness, and the coconut milk adds lipids that protect each strand.
 
-**Pitta hair** (oily roots, dry ends, premature grey, thinning) does best with equal parts all three (2:2:2). Add 1 tbsp bhringraj powder to the mix for extra anti-greying benefit. For sensitive or inflamed scalps, replace half the reetha with aloe vera gel.
+**Pitta hair** (oily roots, dry ends, premature grey, thinning) does best with equal parts all three (2:2:2). Add 1 tbsp [bhringraj powder](/blog/bhringraj-powder-for-hair-growth) to the mix for extra anti-greying benefit. For sensitive or inflamed scalps, replace half the reetha with aloe vera gel.
 
 **Kapha hair** (very oily scalp, heavy, flat, prone to dandruff) benefits from increasing reetha to 40% of the mix. Try 2 tbsp shikakai + 3 tbsp reetha + 1 tbsp amla + 1 tbsp neem. The extra reetha cuts through heavy oil buildup, and neem addresses the scalp fungus that causes dandruff in humid conditions.
 
@@ -657,7 +657,7 @@ Most people with normal to oily hair find they don't need a separate conditioner
 
 ## Make the Switch Today
 
-Switching to natural hair care is one of the best decisions you can make for your hair's long-term health. The Shikakai-Reetha-Amla combination has been proven over millennia and continues to outperform expensive commercial products. Your hair was designed to thrive with natural care — give it what it truly needs.`,
+Switching to natural hair care is one of the best decisions you can make for your hair's long-term health. The Shikakai-Reetha-Amla combination has been proven over millennia and continues to outperform expensive commercial products. For a deeper look at what [reetha alone can do](/blog/reetha-soapnut-benefits-for-hair), it functions as a complete cleanser in its own right. Your hair was designed to thrive with natural care — give it what it truly needs.`,
   },
   {
     title: "Neem Powder for Acne: Your Natural Path to Clear Skin",
@@ -822,7 +822,7 @@ Fungal acne (pityrosporum folliculitis) typically appears as uniform small bumps
 
 In a market flooded with chemical acne treatments — benzoyl peroxide, salicylic acid, retinoids — neem stands out as a time-tested alternative that works without the side effects. It doesn't burn your skin, doesn't cause peeling, and doesn't make you photosensitive. It simply works, the way nature intended.
 
-Your skin has an incredible ability to heal itself when given the right tools. Neem powder is one of the most powerful natural tools available. Trust the wisdom of Ayurveda, be consistent with your routine, and watch your skin transform.`,
+Your skin has an incredible ability to heal itself when given the right tools. Neem powder is one of the most powerful natural tools available — use it as the cleansing backbone of a [5-step Ayurvedic skincare routine](/blog/ayurvedic-skincare-routine-for-beginners) for compounding results. Trust the wisdom of Ayurveda, be consistent with your routine, and watch your skin transform.`,
   },
   {
     title: "Ayurvedic Skincare Routine for Beginners: A Simple 5-Step Guide",
@@ -986,7 +986,7 @@ Natural skincare works on your skin's natural renewal cycle, approximately 28 da
 
 **Do I need to buy all products at once?**
 
-No. Start with just two: neem powder for cleansing and Multani Mitti or ubtan for weekly masking. These two alone cover Steps 1, 3, and 4 of the 5-step routine. Add orange peel powder in week 2. Add a natural oil in week 3. Building gradually lets your skin adjust and helps you identify what works best for you.
+No. Start with just two: [neem powder for cleansing](/blog/neem-powder-for-acne-clear-skin) and [Multani Mitti](/blog/multani-mitti-face-pack-recipes) or ubtan for weekly masking. These two alone cover Steps 1, 3, and 4 of the 5-step routine. Add orange peel powder in week 2. Add a natural oil in week 3. Building gradually lets your skin adjust and helps you identify what works best for you.
 
 **Can I combine Ayurvedic skincare with my existing products like SPF and moisturiser?**
 
@@ -1101,7 +1101,7 @@ Apply on tanned areas for 20 minutes. Gently scrub while removing.
 
 ### Acne Control Pack
 - 1 tbsp orange peel powder
-- 1 tbsp neem powder
+- 1 tbsp [neem powder](/blog/neem-powder-for-acne-clear-skin)
 - Rose water
 
 Apply on acne-prone areas for 15 minutes. Rinse gently.
@@ -1319,7 +1319,7 @@ Topical use of Bhringraj oil or powder on the scalp is generally considered safe
 
 ## The Natural Path to Thicker, Stronger Hair
 
-In a world of expensive hair transplants, chemical treatments, and miracle serums, Bhringraj stands as a humble yet incredibly effective alternative. It doesn't promise instant results — it delivers lasting transformation. The same transformation that Indian royalty relied on centuries ago is available to you today in the form of pure, natural Bhringraj powder. Give your hair the royal treatment it deserves.`,
+In a world of expensive hair transplants, chemical treatments, and miracle serums, Bhringraj stands as a humble yet incredibly effective alternative. It doesn't promise instant results — it delivers lasting transformation. The same transformation that Indian royalty relied on centuries ago is available to you today in the form of pure, natural Bhringraj powder. Give your hair the royal treatment it deserves. For natural colour alongside your growth treatment, explore [mehendi as a chemical-free colourant](/blog/mehendi-henna-natural-hair-colour-guide) — bhringraj and mehendi pair naturally for a complete Ayurvedic hair ritual.`,
   },
   {
     title: "Reetha (Soapnut) for Hair: Nature's Gentlest Cleanser",
@@ -1443,7 +1443,7 @@ Fun fact: Reetha is so versatile that it's used as a natural laundry detergent, 
 
 In Ayurveda, cleansing is not one-size-fits-all. Different hair types respond differently to reetha, and the herbs you combine it with should match your constitution.
 
-**Vata hair** (dry, brittle, frizzy, prone to breakage) can find straight reetha mildly drying since it is, by nature, a cleanser. Vata types should always combine reetha with amla powder (1:1 ratio) and consider adding a few drops of sesame oil to the paste before application. The amla adds moisture retention and the oil prevents any dryness during the transition period.
+**Vata hair** (dry, brittle, frizzy, prone to breakage) can find straight reetha mildly drying since it is, by nature, a cleanser. Vata types should always combine reetha with [amla powder](/blog/amla-powder-benefits-for-hair-growth) (1:1 ratio) and consider adding a few drops of sesame oil to the paste before application. The amla adds moisture retention and the oil prevents any dryness during the transition period.
 
 **Pitta hair** (fine, oily at roots, premature grey, sensitive scalp) responds best to reetha. Pitta scalps tend to overproduce sebum in response to the irritation caused by chemical shampoos. Switching to reetha often dramatically reduces oiliness after a 3-4 week adjustment. Combine with shikakai for extra cleansing and neem powder for scalp cooling.
 
@@ -1481,7 +1481,7 @@ Yes, reetha is one of the gentlest hair cleansers available. It has been used in
 
 ## Make the Natural Switch
 
-Reetha represents the simplest, purest form of hair care — a single natural ingredient that cleans, conditions, and protects your hair simultaneously. No complicated ingredient lists, no harsh chemicals, no plastic waste. Just a fruit that nature designed to be the perfect cleanser. Your hair — and the planet — will thank you for making the switch.`,
+Reetha represents the simplest, purest form of hair care — a single natural ingredient that cleans, conditions, and protects your hair simultaneously. No complicated ingredient lists, no harsh chemicals, no plastic waste. Just a fruit that nature designed to be the perfect cleanser. Pair your reetha wash with a weekly [bhringraj oil treatment](/blog/bhringraj-powder-for-hair-growth) to address hair fall and scalp health simultaneously. Your hair — and the planet — will thank you for making the switch.`,
   },
   {
     title: "Mehendi (Henna) for Hair: Complete Guide to Natural Hair Colour",
@@ -1667,7 +1667,7 @@ Yes, and the results can be stunning — lighter base hair actually takes mehend
 
 ## The Natural Choice for Beautiful Hair
 
-Mehendi is proof that the best beauty solutions are often the oldest ones. While chemical dyes damage your hair with every application, mehendi strengthens it. While chemical dyes fade and need frequent touch-ups, mehendi builds upon itself, getting richer with each application. It's not just a hair dye — it's a complete hair treatment that colours, conditions, and protects in one step. Embrace this ancient beauty secret and enjoy naturally beautiful, chemical-free hair colour.`,
+Mehendi is proof that the best beauty solutions are often the oldest ones. While chemical dyes damage your hair with every application, mehendi strengthens it. While chemical dyes fade and need frequent touch-ups, mehendi builds upon itself, getting richer with each application. It's not just a hair dye — it's a complete hair treatment that colours, conditions, and protects in one step. Complete the ritual: wash your hair with the [Shikakai, Reetha & Amla natural method](/blog/natural-hair-wash-shikakai-reetha-amla) before application, and follow with weekly [bhringraj oil treatments](/blog/bhringraj-powder-for-hair-growth) between colour sessions for stronger, faster-growing hair. Embrace this ancient beauty secret and enjoy naturally beautiful, chemical-free hair colour.`,
   },
 ];
 
