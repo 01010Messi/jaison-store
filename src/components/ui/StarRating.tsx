@@ -35,37 +35,46 @@ export default function StarRating({
 
   const displayRating = hoverRating || rating;
 
+  const starButtons = Array.from({ length: maxRating }).map((_, i) => {
+    const starValue = i + 1;
+    const isFilled = starValue <= displayRating;
+
+    return (
+      <button
+        key={i}
+        type="button"
+        disabled={!interactive}
+        aria-label={interactive ? `Rate ${starValue} out of ${maxRating} stars` : undefined}
+        onClick={() => interactive && onChange?.(starValue)}
+        onMouseEnter={() => interactive && setHoverRating(starValue)}
+        onMouseLeave={() => interactive && setHoverRating(0)}
+        className={cn(
+          "transition-colors duration-150",
+          interactive && "cursor-pointer hover:scale-110",
+          !interactive && "cursor-default"
+        )}
+      >
+        <Star
+          className={cn(
+            sizes[size],
+            isFilled
+              ? "fill-gold text-gold"
+              : "fill-transparent text-parchment-dark"
+          )}
+        />
+      </button>
+    );
+  });
+
   return (
     <div className={cn("flex items-center gap-0.5", className)}>
-      {Array.from({ length: maxRating }).map((_, i) => {
-        const starValue = i + 1;
-        const isFilled = starValue <= displayRating;
-
-        return (
-          <button
-            key={i}
-            type="button"
-            disabled={!interactive}
-            onClick={() => interactive && onChange?.(starValue)}
-            onMouseEnter={() => interactive && setHoverRating(starValue)}
-            onMouseLeave={() => interactive && setHoverRating(0)}
-            className={cn(
-              "transition-colors duration-150",
-              interactive && "cursor-pointer hover:scale-110",
-              !interactive && "cursor-default"
-            )}
-          >
-            <Star
-              className={cn(
-                sizes[size],
-                isFilled
-                  ? "fill-gold text-gold"
-                  : "fill-transparent text-parchment-dark"
-              )}
-            />
-          </button>
-        );
-      })}
+      {interactive ? (
+        <div role="radiogroup" aria-label="Rating" className="flex items-center gap-0.5">
+          {starButtons}
+        </div>
+      ) : (
+        starButtons
+      )}
       {showCount && (
         <span className="ml-1.5 text-xs text-bark/60 font-body">
           ({count})

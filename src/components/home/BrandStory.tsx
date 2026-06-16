@@ -6,7 +6,7 @@ import ScrollReveal from "@/components/decorative/ScrollReveal";
 
 export default function BrandStory() {
   return (
-    <section className="py-16 md:py-24 bg-surface-warm">
+    <section className="section-rhythm-lg bg-surface-warm">
       <div className="container-brand">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           {/* Image */}

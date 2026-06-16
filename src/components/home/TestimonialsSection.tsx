@@ -7,7 +7,7 @@ const testimonials = [
     age: 67,
     city: "Jaipur",
     product: "Ubtan",
-    avatarBg: "#C9A84C",
+    avatarBg: "var(--color-gold)",
     quote:
       "I have used this since 1979. Nothing on the shelf has ever tempted me to switch.",
   },
@@ -17,7 +17,7 @@ const testimonials = [
     age: 38,
     city: "Bengaluru",
     product: "Neem",
-    avatarBg: "#4A7C59",
+    avatarBg: "var(--color-bark-light)",
     quote:
       "I spent twelve years on serums. Neem powder did more in six weeks than all of them combined.",
   },
@@ -27,7 +27,7 @@ const testimonials = [
     age: 22,
     city: "Pune",
     product: "Ubtan Powder",
-    avatarBg: "#C17A3A",
+    avatarBg: "var(--color-terracotta-light)",
     quote:
       "My grandmother made ubtan for my mother's wedding. The smell took me straight back to her kitchen.",
   },
@@ -37,7 +37,7 @@ const testimonials = [
     age: 51,
     city: "Hyderabad",
     product: "Amla",
-    avatarBg: "#5C8A6A",
+    avatarBg: "var(--color-sage)",
     quote:
       "Shampooed for fifteen years. Switched to reetha and shikakai. I have not bought a bottle since.",
   },
@@ -47,7 +47,7 @@ const testimonials = [
     age: 74,
     city: "Indore",
     product: "Mehendi",
-    avatarBg: "#6B8A5A",
+    avatarBg: "var(--color-sage)",
     quote:
       "No PPD. No chemicals. Just leaves. My grey stays covered for six weeks at a time.",
   },
@@ -55,7 +55,7 @@ const testimonials = [
 
 export default function TestimonialsSection() {
   return (
-    <section className="py-16 md:py-24 bg-parchment overflow-hidden">
+    <section className="section-rhythm-lg bg-parchment overflow-hidden">
       <div className="container-brand">
 
         {/* Section header — two columns */}
@@ -89,7 +89,8 @@ export default function TestimonialsSection() {
               key={t.name}
               className="flex-shrink-0 w-[220px] md:w-auto h-[420px] rounded-2xl flex flex-col justify-between p-5 relative overflow-hidden"
               style={{
-                background: "linear-gradient(165deg, #6B3A20 0%, #261008 100%)",
+                background:
+                  "linear-gradient(165deg, var(--color-terracotta-dark) 0%, var(--color-bark) 100%)",
               }}
             >
               {/* Avatar + name pill */}
@@ -132,7 +133,7 @@ export default function TestimonialsSection() {
         </div>
 
         {/* Footer caption */}
-        <p className="text-center font-accent text-[10px] uppercase tracking-[0.25em] text-bark/30 mt-8">
+        <p className="text-center font-accent text-[10px] uppercase tracking-[0.25em] text-bark/60 mt-8">
           Real customers. Real results. Unfiltered.
         </p>
 

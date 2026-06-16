@@ -53,6 +53,8 @@ Watermarks use bigger clamps (`clamp(8rem, 24vw, 20rem)` etc.) — decorative, s
 
 **Eyebrow spec (the only one):** `font-accent text-[11px] tracking-[0.22em] uppercase`. Tones: muted = `text-bark/60`, accent = `text-terracotta` (not `terracotta-light` — contrast). Optional leading gold em-dash. Implemented in `SectionHeader`; don't invent new sizes/trackings (10px/13px and 0.18em/0.28em variants are legacy — migrate on touch).
 
+**Tracking scale — exactly two:** `tracking-[0.22em]` is reserved for section eyebrows only (see spec above). `tracking-[0.14em]` is for interactive labels and buttons (form field labels, pill CTAs, nav links). Don't mix the two or invent a third value.
+
 **Micro sizes:** `text-[10px]`/`text-[11px]` are allowed for chips and labels only, never for content users must read.
 
 ## 3. Spacing & layout
@@ -137,6 +139,17 @@ Opacity 0.03–0.06, always `aria-hidden` + `pointer-events-none select-none`, p
 
 ## 9. Conventions
 
-- **z-index:** 0 content · 10 overlays-in-section · 20 floating UI · 30 sticky header · 40 backdrops · 50 modals/drawers/toasts. Don't invent values between.
+- **z-index scale:**
+
+  | Value | Use |
+  |---|---|
+  | `0` | Default content |
+  | `10` | Overlays within a section (image badges, gradient caption bars) |
+  | `20` | Floating UI (dropdowns, tooltips, popovers) |
+  | `30` | Sticky header |
+  | `40` | Backdrops (modal/drawer scrims) |
+  | `50` | Modals, drawers, toasts |
+
+  Don't invent values between these six.
 - **Inline styles:** allowed (the codebase convention avoids dynamic Tailwind classes), but colors must be `var(--color-*)` and font sizes must come from the display scale above.
 - **Animations:** use the named keyframes in `tailwind.config.ts` (`fade-up`, `scale-in`, …) with `ease-out-expo`. Infinite animations (marquee, ping) must be killed by reduced-motion (the global block handles CSS; check any new JS-driven loop).

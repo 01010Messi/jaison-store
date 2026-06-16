@@ -27,7 +27,7 @@ const categories = [
 
 export default function CategoryShowcase() {
   return (
-    <section className="py-16 md:py-24">
+    <section className="section-rhythm-lg">
       <div className="container-brand">
         <ScrollReveal animation="fade-up">
           <div className="text-center mb-12">

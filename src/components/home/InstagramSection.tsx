@@ -3,8 +3,8 @@ import { Instagram } from "lucide-react";
 
 const tiles = [
   {
-    bg: "#C4A882",
-    avatarBg: "#A07248",
+    bg: "var(--color-gold-light)",
+    avatarBg: "var(--color-terracotta-light)",
     handle: "@sneha.ahuja",
     caption: "First time using Multani. Cracked = too thick. Lesson learned.",
     motif: "figure",
@@ -12,47 +12,47 @@ const tiles = [
   },
   {
     bg: "var(--color-bark)",
-    avatarBg: "#2D5A48",
+    avatarBg: "var(--color-bark-light)",
     handle: "@aarav.makes",
     caption: "Cold-process Shikakai foam. No sulphates. Look at the lather.",
     motif: "glow",
     aspect: "1/1",
   },
   {
-    bg: "#EDE0C8",
-    avatarBg: "#C9A84C",
+    bg: "var(--color-parchment)",
+    avatarBg: "var(--color-gold)",
     handle: "@radhika.mehra",
     caption: "Mum's wedding ubtan. Found her 1989 jar today.",
     motif: "jar",
     aspect: "3/4",
   },
   {
-    bg: "#7B5534",
-    avatarBg: "#4A7C59",
+    bg: "var(--color-terracotta)",
+    avatarBg: "var(--color-bark-light)",
     handle: "@oilskin.diaries",
     caption: "Week 6 on Neem. Side-by-side photos.",
     motif: "sphere",
     aspect: "4/5",
   },
   {
-    bg: "#D4C4A8",
-    avatarBg: "#8B6B4A",
+    bg: "var(--color-parchment-dark)",
+    avatarBg: "var(--color-gold-dark)",
     handle: "@hairhouse.bangalore",
     caption: "Three-powder wash, 90s technique, 2026 lighting.",
     motif: "drop",
     aspect: "3/4",
   },
   {
-    bg: "#4A2810",
-    avatarBg: "#E26713",
+    bg: "var(--color-terracotta-dark)",
+    avatarBg: "var(--color-terracotta)",
     handle: "@bombay.beautyclub",
     caption: "Using Reetha as a facial cleanser. Wild idea. It worked.",
     motif: "crescent",
     aspect: "4/5",
   },
   {
-    bg: "#241408",
-    avatarBg: "#4A7C59",
+    bg: "var(--color-bark)",
+    avatarBg: "var(--color-bark-light)",
     handle: "@maithili.green",
     caption: "Day one of switching from chemical henna.",
     motif: "leaf",
@@ -60,7 +60,7 @@ const tiles = [
   },
   {
     bg: "var(--color-terracotta)",
-    avatarBg: "#C17A3A",
+    avatarBg: "var(--color-terracotta-light)",
     handle: "@the.herb.kitchen",
     caption: "Rose petal powder mixed with honey. 20 minutes, weekly.",
     motif: "oval",
@@ -145,13 +145,10 @@ function Motif({ type, bg }: { type: string; bg: string }) {
 
 export default function InstagramSection() {
   return (
-    <section className="py-16 md:py-24 overflow-hidden">
+    <section className="section-rhythm-lg overflow-hidden">
       {/* Header */}
       <div className="container-brand mb-10 md:mb-14">
-        <p
-          className="font-accent uppercase mb-5"
-          style={{ fontSize: "10px", letterSpacing: "0.22em", color: "rgba(26,60,52,0.40)" }}
-        >
+        <p className="font-accent text-[11px] tracking-[0.22em] uppercase text-bark/60 mb-5">
           — Tag #jaisonritual · We feature one a day
         </p>
         <h2

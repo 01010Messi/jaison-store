@@ -28,7 +28,7 @@ export default function BlogSection() {
       `}</style>
 
       <section
-        className="py-16 md:py-24"
+        className="section-rhythm-lg"
         style={{ backgroundColor: "var(--color-cream)" }}
       >
         <div className="px-6 md:px-14 lg:px-24">
