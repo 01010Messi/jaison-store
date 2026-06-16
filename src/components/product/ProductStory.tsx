@@ -170,25 +170,37 @@ export default function ProductStory({ product }: ProductStoryProps) {
               className="mb-10 md:mb-12"
             />
 
-            {blocks.map((block, bi) => (
-              <div key={bi} className={bi > 0 ? "mt-10" : ""}>
-                {block.heading && (
-                  <h3
-                    className="font-heading font-light mb-6 text-terracotta"
-                    style={{ fontSize: "1.25rem" }}
-                  >
-                    {block.heading}.
-                  </h3>
-                )}
-                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4">
-                  {block.steps.map((step, si) => (
-                    <StepCard key={si} number={si + 1} background="tint">
-                      {step}
-                    </StepCard>
-                  ))}
+            {blocks.some((b) => b.heading) ? (
+              // Headed sections (e.g. "For Hair" / "For Skin") — keep grouped
+              blocks.map((block, bi) => (
+                <div key={bi} className={bi > 0 ? "mt-10" : ""}>
+                  {block.heading && (
+                    <h3
+                      className="font-heading font-light mb-6 text-terracotta"
+                      style={{ fontSize: "1.25rem" }}
+                    >
+                      {block.heading}.
+                    </h3>
+                  )}
+                  <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4">
+                    {block.steps.map((step, si) => (
+                      <StepCard key={si} number={si + 1} background="tint">
+                        {step}
+                      </StepCard>
+                    ))}
+                  </div>
                 </div>
+              ))
+            ) : (
+              // No section headings (combos / single-step paragraphs) — flat grid
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4">
+                {blocks.flatMap((b) => b.steps).map((step, i) => (
+                  <StepCard key={i} number={i + 1} background="tint">
+                    {step}
+                  </StepCard>
+                ))}
               </div>
-            ))}
+            )}
           </div>
         </section>
       )}

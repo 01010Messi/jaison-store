@@ -75,6 +75,7 @@ export default function StepCard({
                 : "clamp(28px, 4vw, 44px)",
             letterSpacing: "-0.03em",
             marginBottom: numberSize === "lg" ? "0.75rem" : "1rem",
+            fontVariantNumeric: "lining-nums",
           }}
         >
           {num}
