@@ -47,74 +47,102 @@ export function generateStaticParams() {
 }
 
 function renderMarkdown(content: string) {
-  // Simple markdown-to-JSX renderer for blog content
   const lines = content.split("\n");
   const elements: React.ReactNode[] = [];
   let currentParagraph: string[] = [];
   let inList = false;
   let listItems: string[] = [];
+  let blockquoteLines: string[] = [];
+
+  const fmt = (text: string) =>
+    text
+      .replace(
+        /\[([^\]]+)\]\(([^)]+)\)/g,
+        '<a href="$2" class="text-terracotta underline hover:text-terracotta-dark transition-colors">$1</a>'
+      )
+      .replace(/\*\*(.*?)\*\*/g, '<strong class="text-bark font-semibold">$1</strong>')
+      .replace(/\*(.*?)\*/g, "<em>$1</em>");
 
   const flushParagraph = () => {
-    if (currentParagraph.length > 0) {
-      const text = currentParagraph.join(" ");
-      if (text.trim()) {
-        elements.push(
-          <p
-            key={`p-${elements.length}`}
-            className="text-bark/75 font-body leading-[1.8] text-[15px]"
-            dangerouslySetInnerHTML={{
-              __html: text
-                .replace(
-                  /\*\*(.*?)\*\*/g,
-                  '<strong class="text-bark font-semibold">$1</strong>'
-                )
-                .replace(/\*(.*?)\*/g, "<em>$1</em>"),
-            }}
-          />
-        );
-      }
-      currentParagraph = [];
+    if (currentParagraph.length === 0) return;
+    const text = currentParagraph.join(" ");
+    if (text.trim()) {
+      elements.push(
+        <p
+          key={`p-${elements.length}`}
+          className="text-bark/75 font-body leading-[1.8] text-[15px]"
+          dangerouslySetInnerHTML={{ __html: fmt(text) }}
+        />
+      );
     }
+    currentParagraph = [];
   };
 
   const flushList = () => {
-    if (listItems.length > 0) {
-      elements.push(
-        <ul
-          key={`ul-${elements.length}`}
-          className="space-y-2 my-4 pl-1"
-        >
-          {listItems.map((item, i) => (
-            <li
-              key={i}
-              className="flex items-start gap-2.5 text-bark/75 font-body text-[15px] leading-[1.8]"
-            >
-              <span className="text-gold mt-2 text-[8px]">&#9679;</span>
-              <span
-                dangerouslySetInnerHTML={{
-                  __html: item
-                    .replace(
-                      /\*\*(.*?)\*\*/g,
-                      '<strong class="text-bark font-semibold">$1</strong>'
-                    )
-                    .replace(/\*(.*?)\*/g, "<em>$1</em>"),
-                }}
-              />
-            </li>
-          ))}
+    if (listItems.length === 0) return;
+    elements.push(
+      <ul key={`ul-${elements.length}`} className="space-y-2 my-4 pl-1">
+        {listItems.map((item, i) => (
+          <li
+            key={i}
+            className="flex items-start gap-2.5 text-bark/75 font-body text-[15px] leading-[1.8]"
+          >
+            <span className="text-gold mt-2 text-[8px]" aria-hidden="true">&#9679;</span>
+            <span dangerouslySetInnerHTML={{ __html: fmt(item) }} />
+          </li>
+        ))}
+      </ul>
+    );
+    listItems = [];
+    inList = false;
+  };
+
+  const flushBlockquote = () => {
+    if (blockquoteLines.length === 0) return;
+    const first = blockquoteLines[0].trim();
+    const isHeading = first.startsWith("**") && first.endsWith("**") && !first.startsWith("- ");
+    const headingText = isHeading ? first.replace(/\*\*/g, "") : null;
+    const body = isHeading ? blockquoteLines.slice(1) : blockquoteLines;
+
+    elements.push(
+      <div key={`bq-${elements.length}`} className="bg-parchment border border-border rounded-xl p-5 my-6">
+        {headingText && (
+          <p className="text-[11px] font-accent uppercase tracking-[0.18em] text-bark/60 mb-3">
+            {headingText}
+          </p>
+        )}
+        <ul className="space-y-2.5">
+          {body
+            .filter((l) => l.trim())
+            .map((line, i) => {
+              const isBullet = line.trim().startsWith("- ");
+              const text = isBullet ? line.trim().slice(2) : line.trim();
+              return (
+                <li key={i} className="flex items-start gap-2.5 text-[14px] font-body text-bark/70 leading-relaxed">
+                  {isBullet && (
+                    <span className="text-gold mt-1.5 text-[8px] shrink-0" aria-hidden="true">&#9679;</span>
+                  )}
+                  <span dangerouslySetInnerHTML={{ __html: fmt(text) }} />
+                </li>
+              );
+            })}
         </ul>
-      );
-      listItems = [];
-      inList = false;
-    }
+      </div>
+    );
+    blockquoteLines = [];
   };
 
   for (const line of lines) {
     const trimmed = line.trim();
 
-    if (trimmed.startsWith("## ")) {
+    if (trimmed.startsWith("> ")) {
       flushParagraph();
       flushList();
+      blockquoteLines.push(trimmed.slice(2));
+    } else if (trimmed.startsWith("## ")) {
+      flushParagraph();
+      flushList();
+      flushBlockquote();
       elements.push(
         <h2
           key={`h2-${elements.length}`}
@@ -126,6 +154,7 @@ function renderMarkdown(content: string) {
     } else if (trimmed.startsWith("### ")) {
       flushParagraph();
       flushList();
+      flushBlockquote();
       elements.push(
         <h3
           key={`h3-${elements.length}`}
@@ -136,12 +165,13 @@ function renderMarkdown(content: string) {
       );
     } else if (trimmed.startsWith("- ") || trimmed.startsWith("* ")) {
       flushParagraph();
+      flushBlockquote();
       inList = true;
       listItems.push(trimmed.replace(/^[-*]\s/, ""));
     } else if (trimmed.startsWith("|")) {
-      // Simple table handling - skip for now
       flushParagraph();
       flushList();
+      flushBlockquote();
       if (!trimmed.includes("---")) {
         const cells = trimmed
           .split("|")
@@ -153,9 +183,7 @@ function renderMarkdown(content: string) {
               key={`tr-${elements.length}`}
               className="flex gap-4 py-2 border-b border-border-light text-sm font-body text-bark/70"
             >
-              <span className="font-semibold text-bark min-w-[100px]">
-                {cells[0]}
-              </span>
+              <span className="font-semibold text-bark min-w-[100px]">{cells[0]}</span>
               <span>{cells[1]}</span>
             </div>
           );
@@ -163,16 +191,17 @@ function renderMarkdown(content: string) {
       }
     } else if (trimmed === "") {
       if (inList) flushList();
+      flushBlockquote();
       flushParagraph();
     } else {
-      if (inList) {
-        flushList();
-      }
+      if (inList) flushList();
+      if (blockquoteLines.length > 0) flushBlockquote();
       currentParagraph.push(trimmed);
     }
   }
 
   flushList();
+  flushBlockquote();
   flushParagraph();
 
   return elements;

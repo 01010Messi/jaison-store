@@ -29,7 +29,7 @@ export const blogPosts: BlogPost[] = [
     image: "/images/blog/ubtan-styled.webp",
     metaTitle: "How to Use Ubtan for Glowing Skin — DIY Recipes & Tips",
     metaDescription:
-      "Learn how to use ubtan powder for glowing skin with easy DIY face pack recipes. Brighten skin, reduce tan & get a natural glow with this ancient Ayurvedic remedy.",
+      "Learn how to use ubtan powder for glowing skin with easy DIY face pack recipes. Brighten skin, reduce tan & get a natural glow with this Ayurvedic remedy.",
     keywords: [
       "ubtan for glowing skin",
       "how to use ubtan",
@@ -177,7 +177,7 @@ Ubtan has no gender-specific application. In traditional Ayurvedic culture, it w
 
 Our ubtan is crafted from a traditional Ayurvedic recipe featuring bakuchi, haritaki, turmeric, sandalwood, gram flour, almond powder, rose petals, saffron, and camphor. Every ingredient is 100% natural with zero chemicals, ensuring your skin gets only the purest care. Each batch is carefully processed to preserve the potency of every herb.
 
-Ubtan isn't just a face pack — it's a self-care ritual that connects you to centuries of Indian beauty wisdom. Give your skin the gift of this ancient tradition, and watch it thank you with a natural, healthy glow.`,
+Ubtan isn't just a face pack — it's a self-care ritual that connects you to centuries of Indian beauty wisdom. It works best as the weekly exfoliating step in a [complete Ayurvedic skincare routine](/blog/ayurvedic-skincare-routine-for-beginners) — the brightening anchor in any natural skin regimen. Give your skin the gift of this ancient tradition, and watch it thank you with a natural, healthy glow.`,
   },
   {
     title: "5 Amazing Benefits of Amla Powder for Hair Growth",
@@ -190,10 +190,9 @@ Ubtan isn't just a face pack — it's a self-care ritual that connects you to ce
     dateModified: "2026-06-16",
     readTime: 8,
     image: "/images/blog/amla-styled.webp",
-    metaTitle:
-      "5 Benefits of Amla Powder for Hair Growth — How to Use Amla for Hair",
+    metaTitle: "Amla Powder Benefits for Hair Growth — How to Use Amla",
     metaDescription:
-      "Discover 5 proven benefits of amla powder for hair growth. Learn how to use amla powder for dandruff, greying, hair fall & shine. Natural Ayurvedic hair care tips.",
+      "Discover 5 proven benefits of amla powder for hair growth. Learn how to use amla for dandruff, greying, hair fall & shine. Natural Ayurvedic hair care tips.",
     keywords: [
       "amla powder for hair",
       "amla benefits for hair",
@@ -275,7 +274,7 @@ Vitamin C in amla is essential for collagen synthesis. Collagen forms the struct
 - Wash out with a mild shampoo
 
 ### Amla + Shikakai Hair Wash
-For a completely natural hair wash, combine equal parts amla powder and shikakai powder with warm water. This combination cleanses, conditions, and nourishes your hair without any chemicals.
+For a completely natural hair wash, combine equal parts amla powder and shikakai powder with warm water. This combination cleanses, conditions, and nourishes your hair without any chemicals. For precise ratios and a full washing method, see the [Shikakai, Reetha & Amla natural hair wash guide](/blog/natural-hair-wash-shikakai-reetha-amla).
 
 ## How Often to Use Amla Powder
 
@@ -336,8 +335,7 @@ In a world of chemical treatments and salon procedures, amla powder remains one 
     dateModified: "2026-06-16",
     readTime: 8,
     image: "/images/blog/multani-styled.webp",
-    metaTitle:
-      "Multani Mitti Face Pack: 7 DIY Recipes for Oily, Dry & Combination Skin",
+    metaTitle: "Multani Mitti Face Pack: 7 Recipes for All Skin Types",
     metaDescription:
       "7 easy Multani Mitti face pack recipes for glowing skin. DIY packs for oily skin, acne, tan removal, dry skin & more. Natural Fuller's Earth beauty tips.",
     keywords: [
@@ -405,7 +403,7 @@ One more thing worth knowing: Multani Mitti's swelling index, how much it expand
 
 **Method:** Combine all ingredients into a paste. Apply to face, focusing on acne-prone areas. Leave for 15 minutes. Rinse gently.
 
-**Why it works:** Neem powder is a potent antibacterial that kills acne-causing bacteria, while Multani Mitti draws out the impurities clogging your pores. This combination tackles both the cause and the symptoms of acne.
+**Why it works:** Neem powder is a potent antibacterial that kills acne-causing bacteria, while Multani Mitti draws out the impurities clogging your pores. This combination tackles both the cause and the symptoms of acne. For a deeper guide to neem alone, read [how to use neem powder for clear skin](/blog/neem-powder-for-acne-clear-skin).
 
 ## Recipe 4: Tan Removal Pack (Sun-Damaged Skin)
 
@@ -502,10 +500,9 @@ The beauty of Multani Mitti is its versatility. Whether you're battling oily ski
     dateModified: "2026-06-16",
     readTime: 8,
     image: "/images/blog/shikakai-styled.webp",
-    metaTitle:
-      "Natural Hair Wash with Shikakai, Reetha & Amla — Complete Guide",
+    metaTitle: "Natural Hair Wash: Shikakai, Reetha & Amla Guide",
     metaDescription:
-      "Learn how to wash hair naturally with Shikakai, Reetha & Amla powder. Step-by-step guide to chemical-free hair care. Say goodbye to shampoo with this Ayurvedic routine.",
+      "Wash hair naturally with Shikakai, Reetha & Amla powder. Step-by-step guide to chemical-free hair care. Say goodbye to shampoo with this Ayurvedic routine.",
     keywords: [
       "shikakai for hair",
       "natural hair wash",
@@ -548,7 +545,7 @@ Amla is the nourisher of the trio. Packed with Vitamin C and antioxidants, it co
 
 **Reetha (Sapindus mukorossi)** shells contain 10-12% saponin content, one of the highest concentrations in any natural source. Its saponins are heptyl glucoside-type, similar to the gentle surfactants used in baby shampoos, yet entirely plant-derived. They create real lather and genuinely clean hair.
 
-**Amla's gallic acid** inhibits 5-alpha-reductase (the enzyme linked to androgenic hair loss) while emblicanin A and B protect follicle cells from oxidative damage. Amla's the conditioner and treatment agent of the trio. Without it, shikakai and reetha clean well but don't nourish.
+**Amla's gallic acid** inhibits 5-alpha-reductase (the enzyme linked to androgenic hair loss) while emblicanin A and B protect follicle cells from oxidative damage. Amla's the conditioner and treatment agent of the trio. Without it, shikakai and reetha clean well but don't nourish. To understand amla's full range of benefits for hair beyond this routine, read the [complete amla powder guide for hair growth](/blog/amla-powder-benefits-for-hair-growth).
 
 The combination creates a synergistic effect worth understanding. Shikakai's mild acidity keeps the mixture at hair-friendly pH. Reetha provides lather. Amla's tannins coat the hair shaft after rinsing. You're cleansing, conditioning, and treating simultaneously, which is why Indian women maintained waist-length hair on this routine for centuries without separate conditioner steps.
 
@@ -671,10 +668,9 @@ Switching to natural hair care is one of the best decisions you can make for you
     dateModified: "2026-06-16",
     readTime: 8,
     image: "/images/blog/neem-styled.webp",
-    metaTitle:
-      "Neem Powder for Acne: How to Use Neem for Clear Skin Naturally",
+    metaTitle: "Neem Powder for Acne: Clear Skin Naturally with Neem",
     metaDescription:
-      "Use neem powder to fight acne naturally. Learn DIY neem face packs, spot treatments & daily routines for clear skin. Antibacterial, chemical-free Ayurvedic remedy.",
+      "Use neem powder to fight acne naturally. Learn DIY neem face packs, spot treatments & routines for clear skin. Antibacterial, chemical-free Ayurvedic remedy.",
     keywords: [
       "neem powder for acne",
       "neem for pimples",
@@ -786,7 +782,7 @@ Not all acne is the same, and the right neem approach depends on which Ayurvedic
 
 **Pitta acne** (inflamed, red, pustular, hot to touch, classic whiteheads and papules, often on forehead and nose) needs cooling. Neem plus aloe vera gel plus rose water is the ideal combination. These cooling ingredients balance Pitta heat while neem addresses the bacteria. Never use lemon on Pitta skin.
 
-**Kapha acne** (large, slow-healing, oily surface, blackheads and cystic deep breakouts on cheeks and chin) can handle the strongest combination. Neem plus Multani Mitti plus a few drops of lemon juice works hard without irritating Kapha's typically thicker, more resilient skin.
+**Kapha acne** (large, slow-healing, oily surface, blackheads and cystic deep breakouts on cheeks and chin) can handle the strongest combination. Neem plus Multani Mitti plus a few drops of lemon juice works hard without irritating Kapha's typically thicker, more resilient skin. For the full range of [Multani Mitti face pack recipes for oily skin](/blog/multani-mitti-face-pack-recipes), pair them with your neem routine.
 
 ## Adjusting Neem Use Across Seasons
 
@@ -921,7 +917,7 @@ This is the core of Ayurvedic skincare — the face pack. Choose based on your s
 
 **For acne-prone skin:** Neem powder + Multani Mitti + rose water. Fights bacteria while deep-cleaning pores.
 
-**For dull skin:** Ubtan powder + rose water. The turmeric and sandalwood in ubtan brighten and revive tired-looking skin.
+**For dull skin:** Ubtan powder + rose water. The turmeric and sandalwood in ubtan brighten and revive tired-looking skin — see the full [ubtan guide for glowing skin](/blog/how-to-use-ubtan-for-glowing-skin) for recipe variations and timing.
 
 Apply the pack, leave for 15 minutes, scrub gently while removing, and rinse with cool water.
 
@@ -1017,7 +1013,7 @@ Start simple, be patient, and let the herbs do what they've been doing for thous
     dateModified: "2026-06-16",
     readTime: 8,
     image: "/images/blog/orange-styled.webp",
-    metaTitle: "6 Benefits of Orange Peel Powder for Face — DIY Recipes & Tips",
+    metaTitle: "Orange Peel Powder for Face: 6 Benefits & DIY Recipes",
     metaDescription:
       "Discover 6 amazing benefits of orange peel powder for face. DIY face packs for tan removal, acne, dark spots & glowing skin. Natural Vitamin C skincare at home.",
     keywords: [
@@ -1136,7 +1132,7 @@ Apply for 15-20 minutes. This combination firms, brightens, and deeply cleanses.
 
 **Monsoon** skin tends toward oiliness and breakouts. Orange peel's antibacterial and oil-regulating properties remain valuable, but reduce frequency to twice weekly as skin is already processing humidity stress. Avoid lemon-based recipes in monsoon months.
 
-**Winter** is where orange peel's brightening and anti-ageing benefits stand out. Summer tan lingers into autumn and orange peel fades it steadily. Use the anti-ageing pack (orange peel plus Multani Mitti plus milk) weekly throughout winter for glowing, healthy skin going into spring.
+**Winter** is where orange peel's brightening and anti-ageing benefits stand out. Summer tan lingers into autumn and orange peel fades it steadily. Use the anti-ageing pack (orange peel plus Multani Mitti plus milk) weekly throughout winter for glowing, healthy skin going into spring. For an even deeper brightening ritual, pair it with [ubtan as a weekly exfoliating mask](/blog/how-to-use-ubtan-for-glowing-skin).
 
 ## Frequently Asked Questions About Orange Peel Powder
 
@@ -1174,9 +1170,8 @@ Orange peel powder is one of the most versatile and affordable natural skincare 
     publishedAt: "2026-02-05",
     dateModified: "2026-06-16",
     readTime: 8,
-    image: "/images/blog/nagmotha-front.webp",
-    metaTitle:
-      "Bhringraj Powder for Hair Growth — Benefits, Uses & DIY Recipes",
+    image: "/images/blog/neem-styled.webp",
+    metaTitle: "Bhringraj Powder for Hair Growth — Benefits & Uses",
     metaDescription:
       "Learn how Bhringraj powder promotes hair growth, prevents greying, and reduces hair fall. DIY hair masks and oil recipes. The King of Herbs for your hair.",
     keywords: [
@@ -1304,7 +1299,7 @@ Bhringraj can slow and in some cases partially reverse premature greying caused 
 
 **Is Bhringraj safe for chemically treated or coloured hair?**
 
-Yes, with one note. Bhringraj has a mild darkening effect on hair over time, similar to amla. If you have lightened, bleached, or highlighted hair, it may gradually shift your colour slightly warmer or darker. For natural or dark hair, that's a benefit. For light-coloured hair, do a strand test first and monitor over 4-6 weeks.
+Yes, with one note. Bhringraj has a mild darkening effect on hair over time, similar to [amla powder](/blog/amla-powder-benefits-for-hair-growth). If you have lightened, bleached, or highlighted hair, it may gradually shift your colour slightly warmer or darker. For natural or dark hair, that's a benefit. For light-coloured hair, do a strand test first and monitor over 4-6 weeks.
 
 **Can women with PCOS-related hair loss use Bhringraj?**
 
@@ -1333,8 +1328,7 @@ In a world of expensive hair transplants, chemical treatments, and miracle serum
     dateModified: "2026-06-16",
     readTime: 8,
     image: "/images/blog/reetha-styled.webp",
-    metaTitle:
-      "Reetha (Soapnut) for Hair: Benefits, Uses & Natural Hair Wash Recipes",
+    metaTitle: "Reetha (Soapnut) for Hair: Benefits & Natural Wash",
     metaDescription:
       "Learn how reetha (soapnut) cleanses hair naturally without chemicals. Benefits, DIY recipes, and tips for using reetha powder as a natural shampoo alternative.",
     keywords: [
@@ -1419,7 +1413,7 @@ This is the classic Ayurvedic hair wash. Shikakai adds extra cleansing power and
 - 2 tablespoons amla powder
 - Warm water
 
-Amla adds conditioning, anti-greying, and hair-strengthening benefits. Perfect for dry or damaged hair.
+Amla adds conditioning, anti-greying, and hair-strengthening benefits. Perfect for dry or damaged hair. For the most thorough approach, follow the [complete Shikakai, Reetha & Amla natural hair wash method](/blog/natural-hair-wash-shikakai-reetha-amla).
 
 ### Reetha Rinse Water
 - 2 tablespoons reetha powder
@@ -1496,10 +1490,9 @@ Reetha represents the simplest, purest form of hair care — a single natural in
     dateModified: "2026-06-16",
     readTime: 8,
     image: "/images/blog/mhendi-front.webp",
-    metaTitle:
-      "Mehendi (Henna) for Hair: How to Use Henna for Natural Hair Colour",
+    metaTitle: "Mehendi (Henna) for Hair: How to Use for Natural Colour",
     metaDescription:
-      "Complete guide to using mehendi (henna) for hair colour and conditioning. DIY recipes for different shades, application tips, and benefits of natural henna for hair.",
+      "Complete guide to mehendi (henna) for hair colour and conditioning. DIY recipes for different shades, application tips, and natural henna benefits for hair.",
     keywords: [
       "mehendi for hair",
       "henna for hair colour",
@@ -1573,7 +1566,7 @@ Use mehendi powder mixed with water or tea only. This gives the classic reddish-
 - 100g mehendi powder
 - 2 tablespoons amla powder
 - Mix with tea water
-- Amla tones down the red and deepens the colour to dark brown
+- [Amla](/blog/amla-powder-benefits-for-hair-growth) tones down the red and deepens the colour to dark brown
 
 ### Burgundy (Mehendi + Beetroot)
 - 100g mehendi powder
@@ -1679,9 +1672,14 @@ export function getBlogPostBySlug(slug: string): BlogPost | undefined {
 }
 
 export function getRelatedPosts(currentSlug: string, limit = 3): BlogPost[] {
-  return blogPosts
-    .filter((post) => post.slug !== currentSlug)
-    .slice(0, limit);
+  const current = blogPosts.find((p) => p.slug === currentSlug);
+  const sameCat = blogPosts.filter(
+    (p) => p.slug !== currentSlug && p.category === current?.category
+  );
+  const others = blogPosts.filter(
+    (p) => p.slug !== currentSlug && p.category !== current?.category
+  );
+  return [...sameCat, ...others].slice(0, limit);
 }
 
 export function getBlogPostsForProduct(
