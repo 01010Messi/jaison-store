@@ -76,7 +76,7 @@ export const metadata: Metadata = {
       "Shop 100% natural Ayurvedic herbal powders for skin & hair. Ubtan, Amla, Neem, Multani Mitti & more — handcrafted in India.",
     images: [
       {
-        url: "/images/og/og-default.jpg",
+        url: "https://jaisonskincare.com/images/og/og-default.jpg",
         width: 1200,
         height: 630,
         alt: "Jaison Herbals — Natural Ayurvedic Beauty Products",
@@ -88,7 +88,7 @@ export const metadata: Metadata = {
     title: "jaison | Natural Ayurvedic Beauty",
     description:
       "Shop 100% natural Ayurvedic herbal powders for skin & hair care. Handcrafted in India.",
-    images: ["/images/og/og-default.jpg"],
+    images: ["https://jaisonskincare.com/images/og/og-default.jpg"],
   },
   alternates: {
     canonical: "https://jaisonskincare.com",

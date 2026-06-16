@@ -9,6 +9,8 @@ import { ArticleJsonLd } from "@/components/seo/JsonLd";
 import { blogPosts, getBlogPostBySlug, getRelatedPosts } from "@/data/blog";
 import { getProductBySlug } from "@/data/products";
 
+const BASE_URL = "https://jaisonskincare.com";
+
 interface Props {
   params: { slug: string };
 }
@@ -18,7 +20,7 @@ export function generateMetadata({ params }: Props): Metadata {
   if (!post) return { title: "Post Not Found" };
 
   return {
-    title: post.metaTitle,
+    title: { absolute: post.metaTitle },
     description: post.metaDescription,
     keywords: post.keywords,
     openGraph: {
@@ -27,17 +29,17 @@ export function generateMetadata({ params }: Props): Metadata {
       type: "article",
       publishedTime: post.publishedAt,
       authors: [post.author],
-      images: [{ url: post.image, alt: post.title }],
-      url: `https://jaisonskincare.com/blog/${post.slug}`,
+      images: [{ url: `${BASE_URL}${post.image}`, alt: `${post.title} — Ayurvedic herbal guide by Jaison Herbals` }],
+      url: `${BASE_URL}/blog/${post.slug}`,
     },
     twitter: {
       card: "summary_large_image",
       title: post.metaTitle,
       description: post.metaDescription,
-      images: [post.image],
+      images: [`${BASE_URL}${post.image}`],
     },
     alternates: {
-      canonical: `https://jaisonskincare.com/blog/${post.slug}`,
+      canonical: `${BASE_URL}/blog/${post.slug}`,
     },
   };
 }

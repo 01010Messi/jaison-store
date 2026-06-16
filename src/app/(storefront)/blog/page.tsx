@@ -3,17 +3,33 @@ import { BreadcrumbJsonLd } from "@/components/seo/JsonLd";
 import BlogContent from "./BlogContent";
 
 export const metadata: Metadata = {
-  title: "The Journal — Ayurvedic Beauty & Natural Skincare Reads | Jaison Herbals",
+  title: {
+    absolute: "The Journal — Ayurvedic Beauty & Natural Skincare Reads | Jaison Herbals",
+  },
   description:
     "Reads worth your time. How to mix our powders, how to use them, and why one ingredient is enough. Real rituals, real ingredients — no marketing claims.",
-  alternates: {
-    canonical: "https://jaisonskincare.com/blog",
-  },
   openGraph: {
     title: "The Journal | Jaison Herbals",
     description: "Real rituals. Real ingredients. Monthly reads on Ayurvedic herbs for skin and hair.",
     type: "website",
     url: "https://jaisonskincare.com/blog",
+    images: [
+      {
+        url: "https://jaisonskincare.com/images/og/og-default.jpg",
+        width: 1200,
+        height: 630,
+        alt: "The Journal — Ayurvedic beauty reads by Jaison Herbals",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "The Journal | Jaison Herbals",
+    description: "Real rituals. Real ingredients. Monthly reads on Ayurvedic herbs for skin and hair.",
+    images: ["https://jaisonskincare.com/images/og/og-default.jpg"],
+  },
+  alternates: {
+    canonical: "https://jaisonskincare.com/blog",
   },
 };
 
