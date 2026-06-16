@@ -1,54 +1,33 @@
 # Jaison Herbals — Session Handoff
 
-**Date:** 16 June 2026 · **Branch:** `redesign/v2` · **Last commit:** `e36df99`
+**Date:** 16 June 2026 · **Branch:** `redesign/v2` · **Last commit:** `92d61f1`
 
 ---
 
-## What was built this session
+## What was built this session (session 10 — design audit fixes)
 
-### 1. Blog: 3rd internal links — all 10 posts now at 3 links (`src/data/blog.ts`)
+Closed out all HIGH and MEDIUM items from the session 9 design system audit (see prior handoff for the full audit/grades).
 
-Previous state: 5 posts had 2 links, 5 posts had 1 link. Target was 3 per post.
+### 1. HIGH priority fixes — commit `0e74938`
+- `ui/StarRating.tsx` — added `aria-label={Rate {n} out of {max} stars}` per star button, wrapped interactive mode in `role="radiogroup" aria-label="Rating"`.
+- `ui/Select.tsx` — label now matches `Input.tsx` spec: `text-[11px] font-accent uppercase tracking-[0.14em] text-bark/60`. (Note: `Select` is not imported anywhere in the live app — admin pages use raw `<select>` — verified via temp route, harmless fix.)
+- `DESIGN.md` — added tracking scale clarification (`0.22em` = section eyebrows only, `0.14em` = interactive labels/buttons) and a z-index table (0 content / 10 in-section / 20 floating / 30 sticky header / 40 backdrops / 50 modals).
 
-| Post | Links added |
-|---|---|
-| ubtan | → neem (monsoon section) |
-| amla | → reetha (conclusion) |
-| multani-mitti | → ubtan (recipe 7), ayurvedic-routine (conclusion) |
-| natural-hair-wash | → bhringraj (pitta section), reetha (conclusion) |
-| neem | → ayurvedic-routine (conclusion) |
-| ayurvedic-skincare-routine | → neem + multani-mitti (FAQ section) |
-| orange-peel | → neem (acne control pack recipe) |
-| bhringraj | → mehendi (conclusion) |
-| reetha | → amla (vata section), bhringraj (conclusion) |
-| mehendi | → natural-hair-wash + bhringraj (conclusion) |
+### 2. MEDIUM priority fixes — commits `0e74938`, `ed7c5a2`
+- `TestimonialsSection.tsx` + `InstagramSection.tsx` — all ~18 hardcoded hex values (avatar bg, card gradient, eyebrow color) replaced with `var(--color-*)` tokens. Contrast fix: `text-bark/30` caption → `/60`.
+- Converged raw `py-*` paddings onto `.section-rhythm` / `.section-rhythm-lg` across **9 home components**: `TestimonialsSection`, `InstagramSection`, `CategoryShowcase`, `BlogSection`, `BrandStory`, `TrustPillars`, `WhyJaisonTeaser`, `NewsletterSection` (home/), `BrandTimeline`, `HowToUseGuide`, `WhyPowderTeaser`, `BlogPreview`. Ambiguous values resolved via a distance-to-token heuristic with semantic tie-breaking (see commit `ed7c5a2` for the per-file mapping).
 
-All links are natural anchor text within existing prose — not added as a standalone sentence wherever possible.
+### 3. Live Footer newsletter strip fix — commit `92d61f1`
+- `layout/Footer.tsx` (rendered globally, every page) — two hardcoded `#E26713` values → `var(--color-terracotta)`; `py-14 md:py-20` → `.section-rhythm-lg`. Verified via computed-style check in a real browser (resolved to `rgb(131,67,22)` / `96px` padding) — no console errors.
 
-### 2. Comprehensive design system audit
+### 4. Important discovery: 7 orphaned home components
+While verifying which sections are actually live on the homepage, found that **only 7 of 12** `home/*` components are imported by `app/(storefront)/page.tsx`:
 
-Full audit across 7 categories. Key findings:
+**Live:** `HeroSection`, `FeaturedProducts`, `HowToUseGuide`, `BrandTimeline`, `TestimonialsSection`, `InstagramSection`, `BlogSection`
 
-**Overall: B+ (85/100)**
+**Orphaned (not imported anywhere in `src/app`):** `BlogPreview.tsx`, `NewsletterSection.tsx`, `TrustPillars.tsx`, `WhyJaisonTeaser.tsx`, `WhyPowderTeaser.tsx`, `CategoryShowcase.tsx`, `BrandStory.tsx`
 
-| Category | Grade |
-|---|---|
-| Visual Consistency | A− (88) |
-| Component Library | B+ (82) |
-| Design Tokens | B (79) |
-| Accessibility | B+ (83) |
-| Documentation | A− (87) |
-| Implementation | A (93) |
-
-**Top issues found:**
-- **H1 (High):** `StarRating.tsx` — interactive mode has no `aria-label` on star buttons. Screen reader encounters 5 unlabelled buttons. Fix: add `aria-label={`Rate ${starValue} out of ${maxRating} stars`}` + `role="radiogroup"` wrapper.
-- **H2 (High):** `Select.tsx` label uses `font-body text-sm` instead of the spec: `font-accent text-[11px] uppercase tracking-[0.14em]`. Input and Select labels look completely different.
-- **H3 (High):** DESIGN.md eyebrow tracking clarification needed: `0.22em` = section eyebrows, `0.14em` = interactive labels/buttons (both are currently specified without this distinction).
-- **M1 (Medium):** `TestimonialsSection.tsx` and `InstagramSection.tsx` contain ~18 unauthorized hex values — earthy tones that should map to closest tokens or be added as sanctioned one-offs.
-- **M2 (Medium):** Home components ignore `.section-rhythm` / `.section-rhythm-lg` tokens — 5+ different `py-*` values used instead of the canonical 2.
-- **M3 (Medium):** `TestimonialsSection` "Verified by Jaison Herbals" caption uses `text-bark/30` on cream (~1.9:1 contrast) — below AA floor. Should be `/60` minimum.
-- **M4 (Medium):** `GlowPillLink` glow only triggers on mouse hover, not keyboard focus — add `onFocus`/`onBlur` parity.
-- **Missing components:** `Textarea`, `Checkbox`, `Tooltip`, `Table` — all currently implemented inline with copied styles.
+All 7 still got the token/padding fixes above (so they're consistent *if* ever wired in), but the owner has not yet decided whether to wire them up, repurpose them, or delete them — **explicitly deferred ("decide later")**, not actioned this session.
 
 ---
 
@@ -58,50 +37,65 @@ All work committed and pushed to `origin/redesign/v2`.
 
 ```
 Last commits on redesign/v2:
+92d61f1  fix(footer): tokenize newsletter strip colors and padding
+ed7c5a2  fix(design): converge remaining home sections onto section-rhythm tokens
+0e74938  fix(design): a11y, token, and spacing fixes from design system audit
+c22e96e  docs: session handoff v7 (June 16 session 9)
 e36df99  content(blog): add 3rd internal links to all 10 posts (target reached)
-b334c1f  docs: update handoff v6 with final commit hash
-0b2cb4e  docs: update CLAUDE.md + README for session 8 state
-088a896  docs: session handoff v6 (June 16 session 8)
-12a2fed  fix(seo): page audits for why-powder, why-jaison, our-story, contact
 ```
 
 ### Files changed this session
 ```
-src/data/blog.ts   ← 3rd internal links added to all 10 posts
-HANDOFF.md         ← this file (updated)
+src/components/ui/StarRating.tsx
+src/components/ui/Select.tsx
+DESIGN.md
+src/components/home/TestimonialsSection.tsx
+src/components/home/InstagramSection.tsx
+src/components/home/CategoryShowcase.tsx   (orphaned)
+src/components/home/BlogSection.tsx
+src/components/home/BrandStory.tsx         (orphaned)
+src/components/home/TrustPillars.tsx       (orphaned)
+src/components/home/WhyJaisonTeaser.tsx    (orphaned)
+src/components/home/NewsletterSection.tsx  (orphaned)
+src/components/home/BrandTimeline.tsx
+src/components/home/HowToUseGuide.tsx
+src/components/home/WhyPowderTeaser.tsx    (orphaned)
+src/components/home/BlogPreview.tsx        (orphaned)
+src/components/layout/Footer.tsx
+HANDOFF.md   ← this file (updated)
 ```
 
 ---
 
 ## What's next — ordered by impact
 
-### 1. Fix design system audit findings (HIGH priority)
-- `ui/StarRating.tsx` — add `aria-label` to each star button when `interactive=true`; wrap in `role="radiogroup"` 
-- `ui/Select.tsx` — align label to Input spec: `text-[11px] font-accent uppercase tracking-[0.14em] text-bark/60`
-- `DESIGN.md` — add z-index scale section; clarify tracking-em hierarchy; document spacing tokens
+### 1. Decide fate of the 7 orphaned home components
+- Wire into `page.tsx`, repurpose elsewhere (e.g. `/our-story`, `/why-powder`), or delete outright.
+- Owner explicitly deferred this — surface it again before doing anything else design-related on the homepage.
 
-### 2. `/find-your-ritual` skin quiz
+### 2. Remaining design system debt (not yet fixed)
+- **M4:** `GlowPillLink` glow only triggers on mouse hover, not keyboard focus — add `onFocus`/`onBlur` parity.
+- **Missing components:** `Textarea`, `Checkbox`, `Tooltip`, `Table` — all currently implemented inline with copied styles.
+
+### 3. `/find-your-ritual` skin quiz
 - ⚠️ Requires explicit owner authorization before building
 - Page files already exist (`page.tsx` + `FindYourRitualContent.tsx`) — verify if functional first
 
-### 3. Admin shipping page
+### 4. Admin shipping page
 - `src/app/admin/shipping/page.tsx`
 - Shiprocket API already in `src/lib/shipping.ts`
 
-### 4. Email shipping notifications
+### 5. Email shipping notifications
 - Trigger in `src/app/api/admin/orders/route.ts`
 - Order confirmation email already exists in `src/lib/email.ts`
 - Add "Order dispatched" email when admin marks status SHIPPED
 
-### 5. IndexNow
+### 6. IndexNow
 - Generate key, place at `public/<key>.txt`
 - Submit sitemap on content publish
 
-### 6. Medium-term design system debt
-- Extract `Textarea` component (raw `<textarea>` in ProductReviews + contact page)
-- Extract `Checkbox` component (checkout + account forms)
-- Standardize home section rhythm to `.section-rhythm` / `.section-rhythm-lg` tokens
-- Fix `TestimonialsSection` + `InstagramSection` unauthorized hex values
+### 7. Google Search Console
+- Submit sitemap once `redesign/v2` merges to production (`main`)
 
 ---
 
@@ -152,7 +146,9 @@ Blog internal link coverage:
 - Muted text minimum `/60` on cream, `/70` on bark (for readable content; `/30` = decorative/placeholder only)
 - Font classes: `font-heading` (Cormorant), `font-body` (DM Sans), `font-accent` (Inter)
 - Eyebrow spec: `font-accent text-[11px] tracking-[0.22em] uppercase`
-- z-index: 0 content / 10 section overlays / 20 floating / 30 sticky header / 40 backdrops / 50 modals
+- Tracking scale — exactly two values: `0.22em` for section eyebrows only; `0.14em` for interactive labels/buttons (form labels, pill CTAs, nav links). Don't mix or invent a third.
+- z-index: 0 content / 10 in-section overlays / 20 floating UI / 30 sticky header / 40 backdrops / 50 modals/drawers/toasts (full table in DESIGN.md)
+- Padding/rhythm — exactly two tokens: `.section-rhythm` (`py-12 md:py-16`) and `.section-rhythm-lg` (`py-16 md:py-24`). Any other raw `py-*` on a section wrapper is legacy debt to converge.
 - Active filter pills → bark bg, not terracotta
 - Never add `aggregateRating` to ProductJsonLd — no real reviews yet
 
