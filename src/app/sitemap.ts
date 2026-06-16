@@ -1,5 +1,5 @@
 import { MetadataRoute } from "next";
-import { products, categories } from "@/data/products";
+import { products } from "@/data/products";
 import { blogPosts } from "@/data/blog";
 
 const baseUrl = "https://jaisonskincare.com";

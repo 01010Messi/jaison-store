@@ -112,6 +112,7 @@ export default function Header() {
               alt="Jaison Herbals — Natural Ayurvedic Herbal Powders for Skin and Hair"
               width={260}
               height={96}
+              sizes="(max-width: 768px) 120px, 180px"
               className="h-16 md:h-24 w-auto mix-blend-multiply -my-3"
               priority
             />

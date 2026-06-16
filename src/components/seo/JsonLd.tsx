@@ -300,7 +300,22 @@ export function LocalBusinessJsonLd() {
       postalCode: "422002",
       addressCountry: "IN",
     },
-    priceRange: "₹250 - ₹550",
+    priceRange: "₹150 - ₹999",
+    openingHoursSpecification: [
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+        ],
+        opens: "10:00",
+        closes: "18:00",
+      },
+    ],
     sameAs: ["https://www.instagram.com/jaison_skincare/"],
   };
 

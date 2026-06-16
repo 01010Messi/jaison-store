@@ -44,7 +44,9 @@ export default function HeroSection() {
             autoPlay
             loop
             playsInline
-            preload="auto"
+            muted
+            preload="metadata"
+            poster="/images/hero-poster.webp"
             className="hero-video absolute inset-0 w-full h-full object-cover object-center"
           >
             <source src="/images/hero-group.mp4" type="video/mp4" />
