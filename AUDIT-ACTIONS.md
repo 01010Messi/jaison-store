@@ -1,7 +1,7 @@
 # Jaison Herbals — Website Audit Action Tracker
 
 Source audit: `jaison-skincare-audit-report-enhanced.html` (May 2026 · Overall score: 3.8/10)  
-Branch: `redesign/v2` · Last updated: June 2026
+Branch: `redesign/v2` · Last updated: June 16 2026 (session 4)
 
 ---
 
@@ -13,7 +13,7 @@ Branch: `redesign/v2` · Last updated: June 2026
 | Trust & Credibility | 2.2/10 | Partial — FAQ expanded, reviews still unverified |
 | SEO / Content | 3.0/10 | Improved — schema + alt text done, keyword strategy pending |
 | Conversion (CRO) | 3.5/10 | Partial — cart cross-sell + price framing done |
-| Mobile Experience | 5.2/10 | Unchanged |
+| Mobile Experience | 5.2/10 | Improved — PageSpeed 51→83, LCP 26.8s→4.7s, TBT 0ms |
 | UX / Navigation | 5.8/10 | Improved — FAQ expanded, combo renamed |
 
 ---
@@ -26,7 +26,7 @@ Branch: `redesign/v2` · Last updated: June 2026
 | Display AYUSH/GMP/manufacturing cert in footer | ❌ Pending | Needs actual cert number from owner; slot is in footer |
 | Add INCI ingredient names to every product | ✅ Done | Already in product descriptions |
 | Rename combo products | ✅ Done | "Jaison Special Combo" → "Complete Head-to-Toe Ritual Kit" |
-| Google PageSpeed Mobile audit | ❌ Pending | Run Lighthouse on mobile; check LCP < 2.5s |
+| Google PageSpeed Mobile audit | ✅ Done | Score 51→83. LCP 26.8s→4.7s, TBT 1,250ms→0ms. Hero poster + Next.js Image on ProductCard. |
 
 ---
 
@@ -90,17 +90,19 @@ Branch: `redesign/v2` · Last updated: June 2026
 - `inLanguage: "en-IN"` added to `ArticleJsonLd` schema — GEO locale signal for Indian-English content
 - Shop page metadata exists via `src/app/(storefront)/shop/layout.tsx`
 - Blog-to-product internal links: "Shop the Ingredients" CTA section on all 10 blog posts
+- `LocalBusinessJsonLd`: `openingHoursSpecification` added (Mon-Sat 10:00-18:00) + `priceRange: "₹150 - ₹999"`
+- PageSpeed Mobile: score 51→83. Hero video poster (28KB WebP) fixes LCP; `<Image>` on ProductCard eliminates 3.2MB image waste. TBT 0ms in production.
+- `llms.txt` at `/public/llms.txt` for AI crawler discoverability
+- How to Use tab: Cormorant Garamond oldstyle numeral bug fixed (`lining-nums`); combo products now show flat horizontal grid
 
 ## SEO — Pending
 
 - **Submit sitemap** to Google Search Console (`https://jaisonskincare.com/sitemap.xml`) — owner action
 - Add `aggregateRating` to product schema once real reviews exist in DB
-- Add `openingHoursSpecification` to `LocalBusinessJsonLd` (Mon-Sat 10am-6pm IST) — `src/components/seo/JsonLd.tsx`
 - Keyword strategy shift to long-tail (see `SEO-AUDIT.md`)
 - Comparison keywords: "Jaison Herbals vs Nat Habit neem powder"
 - Local SEO: Nashik + Maharashtra Ayurveda searches
 - 12-article SEO content cluster per hero product
-- PageSpeed Mobile audit: run Lighthouse, target LCP < 2.5s
 
 ---
 
@@ -133,3 +135,5 @@ These cannot be built until the owner supplies the raw content:
 | "No price-per-use context" | "~20 face masks per pack" below price |
 | "Bestseller badges missing" | Terracotta "Bestseller" pill on ProductCard (4 products) |
 | "Alt text weak/missing" | All images: descriptive, keyword-rich alt text with brand + product context |
+| "Mobile performance poor (LCP)" | Hero video poster + `<Image>` on ProductCard: PageSpeed 51→83, LCP 26.8s→4.7s |
+| "How to Use step numbers garbled" | `lining-nums` on StepCard; combo products flat grid (was N separate single-card rows) |
