@@ -64,10 +64,10 @@ export default function Footer() {
     <footer className="bg-bark text-cream/80">
       {/* Newsletter strip */}
       <div className="border-b border-cream/10">
-        <div className="container-brand py-14 md:py-20 flex flex-col md:flex-row md:items-center justify-between gap-8">
+        <div className="container-brand section-rhythm-lg flex flex-col md:flex-row md:items-center justify-between gap-8">
           {/* Left: copy */}
           <div className="max-w-xl">
-            <p className="font-accent text-[11px] tracking-[0.2em] uppercase mb-5" style={{ color: "#E26713" }}>
+            <p className="font-accent text-[11px] tracking-[0.2em] uppercase mb-5" style={{ color: "var(--color-terracotta)" }}>
               — The Journal
             </p>
             <h3
@@ -75,7 +75,7 @@ export default function Footer() {
               style={{ fontSize: "clamp(2rem, 4vw, 3.25rem)" }}
             >
               Once a month.{" "}
-              <span style={{ color: "#E26713", fontStyle: "italic", fontWeight: 300 }}>
+              <span style={{ color: "var(--color-terracotta)", fontStyle: "italic", fontWeight: 300 }}>
                 That is it.
               </span>
             </h3>
