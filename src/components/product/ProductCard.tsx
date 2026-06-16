@@ -31,11 +31,9 @@ const cardBgColors: Record<string, string> = {
   "orange-peel-powder": "#FCE8CC",
   "nagarmotha-powder": "#E8DCC8",
   "mehendi-powder": "#D8E8C8",
-  "rose-petal-powder": "#F5D8DC",
   "amla-powder": "#D4E8D0",
   "aamla-powder": "#D4E8D0",
   "reetha-powder": "#EDE0D4",
-  "bhringraj-powder": "#C8D8C0",
   "shikakai-powder": "#E8DCC8",
 };
 
@@ -46,11 +44,9 @@ const accentColors: Record<string, string> = {
   "orange-peel-powder": "#C86820",
   "nagarmotha-powder": "#7A6040",
   "mehendi-powder": "#4A7020",
-  "rose-petal-powder": "#B84060",
   "amla-powder": "#4A7C59",
   "aamla-powder": "#4A7C59",
   "reetha-powder": "#8B4020",
-  "bhringraj-powder": "#2D5A30",
   "shikakai-powder": "#8B6020",
 };
 
@@ -61,11 +57,9 @@ const botanicalNames: Record<string, string> = {
   "orange-peel-powder": "Citrus sinensis peel",
   "nagarmotha-powder": "Cyperus rotundus",
   "mehendi-powder": "Lawsonia inermis",
-  "rose-petal-powder": "Rosa centifolia",
   "amla-powder": "Phyllanthus emblica",
   "aamla-powder": "Phyllanthus emblica",
   "reetha-powder": "Sapindus mukorossi",
-  "bhringraj-powder": "Eclipta prostrata",
   "shikakai-powder": "Acacia concinna",
 };
 
@@ -75,12 +69,10 @@ const categoryLabels: Record<string, string> = {
   "multani-mitti": "Skin Care",
   "orange-peel-powder": "Skin Care",
   "nagarmotha-powder": "Skin Care",
-  "rose-petal-powder": "Skin Care",
   "amla-powder": "Hair Care",
   "aamla-powder": "Hair Care",
   "mehendi-powder": "Hair Care",
   "reetha-powder": "Hair Care",
-  "bhringraj-powder": "Hair Care",
   "shikakai-powder": "Hair Care",
 };
 

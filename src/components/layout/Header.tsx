@@ -14,13 +14,11 @@ const skinCareItems = [
   { label: "Neem Powder", href: "/shop/neem-powder", dot: "#4A7C59" },
   { label: "Multani Mitti", href: "/shop/multani-mitti", dot: "#C17A5A" },
   { label: "Orange Peel", href: "/shop/orange-peel-powder", dot: "#E8793A" },
-  { label: "Rose Petal", href: "/shop/rose-petal-powder", dot: "#D4748C" },
   { label: "Nagarmotha", href: "/shop/nagarmotha-powder", dot: "#8B7355" },
 ];
 
 const hairCareItems = [
   { label: "Amla Powder", href: "/shop/aamla-powder", dot: "#6B9E5E" },
-  { label: "Bhringraj", href: "/shop/bhringraj-powder", dot: "#2D6B4A" },
   { label: "Mehendi", href: "/shop/mehendi-powder", dot: "#5C8A3C" },
   { label: "Reetha", href: "/shop/reetha-powder", dot: "#8B5E3C" },
   { label: "Shikakai", href: "/shop/shikakai-powder", dot: "#A07840" },

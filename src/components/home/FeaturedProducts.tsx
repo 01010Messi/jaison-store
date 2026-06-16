@@ -13,12 +13,10 @@ const skinSlugs = [
   "multani-mitti",
   "orange-peel-powder",
   "nagarmotha-powder",
-  "rose-petal-powder",
 ];
 const hairSlugs = [
   "amla-powder",
   "aamla-powder",
-  "bhringraj-powder",
   "mehendi-powder",
   "reetha-powder",
   "shikakai-powder",
