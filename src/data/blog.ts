@@ -127,7 +127,7 @@ If you have sensitive skin, start with once a week and gradually increase freque
 
 - **Always patch test** before first use, especially if you have sensitive skin
 - **Use fresh paste** each time — don't store mixed ubtan for later
-- **Apply on clean skin** for better absorption of nutrients
+- **Apply on clean skin** for better absorption of nutrients — a [Multani Mitti deep-cleanse pack](/blog/multani-mitti-face-pack-recipes) applied 30 minutes before ubtan opens pores and amplifies nutrient absorption
 - **Don't let it dry completely** — semi-dry ubtan exfoliates better than fully dried
 - **Be consistent** — natural remedies work gradually but deliver lasting results
 
@@ -265,6 +265,8 @@ Vitamin C in amla is essential for collagen synthesis. Collagen forms the struct
 - Apply to your hair from roots to tips
 - Leave for 20-30 minutes
 - Rinse thoroughly with water
+
+To target scalp circulation alongside follicle nourishment, add 1 tablespoon of [Bhringraj powder](/blog/bhringraj-powder-for-hair-growth) to this mask — together they address hair fall from both the nutritional and circulatory sides.
 
 ### Amla Oil Treatment
 - Mix 2 tablespoons of amla powder with coconut oil
@@ -759,6 +761,8 @@ Yoghurt contains lactic acid, a natural AHA that gently exfoliates and fades acn
 **Twice a week:**
 - Use the Neem + Multani Mitti deep cleanse pack for a thorough pore-clearing treatment
 
+**For scalp care:** Neem addresses dandruff with the same antibacterial action it uses on acne. When applying neem to the scalp, follow with [amla powder to condition follicles and restore strength](/blog/amla-powder-benefits-for-hair-growth) — neem clears scalp buildup while amla nourishes the roots.
+
 ## What Results to Expect
 
 - **Week 1:** Reduced redness and inflammation. Existing pimples start healing faster.
@@ -1124,7 +1128,7 @@ Apply for 15-20 minutes. This combination firms, brightens, and deeply cleanses.
 
 **Pitta skin** (sensitive, prone to redness) should use orange peel with rose water only. Don't combine with lemon juice since double citrus acid can trigger redness and irritation on Pitta skin. Apply for no more than 10 minutes. Patch test is especially important for Pitta types.
 
-**Kapha skin** (oily, congested, prone to blackheads) can handle the full combination: orange peel plus Multani Mitti plus lemon juice. Kapha skin benefits from the exfoliation, brightening, and oil-control simultaneously. This combination can be used 3x weekly without issues.
+**Kapha skin** (oily, congested, prone to blackheads) can handle the full combination: orange peel plus [Multani Mitti](/blog/multani-mitti-face-pack-recipes) plus lemon juice — a particularly effective layering for oily, acne-prone skin. Kapha skin benefits from the exfoliation, brightening, and oil-control simultaneously. This combination can be used 3x weekly without issues.
 
 ## Using Orange Peel Across Indian Seasons
 
@@ -1240,7 +1244,7 @@ Regular use of Bhringraj thickens individual hair strands and increases overall 
 - Warm water (or coconut milk for extra conditioning)
 - Mix to form a smooth paste
 
-Apply to scalp and hair, leave for 30-45 minutes, then wash off with a mild cleanser or Shikakai-Reetha mix. Use twice a week.
+Apply to scalp and hair, leave for 30-45 minutes, then wash off with a mild cleanser or the [Shikakai, Reetha & Amla natural hair wash](/blog/natural-hair-wash-shikakai-reetha-amla). Use twice a week.
 
 ### Bhringraj + Amla Power Mask
 - 2 tablespoons Bhringraj powder
