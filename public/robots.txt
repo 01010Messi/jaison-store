@@ -4,9 +4,6 @@
 User-agent: *
 Allow: /
 
-# Sitemaps
-Sitemap: https://jaisonskincare.com/sitemap.xml
-
 # Disallow admin and API routes
 Disallow: /admin
 Disallow: /admin/
@@ -17,11 +14,22 @@ Disallow: /register
 # Disallow internal/utility pages
 Disallow: /_next/
 Disallow: /checkout
+Disallow: /order-success
+Disallow: /account
 
-# Allow search engines to crawl all public content
-Allow: /shop
-Allow: /blog
-Allow: /about
-Allow: /contact
-Allow: /faq
-Allow: /why-jaison
+# AI crawlers — allowed for search and citation
+# llms.txt provides a structured summary for AI agents: /llms.txt
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+# Sitemaps
+Sitemap: https://jaisonskincare.com/sitemap.xml

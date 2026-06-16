@@ -4,11 +4,34 @@ import type { Metadata } from "next";
 import GoldRule from "@/components/decorative/GoldRule";
 import OrnamentalBorder from "@/components/decorative/OrnamentalBorder";
 import SectionDivider from "@/components/decorative/SectionDivider";
+import { BreadcrumbJsonLd } from "@/components/seo/JsonLd";
 
 export const metadata: Metadata = {
-  title: "About Us — Our Story & Ayurvedic Heritage",
+  title: "About Jaison Herbals — Ayurvedic Heritage & Natural Skincare",
   description:
-    "Rooted in Nashik, crafted with Ayurvedic wisdom — Jaison Herbals makes 100% natural herbal powders for skin & hair. No chemicals, ever.",
+    "Rooted in Nashik, crafted with Ayurvedic wisdom — Jaison Herbals makes 100% natural herbal powders for skin & hair care. No chemicals, no parabens, ever.",
+  openGraph: {
+    type: "website",
+    url: "https://jaisonskincare.com/about",
+    title: "About Jaison Herbals — Ayurvedic Heritage & Natural Skincare",
+    description:
+      "Rooted in Nashik, crafted with Ayurvedic wisdom — Jaison Herbals makes 100% natural herbal powders for skin & hair care. No chemicals, no parabens, ever.",
+    images: [
+      {
+        url: "https://jaisonskincare.com/images/og/og-default.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Jaison Herbals — Natural Ayurvedic Beauty Products made in Nashik",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "About Jaison Herbals — Ayurvedic Heritage & Natural Skincare",
+    description:
+      "Rooted in Nashik, crafted with Ayurvedic wisdom. 100% natural herbal powders for skin & hair. No chemicals, ever.",
+    images: ["https://jaisonskincare.com/images/og/og-default.jpg"],
+  },
   alternates: {
     canonical: "https://jaisonskincare.com/about",
   },
@@ -40,11 +63,18 @@ const values = [
 export default function AboutPage() {
   return (
     <div className="min-h-screen">
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", url: "https://jaisonskincare.com" },
+          { name: "About Us", url: "https://jaisonskincare.com/about" },
+        ]}
+      />
+
       {/* Hero */}
       <section className="bg-surface-warm py-16 md:py-24">
         <div className="container-brand text-center max-w-3xl mx-auto">
           <h1 className="font-heading text-3xl md:text-5xl text-bark font-light tracking-wide leading-tight">
-            About Us
+            About Jaison Herbals
           </h1>
           <div className="flex justify-center mt-4">
             <GoldRule variant="leaf" width="w-32" />
@@ -66,13 +96,19 @@ export default function AboutPage() {
                   ancient Ayurvedic wisdom into modern lives.
                 </p>
                 <p>
-                  Rooted in tradition, we honor this heritage through 100% natural,
-                  chemical-free products crafted with care.
+                  Rooted in tradition, we honor this heritage through{" "}
+                  <Link href="/shop" className="text-terracotta underline hover:text-terracotta/80 transition-colors">
+                    100% natural, chemical-free herbal powders
+                  </Link>{" "}
+                  crafted with care for skin and hair.
                 </p>
                 <p>
                   Every ingredient is thoughtfully selected from nature&apos;s bounty,
                   ensuring authentic wellness reaches you in its purest form — where
-                  traditional knowledge meets mindful craftsmanship.
+                  traditional knowledge meets mindful craftsmanship.{" "}
+                  <Link href="/blog" className="text-terracotta underline hover:text-terracotta/80 transition-colors">
+                    Read how each herb works in our journal.
+                  </Link>
                 </p>
               </div>
             </div>
