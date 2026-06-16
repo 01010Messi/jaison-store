@@ -2,7 +2,7 @@
 
 **Branch:** `redesign/v2` (pushed to GitHub, NOT deployed — never deploy)  
 **Repo:** https://github.com/01010Messi/jaison-store.git  
-**Latest commit:** `12a2fed` — fix(seo): page audits for why-powder, why-jaison, our-story, contact
+**Latest commit:** `0b2cb4e` — docs: update CLAUDE.md + README for session 8 state
 
 ---
 
@@ -187,7 +187,7 @@ We're on branch redesign/v2 of jaison-store-v2 (Ayurvedic e-commerce, Next.js 14
 
 Read docs/superpowers/specs/2026-06-16-session-handoff-v6.md for full context before starting anything.
 
-Latest commit: 12a2fed. TypeScript is clean. SEO audit is 100% complete.
+Latest commit: 0b2cb4e. TypeScript is clean. SEO audit is 100% complete.
 
 Rules (hard constraints):
 - NEVER deploy (no vercel --prod, no vercel deploy)
