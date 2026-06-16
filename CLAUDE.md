@@ -126,8 +126,9 @@ NEXT_PUBLIC_GA_MEASUREMENT_ID
 - `/` Home, `/shop` Catalog, `/shop/[slug]` Product detail
 - `/cart`, `/checkout` (guest + authenticated), `/order-success`
 - `/account`, `/account/profile`, `/account/addresses`, `/account/orders`
-- `/about`, `/contact`, `/faq`, `/why-jaison`
-- `/blog`, `/blog/[slug]` — 6 SEO articles
+- `/about`, `/contact`, `/faq`, `/why-jaison`, `/why-powder`, `/our-story`
+- `/find-your-ritual` — skin quiz (page files exist, not yet deployed)
+- `/blog`, `/blog/[slug]` — 10 SEO articles (1,500–2,100 words each)
 - `/terms`, `/privacy-policy`, `/returns-policy`
 - `/login`, `/register`
 
@@ -153,33 +154,40 @@ vercel --prod    # Deploy to production
 - Product details were updated from "Jaison Final PDs.docx" document
 - "Nagmotha" was renamed to "Nagarmotha" (slug: nagarmotha-powder)
 - "Mhendi" was renamed to "Mehendi" (slug: mehendi-powder)
-- Products include: Amla, Shikakai, Neem, Multani Mitti, Orange Peel, Ubtan, Mehendi, Reetha, Nagarmotha, Bhringraj, Rose Petal, Sandalwood
-- **Combos category** added with 4 combo product listings (e.g., Premium Hair Care)
+- **Rose Petal and Bhringraj REMOVED from catalogue (June 2026)** — do not re-add to any product UI
+- **Active slugs (13):** ubtan-powder, aamla-powder, neem-powder, shikakai-powder, multani-mitti, orange-peel-powder, mehendi-powder, reetha-powder, nagarmotha-powder, hair-care-trio, premium-hair-care-combo, scalp-care-combo, jaison-special-combo
+- **Combos category** added with 4 combo product listings
 - Color scheme was tested with Pantone brand colors but **reverted to original** (Cream/Parchment/Terracotta/Sage/Bark/Gold)
+- Bhringraj blog post kept as informational content — slug: `bhringraj-powder-for-hair-growth`
 
-## Recently Implemented Features
-- Analytics dashboard with revenue charts, top products, conversion rates
-- CSV exports for orders and customer data
-- Payment management (order status improvements)
-- SEO enhancements: AggregateRating schema, canonical URLs, OG images, favicon
-- Blog with 6 SEO-optimized articles + FAQ schema + internal linking
-- Dedicated /order-success page for conversion tracking
-- Ubtan & Amla product marketing images with zoom/pan gallery
+## Recently Implemented Features (redesign/v2 branch, June 2026)
+- Full visual redesign: hero video + Ken Burns, letter-glow heading, bark auth pages
+- Lead magnet popup (40% scroll depth, email capture → `/api/newsletter`, sessionStorage guard)
+- Cart "You may also like" cross-sell (3 category-matched products)
+- Blog expanded to 10 posts, each 1,500–2,100 words with Key Takeaways, FAQ sections
+- FAQ expanded to 32 questions in 7 groups with FAQPage JSON-LD schema
+- Order detail page rewrite (full brand-compliant timeline + payment/shipping info)
+- PageSpeed 51 → 83: hero poster image, `fetchpriority="high"`, ProductCard Next.js Image
+- Security headers added to `next.config.js` (X-Frame-Options, HSTS, CSP-lite)
+- `public/llms.txt` for AI crawler discoverability
+- SEO audit complete (100% storefront coverage): OG/twitter on all pages, BreadcrumbJsonLd, canonical URLs, absolute image URLs, meta descriptions, heading hierarchy
 - WhatsApp integration was added then removed — email-only notifications kept
+- **Do NOT add `aggregateRating` to ProductJsonLd** — no real reviews yet
 
 ## Upcoming Features (Roadmap)
 ### High Priority
-1. Delivery/Shipping management — Admin page for Shiprocket tracking, labels
+1. `/find-your-ritual` skin quiz — page files exist (`page.tsx` + `FindYourRitualContent.tsx`); needs explicit owner authorization before publishing
+2. Delivery/Shipping admin page — `src/app/admin/shipping/page.tsx`; Shiprocket API already in `src/lib/shipping.ts`
 
 ### Medium Priority
-2. Order detail page — Single-order view with timeline, payment & shipping info
-3. Email notifications — Shipping updates, delivery emails (order confirmation exists)
-4. Inventory alerts — Low stock notifications
+3. Email shipping notifications — "Order dispatched" email when admin marks SHIPPED; trigger in `src/app/api/admin/orders/route.ts`; order confirmation already in `src/lib/email.ts`
+4. IndexNow — generate key, place at `public/<key>.txt`, submit on publish
 
-### Nice to Have
-5. Bulk operations — Price/stock updates, CSV import/export
-6. Customer order history — Order tracking from customer account
+### Blocked on Owner
+5. Bhringraj blog image — placeholder is `neem-styled.webp`; save real photo to `public/images/blog/bhringraj-styled.webp`
+6. Blog 3rd internal links — each post has 2; target is 3 per post
+7. Google Search Console — submit sitemap after redesign/v2 merges to production
 
 ## Deployment Preferences
-- Always run `vercel --prod --yes` after every git commit+push — do not rely on auto-deploy
-- Verify deployment is live before moving on
+- **Active branch `redesign/v2`: NEVER deploy directly** — all work ends at `git commit + push origin redesign/v2`
+- When merging to `main` for production: run `vercel --prod --yes` and verify live before closing

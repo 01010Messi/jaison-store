@@ -1,36 +1,41 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Jaison Herbals — E-Commerce Store
 
-## Getting Started
+D2C Ayurvedic herbal skincare store. Full-stack Next.js 14 app with Razorpay, Shiprocket, Cloudinary, and Neon PostgreSQL.
 
-First, run the development server:
+**Live:** https://jaisonskincare.com  
+**Repo:** https://github.com/01010Messi/jaison-store  
+**Active branch:** `redesign/v2`
+
+---
+
+## Quick start
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev        # localhost:3000
+npm run build      # prisma generate && next build
+vercel --prod --yes  # deploy to production
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Key docs
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+| File | What it covers |
+|---|---|
+| `CLAUDE.md` | Full project reference — stack, DB models, env vars, routes, deployment |
+| `DESIGN.md` | Design system — color tokens, typography, spacing, component rules |
+| `DESIGN-AUDIT.md` | Code quality audit (June 2026) — 23 issues, 58/100 score |
+| `AUDIT-ACTIONS.md` | Website audit action tracker — what's done, what's pending |
+| `CONTENT.md` | Editable copy deck for all storefront text |
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Branch strategy
 
-## Learn More
+- `main` — production. **Do not push directly.** Merge from branch after testing.
+- `redesign/v2` — active redesign. All current work goes here.
 
-To learn more about Next.js, take a look at the following resources:
+## Environment variables
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+See `CLAUDE.md §Environment Variables Required` for the full list. Copy `.env.example` → `.env.local`.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Tech stack
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Next.js 14 (App Router) · TypeScript · Tailwind CSS · Prisma · Neon PostgreSQL · Razorpay · Shiprocket · Cloudinary · Resend · NextAuth.js · Zustand · Framer Motion
