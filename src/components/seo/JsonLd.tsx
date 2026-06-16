@@ -114,7 +114,11 @@ export function ProductJsonLd({
       value: product.weight,
       unitCode: "GRM",
     },
-    material: product.ingredients,
+    additionalProperty: {
+      "@type": "PropertyValue",
+      name: "Ingredients",
+      value: product.ingredients,
+    },
   };
 
   if (aggregateRating && aggregateRating.reviewCount > 0) {

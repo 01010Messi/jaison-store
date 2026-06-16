@@ -20,7 +20,9 @@ export function generateMetadata({ params }: Props): Metadata {
   }
 
   const title = `${product.name} — Buy Natural ${product.category} Online | jaison`;
-  const description = `${product.shortDescription} 100% natural, chemical-free. ₹${product.price} for ${product.weight}g. Shop ${product.name} at Jaison Herbals.`;
+  const rawDescription = `${product.shortDescription} 100% natural, chemical-free. ₹${product.price} for ${product.weight}g. Shop ${product.name} at Jaison Herbals.`;
+  const description = rawDescription.length > 160 ? rawDescription.slice(0, 157) + "..." : rawDescription;
+  const BASE_URL = "https://jaisonskincare.com";
 
   return {
     title,
@@ -38,12 +40,15 @@ export function generateMetadata({ params }: Props): Metadata {
     openGraph: {
       title,
       description,
-      images: product.images.map((img) => ({
-        url: img,
-        alt: product.name,
+      images: product.images.map((img, i) => ({
+        url: `${BASE_URL}${img}`,
+        alt:
+          i === 0
+            ? `${product.name} — natural ${product.category.toLowerCase()} powder by Jaison Herbals`
+            : `${product.name} — product image ${i + 1}`,
       })),
       type: "website",
-      url: `https://jaisonskincare.com/shop/${product.slug}`,
+      url: `${BASE_URL}/shop/${product.slug}`,
     },
     other: {
       "product:price:amount": String(product.price),
@@ -56,10 +61,10 @@ export function generateMetadata({ params }: Props): Metadata {
       card: "summary_large_image",
       title: `${product.name} — jaison Herbals`,
       description: product.shortDescription,
-      images: [product.image],
+      images: [`${BASE_URL}${product.image}`],
     },
     alternates: {
-      canonical: `https://jaisonskincare.com/shop/${product.slug}`,
+      canonical: `${BASE_URL}/shop/${product.slug}`,
     },
   };
 }
