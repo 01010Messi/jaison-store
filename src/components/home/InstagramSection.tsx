@@ -171,11 +171,11 @@ export default function InstagramSection() {
       </div>
 
       {/* Grid */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-3 px-4 md:px-8 lg:px-14 items-start" aria-hidden="true">
+      <div className="columns-2 md:columns-4 gap-2 md:gap-3 px-4 md:px-8 lg:px-14" aria-hidden="true">
         {tiles.map((tile) => (
           <div
             key={tile.handle}
-            className="relative overflow-hidden rounded-2xl"
+            className="relative overflow-hidden rounded-2xl mb-2 md:mb-3 break-inside-avoid"
             style={{ backgroundColor: tile.bg, aspectRatio: tile.aspect }}
           >
             <Motif type={tile.motif} bg={tile.bg} />

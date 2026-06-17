@@ -50,27 +50,6 @@ export default function BlogPage() {
           className="relative overflow-hidden px-6 md:px-14 lg:px-24 pt-28 pb-14"
           style={{ backgroundColor: "var(--color-cream)" }}
         >
-          {/* Watermark: 3 faint card rectangles */}
-          <div
-            className="absolute inset-0 pointer-events-none select-none"
-            aria-hidden="true"
-            style={{ display: "flex", alignItems: "center", gap: "24px", paddingLeft: "8%", paddingTop: "8%" }}
-          >
-            {[0, 1, 2].map((i) => (
-              <div
-                key={i}
-                style={{
-                  width: "180px",
-                  height: "240px",
-                  border: "1px solid rgba(26,60,52,0.06)",
-                  borderRadius: "16px",
-                  backgroundColor: "rgba(245,236,215,0.35)",
-                  flexShrink: 0,
-                }}
-              />
-            ))}
-          </div>
-
           <p
             className="relative font-accent text-[10px] tracking-[0.22em] uppercase mb-8 flex items-center gap-3"
             style={{ color: "rgba(26,60,52,0.4)" }}
