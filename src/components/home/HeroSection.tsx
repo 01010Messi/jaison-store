@@ -123,7 +123,7 @@ export default function HeroSection() {
           </h2>
 
           {/* Sub-copy + CTAs */}
-          <div className="mt-auto flex flex-col md:flex-row md:items-end md:justify-between gap-6 pb-20 md:pb-24">
+          <div className="mt-auto flex flex-col md:flex-row md:items-end md:justify-between gap-6 pb-28 md:pb-32">
             <p
               className="font-body leading-relaxed"
               style={{
@@ -138,14 +138,14 @@ export default function HeroSection() {
               plant, ground and sifted. Mix at home. Use. Rinse.
             </p>
 
-            <div className="flex items-center gap-3 flex-shrink-0" style={{ paddingRight: "72px" }}>
+            <div className="flex items-center gap-4 flex-shrink-0" style={{ paddingRight: "72px" }}>
               <Link
                 href="/shop"
                 className="inline-flex items-center gap-2 font-accent uppercase transition-opacity duration-200 hover:opacity-85"
                 style={{
                   borderRadius: "9999px",
-                  padding: "13px 28px",
-                  fontSize: "11px",
+                  padding: "17px 34px",
+                  fontSize: "12px",
                   letterSpacing: "0.14em",
                   backgroundColor: "var(--color-terracotta)",
                   color: "var(--color-cream)",
@@ -155,15 +155,14 @@ export default function HeroSection() {
               </Link>
               <Link
                 href="/why-powder"
-                className="inline-flex items-center font-accent uppercase border transition-colors duration-200 hover:border-bark/60"
+                className="inline-flex items-center font-accent uppercase transition-opacity duration-200 hover:opacity-85"
                 style={{
                   borderRadius: "9999px",
-                  padding: "13px 28px",
-                  fontSize: "11px",
+                  padding: "17px 34px",
+                  fontSize: "12px",
                   letterSpacing: "0.14em",
-                  borderColor: "rgba(26,60,52,0.55)",
-                  color: "var(--color-bark)",
-                  backgroundColor: "rgba(254,250,224,0.22)",
+                  backgroundColor: "rgba(26,60,52,0.65)",
+                  color: "var(--color-cream)",
                 }}
               >
                 Read Why Powder
