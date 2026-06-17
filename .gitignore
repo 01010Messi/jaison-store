@@ -40,3 +40,4 @@ raw-images/
 
 # Cowork/Claude local settings
 .claude/
+.env*
