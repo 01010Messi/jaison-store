@@ -18,6 +18,7 @@ async function getAuthToken(): Promise<string> {
         email: process.env.SHIPROCKET_EMAIL,
         password: process.env.SHIPROCKET_PASSWORD,
       }),
+      signal: AbortSignal.timeout(8000),
     }
   );
 
@@ -46,6 +47,7 @@ async function shiprocketFetch(
       Authorization: `Bearer ${token}`,
       ...options.headers,
     },
+    signal: AbortSignal.timeout(8000),
   });
 }
 

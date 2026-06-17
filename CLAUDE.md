@@ -173,6 +173,7 @@ vercel --prod    # Deploy to production
 - SEO audit complete (100% storefront coverage): OG/twitter on all pages, BreadcrumbJsonLd, canonical URLs, absolute image URLs, meta descriptions, heading hierarchy
 - WhatsApp integration was added then removed — email-only notifications kept
 - **Do NOT add `aggregateRating` to ProductJsonLd** — no real reviews yet
+- Checkout resilience hardening (session 13, see `RESILIENCE-AUDIT.md`): fixed a silent-success bug where a verified Razorpay payment with no matching order returned `verified: true`; added atomic stock-guarded transactions to prevent oversell in both COD and Razorpay checkout; reordered `create-order` to call Razorpay before writing the DB row (no more zombie PENDING orders); added timeouts to all outbound Telegram/Twilio/Shiprocket calls and parallelized notification sends; added retry-on-collision for order numbers and retry-on-transient-error for Neon connection blips
 
 ## Upcoming Features (Roadmap)
 ### High Priority

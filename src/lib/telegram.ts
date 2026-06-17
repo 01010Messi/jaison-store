@@ -65,6 +65,7 @@ ${escapeMarkdown(addressLines)}`;
         text: message,
         parse_mode: "MarkdownV2",
       }),
+      signal: AbortSignal.timeout(8000),
     }
   );
 

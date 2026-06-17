@@ -9,7 +9,7 @@ function client() {
   if (!ACCOUNT_SID || !AUTH_TOKEN) {
     throw new Error("Twilio credentials not configured");
   }
-  return twilio(ACCOUNT_SID, AUTH_TOKEN);
+  return twilio(ACCOUNT_SID, AUTH_TOKEN, { timeout: 8000 });
 }
 
 export interface OrderNotificationData {

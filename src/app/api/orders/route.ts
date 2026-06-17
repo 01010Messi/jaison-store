@@ -1,7 +1,8 @@
 import { NextResponse } from "next/server";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
-import prisma from "@/lib/prisma";
+import prisma, { isTransientDbError } from "@/lib/prisma";
+import { Prisma } from "@prisma/client";
 import { generateOrderNumber } from "@/lib/utils";
 import { sendOrderConfirmation } from "@/lib/email";
 import { sendTelegramOrderNotification } from "@/lib/telegram";
@@ -112,46 +113,77 @@ export async function POST(req: Request) {
       )
     );
 
-    // Create order
-    const order = await prisma.order.create({
-      data: {
-        orderNumber,
-        ...(userId ? { userId } : {}),
-        ...(!userId && guestEmail
-          ? { guestEmail, guestPhone: guestPhone || address.phone }
-          : {}),
-        shippingAddressId: savedAddress.id,
-        status: "PENDING",
-        paymentMethod,
-        paymentStatus: paymentMethod === "COD" ? "PENDING" : "PAID",
-        subtotal,
-        shippingCost: shippingCost || 0,
-        codFee: codFee || 0,
-        discount: discount || 0,
-        total,
-        couponCode: couponCode || null,
-        items: {
-          create: resolvedItems.map((item) => ({
-            productId: item.productId,
-            name: item.name,
-            price: item.price,
-            quantity: item.quantity,
-            image: item.image || null,
-          })),
-        },
-      },
-      include: {
-        items: true,
-        shippingAddress: true,
-      },
-    });
+    // Reserve stock and create the order as one atomic step, so two
+    // concurrent checkouts on the same low-stock item can't both succeed.
+    // Retry on the rare order-number collision (900 possible values/day).
+    let order;
+    let finalOrderNumber = orderNumber;
+    for (let attempt = 0; ; attempt++) {
+      try {
+        order = await prisma.$transaction(async (tx) => {
+          for (const item of resolvedItems) {
+            const result = await tx.product.updateMany({
+              where: { id: item.productId, stock: { gte: item.quantity } },
+              data: { stock: { decrement: item.quantity } },
+            });
+            if (result.count === 0) {
+              throw new Error(`INSUFFICIENT_STOCK:${item.name}`);
+            }
+          }
 
-    // Update product stock
-    for (const item of resolvedItems) {
-      await prisma.product.update({
-        where: { id: item.productId },
-        data: { stock: { decrement: item.quantity } },
-      });
+          return tx.order.create({
+            data: {
+              orderNumber: finalOrderNumber,
+              ...(userId ? { userId } : {}),
+              ...(!userId && guestEmail
+                ? { guestEmail, guestPhone: guestPhone || address.phone }
+                : {}),
+              shippingAddressId: savedAddress.id,
+              status: "PENDING",
+              paymentMethod,
+              paymentStatus: paymentMethod === "COD" ? "PENDING" : "PAID",
+              subtotal,
+              shippingCost: shippingCost || 0,
+              codFee: codFee || 0,
+              discount: discount || 0,
+              total,
+              couponCode: couponCode || null,
+              items: {
+                create: resolvedItems.map((item) => ({
+                  productId: item.productId,
+                  name: item.name,
+                  price: item.price,
+                  quantity: item.quantity,
+                  image: item.image || null,
+                })),
+              },
+            },
+            include: {
+              items: true,
+              shippingAddress: true,
+            },
+          });
+        });
+        break;
+      } catch (err) {
+        if (err instanceof Error && err.message.startsWith("INSUFFICIENT_STOCK:")) {
+          return NextResponse.json(
+            { message: `Insufficient stock for ${err.message.split(":")[1]}` },
+            { status: 409 }
+          );
+        }
+        const isCollision =
+          err instanceof Prisma.PrismaClientKnownRequestError &&
+          err.code === "P2002";
+        if (isCollision && attempt < 2) {
+          finalOrderNumber = generateOrderNumber();
+          continue;
+        }
+        if (isTransientDbError(err) && attempt < 2) {
+          continue;
+        }
+        throw err;
+      }
     }
 
     // Send notifications (must await on Vercel serverless)
@@ -182,33 +214,35 @@ export async function POST(req: Request) {
       },
     };
 
-    await sendOrderConfirmation(emailData).catch((err) =>
-      console.error("Email send failed:", err)
-    );
-
-    // Send Telegram notification to admin
-    await sendTelegramOrderNotification({
-      orderNumber: order.orderNumber,
-      customerName,
-      customerEmail,
-      paymentMethod: order.paymentMethod,
-      paymentStatus: order.paymentStatus,
-      items: order.items.map((i) => ({
-        name: i.name,
-        quantity: i.quantity,
-        price: Number(i.price),
-      })),
-      total: Number(order.total),
-      shippingAddress: {
-        fullName: savedAddress.fullName,
-        addressLine1: savedAddress.addressLine1,
-        addressLine2: savedAddress.addressLine2 || undefined,
-        city: savedAddress.city,
-        state: savedAddress.state,
-        pincode: savedAddress.pincode,
-        phone: savedAddress.phone,
-      },
-    }).catch((err) => console.error("Telegram notification failed:", err));
+    // Fire all notifications in parallel — each already swallows its own
+    // error, so one slow/down service can't serialize and stall the others.
+    const notifications: Promise<unknown>[] = [
+      sendOrderConfirmation(emailData).catch((err) =>
+        console.error("Email send failed:", err)
+      ),
+      sendTelegramOrderNotification({
+        orderNumber: order.orderNumber,
+        customerName,
+        customerEmail,
+        paymentMethod: order.paymentMethod,
+        paymentStatus: order.paymentStatus,
+        items: order.items.map((i) => ({
+          name: i.name,
+          quantity: i.quantity,
+          price: Number(i.price),
+        })),
+        total: Number(order.total),
+        shippingAddress: {
+          fullName: savedAddress.fullName,
+          addressLine1: savedAddress.addressLine1,
+          addressLine2: savedAddress.addressLine2 || undefined,
+          city: savedAddress.city,
+          state: savedAddress.state,
+          pincode: savedAddress.pincode,
+          phone: savedAddress.phone,
+        },
+      }).catch((err) => console.error("Telegram notification failed:", err)),
+    ];
 
     // Send WhatsApp notification to admin and set session context
     const waPayload = {
@@ -235,7 +269,7 @@ export async function POST(req: Request) {
     };
     const adminPhone = process.env.ADMIN_WHATSAPP_NUMBER;
     if (adminPhone) {
-      await Promise.all([
+      notifications.push(
         sendOrderNotification(waPayload).catch((err) =>
           console.error("WhatsApp notification failed:", err)
         ),
@@ -243,9 +277,11 @@ export async function POST(req: Request) {
           where: { phone: adminPhone },
           create: { phone: adminPhone, orderId: order.id, orderNumber: order.orderNumber },
           update: { orderId: order.id, orderNumber: order.orderNumber, awaitingLrn: false },
-        }).catch((err) => console.error("WhatsApp session upsert failed:", err)),
-      ]);
+        }).catch((err) => console.error("WhatsApp session upsert failed:", err))
+      );
     }
+
+    await Promise.all(notifications);
 
     return NextResponse.json({
       orderNumber: order.orderNumber,

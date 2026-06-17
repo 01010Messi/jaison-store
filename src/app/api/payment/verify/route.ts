@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import crypto from "crypto";
-import prisma from "@/lib/prisma";
+import prisma, { isTransientDbError } from "@/lib/prisma";
 import { sendOrderConfirmation } from "@/lib/email";
 import { sendTelegramOrderNotification } from "@/lib/telegram";
 import { sendOrderNotification } from "@/lib/whatsapp";
@@ -47,24 +47,66 @@ export async function POST(req: Request) {
       include: { items: true, shippingAddress: true },
     });
 
-    if (order) {
-      await prisma.order.update({
-        where: { id: order.id },
-        data: {
-          paymentStatus: "PAID",
-          status: "CONFIRMED",
-          razorpayOrderId,
-          razorpayPaymentId,
-          razorpaySignature,
+    if (!order) {
+      // Payment captured by Razorpay but no matching order row exists.
+      // Don't report success — flag loudly so it can be reconciled manually.
+      console.error(
+        `CRITICAL: payment verified but no order found. orderId=${orderId} razorpayPaymentId=${razorpayPaymentId} razorpayOrderId=${razorpayOrderId}`
+      );
+      return NextResponse.json(
+        {
+          verified: false,
+          message:
+            "Payment received but order record not found. Please contact support with your payment ID.",
+          paymentId: razorpayPaymentId,
         },
-      });
+        { status: 409 }
+      );
+    }
 
-      // Decrement product stock
-      for (const item of order.items) {
-        await prisma.product.update({
-          where: { id: item.productId },
-          data: { stock: { decrement: item.quantity } },
-        });
+    {
+      const oversold: string[] = [];
+      for (let attempt = 0; ; attempt++) {
+        try {
+          await prisma.$transaction(async (tx) => {
+            await tx.order.update({
+              where: { id: order.id },
+              data: {
+                paymentStatus: "PAID",
+                status: "CONFIRMED",
+                razorpayOrderId,
+                razorpayPaymentId,
+                razorpaySignature,
+              },
+            });
+
+            for (const item of order.items) {
+              const result = await tx.product.updateMany({
+                where: { id: item.productId, stock: { gte: item.quantity } },
+                data: { stock: { decrement: item.quantity } },
+              });
+              if (result.count === 0) oversold.push(item.productId);
+            }
+          });
+          break;
+        } catch (err) {
+          if (isTransientDbError(err) && attempt < 2) {
+            oversold.length = 0;
+            continue;
+          }
+          throw err;
+        }
+      }
+
+      // Payment is already captured, so a paid order is never blocked on
+      // stock — but an oversell (stock ran out between checkout and payment)
+      // needs to be flagged for manual backorder/restock handling.
+      if (oversold.length > 0) {
+        console.error(
+          `CRITICAL: oversell on order ${order.orderNumber} — products ${oversold.join(
+            ", "
+          )} had insufficient stock at payment time.`
+        );
       }
 
       // Send order confirmation email
@@ -78,77 +120,77 @@ export async function POST(req: Request) {
             )?.email
           : null);
 
-      // Send order confirmation email (must await on Vercel serverless)
+      // Fire all notifications in parallel — each already swallows its own
+      // error, so one slow/down service can't serialize and stall the others.
+      const notifications: Promise<unknown>[] = [];
+
       if (customerEmail && order.shippingAddress) {
-        await sendOrderConfirmation({
-          orderNumber: order.orderNumber,
-          customerName: order.shippingAddress.fullName,
-          customerEmail,
-          items: order.items.map((i) => ({
-            name: i.name,
-            quantity: i.quantity,
-            price: Number(i.price),
-            image: i.image || undefined,
-          })),
-          subtotal: Number(order.subtotal),
-          shippingCost: Number(order.shippingCost),
-          codFee: Number(order.codFee),
-          discount: Number(order.discount),
-          total: Number(order.total),
-          paymentMethod: order.paymentMethod,
-          shippingAddress: {
-            fullName: order.shippingAddress.fullName,
-            addressLine1: order.shippingAddress.addressLine1,
-            addressLine2: order.shippingAddress.addressLine2 || undefined,
-            city: order.shippingAddress.city,
-            state: order.shippingAddress.state,
-            pincode: order.shippingAddress.pincode,
-            phone: order.shippingAddress.phone,
-          },
-        }).catch((err) => console.error("Email send failed:", err));
+        notifications.push(
+          sendOrderConfirmation({
+            orderNumber: order.orderNumber,
+            customerName: order.shippingAddress.fullName,
+            customerEmail,
+            items: order.items.map((i) => ({
+              name: i.name,
+              quantity: i.quantity,
+              price: Number(i.price),
+              image: i.image || undefined,
+            })),
+            subtotal: Number(order.subtotal),
+            shippingCost: Number(order.shippingCost),
+            codFee: Number(order.codFee),
+            discount: Number(order.discount),
+            total: Number(order.total),
+            paymentMethod: order.paymentMethod,
+            shippingAddress: {
+              fullName: order.shippingAddress.fullName,
+              addressLine1: order.shippingAddress.addressLine1,
+              addressLine2: order.shippingAddress.addressLine2 || undefined,
+              city: order.shippingAddress.city,
+              state: order.shippingAddress.state,
+              pincode: order.shippingAddress.pincode,
+              phone: order.shippingAddress.phone,
+            },
+          }).catch((err) => console.error("Email send failed:", err))
+        );
       }
 
-      // Send Telegram notification to admin
       if (order.shippingAddress) {
-        await sendTelegramOrderNotification({
-          orderNumber: order.orderNumber,
-          customerName: order.shippingAddress.fullName,
-          customerEmail: customerEmail || "N/A",
-          paymentMethod: order.paymentMethod,
-          paymentStatus: "PAID",
-          items: order.items.map((i) => ({
-            name: i.name,
-            quantity: i.quantity,
-            price: Number(i.price),
-          })),
-          total: Number(order.total),
-          shippingAddress: {
-            fullName: order.shippingAddress.fullName,
-            addressLine1: order.shippingAddress.addressLine1,
-            addressLine2: order.shippingAddress.addressLine2 || undefined,
-            city: order.shippingAddress.city,
-            state: order.shippingAddress.state,
-            pincode: order.shippingAddress.pincode,
-            phone: order.shippingAddress.phone,
-          },
-        }).catch((err) => console.error("Telegram notification failed:", err));
+        notifications.push(
+          sendTelegramOrderNotification({
+            orderNumber: order.orderNumber,
+            customerName: order.shippingAddress.fullName,
+            customerEmail: customerEmail || "N/A",
+            paymentMethod: order.paymentMethod,
+            paymentStatus: "PAID",
+            items: order.items.map((i) => ({
+              name: i.name,
+              quantity: i.quantity,
+              price: Number(i.price),
+            })),
+            total: Number(order.total),
+            shippingAddress: {
+              fullName: order.shippingAddress.fullName,
+              addressLine1: order.shippingAddress.addressLine1,
+              addressLine2: order.shippingAddress.addressLine2 || undefined,
+              city: order.shippingAddress.city,
+              state: order.shippingAddress.state,
+              pincode: order.shippingAddress.pincode,
+              phone: order.shippingAddress.phone,
+            },
+          }).catch((err) => console.error("Telegram notification failed:", err))
+        );
 
         // Send WhatsApp notification and set session context
         const adminPhone = process.env.ADMIN_WHATSAPP_NUMBER;
         if (adminPhone && order.shippingAddress) {
-          const customerEmail2 =
-            order.guestEmail ||
-            (order.userId
-              ? (await prisma.user.findUnique({ where: { id: order.userId } }))?.email
-              : null) || "N/A";
-
-          await Promise.all([
+          notifications.push(
             sendOrderNotification({
               orderId: order.id,
               orderNumber: order.orderNumber,
               customerName: order.shippingAddress.fullName,
               customerPhone: order.shippingAddress.phone,
-              customerEmail: customerEmail2,
+              customerEmail: customerEmail || "N/A",
               paymentMethod: order.paymentMethod,
               paymentStatus: "PAID",
               items: order.items.map((i) => ({
@@ -169,10 +211,12 @@ export async function POST(req: Request) {
               where: { phone: adminPhone },
               create: { phone: adminPhone, orderId: order.id, orderNumber: order.orderNumber },
               update: { orderId: order.id, orderNumber: order.orderNumber, awaitingLrn: false },
-            }).catch((err) => console.error("WhatsApp session upsert failed:", err)),
-          ]);
+            }).catch((err) => console.error("WhatsApp session upsert failed:", err))
+          );
         }
       }
+
+      await Promise.all(notifications);
     }
 
     return NextResponse.json({
