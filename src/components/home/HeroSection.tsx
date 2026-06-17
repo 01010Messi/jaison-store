@@ -105,7 +105,7 @@ export default function HeroSection() {
             ref={headlineRef}
             className="font-heading font-light"
             style={{
-              fontSize: "clamp(3rem, 9vw, 11rem)",
+              fontSize: "clamp(2.25rem, 6.75vw, 8.25rem)",
               lineHeight: 0.96,
               letterSpacing: "-0.02em",
             }}
@@ -138,7 +138,7 @@ export default function HeroSection() {
               plant, ground and sifted. Mix at home. Use. Rinse.
             </p>
 
-            <div className="flex items-center gap-4 flex-shrink-0" style={{ paddingRight: "104px" }}>
+            <div className="flex items-center gap-4 flex-shrink-0" style={{ paddingRight: "40px" }}>
               <Link
                 href="/shop"
                 className="inline-flex items-center gap-2 font-accent uppercase transition-opacity duration-200 hover:opacity-85"
