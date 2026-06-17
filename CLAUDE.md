@@ -107,6 +107,12 @@ NEXT_PUBLIC_WHATSAPP_NUMBER=918600151677
 NEXT_PUBLIC_GA_MEASUREMENT_ID
 ```
 
+## Local Dev Against Production
+No staging/sandbox exists for this project (Razorpay LIVE only, env vars only set in Vercel's Production environment). To run `next dev` against real data: `vercel link`, then `vercel env pull .env.local --environment=production`. **Known gotcha:** the pulled values come back with a stray literal `\n` appended to every secret (confirmed on `DATABASE_URL`, `RAZORPAY_KEY_ID/SECRET`, and ~19 others) — this breaks Razorpay auth (`401`) and would break the DB connection too. Strip the trailing `\n` before use. Also set `NEXTAUTH_URL`/`NEXT_PUBLIC_APP_URL` to `http://localhost:3000` (they pull blank). Delete `.env.local` when done — don't leave production secrets on disk.
+
+## Known Minor Issues
+- `Address` rows in `orders/route.ts` and `payment/create-order/route.ts` are written before the stock-guard transaction / Razorpay call. A failed checkout attempt (insufficient stock, gateway rejection) leaves a permanent orphan `Address` row with no order attached. Low severity, not yet fixed — flagged in `RESILIENCE-AUDIT.md`.
+
 ## Design System
 > Full reference: **DESIGN.md** (tokens, type scale, component rules, recipes). Summary:
 - **Colors:** Cream (#FEFAE0), Parchment (#EFE4C5), Terracotta (#834316, light #A56843), Sage (#606C38), Bark (#1A3C34), Gold (#B89968)
@@ -174,6 +180,7 @@ vercel --prod    # Deploy to production
 - WhatsApp integration was added then removed — email-only notifications kept
 - **Do NOT add `aggregateRating` to ProductJsonLd** — no real reviews yet
 - Checkout resilience hardening (session 13, see `RESILIENCE-AUDIT.md`): fixed a silent-success bug where a verified Razorpay payment with no matching order returned `verified: true`; added atomic stock-guarded transactions to prevent oversell in both COD and Razorpay checkout; reordered `create-order` to call Razorpay before writing the DB row (no more zombie PENDING orders); added timeouts to all outbound Telegram/Twilio/Shiprocket calls and parallelized notification sends; added retry-on-collision for order numbers and retry-on-transient-error for Neon connection blips
+- Checkout resilience fixes verified live against production (session 14) — see `RESILIENCE-AUDIT.md` "Live smoke test" section. All 4 testable fixes confirmed working via real Razorpay orders + the real DB (no money moved — verify endpoint exercised with a self-forged HMAC signature, which is valid since signature checking is local). `redesign/v2` checkout path is sound to merge to `main` whenever ready.
 
 ## Upcoming Features (Roadmap)
 ### High Priority

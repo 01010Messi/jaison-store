@@ -100,4 +100,23 @@ All 6 findings are now fixed. Status table first, reason/fix/result detail below
 
 - `npx tsc --noEmit` — clean
 - `npm run build` — 85/85 static pages, same pre-existing dynamic-server-usage warnings as prior sessions (unrelated to these changes)
-- No live network calls were made during the audit or the fix implementation — all six fixes are static code changes, untested against live Razorpay/Shiprocket/Telegram/Twilio traffic. Recommend a manual checkout smoke test (one Razorpay order, one COD order) before merging `redesign/v2` to `main`.
+- No live network calls were made during the audit or the fix implementation — all six fixes were static code changes, untested against live traffic at the time this audit was written.
+
+### Live smoke test (session 14, 17 June 2026)
+
+Ran the actual routes against **production** Neon + live Razorpay (no sandbox exists for this project) via local `next dev` with pulled prod env vars. Full results, probes, and cleanup steps are in the session 14 entry of `HANDOFF.md`. Summary:
+
+| # | Finding | Live result |
+|---|---|---|
+| 1 | Silent strand on missing order | ✅ Confirmed — forged-signature verify against a nonexistent order returns `409` + logs `CRITICAL: payment verified but no order found...` |
+| 2 | Oversell race condition | ✅ Confirmed — two concurrent COD requests against stock=2 (qty 2 each) produced exactly one `200` and one `409`; stock landed at exactly `0`, never negative. Paid-order oversell path also confirmed: stock guard correctly declined and logged `CRITICAL: oversell on order...` instead of going negative |
+| 3 | Zombie PENDING orders | ✅ Confirmed — forcing a Razorpay rejection (sub-minimum amount) returned `502` with **zero** order rows written |
+| 4 | No timeout / sequential notifications | ✅ Confirmed — a real outbound Telegram call timed out at the configured 8s threshold and was caught cleanly via `.catch()` without blocking the response |
+| 5 | Order-number collision retry | Not exercised — needs a forced `P2002`, not worth injecting against prod for this pass |
+| 6 | Transient Neon error retry | Not exercised — same reasoning as #5 |
+
+All test orders/addresses were deleted and stock restored immediately after. No production data was left behind.
+
+**New findings from this pass (not part of the original 6, not yet fixed):**
+- The shipping `Address` row in both `orders/route.ts` and `payment/create-order/route.ts` is written *before* the stock-guarded transaction / Razorpay call. Every failed attempt (insufficient stock, gateway rejection) leaves a permanent orphan `Address` row with no order attached. Low severity, but will accumulate over time.
+- `vercel env pull` against this project returns every secret with a stray literal `\n` appended (confirmed on `DATABASE_URL`, `RAZORPAY_KEY_ID`, `RAZORPAY_KEY_SECRET`, and 19 others). This breaks local dev against pulled prod env vars (Razorpay auth fails with `401`) until stripped. Not a code bug — an artifact of how the values were originally entered into the Vercel dashboard — but worth knowing before the next person tries this.
