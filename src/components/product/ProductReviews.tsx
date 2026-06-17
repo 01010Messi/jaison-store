@@ -5,6 +5,7 @@ import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { Star, MessageSquarePlus } from "lucide-react";
 import StarRating from "@/components/ui/StarRating";
+import Textarea from "@/components/ui/Textarea";
 import toast from "react-hot-toast";
 
 interface ReviewData {
@@ -193,12 +194,12 @@ export default function ProductReviews({
             <label className="block text-xs font-accent uppercase tracking-wider text-bark/60 mb-2">
               Your Review
             </label>
-            <textarea
+            <Textarea
               value={body}
               onChange={(e) => setBody(e.target.value)}
               placeholder="Share your experience with this product..."
               rows={4}
-              className="w-full px-3 py-2 border border-border rounded-lg text-sm font-body bg-cream focus:border-gold transition-colors resize-none placeholder:text-bark/30"
+              className="resize-none"
             />
           </div>
 

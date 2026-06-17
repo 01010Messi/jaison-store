@@ -25,6 +25,8 @@ export default function GlowPillLink({
       style={style}
       onMouseEnter={e => { e.currentTarget.style.boxShadow = hoverShadow; }}
       onMouseLeave={e => { e.currentTarget.style.boxShadow = "none"; }}
+      onFocus={e => { e.currentTarget.style.boxShadow = hoverShadow; }}
+      onBlur={e => { e.currentTarget.style.boxShadow = "none"; }}
     >
       {children}
     </Link>

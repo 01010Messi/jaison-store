@@ -14,6 +14,8 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import Button from "@/components/ui/Button";
+import Textarea from "@/components/ui/Textarea";
+import Checkbox from "@/components/ui/Checkbox";
 import GoldRule from "@/components/decorative/GoldRule";
 import { slugify } from "@/lib/utils";
 import toast from "react-hot-toast";
@@ -477,11 +479,10 @@ export default function ProductForm({
               <label className="block text-xs font-accent uppercase tracking-wider text-bark/60 mb-1.5">
                 Full Description *
               </label>
-              <textarea
+              <Textarea
                 value={product.description}
                 onChange={(e) => updateField("description", e.target.value)}
                 rows={4}
-                className="w-full px-3 py-2.5 border border-border rounded-sm text-sm font-body bg-cream focus:border-gold focus:ring-0 transition-colors resize-y"
                 placeholder="Detailed product description..."
               />
             </div>
@@ -706,35 +707,19 @@ export default function ProductForm({
 
             {/* Toggles */}
             <div className="flex flex-wrap gap-6 pt-2">
-              <label className="flex items-center gap-2.5 cursor-pointer">
-                <input
-                  type="checkbox"
-                  checked={product.isActive}
-                  onChange={(e) => updateField("isActive", e.target.checked)}
-                  className="w-4 h-4 rounded-sm border-border text-terracotta focus:ring-gold accent-terracotta"
-                />
-                <span className="text-sm font-body text-bark/70">Active</span>
-                <span className="text-xs text-bark/60 font-body">
-                  (visible in store)
-                </span>
-              </label>
+              <Checkbox
+                checked={product.isActive}
+                onChange={(e) => updateField("isActive", e.target.checked)}
+                label="Active"
+                helperText="(visible in store)"
+              />
 
-              <label className="flex items-center gap-2.5 cursor-pointer">
-                <input
-                  type="checkbox"
-                  checked={product.isFeatured}
-                  onChange={(e) =>
-                    updateField("isFeatured", e.target.checked)
-                  }
-                  className="w-4 h-4 rounded-sm border-border text-terracotta focus:ring-gold accent-terracotta"
-                />
-                <span className="text-sm font-body text-bark/70">
-                  Featured
-                </span>
-                <span className="text-xs text-bark/60 font-body">
-                  (shown on homepage)
-                </span>
-              </label>
+              <Checkbox
+                checked={product.isFeatured}
+                onChange={(e) => updateField("isFeatured", e.target.checked)}
+                label="Featured"
+                helperText="(shown on homepage)"
+              />
             </div>
           </div>
         </section>
@@ -748,11 +733,10 @@ export default function ProductForm({
               <label className="block text-xs font-accent uppercase tracking-wider text-bark/60 mb-1.5">
                 Ingredients
               </label>
-              <textarea
+              <Textarea
                 value={product.ingredients}
                 onChange={(e) => updateField("ingredients", e.target.value)}
                 rows={3}
-                className="w-full px-3 py-2.5 border border-border rounded-sm text-sm font-body bg-cream focus:border-gold focus:ring-0 transition-colors resize-y"
                 placeholder="List of ingredients..."
               />
             </div>
@@ -761,11 +745,10 @@ export default function ProductForm({
               <label className="block text-xs font-accent uppercase tracking-wider text-bark/60 mb-1.5">
                 How to Use
               </label>
-              <textarea
+              <Textarea
                 value={product.howToUse}
                 onChange={(e) => updateField("howToUse", e.target.value)}
                 rows={3}
-                className="w-full px-3 py-2.5 border border-border rounded-sm text-sm font-body bg-cream focus:border-gold focus:ring-0 transition-colors resize-y"
                 placeholder="Usage instructions..."
               />
             </div>
@@ -774,11 +757,10 @@ export default function ProductForm({
               <label className="block text-xs font-accent uppercase tracking-wider text-bark/60 mb-1.5">
                 Benefits
               </label>
-              <textarea
+              <Textarea
                 value={product.benefits}
                 onChange={(e) => updateField("benefits", e.target.value)}
                 rows={3}
-                className="w-full px-3 py-2.5 border border-border rounded-sm text-sm font-body bg-cream focus:border-gold focus:ring-0 transition-colors resize-y"
                 placeholder="Key benefits of the product..."
               />
             </div>
@@ -807,13 +789,12 @@ export default function ProductForm({
               <label className="block text-xs font-accent uppercase tracking-wider text-bark/60 mb-1.5">
                 Meta Description
               </label>
-              <textarea
+              <Textarea
                 value={product.metaDescription}
                 onChange={(e) =>
                   updateField("metaDescription", e.target.value)
                 }
                 rows={2}
-                className="w-full px-3 py-2.5 border border-border rounded-sm text-sm font-body bg-cream focus:border-gold focus:ring-0 transition-colors resize-y"
                 placeholder="Auto-generated from short description"
               />
             </div>
