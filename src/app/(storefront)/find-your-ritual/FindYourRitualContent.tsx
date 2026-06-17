@@ -181,25 +181,16 @@ export default function FindYourRitualContent() {
         {/* Progress bar — steps 1–4 */}
         {step <= 4 && (
           <div className="mb-12 flex items-center gap-4">
-            <span
-              className="font-accent text-[10px] tracking-[0.2em] uppercase"
-              style={{ color: "rgba(26,60,52,0.4)" }}
-            >
+            <span className="font-accent text-[10px] tracking-[0.22em] uppercase text-bark/40">
               — FIND YOUR RITUAL
             </span>
-            <div className="flex-1 h-px relative" style={{ backgroundColor: "rgba(26,60,52,0.1)" }}>
+            <div className="flex-1 h-px relative bg-bark/10">
               <div
-                className="absolute inset-y-0 left-0 transition-all duration-500"
-                style={{
-                  backgroundColor: "rgba(26,60,52,0.3)",
-                  width: `${((step - 1) / 4) * 100}%`,
-                }}
+                className="absolute inset-y-0 left-0 bg-bark/30 transition-all duration-500"
+                style={{ width: `${((step - 1) / 4) * 100}%` }}
               />
             </div>
-            <span
-              className="font-accent text-[11px] tracking-wider"
-              style={{ color: "rgba(26,60,52,0.4)" }}
-            >
+            <span className="font-accent text-[11px] tracking-wider text-bark/40">
               0{step} · 04
             </span>
           </div>
@@ -213,10 +204,7 @@ export default function FindYourRitualContent() {
               <h2 className="font-heading text-[2.75rem] md:text-[4rem] font-light leading-[1.05] tracking-[-0.02em] text-bark">
                 {q.heading}
               </h2>
-              <p
-                className="font-heading italic text-base md:text-lg mt-3"
-                style={{ color: "rgba(26,60,52,0.35)" }}
-              >
+              <p className="font-heading italic text-base md:text-lg mt-3 text-bark/35">
                 {q.subtitle}
               </p>
             </div>
@@ -229,7 +217,7 @@ export default function FindYourRitualContent() {
                   onClick={() => handleSelect(option.value)}
                   onMouseEnter={() => setHovered(option.value)}
                   onMouseLeave={() => setHovered(null)}
-                  className="relative flex items-center justify-between p-5 md:p-6 rounded-2xl text-left transition-all duration-200"
+                  className="relative flex items-center justify-between p-5 md:p-6 rounded-xl text-left transition-all duration-200"
                   style={{
                     backgroundColor: option.bg,
                     boxShadow:
@@ -239,12 +227,12 @@ export default function FindYourRitualContent() {
                   }}
                 >
                   <div>
-                    <span className="font-heading text-xl md:text-2xl leading-snug" style={{ color: "rgba(26,60,52,0.8)" }}>
+                    <span className="font-heading text-xl md:text-2xl leading-snug text-bark/80">
                       {option.label}
                     </span>
                     {option.recommended && (
                       <p
-                        className="font-accent text-[9px] tracking-[0.15em] uppercase mt-1"
+                        className="font-accent text-[9px] tracking-[0.22em] uppercase mt-1"
                         style={{ color: option.dot }}
                       >
                         RECOMMENDED
@@ -267,10 +255,7 @@ export default function FindYourRitualContent() {
               {step > 1 && (
                 <button
                   onClick={() => setStep((s) => s - 1)}
-                  className="font-accent text-[10px] tracking-[0.15em] uppercase transition-colors"
-                  style={{ color: "rgba(26,60,52,0.4)" }}
-                  onMouseEnter={(e) => (e.currentTarget.style.color = "rgba(26,60,52,0.8)")}
-                  onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(26,60,52,0.4)")}
+                  className="font-accent text-[10px] tracking-[0.14em] uppercase text-bark/40 hover:text-bark/80 transition-colors"
                 >
                   ← PREVIOUS QUESTION
                 </button>
@@ -290,10 +275,7 @@ export default function FindYourRitualContent() {
                   {freq.italic}
                 </span>
               </h2>
-              <p
-                className="font-body text-base mt-4 max-w-md mx-auto"
-                style={{ color: "rgba(26,60,52,0.6)" }}
-              >
+              <p className="font-body text-base mt-4 max-w-md mx-auto text-bark/60">
                 {subtext}
               </p>
             </div>
@@ -304,14 +286,11 @@ export default function FindYourRitualContent() {
                 <Link
                   key={product.slug}
                   href={`/shop/${product.slug}`}
-                  className="rounded-2xl overflow-hidden block relative transition-all duration-200 hover:shadow-lg"
+                  className="rounded-xl overflow-hidden block relative transition-all duration-200 hover:shadow-lg"
                   style={{ backgroundColor: product.bg }}
                 >
                   {/* Badge */}
-                  <span
-                    className="absolute top-4 left-4 z-10 rounded-full px-3 py-1 font-accent text-[9px] tracking-[0.12em] uppercase text-cream"
-                    style={{ backgroundColor: "rgba(26,60,52,0.85)" }}
-                  >
+                  <span className="absolute top-4 left-4 z-10 rounded-full px-3 py-1 font-accent text-[9px] tracking-[0.22em] uppercase text-cream bg-bark/85">
                     {product.badge}
                   </span>
 
@@ -329,7 +308,7 @@ export default function FindYourRitualContent() {
                   {/* Info */}
                   <div className="p-5">
                     <p
-                      className="font-accent text-[9px] tracking-[0.15em] uppercase mb-1"
+                      className="font-accent text-[9px] tracking-[0.22em] uppercase mb-1"
                       style={{ color: product.dot }}
                     >
                       {product.category}
@@ -337,10 +316,7 @@ export default function FindYourRitualContent() {
                     <p className="font-heading text-xl md:text-2xl text-bark font-light">
                       {product.name}
                     </p>
-                    <p
-                      className="font-heading italic text-sm mt-0.5"
-                      style={{ color: "rgba(26,60,52,0.35)" }}
-                    >
+                    <p className="font-heading italic text-sm mt-0.5 text-bark/35">
                       {product.latin}
                     </p>
                     <div className="flex items-center justify-between mt-4">
@@ -349,10 +325,7 @@ export default function FindYourRitualContent() {
                           ₹{product.price}
                         </span>
                         {product.compareAt && (
-                          <span
-                            className="font-body text-sm line-through ml-2"
-                            style={{ color: "rgba(26,60,52,0.4)" }}
-                          >
+                          <span className="font-body text-sm line-through ml-2 text-bark/40">
                             ₹{product.compareAt}
                           </span>
                         )}
@@ -371,19 +344,14 @@ export default function FindYourRitualContent() {
             <div className="mt-10 flex items-center justify-center gap-4">
               <button
                 onClick={() => { setStep(1); setAnswers({}); }}
-                className="px-8 py-3 rounded-full border font-accent text-[10px] tracking-[0.15em] uppercase transition-all duration-200"
-                style={{ borderColor: "rgba(26,60,52,0.3)", color: "var(--color-bark)" }}
-                onMouseEnter={(e) => { e.currentTarget.style.boxShadow = "0 4px 16px rgba(26,60,52,0.15)"; }}
-                onMouseLeave={(e) => { e.currentTarget.style.boxShadow = "none"; }}
+                className="px-8 py-3 rounded-full border border-bark/30 font-accent text-[10px] tracking-[0.14em] uppercase text-bark transition-all duration-200 hover:shadow-[0_4px_16px_color-mix(in_srgb,var(--color-bark)_15%,transparent)]"
               >
                 START OVER
               </button>
               <Link
                 href="/shop"
-                className="px-8 py-3 rounded-full font-accent text-[10px] tracking-[0.15em] uppercase text-cream transition-all duration-200 hover:opacity-90"
+                className="px-8 py-3 rounded-full font-accent text-[10px] tracking-[0.14em] uppercase text-cream transition-all duration-200 hover:opacity-90 hover:shadow-[0_4px_20px_color-mix(in_srgb,var(--color-terracotta)_45%,transparent)]"
                 style={{ backgroundColor: "var(--color-terracotta)" }}
-                onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.boxShadow = "0 4px 20px rgba(131,67,22,0.45)"; }}
-                onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.boxShadow = "none"; }}
               >
                 SEE THE CATALOGUE →
               </Link>

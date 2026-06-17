@@ -127,7 +127,7 @@ NEXT_PUBLIC_GA_MEASUREMENT_ID
 - `/cart`, `/checkout` (guest + authenticated), `/order-success`
 - `/account`, `/account/profile`, `/account/addresses`, `/account/orders`
 - `/about`, `/contact`, `/faq`, `/why-jaison`, `/why-powder`, `/our-story`
-- `/find-your-ritual` — skin quiz (page files exist, not yet deployed)
+- `/find-your-ritual` — skin quiz, fully built and linked in nav/sitemap (not yet live in production — waiting on redesign/v2 → main deploy)
 - `/blog`, `/blog/[slug]` — 10 SEO articles (1,500–2,100 words each)
 - `/terms`, `/privacy-policy`, `/returns-policy`
 - `/login`, `/register`
@@ -176,17 +176,16 @@ vercel --prod    # Deploy to production
 
 ## Upcoming Features (Roadmap)
 ### High Priority
-1. `/find-your-ritual` skin quiz — page files exist (`page.tsx` + `FindYourRitualContent.tsx`); needs explicit owner authorization before publishing
-2. Delivery/Shipping admin page — `src/app/admin/shipping/page.tsx`; Shiprocket API already in `src/lib/shipping.ts`
+1. Delivery/Shipping admin page — `src/app/admin/shipping/page.tsx`; Shiprocket API already in `src/lib/shipping.ts`
 
 ### Medium Priority
-3. Email shipping notifications — "Order dispatched" email when admin marks SHIPPED; trigger in `src/app/api/admin/orders/route.ts`; order confirmation already in `src/lib/email.ts`
-4. IndexNow — generate key, place at `public/<key>.txt`, submit on publish
+2. Email shipping notifications — "Order dispatched" email when admin marks SHIPPED; trigger in `src/app/api/admin/orders/route.ts`; order confirmation already in `src/lib/email.ts`
+3. IndexNow — generate key, place at `public/<key>.txt`, submit on publish
 
 ### Blocked on Owner
-5. Bhringraj blog image — placeholder is `neem-styled.webp`; save real photo to `public/images/blog/bhringraj-styled.webp`
-6. Blog 3rd internal links — each post has 2; target is 3 per post
-7. Google Search Console — submit sitemap after redesign/v2 merges to production
+4. Bhringraj blog image — placeholder is `neem-styled.webp`; save real photo to `public/images/blog/bhringraj-styled.webp`
+5. Blog 3rd internal links — each post has 2; target is 3 per post
+6. Google Search Console — submit sitemap after redesign/v2 merges to production
 
 ## Deployment Preferences
 - **Active branch `redesign/v2`: NEVER deploy directly** — all work ends at `git commit + push origin redesign/v2`

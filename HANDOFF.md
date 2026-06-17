@@ -77,13 +77,16 @@ This is a manual analysis against the `seo-geo` skill's 5 weighted criteria, not
 ### 1. Decide fate of the 7 orphaned home components (carried over from session 10, still deferred)
 - `BlogPreview.tsx`, `NewsletterSection.tsx`, `TrustPillars.tsx`, `WhyJaisonTeaser.tsx`, `WhyPowderTeaser.tsx`, `CategoryShowcase.tsx`, `BrandStory.tsx` — not imported anywhere in `src/app`. Owner explicitly deferred this — surface again before further homepage work.
 
-### 2. Remaining design system debt (carried over, not yet fixed)
-- **M4:** `GlowPillLink` glow only triggers on mouse hover, not keyboard focus — add `onFocus`/`onBlur` parity.
-- **Missing components:** `Textarea`, `Checkbox`, `Tooltip`, `Table` — all currently implemented inline with copied styles.
+### 2. Remaining design system debt
+- ✅ **M4 done (session 12):** `GlowPillLink` now has `onFocus`/`onBlur` parity matching the hover glow.
+- ✅ **Textarea/Checkbox done (session 12):** extracted into `ui/Textarea.tsx` / `ui/Checkbox.tsx`, wired into `ProductForm.tsx` and `ProductReviews.tsx`; also fixed retired `rounded-sm` → `rounded-lg` on those fields.
+- **Tooltip / Table — not built.** Audited the codebase: no existing tooltip pattern exists anywhere to extract (no `title=` hover usage), and no admin page uses an actual `<table>` — each admin list (orders, messages, reviews, categories, customers, coupons) has its own bespoke `divide-y` row layout. Building either now would be a component with no current consumer / a 6-page refactor with no immediate trigger — deferred until a real feature need (e.g. a tooltip on an admin field, or a cross-table feature like bulk actions) surfaces one.
 
-### 3. `/find-your-ritual` skin quiz
-- ⚠️ Requires explicit owner authorization before publishing.
-- Page files already exist (`page.tsx` + `FindYourRitualContent.tsx`) — verify if functional first.
+### 3. `/find-your-ritual` skin quiz — verified + fixed (session 12)
+- **Status correction:** this was never actually gated — it's been linked in the desktop/mobile nav, `sitemap.ts`, `why-powder`, and `HowToUseGuide` since the very first redesign commit. It only 404s in production because `redesign/v2` hasn't been deployed to `main` yet (same as every other page on the branch). The "needs owner authorization" note was stale/unclear in origin — no specific blocking reason found in history.
+- Functionally verified: 4-question quiz → recommends 2 of 8 active products from a hardcoded concern/skin-type matrix, prices/images pulled live from `src/data/products.ts`, links to real `/shop/[slug]` pages. Works correctly.
+- Fixed design-token debt unique to this page (predates the design-system convergence work in sessions 9–11, never swept in): hardcoded `rgba(26,60,52,...)` / hex literals → `text-bark/NN` token classes and `color-mix()` for hover shadows; `rounded-2xl` → `rounded-xl`; tracking values `0.2em`/`0.15em`/`0.12em` → the two-token scale (`0.22em` static labels, `0.14em` interactive buttons/links). Per-option/per-product decorative swatch hexes (16 quiz-option colors + 8 product accent colors) were left as-is — sanctioned one-offs, same precedent as `StepCard`'s tint color in `DESIGN.md`.
+- Remaining decision: get owner sign-off on the quiz copy/recommendations (if desired) — no further code work needed.
 
 ### 4. Admin shipping page
 - `src/app/admin/shipping/page.tsx`; Shiprocket API already in `src/lib/shipping.ts`.
