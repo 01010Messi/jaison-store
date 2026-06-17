@@ -1,55 +1,59 @@
 # Jaison Herbals — Session Handoff
 
-**Date:** 17 June 2026 · **Branch:** `redesign/v2` · **Last commit:** (this session's commit)
+**Date:** 17 June 2026 · **Branch:** `redesign/v2` · **Last commit:** `95fe6b5`
 
 ---
 
-## What was built this session (session 15 — design polish: bento grid, blog hero, shop pill)
+## What was built this session (session 16 — hero polish + nav mega-menu)
 
-User flagged 3 visual issues via screenshots and asked for fixes using `/impeccable`, `/gpt-taste`, `/high-end-visual-design`, `/karpathy-guidelines`, with the hard constraint "the design should be consistent with the current layout."
+Two threads of work, both via iterative screenshot + instruction rounds, `/impeccable` and `/karpathy-guidelines` invoked for the ambiguous ones.
 
-1. **Home Instagram bento grid had uneven gaps/alignment** — root cause: CSS Grid (`grid-cols-2 md:grid-cols-4`) combined with `items-start` and each tile's independent `aspect-ratio` produced jagged row heights. Fix: switched to CSS multi-column masonry (`columns-2 md:columns-4` + `break-inside-avoid` per tile) in `src/components/home/InstagramSection.tsx` — zero-dependency, no GSAP/JS masonry lib needed (would have violated "consistent with current layout" + karpathy's simplicity-first principle). All 8 tiles' colors/captions/motifs/aspect ratios untouched. Verified visually via headless-browser screenshot.
-2. **Blog hero had 3 ghost boxes overlapping the heading** — removed a decorative watermark `<div>` (3 faint rectangle outlines) from the hero section in `src/app/(storefront)/blog/page.tsx`. Verified visually.
-3. **Shop "ALL" filter pill "colored weirdly"** — investigated exhaustively (source, `globals.css` CSS vars, `tailwind.config.ts`, live `curl` of rendered HTML, screenshot). Found **no code discrepancy**: the pill already uses the canonical `var(--color-bark)` token, identical to the POTLI cart button and consistent with the documented rule "Active filter pills → bark bg, not terracotta." Presented finding to user, who confirmed it's fine — no change made.
+### 1. Hero section iteration (`src/components/home/HeroSection.tsx`)
+A back-and-forth sequence of small, explicit visual fixes:
+- "Read Why Powder" CTA changed from a translucent fill (`rgba(26,60,52,0.65)`) to a solid `var(--color-bark)` background.
+- Heading words "bottle", "lists a", "dozen" changed from faded rgba opacity steps to solid `var(--color-bark)` (the `gw1`-`gw6` letter-glow sweep animation classes were left untouched — only the base text color changed).
+- CTA row aligned with the fixed `WhatsAppButton` (`bottom-20 md:bottom-6`, 48px circle): row padding set to `pb-20 md:pb-6` to mirror WhatsApp's own offset, giving near-identical vertical centers without an arbitrary pixel guess.
+- Several rounds of heading font-size scaling ("reduce by 0.75", "increase by 0.45", "reset to original then reduce by 0.25", "increase by 10%") — each colloquial instruction resolved as standard ×(1±X) percentage scaling. Final size: `clamp(2.475rem, 7.425vw, 9.075rem)`.
+- CTA wrapper horizontal position tuned (`paddingRight` 72px → 104px → 40px) per explicit "shift right closer to the boundary" instruction.
+- Earlier in the session (commits `3852f4f`, `544dfda`, not yet documented from a prior unlabeled session): logo enlarged across header/auth pages, hero CTAs enlarged, cart "You may also like" cross-sell moved into the cart's scrollable area.
 
-Why `gpt-taste`/`high-end-visual-design`'s aggressive prescriptions (banned existing fonts, GSAP requirement, dark OLED themes, glassmorphism) were NOT applied: they directly conflict with the user's explicit "consistent with current layout" instruction and with `impeccable`'s identity-preservation principle ("when the existing brand has already committed to a font/lane, identity-preservation wins") and karpathy's simplicity-first/surgical-changes principle. Only the relevant useful idea (gapless bento packing) was extracted from those skills.
+Per explicit user instruction mid-session — **"dont check by screenshoting i will do it, just make the changes and commit"** — no browser/screenshot verification was used for any of these; each change was implemented and committed directly, verification left to the user.
 
-### Verification performed
-- `npx tsc --noEmit` — no errors
-- Headless-browser (Playwright, npx-cached) screenshots of home Instagram section, blog hero, and shop filter pills, before/after
-- Live `curl` of shop page's rendered HTML to confirm the ALL pill's actual computed style
+### 2. Nav dropdown → full-width mega-menu (`src/components/layout/Header.tsx`)
+User provided a reference screenshot of an offline HTML mockup showing the "Skin Care"/"Hair Care" hover menu as a full-width banner (colored dot + product name + one-line benefit subtitle, horizontal row spanning the viewport) instead of the existing small rounded dropdown box.
 
-### Note: admin shipping page work was paused, not resumed
-Earlier in session 15 (before the design-fix pivot), research began on `src/app/admin/shipping/page.tsx` (API routes + UI, using existing `src/lib/shiprocket.ts`). The user rejected a scaffolding `mkdir` tool call and redirected to the 3 design fixes above. **This work was not resumed — treat it as not started.**
+- Added a `subtitle` field to every entry in `skinCareItems` and `hairCareItems`, copy distilled from real `src/data/products.ts` descriptions (e.g. Neem → "Acne & blemish control", Orange Peel → "Vitamin-C brightener").
+- Replaced the old `DropdownMenu` component (rendered per nav item, narrow) with a new `MegaMenuBanner` component rendered once, as a direct child of the `fixed` `<header>` itself, positioned `absolute left-0 right-0 top-full` — this is what makes it span the full viewport width and sit below the *entire* multi-row header rather than under a single nav item.
+- Reused the existing hover-intent state machine unchanged: `openDropdown` (`"skin" | "hair" | null`), `handleDropdownEnter`/`handleDropdownLeave` (150ms close delay) — just reattached to the single banner's `onMouseEnter`/`onMouseLeave` instead of two separate per-item dropdowns.
+- Verified: `grep` confirmed no stale `DropdownMenu` references remain; `npx tsc --noEmit` passed clean.
+
+Committed as `95fe6b5`.
 
 ---
 
 ## Current branch state
 
-All work from this session committed. Not yet pushed — push when ready:
-```
-git push origin redesign/v2
-```
+All work from this session committed and pushed to `origin/redesign/v2`.
 
 ### Files changed this session
 ```
-src/components/home/InstagramSection.tsx   (grid → columns masonry)
-src/app/(storefront)/blog/page.tsx          (removed 3-box watermark div)
-CLAUDE.md                                    (feature log entry)
-HANDOFF.md                                   ← this file (rewritten)
+src/components/home/HeroSection.tsx          (CTA fills, heading color/size, alignment — 6 commits)
+src/components/layout/Header.tsx             (DropdownMenu → MegaMenuBanner banner mega-menu)
+CLAUDE.md                                     (feature log entry)
+HANDOFF.md                                    ← this file (rewritten)
 ```
 
 ---
 
 ## What's next — ordered by impact
 
-### 1. Decide fate of the 8 orphaned home components (carried over from session 10, still deferred)
-- `BlogPreview.tsx`, `NewsletterSection.tsx`, `TrustPillars.tsx`, `WhyJaisonTeaser.tsx`, `WhyPowderTeaser.tsx`, `CategoryShowcase.tsx`, `BrandStory.tsx`, `TrustBadgeBar.tsx` — not imported anywhere in `src/app`. Owner explicitly deferred again this session ("for now let them be, we will decide on this in sometime") — surface again before further homepage work, don't bring it up unprompted.
+### 1. Decide fate of the 8 orphaned home components (carried over from session 10)
+- `BlogPreview.tsx`, `NewsletterSection.tsx`, `TrustPillars.tsx`, `WhyJaisonTeaser.tsx`, `WhyPowderTeaser.tsx`, `CategoryShowcase.tsx`, `BrandStory.tsx`, `TrustBadgeBar.tsx` — not imported anywhere in `src/app`. Owner has deferred twice; surface again before further homepage work, don't bring it up unprompted.
 
 ### 2. Admin shipping page
 - `src/app/admin/shipping/page.tsx`; Shiprocket API already in `src/lib/shiprocket.ts` (`checkServiceability`, `createShiprocketOrder`, `generateAWB`, `getTrackingInfo`, token caching with 9-day refresh).
 - Relevant Prisma `Order` fields: `shiprocketOrderId`, `shiprocketShipmentId`, `trackingNumber`, `trackingUrl`, `estimatedDelivery`, `invoiceUrl`.
-- Was paused mid-research this session before the design-fix pivot — start fresh, no scaffolding exists yet.
+- No scaffolding exists yet — paused twice now (sessions 15 and earlier) before design-fix pivots.
 
 ### 3. Email shipping notifications
 - Trigger in `src/app/api/admin/orders/route.ts`; order confirmation already in `src/lib/email.ts`.
@@ -91,7 +95,7 @@ HANDOFF.md                                   ← this file (rewritten)
 - `claude-blog` v1.9.1 (agricidaniel) — `/blog-write`, `/blog-audit`, etc.
 - `redesign-existing-projects` — design audit patterns
 - `frontend-design:frontend-design` — design direction skill
-- `impeccable` v3.1.1 (plugin) — `/impeccable craft|shape|critique|audit|polish|...`; DESIGN.md is the loaded context, `register: brand` for storefront pages
+- `impeccable` v3.1.1 (plugin) — `/impeccable craft|shape|critique|audit|polish|...`; DESIGN.md is the loaded context, `register: brand` for storefront pages (no `PRODUCT.md` in this repo — loader reports `hasProduct: false`; full `/impeccable teach` setup has been deliberately skipped for surgical pixel-level fixes, only run it if doing from-scratch design generation)
 - `gpt-taste`, `high-end-visual-design` (user-scope skills) — aggressive Awwwards-tier prescriptions; **use selectively** — they conflict with this brand's committed font/color identity unless the user explicitly asks for a from-scratch redesign. Default to `impeccable` + karpathy's surgical-changes principle when fixing existing layout, not these.
 - `karpathy-guidelines` (plugin) — simplicity-first, surgical-changes, think-before-coding
 - `.claude/agents/chaos-engineer.md` (local, gitignored) — not directly invocable mid-session after being added; works if loaded at session start.
@@ -112,6 +116,7 @@ HANDOFF.md                                   ← this file (rewritten)
 - Never add `aggregateRating` to ProductJsonLd — no real reviews yet
 - Never fabricate Person/author schema, social profiles, or video content for GEO — only structure truthful, existing content. Off-platform authority building is an owner decision, not a code fix.
 - Bento/masonry grids with mixed per-tile aspect ratios → use CSS `columns-N` + `break-inside-avoid`, not CSS Grid with `items-start` (causes uneven row gaps). Established session 15.
+- Full-width dropdown/mega-menus must be rendered as a direct child of the `fixed` positioning ancestor (e.g. `<header>`), not nested inside a narrow per-item wrapper, or they won't span the viewport. Established session 16.
 
 ## Checkout/backend resilience rules (see RESILIENCE-AUDIT.md)
 
