@@ -4,60 +4,52 @@
 
 ---
 
-## What was built this session (session 14 — live checkout smoke test)
+## What was built this session (session 15 — design polish: bento grid, blog hero, shop pill)
 
-Goal: exercise the 6 checkout resilience fixes from session 13 (see `RESILIENCE-AUDIT.md`) against real traffic — they'd only ever been verified by `tsc`/`build`, never run.
+User flagged 3 visual issues via screenshots and asked for fixes using `/impeccable`, `/gpt-taste`, `/high-end-visual-design`, `/karpathy-guidelines`, with the hard constraint "the design should be consistent with the current layout."
 
-No staging environment exists (Razorpay LIVE only, secrets only set in Vercel's Production environment), so this ran `next dev` locally against the **real** Neon DB and **real** Razorpay account: `vercel link` → `vercel env pull --environment=production` → drove the actual API routes with curl.
+1. **Home Instagram bento grid had uneven gaps/alignment** — root cause: CSS Grid (`grid-cols-2 md:grid-cols-4`) combined with `items-start` and each tile's independent `aspect-ratio` produced jagged row heights. Fix: switched to CSS multi-column masonry (`columns-2 md:columns-4` + `break-inside-avoid` per tile) in `src/components/home/InstagramSection.tsx` — zero-dependency, no GSAP/JS masonry lib needed (would have violated "consistent with current layout" + karpathy's simplicity-first principle). All 8 tiles' colors/captions/motifs/aspect ratios untouched. Verified visually via headless-browser screenshot.
+2. **Blog hero had 3 ghost boxes overlapping the heading** — removed a decorative watermark `<div>` (3 faint rectangle outlines) from the hero section in `src/app/(storefront)/blog/page.tsx`. Verified visually.
+3. **Shop "ALL" filter pill "colored weirdly"** — investigated exhaustively (source, `globals.css` CSS vars, `tailwind.config.ts`, live `curl` of rendered HTML, screenshot). Found **no code discrepancy**: the pill already uses the canonical `var(--color-bark)` token, identical to the POTLI cart button and consistent with the documented rule "Active filter pills → bark bg, not terracotta." Presented finding to user, who confirmed it's fine — no change made.
 
-### Verified live, all passing
-1. **COD happy path** — order created, stock correctly decremented.
-2. **COD insufficient-stock probe** — `409`, transaction rolled back cleanly, stock untouched.
-3. **Oversell race condition (the critical fix)** — set stock to 2, fired two concurrent COD requests for qty 2 each → exactly one `200`, one `409`, stock landed at `0`, never negative.
-4. **Razorpay create-order zombie-row fix** — forced a Razorpay rejection (sub-minimum amount) → `502`, zero order rows written.
-5. **Verify endpoint, missing-order fix (the other critical fix)** — forged a correctly-HMAC-signed payload against a nonexistent order number → `409` + `CRITICAL` log, exactly as designed.
-6. **Verify endpoint, happy path + paid-order oversell flag** — order transitioned `PENDING→CONFIRMED`/`PAID`; since stock was already at 0 from the race test, the stock guard correctly declined to decrement further and logged `CRITICAL: oversell on order...` instead of going negative.
-7. **Tampered signature** — `400 Invalid payment signature`, as expected.
-8. **Notification timeout fix** — a real outbound Telegram call timed out at the configured 8s threshold and was caught via `.catch()` without blocking the response.
-
-**Note on the Razorpay leg:** no real card payment was made or money moved. `verify` only checks an HMAC-SHA256 signature locally — it never calls Razorpay's API — so a correctly-signed payload computed with the real `RAZORPAY_KEY_SECRET` exercises the exact same code path as a genuine successful payment. `create-order` *does* hit the real Razorpay API, but creating a Razorpay order is just a payment intent — it doesn't charge anything.
-
-**Not exercised:** order-number collision retry and transient-Neon-error retry (fixes #5/#6 from session 13) — both need a forced DB-level fault to trigger and weren't worth injecting against production for this pass.
-
-**Cleanup performed:** all 3 test orders deleted, 7 orphaned test addresses deleted, Aamla Powder stock restored to 46, dev server stopped, `.env.local` (production secrets) deleted from disk.
-
-### New findings from this pass
-- **Orphan `Address` rows:** in both `orders/route.ts` and `payment/create-order/route.ts`, the shipping address is written *before* the stock-guard transaction / Razorpay call. Every failed checkout attempt leaves a permanent orphan `Address` row with no order attached. Low severity, not fixed — noted in `CLAUDE.md` "Known Minor Issues" and `RESILIENCE-AUDIT.md`.
-- **`vercel env pull` artifact:** every secret pulled from this project's Production environment comes back with a stray literal `\n` appended (confirmed on `DATABASE_URL`, `RAZORPAY_KEY_ID/SECRET`, and ~19 others). Breaks Razorpay auth (`401`) until stripped — likely from how the values were originally pasted into the Vercel dashboard. Documented in `CLAUDE.md` "Local Dev Against Production" so the next session doesn't lose time on it.
+Why `gpt-taste`/`high-end-visual-design`'s aggressive prescriptions (banned existing fonts, GSAP requirement, dark OLED themes, glassmorphism) were NOT applied: they directly conflict with the user's explicit "consistent with current layout" instruction and with `impeccable`'s identity-preservation principle ("when the existing brand has already committed to a font/lane, identity-preservation wins") and karpathy's simplicity-first/surgical-changes principle. Only the relevant useful idea (gapless bento packing) was extracted from those skills.
 
 ### Verification performed
-- Live smoke test as above (this *is* the verification — see `RESILIENCE-AUDIT.md` for the full table)
-- No `tsc`/`build` re-run this session — no code changed, only docs + a `.gitignore` line
+- `npx tsc --noEmit` — no errors
+- Headless-browser (Playwright, npx-cached) screenshots of home Instagram section, blog hero, and shop filter pills, before/after
+- Live `curl` of shop page's rendered HTML to confirm the ALL pill's actual computed style
+
+### Note: admin shipping page work was paused, not resumed
+Earlier in session 15 (before the design-fix pivot), research began on `src/app/admin/shipping/page.tsx` (API routes + UI, using existing `src/lib/shiprocket.ts`). The user rejected a scaffolding `mkdir` tool call and redirected to the 3 design fixes above. **This work was not resumed — treat it as not started.**
 
 ---
 
 ## Current branch state
 
-All work from this session committed and pushed to `origin/redesign/v2`.
+All work from this session committed. Not yet pushed — push when ready:
+```
+git push origin redesign/v2
+```
 
 ### Files changed this session
 ```
-.gitignore           (added .env* — vercel env pull added this automatically)
-HANDOFF.md            ← this file (rewritten)
-RESILIENCE-AUDIT.md   (added "Live smoke test (session 14)" section)
-CLAUDE.md             (feature log + new "Local Dev Against Production" / "Known Minor Issues" sections)
+src/components/home/InstagramSection.tsx   (grid → columns masonry)
+src/app/(storefront)/blog/page.tsx          (removed 3-box watermark div)
+CLAUDE.md                                    (feature log entry)
+HANDOFF.md                                   ← this file (rewritten)
 ```
-No application code changed this session — this was a verification-only pass.
 
 ---
 
 ## What's next — ordered by impact
 
-### 1. Decide fate of the 7 orphaned home components (carried over from session 10, still deferred)
-- `BlogPreview.tsx`, `NewsletterSection.tsx`, `TrustPillars.tsx`, `WhyJaisonTeaser.tsx`, `WhyPowderTeaser.tsx`, `CategoryShowcase.tsx`, `BrandStory.tsx` — not imported anywhere in `src/app`. Owner explicitly deferred this — surface again before further homepage work.
+### 1. Decide fate of the 8 orphaned home components (carried over from session 10, still deferred)
+- `BlogPreview.tsx`, `NewsletterSection.tsx`, `TrustPillars.tsx`, `WhyJaisonTeaser.tsx`, `WhyPowderTeaser.tsx`, `CategoryShowcase.tsx`, `BrandStory.tsx`, `TrustBadgeBar.tsx` — not imported anywhere in `src/app`. Owner explicitly deferred again this session ("for now let them be, we will decide on this in sometime") — surface again before further homepage work, don't bring it up unprompted.
 
 ### 2. Admin shipping page
-- `src/app/admin/shipping/page.tsx`; Shiprocket API already in `src/lib/shipping.ts` / `src/lib/shiprocket.ts`.
+- `src/app/admin/shipping/page.tsx`; Shiprocket API already in `src/lib/shiprocket.ts` (`checkServiceability`, `createShiprocketOrder`, `generateAWB`, `getTrackingInfo`, token caching with 9-day refresh).
+- Relevant Prisma `Order` fields: `shiprocketOrderId`, `shiprocketShipmentId`, `trackingNumber`, `trackingUrl`, `estimatedDelivery`, `invoiceUrl`.
+- Was paused mid-research this session before the design-fix pivot — start fresh, no scaffolding exists yet.
 
 ### 3. Email shipping notifications
 - Trigger in `src/app/api/admin/orders/route.ts`; order confirmation already in `src/lib/email.ts`.
@@ -70,12 +62,12 @@ No application code changed this session — this was a verification-only pass.
 - Submit sitemap once `redesign/v2` merges to production (`main`).
 
 ### 6. (Optional, low priority) Fix orphan Address rows
-- See "New findings" above. Move address creation inside the same transaction as the stock guard, or only persist it after the transaction succeeds.
+- `Address` rows written before stock-guard transaction in both checkout routes, leaving orphans on failed attempts. Move address creation inside the same transaction, or only persist after it succeeds. See `RESILIENCE-AUDIT.md`.
 
 ### Deferred, no current trigger
-- **Tooltip / Table components** — see session 12 note in git history. Build only when a real feature needs one.
-- **GEO score (~69/100)** — remaining gap to 100 is owner-dependent (founder bio/Person schema, social/brand presence, video content). See `GEO-ANALYSIS.md`. Shelved per owner decision (session 12).
-- **Neon connection string tuning** (`?connection_limit=1&pool_timeout=10`) — see finding #6 in `RESILIENCE-AUDIT.md`. This is a Vercel env var change, outside any session's blast radius; owner action if desired.
+- **Tooltip / Table components** — build only when a real feature needs one.
+- **GEO score (~69/100)** — remaining gap is owner-dependent (founder bio/Person schema, social/brand presence, video content). Shelved per owner decision.
+- **Neon connection string tuning** (`?connection_limit=1&pool_timeout=10`) — Vercel env var change, owner action if desired.
 
 ---
 
@@ -89,7 +81,7 @@ No application code changed this session — this was a verification-only pass.
 | Before/after customer photos (10–15) | Review section, product pages |
 | Lead magnet PDF guide content | Popup email delivery |
 | Bhringraj blog image | Placeholder is `neem-styled.webp`; save real photo to `public/images/blog/bhringraj-styled.webp` |
-| Social/brand presence (YouTube, Reddit, LinkedIn, Wikipedia) | **GEO authority score** — backed by Ahrefs data showing 3x stronger AI-citation correlation than backlinks |
+| Social/brand presence (YouTube, Reddit, LinkedIn, Wikipedia) | **GEO authority score** |
 
 ---
 
@@ -99,7 +91,10 @@ No application code changed this session — this was a verification-only pass.
 - `claude-blog` v1.9.1 (agricidaniel) — `/blog-write`, `/blog-audit`, etc.
 - `redesign-existing-projects` — design audit patterns
 - `frontend-design:frontend-design` — design direction skill
-- `.claude/agents/chaos-engineer.md` (local, gitignored) — from `VoltAgent/awesome-claude-code-subagents`, category `04-quality-security`. Not directly invocable mid-session after being added; works if loaded at session start.
+- `impeccable` v3.1.1 (plugin) — `/impeccable craft|shape|critique|audit|polish|...`; DESIGN.md is the loaded context, `register: brand` for storefront pages
+- `gpt-taste`, `high-end-visual-design` (user-scope skills) — aggressive Awwwards-tier prescriptions; **use selectively** — they conflict with this brand's committed font/color identity unless the user explicitly asks for a from-scratch redesign. Default to `impeccable` + karpathy's surgical-changes principle when fixing existing layout, not these.
+- `karpathy-guidelines` (plugin) — simplicity-first, surgical-changes, think-before-coding
+- `.claude/agents/chaos-engineer.md` (local, gitignored) — not directly invocable mid-session after being added; works if loaded at session start.
 
 ---
 
@@ -113,9 +108,10 @@ No application code changed this session — this was a verification-only pass.
 - Tracking scale — exactly two values: `0.22em` for section eyebrows/static labels; `0.14em` for interactive labels/buttons (form labels, pill CTAs, nav links). Don't mix or invent a third.
 - z-index: 0 content / 10 in-section overlays / 20 floating UI / 30 sticky header / 40 backdrops / 50 modals/drawers/toasts (full table in DESIGN.md)
 - Padding/rhythm — exactly two tokens: `.section-rhythm` (`py-12 md:py-16`) and `.section-rhythm-lg` (`py-16 md:py-24`). Any other raw `py-*` on a section wrapper is legacy debt to converge.
-- Active filter pills → bark bg, not terracotta
+- Active filter pills → bark bg, not terracotta (re-confirmed session 15 — shop "ALL" pill already correct, no change needed)
 - Never add `aggregateRating` to ProductJsonLd — no real reviews yet
 - Never fabricate Person/author schema, social profiles, or video content for GEO — only structure truthful, existing content. Off-platform authority building is an owner decision, not a code fix.
+- Bento/masonry grids with mixed per-tile aspect ratios → use CSS `columns-N` + `break-inside-avoid`, not CSS Grid with `items-start` (causes uneven row gaps). Established session 15.
 
 ## Checkout/backend resilience rules (see RESILIENCE-AUDIT.md)
 
@@ -126,7 +122,7 @@ No application code changed this session — this was a verification-only pass.
 - Use `isTransientDbError()` from `src/lib/prisma.ts` to retry once on Neon's transient `P1001`/`P2024` before treating a DB error as a real failure.
 - Known minor issue, not yet fixed: `Address` rows are written before the stock-guard transaction in both checkout routes, leaving orphans on failed attempts.
 
-## Local dev gotcha (new this session)
+## Local dev gotcha
 
 No sandbox exists — `vercel env pull` against this project only has Production-environment secrets, and every one of them comes back with a stray literal `\n` appended (breaks Razorpay auth with `401` until stripped). See `CLAUDE.md` "Local Dev Against Production" for the exact recipe.
 
