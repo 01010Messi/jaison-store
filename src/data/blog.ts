@@ -1694,3 +1694,35 @@ export function getBlogPostsForProduct(
     .filter((post) => post.relatedProducts.includes(productSlug))
     .slice(0, limit);
 }
+
+// Blog posts write FAQ Q&A as "## Frequently Asked Questions" sections with
+// "**Question?**" markers (inline or block-style answers) — extract them for
+// FAQPage schema instead of duplicating the content as separate data.
+export function getBlogFaqs(content: string): { question: string; answer: string }[] {
+  const faqs: { question: string; answer: string }[] = [];
+  const sections = content.split(/\n##\s+/).slice(1);
+
+  for (const section of sections) {
+    const newlineIndex = section.indexOf("\n");
+    const heading = newlineIndex === -1 ? section : section.slice(0, newlineIndex);
+    if (!/frequently asked questions/i.test(heading)) continue;
+
+    const body = newlineIndex === -1 ? "" : section.slice(newlineIndex + 1);
+    const matches = Array.from(
+      body.matchAll(/\*\*([^*]+?\?)\*\*\s*([\s\S]*?)(?=\*\*[^*]+?\?\*\*|$)/g)
+    );
+
+    for (const match of matches) {
+      const question = match[1].trim();
+      const answer = match[2]
+        .replace(/\[([^\]]+)\]\([^)]+\)/g, "$1")
+        .replace(/\*\*([^*]+)\*\*/g, "$1")
+        .replace(/\*([^*]+)\*/g, "$1")
+        .replace(/\s+/g, " ")
+        .trim();
+      if (question && answer) faqs.push({ question, answer });
+    }
+  }
+
+  return faqs;
+}

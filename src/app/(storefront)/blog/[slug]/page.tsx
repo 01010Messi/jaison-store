@@ -5,7 +5,7 @@ import Image from "next/image";
 import { Clock, ArrowLeft, ArrowRight } from "lucide-react";
 import SocialShare from "@/components/ui/SocialShare";
 import { BreadcrumbJsonLd } from "@/components/seo/JsonLd";
-import { ArticleJsonLd } from "@/components/seo/JsonLd";
+import { ArticleJsonLd, BlogFAQPageJsonLd } from "@/components/seo/JsonLd";
 import { blogPosts, getBlogPostBySlug, getRelatedPosts } from "@/data/blog";
 import { getProductBySlug } from "@/data/products";
 
@@ -221,6 +221,7 @@ export default function BlogPostPage({ params }: Props) {
   return (
     <>
       <ArticleJsonLd slug={params.slug} />
+      <BlogFAQPageJsonLd slug={params.slug} />
       <BreadcrumbJsonLd
         items={[
           { name: "Home", url: "https://jaisonskincare.com" },
@@ -270,6 +271,21 @@ export default function BlogPostPage({ params }: Props) {
                 <Clock className="h-3 w-3" />
                 {post.readTime} min read
               </span>
+              {post.dateModified !== post.publishedAt && (
+                <>
+                  <span>&bull;</span>
+                  <span>
+                    Updated{" "}
+                    <time dateTime={post.dateModified}>
+                      {new Date(post.dateModified).toLocaleDateString("en-IN", {
+                        day: "numeric",
+                        month: "long",
+                        year: "numeric",
+                      })}
+                    </time>
+                  </span>
+                </>
+              )}
             </div>
 
             <div className="mt-6">

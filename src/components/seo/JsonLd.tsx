@@ -1,5 +1,5 @@
 import { products } from "@/data/products";
-import { blogPosts } from "@/data/blog";
+import { blogPosts, getBlogFaqs } from "@/data/blog";
 import { getProductFaqs } from "@/data/productFaqs";
 
 const BASE_URL = "https://jaisonskincare.com";
@@ -250,6 +250,34 @@ export function ArticleJsonLd({ slug }: { slug: string }) {
       "@type": "WebPage",
       "@id": `${BASE_URL}/blog/${post.slug}`,
     },
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    />
+  );
+}
+
+export function BlogFAQPageJsonLd({ slug }: { slug: string }) {
+  const post = blogPosts.find((p) => p.slug === slug);
+  if (!post) return null;
+
+  const faqs = getBlogFaqs(post.content);
+  if (faqs.length === 0) return null;
+
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.answer,
+      },
+    })),
   };
 
   return (

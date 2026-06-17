@@ -15,7 +15,7 @@
 | Structured Data / Schema | 65/100 | — |
 | Sitemap & Crawlability | 60/100 | ↑ (fixes applied) |
 | Performance | 80/100 | — |
-| GEO / AI Discoverability | 20/100 | ↑ (llms.txt added) |
+| GEO / AI Discoverability | ~69/100 | ↑↑ See `GEO-ANALYSIS.md` (17 June session) — robots.txt conflict fixed, FAQPage schema added to all 10 blog posts, freshness signal added |
 
 ---
 
