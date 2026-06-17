@@ -10,42 +10,60 @@ import AnnouncementBar from "@/components/layout/AnnouncementBar";
 import Drawer from "@/components/ui/Drawer";
 
 const skinCareItems = [
-  { label: "Ubtan Powder", href: "/shop/ubtan-powder", dot: "#D4A843" },
-  { label: "Neem Powder", href: "/shop/neem-powder", dot: "#4A7C59" },
-  { label: "Multani Mitti", href: "/shop/multani-mitti", dot: "#C17A5A" },
-  { label: "Orange Peel", href: "/shop/orange-peel-powder", dot: "#E8793A" },
-  { label: "Nagarmotha", href: "/shop/nagarmotha-powder", dot: "#8B7355" },
+  { label: "Ubtan Powder", href: "/shop/ubtan-powder", dot: "#D4A843", subtitle: "Brightening & even tone" },
+  { label: "Neem Powder", href: "/shop/neem-powder", dot: "#4A7C59", subtitle: "Acne & blemish control" },
+  { label: "Multani Mitti", href: "/shop/multani-mitti", dot: "#C17A5A", subtitle: "Oil control, purifying clay" },
+  { label: "Orange Peel", href: "/shop/orange-peel-powder", dot: "#E8793A", subtitle: "Vitamin-C brightener" },
+  { label: "Nagarmotha", href: "/shop/nagarmotha-powder", dot: "#8B7355", subtitle: "Dark-spot & tone care" },
 ];
 
 const hairCareItems = [
-  { label: "Amla Powder", href: "/shop/aamla-powder", dot: "#6B9E5E" },
-  { label: "Mehendi", href: "/shop/mehendi-powder", dot: "#5C8A3C" },
-  { label: "Reetha", href: "/shop/reetha-powder", dot: "#8B5E3C" },
-  { label: "Shikakai", href: "/shop/shikakai-powder", dot: "#A07840" },
+  { label: "Amla Powder", href: "/shop/aamla-powder", dot: "#6B9E5E", subtitle: "Dandruff control & shine" },
+  { label: "Mehendi", href: "/shop/mehendi-powder", dot: "#5C8A3C", subtitle: "Conditioning & scalp health" },
+  { label: "Reetha", href: "/shop/reetha-powder", dot: "#8B5E3C", subtitle: "Natural cleanser, less dandruff" },
+  { label: "Shikakai", href: "/shop/shikakai-powder", dot: "#A07840", subtitle: "Bouncy, lustrous hair" },
 ];
 
-interface DropdownMenuProps {
-  items: { label: string; href: string; dot: string }[];
-  onClose: () => void;
+interface MegaMenuItem {
+  label: string;
+  href: string;
+  dot: string;
+  subtitle: string;
 }
 
-function DropdownMenu({ items, onClose }: DropdownMenuProps) {
+interface MegaMenuBannerProps {
+  items: MegaMenuItem[];
+  onClose: () => void;
+  onMouseEnter: () => void;
+  onMouseLeave: () => void;
+}
+
+function MegaMenuBanner({ items, onClose, onMouseEnter, onMouseLeave }: MegaMenuBannerProps) {
   return (
-    <div className="absolute top-full left-1/2 -translate-x-1/2 mt-1 z-50 bg-cream border border-bark/10 rounded-xl shadow-sm py-2 px-1 min-w-[180px]">
-      {items.map((item) => (
-        <Link
-          key={item.href}
-          href={item.href}
-          onClick={onClose}
-          className="flex items-center gap-2.5 px-3 py-2 hover:bg-parchment rounded-lg text-sm text-bark transition-colors"
-        >
-          <span
-            className="w-2.5 h-2.5 rounded-full flex-shrink-0"
-            style={{ backgroundColor: item.dot }}
-          />
-          {item.label}
-        </Link>
-      ))}
+    <div
+      className="absolute left-0 right-0 top-full z-50 bg-cream border-b border-bark/10 shadow-sm"
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+    >
+      <div className="container-brand flex items-start justify-between py-8">
+        {items.map((item) => (
+          <Link
+            key={item.href}
+            href={item.href}
+            onClick={onClose}
+            className="flex flex-col items-start gap-2.5 hover:opacity-75 transition-opacity"
+          >
+            <span
+              className="w-3 h-3 rounded-full flex-shrink-0"
+              style={{ backgroundColor: item.dot }}
+            />
+            <span className="font-body text-base text-bark">{item.label}</span>
+            <span className="font-accent text-[11px] tracking-[0.08em] text-bark/60">
+              {item.subtitle}
+            </span>
+          </Link>
+        ))}
+      </div>
     </div>
   );
 }
@@ -150,12 +168,6 @@ export default function Header() {
                   Skin Care
                   <ChevronDown className="h-3.5 w-3.5" />
                 </button>
-                {openDropdown === "skin" && (
-                  <DropdownMenu
-                    items={skinCareItems}
-                    onClose={() => setOpenDropdown(null)}
-                  />
-                )}
               </div>
 
               {/* Hair Care dropdown */}
@@ -168,12 +180,6 @@ export default function Header() {
                   Hair Care
                   <ChevronDown className="h-3.5 w-3.5" />
                 </button>
-                {openDropdown === "hair" && (
-                  <DropdownMenu
-                    items={hairCareItems}
-                    onClose={() => setOpenDropdown(null)}
-                  />
-                )}
               </div>
 
               <Link
@@ -250,6 +256,15 @@ export default function Header() {
             </button>
           </div>
         </div>
+
+        {openDropdown && (
+          <MegaMenuBanner
+            items={openDropdown === "skin" ? skinCareItems : hairCareItems}
+            onClose={() => setOpenDropdown(null)}
+            onMouseEnter={() => handleDropdownEnter(openDropdown)}
+            onMouseLeave={handleDropdownLeave}
+          />
+        )}
       </header>
 
       {/* Search overlay */}
