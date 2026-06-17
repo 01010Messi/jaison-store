@@ -1,33 +1,33 @@
 # Jaison Herbals — Session Handoff
 
-**Date:** 16 June 2026 · **Branch:** `redesign/v2` · **Last commit:** `92d61f1`
+**Date:** 17 June 2026 · **Branch:** `redesign/v2` · **Last commit:** `bec200b`
 
 ---
 
-## What was built this session (session 10 — design audit fixes)
+## What was built this session (session 11 — GEO score improvement)
 
-Closed out all HIGH and MEDIUM items from the session 9 design system audit (see prior handoff for the full audit/grades).
+Goal: take the GEO / AI Discoverability score from 20/100 (stale figure from `SEO-AUDIT.md`, 15 June) toward 100. Loaded `claude-seo:seo-geo`, `claude-seo:seo-schema`, `claude-seo:seo-content` skills first.
 
-### 1. HIGH priority fixes — commit `0e74938`
-- `ui/StarRating.tsx` — added `aria-label={Rate {n} out of {max} stars}` per star button, wrapped interactive mode in `role="radiogroup" aria-label="Rating"`.
-- `ui/Select.tsx` — label now matches `Input.tsx` spec: `text-[11px] font-accent uppercase tracking-[0.14em] text-bark/60`. (Note: `Select` is not imported anywhere in the live app — admin pages use raw `<select>` — verified via temp route, harmless fix.)
-- `DESIGN.md` — added tracking scale clarification (`0.22em` = section eyebrows only, `0.14em` = interactive labels/buttons) and a z-index table (0 content / 10 in-section / 20 floating / 30 sticky header / 40 backdrops / 50 modals).
+### 1. Critical fix: `/robots.txt` was actually broken — commit `bec200b`
+`public/robots.txt` and `src/app/robots.ts` both existed. Next.js can't serve both: in dev this throws a 500 (`"A conflicting public file and page file was found for path /robots.txt"`, verified locally). In production, `robots.ts` silently won — meaning **the AI-crawler `Allow` rules added back in session 7's `public/robots.txt` (GPTBot, ChatGPT-User, PerplexityBot, ClaudeBot) had never actually been live.** Verified by curling `https://jaisonskincare.com/robots.txt` directly — only the generic wildcard rule was being served.
 
-### 2. MEDIUM priority fixes — commits `0e74938`, `ed7c5a2`
-- `TestimonialsSection.tsx` + `InstagramSection.tsx` — all ~18 hardcoded hex values (avatar bg, card gradient, eyebrow color) replaced with `var(--color-*)` tokens. Contrast fix: `text-bark/30` caption → `/60`.
-- Converged raw `py-*` paddings onto `.section-rhythm` / `.section-rhythm-lg` across **9 home components**: `TestimonialsSection`, `InstagramSection`, `CategoryShowcase`, `BlogSection`, `BrandStory`, `TrustPillars`, `WhyJaisonTeaser`, `NewsletterSection` (home/), `BrandTimeline`, `HowToUseGuide`, `WhyPowderTeaser`, `BlogPreview`. Ambiguous values resolved via a distance-to-token heuristic with semantic tie-breaking (see commit `ed7c5a2` for the per-file mapping).
+**Fix:** Consolidated everything into `src/app/robots.ts` (the file Next.js actually serves), merged the disallow list from both sources, added the two missing crawlers (`OAI-SearchBot`, `anthropic-ai`), deleted `public/robots.txt`. Verified locally: 200 response, all 6 AI crawlers + full disallow list + sitemap.
 
-### 3. Live Footer newsletter strip fix — commit `92d61f1`
-- `layout/Footer.tsx` (rendered globally, every page) — two hardcoded `#E26713` values → `var(--color-terracotta)`; `py-14 md:py-20` → `.section-rhythm-lg`. Verified via computed-style check in a real browser (resolved to `rgb(131,67,22)` / `96px` padding) — no console errors.
+### 2. FAQPage schema added to all 10 blog posts — commit `bec200b`
+Every post has a "Frequently Asked Questions" section written as plain markdown (40+ Q&A pairs site-wide) with zero structured data. Added `getBlogFaqs()` parser in `src/data/blog.ts` — handles both inline (`**Q?** answer`) and block (`**Q?**\n\nanswer`) formats, strips markdown artifacts — wired into a new `BlogFAQPageJsonLd` component (`src/components/seo/JsonLd.tsx`) rendered on `blog/[slug]/page.tsx`. Verified clean JSON-LD (no markdown leakage, correct Q&A counts) across all 10 posts via local curl + parse.
 
-### 4. Important discovery: 7 orphaned home components
-While verifying which sections are actually live on the homepage, found that **only 7 of 12** `home/*` components are imported by `app/(storefront)/page.tsx`:
+### 3. Visible "Updated [date]" freshness signal on blog posts — commit `bec200b`
+`dateModified` existed only in schema, never shown to readers. Added a badge next to the byline when `dateModified` differs from `publishedAt` — surfaces real existing freshness (most posts already have a 16 June 2026 `dateModified`), nothing fabricated.
 
-**Live:** `HeroSection`, `FeaturedProducts`, `HowToUseGuide`, `BrandTimeline`, `TestimonialsSection`, `InstagramSection`, `BlogSection`
+### 4. Ruled out a false alarm: `/shop` is not a GEO gap
+`/shop/page.tsx` is `"use client"`, which looked like a Technical Accessibility risk (AI crawlers don't execute JS). Verified via local curl that the full product grid renders in raw server HTML on the initial request — Next.js SSRs client components regardless of the directive. No fix made; this avoided an unnecessary, risky filter/sort refactor.
 
-**Orphaned (not imported anywhere in `src/app`):** `BlogPreview.tsx`, `NewsletterSection.tsx`, `TrustPillars.tsx`, `WhyJaisonTeaser.tsx`, `WhyPowderTeaser.tsx`, `CategoryShowcase.tsx`, `BrandStory.tsx`
+### Verification performed
+- `npx tsc --noEmit` — clean
+- `npm run build` — 85/85 static pages, `/robots.txt` and `/blog/[slug]` both build correctly (unrelated pre-existing dynamic-server-usage warnings on `/api/admin/*/export` routes, not touched this session)
+- Local dev server + curl checks on all 10 blog post FAQ schemas, the updated-date badge, and `/robots.txt` before and after the fix
 
-All 7 still got the token/padding fixes above (so they're consistent *if* ever wired in), but the owner has not yet decided whether to wire them up, repurpose them, or delete them — **explicitly deferred ("decide later")**, not actioned this session.
+Full breakdown, scoring rationale, and what's still blocked on owner content: **`GEO-ANALYSIS.md`** (new file, root).
 
 ---
 
@@ -37,83 +37,66 @@ All work committed and pushed to `origin/redesign/v2`.
 
 ```
 Last commits on redesign/v2:
+bec200b  fix(geo): resolve robots.txt conflict, add FAQ schema to blog posts
+2427ade  docs: session handoff (June 16 session 10)
 92d61f1  fix(footer): tokenize newsletter strip colors and padding
 ed7c5a2  fix(design): converge remaining home sections onto section-rhythm tokens
 0e74938  fix(design): a11y, token, and spacing fixes from design system audit
-c22e96e  docs: session handoff v7 (June 16 session 9)
-e36df99  content(blog): add 3rd internal links to all 10 posts (target reached)
 ```
 
 ### Files changed this session
 ```
-src/components/ui/StarRating.tsx
-src/components/ui/Select.tsx
-DESIGN.md
-src/components/home/TestimonialsSection.tsx
-src/components/home/InstagramSection.tsx
-src/components/home/CategoryShowcase.tsx   (orphaned)
-src/components/home/BlogSection.tsx
-src/components/home/BrandStory.tsx         (orphaned)
-src/components/home/TrustPillars.tsx       (orphaned)
-src/components/home/WhyJaisonTeaser.tsx    (orphaned)
-src/components/home/NewsletterSection.tsx  (orphaned)
-src/components/home/BrandTimeline.tsx
-src/components/home/HowToUseGuide.tsx
-src/components/home/WhyPowderTeaser.tsx    (orphaned)
-src/components/home/BlogPreview.tsx        (orphaned)
-src/components/layout/Footer.tsx
-HANDOFF.md   ← this file (updated)
+src/app/robots.ts                          (consolidated AI-crawler + disallow rules)
+public/robots.txt                          (deleted — superseded by robots.ts)
+src/data/blog.ts                           (added getBlogFaqs() parser)
+src/components/seo/JsonLd.tsx              (added BlogFAQPageJsonLd)
+src/app/(storefront)/blog/[slug]/page.tsx  (wired FAQ schema + "Updated" badge)
+SEO-AUDIT.md                               (GEO row updated: 20 → ~69, links to GEO-ANALYSIS.md)
+GEO-ANALYSIS.md                            (new — full GEO breakdown)
+HANDOFF.md                                 ← this file (updated)
 ```
+
+---
+
+## GEO score: ~20 → ~69/100 (estimated)
+
+This is a manual analysis against the `seo-geo` skill's 5 weighted criteria, not an automated crawler score. See `GEO-ANALYSIS.md` for the full per-criterion table.
+
+**What's left to reach 100 — not code-fixable, needs owner action:**
+| Gap | Blocked on |
+|---|---|
+| Real author/founder Person schema with credentials | Founder name/bio/photo (already on the owner-content list below) |
+| Brand presence on YouTube, Reddit, Wikipedia, LinkedIn (3x stronger AI-citation correlation than backlinks per Ahrefs) | Owner decision — months-long effort, not a code change |
+| Video content / infographics | "How to use" videos (already on the owner-content list below) |
+| Original research / unique data | New content initiative |
 
 ---
 
 ## What's next — ordered by impact
 
-### 1. Decide fate of the 7 orphaned home components
-- Wire into `page.tsx`, repurpose elsewhere (e.g. `/our-story`, `/why-powder`), or delete outright.
-- Owner explicitly deferred this — surface it again before doing anything else design-related on the homepage.
+### 1. Decide fate of the 7 orphaned home components (carried over from session 10, still deferred)
+- `BlogPreview.tsx`, `NewsletterSection.tsx`, `TrustPillars.tsx`, `WhyJaisonTeaser.tsx`, `WhyPowderTeaser.tsx`, `CategoryShowcase.tsx`, `BrandStory.tsx` — not imported anywhere in `src/app`. Owner explicitly deferred this — surface again before further homepage work.
 
-### 2. Remaining design system debt (not yet fixed)
+### 2. Remaining design system debt (carried over, not yet fixed)
 - **M4:** `GlowPillLink` glow only triggers on mouse hover, not keyboard focus — add `onFocus`/`onBlur` parity.
 - **Missing components:** `Textarea`, `Checkbox`, `Tooltip`, `Table` — all currently implemented inline with copied styles.
 
 ### 3. `/find-your-ritual` skin quiz
-- ⚠️ Requires explicit owner authorization before building
-- Page files already exist (`page.tsx` + `FindYourRitualContent.tsx`) — verify if functional first
+- ⚠️ Requires explicit owner authorization before publishing.
+- Page files already exist (`page.tsx` + `FindYourRitualContent.tsx`) — verify if functional first.
 
 ### 4. Admin shipping page
-- `src/app/admin/shipping/page.tsx`
-- Shiprocket API already in `src/lib/shipping.ts`
+- `src/app/admin/shipping/page.tsx`; Shiprocket API already in `src/lib/shipping.ts`.
 
 ### 5. Email shipping notifications
-- Trigger in `src/app/api/admin/orders/route.ts`
-- Order confirmation email already exists in `src/lib/email.ts`
-- Add "Order dispatched" email when admin marks status SHIPPED
+- Trigger in `src/app/api/admin/orders/route.ts`; order confirmation already in `src/lib/email.ts`.
+- Add "Order dispatched" email when admin marks status SHIPPED.
 
 ### 6. IndexNow
-- Generate key, place at `public/<key>.txt`
-- Submit sitemap on content publish
+- Generate key, place at `public/<key>.txt`, submit on content publish.
 
 ### 7. Google Search Console
-- Submit sitemap once `redesign/v2` merges to production (`main`)
-
----
-
-## SEO status (100% complete as of session 8)
-
-All storefront pages audited. No remaining SEO work on this branch.
-
-| Page group | Status |
-|---|---|
-| `/faq`, `/shop/[slug]` | ✅ Session 6 |
-| `/`, `/shop`, `/blog`, `/blog/[slug]` | ✅ Session 7 |
-| `/about`, site-wide technical | ✅ Session 7 |
-| `/why-powder`, `/why-jaison`, `/our-story`, `/contact` | ✅ Session 8 |
-
-Blog internal link coverage:
-- Session 5: 1st link per post
-- Session 6: 2nd link per post  
-- **Session 9 (this session): 3rd link per post — COMPLETE ✅**
+- Submit sitemap once `redesign/v2` merges to production (`main`).
 
 ---
 
@@ -121,18 +104,19 @@ Blog internal link coverage:
 
 | Item | Blocks |
 |---|---|
-| Founder story (name, origin, photo) | About page, homepage brand section |
+| Founder story (name, origin, photo) | About page, homepage brand section, **+ Person schema for GEO authority** |
 | AYUSH / GMP license number | Footer trust signal |
-| "How to use" videos (Neem, Multani, Ubtan) | Product page embeds |
+| "How to use" videos (Neem, Multani, Ubtan) | Product page embeds, **+ GEO multi-modal score** |
 | Before/after customer photos (10–15) | Review section, product pages |
 | Lead magnet PDF guide content | Popup email delivery |
 | Bhringraj blog image | Placeholder is `neem-styled.webp`; save real photo to `public/images/blog/bhringraj-styled.webp` |
+| Social/brand presence (YouTube, Reddit, LinkedIn, Wikipedia) | **GEO authority score** — backed by Ahrefs data showing 3x stronger AI-citation correlation than backlinks |
 
 ---
 
 ## Skills installed (user scope)
 
-- `claude-seo` v2.2.0 (agricidaniel) — `/seo-audit`, `/seo-geo`, `/seo-page`, etc.
+- `claude-seo` v2.2.0 (agricidaniel) — `/seo-audit`, `/seo-geo`, `/seo-page`, `/seo-schema`, `/seo-content`, etc.
 - `claude-blog` v1.9.1 (agricidaniel) — `/blog-write`, `/blog-audit`, etc.
 - `redesign-existing-projects` — design audit patterns
 - `frontend-design:frontend-design` — design direction skill
@@ -151,6 +135,7 @@ Blog internal link coverage:
 - Padding/rhythm — exactly two tokens: `.section-rhythm` (`py-12 md:py-16`) and `.section-rhythm-lg` (`py-16 md:py-24`). Any other raw `py-*` on a section wrapper is legacy debt to converge.
 - Active filter pills → bark bg, not terracotta
 - Never add `aggregateRating` to ProductJsonLd — no real reviews yet
+- Never fabricate Person/author schema, social profiles, or video content for GEO — only structure truthful, existing content. Off-platform authority building is an owner decision, not a code fix.
 
 ## Deployment rule
 
