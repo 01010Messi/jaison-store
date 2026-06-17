@@ -105,7 +105,7 @@ export default function HeroSection() {
             ref={headlineRef}
             className="font-heading font-light"
             style={{
-              fontSize: "clamp(3.26rem, 9.79vw, 11.96rem)",
+              fontSize: "clamp(2.25rem, 6.75vw, 8.25rem)",
               lineHeight: 0.96,
               letterSpacing: "-0.02em",
             }}
