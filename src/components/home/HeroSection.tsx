@@ -108,13 +108,14 @@ export default function HeroSection() {
               fontSize: "clamp(3rem, 9vw, 11rem)",
               lineHeight: 0.96,
               letterSpacing: "-0.02em",
+              marginTop: "-0.96em",
             }}
           >
             <span className="gw1" style={{ color: "var(--color-bark)" }}>Your </span>
-            <span className="gw2" style={{ color: "rgba(26,60,52,0.72)" }}>bottle </span>
-            <span className="gw3" style={{ color: "rgba(26,60,52,0.56)" }}>lists a</span>
+            <span className="gw2" style={{ color: "var(--color-bark)" }}>bottle </span>
+            <span className="gw3" style={{ color: "var(--color-bark)" }}>lists a</span>
             <br />
-            <span className="gw4" style={{ color: "rgba(26,60,52,0.40)" }}>dozen </span>
+            <span className="gw4" style={{ color: "var(--color-bark)" }}>dozen </span>
             <span className="gw5" style={{ color: "var(--color-bark)" }}>ingredients.</span>
             <br />
             <span className="gw6" style={{ fontStyle: "italic", fontWeight: 300, color: "var(--color-terracotta)" }}>
@@ -123,7 +124,7 @@ export default function HeroSection() {
           </h2>
 
           {/* Sub-copy + CTAs */}
-          <div className="mt-auto flex flex-col md:flex-row md:items-end md:justify-between gap-6 pb-28 md:pb-32">
+          <div className="mt-auto flex flex-col md:flex-row md:items-end md:justify-between gap-6 pb-20 md:pb-6">
             <p
               className="font-body leading-relaxed"
               style={{
@@ -161,7 +162,7 @@ export default function HeroSection() {
                   padding: "17px 34px",
                   fontSize: "12px",
                   letterSpacing: "0.14em",
-                  backgroundColor: "rgba(26,60,52,0.65)",
+                  backgroundColor: "var(--color-bark)",
                   color: "var(--color-cream)",
                 }}
               >
