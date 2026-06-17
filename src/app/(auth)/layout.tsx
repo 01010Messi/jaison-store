@@ -41,7 +41,7 @@ export default function AuthLayout({
               alt="Jaison Herbals — Natural Ayurvedic Skincare"
               width={220}
               height={80}
-              className="h-14 w-auto mx-auto"
+              className="h-20 w-auto mx-auto"
               style={{ mixBlendMode: "multiply" }}
               priority
             />

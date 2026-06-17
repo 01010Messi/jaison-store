@@ -104,14 +104,14 @@ export default function Header() {
 
         {/* Row 2 — Logo only */}
         <div className="bg-cream py-2 flex flex-col items-center">
-          <Link href="/" className="flex-shrink-0 overflow-hidden h-10 md:h-14 flex items-center">
+          <Link href="/" className="flex-shrink-0 overflow-hidden h-12 md:h-16 flex items-center">
             <Image
               src="/images/logo.png"
               alt="Jaison Herbals — Natural Ayurvedic Herbal Powders for Skin and Hair"
               width={260}
               height={96}
-              sizes="(max-width: 768px) 120px, 180px"
-              className="h-16 md:h-24 w-auto mix-blend-multiply -my-3"
+              sizes="(max-width: 768px) 150px, 210px"
+              className="h-20 md:h-28 w-auto mix-blend-multiply -my-3"
               priority
             />
           </Link>
