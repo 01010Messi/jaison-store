@@ -52,12 +52,15 @@ export default function HeroSection() {
             <source src="/images/hero-group.mp4" type="video/mp4" />
           </video>
 
-          {/* Uniform overlay — no seam between hero body and stats */}
+          {/* Uniform overlay — no seam between hero body and stats.
+              Floor raised to 0.20 minimum: the original 0.08 dip sat right
+              behind the headline, so a dark video frame there could crush
+              contrast on the opaque bark heading text. */}
           <div
             className="absolute inset-0"
             style={{
               background:
-                "linear-gradient(170deg, rgba(254,250,224,0.22) 0%, rgba(254,250,224,0.08) 25%, rgba(254,250,224,0.28) 60%, rgba(254,250,224,0.44) 85%, rgba(254,250,224,0.50) 100%)",
+                "linear-gradient(170deg, rgba(254,250,224,0.22) 0%, rgba(254,250,224,0.20) 25%, rgba(254,250,224,0.30) 60%, rgba(254,250,224,0.44) 85%, rgba(254,250,224,0.50) 100%)",
             }}
           />
         </div>

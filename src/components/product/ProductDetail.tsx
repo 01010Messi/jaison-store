@@ -276,7 +276,7 @@ export default function ProductDetail({ product }: ProductDetailProps) {
                       });
                     }}
                     disabled={zoomLevel >= 3}
-                    className="w-8 h-8 rounded-full bg-cream/80 backdrop-blur-sm flex items-center justify-center text-bark/60 hover:text-bark hover:bg-cream transition-all duration-300 shadow-warm disabled:opacity-30 disabled:cursor-not-allowed"
+                    className="w-8 h-8 rounded-full bg-cream/80 backdrop-blur-sm flex items-center justify-center text-bark/72 hover:text-bark hover:bg-cream transition-all duration-300 shadow-warm disabled:opacity-30 disabled:cursor-not-allowed"
                     aria-label="Zoom in"
                   >
                     <ZoomIn className="h-3.5 w-3.5" />
@@ -291,7 +291,7 @@ export default function ProductDetail({ product }: ProductDetailProps) {
                       });
                     }}
                     disabled={zoomLevel <= 0}
-                    className="w-8 h-8 rounded-full bg-cream/80 backdrop-blur-sm flex items-center justify-center text-bark/60 hover:text-bark hover:bg-cream transition-all duration-300 shadow-warm disabled:opacity-30 disabled:cursor-not-allowed"
+                    className="w-8 h-8 rounded-full bg-cream/80 backdrop-blur-sm flex items-center justify-center text-bark/72 hover:text-bark hover:bg-cream transition-all duration-300 shadow-warm disabled:opacity-30 disabled:cursor-not-allowed"
                     aria-label="Zoom out"
                   >
                     <ZoomOut className="h-3.5 w-3.5" />
@@ -306,7 +306,7 @@ export default function ProductDetail({ product }: ProductDetailProps) {
                         e.preventDefault();
                         goToPrevImage();
                       }}
-                      className="absolute left-3 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full bg-cream/80 backdrop-blur-sm flex items-center justify-center text-bark/60 hover:text-bark hover:bg-cream transition-all duration-300 opacity-0 group-hover:opacity-100 hover:opacity-100 shadow-warm"
+                      className="absolute left-3 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full bg-cream/80 backdrop-blur-sm flex items-center justify-center text-bark/72 hover:text-bark hover:bg-cream transition-all duration-300 opacity-0 group-hover:opacity-100 hover:opacity-100 shadow-warm"
                       style={{ opacity: 1 }}
                       aria-label="Previous image"
                     >
@@ -317,7 +317,7 @@ export default function ProductDetail({ product }: ProductDetailProps) {
                         e.preventDefault();
                         goToNextImage();
                       }}
-                      className="absolute right-3 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full bg-cream/80 backdrop-blur-sm flex items-center justify-center text-bark/60 hover:text-bark hover:bg-cream transition-all duration-300 opacity-0 group-hover:opacity-100 hover:opacity-100 shadow-warm"
+                      className="absolute right-3 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full bg-cream/80 backdrop-blur-sm flex items-center justify-center text-bark/72 hover:text-bark hover:bg-cream transition-all duration-300 opacity-0 group-hover:opacity-100 hover:opacity-100 shadow-warm"
                       style={{ opacity: 1 }}
                       aria-label="Next image"
                     >
@@ -326,7 +326,7 @@ export default function ProductDetail({ product }: ProductDetailProps) {
 
                     {/* Image counter — bottom-right */}
                     <div className="absolute bottom-3 right-3 z-10 bg-cream/80 backdrop-blur-sm px-3 py-1 rounded-full">
-                      <span className="font-accent text-[11px] text-bark/60 tracking-wider">
+                      <span className="font-accent text-[11px] text-bark/72 tracking-wider">
                         {activeImageIndex + 1} / {allImages.length}
                       </span>
                     </div>
@@ -535,8 +535,8 @@ export default function ProductDetail({ product }: ProductDetailProps) {
             {/* 8. PIN Code Check — kept exactly as-is */}
             <div className="mt-5 pt-4 border-t border-border">
               <div className="flex items-center gap-2 mb-2">
-                <MapPin className="h-3.5 w-3.5 text-bark/60" />
-                <span className="text-xs font-accent uppercase tracking-wider text-bark/60">
+                <MapPin className="h-3.5 w-3.5 text-bark/72" />
+                <span className="text-xs font-accent uppercase tracking-wider text-bark/72">
                   Check Delivery
                 </span>
               </div>
@@ -563,7 +563,7 @@ export default function ProductDetail({ product }: ProductDetailProps) {
                 <div className={`mt-2 text-xs font-body ${pincodeResult.serviceable ? "text-sage" : "text-terracotta"}`}>
                   <p>{pincodeResult.message}</p>
                   {pincodeResult.serviceable && pincodeResult.estimatedDays && (
-                    <p className="text-bark/60 mt-0.5">
+                    <p className="text-bark/72 mt-0.5">
                       Estimated delivery: {pincodeResult.estimatedDays} days
                       {pincodeResult.codAvailable && " · COD available"}
                     </p>
@@ -594,7 +594,7 @@ export default function ProductDetail({ product }: ProductDetailProps) {
           <div className="container-brand">
             <ScrollReveal animation="fade-up">
               <div className="mb-8 max-w-3xl mx-auto">
-                <p className="font-accent text-[10px] tracking-[0.2em] uppercase text-bark/60 mb-4">
+                <p className="font-accent text-[10px] tracking-[0.2em] uppercase text-bark/72 mb-4">
                   — From the Journal
                 </p>
                 <h2 className="font-heading text-[1.75rem] md:text-[2.25rem] text-bark font-light leading-[1.08] tracking-[-0.01em]">
@@ -629,7 +629,7 @@ export default function ProductDetail({ product }: ProductDetailProps) {
                       <h3 className="font-heading text-sm text-bark group-hover:text-terracotta transition-colors line-clamp-2 leading-snug">
                         {post.title}
                       </h3>
-                      <p className="text-[11px] text-bark/60 font-accent uppercase tracking-wider mt-1.5">
+                      <p className="text-[11px] text-bark/72 font-accent uppercase tracking-wider mt-1.5">
                         {post.readTime} min read
                       </p>
                     </div>
@@ -647,7 +647,7 @@ export default function ProductDetail({ product }: ProductDetailProps) {
           <div className="container-brand">
             <ScrollReveal animation="fade-up">
               <div className="mb-10">
-                <p className="font-accent text-[10px] tracking-[0.2em] uppercase text-bark/60 mb-4">
+                <p className="font-accent text-[10px] tracking-[0.2em] uppercase text-bark/72 mb-4">
                   — Pairs Well With · {product.category}
                 </p>
                 <h2 className="font-heading text-[2.25rem] md:text-[3rem] text-bark font-light leading-[1.08] tracking-[-0.01em]">

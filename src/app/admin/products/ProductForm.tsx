@@ -373,14 +373,14 @@ export default function ProductForm({
             href="/admin/products"
             className="p-2 hover:bg-parchment/50 rounded-sm transition-colors"
           >
-            <ArrowLeft className="h-4 w-4 text-bark/60" />
+            <ArrowLeft className="h-4 w-4 text-bark/72" />
           </Link>
           <div>
             <h1 className="font-heading text-2xl text-bark">
               {isEditing ? "Edit Product" : "New Product"}
             </h1>
             {isEditing && (
-              <p className="text-xs text-bark/60 font-body mt-0.5">
+              <p className="text-xs text-bark/72 font-body mt-0.5">
                 {product.sku}
               </p>
             )}
@@ -414,11 +414,11 @@ export default function ProductForm({
       <div className="space-y-6">
         {/* Basic Info */}
         <section className="bg-cream p-5 rounded-sm border border-border/50">
-          <h2 className="section-label text-bark/60 mb-4">Basic Information</h2>
+          <h2 className="section-label text-bark/72 mb-4">Basic Information</h2>
 
           <div className="space-y-4">
             <div>
-              <label className="block text-xs font-accent uppercase tracking-wider text-bark/60 mb-1.5">
+              <label className="block text-xs font-accent uppercase tracking-wider text-bark/72 mb-1.5">
                 Product Name *
               </label>
               <input
@@ -432,7 +432,7 @@ export default function ProductForm({
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label className="block text-xs font-accent uppercase tracking-wider text-bark/60 mb-1.5">
+                <label className="block text-xs font-accent uppercase tracking-wider text-bark/72 mb-1.5">
                   URL Slug *
                 </label>
                 <input
@@ -447,7 +447,7 @@ export default function ProductForm({
                 />
               </div>
               <div>
-                <label className="block text-xs font-accent uppercase tracking-wider text-bark/60 mb-1.5">
+                <label className="block text-xs font-accent uppercase tracking-wider text-bark/72 mb-1.5">
                   SKU *
                 </label>
                 <input
@@ -461,7 +461,7 @@ export default function ProductForm({
             </div>
 
             <div>
-              <label className="block text-xs font-accent uppercase tracking-wider text-bark/60 mb-1.5">
+              <label className="block text-xs font-accent uppercase tracking-wider text-bark/72 mb-1.5">
                 Short Description
               </label>
               <input
@@ -476,7 +476,7 @@ export default function ProductForm({
             </div>
 
             <div>
-              <label className="block text-xs font-accent uppercase tracking-wider text-bark/60 mb-1.5">
+              <label className="block text-xs font-accent uppercase tracking-wider text-bark/72 mb-1.5">
                 Full Description *
               </label>
               <Textarea
@@ -491,7 +491,7 @@ export default function ProductForm({
 
         {/* Images */}
         <section className="bg-cream p-5 rounded-sm border border-border/50">
-          <h2 className="section-label text-bark/60 mb-4">Product Images</h2>
+          <h2 className="section-label text-bark/72 mb-4">Product Images</h2>
 
           <div className="space-y-4">
             {/* Image grid */}
@@ -554,7 +554,7 @@ export default function ProductForm({
               {uploading ? (
                 <div className="flex flex-col items-center gap-2">
                   <div className="animate-spin rounded-full h-8 w-8 border-2 border-bark/20 border-t-terracotta" />
-                  <p className="text-xs text-bark/60 font-body">
+                  <p className="text-xs text-bark/72 font-body">
                     Uploading...
                   </p>
                 </div>
@@ -566,7 +566,7 @@ export default function ProductForm({
                     <Plus className="h-6 w-6 text-bark/30" />
                   )}
                   <div>
-                    <p className="text-sm text-bark/60 font-body">
+                    <p className="text-sm text-bark/72 font-body">
                       {product.images.length === 0
                         ? "Click to upload product images"
                         : "Add more images"}
@@ -591,13 +591,13 @@ export default function ProductForm({
 
         {/* Pricing & Inventory */}
         <section className="bg-cream p-5 rounded-sm border border-border/50">
-          <h2 className="section-label text-bark/60 mb-4">
+          <h2 className="section-label text-bark/72 mb-4">
             Pricing & Inventory
           </h2>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label className="block text-xs font-accent uppercase tracking-wider text-bark/60 mb-1.5">
+              <label className="block text-xs font-accent uppercase tracking-wider text-bark/72 mb-1.5">
                 Price (INR) *
               </label>
               <input
@@ -611,7 +611,7 @@ export default function ProductForm({
               />
             </div>
             <div>
-              <label className="block text-xs font-accent uppercase tracking-wider text-bark/60 mb-1.5">
+              <label className="block text-xs font-accent uppercase tracking-wider text-bark/72 mb-1.5">
                 Compare at Price (INR)
               </label>
               <input
@@ -627,7 +627,7 @@ export default function ProductForm({
               />
             </div>
             <div>
-              <label className="block text-xs font-accent uppercase tracking-wider text-bark/60 mb-1.5">
+              <label className="block text-xs font-accent uppercase tracking-wider text-bark/72 mb-1.5">
                 Stock Quantity
               </label>
               <input
@@ -641,7 +641,7 @@ export default function ProductForm({
             </div>
             <div className="grid grid-cols-2 gap-3">
               <div>
-                <label className="block text-xs font-accent uppercase tracking-wider text-bark/60 mb-1.5">
+                <label className="block text-xs font-accent uppercase tracking-wider text-bark/72 mb-1.5">
                   Weight
                 </label>
                 <input
@@ -655,7 +655,7 @@ export default function ProductForm({
                 />
               </div>
               <div>
-                <label className="block text-xs font-accent uppercase tracking-wider text-bark/60 mb-1.5">
+                <label className="block text-xs font-accent uppercase tracking-wider text-bark/72 mb-1.5">
                   Unit
                 </label>
                 <select
@@ -675,7 +675,7 @@ export default function ProductForm({
 
         {/* Categories & Visibility */}
         <section className="bg-cream p-5 rounded-sm border border-border/50">
-          <h2 className="section-label text-bark/60 mb-4">
+          <h2 className="section-label text-bark/72 mb-4">
             Categories & Visibility
           </h2>
 
@@ -683,7 +683,7 @@ export default function ProductForm({
             {/* Categories */}
             {categories.length > 0 && (
               <div>
-                <label className="block text-xs font-accent uppercase tracking-wider text-bark/60 mb-2">
+                <label className="block text-xs font-accent uppercase tracking-wider text-bark/72 mb-2">
                   Categories
                 </label>
                 <div className="flex flex-wrap gap-2">
@@ -695,7 +695,7 @@ export default function ProductForm({
                       className={`text-xs font-accent px-3 py-1.5 rounded-sm border transition-colors ${
                         product.categoryIds.includes(cat.id)
                           ? "bg-bark text-cream border-bark"
-                          : "bg-cream text-bark/60 border-border hover:border-bark/40"
+                          : "bg-cream text-bark/72 border-border hover:border-bark/40"
                       }`}
                     >
                       {cat.name}
@@ -726,11 +726,11 @@ export default function ProductForm({
 
         {/* Product Details */}
         <section className="bg-cream p-5 rounded-sm border border-border/50">
-          <h2 className="section-label text-bark/60 mb-4">Product Details</h2>
+          <h2 className="section-label text-bark/72 mb-4">Product Details</h2>
 
           <div className="space-y-4">
             <div>
-              <label className="block text-xs font-accent uppercase tracking-wider text-bark/60 mb-1.5">
+              <label className="block text-xs font-accent uppercase tracking-wider text-bark/72 mb-1.5">
                 Ingredients
               </label>
               <Textarea
@@ -742,7 +742,7 @@ export default function ProductForm({
             </div>
 
             <div>
-              <label className="block text-xs font-accent uppercase tracking-wider text-bark/60 mb-1.5">
+              <label className="block text-xs font-accent uppercase tracking-wider text-bark/72 mb-1.5">
                 How to Use
               </label>
               <Textarea
@@ -754,7 +754,7 @@ export default function ProductForm({
             </div>
 
             <div>
-              <label className="block text-xs font-accent uppercase tracking-wider text-bark/60 mb-1.5">
+              <label className="block text-xs font-accent uppercase tracking-wider text-bark/72 mb-1.5">
                 Benefits
               </label>
               <Textarea
@@ -769,11 +769,11 @@ export default function ProductForm({
 
         {/* SEO */}
         <section className="bg-cream p-5 rounded-sm border border-border/50">
-          <h2 className="section-label text-bark/60 mb-4">SEO</h2>
+          <h2 className="section-label text-bark/72 mb-4">SEO</h2>
 
           <div className="space-y-4">
             <div>
-              <label className="block text-xs font-accent uppercase tracking-wider text-bark/60 mb-1.5">
+              <label className="block text-xs font-accent uppercase tracking-wider text-bark/72 mb-1.5">
                 Meta Title
               </label>
               <input
@@ -786,7 +786,7 @@ export default function ProductForm({
             </div>
 
             <div>
-              <label className="block text-xs font-accent uppercase tracking-wider text-bark/60 mb-1.5">
+              <label className="block text-xs font-accent uppercase tracking-wider text-bark/72 mb-1.5">
                 Meta Description
               </label>
               <Textarea
@@ -805,7 +805,7 @@ export default function ProductForm({
         <div className="flex items-center justify-between pt-2 pb-8">
           <Link
             href="/admin/products"
-            className="text-sm text-bark/60 font-body hover:text-bark transition-colors"
+            className="text-sm text-bark/72 font-body hover:text-bark transition-colors"
           >
             Cancel
           </Link>

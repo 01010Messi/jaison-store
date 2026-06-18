@@ -66,7 +66,7 @@ export default function PrivacyPolicyPage() {
             <p>You have the right to access, correct, or delete your personal information at any time. Contact us at Jaisonskincare@gmail.com to exercise these rights.</p>
           </div>
 
-          <p className="pt-6 border-t border-border-light text-bark/35 text-xs">Last updated: March 2026</p>
+          <p className="pt-6 border-t border-border-light text-bark/72 text-xs">Last updated: March 2026</p>
         </div>
       </div>
     </div>

@@ -104,11 +104,11 @@ function ShopContent() {
           <p className="text-sm font-body text-bark/70">
             Results for &ldquo;
             <span className="font-medium text-bark">{searchQuery}</span>&rdquo;
-            <span className="text-bark/60 ml-1">({filteredProducts.length})</span>
+            <span className="text-bark/72 ml-1">({filteredProducts.length})</span>
           </p>
           <button
             onClick={clearSearch}
-            className="ml-auto flex items-center gap-1 text-xs font-accent uppercase tracking-wider text-bark/60 hover:text-bark transition-colors"
+            className="ml-auto flex items-center gap-1 text-xs font-accent uppercase tracking-wider text-bark/72 hover:text-bark transition-colors"
           >
             <X className="h-3.5 w-3.5" />
             Clear
@@ -138,7 +138,7 @@ function ShopContent() {
 
         {/* Sort dropdown */}
         <div className="relative flex items-center gap-3">
-          <span className="text-xs text-bark/60 font-accent uppercase tracking-wider hidden md:block">
+          <span className="text-xs text-bark/72 font-accent uppercase tracking-wider hidden md:block">
             {filteredProducts.length} product
             {filteredProducts.length !== 1 ? "s" : ""}
           </span>
@@ -174,7 +174,7 @@ function ShopContent() {
                         "w-full text-left px-4 py-2.5 text-xs font-accent uppercase tracking-wider transition-colors",
                         activeSort === key
                           ? "text-bark bg-parchment/60"
-                          : "text-bark/60 hover:text-bark hover:bg-parchment/20"
+                          : "text-bark/72 hover:text-bark hover:bg-parchment/20"
                       )}
                     >
                       {label}
@@ -188,7 +188,7 @@ function ShopContent() {
       </div>
 
       {/* Product count - mobile */}
-      <p className="text-xs text-bark/60 font-accent uppercase tracking-wider mb-4 md:hidden">
+      <p className="text-xs text-bark/72 font-accent uppercase tracking-wider mb-4 md:hidden">
         {filteredProducts.length} product{filteredProducts.length !== 1 ? "s" : ""}
       </p>
 
@@ -218,7 +218,7 @@ function ShopContent() {
       {/* Empty state */}
       {filteredProducts.length === 0 && (
         <div className="text-center py-16">
-          <p className="text-bark/60 font-body">
+          <p className="text-bark/72 font-body">
             {searchQuery
               ? `No products found for "${searchQuery}".`
               : "No products found in this category."}

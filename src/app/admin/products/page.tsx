@@ -57,14 +57,14 @@ export default function AdminProductsPage() {
       <div className="flex items-center justify-between mb-8">
         <div>
           <h1 className="font-heading text-2xl text-bark">Products</h1>
-          <p className="text-sm text-bark/60 font-body mt-1">
+          <p className="text-sm text-bark/72 font-body mt-1">
             Manage your product catalog
           </p>
         </div>
         <div className="flex items-center gap-2">
           <a
             href="/api/admin/products/export"
-            className="flex items-center gap-1.5 px-3 py-2 text-xs font-accent uppercase tracking-wider border border-border rounded-sm text-bark/60 hover:border-bark hover:text-bark transition-colors"
+            className="flex items-center gap-1.5 px-3 py-2 text-xs font-accent uppercase tracking-wider border border-border rounded-sm text-bark/72 hover:border-bark hover:text-bark transition-colors"
           >
             <Download className="h-3.5 w-3.5" />
             Export
@@ -83,7 +83,7 @@ export default function AdminProductsPage() {
         <div className="bg-cream p-5 rounded-sm border border-border/50">
           <div className="flex flex-col items-center justify-center py-16 text-bark/30">
             <Package className="h-12 w-12 mb-3 opacity-50" />
-            <p className="font-heading text-lg text-bark/60">No products yet</p>
+            <p className="font-heading text-lg text-bark/72">No products yet</p>
             <p className="text-xs text-bark/30 font-body mt-1">
               Add your first product to get started
             </p>
@@ -99,7 +99,7 @@ export default function AdminProductsPage() {
       ) : (
         <div className="bg-cream rounded-sm border border-border/50 overflow-hidden">
           <div className="p-4 border-b border-border/50">
-            <span className="section-label text-bark/60">
+            <span className="section-label text-bark/72">
               {products.length} Products
             </span>
           </div>
@@ -130,7 +130,7 @@ export default function AdminProductsPage() {
                   <p className="font-heading text-sm text-bark truncate group-hover:text-terracotta transition-colors">
                     {product.name}
                   </p>
-                  <p className="text-xs text-bark/60 font-body">
+                  <p className="text-xs text-bark/72 font-body">
                     {product.sku} &bull;{" "}
                     {product.categories.join(", ") || "Uncategorized"}
                   </p>
@@ -153,7 +153,7 @@ export default function AdminProductsPage() {
                   <p className="font-body font-semibold text-sm text-bark">
                     {formatPrice(product.price)}
                   </p>
-                  <p className="text-xs text-bark/60">
+                  <p className="text-xs text-bark/72">
                     {product.stock} in stock
                   </p>
                 </div>

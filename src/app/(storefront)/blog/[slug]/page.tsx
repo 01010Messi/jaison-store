@@ -109,7 +109,7 @@ function renderMarkdown(content: string) {
     elements.push(
       <div key={`bq-${elements.length}`} className="bg-parchment border border-border rounded-xl p-5 my-6">
         {headingText && (
-          <p className="text-[11px] font-accent uppercase tracking-[0.18em] text-bark/60 mb-3">
+          <p className="text-[11px] font-accent uppercase tracking-[0.18em] text-bark/72 mb-3">
             {headingText}
           </p>
         )}
@@ -239,7 +239,7 @@ export default function BlogPostPage({ params }: Props) {
           <div className="container-brand mb-6">
             <Link
               href="/blog"
-              className="inline-flex items-center gap-1.5 text-[10px] font-accent uppercase tracking-wider text-bark/60 hover:text-bark transition-colors rounded-full border px-4 py-2"
+              className="inline-flex items-center gap-1.5 text-[10px] font-accent uppercase tracking-wider text-bark/72 hover:text-bark transition-colors rounded-full border px-4 py-2"
               style={{ borderColor: "rgba(26,60,52,0.2)" }}
             >
               <ArrowLeft className="h-3 w-3" />
@@ -248,7 +248,7 @@ export default function BlogPostPage({ params }: Props) {
           </div>
 
           <div className="container-brand max-w-3xl mx-auto">
-            <span className="inline-block px-4 py-1.5 bg-parchment text-[10px] font-accent uppercase tracking-[0.15em] text-bark/60 rounded-full mb-4">
+            <span className="inline-block px-4 py-1.5 bg-parchment text-[10px] font-accent uppercase tracking-[0.15em] text-bark/72 rounded-full mb-4">
               {post.category}
             </span>
 
@@ -256,7 +256,7 @@ export default function BlogPostPage({ params }: Props) {
               {post.title}
             </h1>
 
-            <div className="flex items-center gap-4 mt-5 text-[11px] font-accent uppercase tracking-wider text-bark/60">
+            <div className="flex items-center gap-4 mt-5 text-[11px] font-accent uppercase tracking-wider text-bark/72">
               <span>By {post.author}</span>
               <span>&bull;</span>
               <time dateTime={post.publishedAt}>
@@ -324,7 +324,7 @@ export default function BlogPostPage({ params }: Props) {
                 <h3 className="font-heading text-3xl md:text-4xl text-bark font-medium tracking-wide">
                   Shop the Ingredients
                 </h3>
-                <p className="font-body text-sm text-bark/60 mt-1.5">
+                <p className="font-body text-sm text-bark/72 mt-1.5">
                   The herbs from this article, sourced and processed for your ritual.
                 </p>
               </div>
@@ -351,7 +351,7 @@ export default function BlogPostPage({ params }: Props) {
                             <p className="font-heading text-[15px] text-bark group-hover:text-terracotta transition-colors leading-snug">
                               {product.name}
                             </p>
-                            <p className="text-xs text-bark/60 font-body mt-0.5">
+                            <p className="text-xs text-bark/72 font-body mt-0.5">
                               ₹{product.price} · {product.weight}g
                             </p>
                           </div>
@@ -392,7 +392,7 @@ export default function BlogPostPage({ params }: Props) {
                     <h4 className="font-heading text-base text-bark group-hover:text-terracotta transition-colors leading-snug">
                       {related.title}
                     </h4>
-                    <span className="inline-flex items-center gap-1.5 text-[10px] font-accent uppercase tracking-wider text-bark/60 hover:text-terracotta transition-colors mt-2 border rounded-full px-3 py-1.5" style={{ borderColor: "rgba(26,60,52,0.2)" }}>
+                    <span className="inline-flex items-center gap-1.5 text-[10px] font-accent uppercase tracking-wider text-bark/72 hover:text-terracotta transition-colors mt-2 border rounded-full px-3 py-1.5" style={{ borderColor: "rgba(26,60,52,0.2)" }}>
                       Read More <ArrowRight className="h-3 w-3" />
                     </span>
                   </Link>

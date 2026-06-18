@@ -82,7 +82,7 @@ export default function AdminCustomersPage() {
     <div>
       <div className="mb-8">
         <h1 className="font-heading text-2xl text-bark">Customers</h1>
-        <p className="text-sm text-bark/60 font-body mt-1">
+        <p className="text-sm text-bark/72 font-body mt-1">
           Manage and view customer information
         </p>
       </div>
@@ -92,7 +92,7 @@ export default function AdminCustomersPage() {
         <div className="inline-flex items-center gap-3 bg-cream rounded-sm border border-border/50 px-5 py-3">
           <Users className="h-5 w-5 text-terracotta" />
           <div>
-            <p className="text-xs font-accent uppercase tracking-wider text-bark/60">
+            <p className="text-xs font-accent uppercase tracking-wider text-bark/72">
               Total Customers
             </p>
             <p className="font-heading text-lg text-bark">
@@ -118,7 +118,7 @@ export default function AdminCustomersPage() {
 
       <div className="bg-cream rounded-sm border border-border/50">
         <div className="flex items-center gap-3 p-4 border-b border-border/50">
-          <span className="section-label text-bark/60">
+          <span className="section-label text-bark/72">
             {filteredCustomers.length} Customer{filteredCustomers.length !== 1 ? "s" : ""}
             {searchQuery.trim() && ` found`}
           </span>
@@ -128,7 +128,7 @@ export default function AdminCustomersPage() {
         {filteredCustomers.length === 0 ? (
           <div className="flex flex-col items-center justify-center py-16 text-bark/30">
             <Users className="h-12 w-12 mb-3 opacity-50" />
-            <p className="font-heading text-lg text-bark/60">
+            <p className="font-heading text-lg text-bark/72">
               {searchQuery.trim() ? "No customers match your search" : "No customers yet"}
             </p>
             <p className="text-xs text-bark/30 font-body mt-1">
@@ -147,7 +147,7 @@ export default function AdminCustomersPage() {
               >
                 {/* Avatar */}
                 <div className="h-10 w-10 rounded-full bg-parchment flex items-center justify-center shrink-0">
-                  <span className="font-accent text-sm text-bark/60 uppercase">
+                  <span className="font-accent text-sm text-bark/72 uppercase">
                     {customer.name
                       ? customer.name
                           .split(" ")
@@ -163,7 +163,7 @@ export default function AdminCustomersPage() {
                   <p className="font-accent text-sm font-semibold text-bark truncate">
                     {customer.name || customer.email}
                   </p>
-                  <p className="text-xs text-bark/60 font-body truncate">
+                  <p className="text-xs text-bark/72 font-body truncate">
                     {customer.name ? customer.email : ""}{" "}
                     {customer.phone && (
                       <span>
@@ -196,7 +196,7 @@ export default function AdminCustomersPage() {
 
                 {/* Member since */}
                 <div className="text-right shrink-0 hidden md:block">
-                  <p className="text-xs text-bark/60 font-body">
+                  <p className="text-xs text-bark/72 font-body">
                     {new Date(customer.createdAt).toLocaleDateString("en-IN", {
                       day: "numeric",
                       month: "short",
@@ -222,24 +222,24 @@ export default function AdminCustomersPage() {
             {/* Customer profile */}
             <div className="flex items-start gap-4">
               <div className="h-14 w-14 rounded-full bg-parchment flex items-center justify-center shrink-0">
-                <User className="h-6 w-6 text-bark/60" />
+                <User className="h-6 w-6 text-bark/72" />
               </div>
               <div className="flex-1 min-w-0">
                 <h3 className="font-heading text-lg text-bark">
                   {selectedCustomer.name || "Unnamed Customer"}
                 </h3>
                 <div className="mt-1 space-y-0.5">
-                  <div className="flex items-center gap-2 text-sm text-bark/60 font-body">
+                  <div className="flex items-center gap-2 text-sm text-bark/72 font-body">
                     <Mail className="h-3.5 w-3.5 text-bark/30" />
                     {selectedCustomer.email}
                   </div>
                   {selectedCustomer.phone && (
-                    <div className="flex items-center gap-2 text-sm text-bark/60 font-body">
+                    <div className="flex items-center gap-2 text-sm text-bark/72 font-body">
                       <Phone className="h-3.5 w-3.5 text-bark/30" />
                       {selectedCustomer.phone}
                     </div>
                   )}
-                  <div className="flex items-center gap-2 text-sm text-bark/60 font-body">
+                  <div className="flex items-center gap-2 text-sm text-bark/72 font-body">
                     <Calendar className="h-3.5 w-3.5 text-bark/30" />
                     Member since{" "}
                     {new Date(selectedCustomer.createdAt).toLocaleDateString(
@@ -259,7 +259,7 @@ export default function AdminCustomersPage() {
                 <p className="font-heading text-2xl text-bark">
                   {selectedCustomer.orderCount}
                 </p>
-                <p className="text-xs font-accent uppercase tracking-wider text-bark/60 mt-1">
+                <p className="text-xs font-accent uppercase tracking-wider text-bark/72 mt-1">
                   Total Orders
                 </p>
               </div>
@@ -267,7 +267,7 @@ export default function AdminCustomersPage() {
                 <p className="font-heading text-2xl text-terracotta">
                   {formatPrice(selectedCustomer.totalSpent)}
                 </p>
-                <p className="text-xs font-accent uppercase tracking-wider text-bark/60 mt-1">
+                <p className="text-xs font-accent uppercase tracking-wider text-bark/72 mt-1">
                   Total Spent
                 </p>
               </div>
@@ -275,7 +275,7 @@ export default function AdminCustomersPage() {
 
             {/* Recent orders */}
             <div>
-              <h3 className="text-xs font-accent uppercase tracking-wider text-bark/60 mb-3">
+              <h3 className="text-xs font-accent uppercase tracking-wider text-bark/72 mb-3">
                 Recent Orders
               </h3>
               {selectedCustomer.recentOrders.length === 0 ? (
@@ -305,7 +305,7 @@ export default function AdminCustomersPage() {
                             {order.status}
                           </Badge>
                         </div>
-                        <p className="text-xs text-bark/60 font-body mt-0.5">
+                        <p className="text-xs text-bark/72 font-body mt-0.5">
                           {new Date(order.createdAt).toLocaleDateString(
                             "en-IN",
                             {

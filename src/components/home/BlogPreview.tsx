@@ -20,7 +20,7 @@ export default function BlogPreview() {
             <div className="flex justify-center mt-3">
               <GoldRule variant="leaf" width="w-24" />
             </div>
-            <p className="mt-4 text-bark/60 font-body text-sm max-w-md mx-auto">
+            <p className="mt-4 text-bark/72 font-body text-sm max-w-md mx-auto">
               DIY recipes, skincare routines, and herbal hair care guides to
               help you glow naturally.
             </p>
@@ -51,14 +51,14 @@ export default function BlogPreview() {
                     </div>
                   </div>
                   <div className="space-y-1.5">
-                    <div className="flex items-center gap-2 text-[10px] font-accent uppercase tracking-wider text-bark/60">
+                    <div className="flex items-center gap-2 text-[10px] font-accent uppercase tracking-wider text-bark/72">
                       <Clock className="h-3 w-3" />
                       {post.readTime} min read
                     </div>
                     <h3 className="font-heading text-lg text-bark font-medium leading-snug group-hover:text-terracotta transition-colors">
                       {post.title}
                     </h3>
-                    <p className="text-xs text-bark/60 font-body line-clamp-2 leading-relaxed">
+                    <p className="text-xs text-bark/72 font-body line-clamp-2 leading-relaxed">
                       {post.excerpt}
                     </p>
                   </div>

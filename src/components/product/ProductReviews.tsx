@@ -130,7 +130,7 @@ export default function ProductReviews({
           {count > 0 && (
             <div className="flex items-center gap-2 mt-1">
               <StarRating rating={Math.round(averageRating)} size="sm" />
-              <span className="text-sm text-bark/60 font-body">
+              <span className="text-sm text-bark/72 font-body">
                 {averageRating} out of 5 ({count} review{count !== 1 ? "s" : ""})
               </span>
             </div>
@@ -148,7 +148,7 @@ export default function ProductReviews({
         ) : (
           <Link
             href="/login"
-            className="text-xs font-accent uppercase tracking-wider text-bark/60 hover:text-terracotta transition-colors"
+            className="text-xs font-accent uppercase tracking-wider text-bark/72 hover:text-terracotta transition-colors"
           >
             Login to write a review
           </Link>
@@ -161,12 +161,12 @@ export default function ProductReviews({
           onSubmit={handleSubmit}
           className="mb-8 p-5 bg-surface-warm border border-border/50 rounded-xl"
         >
-          <p className="text-xs font-accent uppercase tracking-wider text-bark/60 mb-4">
+          <p className="text-xs font-accent uppercase tracking-wider text-bark/72 mb-4">
             Reviewing: {productName}
           </p>
 
           <div className="mb-4">
-            <label className="block text-xs font-accent uppercase tracking-wider text-bark/60 mb-2">
+            <label className="block text-xs font-accent uppercase tracking-wider text-bark/72 mb-2">
               Your Rating
             </label>
             <StarRating
@@ -178,7 +178,7 @@ export default function ProductReviews({
           </div>
 
           <div className="mb-4">
-            <label className="block text-xs font-accent uppercase tracking-wider text-bark/60 mb-2">
+            <label className="block text-xs font-accent uppercase tracking-wider text-bark/72 mb-2">
               Title (optional)
             </label>
             <input
@@ -191,7 +191,7 @@ export default function ProductReviews({
           </div>
 
           <div className="mb-4">
-            <label className="block text-xs font-accent uppercase tracking-wider text-bark/60 mb-2">
+            <label className="block text-xs font-accent uppercase tracking-wider text-bark/72 mb-2">
               Your Review
             </label>
             <Textarea
@@ -214,7 +214,7 @@ export default function ProductReviews({
             <button
               type="button"
               onClick={() => setShowForm(false)}
-              className="px-4 py-2 text-xs font-accent uppercase tracking-wider text-bark/60 hover:text-bark transition-colors"
+              className="px-4 py-2 text-xs font-accent uppercase tracking-wider text-bark/72 hover:text-bark transition-colors"
             >
               Cancel
             </button>
@@ -238,7 +238,7 @@ export default function ProductReviews({
                   <p className="text-sm font-heading text-bark">
                     {review.userName}
                   </p>
-                  <p className="text-[11px] text-bark/60 font-body">
+                  <p className="text-[11px] text-bark/72 font-body">
                     {new Date(review.createdAt).toLocaleDateString("en-IN", {
                       year: "numeric",
                       month: "short",
@@ -274,7 +274,7 @@ export default function ProductReviews({
         </div>
       ) : (
         <div className="text-center py-8">
-          <p className="text-sm text-bark/60 font-body">
+          <p className="text-sm text-bark/72 font-body">
             No reviews yet. Be the first to review this product!
           </p>
         </div>

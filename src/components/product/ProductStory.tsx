@@ -230,7 +230,7 @@ export default function ProductStory({ product }: ProductStoryProps) {
                   accent="nothing hidden."
                 />
               </div>
-              <p className="font-body text-sm text-bark/60 max-w-xs leading-relaxed md:self-end">
+              <p className="font-body text-sm text-bark/72 max-w-xs leading-relaxed md:self-end">
                 {isCombo
                   ? "Every jar in this combo is a single herb — ground, sun-dried and sifted. Here's exactly what you get."
                   : "Every ingredient, named. No fragrance, no preservatives, no fillers — if it's not listed here, it's not in the jar."}

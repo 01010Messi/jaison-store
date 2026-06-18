@@ -65,7 +65,7 @@ function OrderSuccessContent() {
         <h1 className="font-heading text-2xl text-bark mb-3">
           No order found
         </h1>
-        <p className="text-sm text-bark/60 font-body mb-6">
+        <p className="text-sm text-bark/72 font-body mb-6">
           It looks like you haven&apos;t placed an order yet.
         </p>
         <Link href="/shop">
@@ -109,20 +109,20 @@ function OrderSuccessContent() {
           <GoldRule variant="leaf" width="w-20" />
         </div>
 
-        <p className="text-bark/60 font-body text-sm mb-2 max-w-md leading-relaxed">
+        <p className="text-bark/72 font-body text-sm mb-2 max-w-md leading-relaxed">
           Thank you for your order. We&apos;ll send you a confirmation email
           with your order details and tracking information shortly.
         </p>
 
         <div className="bg-surface-warm border border-border rounded-xl px-6 py-4 mt-4 mb-8">
-          <p className="text-[10px] font-accent uppercase tracking-[0.15em] text-bark/60 mb-1">
+          <p className="text-[10px] font-accent uppercase tracking-[0.15em] text-bark/72 mb-1">
             Order Number
           </p>
           <p className="font-heading text-xl text-bark tracking-wide">
             {orderNumber}
           </p>
           {total && (
-            <p className="text-xs text-bark/60 font-body mt-1">
+            <p className="text-xs text-bark/72 font-body mt-1">
               Total: ₹{parseFloat(total).toLocaleString("en-IN")} &middot;{" "}
               {method === "COD" ? "Cash on Delivery" : "Paid Online"}
             </p>
@@ -134,10 +134,10 @@ function OrderSuccessContent() {
           <div className="flex items-center gap-3 text-left py-3 border-b border-border/50">
             <Package className="h-5 w-5 text-terracotta flex-shrink-0" />
             <div>
-              <p className="text-xs font-accent uppercase tracking-wider text-bark/60">
+              <p className="text-xs font-accent uppercase tracking-wider text-bark/72">
                 What happens next?
               </p>
-              <p className="text-xs text-bark/60 font-body mt-0.5 leading-relaxed">
+              <p className="text-xs text-bark/72 font-body mt-0.5 leading-relaxed">
                 We&apos;ll pack your order with care and ship it within 1-2
                 business days. Estimated delivery: 5-7 business days.
               </p>

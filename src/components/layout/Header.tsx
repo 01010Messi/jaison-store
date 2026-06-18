@@ -58,7 +58,7 @@ function MegaMenuBanner({ items, onClose, onMouseEnter, onMouseLeave }: MegaMenu
               style={{ backgroundColor: item.dot }}
             />
             <span className="font-body text-base text-bark">{item.label}</span>
-            <span className="font-accent text-[11px] tracking-[0.08em] text-bark/60">
+            <span className="font-accent text-[11px] tracking-[0.08em] text-bark/72">
               {item.subtitle}
             </span>
           </Link>
@@ -143,7 +143,7 @@ export default function Header() {
             <div className="absolute left-4 top-1/2 -translate-y-1/2">
               <button
                 onClick={() => setSearchOpen(true)}
-                className="p-1.5 text-bark/60 hover:text-bark transition-colors"
+                className="p-1.5 text-bark/72 hover:text-bark transition-colors"
                 aria-label="Search"
               >
                 <Search className="h-5 w-5" />
@@ -212,7 +212,7 @@ export default function Header() {
             <div className="absolute right-4 top-1/2 -translate-y-1/2 flex items-center gap-3">
               <Link
                 href="/account"
-                className="p-1.5 text-bark/60 hover:text-bark transition-colors"
+                className="p-1.5 text-bark/72 hover:text-bark transition-colors"
                 aria-label="Account"
               >
                 <User className="h-5 w-5" />
@@ -225,7 +225,7 @@ export default function Header() {
                 <ShoppingBag className="h-5 w-5" />
                 <span className="font-accent text-[13px] tracking-widest">POTLI</span>
                 {count > 0 && (
-                  <span className="absolute -top-1.5 -right-1.5 flex items-center justify-center w-4 h-4 text-[9px] font-accent font-bold bg-gold text-bark rounded-full">
+                  <span className="absolute -top-1.5 -right-1.5 flex items-center justify-center w-4 h-4 text-[9px] font-accent font-bold bg-gold-light text-bark rounded-full">
                     {count}
                   </span>
                 )}
@@ -249,7 +249,7 @@ export default function Header() {
             >
               <ShoppingBag className="h-4 w-4" />
               {count > 0 && (
-                <span className="absolute -top-1.5 -right-1.5 flex items-center justify-center w-4 h-4 text-[9px] font-accent font-bold bg-gold text-bark rounded-full">
+                <span className="absolute -top-1.5 -right-1.5 flex items-center justify-center w-4 h-4 text-[9px] font-accent font-bold bg-gold-light text-bark rounded-full">
                   {count}
                 </span>
               )}
@@ -430,21 +430,21 @@ export default function Header() {
             <Link
               href="/account"
               onClick={() => setIsMobileMenuOpen(false)}
-              className="block py-2 font-accent text-xs tracking-widest uppercase text-bark/60 hover:text-bark transition-colors"
+              className="block py-2 font-accent text-xs tracking-widest uppercase text-bark/72 hover:text-bark transition-colors"
             >
               My Account
             </Link>
             <Link
               href="/faq"
               onClick={() => setIsMobileMenuOpen(false)}
-              className="block py-2 font-accent text-xs tracking-widest uppercase text-bark/60 hover:text-bark transition-colors"
+              className="block py-2 font-accent text-xs tracking-widest uppercase text-bark/72 hover:text-bark transition-colors"
             >
               FAQ
             </Link>
             <Link
               href="/contact"
               onClick={() => setIsMobileMenuOpen(false)}
-              className="block py-2 font-accent text-xs tracking-widest uppercase text-bark/60 hover:text-bark transition-colors"
+              className="block py-2 font-accent text-xs tracking-widest uppercase text-bark/72 hover:text-bark transition-colors"
             >
               Contact
             </Link>

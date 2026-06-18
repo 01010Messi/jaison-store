@@ -337,7 +337,7 @@ export default function CheckoutPage() {
         <div className="container-brand">
           <Link
             href="/cart"
-            className="inline-flex items-center gap-1 text-xs font-accent uppercase tracking-wider text-bark/60 hover:text-bark transition-colors mb-4"
+            className="inline-flex items-center gap-1 text-xs font-accent uppercase tracking-wider text-bark/72 hover:text-bark transition-colors mb-4"
           >
             <ArrowLeft className="h-3.5 w-3.5" />
             Back to Potli
@@ -396,7 +396,7 @@ export default function CheckoutPage() {
                   {!isLoggedIn && (
                     <div className="flex items-center gap-3 p-4 bg-parchment/30 border border-border/50 rounded-xl mb-6">
                       <Mail className="h-4 w-4 text-sage flex-shrink-0" />
-                      <p className="text-xs text-bark/60 font-body">
+                      <p className="text-xs text-bark/72 font-body">
                         Checking out as a guest.{" "}
                         <Link
                           href="/login?redirect=/checkout"
@@ -416,7 +416,7 @@ export default function CheckoutPage() {
                   {/* Saved Addresses */}
                   {savedAddresses.length > 0 && (
                     <div className="mb-6">
-                      <p className="text-xs font-accent uppercase tracking-wider text-bark/60 mb-3">
+                      <p className="text-xs font-accent uppercase tracking-wider text-bark/72 mb-3">
                         Saved Addresses
                       </p>
                       <div className="space-y-2">
@@ -439,7 +439,7 @@ export default function CheckoutPage() {
                                 </span>
                               )}
                             </p>
-                            <p className="text-xs text-bark/60 font-body mt-0.5">
+                            <p className="text-xs text-bark/72 font-body mt-0.5">
                               {addr.addressLine1}, {addr.city}, {addr.state} — {addr.pincode}
                             </p>
                           </button>
@@ -453,7 +453,7 @@ export default function CheckoutPage() {
                               : "border-border hover:border-bark/30"
                           }`}
                         >
-                          <p className="text-sm font-body text-bark/60">
+                          <p className="text-sm font-body text-bark/72">
                             + Use a new address
                           </p>
                         </button>
@@ -477,7 +477,7 @@ export default function CheckoutPage() {
                         disabled={isLoggedIn}
                       />
                       {!isLoggedIn && (
-                        <p className="mt-1 text-[11px] text-bark/60 font-body">
+                        <p className="mt-1 text-[11px] text-bark/72 font-body">
                           Order confirmation will be sent to this email
                         </p>
                       )}
@@ -537,7 +537,7 @@ export default function CheckoutPage() {
                       required
                     />
                     <div>
-                      <label className="block text-[11px] font-accent uppercase tracking-[0.14em] text-bark/60 mb-1.5">
+                      <label className="block text-[11px] font-accent uppercase tracking-[0.14em] text-bark/72 mb-1.5">
                         State <span className="text-terracotta">*</span>
                       </label>
                       <select
@@ -629,10 +629,10 @@ export default function CheckoutPage() {
                           <div className="w-2.5 h-2.5 rounded-full bg-terracotta" />
                         )}
                       </div>
-                      <CreditCard className="h-5 w-5 text-bark/60" />
+                      <CreditCard className="h-5 w-5 text-bark/72" />
                       <div className="text-left">
                         <p className="font-heading text-sm text-bark">Pay Online</p>
-                        <p className="text-[11px] text-bark/60 font-body">
+                        <p className="text-[11px] text-bark/72 font-body">
                           UPI, Credit/Debit Card, Net Banking, Wallets
                         </p>
                       </div>
@@ -659,10 +659,10 @@ export default function CheckoutPage() {
                           <div className="w-2.5 h-2.5 rounded-full bg-terracotta" />
                         )}
                       </div>
-                      <Banknote className="h-5 w-5 text-bark/60" />
+                      <Banknote className="h-5 w-5 text-bark/72" />
                       <div className="text-left">
                         <p className="font-heading text-sm text-bark">Cash on Delivery</p>
-                        <p className="text-[11px] text-bark/60 font-body">
+                        <p className="text-[11px] text-bark/72 font-body">
                           Pay when you receive your order (+₹40 COD fee)
                         </p>
                       </div>
@@ -693,7 +693,7 @@ export default function CheckoutPage() {
                       <div className="flex items-center justify-between mb-2">
                         <div className="flex items-center gap-2">
                           <Mail className="h-4 w-4 text-sage" />
-                          <span className="font-accent text-xs uppercase tracking-wider text-bark/60">
+                          <span className="font-accent text-xs uppercase tracking-wider text-bark/72">
                             Contact
                           </span>
                         </div>
@@ -704,7 +704,7 @@ export default function CheckoutPage() {
                           Edit
                         </button>
                       </div>
-                      <p className="text-xs text-bark/60 font-body">{address.email}</p>
+                      <p className="text-xs text-bark/72 font-body">{address.email}</p>
                     </div>
                   )}
 
@@ -713,7 +713,7 @@ export default function CheckoutPage() {
                     <div className="flex items-center justify-between mb-2">
                       <div className="flex items-center gap-2">
                         <MapPin className="h-4 w-4 text-sage" />
-                        <span className="font-accent text-xs uppercase tracking-wider text-bark/60">
+                        <span className="font-accent text-xs uppercase tracking-wider text-bark/72">
                           Shipping Address
                         </span>
                       </div>
@@ -725,7 +725,7 @@ export default function CheckoutPage() {
                       </button>
                     </div>
                     <p className="font-heading text-sm text-bark">{address.fullName}</p>
-                    <p className="text-xs text-bark/60 font-body leading-relaxed mt-1">
+                    <p className="text-xs text-bark/72 font-body leading-relaxed mt-1">
                       {address.addressLine1}
                       {address.addressLine2 && `, ${address.addressLine2}`}
                       <br />
@@ -740,7 +740,7 @@ export default function CheckoutPage() {
                     <div className="flex items-center justify-between mb-2">
                       <div className="flex items-center gap-2">
                         <CreditCard className="h-4 w-4 text-sage" />
-                        <span className="font-accent text-xs uppercase tracking-wider text-bark/60">
+                        <span className="font-accent text-xs uppercase tracking-wider text-bark/72">
                           Payment Method
                         </span>
                       </div>
@@ -762,7 +762,7 @@ export default function CheckoutPage() {
                   <div className="border border-border rounded-xl p-4 mb-6">
                     <div className="flex items-center gap-2 mb-3">
                       <Truck className="h-4 w-4 text-sage" />
-                      <span className="font-accent text-xs uppercase tracking-wider text-bark/60">
+                      <span className="font-accent text-xs uppercase tracking-wider text-bark/72">
                         Order Items
                       </span>
                     </div>
@@ -782,7 +782,7 @@ export default function CheckoutPage() {
                           </div>
                           <div className="flex-1 min-w-0">
                             <p className="font-heading text-sm text-bark truncate">{item.name}</p>
-                            <p className="text-xs text-bark/60 font-body">Qty: {item.quantity}</p>
+                            <p className="text-xs text-bark/72 font-body">Qty: {item.quantity}</p>
                           </div>
                           <p className="font-body text-sm font-semibold text-bark">
                             {formatPrice(item.price * item.quantity)}
@@ -804,7 +804,7 @@ export default function CheckoutPage() {
                       : `Place Order (${formatPrice(grandTotal)})`}
                   </Button>
 
-                  <p className="text-center text-[11px] text-bark/60 font-body mt-3">
+                  <p className="text-center text-[11px] text-bark/72 font-body mt-3">
                     By placing this order, you agree to our Terms of Service and Privacy Policy.
                   </p>
                 </div>
@@ -821,7 +821,7 @@ export default function CheckoutPage() {
               <div className="space-y-2 mb-4">
                 {items.map((item) => (
                   <div key={item.productId} className="flex justify-between text-sm">
-                    <span className="text-bark/60 font-body truncate mr-2">
+                    <span className="text-bark/72 font-body truncate mr-2">
                       {item.name} x{item.quantity}
                     </span>
                     <span className="text-bark font-body font-medium shrink-0">
@@ -834,7 +834,7 @@ export default function CheckoutPage() {
               <GoldRule variant="simple" width="w-full" className="mb-4" />
 
               <div className="space-y-2 text-sm font-body">
-                <div className="flex justify-between text-bark/60">
+                <div className="flex justify-between text-bark/72">
                   <span>Subtotal</span>
                   <span>{formatPrice(total)}</span>
                 </div>
@@ -844,7 +844,7 @@ export default function CheckoutPage() {
                     <span>-{formatPrice(discount)}</span>
                   </div>
                 )}
-                <div className="flex justify-between text-bark/60">
+                <div className="flex justify-between text-bark/72">
                   <span>Shipping</span>
                   <span>
                     {shipping === 0 ? (
@@ -855,7 +855,7 @@ export default function CheckoutPage() {
                   </span>
                 </div>
                 {codFee > 0 && (
-                  <div className="flex justify-between text-bark/60">
+                  <div className="flex justify-between text-bark/72">
                     <span>COD Fee</span>
                     <span>{formatPrice(codFee)}</span>
                   </div>

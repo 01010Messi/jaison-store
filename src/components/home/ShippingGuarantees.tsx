@@ -42,7 +42,7 @@ export default function ShippingGuarantees() {
                     <p className="font-accent text-[11px] uppercase tracking-[0.12em] text-bark font-medium">
                       {item.title}
                     </p>
-                    <p className="text-[11px] text-bark/60 font-body">
+                    <p className="text-[11px] text-bark/72 font-body">
                       {item.description}
                     </p>
                   </div>

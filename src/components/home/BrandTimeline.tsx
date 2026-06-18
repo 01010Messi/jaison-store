@@ -117,7 +117,7 @@ export default function BrandTimeline() {
                   >
                     {m.title}
                   </h3>
-                  <p className="font-body text-sm text-bark/60 leading-relaxed mt-2 max-w-sm">
+                  <p className="font-body text-sm text-bark/72 leading-relaxed mt-2 max-w-sm">
                     {m.body}
                   </p>
                 </div>

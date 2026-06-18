@@ -56,7 +56,7 @@ export default function ReturnsPage() {
             <p>We do not issue refunds to the original payment method. We send a replacement product instead. This applies to both Razorpay and COD orders.</p>
           </div>
 
-          <p className="pt-6 border-t border-border-light text-bark/35 text-xs">Last updated: June 2026</p>
+          <p className="pt-6 border-t border-border-light text-bark/72 text-xs">Last updated: June 2026</p>
         </div>
       </div>
     </div>

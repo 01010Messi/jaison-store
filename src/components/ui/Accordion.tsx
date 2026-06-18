@@ -73,7 +73,7 @@ export default function Accordion({
               <ChevronDown
                 aria-hidden="true"
                 className={cn(
-                  "h-4 w-4 text-bark/60 transition-transform duration-300",
+                  "h-4 w-4 text-bark/72 transition-transform duration-300",
                   isOpen && "rotate-180"
                 )}
               />

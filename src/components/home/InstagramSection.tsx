@@ -1,10 +1,15 @@
 import Link from "next/link";
 import { Instagram } from "lucide-react";
 
+// `textOn` picks the handle/play-icon color for contrast against `bg` —
+// light tile backgrounds (gold-light, parchment, parchment-dark) need dark
+// (bark) text; dark tile backgrounds need light (cream) text. The bottom
+// caption already sits on its own black scrim and doesn't need this.
 const tiles = [
   {
     bg: "var(--color-gold-light)",
     avatarBg: "var(--color-terracotta-light)",
+    textOn: "light" as const,
     handle: "@sneha.ahuja",
     caption: "First time using Multani. Cracked = too thick. Lesson learned.",
     motif: "figure",
@@ -13,6 +18,7 @@ const tiles = [
   {
     bg: "var(--color-bark)",
     avatarBg: "var(--color-bark-light)",
+    textOn: "dark" as const,
     handle: "@aarav.makes",
     caption: "Cold-process Shikakai foam. No sulphates. Look at the lather.",
     motif: "glow",
@@ -21,6 +27,7 @@ const tiles = [
   {
     bg: "var(--color-parchment)",
     avatarBg: "var(--color-gold)",
+    textOn: "light" as const,
     handle: "@radhika.mehra",
     caption: "Mum's wedding ubtan. Found her 1989 jar today.",
     motif: "jar",
@@ -29,6 +36,7 @@ const tiles = [
   {
     bg: "var(--color-terracotta)",
     avatarBg: "var(--color-bark-light)",
+    textOn: "dark" as const,
     handle: "@oilskin.diaries",
     caption: "Week 6 on Neem. Side-by-side photos.",
     motif: "sphere",
@@ -37,6 +45,7 @@ const tiles = [
   {
     bg: "var(--color-parchment-dark)",
     avatarBg: "var(--color-gold-dark)",
+    textOn: "light" as const,
     handle: "@hairhouse.bangalore",
     caption: "Three-powder wash, 90s technique, 2026 lighting.",
     motif: "drop",
@@ -45,6 +54,7 @@ const tiles = [
   {
     bg: "var(--color-terracotta-dark)",
     avatarBg: "var(--color-terracotta)",
+    textOn: "dark" as const,
     handle: "@bombay.beautyclub",
     caption: "Using Reetha as a facial cleanser. Wild idea. It worked.",
     motif: "crescent",
@@ -53,6 +63,7 @@ const tiles = [
   {
     bg: "var(--color-bark)",
     avatarBg: "var(--color-bark-light)",
+    textOn: "dark" as const,
     handle: "@maithili.green",
     caption: "Day one of switching from chemical henna.",
     motif: "leaf",
@@ -61,6 +72,7 @@ const tiles = [
   {
     bg: "var(--color-terracotta)",
     avatarBg: "var(--color-terracotta-light)",
+    textOn: "dark" as const,
     handle: "@the.herb.kitchen",
     caption: "Rose petal powder mixed with honey. 20 minutes, weekly.",
     motif: "oval",
@@ -148,7 +160,7 @@ export default function InstagramSection() {
     <section className="section-rhythm-lg overflow-hidden">
       {/* Header */}
       <div className="container-brand mb-10 md:mb-14">
-        <p className="font-accent text-[11px] tracking-[0.22em] uppercase text-bark/60 mb-5">
+        <p className="font-accent text-[11px] tracking-[0.22em] uppercase text-bark/72 mb-5">
           — Tag #jaisonritual · We feature one a day
         </p>
         <h2
@@ -172,7 +184,13 @@ export default function InstagramSection() {
 
       {/* Grid */}
       <div className="columns-2 md:columns-4 gap-2 md:gap-3 px-4 md:px-8 lg:px-14" aria-hidden="true">
-        {tiles.map((tile) => (
+        {tiles.map((tile) => {
+          const handleColor =
+            tile.textOn === "light" ? "rgba(26,60,52,0.85)" : "rgba(255,248,225,0.80)";
+          const playIconColor =
+            tile.textOn === "light" ? "rgba(26,60,52,0.65)" : "rgba(255,248,225,0.65)";
+
+          return (
           <div
             key={tile.handle}
             className="relative overflow-hidden rounded-2xl mb-2 md:mb-3 break-inside-avoid"
@@ -189,13 +207,13 @@ export default function InstagramSection() {
                 />
                 <span
                   className="font-accent truncate"
-                  style={{ fontSize: "9px", letterSpacing: "0.06em", color: "rgba(255,248,225,0.80)" }}
+                  style={{ fontSize: "9px", letterSpacing: "0.06em", color: handleColor }}
                 >
                   {tile.handle}
                 </span>
               </div>
               <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true" className="flex-shrink-0">
-                <polygon points="2,1 11,6 2,11" fill="rgba(255,248,225,0.65)" />
+                <polygon points="2,1 11,6 2,11" fill={playIconColor} />
               </svg>
             </div>
 
@@ -212,7 +230,8 @@ export default function InstagramSection() {
               </p>
             </div>
           </div>
-        ))}
+          );
+        })}
       </div>
 
       {/* CTA */}

@@ -88,7 +88,7 @@ export default function Modal({
                 <button
                   onClick={onClose}
                   aria-label="Close dialog"
-                  className="text-bark/60 hover:text-bark transition-colors p-1"
+                  className="text-bark/72 hover:text-bark transition-colors p-1"
                 >
                   <X className="h-5 w-5" />
                 </button>
@@ -100,7 +100,7 @@ export default function Modal({
               <button
                 onClick={onClose}
                 aria-label="Close dialog"
-                className="absolute top-4 right-4 text-bark/60 hover:text-bark transition-colors p-1 z-10"
+                className="absolute top-4 right-4 text-bark/72 hover:text-bark transition-colors p-1 z-10"
               >
                 <X className="h-5 w-5" />
               </button>

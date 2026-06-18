@@ -85,7 +85,7 @@ export default function Tabs({
                 variant === "underline" &&
                   (isActive
                     ? "text-terracotta"
-                    : "text-bark/60 hover:text-bark/80")
+                    : "text-bark/72 hover:text-bark/80")
               )}
             >
               {item.label}
@@ -95,7 +95,7 @@ export default function Tabs({
                     "ml-1.5 text-xs",
                     variant === "pills" && isActive
                       ? "text-cream/70"
-                      : "text-bark/60"
+                      : "text-bark/72"
                   )}
                 >
                   ({item.count})

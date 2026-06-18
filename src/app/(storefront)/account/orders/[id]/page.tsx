@@ -67,13 +67,13 @@ const STATUS_STEPS = [
 ] as const;
 
 const STATUS_BADGE: Record<string, { pill: string; label: string }> = {
-  PENDING: { pill: "bg-parchment text-bark/70", label: "Pending" },
+  PENDING: { pill: "bg-parchment text-bark/85", label: "Pending" },
   CONFIRMED: { pill: "bg-sage/10 text-sage", label: "Confirmed" },
   PROCESSING: { pill: "bg-terracotta/10 text-terracotta", label: "Processing" },
   SHIPPED: { pill: "bg-bark/10 text-bark", label: "Shipped" },
-  DELIVERED: { pill: "bg-sage/20 text-sage", label: "Delivered" },
+  DELIVERED: { pill: "bg-sage/20 text-sage-dark", label: "Delivered" },
   CANCELLED: { pill: "bg-red-50 text-red-700", label: "Cancelled" },
-  RETURNED: { pill: "bg-parchment text-bark/50", label: "Returned" },
+  RETURNED: { pill: "bg-parchment text-bark/85", label: "Returned" },
 };
 
 function formatDate(iso: string) {
@@ -113,7 +113,7 @@ export default function OrderDetailPage() {
     return (
       <div className="min-h-[60vh] flex flex-col items-center justify-center px-4 text-center">
         <Package className="h-12 w-12 text-bark/15 mb-4" aria-hidden="true" />
-        <p className="text-sm font-body text-bark/60">{error || "Order not found"}</p>
+        <p className="text-sm font-body text-bark/72">{error || "Order not found"}</p>
         <Link
           href="/account/orders"
           className="mt-4 text-[11px] font-accent uppercase tracking-[0.18em] text-terracotta hover:text-terracotta-dark transition-colors"
@@ -126,7 +126,7 @@ export default function OrderDetailPage() {
 
   const currentStepIndex = STATUS_STEPS.findIndex((s) => s.key === order.status);
   const isCancelled = order.status === "CANCELLED" || order.status === "RETURNED";
-  const badge = STATUS_BADGE[order.status] ?? { pill: "bg-parchment text-bark/60", label: order.status };
+  const badge = STATUS_BADGE[order.status] ?? { pill: "bg-parchment text-bark/72", label: order.status };
 
   return (
     <div className="min-h-screen bg-cream">
@@ -135,7 +135,7 @@ export default function OrderDetailPage() {
         <div className="container-brand py-8 md:py-10">
           <Link
             href="/account/orders"
-            className="inline-flex items-center gap-1.5 text-[11px] font-accent uppercase tracking-[0.18em] text-bark/60 hover:text-bark transition-colors mb-4"
+            className="inline-flex items-center gap-1.5 text-[11px] font-accent uppercase tracking-[0.18em] text-bark/72 hover:text-bark transition-colors mb-4"
           >
             <ArrowLeft className="h-3.5 w-3.5" />
             All Orders
@@ -145,7 +145,7 @@ export default function OrderDetailPage() {
               <h1 className="font-heading text-2xl md:text-3xl text-bark">
                 Order #{order.orderNumber}
               </h1>
-              <p className="text-xs font-body text-bark/60 mt-1">
+              <p className="text-xs font-body text-bark/72 mt-1">
                 Placed {formatDate(order.createdAt)}
               </p>
             </div>
@@ -163,7 +163,7 @@ export default function OrderDetailPage() {
         {!isCancelled && (
           <ScrollReveal animation="fade-up">
             <div className="bg-surface-warm border border-border rounded-xl p-5 md:p-6 mb-8">
-              <p className="text-[11px] font-accent uppercase tracking-[0.22em] text-bark/60 mb-5">
+              <p className="text-[11px] font-accent uppercase tracking-[0.22em] text-bark/72 mb-5">
                 Order Progress
               </p>
               <div className="flex items-start">
@@ -182,14 +182,14 @@ export default function OrderDetailPage() {
                               ? "bg-bark text-cream ring-2 ring-bark/20 ring-offset-2"
                               : isCompleted
                               ? "bg-sage/15 text-sage"
-                              : "bg-parchment text-bark/20"
+                              : "bg-parchment text-bark/60"
                           }`}
                         >
                           <Icon className="h-4 w-4" />
                         </div>
                         <span
                           className={`hidden sm:block text-[9px] font-accent uppercase tracking-wider text-center leading-tight ${
-                            isCompleted ? "text-bark/70" : "text-bark/25"
+                            isCompleted ? "text-bark/85" : "text-bark/72"
                           }`}
                         >
                           {step.label}
@@ -234,7 +234,7 @@ export default function OrderDetailPage() {
           {/* Left: Items + price breakdown */}
           <ScrollReveal animation="fade-up" className="lg:col-span-2">
             <div>
-              <p className="text-[11px] font-accent uppercase tracking-[0.22em] text-bark/60 mb-4">
+              <p className="text-[11px] font-accent uppercase tracking-[0.22em] text-bark/72 mb-4">
                 Items Ordered
               </p>
 
@@ -260,7 +260,7 @@ export default function OrderDetailPage() {
                       <p className="font-heading text-base text-bark leading-snug">
                         {item.name}
                       </p>
-                      <p className="text-xs font-body text-bark/60 mt-1">
+                      <p className="text-xs font-body text-bark/72 mt-1">
                         {formatPrice(item.price)} &times; {item.quantity}
                       </p>
                     </div>
@@ -274,22 +274,22 @@ export default function OrderDetailPage() {
               {/* Price breakdown */}
               <div className="mt-4 pt-4 border-t border-border">
                 <div className="space-y-2.5 text-sm font-body">
-                  <div className="flex justify-between text-bark/60">
+                  <div className="flex justify-between text-bark/72">
                     <span>Subtotal</span>
                     <span>{formatPrice(order.subtotal)}</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-bark/60">Shipping</span>
+                    <span className="text-bark/72">Shipping</span>
                     {order.shippingCost === 0 ? (
                       <span className="text-[11px] font-accent uppercase tracking-wider text-sage">
                         Free
                       </span>
                     ) : (
-                      <span className="text-bark/60">{formatPrice(order.shippingCost)}</span>
+                      <span className="text-bark/72">{formatPrice(order.shippingCost)}</span>
                     )}
                   </div>
                   {order.codFee > 0 && (
-                    <div className="flex justify-between text-bark/60">
+                    <div className="flex justify-between text-bark/72">
                       <span>COD Fee</span>
                       <span>{formatPrice(order.codFee)}</span>
                     </div>
@@ -321,14 +321,14 @@ export default function OrderDetailPage() {
             <div className="bg-surface-warm border border-border rounded-xl p-5">
               <div className="flex items-center gap-2 mb-3">
                 <MapPin className="h-3.5 w-3.5 text-terracotta shrink-0" aria-hidden="true" />
-                <h3 className="text-[11px] font-accent uppercase tracking-[0.22em] text-bark/60">
+                <h3 className="text-[11px] font-accent uppercase tracking-[0.22em] text-bark/72">
                   Shipping Address
                 </h3>
               </div>
               <p className="font-heading text-base text-bark">
                 {order.shippingAddress.fullName}
               </p>
-              <p className="text-xs font-body text-bark/60 mt-1.5 leading-relaxed">
+              <p className="text-xs font-body text-bark/72 mt-1.5 leading-relaxed">
                 {order.shippingAddress.addressLine1}
                 {order.shippingAddress.addressLine2 && (
                   <>, {order.shippingAddress.addressLine2}</>
@@ -351,7 +351,7 @@ export default function OrderDetailPage() {
             <div className="bg-surface-warm border border-border rounded-xl p-5">
               <div className="flex items-center gap-2 mb-3">
                 <CreditCard className="h-3.5 w-3.5 text-terracotta shrink-0" aria-hidden="true" />
-                <h3 className="text-[11px] font-accent uppercase tracking-[0.22em] text-bark/60">
+                <h3 className="text-[11px] font-accent uppercase tracking-[0.22em] text-bark/72">
                   Payment
                 </h3>
               </div>
@@ -361,7 +361,7 @@ export default function OrderDetailPage() {
                   : "Online (Razorpay)"}
               </p>
               <p className="text-xs font-body mt-0.5">
-                <span className="text-bark/60">Status: </span>
+                <span className="text-bark/72">Status: </span>
                 <span
                   className={
                     order.paymentStatus === "PAID"
@@ -370,7 +370,7 @@ export default function OrderDetailPage() {
                       ? "text-terracotta"
                       : order.paymentStatus === "FAILED"
                       ? "text-red-600"
-                      : "text-bark/60"
+                      : "text-bark/72"
                   }
                 >
                   {order.paymentStatus === "PAID"
@@ -389,7 +389,7 @@ export default function OrderDetailPage() {
               <div className="bg-surface-warm border border-border rounded-xl p-5">
                 <div className="flex items-center gap-2 mb-3">
                   <Truck className="h-3.5 w-3.5 text-terracotta shrink-0" aria-hidden="true" />
-                  <h3 className="text-[11px] font-accent uppercase tracking-[0.22em] text-bark/60">
+                  <h3 className="text-[11px] font-accent uppercase tracking-[0.22em] text-bark/72">
                     Shipping Details
                   </h3>
                 </div>
@@ -397,7 +397,7 @@ export default function OrderDetailPage() {
                   <div className="flex items-start gap-2 mb-3">
                     <Hash className="h-3.5 w-3.5 text-bark/30 mt-0.5 shrink-0" aria-hidden="true" />
                     <div>
-                      <p className="text-[10px] font-accent uppercase tracking-wider text-bark/40">
+                      <p className="text-[10px] font-accent uppercase tracking-wider text-bark/72">
                         AWB / Tracking No.
                       </p>
                       <p className="text-xs font-body text-bark font-medium mt-0.5 break-all">
@@ -410,7 +410,7 @@ export default function OrderDetailPage() {
                   <div className="flex items-start gap-2">
                     <Calendar className="h-3.5 w-3.5 text-bark/30 mt-0.5 shrink-0" aria-hidden="true" />
                     <div>
-                      <p className="text-[10px] font-accent uppercase tracking-wider text-bark/40">
+                      <p className="text-[10px] font-accent uppercase tracking-wider text-bark/72">
                         Expected by
                       </p>
                       <p className="text-xs font-body text-bark font-medium mt-0.5">

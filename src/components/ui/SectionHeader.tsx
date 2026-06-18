@@ -55,7 +55,7 @@ export default function SectionHeader({
               ? "text-cream/70"
               : eyebrowTone === "accent"
                 ? "text-terracotta"
-                : "text-bark/60"
+                : "text-bark/72"
           )}
         >
           {eyebrowDash && (
@@ -91,7 +91,7 @@ export default function SectionHeader({
         <p
           className={cn(
             "font-body text-sm leading-relaxed mt-6 max-w-xs",
-            dark ? "text-cream/70" : "text-bark/60"
+            dark ? "text-cream/70" : "text-bark/72"
           )}
         >
           {note}

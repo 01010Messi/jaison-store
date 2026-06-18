@@ -85,7 +85,7 @@ export default function NewsletterSection() {
               />
               <Button
                 type="submit"
-                variant="gold"
+                variant="primary"
                 size="lg"
                 isLoading={isLoading}
               >
@@ -93,7 +93,7 @@ export default function NewsletterSection() {
               </Button>
             </form>
 
-            <p className="text-[11px] text-cream/30 mt-4 font-body">
+            <p className="text-[11px] text-cream/55 mt-4 font-body">
               No spam, ever. Unsubscribe anytime.
             </p>
           </div>

@@ -59,7 +59,7 @@ export default function TermsPage() {
               <p>{section.body}</p>
             </div>
           ))}
-          <p className="pt-8 mt-8 border-t border-border-light text-bark/35 text-xs">Last updated: March 2026</p>
+          <p className="pt-8 mt-8 border-t border-border-light text-bark/72 text-xs">Last updated: March 2026</p>
         </div>
       </div>
     </div>

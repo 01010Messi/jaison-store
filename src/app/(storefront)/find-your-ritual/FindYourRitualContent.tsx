@@ -181,7 +181,7 @@ export default function FindYourRitualContent() {
         {/* Progress bar — steps 1–4 */}
         {step <= 4 && (
           <div className="mb-12 flex items-center gap-4">
-            <span className="font-accent text-[10px] tracking-[0.22em] uppercase text-bark/40">
+            <span className="font-accent text-[10px] tracking-[0.22em] uppercase text-bark/72">
               — FIND YOUR RITUAL
             </span>
             <div className="flex-1 h-px relative bg-bark/10">
@@ -190,7 +190,7 @@ export default function FindYourRitualContent() {
                 style={{ width: `${((step - 1) / 4) * 100}%` }}
               />
             </div>
-            <span className="font-accent text-[11px] tracking-wider text-bark/40">
+            <span className="font-accent text-[11px] tracking-wider text-bark/72">
               0{step} · 04
             </span>
           </div>
@@ -204,7 +204,7 @@ export default function FindYourRitualContent() {
               <h2 className="font-heading text-[2.75rem] md:text-[4rem] font-light leading-[1.05] tracking-[-0.02em] text-bark">
                 {q.heading}
               </h2>
-              <p className="font-heading italic text-base md:text-lg mt-3 text-bark/35">
+              <p className="font-heading italic text-base md:text-lg mt-3 text-bark/72">
                 {q.subtitle}
               </p>
             </div>
@@ -255,7 +255,7 @@ export default function FindYourRitualContent() {
               {step > 1 && (
                 <button
                   onClick={() => setStep((s) => s - 1)}
-                  className="font-accent text-[10px] tracking-[0.14em] uppercase text-bark/40 hover:text-bark/80 transition-colors"
+                  className="font-accent text-[10px] tracking-[0.14em] uppercase text-bark/72 hover:text-bark/80 transition-colors"
                 >
                   ← PREVIOUS QUESTION
                 </button>
@@ -275,7 +275,7 @@ export default function FindYourRitualContent() {
                   {freq.italic}
                 </span>
               </h2>
-              <p className="font-body text-base mt-4 max-w-md mx-auto text-bark/60">
+              <p className="font-body text-base mt-4 max-w-md mx-auto text-bark/72">
                 {subtext}
               </p>
             </div>
@@ -316,7 +316,7 @@ export default function FindYourRitualContent() {
                     <p className="font-heading text-xl md:text-2xl text-bark font-light">
                       {product.name}
                     </p>
-                    <p className="font-heading italic text-sm mt-0.5 text-bark/35">
+                    <p className="font-heading italic text-sm mt-0.5 text-bark/72">
                       {product.latin}
                     </p>
                     <div className="flex items-center justify-between mt-4">
@@ -325,7 +325,7 @@ export default function FindYourRitualContent() {
                           ₹{product.price}
                         </span>
                         {product.compareAt && (
-                          <span className="font-body text-sm line-through ml-2 text-bark/40">
+                          <span className="font-body text-sm line-through ml-2 text-bark/72">
                             ₹{product.compareAt}
                           </span>
                         )}

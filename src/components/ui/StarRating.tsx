@@ -76,7 +76,7 @@ export default function StarRating({
         starButtons
       )}
       {showCount && (
-        <span className="ml-1.5 text-xs text-bark/60 font-body">
+        <span className="ml-1.5 text-xs text-bark/72 font-body">
           ({count})
         </span>
       )}

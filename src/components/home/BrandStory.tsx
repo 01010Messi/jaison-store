@@ -35,7 +35,7 @@ export default function BrandStory() {
                 <br />
                 Made for Today
               </h2>
-              <div className="space-y-4 text-bark/60 font-body leading-relaxed">
+              <div className="space-y-4 text-bark/72 font-body leading-relaxed">
                 <p>
                   At jaison, we believe in the timeless power of nature.
                   Our journey began with a simple truth — the ancient Ayurvedic

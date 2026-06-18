@@ -32,12 +32,12 @@ export default function ProductFAQ({ productName, faqs }: ProductFAQProps) {
           <div className="lg:col-span-3">
             <Accordion
               className="divide-bark/10 border-t border-b border-bark/10"
-              titleClassName="text-base md:text-lg font-light leading-snug"
+              titleClassName="text-base md:text-lg font-normal leading-snug"
               items={faqs.map((faq, i) => ({
                 id: String(i),
                 title: faq.question,
                 content: (
-                  <p className="font-body text-sm text-bark/60 leading-relaxed pr-10">
+                  <p className="font-body text-sm text-bark/72 leading-relaxed pr-10">
                     {faq.answer}
                   </p>
                 ),

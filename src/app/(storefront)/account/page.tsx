@@ -69,7 +69,7 @@ export default function AccountPage() {
             <h1 className="font-heading text-2xl md:text-3xl text-bark">
               Welcome, {session.user?.name || "there"}
             </h1>
-            <p className="text-sm text-bark/60 font-body mt-1">
+            <p className="text-sm text-bark/72 font-body mt-1">
               {session.user?.email}
             </p>
           </ScrollReveal>
@@ -110,17 +110,17 @@ export default function AccountPage() {
                     className="flex items-center gap-4 p-4 bg-cream rounded-xl border border-border/50 hover:border-gold/50 hover:shadow-warm transition-all duration-300 group"
                   >
                     <div className="w-10 h-10 bg-parchment/50 rounded-full flex items-center justify-center">
-                      <Icon className="h-5 w-5 text-bark/60 group-hover:text-terracotta transition-colors" />
+                      <Icon className="h-5 w-5 text-bark/72 group-hover:text-terracotta transition-colors" />
                     </div>
                     <div className="flex-1 min-w-0">
                       <p className="font-heading text-sm text-bark">
                         {link.label}
                       </p>
-                      <p className="text-xs text-bark/60 font-body">
+                      <p className="text-xs text-bark/72 font-body">
                         {link.description}
                       </p>
                     </div>
-                    <ChevronRight className="h-4 w-4 text-bark/20 group-hover:text-bark/60 transition-colors" />
+                    <ChevronRight className="h-4 w-4 text-bark/20 group-hover:text-bark/72 transition-colors" />
                   </Link>
                 </ScrollReveal>
               );
@@ -141,7 +141,7 @@ export default function AccountPage() {
             </Link>
             <button
               onClick={() => signOut({ callbackUrl: "/" })}
-              className="flex-1 flex items-center justify-center gap-2 px-6 py-2.5 rounded-full border border-border text-sm font-accent uppercase tracking-wider text-bark/60 hover:text-terracotta hover:border-terracotta/30 transition-all"
+              className="flex-1 flex items-center justify-center gap-2 px-6 py-2.5 rounded-full border border-border text-sm font-accent uppercase tracking-wider text-bark/72 hover:text-terracotta hover:border-terracotta/30 transition-all"
             >
               <LogOut className="h-4 w-4" />
               Sign Out

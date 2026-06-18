@@ -74,7 +74,7 @@ export default function OrdersPage() {
         <div className="container-brand">
           <Link
             href="/account"
-            className="inline-flex items-center gap-1 text-xs font-accent uppercase tracking-wider text-bark/60 hover:text-bark transition-colors mb-3"
+            className="inline-flex items-center gap-1 text-xs font-accent uppercase tracking-wider text-bark/72 hover:text-bark transition-colors mb-3"
           >
             <ArrowLeft className="h-3.5 w-3.5" />
             My Account
@@ -93,7 +93,7 @@ export default function OrdersPage() {
               <h2 className="font-heading text-xl text-bark mb-2">
                 No orders yet
               </h2>
-              <p className="text-sm text-bark/60 font-body mb-6 max-w-sm">
+              <p className="text-sm text-bark/72 font-body mb-6 max-w-sm">
                 When you place your first order, it will appear here with
                 tracking information.
               </p>
@@ -121,7 +121,7 @@ export default function OrdersPage() {
                       >
                         #{order.orderNumber}
                       </Link>
-                      <p className="text-xs text-bark/60 font-body mt-0.5">
+                      <p className="text-xs text-bark/72 font-body mt-0.5">
                         {new Date(order.createdAt).toLocaleDateString("en-IN", {
                           day: "numeric",
                           month: "long",
@@ -170,7 +170,7 @@ export default function OrdersPage() {
                         href={order.trackingUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-xs font-accent uppercase tracking-wider text-bark/60 hover:text-bark transition-colors"
+                        className="text-xs font-accent uppercase tracking-wider text-bark/72 hover:text-bark transition-colors"
                       >
                         Track Order
                       </a>
@@ -180,7 +180,7 @@ export default function OrdersPage() {
                         href={order.invoiceUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-xs font-accent uppercase tracking-wider text-bark/60 hover:text-bark transition-colors"
+                        className="text-xs font-accent uppercase tracking-wider text-bark/72 hover:text-bark transition-colors"
                       >
                         Download Invoice
                       </a>

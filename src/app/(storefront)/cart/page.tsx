@@ -61,7 +61,7 @@ export default function CartPage() {
         <h1 className="font-heading text-2xl md:text-3xl text-bark mb-3">
           Your potli is empty
         </h1>
-        <p className="text-bark/60 font-body text-sm mb-8 text-center max-w-md">
+        <p className="text-bark/72 font-body text-sm mb-8 text-center max-w-md">
           Looks like you haven&apos;t added any of our natural herbal products
           to your potli yet.
         </p>
@@ -93,7 +93,7 @@ export default function CartPage() {
           {/* Cart Items */}
           <div className="lg:col-span-2 space-y-0">
             {/* Header - desktop */}
-            <div className="hidden md:grid grid-cols-[1fr_120px_120px_40px] gap-4 pb-3 border-b border-border text-xs font-accent uppercase tracking-wider text-bark/60">
+            <div className="hidden md:grid grid-cols-[1fr_120px_120px_40px] gap-4 pb-3 border-b border-border text-xs font-accent uppercase tracking-wider text-bark/72">
               <span>Product</span>
               <span className="text-center">Quantity</span>
               <span className="text-right">Total</span>
@@ -171,7 +171,7 @@ export default function CartPage() {
             <div className="flex items-center justify-between pt-6">
               <Link
                 href="/shop"
-                className="gold-underline font-body text-sm text-bark/60 hover:text-bark transition-colors pb-1"
+                className="gold-underline font-body text-sm text-bark/72 hover:text-bark transition-colors pb-1"
               >
                 Continue Shopping
               </Link>
@@ -180,7 +180,7 @@ export default function CartPage() {
                   clearCart();
                   toast.success("Potli emptied");
                 }}
-                className="text-xs font-accent uppercase tracking-wider text-bark/60 hover:text-terracotta transition-colors"
+                className="text-xs font-accent uppercase tracking-wider text-bark/72 hover:text-terracotta transition-colors"
               >
                 Empty Potli
               </button>
@@ -198,13 +198,13 @@ export default function CartPage() {
               {/* Free Shipping Progress */}
               <div className="mb-4 p-3 bg-cream rounded-xl border border-border/50">
                 <div className="flex items-center gap-2 mb-2">
-                  <Truck className="h-3.5 w-3.5 text-bark/60" />
+                  <Truck className="h-3.5 w-3.5 text-bark/72" />
                   {total >= 499 ? (
                     <p className="text-xs font-body text-sage font-medium">
                       You&apos;ve unlocked free shipping!
                     </p>
                   ) : (
-                    <p className="text-xs font-body text-bark/60">
+                    <p className="text-xs font-body text-bark/72">
                       Add <span className="font-medium text-bark">{formatPrice(499 - total)}</span> more for free shipping
                     </p>
                   )}
@@ -231,7 +231,7 @@ export default function CartPage() {
                     </div>
                     <button
                       onClick={removeCoupon}
-                      className="text-xs text-bark/60 hover:text-terracotta transition-colors"
+                      className="text-xs text-bark/72 hover:text-terracotta transition-colors"
                     >
                       Remove
                     </button>
@@ -258,7 +258,7 @@ export default function CartPage() {
 
               {/* Totals */}
               <div className="space-y-2 text-sm font-body">
-                <div className="flex justify-between text-bark/60">
+                <div className="flex justify-between text-bark/72">
                   <span>Subtotal</span>
                   <span>{formatPrice(total)}</span>
                 </div>
@@ -268,7 +268,7 @@ export default function CartPage() {
                     <span>-{formatPrice(discount)}</span>
                   </div>
                 )}
-                <div className="flex justify-between text-bark/60">
+                <div className="flex justify-between text-bark/72">
                   <span>Shipping</span>
                   <span>
                     {shipping === 0 ? (
@@ -279,7 +279,7 @@ export default function CartPage() {
                   </span>
                 </div>
                 {shipping > 0 && (
-                  <p className="text-[11px] text-bark/60">
+                  <p className="text-[11px] text-bark/72">
                     Free shipping on orders above ₹499
                   </p>
                 )}
@@ -304,7 +304,7 @@ export default function CartPage() {
               </Link>
 
               {/* Trust badges */}
-              <div className="mt-4 flex items-center justify-center gap-4 text-[10px] text-bark/60 font-accent uppercase tracking-wider">
+              <div className="mt-4 flex items-center justify-center gap-4 text-[10px] text-bark/72 font-accent uppercase tracking-wider">
                 <span>Secure Checkout</span>
                 <span>&bull;</span>
                 <span>COD Available</span>

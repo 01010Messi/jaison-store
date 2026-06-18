@@ -199,7 +199,7 @@ export default function AdminCategoriesPage() {
       <div className="flex items-center justify-between mb-8">
         <div>
           <h1 className="font-heading text-2xl text-bark">Categories</h1>
-          <p className="text-sm text-bark/60 font-body mt-1">
+          <p className="text-sm text-bark/72 font-body mt-1">
             Manage product categories
           </p>
         </div>
@@ -216,7 +216,7 @@ export default function AdminCategoriesPage() {
         <div className="bg-cream p-5 rounded-sm border border-border/50">
           <div className="flex flex-col items-center justify-center py-16 text-bark/30">
             <Layers className="h-12 w-12 mb-3 opacity-50" />
-            <p className="font-heading text-lg text-bark/60">
+            <p className="font-heading text-lg text-bark/72">
               No categories yet
             </p>
             <p className="text-xs text-bark/30 font-body mt-1">
@@ -228,16 +228,16 @@ export default function AdminCategoriesPage() {
         <div className="bg-cream rounded-sm border border-border/50 overflow-hidden">
           {/* Table header */}
           <div className="grid grid-cols-[1fr_1fr_auto_auto] gap-4 px-4 py-3 bg-parchment/30 border-b border-border/50">
-            <p className="text-xs font-accent uppercase tracking-wider text-bark/60">
+            <p className="text-xs font-accent uppercase tracking-wider text-bark/72">
               Name
             </p>
-            <p className="text-xs font-accent uppercase tracking-wider text-bark/60">
+            <p className="text-xs font-accent uppercase tracking-wider text-bark/72">
               Slug
             </p>
-            <p className="text-xs font-accent uppercase tracking-wider text-bark/60 text-center w-24">
+            <p className="text-xs font-accent uppercase tracking-wider text-bark/72 text-center w-24">
               Products
             </p>
-            <p className="text-xs font-accent uppercase tracking-wider text-bark/60 text-center w-20">
+            <p className="text-xs font-accent uppercase tracking-wider text-bark/72 text-center w-20">
               Order
             </p>
           </div>
@@ -251,20 +251,20 @@ export default function AdminCategoriesPage() {
               >
                 <div className="flex items-center gap-3 min-w-0">
                   <div className="w-9 h-9 bg-parchment/50 rounded-full flex items-center justify-center shrink-0">
-                    <Layers className="h-4 w-4 text-bark/60" />
+                    <Layers className="h-4 w-4 text-bark/72" />
                   </div>
                   <div className="min-w-0">
                     <p className="font-heading text-sm text-bark truncate">
                       {category.name}
                     </p>
                     {category.description && (
-                      <p className="text-xs text-bark/60 font-body truncate">
+                      <p className="text-xs text-bark/72 font-body truncate">
                         {category.description}
                       </p>
                     )}
                   </div>
                 </div>
-                <p className="text-xs text-bark/60 font-body font-mono truncate">
+                <p className="text-xs text-bark/72 font-body font-mono truncate">
                   {category.slug}
                 </p>
                 <div className="flex items-center justify-center w-24">
@@ -280,7 +280,7 @@ export default function AdminCategoriesPage() {
                   </Badge>
                 </div>
                 <div className="flex items-center justify-center w-20">
-                  <span className="flex items-center gap-1 text-xs text-bark/60 font-body">
+                  <span className="flex items-center gap-1 text-xs text-bark/72 font-body">
                     <GripVertical className="h-3 w-3" />
                     {category.sortOrder}
                   </span>
@@ -326,7 +326,7 @@ export default function AdminCategoriesPage() {
               }
               placeholder="Optional description"
               rows={3}
-              className="w-full px-4 py-2.5 bg-cream border border-border rounded-sm font-body text-bark text-sm placeholder:text-bark/60 transition-all duration-200 hover:border-gold/60 focus:border-gold focus:ring-1 focus:ring-gold/30 resize-none"
+              className="w-full px-4 py-2.5 bg-cream border border-border rounded-sm font-body text-bark text-sm placeholder:text-bark/72 transition-all duration-200 hover:border-gold/60 focus:border-gold focus:ring-1 focus:ring-gold/30 resize-none"
             />
           </div>
           <Input

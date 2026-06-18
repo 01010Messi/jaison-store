@@ -31,7 +31,7 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
           <span className="text-sm font-body text-bark/70">{label}</span>
         )}
         {helperText && (
-          <span className="text-xs text-bark/60 font-body">{helperText}</span>
+          <span className="text-xs text-bark/72 font-body">{helperText}</span>
         )}
       </label>
     );

@@ -84,7 +84,7 @@ export default function SocialShare({
 
   return (
     <div className="flex items-center gap-3">
-      <span className="text-[10px] font-accent uppercase tracking-[0.15em] text-bark/60">
+      <span className="text-[10px] font-accent uppercase tracking-[0.15em] text-bark/72">
         Share
       </span>
       {shareLinks.map((link) => (

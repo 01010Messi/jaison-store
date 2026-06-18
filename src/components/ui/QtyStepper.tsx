@@ -46,7 +46,7 @@ export default function QtyStepper({
           "transition-colors duration-200 disabled:opacity-30",
           size === "md"
             ? "pl-4 pr-3 py-3 text-bark"
-            : "px-2.5 py-1 text-bark/60 hover:text-bark"
+            : "px-2.5 py-1 text-bark/72 hover:text-bark"
         )}
       >
         <Minus className={size === "md" ? "h-4 w-4" : "h-3 w-3"} />
@@ -71,7 +71,7 @@ export default function QtyStepper({
           "transition-colors duration-200 disabled:opacity-30",
           size === "md"
             ? "pl-3 pr-4 py-3 text-bark"
-            : "px-2.5 py-1 text-bark/60 hover:text-bark"
+            : "px-2.5 py-1 text-bark/72 hover:text-bark"
         )}
       >
         <Plus className={size === "md" ? "h-4 w-4" : "h-3 w-3"} />

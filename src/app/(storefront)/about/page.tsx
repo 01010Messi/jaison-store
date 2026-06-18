@@ -167,7 +167,7 @@ export default function AboutPage() {
                   {value.title}
                 </h3>
                 <GoldRule variant="simple" width="w-8 mx-auto" className="mb-3" />
-                <p className="text-sm text-bark/60 font-body leading-relaxed">
+                <p className="text-sm text-bark/72 font-body leading-relaxed">
                   {value.description}
                 </p>
               </div>

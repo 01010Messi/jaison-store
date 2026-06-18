@@ -19,7 +19,7 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>(
         {label && (
           <label
             htmlFor={selectId}
-            className="block text-[11px] font-accent uppercase tracking-[0.14em] text-bark/60"
+            className="block text-[11px] font-accent uppercase tracking-[0.14em] text-bark/72"
           >
             {label}
           </label>
@@ -45,7 +45,7 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>(
               </option>
             ))}
           </select>
-          <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 h-4 w-4 text-bark/60 pointer-events-none" />
+          <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 h-4 w-4 text-bark/72 pointer-events-none" />
         </div>
         {error && (
           <p className="text-xs text-terracotta font-body">{error}</p>

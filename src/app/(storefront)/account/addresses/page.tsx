@@ -70,7 +70,7 @@ export default function AddressesPage() {
         <div className="container-brand">
           <Link
             href="/account"
-            className="inline-flex items-center gap-1 text-xs font-accent uppercase tracking-wider text-bark/60 hover:text-bark transition-colors mb-3"
+            className="inline-flex items-center gap-1 text-xs font-accent uppercase tracking-wider text-bark/72 hover:text-bark transition-colors mb-3"
           >
             <ArrowLeft className="h-3.5 w-3.5" />
             My Account
@@ -89,7 +89,7 @@ export default function AddressesPage() {
               <h2 className="font-heading text-xl text-bark mb-2">
                 No saved addresses
               </h2>
-              <p className="text-sm text-bark/60 font-body mb-6 max-w-sm">
+              <p className="text-sm text-bark/72 font-body mb-6 max-w-sm">
                 Add a delivery address during checkout and it will appear here.
               </p>
               <GoldRule variant="simple" width="w-16" className="mb-6" />
@@ -120,13 +120,13 @@ export default function AddressesPage() {
                           </span>
                         )}
                       </div>
-                      <p className="text-sm text-bark/60 font-body leading-relaxed">
+                      <p className="text-sm text-bark/72 font-body leading-relaxed">
                         {addr.addressLine1}
                         {addr.addressLine2 && `, ${addr.addressLine2}`}
                         <br />
                         {addr.city}, {addr.state} - {addr.pincode}
                       </p>
-                      <p className="text-sm text-bark/60 font-body mt-1">
+                      <p className="text-sm text-bark/72 font-body mt-1">
                         {addr.phone}
                       </p>
                     </div>

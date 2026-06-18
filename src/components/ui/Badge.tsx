@@ -17,9 +17,9 @@ export default function Badge({
     default: "bg-parchment text-bark/70",
     sage: "bg-sage/10 text-sage-dark",
     terracotta: "bg-terracotta/10 text-terracotta",
-    gold: "bg-gold/10 text-gold-dark",
+    gold: "bg-gold/10 text-bark",
     bark: "bg-bark text-cream",
-    outline: "border border-border text-bark/60",
+    outline: "border border-border text-bark/72",
   };
 
   const sizes = {

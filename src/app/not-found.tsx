@@ -23,7 +23,7 @@ export default function NotFound() {
       <div className="flex justify-center mt-3">
         <GoldRule variant="leaf" width="w-24" />
       </div>
-      <p className="text-sm text-bark/60 font-body mt-4 max-w-sm">
+      <p className="text-sm text-bark/72 font-body mt-4 max-w-sm">
         The page you&apos;re looking for doesn&apos;t exist or has been moved.
         Try one of these popular pages instead.
       </p>
@@ -43,7 +43,7 @@ export default function NotFound() {
       </div>
 
       <div className="mt-12 w-full max-w-md">
-        <div className="flex items-center gap-2 text-bark/60 mb-4 justify-center">
+        <div className="flex items-center gap-2 text-bark/72 mb-4 justify-center">
           <Search className="h-4 w-4" />
           <span className="text-xs font-accent uppercase tracking-wider">
             Popular Pages
@@ -54,7 +54,7 @@ export default function NotFound() {
             <Link
               key={link.href}
               href={link.href}
-              className="px-3 py-1.5 text-xs font-body text-bark/60 bg-cream border border-border rounded-full hover:text-terracotta hover:border-terracotta/30 transition-colors"
+              className="px-3 py-1.5 text-xs font-body text-bark/72 bg-cream border border-border rounded-full hover:text-terracotta hover:border-terracotta/30 transition-colors"
             >
               {link.label}
             </Link>

@@ -76,7 +76,7 @@ export default function WhyJaisonPage() {
           <div className="flex justify-center mt-4">
             <GoldRule variant="leaf" width="w-32" />
           </div>
-          <p className="mt-6 text-bark/60 font-body text-base md:text-lg leading-relaxed max-w-2xl mx-auto">
+          <p className="mt-6 text-bark/72 font-body text-base md:text-lg leading-relaxed max-w-2xl mx-auto">
             We believe skincare works best when it stays close to nature and tradition.
           </p>
         </div>
@@ -110,7 +110,7 @@ export default function WhyJaisonPage() {
           <h2 className="font-heading text-2xl md:text-3xl text-bark mb-4">
             Experience the Jaison Difference
           </h2>
-          <p className="text-bark/60 font-body mb-8">
+          <p className="text-bark/72 font-body mb-8">
             Try our range of 100% natural herbal powders and feel the difference nature makes.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">

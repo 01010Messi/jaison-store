@@ -51,7 +51,7 @@ Fonts (loaded in `app/layout.tsx` via next/font):
 
 Watermarks use bigger clamps (`clamp(8rem, 24vw, 20rem)` etc.) — decorative, see §6.
 
-**Eyebrow spec (the only one):** `font-accent text-[11px] tracking-[0.22em] uppercase`. Tones: muted = `text-bark/60`, accent = `text-terracotta` (not `terracotta-light` — contrast). Optional leading gold em-dash. Implemented in `SectionHeader`; don't invent new sizes/trackings (10px/13px and 0.18em/0.28em variants are legacy — migrate on touch).
+**Eyebrow spec (the only one):** `font-accent text-[11px] tracking-[0.22em] uppercase`. Tones: muted = `text-bark/72`, accent = `text-terracotta` (not `terracotta-light` — contrast). Optional leading gold em-dash. Implemented in `SectionHeader`; don't invent new sizes/trackings (10px/13px and 0.18em/0.28em variants are legacy — migrate on touch).
 
 **Tracking scale — exactly two:** `tracking-[0.22em]` is reserved for section eyebrows only (see spec above). `tracking-[0.14em]` is for interactive labels and buttons (form field labels, pill CTAs, nav links). Don't mix the two or invent a third value.
 
@@ -73,9 +73,11 @@ Watermarks use bigger clamps (`clamp(8rem, 24vw, 20rem)` etc.) — decorative, s
 
 ## 5. Color & contrast rules
 
-- **Muted text:** minimum `/60` on cream/parchment, minimum `/70` on bark. Anything below those opacities is *decorative only* (watermarks, ornament glyphs) and must be `aria-hidden`.
+- **Muted text:** minimum `/72` on cream/parchment, minimum `/70` on bark. Anything below those opacities is *decorative only* (watermarks, ornament glyphs, icon fills) and must be `aria-hidden`.
+  - **Why `/72`, not `/60`:** measured contrast — `bark/60` on cream is 3.59:1, below the 4.5:1 AA floor for normal text. `bark/72` clears AA on both cream (5.02:1) and parchment (4.53:1). The `/70` bark-surface floor was already correct (`cream/70` on bark measures 6.50:1) and is unchanged. Full measurements in `ACCESSIBILITY-AUDIT.md`.
+  - Non-text UI elements (icon fills, decorative glyphs) only need 3:1 (WCAG 1.4.11) — `bark/60` is fine for those, just never for text a user reads.
 - Gold numerals/ornaments are decorative; the step semantics are duplicated for screen readers in `StepCard` (`sr-only`).
-- `terracotta` is the accessible accent for small text; `terracotta-light` only at display sizes.
+- `terracotta` is the accessible accent for small text; `terracotta-light` only at display sizes. Never pair light text (`cream`, `white`) directly on `gold`/`gold-light` for content a user must read — both measure well under 3:1.
 
 ## 6. Recipes
 
@@ -84,7 +86,7 @@ Watermarks use bigger clamps (`clamp(8rem, 24vw, 20rem)` etc.) — decorative, s
 <SectionHeader
   eyebrow="The Ritual · Five Steps"
   eyebrowDash            // leading gold "—"
-  eyebrowTone="accent"   // terracotta; default "muted" = bark/60
+  eyebrowTone="accent"   // terracotta; default "muted" = bark/72
   title="How to use"
   accent="our powders."  // italic terracotta
   accentPlacement="inline" // or "block" (own line, the default)
