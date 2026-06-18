@@ -1,10 +1,28 @@
 # Jaison Herbals — Session Handoff
 
-**Date:** 17 June 2026 · **Branch:** `redesign/v2` · **Last commit:** `95fe6b5`
+**Date:** 18 June 2026 · **Branch:** `redesign/v2` · **Last commit:** `f7549fd`
 
 ---
 
-## What was built this session (session 16 — hero polish + nav mega-menu)
+## What was built this session (session 17 — full color/contrast/typography accessibility audit + fix pass)
+
+Two-part request: (1) audit color palette/typography/contrast against WCAG AA/AAA + mobile sunlight glare, no fixes yet; (2) fix everything found, document it, commit + push to `redesign/v2` only.
+
+Full findings, measured ratios, fix, and reasoning per item: **`ACCESSIBILITY-AUDIT.md`** (new file, 12 findings + 1 investigated-no-change).
+
+**Highest-leverage fix:** the site's own documented muted-text floor, `text-bark/60`, measured 3.59:1 — below the 4.5:1 AA threshold — and was in use 275× across 51 files. Swept sitewide to `text-bark/72` (5.02:1 cream / 4.53:1 parchment) via `sed`, then `DESIGN.md` §5 updated to document `/72` as the new floor (with the measured numbers inline so nobody has to re-derive them).
+
+Also fixed in the same pass: Newsletter "Subscribe" button (cream-on-gold, 2.56:1 → switched to the existing `primary` variant, 7.18:1); `Badge` `gold` variant used by Featured/Low Stock/COD tags (2.91:1 → `text-bark`, 10.56:1); 3 of 8 homepage Instagram tiles had invisible light-on-light handle text (as low as 1.15:1) — fixed via a per-tile `textOn: "light"|"dark"` branch; order-detail status pills and step-timeline labels/icons below floor; leftover `bark/35`–`/40` text on legal pages and `find-your-ritual`; newsletter caption and header cart-badge near-misses; hero video scrim's weakest gradient stop (sat directly behind the opaque headline with no contrast guarantee against a dark video frame — raised 0.08 → 0.20 minimum); `ProductFAQ` accordion titles thickened `font-light` → `font-normal` (a stroke-weight/sunlight-glare fix, not a ratio failure — color was already solid `bark`).
+
+Deliberately left unchanged: the "Cancelled" order-status badge's off-token Tailwind red (`red-50`/`red-700`) — measures 5.91:1, passes comfortably, and `DESIGN.md` already sanctions off-brand red for error/destructive states (recognizability > palette purity).
+
+Verified: `npx tsc --noEmit` clean, `npm run lint` → 0 errors (3 pre-existing unrelated warnings). No browser/screenshot verification this session — not requested, and the change set is contrast-ratio math + an established AA-passing token, not new visual composition.
+
+Committed as `f7549fd`, pushed to `origin/redesign/v2`. Nothing pushed to `main`, nothing deployed, per standing instruction.
+
+---
+
+## Previous session (session 16 — hero polish + nav mega-menu)
 
 Two threads of work, both via iterative screenshot + instruction rounds, `/impeccable` and `/karpathy-guidelines` invoked for the ambiguous ones.
 
@@ -35,12 +53,28 @@ Committed as `95fe6b5`.
 
 All work from this session committed and pushed to `origin/redesign/v2`.
 
-### Files changed this session
+### Files changed this session (17)
+```
+ACCESSIBILITY-AUDIT.md                        (new — full audit report, 12 findings)
+DESIGN.md                                     (muted-text floor /60 → /72, documented with measured ratios)
+CLAUDE.md                                     (feature log entry)
+HANDOFF.md                                    ← this file (rewritten)
+51 .tsx files                                 (text-bark/60 → text-bark/72, 275 occurrences via sed)
+src/components/ui/Badge.tsx                   (gold variant text color)
+src/components/home/NewsletterSection.tsx     (Subscribe button variant, caption opacity)
+src/components/layout/Header.tsx              (cart/wishlist count badge bg)
+src/components/home/InstagramSection.tsx      (per-tile light/dark handle text)
+src/components/home/HeroSection.tsx           (scrim gradient floor raised)
+src/components/product/ProductFAQ.tsx         (title weight light → normal)
+src/app/(storefront)/account/orders/[id]/page.tsx  (status pills, step-timeline)
+privacy-policy/terms/returns-policy pages     (footer text opacity)
+src/app/(storefront)/find-your-ritual/FindYourRitualContent.tsx  (eyebrow/price/note opacity)
+```
+
+### Files changed session 16 (for reference)
 ```
 src/components/home/HeroSection.tsx          (CTA fills, heading color/size, alignment — 6 commits)
 src/components/layout/Header.tsx             (DropdownMenu → MegaMenuBanner banner mega-menu)
-CLAUDE.md                                     (feature log entry)
-HANDOFF.md                                    ← this file (rewritten)
 ```
 
 ---
@@ -106,7 +140,7 @@ HANDOFF.md                                    ← this file (rewritten)
 
 - No hardcoded hex in `.tsx` — token classes in `className`, `var(--color-*)` in `style={{}}`. Sanctioned one-off decorative hex values must be documented in `DESIGN.md` if they recur.
 - `rounded-full` interactive pills, `rounded-xl` cards/modals, `rounded-lg` form fields
-- Muted text minimum `/60` on cream, `/70` on bark (for readable content; `/30` = decorative/placeholder only)
+- Muted text minimum `/72` on cream/parchment, `/70` on bark (raised from `/60` session 17 — measured 3.59:1, failed AA; see `ACCESSIBILITY-AUDIT.md`). `/60` is fine only for non-text icon fills (3:1 floor), never real text. `/30` = decorative/placeholder only.
 - Font classes: `font-heading` (Cormorant), `font-body` (DM Sans), `font-accent` (Inter)
 - Eyebrow spec: `font-accent text-[11px] tracking-[0.22em] uppercase`
 - Tracking scale — exactly two values: `0.22em` for section eyebrows/static labels; `0.14em` for interactive labels/buttons (form labels, pill CTAs, nav links). Don't mix or invent a third.
