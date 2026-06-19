@@ -25,29 +25,29 @@ interface ProductCardProps {
 }
 
 const cardBgColors: Record<string, string> = {
-  "ubtan-powder": "#F5E6C8",
-  "neem-powder": "#D4E8D0",
-  "multani-mitti": "#F0D9CC",
-  "orange-peel-powder": "#FCE8CC",
-  "nagarmotha-powder": "#E8DCC8",
-  "mehendi-powder": "#D8E8C8",
-  "amla-powder": "#D4E8D0",
-  "aamla-powder": "#D4E8D0",
-  "reetha-powder": "#EDE0D4",
-  "shikakai-powder": "#E8DCC8",
+  "ubtan-powder": "#EAD9A8",
+  "neem-powder": "#C9D2B0",
+  "multani-mitti": "#E8D2BE",
+  "orange-peel-powder": "#EAD4A0",
+  "nagarmotha-powder": "#DDD0B8",
+  "mehendi-powder": "#C5D0A8",
+  "amla-powder": "#CCD4B4",
+  "aamla-powder": "#CCD4B4",
+  "reetha-powder": "#E0D2C0",
+  "shikakai-powder": "#DED0B0",
 };
 
 const accentColors: Record<string, string> = {
-  "ubtan-powder": "#C17A3A",
-  "neem-powder": "#4A7C59",
-  "multani-mitti": "#B85C38",
-  "orange-peel-powder": "#C86820",
-  "nagarmotha-powder": "#7A6040",
-  "mehendi-powder": "#4A7020",
-  "amla-powder": "#4A7C59",
-  "aamla-powder": "#4A7C59",
-  "reetha-powder": "#8B4020",
-  "shikakai-powder": "#8B6020",
+  "ubtan-powder": "#7A4F15",
+  "neem-powder": "#3D4E22",
+  "multani-mitti": "#8B4A2E",
+  "orange-peel-powder": "#824A10",
+  "nagarmotha-powder": "#6B5230",
+  "mehendi-powder": "#3A4E1E",
+  "amla-powder": "#3D4E22",
+  "aamla-powder": "#3D4E22",
+  "reetha-powder": "#7A4524",
+  "shikakai-powder": "#6B4E1E",
 };
 
 const botanicalNames: Record<string, string> = {
