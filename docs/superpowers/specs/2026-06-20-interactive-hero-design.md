@@ -27,6 +27,7 @@ established.
 - **Full replacement** of the current video-background hero (not an additive layer, not a new separate section).
 - **No true 3D.** Depth is simulated with parallax layering + perspective transforms on existing product photography, not WebGL/3D models.
 - **Visual centerpiece:** a fusion of product (jar/pouch) and raw ingredient imagery — not lifestyle/process photography.
+- **No isolated cutouts exist or will be produced for this iteration.** Every image in `public/images/products/` was checked directly (not just by filename) — `multani-hero.png`, `neem-hero.png`, `reetha-product.png`, `ubtan-herbs.png`, etc. are all fully composited marketing banners with baked-in headline text and styled photographic backgrounds (wood tables, bokeh leaves, fabric, soft shadows). None are isolated/transparent product or ingredient art, and none are good candidates for automated background removal (multi-object scenes, soft shadows, varied backdrops). The visual architecture below is built around this constraint rather than around cutouts.
 - **Flagship product:** Ubtan (signature multi-herb product).
 - **Headline copy unchanged** for now: "Your bottle lists a dozen ingredients. Our product lists one." Better headline ideas may be proposed later but require explicit owner approval before swapping.
 - **Single viewport height**, not a multi-screen cinematic scroll story. CTAs ("Shop the Catalogue", "Read Why Powder") must stay visible without scrolling — this is a commerce site with intent-driven traffic, not a brand-film page that can afford to delay the CTA. The "richness" budget goes into a short (~100–150vh) scroll-out transition, not additional screens.
@@ -37,11 +38,13 @@ established.
 Split layout instead of today's full-bleed-text-over-video:
 
 - **Text block** (tagline, headline, body copy, CTAs) sits on a fixed, controlled-contrast backdrop on one side (left on desktop, stacked first on mobile). This protects the `/72` muted-text contrast floor from the accessibility audit — text never sits over moving art, so contrast doesn't need to be re-verified per animation frame.
-- **Visual block** occupies the other side (or sits behind/below on mobile), built from a layered stack, back to front:
+- **Visual block** occupies the other side (or sits behind/below on mobile), built from a layered stack of **whole-photo cards** (not cutouts), back to front:
   1. **Ambient backdrop** — soft cream/parchment gradient + subtle paper-grain texture; retains the faint "jaison" wordmark watermark from the current design.
-  2. **Ingredient layer** — 2–4 raw herb/leaf cutouts (reuse existing assets, e.g. `ubtan-herbs.png`), drifting slowly near the edges.
-  3. **Product layer** — the Ubtan jar/pouch, sharp and in focus, the visual anchor. **Asset gap:** unlike neem/multani/reetha/orange/nagmotha, Ubtan has no existing transparent product cutout (`*-hero.png`); only marketing composites (`ubtan-herbs.png`, `ubtan-essence.png`, `ubtan-radiant.png` — likely with baked-in text/graphics) and flat shots (`ubtan.jpg`/`.webp`) exist. A clean cutout must be produced (background removal from `ubtan.jpg`/`ubtan-styled.jpg`, or a fresh crop) before this layer can be built — track as a prerequisite asset task, not an assumed-available asset.
-  4. **Particle layer** — fine powder/dust drifting and gathering near the jar; foreground-most; `pointer-events: none` so it can never intercept clicks.
+  2. **Ingredient/context card layer** — 1–2 of the existing marketing banner images (e.g. a crop of `ubtan-herbs.png` or `ubtan.jpg`), rendered as soft-edged rectangular cards: rounded corners, a feathered edge via CSS `mask-image` radial gradient, and a subtle drop-shadow — positioned smaller and offset behind the product card, drifting slowly at a slower parallax depth.
+  3. **Product card** — `ubtan.jpg`/`ubtan-styled.jpg` (the flat product shot, not a composite with other baked-in headline copy where avoidable) as the sharp, in-focus, largest card — the visual anchor, at the fastest/most prominent parallax depth.
+  4. **Particle layer** — fine powder/dust drifting and gathering near the product card; foreground-most; `pointer-events: none` so it can never intercept clicks.
+
+  This sidesteps the missing-cutout problem entirely: cards are rectangular (with soft masked edges, not hard crops), so no background removal or new photography is required. The depth illusion comes from layering, scale, shadow, and independent parallax motion per card — not from irregular cutout shapes.
 
 ## Interaction & Motion Spec
 
@@ -57,7 +60,7 @@ Split layout instead of today's full-bleed-text-over-video:
 ## Performance Plan
 
 - **LCP stays on text.** With the video removed, the headline (real text, not an image) is the natural LCP candidate — keep it that way rather than letting a product PNG become the bottleneck.
-- **Asset prep required before integration:** existing product/ingredient PNGs are currently 1.3–3MB each (e.g. `neem-hero.png` at 2MB). These must be recompressed to WebP/AVIF at actual render dimensions before use in the hero — do not ship the raw source PNGs. The Ubtan product cutout doesn't exist yet at all (see Layout & Visual Architecture) and must be produced first, then put through this same compression pass.
+- **Asset prep:** the chosen Ubtan source images (`ubtan.jpg`/`ubtan-styled.jpg`/`ubtan-herbs.png`, currently 1.3–3MB JPGs/PNGs) are served through `next/image` rather than as raw `<img>` tags — `next.config.js` already configures WebP output and the `deviceSizes`/`imageSizes` this needs, so this is consistent with the existing pattern in `ProductCard.tsx`/`ProductDetail.tsx` rather than a new manual compression step.
 - **Particle/canvas layer:** paused via `IntersectionObserver` when the hero scrolls out of view; animates only `transform`/`opacity` (compositor-friendly, no layout-triggering properties); particle count capped lower on mobile than desktop.
 - **GSAP cost is the explicit thing being measured** in the spike comparison — if it doesn't earn its ~70KB over the Framer Motion variant, it gets deleted.
 
