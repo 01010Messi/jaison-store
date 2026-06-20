@@ -29,7 +29,7 @@ const channels = [
   {
     num: "04",
     label: "Workshop",
-    note: "Where every jar is packed by hand",
+    note: "Where every batch is packed by hand",
     value: "Nashik, Maharashtra, India",
     href: null,
   },

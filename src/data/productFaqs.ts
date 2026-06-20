@@ -28,7 +28,9 @@ export function getProductFaqs(product: Product): ProductFaq[] {
     },
     {
       question: `How should I store ${product.name}?`,
-      answer: `Keep the jar tightly closed in a cool, dry place away from direct sunlight and moisture. Always use a dry spoon — water in the jar is the only thing that can spoil a pure herbal powder.`,
+      answer: `Keep the ${
+        product.slug === "ubtan-powder" ? "jar" : "pouch"
+      } tightly closed in a cool, dry place away from direct sunlight and moisture. Always use a dry spoon — moisture is the only thing that can spoil a pure herbal powder.`,
     },
     {
       question: `What is the weight and price of ${product.name}?`,

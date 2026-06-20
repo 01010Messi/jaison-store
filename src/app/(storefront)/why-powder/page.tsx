@@ -8,21 +8,21 @@ export const metadata: Metadata = {
     absolute: "Why Powder? The Case Against Liquid Skincare | Jaison Herbals",
   },
   description:
-    "An essay on why Jaison has never made a liquid, never added a preservative, and never will. Single-ingredient herbal powders — the honest alternative.",
+    "An essay on why Jaison has never made a liquid, never added a preservative, and never will. Pure herbal powders — the honest alternative.",
   alternates: {
     canonical: "https://jaisonskincare.com/why-powder",
   },
   openGraph: {
     title: "Why Powder? The Case Against Liquid Skincare",
     description:
-      "An essay on why Jaison has never made a liquid, never added a preservative, and never will. Single-ingredient herbal powders — the honest alternative.",
+      "An essay on why Jaison has never made a liquid, never added a preservative, and never will. Pure herbal powders — the honest alternative.",
     url: "https://jaisonskincare.com/why-powder",
     images: [
       {
         url: "https://jaisonskincare.com/images/og/og-default.jpg",
         width: 1200,
         height: 630,
-        alt: "Jaison Herbals — pure single-ingredient herbal powders",
+        alt: "Jaison Herbals — pure Ayurvedic herbal powders",
       },
     ],
   },
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Why Powder? The Case Against Liquid Skincare",
     description:
-      "An essay on why Jaison has never made a liquid, never added a preservative, and never will. Single-ingredient herbal powders — the honest alternative.",
+      "An essay on why Jaison has never made a liquid, never added a preservative, and never will. Pure herbal powders — the honest alternative.",
     images: ["https://jaisonskincare.com/images/og/og-default.jpg"],
   },
 };
@@ -163,7 +163,7 @@ export default function WhyPowderPage() {
               We never added a preservative, a stabiliser or a synthetic
               anything. A single dried herb doesn&apos;t need them. The idea is
               simple; the execution is hard — it requires a dry workflow,
-              sealed jars, batch-level quality control, and the discipline to
+              moisture-proof packaging, batch-level quality control, and the discipline to
               never reformulate. We have made one format for fifty-five years.
             </p>
           </div>
@@ -257,7 +257,7 @@ export default function WhyPowderPage() {
                 className="underline underline-offset-2 transition-colors"
                 style={{ color: "var(--color-bark)" }}
               >
-                single-ingredient herbal powders
+                pure herbal powders
               </Link>
               , or read the{" "}
               <Link

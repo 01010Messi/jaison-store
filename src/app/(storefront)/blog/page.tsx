@@ -7,7 +7,7 @@ export const metadata: Metadata = {
     absolute: "The Journal — Ayurvedic Beauty & Natural Skincare Reads | Jaison Herbals",
   },
   description:
-    "Reads worth your time. How to mix our powders, how to use them, and why one ingredient is enough. Real rituals, real ingredients — no marketing claims.",
+    "Reads worth your time. How to mix our powders, how to use them, and why fewer ingredients work better. Real rituals, real ingredients — no marketing claims.",
   openGraph: {
     title: "The Journal | Jaison Herbals",
     description: "Real rituals. Real ingredients. Monthly reads on Ayurvedic herbs for skin and hair.",
@@ -71,7 +71,7 @@ export default function BlogPage() {
             style={{ color: "rgba(26,60,52,0.52)", maxWidth: "520px" }}
           >
             Once a month we write about the herbs we grind — how to mix them, how to
-            use them, and why one ingredient is enough. No marketing. No miracle claims.
+            use them, and why fewer ingredients work better. No marketing. No miracle claims.
             Just the powder and the method.
           </p>
         </section>

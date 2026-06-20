@@ -7,7 +7,7 @@ const claims = [
     note: "Dry powder needs none. Liquids can't say that.",
   },
   {
-    label: "Ingredients per jar",
+    label: "Ingredients per pouch",
     value: "One",
     note: "The herb, ground and sifted. The label is one line long.",
   },

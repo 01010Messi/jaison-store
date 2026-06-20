@@ -6,7 +6,7 @@ const milestones = [
   {
     year: "1970",
     title: "One format.",
-    body: "Jaison opens, making single-ingredient herbal powders. No liquids. No preservatives. No synthetics. One herb per jar from day one.",
+    body: "Jaison opens, hand-grinding the original Ubtan blend and packing it in jars. No liquids. No preservatives. No synthetics — not then, not now.",
   },
   {
     year: "1985",
@@ -20,8 +20,8 @@ const milestones = [
   },
   {
     year: "2026",
-    title: "Still one ingredient.",
-    body: "Fifty-five years on, every jar is still one herb — ground, sun-dried and sifted by hand, with zero preservatives.",
+    title: "Still nothing hidden.",
+    body: "Fifty-five years on, every pouch is still one herb, and our original Ubtan blend still lists every ingredient by name — ground, sun-dried and sifted by hand, with zero preservatives.",
   },
 ];
 

@@ -23,7 +23,7 @@ export default function ProductFAQ({ productName, faqs }: ProductFAQProps) {
               note={
                 <>
                   Everything people usually ask about {productName} before
-                  their first jar. Anything else — WhatsApp us.
+                  their first order. Anything else — WhatsApp us.
                 </>
               }
             />

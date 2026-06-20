@@ -51,8 +51,8 @@ export default function FeaturedProducts() {
               </span>
             </h2>
             <p className="font-body text-sm md:text-base text-bark/72 max-w-md mt-4">
-              Nine single-ingredient herbal powders for face, skin and hair —
-              neem, multani mitti, ubtan, amla and more. One herb per jar.
+              Nine pure herbal powders for face, skin and hair —
+              neem, multani mitti, ubtan, amla and more. Single herbs in every pouch.
               Nothing synthetic, nothing added.
             </p>
           </div>

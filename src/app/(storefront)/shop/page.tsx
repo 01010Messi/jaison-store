@@ -268,7 +268,7 @@ export default function ShopPage() {
             </span>
           </h1>
           <p className="font-body text-sm md:text-base max-w-md mt-5 leading-relaxed" style={{ color: "rgba(26,60,52,0.5)" }}>
-            Each jar holds exactly one herb. Mix with rose water, milk or curd.
+            Each pouch holds exactly one herb. Mix with rose water, milk or curd.
             Use. Rinse. That is the whole process.
           </p>
         </div>

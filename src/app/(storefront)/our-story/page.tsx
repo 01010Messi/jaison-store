@@ -4,17 +4,17 @@ import { BreadcrumbJsonLd } from "@/components/seo/JsonLd";
 
 export const metadata: Metadata = {
   title: {
-    absolute: "Our Story — Single-Ingredient Herbal Powders Since 1970 | Jaison Herbals",
+    absolute: "Our Story — Pure Ayurvedic Herbal Powders Since 1970 | Jaison Herbals",
   },
   description:
-    "One format. Fifty-five years. Zero exceptions. How Jaison Herbals has made single-ingredient Ayurvedic herbal powders since 1970 — and why we never changed.",
+    "One format. Fifty-five years. Zero exceptions. How Jaison Herbals has made pure Ayurvedic herbal powders since 1970 — and why we never changed.",
   alternates: {
     canonical: "https://jaisonskincare.com/our-story",
   },
   openGraph: {
-    title: "Our Story — Single-Ingredient Herbal Powders Since 1970",
+    title: "Our Story — Pure Ayurvedic Herbal Powders Since 1970",
     description:
-      "One format. Fifty-five years. Zero exceptions. How Jaison Herbals has made single-ingredient Ayurvedic herbal powders since 1970 — and why we never changed.",
+      "One format. Fifty-five years. Zero exceptions. How Jaison Herbals has made pure Ayurvedic herbal powders since 1970 — and why we never changed.",
     url: "https://jaisonskincare.com/our-story",
     images: [
       {
@@ -27,9 +27,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Our Story — Single-Ingredient Herbal Powders Since 1970",
+    title: "Our Story — Pure Ayurvedic Herbal Powders Since 1970",
     description:
-      "One format. Fifty-five years. Zero exceptions. How Jaison Herbals has made single-ingredient Ayurvedic herbal powders since 1970 — and why we never changed.",
+      "One format. Fifty-five years. Zero exceptions. How Jaison Herbals has made pure Ayurvedic herbal powders since 1970 — and why we never changed.",
     images: ["https://jaisonskincare.com/images/og/og-default.jpg"],
   },
 };
@@ -63,15 +63,15 @@ const acts = [
     num: "IV",
     year: "2010",
     heading: "We stayed small on purpose.",
-    body: "A large FMCG offered to acquire us in 2010. The proposal involved adding 'enhanced' actives and moving production offshore. We declined. We have kept production small and in-house ever since. We make 100 jars per batch. We pack by hand. Scale was never the point — the format was.",
+    body: "A large FMCG offered to acquire us in 2010. The proposal involved adding 'enhanced' actives and moving production offshore. We declined. We have kept production small and in-house ever since. We make 100 packs per batch. We pack by hand. Scale was never the point — the format was.",
     imageSide: "right" as const,
     imageBg: "#8B6B4A",
   },
   {
     num: "V",
     year: "2026",
-    heading: "Still one ingredient.",
-    body: "Same small workshop. Same single-ingredient format. The original 1970 recipes, unchanged. Every jar is still ground, sun-dried and sifted, then packed by hand. The ingredient list is still one line long — because the purest form of a herb is the herb itself.",
+    heading: "Still nothing hidden.",
+    body: "Same small workshop. Same hand-ground process. The original 1970 recipes, unchanged. Every pouch is still one herb, and our original Ubtan blend still lists every ingredient by name — ground, sun-dried and sifted, then packed by hand.",
     imageSide: "left" as const,
     imageBg: "#3D2415",
   },
@@ -157,7 +157,7 @@ export default function OurStoryPage() {
             className="relative mt-8 font-body text-base leading-relaxed"
             style={{ color: "rgba(26,60,52,0.55)", maxWidth: "520px" }}
           >
-            We have made one thing since 1970: single-ingredient herbal powder for skin
+            We have made one thing since 1970: pure Ayurvedic herbal powder for skin
             and hair. No preservatives. No synthetics. No reformulations to chase a trend.
             This is how — and why.
           </p>
@@ -272,7 +272,7 @@ export default function OurStoryPage() {
             className="mt-6 font-body text-base leading-relaxed mx-auto"
             style={{ color: "rgba(26,60,52,0.55)", maxWidth: "460px" }}
           >
-            Same kitchen. Same herbs. Same single-ingredient promise. We will keep
+            Same kitchen. Same herbs. Same promise of nothing hidden. We will keep
             grinding. You can keep mixing.
           </p>
 

@@ -3,8 +3,8 @@ import Link from "next/link";
 const pillars = [
   {
     icon: "🌿",
-    title: "One Ingredient. Nothing Else.",
-    body: "Our single-ingredient powders list exactly one thing on the label — because that's exactly what's inside. No fillers, no flow agents, no hidden additives.",
+    title: "Pure Herbs. Nothing Else.",
+    body: "Our labels list exactly what's inside — most are a single herb, our Ubtan blend names every ingredient it contains. No fillers, no flow agents, no hidden additives.",
   },
   {
     icon: "🧪",
