@@ -60,7 +60,7 @@ export default function WhyPowderTeaser() {
           }}
         >
           Anything that pours{" "}
-          <span style={{ color: "#E26713", fontStyle: "italic" }}>
+          <span style={{ color: "var(--color-gold-light)", fontStyle: "italic" }}>
             needs a preservative.
           </span>{" "}
           Powder doesn&apos;t.

@@ -146,7 +146,7 @@ export default function OurStoryPage() {
             }}
           >
             One format.{" "}
-            <span style={{ color: "#E26713", fontStyle: "italic" }}>
+            <span style={{ color: "var(--color-gold-deep)", fontStyle: "italic" }}>
               Fifty-five years.
             </span>
             <br />
@@ -263,7 +263,7 @@ export default function OurStoryPage() {
             }}
           >
             <span style={{ color: "var(--color-bark)" }}>The next 55 years </span>
-            <span style={{ color: "#E26713", fontStyle: "italic" }}>
+            <span style={{ color: "var(--color-gold-deep)", fontStyle: "italic" }}>
               look exactly the same.
             </span>
           </h2>

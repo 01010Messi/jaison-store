@@ -60,7 +60,7 @@ export default function WhyPowderPage() {
             className="font-heading font-light leading-none"
             style={{
               fontSize: "clamp(200px, 40vw, 500px)",
-              color: "rgba(226,103,19,0.10)",
+              color: "rgba(184,153,104,0.10)",
               fontStyle: "italic",
               userSelect: "none",
             }}
@@ -73,7 +73,7 @@ export default function WhyPowderPage() {
         <div className="relative z-10 container-brand">
           <p
             className="font-accent text-[11px] tracking-[0.28em] uppercase mb-8"
-            style={{ color: "#E26713" }}
+            style={{ color: "var(--color-gold-light)" }}
           >
             — THE POWDER PHILOSOPHY
           </p>
@@ -84,7 +84,7 @@ export default function WhyPowderPage() {
             Just the herb.
             <span
               className="block"
-              style={{ color: "#E26713", fontStyle: "italic" }}
+              style={{ color: "var(--color-gold-light)", fontStyle: "italic" }}
             >
               Nothing synthetic.
             </span>

@@ -25,7 +25,7 @@ const questions = [
     subtitle: "Pick the one closest to what you'd like to improve.",
     options: [
       { value: "oily",      label: "Breakouts and oil",       recommended: true,  bg: "#EDF2EC", dot: "#4A7C59" },
-      { value: "dull",      label: "Dull or uneven tone",     recommended: false, bg: "#F7F2E4", dot: "#E26713" },
+      { value: "dull",      label: "Dull or uneven tone",     recommended: false, bg: "#F7F2E4", dot: "#7A5012" },
       { value: "sensitive", label: "Sensitivity and redness", recommended: false, bg: "#F2EDF2", dot: "#9B7BAE" },
       { value: "hair",      label: "Hair fall or thinning",   recommended: false, bg: "#F2EDE8", dot: "#A0784A" },
     ],
@@ -36,7 +36,7 @@ const questions = [
     subtitle: "This helps us match the right base for you.",
     options: [
       { value: "oily_t",  label: "Oily",        recommended: false, bg: "#F5EDE8", dot: "#C16B4A" },
-      { value: "dry_t",   label: "Dry",         recommended: false, bg: "#F7F2E4", dot: "#E26713" },
+      { value: "dry_t",   label: "Dry",         recommended: false, bg: "#F7F2E4", dot: "#7A5012" },
       { value: "combo_t", label: "Combination", recommended: true,  bg: "#EDF2EC", dot: "#4A7C59" },
       { value: "norm_t",  label: "Normal",      recommended: false, bg: "#EDF2EC", dot: "#3A6B4A" },
     ],
@@ -47,7 +47,7 @@ const questions = [
     subtitle: "Twice a week suits most skin and hair concerns.",
     options: [
       { value: "once",  label: "Once a week",     recommended: false, bg: "#EDF2EC", dot: "#4A7C59" },
-      { value: "twice", label: "Twice a week",    recommended: true,  bg: "#F7F2E4", dot: "#E26713" },
+      { value: "twice", label: "Twice a week",    recommended: true,  bg: "#F7F2E4", dot: "#7A5012" },
       { value: "alt",   label: "Every other day", recommended: false, bg: "#F5EDE8", dot: "#C16B4A" },
       { value: "daily", label: "Daily",           recommended: false, bg: "#FDEEE8", dot: "#D4784A" },
     ],
@@ -58,7 +58,7 @@ const questions = [
     subtitle: "Rose water suits most people — you can change it anytime.",
     options: [
       { value: "rose",   label: "Rose water",  recommended: true,  bg: "#F5EDE8", dot: "#C16B4A" },
-      { value: "milk",   label: "Raw milk",    recommended: false, bg: "#F7F2E4", dot: "#E26713" },
+      { value: "milk",   label: "Raw milk",    recommended: false, bg: "#F7F2E4", dot: "#7A5012" },
       { value: "yogurt", label: "Yogurt",      recommended: false, bg: "#EDF2EC", dot: "#4A7C59" },
       { value: "water",  label: "Plain water", recommended: false, bg: "#EFF0F5", dot: "#7B7BAE" },
     ],
@@ -72,7 +72,7 @@ const productMeta: Record<
   string,
   { latin: string; badge: string; dot: string; bg: string }
 > = {
-  "ubtan-powder":       { latin: "Curcuma longa + 7 herbs", badge: "22% OFF",        dot: "#E26713", bg: "#F7F2E4" },
+  "ubtan-powder":       { latin: "Curcuma longa + 7 herbs", badge: "22% OFF",        dot: "#7A5012", bg: "#F7F2E4" },
   "neem-powder":        { latin: "Azadirachta indica",      badge: "ANTIBACTERIAL",  dot: "#4A7C59", bg: "#EDF2EC" },
   "multani-mitti":      { latin: "Fuller's Earth Clay",     badge: "DEEP CLEAN",     dot: "#C16B4A", bg: "#F5EDE8" },
   "orange-peel-powder": { latin: "Citrus sinensis peel",    badge: "VITAMIN C",      dot: "#D4784A", bg: "#FEF0E8" },

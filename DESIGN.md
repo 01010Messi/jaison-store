@@ -21,14 +21,15 @@ Defined twice, **always in sync**: Tailwind tokens in `tailwind.config.ts` (for 
 | `terracotta-dark` | `#6B370F` | Hover on terracotta |
 | `sage` | `#606C38` (light `#87964F`, dark `#36541F`) | Botanical accents, category labels |
 | `gold` | `#B89968` | Ornaments, rules, display numerals — **decorative only**, 2.4:1 on cream |
-| `gold-light` / `gold-dark` | `#D2BA96` / `#A08A64` | Gold steps |
+| `gold-light` / `gold-dark` | `#D2BA96` / `#A08A64` | Gold steps. `gold-light` doubles as the accessible gold **text** accent on dark/mid surfaces (bark, terracotta) — 6.4:1 on bark, 4.0:1 on terracotta (AA-large; only used at display sizes) |
+| `gold-deep` | `#7A5012` | Accessible gold **text** accent on cream/parchment — 6.5:1 on cream, 5.6:1 on parchment. Replaces the old hardcoded `#E26713` orange (2.9–3.2:1, failed AA) formerly scattered across why-powder, our-story, WhyPowderTeaser, and find-your-ritual |
 | `border` / `border-light` | `#E0CFA6` / `#F2E9CC` | Hairlines |
 
 **Alias rule:** `surface`/`surface-warm`/`surface-dark`/`border` are the *semantic* names — prefer them for backgrounds and borders; use the raw family names (`cream`, `parchment`…) for text and decorative color.
 
 **Hardcoding rule:** no raw hex in `.tsx`. In `className` use token classes; in `style={{}}` use `var(--color-*)`. Exceptions (hex required, CSS vars unavailable): `lib/email.ts`, `lib/invoice.ts` (emails/PDFs), `manifest`/`theme-color` metadata.
 
-**One-off values that are sanctioned:** `#FAF3E4` (StepCard "tint" background — between cream and parchment, lives only in `ui/StepCard.tsx`); `#E26713` (the why-powder bright accent); `#C1714F` (toast error icon). Don't copy these elsewhere.
+**One-off values that are sanctioned:** `#FAF3E4` (StepCard "tint" background — between cream and parchment, lives only in `ui/StepCard.tsx`); `#C1714F` (toast error icon). Don't copy these elsewhere.
 
 ## 2. Typography
 

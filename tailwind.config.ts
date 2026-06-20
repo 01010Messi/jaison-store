@@ -37,6 +37,7 @@ const config: Config = {
           DEFAULT: "#B89968", // re-trued to shipped numeral/ornament gold (was #BCA480)
           light: "#D2BA96",
           dark: "#A08A64",
+          deep: "#7A5012", // AA-compliant gold accent for text on cream/parchment (was orange #E26713)
         },
         surface: "#FEFAE0",
         "surface-warm": "#EFE4C5",
@@ -53,7 +54,7 @@ const config: Config = {
         warm: "0 4px 20px rgba(26, 60, 52, 0.08)",
         "warm-lg": "0 8px 40px rgba(26, 60, 52, 0.12)",
         "warm-xl": "0 12px 60px rgba(26, 60, 52, 0.16)",
-        gold: "0 2px 12px rgba(226, 103, 19, 0.3)",
+        gold: "0 2px 12px rgba(184, 153, 104, 0.3)",
       },
       backgroundImage: {
         "botanical-pattern": "url('/images/patterns/botanical-tile.svg')",

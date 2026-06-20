@@ -20,6 +20,7 @@ All findings below are fixed on this branch. Status table first, reason/fix/resu
 | 10 | Low (near-miss) | Header cart/wishlist count badge: 4.48:1 (rounding miss) | ✅ Fixed |
 | 11 | Structural | Hero scrim dips to 8% opacity directly behind the headline | ✅ Fixed |
 | 12 | Structural | `ProductFAQ` accordion titles use thin (300) weight at 16–18px | ✅ Fixed |
+| 13 | High | Hardcoded orange `#E26713` (why-powder, our-story, WhyPowderTeaser, find-your-ritual): 2.9–3.2:1 | ✅ Fixed (session 18) |
 | — | Investigated, no change | "Cancelled" badge uses off-token Tailwind red | No change (see below) |
 
 ---
@@ -167,6 +168,18 @@ All findings below are fixed on this branch. Status table first, reason/fix/resu
 **Fix:** Changed `titleClassName` from `font-light` to `font-normal`.
 
 **Result:** No contrast-ratio change (it didn't need one), but stroke definition at small sizes is now closer to body-text weight, which is the relevant fix for the sunlight-glare scenario WCAG's contrast formula doesn't model.
+
+---
+
+## 13 — High: hardcoded orange `#E26713` (added session 18, post-publication)
+
+**Files:** `src/app/(storefront)/why-powder/page.tsx` (hero eyebrow + heading accent + watermark), `src/app/(storefront)/our-story/page.tsx` (2 heading accents), `src/components/home/WhyPowderTeaser.tsx` (1 heading accent), `src/app/(storefront)/find-your-ritual/FindYourRitualContent.tsx` (6 `dot` values used as both decorative swatches and as text color for the "RECOMMENDED" label and product category label), `tailwind.config.ts` (`shadow-gold`).
+
+**Reason:** A bright orange (`#E26713`) was hardcoded directly in 12 places instead of routed through a `DESIGN.md` token — it predates this audit's token sweep, which only checked documented tokens, not raw hex literals. Measured **2.9:1 on bark** (why-powder hero) and **3.15:1 on cream** (our-story, find-your-ritual) — both fail the 4.5:1 AA floor for normal text. The find-your-ritual "RECOMMENDED" and category labels are 9px text, making the failure worse in practice (no large-text exemption available). Visually it also reads as an off-brand orange against the rest of the earthy cream/terracotta/sage/gold palette.
+
+**Fix:** Added one new token, `gold-deep` (`#7A5012`), for gold accent text on light cream/parchment backgrounds (6.5:1 on cream, 5.6:1 on parchment) — used in our-story and find-your-ritual. Reused the existing `gold-light` (`#D2BA96`) token for gold accent text on dark/mid backgrounds (bark, terracotta) — 6.4:1 on bark, 4.0:1 on terracotta (AA-large; only used at display sizes ≥36px, which only need 3:1). The why-powder watermark and `shadow-gold` (both decorative, non-text) were re-tinted from orange to the actual `gold` hue for visual consistency, no contrast requirement applies to either.
+
+**Result:** 2.9–3.2:1 → 4.0–6.5:1 across all 12 occurrences, and the accent now reads as gold rather than orange, consistent with the rest of the palette. `DESIGN.md` §1 updated with the new token; the old "sanctioned one-off `#E26713`" note removed since it's no longer used anywhere.
 
 ---
 
