@@ -1,10 +1,37 @@
 # Jaison Herbals — Session Handoff
 
-**Date:** 18 June 2026 · **Branch:** `redesign/v2` · **Last commit:** `f7549fd`
+**Date:** 20 June 2026 · **Branch:** `redesign/v2` · **Last commit:** `59ece33`
 
 ---
 
-## What was built this session (session 17 — full color/contrast/typography accessibility audit + fix pass)
+## What was built this session (session 18 — orange accent → gold accent, WCAG fix)
+
+User flagged a bright orange accent color in three screenshots (why-powder hero, our-story heading x2) as off-brand and asked for a golden/earthy-gold replacement that passes WCAG. `grep` across the codebase found the same hardcoded hex, `#E26713`, in 12 places — not just the 3 visible in the screenshots — none of them routed through a `DESIGN.md` token, which is why session 17's token-based contrast sweep missed it entirely.
+
+**Measured:** 2.9:1 on bark (why-powder hero), 3.15:1 on cream (our-story, find-your-ritual) — both fail the 4.5:1 AA floor; the find-your-ritual occurrences are 9px text, no large-text exemption available.
+
+**Fix:** Added one new token, `gold-deep` (`#7A5012`) — gold accent text for light cream/parchment backgrounds, 6.5:1 on cream / 5.6:1 on parchment. Reused the existing `gold-light` (`#D2BA96`) token — gold accent text for dark/mid backgrounds (bark, terracotta), 6.4:1 on bark / 4.0:1 on terracotta (AA-large; all terracotta-background uses are display-size text ≥36px). Two purely decorative, non-text uses (the why-powder watermark, `shadow-gold`) were re-tinted from orange to the actual `gold` hue for visual consistency — no contrast requirement applies to either.
+
+**Files touched:**
+```
+src/app/globals.css                                              (new --color-gold-deep var)
+tailwind.config.ts                                                (gold.deep token, shadow-gold re-tinted)
+src/app/(storefront)/why-powder/page.tsx                          (eyebrow + heading accent → gold-light, watermark re-tinted)
+src/app/(storefront)/our-story/page.tsx                           (2 heading accents → gold-deep)
+src/components/home/WhyPowderTeaser.tsx                           (heading accent → gold-light)
+src/app/(storefront)/find-your-ritual/FindYourRitualContent.tsx   (6 `dot` values → #7A5012, kept as raw hex — string-concatenated with an alpha suffix for box-shadow glows, can't be a CSS var)
+DESIGN.md                                                         (gold-deep documented, stale "sanctioned #E26713" note removed)
+ACCESSIBILITY-AUDIT.md                                            (new finding #13, full reason/fix/result)
+CLAUDE.md                                                         (feature-log entry)
+```
+
+Verified: `grep -rni "e26713\|226, *103, *19"` across `src/` and `tailwind.config.ts` returns zero hits (only the explanatory code comment mentions the old hex). No browser/screenshot check this session — user had already verified visually before this handoff was written ("dont screenshot i already checked").
+
+Committed and pushed to `origin/redesign/v2`. Nothing pushed to `main`, nothing deployed, per standing instruction.
+
+---
+
+## Previous session (session 17 — full color/contrast/typography accessibility audit + fix pass)
 
 Two-part request: (1) audit color palette/typography/contrast against WCAG AA/AAA + mobile sunlight glare, no fixes yet; (2) fix everything found, document it, commit + push to `redesign/v2` only.
 
@@ -53,7 +80,21 @@ Committed as `95fe6b5`.
 
 All work from this session committed and pushed to `origin/redesign/v2`.
 
-### Files changed this session (17)
+### Files changed this session (18)
+```
+src/app/globals.css                                              (new --color-gold-deep var)
+tailwind.config.ts                                                (gold.deep token, shadow-gold re-tinted)
+src/app/(storefront)/why-powder/page.tsx                          (eyebrow + heading accent + watermark)
+src/app/(storefront)/our-story/page.tsx                           (2 heading accents)
+src/components/home/WhyPowderTeaser.tsx                           (1 heading accent)
+src/app/(storefront)/find-your-ritual/FindYourRitualContent.tsx   (6 dot values)
+DESIGN.md                                                         (gold-deep documented)
+ACCESSIBILITY-AUDIT.md                                            (finding #13)
+CLAUDE.md                                                         (feature log entry)
+HANDOFF.md                                                        ← this file (rewritten)
+```
+
+### Files changed session 17 (for reference)
 ```
 ACCESSIBILITY-AUDIT.md                        (new — full audit report, 12 findings)
 DESIGN.md                                     (muted-text floor /60 → /72, documented with measured ratios)
