@@ -171,8 +171,8 @@ export default function HeroSectionFramer() {
             alt="Turmeric, saffron and neem — the herbs in Jaison Ubtan"
             sizes="(max-width: 768px) 200px, 260px"
             decorative
-            objectPosition="50% 95%"
-            className="w-[160px] h-[220px] md:w-[260px] md:h-[320px] top-[6%] left-[2%] md:top-[10%] md:left-[4%] z-10"
+            objectPosition="50% 100%"
+            className="w-[160px] h-[136px] md:w-[260px] md:h-[222px] top-[6%] left-[2%] md:top-[10%] md:left-[4%] z-10"
           />
           <HeroPhotoCard
             ref={productCardRef}
