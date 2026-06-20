@@ -10,7 +10,6 @@ const disallow = [
   "/checkout",
   "/order-success",
   "/account",
-  "/dev/",
 ];
 
 // AI crawlers explicitly allowed for search/citation visibility (GEO).
