@@ -72,7 +72,7 @@ export default function TestimonialsSection() {
                 className="block"
                 style={{ color: "var(--color-terracotta)", fontStyle: "italic", fontWeight: 300 }}
               >
-                their own skincare.
+                their own skin and hair care.
               </span>
             </h2>
           </div>

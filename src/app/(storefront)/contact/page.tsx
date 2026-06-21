@@ -16,8 +16,8 @@ const channels = [
     num: "02",
     label: "Email",
     note: "For orders, ingredients, anything",
-    value: "Jaisonskincare@gmail.com",
-    href: "mailto:Jaisonskincare@gmail.com",
+    value: "jaisonskincare@gmail.com",
+    href: "mailto:jaisonskincare@gmail.com",
   },
   {
     num: "03",

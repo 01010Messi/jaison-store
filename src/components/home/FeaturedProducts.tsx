@@ -41,11 +41,11 @@ export default function FeaturedProducts() {
           {/* Left column — copy */}
           <div className="flex-1 min-w-0 max-w-2xl">
             <p className="font-accent text-[10px] tracking-[0.2em] uppercase text-bark/72 mb-3">
-              — THE CATALOGUE · NINE POWDERS
+              — THE CATALOGUE · NINE AYURVEDIC POWDERS
             </p>
             <h2 className="font-heading text-[2.75rem] md:text-[3.5rem] lg:text-[4.5rem] text-bark font-light leading-[1.08] tracking-[-0.01em]">
               If nature had a
-              <span className="block">skincare lab,</span>
+              <span className="block">skin and hair care lab,</span>
               <span className="block" style={{ color: "var(--color-terracotta)", fontStyle: "italic", fontWeight: 300 }}>
                 this would be it.
               </span>

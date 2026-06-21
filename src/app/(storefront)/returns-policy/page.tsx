@@ -42,7 +42,7 @@ export default function ReturnsPage() {
             <ul className="space-y-2">
               <li className="flex items-baseline gap-3">
                 <span className="font-heading text-terracotta font-light">01</span>
-                <span>Email: hello@jaisonskincare.com</span>
+                <span>Email: jaisonskincare@gmail.com</span>
               </li>
               <li className="flex items-baseline gap-3">
                 <span className="font-heading text-terracotta font-light">02</span>

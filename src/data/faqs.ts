@@ -237,12 +237,6 @@ export const faqGroups: FaqGroup[] = [
         content:
           "Quality and purity testing is part of our manufacturing process. We work with suppliers who maintain hygiene and quality standards, and we conduct checks on incoming raw material and finished products. If you need specific test reports for a product, you can contact us directly.",
       },
-      {
-        id: "q4",
-        title: "Do you have AYUSH or GMP certification?",
-        content:
-          "We are actively working towards obtaining formal AYUSH and GMP certifications. Our manufacturing and quality control processes are already aligned with these standards. We will display all certifications prominently on the website as soon as they are in place. In the meantime, our commitment to using 100% natural ingredients and clean manufacturing practices remains unchanged.",
-      },
     ],
   },
 ];

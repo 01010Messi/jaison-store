@@ -167,7 +167,7 @@ export default function InstagramSection() {
           className="font-heading font-light leading-[1.04]"
           style={{ fontSize: "clamp(2.5rem, 6vw, 5rem)", letterSpacing: "-0.02em", color: "var(--color-bark)" }}
         >
-          Their kitchens.{" "}
+          Their kitchen.{" "}
           <em style={{ color: "var(--color-terracotta)", fontStyle: "italic", fontWeight: 300 }}>
             Their rituals.
           </em>

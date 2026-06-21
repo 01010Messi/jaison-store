@@ -63,7 +63,7 @@ export default function PrivacyPolicyPage() {
 
           <div className="pt-6 border-t border-border-light">
             <h2 className="font-heading text-xl md:text-2xl text-bark font-light mb-3">Your Rights</h2>
-            <p>You have the right to access, correct, or delete your personal information at any time. Contact us at Jaisonskincare@gmail.com to exercise these rights.</p>
+            <p>You have the right to access, correct, or delete your personal information at any time. Contact us at jaisonskincare@gmail.com to exercise these rights.</p>
           </div>
 
           <p className="pt-6 border-t border-border-light text-bark/72 text-xs">Last updated: March 2026</p>

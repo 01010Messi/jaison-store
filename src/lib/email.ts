@@ -6,7 +6,7 @@ function getResend() {
 
 const FROM = process.env.EMAIL_FROM || "orders@jaisonskincare.com";
 const APP_NAME = "jaison";
-const OWNER_EMAIL = process.env.ADMIN_EMAIL || "Jaisonskincare@gmail.com";
+const OWNER_EMAIL = process.env.ADMIN_EMAIL || "jaisonskincare@gmail.com";
 
 interface OrderEmailData {
   orderNumber: string;

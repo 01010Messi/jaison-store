@@ -53,11 +53,13 @@ function MegaMenuBanner({ items, onClose, onMouseEnter, onMouseLeave }: MegaMenu
             onClick={onClose}
             className="flex flex-col items-start gap-2.5 hover:opacity-75 transition-opacity"
           >
-            <span
-              className="w-3 h-3 rounded-full flex-shrink-0"
-              style={{ backgroundColor: item.dot }}
-            />
-            <span className="font-body text-base text-bark">{item.label}</span>
+            <span className="flex items-center gap-2">
+              <span
+                className="w-3 h-3 rounded-full flex-shrink-0"
+                style={{ backgroundColor: item.dot }}
+              />
+              <span className="font-body text-base text-bark">{item.label}</span>
+            </span>
             <span className="font-accent text-[11px] tracking-[0.08em] text-bark/72">
               {item.subtitle}
             </span>

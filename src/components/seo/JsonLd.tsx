@@ -21,6 +21,7 @@ export function OrganizationJsonLd() {
     contactPoint: {
       "@type": "ContactPoint",
       telephone: "+91-8600151677",
+      email: "jaisonskincare@gmail.com",
       contactType: "customer service",
       availableLanguage: ["English", "Hindi"],
     },

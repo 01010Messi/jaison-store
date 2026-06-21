@@ -67,7 +67,7 @@ export default function Footer() {
         <div className="container-brand section-rhythm-lg flex flex-col md:flex-row md:items-center justify-between gap-8">
           {/* Left: copy */}
           <div className="max-w-xl">
-            <p className="font-accent text-[11px] tracking-[0.2em] uppercase mb-5" style={{ color: "var(--color-terracotta)" }}>
+            <p className="font-accent text-[11px] tracking-[0.2em] uppercase mb-5" style={{ color: "var(--color-gold-light)" }}>
               — The Journal
             </p>
             <h3
@@ -75,7 +75,7 @@ export default function Footer() {
               style={{ fontSize: "clamp(2rem, 4vw, 3.25rem)" }}
             >
               Once a month.{" "}
-              <span style={{ color: "var(--color-terracotta)", fontStyle: "italic", fontWeight: 300 }}>
+              <span style={{ color: "var(--color-gold-light)", fontStyle: "italic", fontWeight: 300 }}>
                 That is it.
               </span>
             </h3>
@@ -98,8 +98,8 @@ export default function Footer() {
             <button
               type="submit"
               disabled={isLoading}
-              className="flex-shrink-0 flex items-center gap-2 px-8 py-4 rounded-full text-cream text-sm font-accent tracking-wider uppercase transition-opacity hover:opacity-90 disabled:opacity-50"
-              style={{ backgroundColor: "var(--color-terracotta)" }}
+              className="flex-shrink-0 flex items-center gap-2 px-8 py-4 rounded-full text-bark text-sm font-accent tracking-wider uppercase transition-opacity hover:opacity-90 disabled:opacity-50"
+              style={{ backgroundColor: "var(--color-gold-light)" }}
             >
               {isLoading ? "..." : "Subscribe"} {!isLoading && "→"}
             </button>
@@ -149,7 +149,7 @@ export default function Footer() {
             <ul className="space-y-3.5">
               <li>
                 <a
-                  href="mailto:Jaisonskincare@gmail.com"
+                  href="mailto:jaisonskincare@gmail.com"
                   className="flex items-center gap-2.5 text-base text-cream/70 hover:text-cream transition-colors font-body"
                 >
                   <Mail className="h-4 w-4" />
