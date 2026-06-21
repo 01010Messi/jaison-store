@@ -2,82 +2,16 @@
 
 import Link from "next/link";
 import { useEffect, useRef } from "react";
-import { useAnimationFrame, useScroll } from "framer-motion";
-import { useMediaQuery, useIsMobile } from "@/hooks/useMediaQuery";
-import { usePointerRef } from "@/hooks/usePointerRef";
-import { HERO_PARALLAX, cursorOffset, lerp, scrollProgress, cardTransform } from "@/lib/hero/parallaxMath";
-import HeroPhotoCard from "./hero/HeroPhotoCard";
-import HeroParticles from "./hero/HeroParticles";
 
-// Ambient drift period for touch devices, where there's no cursor to
-// react to (spec: "slow ambient auto-loop (~8-12s period)").
-const AMBIENT_LOOP_MS = 10000;
+const stats = [
+  { num: "1970", label: "Year we started grinding" },
+  { num: "55", label: "Years, one format" },
+  { num: "0", label: "Preservatives. Ever." },
+];
 
 export default function HeroSection() {
   const headlineRef = useRef<HTMLHeadingElement>(null);
-  const contextCardRef = useRef<HTMLDivElement>(null);
-  const productCardRef = useRef<HTMLDivElement>(null);
-  const visualBlockRef = useRef<HTMLDivElement>(null);
-
-  // Hydration-safe: framer-motion's own useReducedMotion() reads
-  // window.matchMedia(...) synchronously via a lazy useState initializer on
-  // the client's very first render (pre-effect), which mismatches SSR's
-  // default and throws hydration errors under real prefers-reduced-motion
-  // (e.g. Playwright's reducedMotion: "reduce" context). The project's
-  // useMediaQuery hook always initializes to false and only updates inside
-  // useEffect (post-mount), deferring to match SSR until after hydration.
-  const prefersReducedMotion = useMediaQuery("(prefers-reduced-motion: reduce)");
-  const pointerFine = useMediaQuery("(hover: hover) and (pointer: fine)");
-  const isMobile = useIsMobile();
-  const cursorRef = usePointerRef(pointerFine && !prefersReducedMotion);
-
-  const { scrollY } = useScroll();
-
-  useAnimationFrame((time) => {
-    if (
-      prefersReducedMotion ||
-      !visualBlockRef.current ||
-      !contextCardRef.current ||
-      !productCardRef.current
-    ) {
-      return;
-    }
-
-    const scrollT = scrollProgress(scrollY.get(), 0, HERO_PARALLAX.scrollRangePx);
-    const contextOpacity = lerp(scrollT, HERO_PARALLAX.scroll.contextCard.opacityRange);
-    const contextScrollY = lerp(scrollT, HERO_PARALLAX.scroll.contextCard.translateYRange);
-    const productScale = lerp(scrollT, HERO_PARALLAX.scroll.productCard.scaleRange);
-
-    let ctxX = 0;
-    let ctxY = 0;
-    let prodX = 0;
-    let prodY = 0;
-
-    if (pointerFine) {
-      const rect = visualBlockRef.current.getBoundingClientRect();
-      const cursor = cursorRef.current;
-      if (cursor) {
-        const ctxOffset = cursorOffset(cursor.x, cursor.y, rect, HERO_PARALLAX.cursor.contextCard.depth, HERO_PARALLAX.cursor.contextCard.maxOffsetPx);
-        const prodOffset = cursorOffset(cursor.x, cursor.y, rect, HERO_PARALLAX.cursor.productCard.depth, HERO_PARALLAX.cursor.productCard.maxOffsetPx);
-        ctxX = ctxOffset.x;
-        ctxY = ctxOffset.y;
-        prodX = prodOffset.x;
-        prodY = prodOffset.y;
-      }
-    } else {
-      // No cursor on touch — drift gently on a timer instead, so the
-      // scene isn't static for the mobile majority of traffic.
-      const angle = ((time % AMBIENT_LOOP_MS) / AMBIENT_LOOP_MS) * Math.PI * 2;
-      ctxX = Math.sin(angle) * HERO_PARALLAX.cursor.contextCard.maxOffsetPx * 0.5;
-      ctxY = Math.cos(angle) * HERO_PARALLAX.cursor.contextCard.maxOffsetPx * 0.5;
-      prodX = Math.sin(angle + Math.PI / 3) * HERO_PARALLAX.cursor.productCard.maxOffsetPx * 0.5;
-      prodY = Math.cos(angle + Math.PI / 3) * HERO_PARALLAX.cursor.productCard.maxOffsetPx * 0.5;
-    }
-
-    contextCardRef.current.style.opacity = String(contextOpacity);
-    contextCardRef.current.style.transform = cardTransform(ctxX, ctxY + contextScrollY, 1);
-    productCardRef.current.style.transform = cardTransform(prodX, prodY, productScale);
-  });
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
     const el = headlineRef.current;
@@ -92,41 +26,92 @@ export default function HeroSection() {
     return () => clearTimeout(t);
   }, []);
 
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.muted = true;
+    }
+  }, []);
+
   return (
     <section
-      className="relative flex flex-col min-h-screen overflow-hidden"
-      style={{ backgroundColor: "var(--color-cream)" }}
-    >
-      <div
-        className="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden"
-        aria-hidden="true"
+        className="relative flex flex-col overflow-hidden min-h-screen"
+        style={{ backgroundColor: "var(--color-cream)" }}
       >
-        <span
-          className="font-heading font-light"
+        {/* Background video */}
+        <div className="absolute inset-0">
+          <video
+            ref={videoRef}
+            autoPlay
+            loop
+            playsInline
+            muted
+            preload="metadata"
+            poster="/images/hero-poster.webp"
+            className="hero-video absolute inset-0 w-full h-full object-cover object-center"
+          >
+            <source src="/images/hero-group.mp4" type="video/mp4" />
+          </video>
+
+          {/* Uniform overlay — no seam between hero body and stats.
+              Floor raised to 0.20 minimum: the original 0.08 dip sat right
+              behind the headline, so a dark video frame there could crush
+              contrast on the opaque bark heading text. */}
+          <div
+            className="absolute inset-0"
+            style={{
+              background:
+                "linear-gradient(170deg, rgba(254,250,224,0.22) 0%, rgba(254,250,224,0.20) 25%, rgba(254,250,224,0.30) 60%, rgba(254,250,224,0.44) 85%, rgba(254,250,224,0.50) 100%)",
+            }}
+          />
+        </div>
+
+        {/* Watermark */}
+        <div
+          className="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden"
+          aria-hidden="true"
+        >
+          <span
+            className="font-heading font-light"
+            style={{
+              fontSize: "clamp(9rem, 26vw, 24rem)",
+              color: "rgba(26,60,52,0.032)",
+              letterSpacing: "-0.05em",
+              lineHeight: 1,
+            }}
+          >
+            jaison
+          </span>
+        </div>
+
+        {/* ── FOREGROUND CONTENT ─────────────────────────────────── */}
+        <div
+          className="relative z-10 w-full px-6 md:px-10 lg:px-14 flex flex-col flex-1"
           style={{
-            fontSize: "clamp(9rem, 26vw, 24rem)",
-            color: "rgba(26,60,52,0.032)",
-            letterSpacing: "-0.05em",
-            lineHeight: 1,
+            paddingTop: "clamp(56px, 6vh, 76px)",
+            paddingBottom: 0,
           }}
         >
-          jaison
-        </span>
-      </div>
-
-      <div className="relative z-10 flex flex-col md:flex-row flex-1 px-6 md:px-10 lg:px-14 gap-10 items-center">
-        <div className="flex-1 max-w-xl">
+          {/* Top-right tagline — normal weight */}
           <span
-            className="block font-accent font-normal uppercase mb-6 md:mb-8"
-            style={{ fontSize: "clamp(12px, 1.05vw, 14px)", letterSpacing: "0.18em", color: "var(--color-terracotta)" }}
+            className="self-end font-accent font-normal uppercase mb-6 md:mb-8"
+            style={{
+              fontSize: "clamp(12px, 1.05vw, 14px)",
+              letterSpacing: "0.18em",
+              color: "var(--color-terracotta)",
+            }}
           >
-            55 Years&nbsp;&nbsp;&middot;&nbsp;&nbsp;One Format&nbsp;&nbsp;&middot;&nbsp;&nbsp;Zero Compromises
+            55 Years&nbsp;&nbsp;·&nbsp;&nbsp;One Format&nbsp;&nbsp;·&nbsp;&nbsp;Zero Compromises
           </span>
 
+          {/* Headline — letter glow sweeps word by word */}
           <h2
             ref={headlineRef}
             className="font-heading font-light"
-            style={{ fontSize: "clamp(2.475rem, 5.5vw, 6.5rem)", lineHeight: 0.96, letterSpacing: "-0.02em" }}
+            style={{
+              fontSize: "clamp(2.475rem, 7.425vw, 9.075rem)",
+              lineHeight: 0.96,
+              letterSpacing: "-0.02em",
+            }}
           >
             <span className="gw1" style={{ color: "var(--color-bark)" }}>Your </span>
             <span className="gw2" style={{ color: "var(--color-bark)" }}>bottle </span>
@@ -140,64 +125,90 @@ export default function HeroSection() {
             </span>
           </h2>
 
-          <p
-            className="font-body leading-relaxed mt-6"
-            style={{ fontSize: "clamp(1rem, 1.3vw, 1.125rem)", color: "rgba(26,60,52,0.88)", maxWidth: "380px" }}
-          >
-            Most skincare needs preservatives, stabilisers and synthetic
-            fragrance to sit on a shelf. Ours needs none of that — just the
-            plant, ground and sifted. Mix at home. Use. Rinse.
-          </p>
+          {/* Sub-copy + CTAs */}
+          <div className="mt-auto flex flex-col md:flex-row md:items-end md:justify-between gap-6 pb-20 md:pb-6">
+            <p
+              className="font-body leading-relaxed"
+              style={{
+                fontSize: "clamp(1rem, 1.3vw, 1.125rem)",
+                color: "rgba(26,60,52,0.88)",
+                maxWidth: "380px",
+                textShadow: "0 1px 4px rgba(239,228,197,0.55)",
+              }}
+            >
+              Most skincare needs preservatives, stabilisers and synthetic
+              fragrance to sit on a shelf. Ours needs none of that — just the
+              plant, ground and sifted. Mix at home. Use. Rinse.
+            </p>
 
-          <div className="flex items-center gap-4 flex-wrap mt-8">
-            <Link
-              href="/shop"
-              className="inline-flex items-center gap-2 font-accent uppercase transition-opacity duration-200 hover:opacity-85"
-              style={{ borderRadius: "9999px", padding: "17px 34px", fontSize: "12px", letterSpacing: "0.14em", backgroundColor: "var(--color-terracotta)", color: "var(--color-cream)" }}
-            >
-              Shop the Catalogue&nbsp;→
-            </Link>
-            <Link
-              href="/why-powder"
-              className="inline-flex items-center font-accent uppercase transition-opacity duration-200 hover:opacity-85"
-              style={{ borderRadius: "9999px", padding: "17px 34px", fontSize: "12px", letterSpacing: "0.14em", backgroundColor: "var(--color-bark)", color: "var(--color-cream)" }}
-            >
-              Read Why Powder
-            </Link>
+            <div className="flex items-center gap-4 flex-shrink-0" style={{ paddingRight: "40px" }}>
+              <Link
+                href="/shop"
+                className="inline-flex items-center gap-2 font-accent uppercase transition-opacity duration-200 hover:opacity-85"
+                style={{
+                  borderRadius: "9999px",
+                  padding: "17px 34px",
+                  fontSize: "12px",
+                  letterSpacing: "0.14em",
+                  backgroundColor: "var(--color-terracotta)",
+                  color: "var(--color-cream)",
+                }}
+              >
+                Shop the Catalogue&nbsp;→
+              </Link>
+              <Link
+                href="/why-powder"
+                className="inline-flex items-center font-accent uppercase transition-opacity duration-200 hover:opacity-85"
+                style={{
+                  borderRadius: "9999px",
+                  padding: "17px 34px",
+                  fontSize: "12px",
+                  letterSpacing: "0.14em",
+                  backgroundColor: "var(--color-bark)",
+                  color: "var(--color-cream)",
+                }}
+              >
+                Read Why Powder
+              </Link>
+            </div>
           </div>
         </div>
 
+        {/* ── STATS STRIP — no local overlay, same video shows through ─ */}
         <div
-          ref={visualBlockRef}
-          className="relative w-full md:flex-1"
-          style={{ height: "clamp(280px, 46vw, 620px)" }}
+          className="relative z-10 border-t"
+          style={{ borderColor: "rgba(26,60,52,0.10)" }}
         >
-          <HeroPhotoCard
-            ref={contextCardRef}
-            src="/images/products/ubtan-essence.png"
-            alt="Turmeric, saffron and neem — the herbs in Jaison Ubtan"
-            sizes="(max-width: 768px) 200px, 260px"
-            decorative
-            objectPosition="50% 100%"
-            className="w-[160px] h-[136px] md:w-[260px] md:h-[222px] top-[6%] left-[2%] md:top-[10%] md:left-[4%] z-10"
-          />
-          <HeroPhotoCard
-            ref={productCardRef}
-            src="/images/products/ubtan.jpg"
-            alt="Jaison Ubtan powder jar, box and bowl"
-            sizes="(max-width: 768px) 220px, 340px"
-            priority
-            objectPosition="center"
-            className="w-[200px] h-[260px] md:w-[340px] md:h-[420px] top-[24%] left-[28%] md:top-[18%] md:left-[30%] z-20"
-          />
-          <HeroParticles
-            reducedMotion={prefersReducedMotion}
-            particleCount={isMobile ? 12 : 24}
-            cursorRef={cursorRef}
-            className="z-30"
-          />
+          <div className="container-brand py-8 md:py-10">
+            <div className="grid grid-cols-3 gap-6 md:gap-12 lg:gap-16 text-center">
+              {stats.map((s) => (
+                <div key={s.num}>
+                  <span
+                    className="font-heading font-light block"
+                    style={{
+                      fontSize: "clamp(2.5rem, 5.5vw, 5.5rem)",
+                      color: "var(--color-terracotta)",
+                      letterSpacing: "-0.03em",
+                      lineHeight: 1,
+                    }}
+                  >
+                    {s.num}
+                  </span>
+                  <p
+                    className="font-accent uppercase mt-3"
+                    style={{
+                      fontSize: "clamp(11px, 1vw, 13px)",
+                      letterSpacing: "0.18em",
+                      color: "rgba(26,60,52,0.70)",
+                    }}
+                  >
+                    {s.label}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
   );
 }
