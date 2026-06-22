@@ -201,7 +201,7 @@ export default function AdminMessagesPage() {
       </div>
 
       {/* Messages list */}
-      <div className="bg-cream rounded-sm border border-border/50">
+      <div className="bg-cream rounded-xl border border-border/50">
         <div className="flex items-center gap-3 p-4 border-b border-border/50">
           <span className="section-label text-bark/72">
             {filteredMessages.length} Message
@@ -353,7 +353,7 @@ export default function AdminMessagesPage() {
               <h3 className="text-xs font-accent uppercase tracking-wider text-bark/72 mb-2">
                 Message
               </h3>
-              <div className="bg-parchment/30 rounded-sm p-4 border border-border/30">
+              <div className="bg-parchment/30 rounded-xl p-4 border border-border/30">
                 <p className="text-sm text-bark/80 font-body whitespace-pre-wrap leading-relaxed">
                   {selectedMessage.message}
                 </p>
@@ -408,7 +408,7 @@ export default function AdminMessagesPage() {
                   </Button>
                 </div>
               ) : (
-                <div className="bg-terracotta/5 border border-terracotta/20 rounded-sm p-4">
+                <div className="bg-terracotta/5 border border-terracotta/20 rounded-xl p-4">
                   <p className="text-sm text-bark/70 font-body mb-3">
                     Are you sure you want to delete this message? This action
                     cannot be undone.

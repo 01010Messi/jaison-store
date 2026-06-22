@@ -205,7 +205,7 @@ export default function AdminCategoriesPage() {
         </div>
         <button
           onClick={openCreate}
-          className="flex items-center gap-2 px-4 py-2 bg-bark text-cream rounded-sm text-xs font-accent uppercase tracking-wider hover:bg-bark/90 transition-colors"
+          className="flex items-center gap-2 px-4 py-2 bg-bark text-cream rounded-full text-xs font-accent uppercase tracking-wider hover:bg-bark/90 transition-colors"
         >
           <Plus className="h-4 w-4" />
           Add Category
@@ -213,7 +213,7 @@ export default function AdminCategoriesPage() {
       </div>
 
       {categories.length === 0 ? (
-        <div className="bg-cream p-5 rounded-sm border border-border/50">
+        <div className="bg-cream p-5 rounded-xl border border-border/50">
           <div className="flex flex-col items-center justify-center py-16 text-bark/30">
             <Layers className="h-12 w-12 mb-3 opacity-50" />
             <p className="font-heading text-lg text-bark/72">
@@ -225,7 +225,7 @@ export default function AdminCategoriesPage() {
           </div>
         </div>
       ) : (
-        <div className="bg-cream rounded-sm border border-border/50 overflow-hidden">
+        <div className="bg-cream rounded-xl border border-border/50 overflow-hidden">
           {/* Table header */}
           <div className="grid grid-cols-[1fr_1fr_auto_auto] gap-4 px-4 py-3 bg-parchment/30 border-b border-border/50">
             <p className="text-xs font-accent uppercase tracking-wider text-bark/72">
@@ -326,7 +326,7 @@ export default function AdminCategoriesPage() {
               }
               placeholder="Optional description"
               rows={3}
-              className="w-full px-4 py-2.5 bg-cream border border-border rounded-sm font-body text-bark text-sm placeholder:text-bark/72 transition-all duration-200 hover:border-gold/60 focus:border-gold focus:ring-1 focus:ring-gold/30 resize-none"
+              className="w-full px-4 py-2.5 bg-cream border border-border rounded-lg font-body text-bark text-sm placeholder:text-bark/72 transition-all duration-200 hover:border-gold/60 focus:border-gold focus:ring-1 focus:ring-gold/30 resize-none"
             />
           </div>
           <Input

@@ -89,7 +89,7 @@ export default function AdminCustomersPage() {
 
       {/* Summary stats */}
       <div className="mb-6">
-        <div className="inline-flex items-center gap-3 bg-cream rounded-sm border border-border/50 px-5 py-3">
+        <div className="inline-flex items-center gap-3 bg-cream rounded-xl border border-border/50 px-5 py-3">
           <Users className="h-5 w-5 text-terracotta" />
           <div>
             <p className="text-xs font-accent uppercase tracking-wider text-bark/72">
@@ -111,12 +111,12 @@ export default function AdminCustomersPage() {
             placeholder="Search by name or email..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-10 pr-4 py-2.5 text-sm font-body text-bark bg-cream border border-border/50 rounded-sm placeholder:text-bark/30 focus:border-bark/30 transition-colors"
+            className="w-full pl-10 pr-4 py-2.5 text-sm font-body text-bark bg-cream border border-border/50 rounded-lg placeholder:text-bark/30 focus:border-bark/30 transition-colors"
           />
         </div>
       </div>
 
-      <div className="bg-cream rounded-sm border border-border/50">
+      <div className="bg-cream rounded-xl border border-border/50">
         <div className="flex items-center gap-3 p-4 border-b border-border/50">
           <span className="section-label text-bark/72">
             {filteredCustomers.length} Customer{filteredCustomers.length !== 1 ? "s" : ""}
@@ -255,7 +255,7 @@ export default function AdminCustomersPage() {
 
             {/* Stats row */}
             <div className="grid grid-cols-2 gap-4">
-              <div className="bg-parchment/30 rounded-sm p-4 text-center">
+              <div className="bg-parchment/30 rounded-xl p-4 text-center">
                 <p className="font-heading text-2xl text-bark">
                   {selectedCustomer.orderCount}
                 </p>
@@ -263,7 +263,7 @@ export default function AdminCustomersPage() {
                   Total Orders
                 </p>
               </div>
-              <div className="bg-parchment/30 rounded-sm p-4 text-center">
+              <div className="bg-parchment/30 rounded-xl p-4 text-center">
                 <p className="font-heading text-2xl text-terracotta">
                   {formatPrice(selectedCustomer.totalSpent)}
                 </p>
@@ -290,7 +290,7 @@ export default function AdminCustomersPage() {
                   {selectedCustomer.recentOrders.map((order) => (
                     <div
                       key={order.orderNumber}
-                      className="flex items-center justify-between bg-parchment/20 rounded-sm px-4 py-3"
+                      className="flex items-center justify-between bg-parchment/20 rounded-xl px-4 py-3"
                     >
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center gap-2">

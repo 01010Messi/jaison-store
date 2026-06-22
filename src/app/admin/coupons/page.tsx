@@ -255,7 +255,7 @@ export default function AdminCouponsPage() {
         </div>
         <button
           onClick={() => setShowCreate(true)}
-          className="flex items-center gap-2 px-4 py-2 bg-bark text-cream rounded-sm text-xs font-accent uppercase tracking-wider hover:bg-bark/90 transition-colors"
+          className="flex items-center gap-2 px-4 py-2 bg-bark text-cream rounded-full text-xs font-accent uppercase tracking-wider hover:bg-bark/90 transition-colors"
         >
           <Plus className="h-4 w-4" />
           Create Coupon
@@ -263,7 +263,7 @@ export default function AdminCouponsPage() {
       </div>
 
       {coupons.length === 0 ? (
-        <div className="bg-cream p-5 rounded-sm border border-border/50">
+        <div className="bg-cream p-5 rounded-xl border border-border/50">
           <div className="flex flex-col items-center justify-center py-16 text-bark/30">
             <Tag className="h-12 w-12 mb-3 opacity-50" />
             <p className="font-heading text-lg text-bark/72">No coupons yet</p>
@@ -273,7 +273,7 @@ export default function AdminCouponsPage() {
           </div>
         </div>
       ) : (
-        <div className="bg-cream rounded-sm border border-border/50 overflow-hidden">
+        <div className="bg-cream rounded-xl border border-border/50 overflow-hidden">
           <div className="divide-y divide-border-light">
             {coupons.map((coupon) => (
               <div
@@ -335,7 +335,7 @@ export default function AdminCouponsPage() {
                         ? "Deactivate coupon"
                         : "Activate coupon"
                     }
-                    className={`p-1.5 rounded-sm transition-colors shrink-0 ${
+                    className={`p-1.5 rounded-full transition-colors shrink-0 ${
                       coupon.isActive
                         ? "text-sage-dark hover:bg-sage-dark/10"
                         : "text-bark/30 hover:bg-bark/5"
@@ -388,7 +388,7 @@ export default function AdminCouponsPage() {
                 onChange={(e) =>
                   setForm((f) => ({ ...f, discountType: e.target.value }))
                 }
-                className="w-full px-3 py-2.5 bg-cream border border-border rounded-sm text-sm text-bark font-body focus:border-bark focus:ring-0 outline-none"
+                className="w-full px-3 py-2.5 bg-cream border border-border rounded-lg text-sm text-bark font-body focus:border-bark focus:ring-0 outline-none"
               >
                 <option value="PERCENTAGE">Percentage</option>
                 <option value="FIXED">Fixed Amount</option>
@@ -469,7 +469,7 @@ export default function AdminCouponsPage() {
         {editCoupon && (
           <>
             {/* Active status toggle bar */}
-            <div className="flex items-center justify-between mb-5 p-3 rounded-sm bg-parchment/30 border border-border/30">
+            <div className="flex items-center justify-between mb-5 p-3 rounded-xl bg-parchment/30 border border-border/30">
               <div className="flex items-center gap-2">
                 <Power className="h-4 w-4 text-bark/72" />
                 <span className="text-sm font-body text-bark/70">
@@ -532,7 +532,7 @@ export default function AdminCouponsPage() {
                         discountType: e.target.value,
                       }))
                     }
-                    className="w-full px-3 py-2.5 bg-cream border border-border rounded-sm text-sm text-bark font-body focus:border-bark focus:ring-0 outline-none"
+                    className="w-full px-3 py-2.5 bg-cream border border-border rounded-lg text-sm text-bark font-body focus:border-bark focus:ring-0 outline-none"
                   >
                     <option value="PERCENTAGE">Percentage</option>
                     <option value="FIXED">Fixed Amount</option>
@@ -644,7 +644,7 @@ export default function AdminCouponsPage() {
                       type="button"
                       onClick={handleDelete}
                       disabled={deleting}
-                      className="flex items-center gap-1.5 px-3 py-1.5 bg-terracotta text-cream rounded-sm text-xs font-accent uppercase tracking-wider hover:bg-terracotta-dark transition-colors disabled:opacity-50"
+                      className="flex items-center gap-1.5 px-3 py-1.5 bg-terracotta text-cream rounded-full text-xs font-accent uppercase tracking-wider hover:bg-terracotta-dark transition-colors disabled:opacity-50"
                     >
                       {deleting ? (
                         <div className="animate-spin rounded-full h-3 w-3 border border-cream/30 border-t-cream" />

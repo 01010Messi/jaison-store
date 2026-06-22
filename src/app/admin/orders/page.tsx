@@ -147,7 +147,7 @@ export default function AdminOrdersPage() {
         </div>
         <a
           href="/api/admin/orders/export"
-          className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-accent uppercase tracking-wider border border-border rounded-sm text-bark/72 hover:border-bark hover:text-bark transition-colors"
+          className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-accent uppercase tracking-wider border border-border rounded-full text-bark/72 hover:border-bark hover:text-bark transition-colors"
         >
           <Download className="h-3.5 w-3.5" />
           Export CSV
@@ -162,7 +162,7 @@ export default function AdminOrdersPage() {
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
           placeholder="Search by order number, name, or email..."
-          className="w-full pl-9 pr-4 py-2 bg-cream border border-border rounded-sm text-sm font-body text-bark placeholder:text-bark/30 focus:border-gold"
+          className="w-full pl-9 pr-4 py-2 bg-cream border border-border rounded-lg text-sm font-body text-bark placeholder:text-bark/30 focus:border-gold"
         />
       </div>
 
@@ -189,7 +189,7 @@ export default function AdminOrdersPage() {
         ))}
       </div>
 
-      <div className="bg-cream rounded-sm border border-border/50">
+      <div className="bg-cream rounded-xl border border-border/50">
         <div className="flex items-center gap-3 p-4 border-b border-border/50">
           <span className="section-label text-bark/72">
             {filteredOrders.length} Order{filteredOrders.length !== 1 ? "s" : ""}

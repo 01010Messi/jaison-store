@@ -106,7 +106,7 @@ export default function AdminReviewsPage() {
       </div>
 
       {filteredReviews.length === 0 ? (
-        <div className="bg-cream p-5 rounded-sm border border-border/50">
+        <div className="bg-cream p-5 rounded-xl border border-border/50">
           <div className="flex flex-col items-center justify-center py-16 text-bark/30">
             <Star className="h-12 w-12 mb-3 opacity-50" />
             <p className="font-heading text-lg text-bark/72">No reviews found</p>
@@ -122,7 +122,7 @@ export default function AdminReviewsPage() {
           {filteredReviews.map((review) => (
             <div
               key={review.id}
-              className="bg-cream rounded-sm border border-border/50 p-5"
+              className="bg-cream rounded-xl border border-border/50 p-5"
             >
               <div className="flex items-start justify-between gap-4">
                 <div className="flex-1 min-w-0">
@@ -170,14 +170,14 @@ export default function AdminReviewsPage() {
                   <div className="flex gap-2 shrink-0">
                     <button
                       onClick={() => handleModerate(review.id, "APPROVED")}
-                      className="p-2 text-sage hover:bg-sage/10 rounded-sm transition-colors"
+                      className="p-2 text-sage hover:bg-sage/10 rounded-full transition-colors"
                       aria-label="Approve review"
                     >
                       <Check className="h-4 w-4" />
                     </button>
                     <button
                       onClick={() => handleModerate(review.id, "REJECTED")}
-                      className="p-2 text-terracotta hover:bg-terracotta/10 rounded-sm transition-colors"
+                      className="p-2 text-terracotta hover:bg-terracotta/10 rounded-full transition-colors"
                       aria-label="Reject review"
                     >
                       <X className="h-4 w-4" />

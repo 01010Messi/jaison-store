@@ -64,14 +64,14 @@ export default function AdminProductsPage() {
         <div className="flex items-center gap-2">
           <a
             href="/api/admin/products/export"
-            className="flex items-center gap-1.5 px-3 py-2 text-xs font-accent uppercase tracking-wider border border-border rounded-sm text-bark/72 hover:border-bark hover:text-bark transition-colors"
+            className="flex items-center gap-1.5 px-3 py-2 text-xs font-accent uppercase tracking-wider border border-border rounded-full text-bark/72 hover:border-bark hover:text-bark transition-colors"
           >
             <Download className="h-3.5 w-3.5" />
             Export
           </a>
           <Link
             href="/admin/products/new"
-            className="flex items-center gap-2 px-4 py-2 bg-bark text-cream rounded-sm text-xs font-accent uppercase tracking-wider hover:bg-bark/90 transition-colors"
+            className="flex items-center gap-2 px-4 py-2 bg-bark text-cream rounded-full text-xs font-accent uppercase tracking-wider hover:bg-bark/90 transition-colors"
           >
             <Plus className="h-4 w-4" />
             Add Product
@@ -80,7 +80,7 @@ export default function AdminProductsPage() {
       </div>
 
       {products.length === 0 ? (
-        <div className="bg-cream p-5 rounded-sm border border-border/50">
+        <div className="bg-cream p-5 rounded-xl border border-border/50">
           <div className="flex flex-col items-center justify-center py-16 text-bark/30">
             <Package className="h-12 w-12 mb-3 opacity-50" />
             <p className="font-heading text-lg text-bark/72">No products yet</p>
@@ -89,7 +89,7 @@ export default function AdminProductsPage() {
             </p>
             <Link
               href="/admin/products/new"
-              className="mt-4 flex items-center gap-2 px-4 py-2 bg-terracotta text-cream rounded-sm text-xs font-accent uppercase tracking-wider hover:bg-terracotta/90 transition-colors"
+              className="mt-4 flex items-center gap-2 px-4 py-2 bg-terracotta text-cream rounded-full text-xs font-accent uppercase tracking-wider hover:bg-terracotta/90 transition-colors"
             >
               <Plus className="h-4 w-4" />
               Add Product
@@ -97,7 +97,7 @@ export default function AdminProductsPage() {
           </div>
         </div>
       ) : (
-        <div className="bg-cream rounded-sm border border-border/50 overflow-hidden">
+        <div className="bg-cream rounded-xl border border-border/50 overflow-hidden">
           <div className="p-4 border-b border-border/50">
             <span className="section-label text-bark/72">
               {products.length} Products
@@ -111,7 +111,7 @@ export default function AdminProductsPage() {
                 href={`/admin/products/${product.id}`}
                 className="flex items-center gap-4 p-4 hover:bg-parchment/30 transition-colors cursor-pointer group"
               >
-                <div className="relative w-12 h-14 bg-parchment rounded-sm overflow-hidden shrink-0">
+                <div className="relative w-12 h-14 bg-parchment rounded-xl overflow-hidden shrink-0">
                   {product.images[0] ? (
                     <Image
                       src={product.images[0].url}

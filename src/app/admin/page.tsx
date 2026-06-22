@@ -56,12 +56,12 @@ interface LowStockProduct {
 }
 
 const statusColors: Record<string, string> = {
-  PENDING: "text-amber-600",
-  CONFIRMED: "text-blue-600",
-  PROCESSING: "text-purple-600",
-  SHIPPED: "text-sky-600",
-  DELIVERED: "text-green-600",
-  CANCELLED: "text-red-600",
+  PENDING: "text-gold-deep",
+  CONFIRMED: "text-bark/72",
+  PROCESSING: "text-bark/72",
+  SHIPPED: "text-sage-dark",
+  DELIVERED: "text-sage-dark",
+  CANCELLED: "text-terracotta",
 };
 
 export default function AdminDashboard() {
@@ -146,7 +146,7 @@ export default function AdminDashboard() {
           return (
             <div
               key={stat.label}
-              className="bg-cream p-5 rounded-sm border border-border/50"
+              className="bg-cream p-5 rounded-xl border border-border/50"
             >
               <div className="flex items-center justify-between mb-3">
                 <span className="text-xs font-accent uppercase tracking-wider text-bark/72">
@@ -163,7 +163,7 @@ export default function AdminDashboard() {
       {/* Revenue Chart + Top Products */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
         {/* Revenue Chart - Last 7 Days */}
-        <div className="lg:col-span-2 bg-cream p-5 rounded-sm border border-border/50">
+        <div className="lg:col-span-2 bg-cream p-5 rounded-xl border border-border/50">
           <div className="flex items-center justify-between mb-1">
             <h2 className="font-heading text-lg text-bark">Revenue — Last 7 Days</h2>
             <BarChart3 className="h-4 w-4 text-bark/30" />
@@ -213,7 +213,7 @@ export default function AdminDashboard() {
         </div>
 
         {/* Top Selling Products */}
-        <div className="bg-cream p-5 rounded-sm border border-border/50">
+        <div className="bg-cream p-5 rounded-xl border border-border/50">
           <div className="flex items-center justify-between mb-1">
             <h2 className="font-heading text-lg text-bark">Top Products</h2>
             <TrendingUp className="h-4 w-4 text-bark/30" />
@@ -246,7 +246,7 @@ export default function AdminDashboard() {
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Recent orders */}
-        <div className="bg-cream p-5 rounded-sm border border-border/50">
+        <div className="bg-cream p-5 rounded-xl border border-border/50">
           <div className="flex items-center justify-between mb-1">
             <h2 className="font-heading text-lg text-bark">Recent Orders</h2>
             <Link
@@ -272,7 +272,7 @@ export default function AdminDashboard() {
               {recentOrders.map((order) => (
                 <div
                   key={order.id}
-                  className="flex items-center justify-between p-3 bg-parchment/20 rounded-sm"
+                  className="flex items-center justify-between p-3 bg-parchment/20 rounded-xl"
                 >
                   <div>
                     <p className="text-sm font-accent font-semibold text-bark">
@@ -303,12 +303,12 @@ export default function AdminDashboard() {
         </div>
 
         {/* Quick info + Low Stock Details */}
-        <div className="bg-cream p-5 rounded-sm border border-border/50">
+        <div className="bg-cream p-5 rounded-xl border border-border/50">
           <h2 className="font-heading text-lg text-bark mb-1">Quick Info</h2>
           <GoldRule variant="simple" width="w-12" className="mb-4" />
 
           <div className="space-y-3">
-            <div className="flex items-center gap-3 p-3 bg-sage/5 rounded-sm">
+            <div className="flex items-center gap-3 p-3 bg-sage/5 rounded-xl">
               <IndianRupee className="h-4 w-4 text-sage" />
               <div>
                 <p className="text-sm font-heading text-bark">Total Revenue</p>
@@ -319,7 +319,7 @@ export default function AdminDashboard() {
             </div>
 
             {(stats?.pendingReviews || 0) > 0 && (
-              <div className="flex items-center gap-3 p-3 bg-gold/5 rounded-sm">
+              <div className="flex items-center gap-3 p-3 bg-gold/5 rounded-xl">
                 <Star className="h-4 w-4 text-gold" />
                 <div>
                   <p className="text-sm font-heading text-bark">
@@ -333,7 +333,7 @@ export default function AdminDashboard() {
               </div>
             )}
 
-            <div className="flex items-center gap-3 p-3 bg-sage/5 rounded-sm">
+            <div className="flex items-center gap-3 p-3 bg-sage/5 rounded-xl">
               <ShoppingCart className="h-4 w-4 text-sage" />
               <div>
                 <p className="text-sm font-heading text-bark">
@@ -359,7 +359,7 @@ export default function AdminDashboard() {
                 {lowStockDetails.map((product) => (
                   <div
                     key={product.slug}
-                    className="flex items-center justify-between p-2 bg-terracotta/5 rounded-sm"
+                    className="flex items-center justify-between p-2 bg-terracotta/5 rounded-xl"
                   >
                     <Link
                       href={`/admin/products`}
@@ -371,8 +371,8 @@ export default function AdminDashboard() {
                       className={cn(
                         "text-xs font-accent font-semibold shrink-0",
                         product.stock === 0
-                          ? "text-red-600"
-                          : "text-amber-600"
+                          ? "text-terracotta"
+                          : "text-gold-deep"
                       )}
                     >
                       {product.stock === 0 ? "Out of stock" : `${product.stock} left`}
