@@ -61,7 +61,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-bark text-cream/80">
+    <footer className="bg-bark text-cream/80 pb-20 md:pb-0">
       {/* Newsletter strip */}
       <div className="border-b border-cream/10">
         <div className="container-brand section-rhythm-lg flex flex-col md:flex-row md:items-center justify-between gap-8">

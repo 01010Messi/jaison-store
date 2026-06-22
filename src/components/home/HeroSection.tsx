@@ -141,10 +141,10 @@ export default function HeroSection() {
               plant, ground and sifted. Mix at home. Use. Rinse.
             </p>
 
-            <div className="flex items-center gap-4 flex-shrink-0" style={{ paddingRight: "40px" }}>
+            <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4 flex-shrink-0" style={{ paddingRight: "40px" }}>
               <Link
                 href="/shop"
-                className="inline-flex items-center gap-2 font-accent uppercase transition-opacity duration-200 hover:opacity-85"
+                className="inline-flex items-center justify-center gap-2 font-accent uppercase transition-opacity duration-200 hover:opacity-85"
                 style={{
                   borderRadius: "9999px",
                   padding: "17px 34px",
@@ -152,13 +152,14 @@ export default function HeroSection() {
                   letterSpacing: "0.14em",
                   backgroundColor: "var(--color-terracotta)",
                   color: "var(--color-cream)",
+                  whiteSpace: "nowrap",
                 }}
               >
                 Shop the Catalogue&nbsp;→
               </Link>
               <Link
                 href="/why-powder"
-                className="inline-flex items-center font-accent uppercase transition-opacity duration-200 hover:opacity-85"
+                className="inline-flex items-center justify-center font-accent uppercase transition-opacity duration-200 hover:opacity-85"
                 style={{
                   borderRadius: "9999px",
                   padding: "17px 34px",
@@ -166,6 +167,7 @@ export default function HeroSection() {
                   letterSpacing: "0.14em",
                   backgroundColor: "var(--color-bark)",
                   color: "var(--color-cream)",
+                  whiteSpace: "nowrap",
                 }}
               >
                 Read Why Powder

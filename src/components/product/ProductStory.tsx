@@ -182,9 +182,14 @@ export default function ProductStory({ product }: ProductStoryProps) {
                       {block.heading}.
                     </h3>
                   )}
-                  <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4">
+                  <div className="flex md:grid md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4 overflow-x-auto md:overflow-visible scrollbar-hide snap-x snap-mandatory -mx-4 px-4 md:mx-0 md:px-0">
                     {block.steps.map((step, si) => (
-                      <StepCard key={si} number={si + 1} background="tint">
+                      <StepCard
+                        key={si}
+                        number={si + 1}
+                        background="tint"
+                        className="min-w-[75%] sm:min-w-[45%] md:min-w-0 flex-shrink-0 snap-start"
+                      >
                         {step}
                       </StepCard>
                     ))}
@@ -193,9 +198,14 @@ export default function ProductStory({ product }: ProductStoryProps) {
               ))
             ) : (
               // No section headings (combos / single-step paragraphs) — flat grid
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4">
+              <div className="flex md:grid md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4 overflow-x-auto md:overflow-visible scrollbar-hide snap-x snap-mandatory -mx-4 px-4 md:mx-0 md:px-0">
                 {blocks.flatMap((b) => b.steps).map((step, i) => (
-                  <StepCard key={i} number={i + 1} background="tint">
+                  <StepCard
+                    key={i}
+                    number={i + 1}
+                    background="tint"
+                    className="min-w-[75%] sm:min-w-[45%] md:min-w-0 flex-shrink-0 snap-start"
+                  >
                     {step}
                   </StepCard>
                 ))}
