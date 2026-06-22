@@ -85,7 +85,7 @@ export default function Footer() {
             </p>
           </div>
           {/* Right: form */}
-          <form onSubmit={handleNewsletterSubmit} className="flex items-center gap-3 w-full md:max-w-lg">
+          <form onSubmit={handleNewsletterSubmit} className="flex flex-col sm:flex-row sm:items-center gap-3 w-full md:max-w-lg">
             <input
               type="email"
               value={email}
@@ -98,7 +98,7 @@ export default function Footer() {
             <button
               type="submit"
               disabled={isLoading}
-              className="flex-shrink-0 flex items-center gap-2 px-8 py-4 rounded-full text-bark text-sm font-accent tracking-wider uppercase transition-opacity hover:opacity-90 disabled:opacity-50"
+              className="flex-shrink-0 flex items-center justify-center gap-2 px-8 py-4 rounded-full text-bark text-sm font-accent tracking-wider uppercase transition-opacity hover:opacity-90 disabled:opacity-50"
               style={{ backgroundColor: "var(--color-gold-light)" }}
             >
               {isLoading ? "..." : "Subscribe"} {!isLoading && "→"}

@@ -113,18 +113,22 @@ export default function ProductCard({ product }: ProductCardProps) {
     >
       <Link href={`/shop/${product.slug}`} className="block">
         <div className="relative w-full aspect-square overflow-hidden">
-          {badge && (
-            <span className="absolute top-3 left-3 z-10 px-2.5 py-0.5 text-[9px] font-accent tracking-widest uppercase bg-bark text-cream rounded-full">
-              {badge}
-            </span>
-          )}
-          {isBestseller && (
-            <span
-              className="absolute top-3 right-3 z-10 px-2.5 py-0.5 text-[9px] font-accent tracking-widest uppercase rounded-full"
-              style={{ backgroundColor: "var(--color-terracotta)", color: "var(--color-cream)" }}
-            >
-              Bestseller
-            </span>
+          {(badge || isBestseller) && (
+            <div className="absolute top-3 left-3 right-3 z-10 flex flex-wrap items-start gap-1.5">
+              {badge && (
+                <span className="px-2.5 py-0.5 text-[9px] font-accent tracking-widest uppercase bg-bark text-cream rounded-full flex-shrink-0">
+                  {badge}
+                </span>
+              )}
+              {isBestseller && (
+                <span
+                  className="px-2.5 py-0.5 text-[9px] font-accent tracking-widest uppercase rounded-full flex-shrink-0"
+                  style={{ backgroundColor: "var(--color-terracotta)", color: "var(--color-cream)" }}
+                >
+                  Bestseller
+                </span>
+              )}
+            </div>
           )}
           <Image
             src={product.images?.[0] ?? product.image}
