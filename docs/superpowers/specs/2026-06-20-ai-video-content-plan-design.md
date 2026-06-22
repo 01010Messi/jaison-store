@@ -54,20 +54,25 @@ Submit in batches of up to 8 (Max plan's parallel-generation limit). Accept the 
 
 ### 6.1 Testimonials (5) — `public/images/video/testimonial-{n}.mp4`
 
-**1. Lakshmi, 67, Jaipur — Ubtan — AVATAR (disclosure required)**
-> Natural portrait video of an elderly Indian woman in her late 60s, silver hair tied back, wearing a simple cream-colored cotton saree, sitting in soft natural window light in a warm-toned home interior. She speaks calmly and warmly to camera, gentle smile, natural hand gestures. Earthy terracotta and cream tones in the background. Documentary, authentic, no text overlays. Portrait orientation. [+ style bible]
+**1. Meher, 39, Udaipur — Ubtan — AVATAR (disclosure required)**
+> Natural portrait video of an Indian woman in her late 30s, dark hair worn loose or simply tied, wearing a warm cream cotton kurta, sitting in soft natural window light in a warm-toned home interior. She speaks calmly and warmly to camera, gentle smile, natural hand gestures. Earthy terracotta and cream tones in the background. Documentary, authentic, no text overlays. Portrait orientation. [+ style bible]
+> Spoken line: "I've used Jaison's ubtan powder every week for eight years. Same turmeric-sandalwood blend — never needed anything else."
 
-**2. Priya, 38, Bengaluru — Neem — AMBIENT**
+**2. Divya, 35, Coimbatore — Neem — AMBIENT**
 > Macro close-up of neem powder being gently sprinkled into a small terracotta bowl, soft natural light, slow motion, light dust catching the light, warm sage-green and earthy tones. Portrait orientation, seamless loop. [+ style bible]
+> On-page quote (text, not spoken): "Twelve years of serums never cleared my breakouts the way Jaison's neem powder did in six weeks."
 
-**3. Anika, 22, Pune — Ubtan Powder — AVATAR (disclosure required)**
-> Natural portrait video of a young Indian woman in her early 20s, simple styling, minimal jewelry, warm cream cotton top, sitting in a softly lit room with warm earthy decor. She speaks naturally and warmly to camera as if sharing a personal skincare story, occasional smile, natural gestures, soft window light. Documentary style, no text overlays, portrait orientation. [+ style bible]
+**3. Riya, 26, Nagpur — Ubtan Powder — AVATAR (disclosure required)**
+> Natural portrait video of a young Indian woman in her mid-20s, simple styling, minimal jewelry, warm cream cotton top, sitting in a softly lit room with warm earthy decor. She speaks naturally and warmly to camera as if sharing a personal skincare story, occasional smile, natural gestures, soft window light. Documentary style, no text overlays, portrait orientation. [+ style bible]
+> Spoken line: "My grandmother mixed ubtan from Jaison the same way before my mother's wedding. One sniff of it and I'm back in her kitchen."
 
-**4. Meera, 51, Hyderabad — Amla — AMBIENT**
+**4. Geeta, 47, Bhopal — Amla — AMBIENT**
 > Macro close-up of dried amla (Indian gooseberry) powder being poured from a wooden scoop into a clay bowl, soft directional natural light, slow motion, warm gold and terracotta tones, gentle floating dust particles. Portrait orientation, seamless loop. [+ style bible]
+> On-page quote (text, not spoken): "Fifteen years of bottled anti-hairfall oils, then six weeks of Jaison's amla powder — that's when my hairfall actually slowed down."
 
-**5. Sunita, 74, Indore — Mehendi — AVATAR (disclosure required)**
-> Natural portrait video of an elderly Indian woman in her early 70s, gray hair in a simple bun, wearing a warm-toned cotton saree, sitting in a sunlit traditional home interior with terracotta walls. She speaks slowly and warmly to camera, gentle expressive hands, natural smile. Documentary realism, no text overlays, portrait orientation. [+ style bible]
+**5. Pooja, 42, Patna — Mehendi — AVATAR (disclosure required)**
+> Natural portrait video of an Indian woman in her early 40s, dark hair with a few visible strands of natural grey at the roots, wearing a warm-toned cotton kurta, sitting in a sunlit home interior with terracotta walls. She speaks warmly to camera, gentle expressive hands, natural smile. Documentary realism, no text overlays, portrait orientation. [+ style bible]
+> Spoken line: "No PPD, no ammonia — just Jaison's mehendi leaves. My grey covers for six weeks before I need to redo it."
 
 ### 6.2 Hero (1) — `public/images/video/hero.mp4`
 
