@@ -24,12 +24,12 @@
 
 ## Website
 
-- Home: https://jaisonskincare.com
-- Shop: https://jaisonskincare.com/shop
-- Blog (Ayurvedic guides): https://jaisonskincare.com/blog
-- About: https://jaisonskincare.com/about
-- FAQ: https://jaisonskincare.com/faq
-- Why Jaison: https://jaisonskincare.com/why-jaison
+- [Home](https://jaisonskincare.com): Storefront homepage
+- [Shop](https://jaisonskincare.com/shop): Full product catalogue
+- [Blog](https://jaisonskincare.com/blog): Ayurvedic guides and articles
+- [About](https://jaisonskincare.com/about): Brand story
+- [FAQ](https://jaisonskincare.com/faq): Frequently asked questions
+- [Why Jaison](https://jaisonskincare.com/why-jaison): Why choose Jaison Herbals
 
 ## Contact
 
