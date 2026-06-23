@@ -67,7 +67,7 @@ export default function StepCard({
       >
         <span
           aria-hidden="true"
-          className="font-heading font-light block leading-none text-gold"
+          className="font-heading font-light block leading-none text-gold-deep"
           style={{
             fontSize:
               numberSize === "lg"

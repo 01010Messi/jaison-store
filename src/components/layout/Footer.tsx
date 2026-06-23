@@ -123,7 +123,7 @@ export default function Footer() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-10 mt-10">
           {Object.entries(footerLinks).map(([category, links]) => (
             <div key={category}>
-              <h3 className="font-accent text-[13px] uppercase tracking-[0.15em] text-gold mb-5">
+              <h3 className="font-accent text-[13px] uppercase tracking-[0.15em] text-gold-light mb-5">
                 {category}
               </h3>
               <ul className="space-y-3.5">
@@ -143,7 +143,7 @@ export default function Footer() {
 
           {/* Connect column */}
           <div>
-            <h3 className="font-accent text-[13px] uppercase tracking-[0.15em] text-gold mb-5">
+            <h3 className="font-accent text-[13px] uppercase tracking-[0.15em] text-gold-light mb-5">
               Connect
             </h3>
             <ul className="space-y-3.5">

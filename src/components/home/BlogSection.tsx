@@ -106,7 +106,7 @@ export default function BlogSection() {
                     </h3>
                     <p
                       className="mt-1.5 font-accent text-[10px] tracking-widest"
-                      style={{ color: "rgba(26,60,52,0.35)" }}
+                      style={{ color: "rgba(26,60,52,0.72)" }}
                     >
                       {post.readTime} min read
                     </p>
