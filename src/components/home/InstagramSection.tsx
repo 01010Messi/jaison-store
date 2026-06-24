@@ -4,7 +4,7 @@ import InstagramReels from "./InstagramReels";
 
 export default function InstagramSection() {
   return (
-    <section className="section-rhythm-lg overflow-hidden">
+    <section className="section-rhythm-lg">
       {/* Header */}
       <div className="container-brand mb-10 md:mb-14">
         <p className="font-accent text-[11px] tracking-[0.22em] uppercase text-bark/72 mb-5">
@@ -29,8 +29,8 @@ export default function InstagramSection() {
         </p>
       </div>
 
-      {/* Reel cards */}
-      <div className="px-4 md:px-8 lg:px-14">
+      {/* Reel cards — bleeds to viewport edge on mobile so horizontal scroll works */}
+      <div className="px-4 md:px-8 lg:px-14 overflow-x-auto md:overflow-visible -mx-4 px-4 md:mx-0">
         <InstagramReels />
       </div>
 
