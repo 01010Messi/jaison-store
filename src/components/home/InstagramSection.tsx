@@ -7,9 +7,6 @@ export default function InstagramSection() {
     <section className="pt-16 md:pt-24 pb-8 md:pb-10">
       {/* Header */}
       <div className="container-brand mb-10 md:mb-14">
-        <p className="font-accent text-[11px] tracking-[0.22em] uppercase text-bark/72 mb-5">
-          — Real collabs · Real products
-        </p>
         <h2
           className="font-heading font-light leading-[1.04]"
           style={{ fontSize: "clamp(2.5rem, 6vw, 5rem)", letterSpacing: "-0.02em", color: "var(--color-bark)" }}
