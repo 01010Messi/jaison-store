@@ -9,6 +9,7 @@ import {
   LayoutDashboard,
   Package,
   ShoppingCart,
+  Truck,
   Star,
   Tag,
   MessageSquare,
@@ -23,6 +24,7 @@ import { cn } from "@/lib/utils";
 const adminLinks = [
   { href: "/admin", icon: LayoutDashboard, label: "Dashboard" },
   { href: "/admin/orders", icon: ShoppingCart, label: "Orders" },
+  { href: "/admin/shipping", icon: Truck, label: "Shipping" },
   { href: "/admin/products", icon: Package, label: "Products" },
   { href: "/admin/categories", icon: Layers, label: "Categories" },
   { href: "/admin/reviews", icon: Star, label: "Reviews" },
