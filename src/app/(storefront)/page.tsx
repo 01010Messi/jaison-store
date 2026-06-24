@@ -5,6 +5,7 @@ import HowToUseGuide from "@/components/home/HowToUseGuide";
 import BrandTimeline from "@/components/home/BrandTimeline";
 import TestimonialsSection from "@/components/home/TestimonialsSection";
 import BlogSection from "@/components/home/BlogSection";
+import InstagramSection from "@/components/home/InstagramSection";
 
 export const metadata: Metadata = {
   title: {
@@ -53,7 +54,7 @@ export default function HomePage() {
       <HowToUseGuide />
       <BrandTimeline />
       <TestimonialsSection />
-      {/* InstagramSection deferred — pending real photo/video assets */}
+      <InstagramSection />
       <BlogSection />
     </>
   );
