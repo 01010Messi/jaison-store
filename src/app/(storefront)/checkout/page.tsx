@@ -467,6 +467,7 @@ export default function CheckoutPage() {
                       <Input
                         label="Email Address"
                         type="email"
+                        autoComplete="email"
                         value={address.email}
                         onChange={(e) =>
                           setAddress({ ...address, email: e.target.value })
@@ -485,6 +486,7 @@ export default function CheckoutPage() {
 
                     <Input
                       label="Full Name"
+                      autoComplete="name"
                       value={address.fullName}
                       onChange={(e) =>
                         setAddress({ ...address, fullName: e.target.value })
@@ -494,6 +496,8 @@ export default function CheckoutPage() {
                     />
                     <Input
                       label="Mobile Number"
+                      type="tel"
+                      autoComplete="tel-national"
                       value={address.phone}
                       onChange={(e) =>
                         setAddress({
@@ -508,6 +512,7 @@ export default function CheckoutPage() {
                     <div className="md:col-span-2">
                       <Input
                         label="Address Line 1"
+                        autoComplete="address-line1"
                         value={address.addressLine1}
                         onChange={(e) =>
                           setAddress({ ...address, addressLine1: e.target.value })
@@ -520,6 +525,7 @@ export default function CheckoutPage() {
                     <div className="md:col-span-2">
                       <Input
                         label="Address Line 2"
+                        autoComplete="address-line2"
                         value={address.addressLine2}
                         onChange={(e) =>
                           setAddress({ ...address, addressLine2: e.target.value })
@@ -529,6 +535,7 @@ export default function CheckoutPage() {
                     </div>
                     <Input
                       label="City"
+                      autoComplete="address-level2"
                       value={address.city}
                       onChange={(e) =>
                         setAddress({ ...address, city: e.target.value })
@@ -541,6 +548,7 @@ export default function CheckoutPage() {
                         State <span className="text-terracotta">*</span>
                       </label>
                       <select
+                        autoComplete="address-level1"
                         value={address.state}
                         onChange={(e) =>
                           setAddress({ ...address, state: e.target.value })
@@ -567,6 +575,7 @@ export default function CheckoutPage() {
                     </div>
                     <Input
                       label="PIN Code"
+                      autoComplete="postal-code"
                       value={address.pincode}
                       onChange={(e) =>
                         setAddress({
