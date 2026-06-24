@@ -48,8 +48,8 @@ export default function InstagramReelCard({
 
   return (
     <div className="flex-shrink-0 w-[260px] md:w-full rounded-2xl overflow-hidden flex flex-col">
-      {/* Instagram embed — header clipped via negative margin-top */}
-      <div className="relative overflow-hidden flex-shrink-0" style={{ height: '300px' }}>
+      {/* Instagram embed — 9:16 aspect ratio, header clipped via negative margin-top */}
+      <div className="relative overflow-hidden flex-shrink-0" style={{ aspectRatio: '9/16' }}>
         <iframe
           src={`https://www.instagram.com/reel/${reel.shortcode}/embed/`}
           title={`${reel.handle} collab reel`}
@@ -57,7 +57,7 @@ export default function InstagramReelCard({
           scrolling="no"
           style={{
             width: '100%',
-            height: '500px',
+            height: 'calc(100% + 56px)',
             border: 'none',
             marginTop: '-56px',
             display: 'block',
@@ -80,9 +80,16 @@ export default function InstagramReelCard({
 
       {/* Product footer */}
       <div
-        className="px-4 py-3 flex items-center gap-3"
+        className="px-4 pt-2.5 pb-3 flex flex-col gap-2.5"
         style={{ backgroundColor: 'var(--color-bark)' }}
       >
+        <p
+          className="font-accent text-[9px] uppercase tracking-[0.22em]"
+          style={{ color: 'rgba(255,248,225,0.50)' }}
+        >
+          — Buy the product
+        </p>
+        <div className="flex items-center gap-3">
         {/* Thumbnail */}
         {product.image && (
           // eslint-disable-next-line @next/next/no-img-element
@@ -134,6 +141,7 @@ export default function InstagramReelCard({
         >
           {added ? 'Added ✓' : '+ Potli'}
         </button>
+        </div>{/* end flex row */}
       </div>
     </div>
   );
