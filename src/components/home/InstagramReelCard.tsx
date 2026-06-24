@@ -79,7 +79,7 @@ export default function InstagramReelCard({
         className="px-4 pt-3 pb-4 flex flex-col gap-3 relative z-10"
         style={{
           backgroundColor: 'var(--color-bark)',
-          marginTop: '-105px',
+          marginTop: '-160px',
         }}
       >
         <p
