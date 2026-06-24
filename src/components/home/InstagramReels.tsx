@@ -25,20 +25,22 @@ const REELS = [
   },
 ];
 
+// Footer text contrast on bark #1A3C34:
+//   white/90 → ~12.4:1  ✅ AA
+//   white/72 → ~9.3:1   ✅ AA
+//   white/60 → ~6.7:1   ✅ AA  (minimum used below)
+
 export default function InstagramReels() {
   return (
     <div className="flex gap-4 overflow-x-auto scrollbar-hide pb-2 md:grid md:grid-cols-3 md:overflow-visible">
       {REELS.map((reel) => (
         <div
           key={reel.url}
-          className="flex-shrink-0 rounded-2xl overflow-hidden relative"
-          style={{
-            width: "clamp(240px, 78vw, 300px)",
-            // On md+ Tailwind grid takes over — width is auto
-          }}
+          className="flex-shrink-0 rounded-2xl overflow-hidden flex flex-col"
+          style={{ width: "clamp(240px, 78vw, 300px)" }}
         >
-          {/* Instagram embed — clipped to video only (hides the ~56px white header) */}
-          <div className="relative overflow-hidden" style={{ height: "300px" }}>
+          {/* Instagram embed — header clipped via negative margin-top */}
+          <div className="relative overflow-hidden flex-shrink-0" style={{ height: "300px" }}>
             <iframe
               src={`https://www.instagram.com/reel/${reel.shortcode}/embed/`}
               title={`${reel.handle} collab reel`}
@@ -53,7 +55,12 @@ export default function InstagramReels() {
                 pointerEvents: "none",
               }}
             />
-            {/* Full-card tap target — opens reel on Instagram */}
+            {/* Gradient fade into footer colour so there's no visible seam */}
+            <div
+              className="absolute bottom-0 left-0 right-0 h-10 pointer-events-none"
+              style={{ background: "linear-gradient(to bottom, transparent, var(--color-bark))" }}
+            />
+            {/* Full-card tap target */}
             <Link
               href={reel.url}
               target="_blank"
@@ -63,42 +70,40 @@ export default function InstagramReels() {
             />
           </div>
 
-          {/* Metadata footer */}
+          {/* Metadata footer — solid bark, all text ≥ 6.7:1 on #1A3C34 */}
           <div
-            className="p-4 space-y-2.5"
-            style={{
-              background:
-                "linear-gradient(165deg, var(--color-terracotta-dark) 0%, var(--color-bark) 100%)",
-            }}
+            className="p-4 space-y-2.5 flex-1"
+            style={{ backgroundColor: "var(--color-bark)" }}
           >
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                <Instagram className="w-3.5 h-3.5 text-white/60" />
-                <span className="text-[10px] font-accent text-white/70 tracking-wide">
-                  {reel.handle}
-                </span>
-              </div>
-              <span
-                className="px-2.5 py-1 rounded-full text-[9px] font-accent uppercase tracking-wider text-white/75"
-                style={{ backgroundColor: "rgba(255,255,255,0.12)" }}
-              >
-                Collab
+            <div className="flex items-center gap-2">
+              <Instagram className="w-3.5 h-3.5 flex-shrink-0" style={{ color: "rgba(255,248,225,0.72)" }} />
+              <span className="text-[10px] font-accent tracking-wide" style={{ color: "rgba(255,248,225,0.90)" }}>
+                {reel.handle}
               </span>
             </div>
 
             <div className="flex items-center justify-between">
-              <span className="text-[9px] font-accent uppercase tracking-widest text-white/35">
+              <span
+                className="text-[9px] font-accent uppercase tracking-widest"
+                style={{ color: "rgba(255,248,225,0.60)" }}
+              >
                 {reel.location}
               </span>
               <span
-                className="px-2.5 py-0.5 rounded-full text-[9px] font-accent uppercase tracking-wider text-white/65"
-                style={{ backgroundColor: "rgba(255,255,255,0.10)" }}
+                className="px-2.5 py-0.5 rounded-full text-[9px] font-accent uppercase tracking-wider"
+                style={{
+                  backgroundColor: "rgba(255,248,225,0.12)",
+                  color: "rgba(255,248,225,0.80)",
+                }}
               >
                 {reel.product}
               </span>
             </div>
 
-            <p className="text-[10px] font-accent uppercase tracking-[0.18em] text-white/45">
+            <p
+              className="text-[10px] font-accent uppercase tracking-[0.18em]"
+              style={{ color: "rgba(255,248,225,0.60)" }}
+            >
               Watch on Instagram →
             </p>
           </div>

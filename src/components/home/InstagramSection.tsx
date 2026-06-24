@@ -29,8 +29,8 @@ export default function InstagramSection() {
         </p>
       </div>
 
-      {/* Reel cards — bleeds to viewport edge on mobile so horizontal scroll works */}
-      <div className="px-4 md:px-8 lg:px-14 overflow-x-auto md:overflow-visible -mx-4 px-4 md:mx-0">
+      {/* Reel cards — bleeds to viewport edge on mobile for horizontal scroll */}
+      <div className="overflow-x-auto md:overflow-visible -mx-4 px-4 md:mx-0 md:px-8 lg:px-14">
         <InstagramReels />
       </div>
 
