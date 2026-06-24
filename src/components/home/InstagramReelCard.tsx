@@ -48,7 +48,7 @@ export default function InstagramReelCard({
 
   return (
     <div className="flex-shrink-0 w-[260px] md:w-full rounded-2xl overflow-hidden flex flex-col">
-      {/* Instagram embed — 9:16 aspect ratio, header clipped via negative margin-top */}
+      {/* Instagram embed — 9:16 container, header clipped at top */}
       <div className="relative overflow-hidden flex-shrink-0" style={{ aspectRatio: '9/16' }}>
         <iframe
           src={`https://www.instagram.com/reel/${reel.shortcode}/embed/`}
@@ -64,11 +64,6 @@ export default function InstagramReelCard({
             pointerEvents: 'none',
           }}
         />
-        {/* Fade into footer colour */}
-        <div
-          className="absolute bottom-0 left-0 right-0 h-10 pointer-events-none"
-          style={{ background: 'linear-gradient(to bottom, transparent, var(--color-bark))' }}
-        />
         <Link
           href={reel.url}
           target="_blank"
@@ -78,10 +73,14 @@ export default function InstagramReelCard({
         />
       </div>
 
-      {/* Product footer */}
+      {/* Product footer — pulled up with negative margin to cover Instagram's
+          engagement bar (View more / likes / comments ~150px) */}
       <div
-        className="px-4 pt-2.5 pb-3 flex flex-col gap-2.5"
-        style={{ backgroundColor: 'var(--color-bark)' }}
+        className="px-4 pt-3 pb-4 flex flex-col gap-3 relative z-10"
+        style={{
+          backgroundColor: 'var(--color-bark)',
+          marginTop: '-150px',
+        }}
       >
         <p
           className="font-accent text-[9px] uppercase tracking-[0.22em]"
@@ -89,59 +88,67 @@ export default function InstagramReelCard({
         >
           — Buy the product
         </p>
+
         <div className="flex items-center gap-3">
-        {/* Thumbnail */}
-        {product.image && (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img
-            src={product.image}
-            alt={product.name}
-            width={48}
-            height={48}
-            className="w-12 h-12 rounded-xl object-cover flex-shrink-0"
-            style={{ backgroundColor: 'var(--color-parchment)' }}
-          />
-        )}
+          {/* Thumbnail — larger so it's clearly visible */}
+          {product.image && (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              src={product.image}
+              alt={product.name}
+              width={72}
+              height={72}
+              className="w-18 h-18 rounded-xl object-cover flex-shrink-0"
+              style={{
+                width: '72px',
+                height: '72px',
+                backgroundColor: 'var(--color-parchment)',
+              }}
+            />
+          )}
 
-        {/* Name + price + handle */}
-        <div className="flex-1 min-w-0">
-          <p
-            className="text-[11px] font-accent uppercase tracking-wider truncate"
-            style={{ color: 'rgba(255,248,225,0.90)' }}
-          >
-            {product.name}
-          </p>
-          <p
-            className="font-heading text-sm mt-0.5"
-            style={{ color: 'rgba(255,248,225,0.72)', fontWeight: 300 }}
-          >
-            ₹{product.price}
-          </p>
-          <div className="flex items-center gap-1 mt-1">
-            <Instagram className="w-3 h-3 flex-shrink-0" style={{ color: 'rgba(255,248,225,0.45)' }} />
-            <span
-              className="text-[9px] font-accent tracking-wide truncate"
-              style={{ color: 'rgba(255,248,225,0.45)' }}
+          {/* Name + price + handle */}
+          <div className="flex-1 min-w-0">
+            <p
+              className="text-[11px] font-accent uppercase tracking-wider truncate"
+              style={{ color: 'rgba(255,248,225,0.90)' }}
             >
-              {reel.handle}
-            </span>
+              {product.name}
+            </p>
+            <p
+              className="font-heading text-base mt-0.5"
+              style={{ color: 'rgba(255,248,225,0.80)', fontWeight: 300 }}
+            >
+              ₹{product.price}
+            </p>
+            <div className="flex items-center gap-1 mt-1">
+              <Instagram
+                className="w-3 h-3 flex-shrink-0"
+                style={{ color: 'rgba(255,248,225,0.45)' }}
+              />
+              <span
+                className="text-[9px] font-accent tracking-wide truncate"
+                style={{ color: 'rgba(255,248,225,0.45)' }}
+              >
+                {reel.handle}
+              </span>
+            </div>
           </div>
-        </div>
 
-        {/* Add to Potli */}
-        <button
-          onClick={handleAdd}
-          className="flex-shrink-0 rounded-full font-accent text-[9px] uppercase tracking-wider transition-all duration-200"
-          style={{
-            padding: '7px 12px',
-            backgroundColor: added ? 'rgba(255,248,225,0.22)' : 'rgba(255,248,225,0.10)',
-            color: 'rgba(255,248,225,0.90)',
-            border: '1px solid rgba(255,248,225,0.22)',
-          }}
-        >
-          {added ? 'Added ✓' : '+ Potli'}
-        </button>
-        </div>{/* end flex row */}
+          {/* Add to Potli */}
+          <button
+            onClick={handleAdd}
+            className="flex-shrink-0 rounded-full font-accent text-[9px] uppercase tracking-wider transition-all duration-200"
+            style={{
+              padding: '8px 14px',
+              backgroundColor: added ? 'rgba(255,248,225,0.22)' : 'rgba(255,248,225,0.10)',
+              color: 'rgba(255,248,225,0.90)',
+              border: '1px solid rgba(255,248,225,0.22)',
+            }}
+          >
+            {added ? 'Added ✓' : '+ Potli'}
+          </button>
+        </div>
       </div>
     </div>
   );
