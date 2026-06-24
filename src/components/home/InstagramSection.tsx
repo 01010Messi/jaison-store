@@ -4,7 +4,7 @@ import InstagramReels from "./InstagramReels";
 
 export default function InstagramSection() {
   return (
-    <section className="section-rhythm-lg">
+    <section className="pt-16 md:pt-24 pb-8 md:pb-10">
       {/* Header */}
       <div className="container-brand mb-10 md:mb-14">
         <p className="font-accent text-[11px] tracking-[0.22em] uppercase text-bark/72 mb-5">
