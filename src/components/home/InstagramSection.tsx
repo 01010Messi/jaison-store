@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Instagram } from "lucide-react";
+import InstagramReels from "./InstagramReels";
 
 // `textOn` picks the handle/play-icon color for contrast against `bg` —
 // light tile backgrounds (gold-light, parchment, parchment-dark) need dark
@@ -233,6 +234,20 @@ export default function InstagramSection() {
           );
         })}
       </div>
+
+      {/* Collab Reels */}
+      <div className="container-brand mt-14 mb-4">
+        <p className="font-accent text-[11px] tracking-[0.22em] uppercase text-bark/72 mb-3">
+          — Collab Reels
+        </p>
+        <h3
+          className="font-heading font-light leading-tight"
+          style={{ fontSize: "clamp(1.6rem, 3.5vw, 2.8rem)", color: "var(--color-bark)" }}
+        >
+          See it in action
+        </h3>
+      </div>
+      <InstagramReels />
 
       {/* CTA */}
       <div className="container-brand mt-10 flex justify-center">
