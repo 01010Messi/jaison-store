@@ -344,9 +344,15 @@
   }
 }
 
-.gw1 { animation: letterGlow     12s 0.0s ease-in-out infinite; }
-.gw2 { animation: letterGlow     12s 1.0s ease-in-out infinite; }
-.gw3 { animation: letterGlow     12s 2.0s ease-in-out infinite; }
-.gw4 { animation: letterGlow     12s 3.0s ease-in-out infinite; }
-.gw5 { animation: letterGlow     12s 4.0s ease-in-out infinite; }
-.gw6 { animation: letterGlowWarm 12s 5.0s ease-in-out infinite; }
+/* text-shadow animations are CPU-only (not GPU-composited).
+   On mobile they account for all 6 "non-composited animated elements"
+   in PSI and dominate the Rendering + Style & Layout main-thread time.
+   Desktop (≥769px) can handle them; mobile gets none. */
+@media (min-width: 769px) {
+  .gw1 { animation: letterGlow     12s 0.0s ease-in-out infinite; }
+  .gw2 { animation: letterGlow     12s 1.0s ease-in-out infinite; }
+  .gw3 { animation: letterGlow     12s 2.0s ease-in-out infinite; }
+  .gw4 { animation: letterGlow     12s 3.0s ease-in-out infinite; }
+  .gw5 { animation: letterGlow     12s 4.0s ease-in-out infinite; }
+  .gw6 { animation: letterGlowWarm 12s 5.0s ease-in-out infinite; }
+}

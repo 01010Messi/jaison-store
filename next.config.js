@@ -1,5 +1,13 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  experimental: {
+    // Inline above-the-fold CSS into the HTML response (via critters).
+    // Eliminates the 600ms render-blocking CSS round-trips on slow 4G.
+    optimizeCss: true,
+    // Tree-shake large icon/animation packages to only include used exports.
+    // Reduces the 219 KiB of unused JS flagged by PSI.
+    optimizePackageImports: ["lucide-react", "framer-motion"],
+  },
   images: {
     // Only the widths your layouts actually need
     deviceSizes: [640, 828, 1080, 1280, 1920],
