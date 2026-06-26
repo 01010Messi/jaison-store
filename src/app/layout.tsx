@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Cormorant_Garamond, DM_Sans, Inter } from "next/font/google";
 import { Toaster } from "react-hot-toast";
 import SessionProvider from "@/components/providers/SessionProvider";
-import MotionProvider from "@/components/providers/MotionProvider";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
 import MetaPixel from "@/components/MetaPixel";
 import {
@@ -131,7 +130,7 @@ export default function RootLayout({
         <GoogleAnalytics />
         <MetaPixel />
         <SessionProvider>
-          <MotionProvider>{children}</MotionProvider>
+          {children}
         </SessionProvider>
         <Toaster
           position="bottom-right"
