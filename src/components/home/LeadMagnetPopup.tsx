@@ -2,7 +2,6 @@
 
 import { useState, useEffect, useCallback } from "react";
 import { usePathname } from "next/navigation";
-import { AnimatePresence, motion } from "framer-motion";
 import { X } from "lucide-react";
 import Button from "@/components/ui/Button";
 import Input from "@/components/ui/Input";
@@ -88,33 +87,28 @@ export default function LeadMagnetPopup() {
   }
 
   return (
-    <AnimatePresence>
-      {open && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-          {/* Backdrop */}
-          <motion.div
-            className="absolute inset-0 bg-bark/50 backdrop-blur-sm"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
-            onClick={dismiss}
-            aria-hidden="true"
-          />
+    // Popup stays in DOM; CSS transitions handle open/close so framer-motion
+    // is not needed and stays out of the critical JS bundle.
+    <div
+      className={`fixed inset-0 z-50 flex items-center justify-center p-4 ${open ? "pointer-events-auto" : "pointer-events-none"}`}
+      aria-hidden={!open}
+    >
+      {/* Backdrop */}
+      <div
+        className={`absolute inset-0 bg-bark/50 backdrop-blur-sm transition-opacity duration-200 ${open ? "opacity-100" : "opacity-0"}`}
+        onClick={dismiss}
+        aria-hidden="true"
+      />
 
-          {/* Panel */}
-          <motion.div
-            ref={panelRef}
-            role="dialog"
-            aria-modal="true"
-            aria-labelledby="lead-popup-title"
-            tabIndex={-1}
-            className="relative w-full max-w-md bg-bark rounded-xl shadow-warm-xl overflow-hidden"
-            initial={{ opacity: 0, scale: 0.95, y: 10 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.95, y: 10 }}
-            transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
-          >
+      {/* Panel */}
+      <div
+        ref={panelRef}
+        role="dialog"
+        aria-modal={open ? "true" : undefined}
+        aria-labelledby="lead-popup-title"
+        tabIndex={-1}
+        className={`relative w-full max-w-md bg-bark rounded-xl shadow-warm-xl overflow-hidden transition-all duration-[220ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${open ? "opacity-100 scale-100 translate-y-0" : "opacity-0 scale-95 translate-y-2.5"}`}
+      >
             {/* Close */}
             <button
               onClick={dismiss}
@@ -207,9 +201,7 @@ export default function LeadMagnetPopup() {
                 </div>
               )}
             </div>
-          </motion.div>
         </div>
-      )}
-    </AnimatePresence>
+    </div>
   );
 }

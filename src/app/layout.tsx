@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Cormorant_Garamond, DM_Sans, Inter } from "next/font/google";
 import { Toaster } from "react-hot-toast";
 import SessionProvider from "@/components/providers/SessionProvider";
-import MotionProvider from "@/components/providers/MotionProvider";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
 import MetaPixel from "@/components/MetaPixel";
 import {
@@ -17,21 +16,21 @@ const cormorant = Cormorant_Garamond({
   weight: ["300", "400", "500"],
   style: ["normal", "italic"],
   variable: "--font-heading",
-  display: "swap",
+  display: "optional",
 });
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
   weight: ["400", "500", "600"],
   variable: "--font-body",
-  display: "swap",
+  display: "optional",
 });
 
 const inter = Inter({
   subsets: ["latin"],
   weight: ["400", "500", "600"],
   variable: "--font-accent",
-  display: "swap",
+  display: "optional",
 });
 
 export const metadata: Metadata = {
@@ -117,6 +116,12 @@ export default function RootLayout({
       className={`${cormorant.variable} ${dmSans.variable} ${inter.variable}`}
     >
       <head>
+        {/* Hero poster — preloaded in <head> so the browser scanner discovers it
+            immediately, before any render-blocking CSS or JS runs */}
+        <link rel="preload" as="image" href="/images/hero-poster.webp" fetchPriority="high" />
+        {/* Early DNS + connection for analytics (loads afterInteractive but pre-warming helps) */}
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
+        <link rel="dns-prefetch" href="https://www.google-analytics.com" />
         <OrganizationJsonLd />
         <WebsiteJsonLd />
         <LocalBusinessJsonLd />
@@ -125,7 +130,7 @@ export default function RootLayout({
         <GoogleAnalytics />
         <MetaPixel />
         <SessionProvider>
-          <MotionProvider>{children}</MotionProvider>
+          {children}
         </SessionProvider>
         <Toaster
           position="bottom-right"

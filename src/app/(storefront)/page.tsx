@@ -44,8 +44,6 @@ export const metadata: Metadata = {
 export default function HomePage() {
   return (
     <>
-      {/* LCP preload hint — only on homepage where the hero video lives */}
-      <link rel="preload" as="image" href="/images/hero-poster.webp" fetchPriority="high" />
       <h1 className="sr-only">
         Jaison Herbals — Natural Ayurvedic Herbal Powders for Skin &amp; Hair
       </h1>
