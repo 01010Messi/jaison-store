@@ -1,7 +1,4 @@
-"use client";
-
 import Link from "next/link";
-import { useEffect, useRef } from "react";
 
 const stats = [
   { num: "1970", label: "Year we started grinding" },
@@ -10,28 +7,6 @@ const stats = [
 ];
 
 export default function HeroSection() {
-  const headlineRef = useRef<HTMLHeadingElement>(null);
-  const videoRef = useRef<HTMLVideoElement>(null);
-
-  useEffect(() => {
-    const el = headlineRef.current;
-    if (!el) return;
-    el.style.opacity = "0";
-    el.style.transform = "translateY(14px)";
-    const t = setTimeout(() => {
-      el.style.transition = "opacity 1.1s ease, transform 1.1s ease";
-      el.style.opacity = "1";
-      el.style.transform = "translateY(0)";
-    }, 80);
-    return () => clearTimeout(t);
-  }, []);
-
-  useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.muted = true;
-    }
-  }, []);
-
   return (
     <section
         className="relative flex flex-col overflow-hidden min-h-screen"
@@ -40,7 +15,6 @@ export default function HeroSection() {
         {/* Background video */}
         <div className="absolute inset-0">
           <video
-            ref={videoRef}
             autoPlay
             loop
             playsInline
@@ -105,8 +79,7 @@ export default function HeroSection() {
 
           {/* Headline — letter glow sweeps word by word */}
           <h2
-            ref={headlineRef}
-            className="font-heading font-light"
+            className="font-heading font-light hero-headline"
             style={{
               fontSize: "clamp(2.475rem, 7.425vw, 9.075rem)",
               lineHeight: 0.96,

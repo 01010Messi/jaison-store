@@ -117,6 +117,12 @@ export default function RootLayout({
       className={`${cormorant.variable} ${dmSans.variable} ${inter.variable}`}
     >
       <head>
+        {/* Hero poster — preloaded in <head> so the browser scanner discovers it
+            immediately, before any render-blocking CSS or JS runs */}
+        <link rel="preload" as="image" href="/images/hero-poster.webp" fetchPriority="high" />
+        {/* Early DNS + connection for analytics (loads afterInteractive but pre-warming helps) */}
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
+        <link rel="dns-prefetch" href="https://www.google-analytics.com" />
         <OrganizationJsonLd />
         <WebsiteJsonLd />
         <LocalBusinessJsonLd />
