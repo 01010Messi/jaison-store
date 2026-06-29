@@ -14,6 +14,22 @@ const nextConfig = {
     imageSizes: [64, 128, 256, 384],
     formats: ["image/webp"],
   },
+  async redirects() {
+    return [
+      // Old Shopify product URLs → new Next.js /shop/ paths
+      { source: "/products/nagarmotha-powder", destination: "/shop/nagarmotha-powder", permanent: true },
+      { source: "/products/reetha-powder-1",   destination: "/shop/reetha-powder",     permanent: true },
+      { source: "/products/ubtan-powder",       destination: "/shop/ubtan-powder",       permanent: true },
+      { source: "/products/orange-peel-powder", destination: "/shop/orange-peel-powder", permanent: true },
+      // Catch-all for any remaining old /products/* slugs
+      { source: "/products/:slug",              destination: "/shop/:slug",              permanent: true },
+      // Old Shopify blog and page routes
+      { source: "/blogs/news",                  destination: "/blog",                    permanent: true },
+      { source: "/blogs/:path*",                destination: "/blog",                    permanent: true },
+      { source: "/pages/contact",               destination: "/contact",                 permanent: true },
+      { source: "/pages/:slug",                 destination: "/:slug",                   permanent: true },
+    ];
+  },
   async headers() {
     return [
       {
