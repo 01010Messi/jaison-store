@@ -107,6 +107,20 @@ Owner reviewed the live HTML-text version against the first real render and pivo
 
 Prompt pack v1 (above) is superseded for typography-less images; v2 prompts (baked text) are delivered in-session, slide by slide, pending owner approval of slide 1's art direction.
 
+## Revision 3 (July 8, evening) — all banners generated via Higgsfield MCP; slide 4 rebuilt from real photo
+
+All 8 production assets were generated in-session through the Higgsfield MCP (**Nano Banana Pro, 2K, 2 credits each**; account balance 53.7 → 33.7) and installed at the contract paths. Real product photos from `/Users/manan/Downloads/Product Images/` were uploaded as packaging references.
+
+**Job IDs** (in Higgsfield history): S1 desktop `56325452`, S1 mobile `61c1a4a1`, S2 desktop `1c01af50`, S2 mobile `ce134b1f`, S3 desktop `1d00c270`, S3 mobile `a212bc44`, S4 v2 desktop `fc8f37e1`, S4 v2 mobile `65735a87`. (Rejected: S4 v1 AI-composed scene `e3294e22`/`aa363712`; first gpt_image_2 portrait test `eb5f3567`.)
+
+**Key learnings baked into future prompts:**
+1. **Packaging truth:** single-herb products are kraft stand-up pouches with cream labels; only Ubtan is a glass jar with gold lid.
+2. **Slide 4 pattern (owner-preferred):** rather than letting the model compose a product scene, feed the real photo (`combo-jaison-special.png`) and prompt "Extend the provided photograph… keep it completely unchanged… extend the backdrop… add typography." Products stay pixel-true. Use this pattern if slides 1–3 ever need redoing.
+3. Aspect ratio must be set explicitly (Higgsfield "auto" copies the reference photo's shape). Desktop = 21:9 (near-zero crop in the banner container), mobile = 4:5.
+4. Nano Banana Pro renders typography reliably; verify pouch label text with a full-res crop before accepting.
+
+**Status: awaiting owner + team review (planned next session). Branch pushed; NOT merged, NOT deployed.** Open items for next session: team verdict on slides 1–3 (composed scenes) vs redoing them with the extend-real-photo pattern; check the Vercel preview on real devices; optional PSI run; then merge gate.
+
 ## Out of scope
 
 - Deleting `HeroSection.tsx`, `hero-group.mp4`, `hero-poster.webp` (cleanup after approval).
