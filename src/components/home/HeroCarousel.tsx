@@ -33,8 +33,9 @@ const slides: Slide[] = [
   },
   {
     image: "/images/hero/slide-2-trio.webp",
+    imageMobile: "/images/hero/slide-2-trio-mobile.webp",
     imageAlt:
-      "Jaison Hair Care Trio — Shikakai, Aamla and Reetha jars with pods, berries, soapnuts and a wooden comb on linen. Shop the Trio.",
+      "Jaison Hair Care Trio — Shikakai, Aamla and Reetha kraft pouches with pods, berries, soapnuts and a wooden comb on linen. Shop the Trio.",
     headline: "the trio — The Haircare Ritual",
     claim: "Shikakai. Aamla. Reetha. Your grandmother's haircare, ground fresh. Shop the Trio.",
     href: "/shop/hair-care-trio",
@@ -42,8 +43,9 @@ const slides: Slide[] = [
   },
   {
     image: "/images/hero/slide-3-manifesto.webp",
+    imageMobile: "/images/hero/slide-3-manifesto-mobile.webp",
     imageAlt:
-      "One ingredient — a single neem branch beside a cone of neem powder and the Jaison neem jar on dark green. Read Why Powder.",
+      "One ingredient — a single neem branch beside a cone of neem powder and the Jaison neem pouch on deep green. Read Why Powder.",
     headline: "one ingredient — Our Manifesto",
     claim: "Your bottle lists a dozen ingredients. Our product lists one. Read Why Powder.",
     href: "/why-powder",
@@ -51,8 +53,9 @@ const slides: Slide[] = [
   },
   {
     image: "/images/hero/slide-4-combo.webp",
+    imageMobile: "/images/hero/slide-4-combo-mobile.webp",
     imageAlt:
-      "Jaison Special — the complete ritual in one box. Combo jars arranged as a gift spread with brass bowls of powders and marigolds. Shop Combos.",
+      "Jaison Special — the complete ritual in one box. Ubtan jar and herb pouches arranged as a gift spread with brass bowls of powders and marigolds. Shop Combos.",
     headline: "jaison special — The Complete Ritual",
     claim: "The whole ritual, in one box. Shop Combos.",
     href: "/shop/jaison-special-combo",
