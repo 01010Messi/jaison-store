@@ -116,9 +116,10 @@ export default function RootLayout({
       className={`${cormorant.variable} ${dmSans.variable} ${inter.variable}`}
     >
       <head>
-        {/* Hero poster — preloaded in <head> so the browser scanner discovers it
-            immediately, before any render-blocking CSS or JS runs */}
-        <link rel="preload" as="image" href="/images/hero-poster.webp" fetchPriority="high" />
+        {/* Hero carousel slide 1 is server-rendered as an eager fetchpriority=high
+            <img> (see HeroCarousel), so the preload scanner discovers it from the
+            HTML itself — no manual <link rel="preload"> needed (a raw-file preload
+            would double-fetch alongside the /_next/image optimized URL). */}
         {/* Early DNS + connection for analytics (loads afterInteractive but pre-warming helps) */}
         <link rel="preconnect" href="https://www.googletagmanager.com" />
         <link rel="dns-prefetch" href="https://www.google-analytics.com" />

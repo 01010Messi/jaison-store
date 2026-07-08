@@ -94,6 +94,19 @@ Workflow per slide: upload the real product photo(s) named in the prompt as imag
 - Manual: swipe on mobile viewport, arrows/dots on desktop, autoplay pauses on hover, `prefers-reduced-motion` disables autoplay, keyboard focus order sane.
 - Lighthouse/PSI check on the Vercel preview to confirm LCP is not regressed (slide 1 image is the LCP element and is preloaded).
 
+## Revision 2 (July 8, after first Higgsfield render) — baked-text banners
+
+Owner reviewed the live HTML-text version against the first real render and pivoted:
+
+1. **Text is now baked into the artwork** (owner decision, reverses Decision 3). Each slide is a single finished banner image; the whole slide is one `<Link>` to the campaign URL. SEO/a11y preserved via descriptive `alt` + a visually-hidden headline/claim inside the link. Arrows/dots/autoplay stay native HTML.
+2. **Two assets per slide (art direction)**: desktop `16:9` banner + mobile `4:5` portrait ("reel-ratio") banner, both with baked typography. Served via `<picture>` + `getImageProps` so only the matching asset downloads. Mobile container: `aspect-[4/5]`; desktop: `h-[clamp(480px,62vh,640px)]`.
+3. **File contract:** `public/images/hero/slide-N-<name>.webp` (desktop) + `slide-N-<name>-mobile.webp` (mobile portrait). Slide 1's first portrait render (Higgsfield job `eb5f3567`) is already in as the mobile asset.
+4. **Safe-crop band:** desktop displays 16:9 assets at up to ~2.9:1, so prompts must keep all typography + hero objects inside the middle ~60% of frame height. Mobile 4:5 assets display near-uncropped.
+5. **Prompt learnings from render 1** (gpt_image_2, aspect "auto" → portrait): set the aspect ratio explicitly in the Higgsfield UI (auto follows the reference photo's shape); prefer Nano Banana Pro for baked typography; backdrop must be prompted "bright, evenly lit, NOT dark chocolate" (render came out too dark); drop chickpea flour; drop the "powder drift in the air" line (rendered as dust specks).
+6. The manual `<link rel="preload">` in `layout.tsx` was removed — slide 1 renders as an eager `fetchpriority=high` `<img>` in server HTML, and a raw-file preload would double-fetch beside the optimized `/_next/image` URL.
+
+Prompt pack v1 (above) is superseded for typography-less images; v2 prompts (baked text) are delivered in-session, slide by slide, pending owner approval of slide 1's art direction.
+
 ## Out of scope
 
 - Deleting `HeroSection.tsx`, `hero-group.mp4`, `hero-poster.webp` (cleanup after approval).

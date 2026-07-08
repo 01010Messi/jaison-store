@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import HeroSection from "@/components/home/HeroSection";
+import HeroCarousel from "@/components/home/HeroCarousel";
 import FeaturedProducts from "@/components/home/FeaturedProducts";
 import HowToUseGuide from "@/components/home/HowToUseGuide";
 import BrandTimeline from "@/components/home/BrandTimeline";
@@ -47,7 +47,7 @@ export default function HomePage() {
       <h1 className="sr-only">
         Jaison Herbals — Natural Ayurvedic Herbal Powders for Skin &amp; Hair
       </h1>
-      <HeroSection />
+      <HeroCarousel />
       <FeaturedProducts />
       <HowToUseGuide />
       <BrandTimeline />
