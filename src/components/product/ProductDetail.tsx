@@ -484,7 +484,7 @@ export default function ProductDetail({ product }: ProductDetailProps) {
               <button
                 onClick={handleAddToCart}
                 className={cn(
-                  "flex-1 flex items-center justify-between px-7 py-3 rounded-full font-body text-[13px] font-medium uppercase tracking-[0.18em] transition-all active:translate-y-px",
+                  "flex-1 flex items-center justify-between gap-2 px-4 sm:px-7 py-3 rounded-full font-body text-[12px] sm:text-[13px] font-medium uppercase tracking-[0.06em] sm:tracking-[0.18em] transition-all active:translate-y-px",
                   addedToCart ? "opacity-80" : ""
                 )}
                 style={{
@@ -492,15 +492,16 @@ export default function ProductDetail({ product }: ProductDetailProps) {
                   color: "var(--color-cream)",
                 }}
               >
-                <span className="flex items-center gap-2">
+                <span className="flex items-center gap-1.5 sm:gap-2 whitespace-nowrap">
                   {addedToCart ? (
-                    <Check className="h-4 w-4" />
+                    <Check className="h-4 w-4 flex-shrink-0" />
                   ) : (
-                    <ShoppingBag className="h-4 w-4" />
+                    <ShoppingBag className="h-4 w-4 flex-shrink-0" />
                   )}
-                  {addedToCart ? "Added" : "Add to Potli"}
+                  <span className="sm:hidden">{addedToCart ? "Added" : "Add"}</span>
+                  <span className="hidden sm:inline">{addedToCart ? "Added" : "Add to Potli"}</span>
                 </span>
-                <span>₹{product.price} →</span>
+                <span className="whitespace-nowrap">₹{product.price} →</span>
               </button>
             </div>
 

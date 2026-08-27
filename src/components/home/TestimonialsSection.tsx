@@ -83,53 +83,60 @@ export default function TestimonialsSection() {
         </div>
 
         {/* Cards — horizontal scroll on mobile, 5-col grid on desktop */}
-        <div className="flex gap-4 overflow-x-auto pb-4 -mx-4 px-4 md:grid md:grid-cols-5 md:overflow-visible md:mx-0 md:px-0 scrollbar-hide">
-          {testimonials.map((t) => (
-            <div
-              key={t.name}
-              className="flex-shrink-0 w-[220px] md:w-auto h-[420px] rounded-2xl flex flex-col justify-between p-5 relative overflow-hidden"
-              style={{
-                background:
-                  "linear-gradient(165deg, var(--color-terracotta-dark) 0%, var(--color-bark) 100%)",
-              }}
-            >
-              {/* Avatar + name pill */}
-              <div className="flex items-center gap-2">
-                <div
-                  className="w-7 h-7 rounded-full flex items-center justify-center flex-shrink-0"
-                  style={{ backgroundColor: t.avatarBg }}
-                >
-                  <span className="text-[11px] font-accent font-semibold text-white">
-                    {t.initial}
+        <div className="relative">
+          <div className="flex gap-4 overflow-x-auto pb-4 -mx-4 px-4 snap-x snap-mandatory md:grid md:grid-cols-5 md:overflow-visible md:mx-0 md:px-0 md:snap-none scrollbar-hide">
+            {testimonials.map((t) => (
+              <div
+                key={t.name}
+                className="flex-shrink-0 w-[220px] md:w-auto h-[420px] rounded-2xl flex flex-col justify-between p-5 relative overflow-hidden snap-center md:snap-align-none"
+                style={{
+                  background:
+                    "linear-gradient(165deg, var(--color-terracotta-dark) 0%, var(--color-bark) 100%)",
+                }}
+              >
+                {/* Avatar + name pill */}
+                <div className="flex items-center gap-2">
+                  <div
+                    className="w-7 h-7 rounded-full flex items-center justify-center flex-shrink-0"
+                    style={{ backgroundColor: t.avatarBg }}
+                  >
+                    <span className="text-[11px] font-accent font-semibold text-white">
+                      {t.initial}
+                    </span>
+                  </div>
+                  <span className="text-xs font-accent text-white/70 tracking-wide">
+                    {t.name}, {t.age}
                   </span>
                 </div>
-                <span className="text-xs font-accent text-white/70 tracking-wide">
-                  {t.name}, {t.age}
-                </span>
-              </div>
 
-              {/* Quote — centred in remaining space */}
-              <p
-                className="font-heading text-[1.05rem] leading-snug text-white/90 flex-1 flex items-center py-4"
-                style={{ fontStyle: "italic", fontWeight: 300 }}
-              >
-                &ldquo;{t.quote}&rdquo;
-              </p>
-
-              {/* City + product */}
-              <div className="flex items-center justify-between">
-                <span className="text-[10px] font-accent uppercase tracking-widest text-white/35">
-                  {t.city}
-                </span>
-                <span
-                  className="px-2.5 py-1 rounded-full text-[9px] font-accent uppercase tracking-wider text-white/75"
-                  style={{ backgroundColor: "rgba(255,255,255,0.12)" }}
+                {/* Quote — centred in remaining space */}
+                <p
+                  className="font-heading text-[1.05rem] leading-snug text-white/90 flex-1 flex items-center py-4"
+                  style={{ fontStyle: "italic", fontWeight: 300 }}
                 >
-                  {t.product}
-                </span>
+                  &ldquo;{t.quote}&rdquo;
+                </p>
+
+                {/* City + product */}
+                <div className="flex items-center justify-between">
+                  <span className="text-[10px] font-accent uppercase tracking-widest text-white/35">
+                    {t.city}
+                  </span>
+                  <span
+                    className="px-2.5 py-1 rounded-full text-[9px] font-accent uppercase tracking-wider text-white/75"
+                    style={{ backgroundColor: "rgba(255,255,255,0.12)" }}
+                  >
+                    {t.product}
+                  </span>
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
+          {/* Edge fade — signals more cards are scrollable off-screen (mobile only) */}
+          <div
+            className="pointer-events-none absolute right-0 top-0 bottom-4 w-10 md:hidden"
+            style={{ background: "linear-gradient(to right, rgba(239,228,197,0), var(--color-parchment) 75%)" }}
+          />
         </div>
 
         {/* Footer caption */}

@@ -47,7 +47,7 @@ export default function BlogPage() {
 
         {/* ── Hero ── */}
         <section
-          className="relative overflow-hidden px-6 md:px-14 lg:px-24 pt-28 pb-14"
+          className="relative overflow-hidden px-6 md:px-14 lg:px-24 pt-16 md:pt-28 pb-14"
           style={{ backgroundColor: "var(--color-cream)" }}
         >
           <p

@@ -9,7 +9,7 @@ const stats = [
 export default function HeroSection() {
   return (
     <section
-        className="relative flex flex-col overflow-hidden min-h-screen"
+        className="relative flex flex-col overflow-hidden md:min-h-screen"
         style={{ backgroundColor: "var(--color-cream)" }}
       >
         {/* Background video */}

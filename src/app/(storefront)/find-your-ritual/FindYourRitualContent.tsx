@@ -176,7 +176,7 @@ export default function FindYourRitualContent() {
 
   return (
     <div className="min-h-screen" style={{ backgroundColor: "var(--color-cream)" }}>
-      <div className="max-w-4xl mx-auto px-6 md:px-10 pt-36 md:pt-40 pb-20">
+      <div className="max-w-4xl mx-auto px-6 md:px-10 pt-20 md:pt-40 pb-20">
 
         {/* Progress bar — steps 1–4 */}
         {step <= 4 && (

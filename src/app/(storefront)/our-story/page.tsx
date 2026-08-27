@@ -77,6 +77,311 @@ const acts = [
   },
 ];
 
+/* ── Panel 1970: Mortar & Pestle ── */
+function Panel1970() {
+  return (
+    <div className="absolute inset-0 flex flex-col items-center justify-center">
+      <span
+        className="absolute font-heading font-light select-none leading-none pointer-events-none"
+        style={{
+          fontSize: "clamp(8rem, 20vw, 16rem)",
+          color: "rgba(26,60,52,0.06)",
+          letterSpacing: "-0.04em",
+          bottom: "-0.1em",
+          right: "-0.03em",
+        }}
+        aria-hidden
+      >
+        1970
+      </span>
+
+      <svg
+        viewBox="0 0 200 190"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        style={{ width: "clamp(90px, 14vw, 145px)", opacity: 0.78 }}
+        aria-hidden
+      >
+        {/* Pestle stick */}
+        <path d="M128 76 L164 20" stroke="rgba(26,60,52,0.78)" strokeWidth="5" strokeLinecap="round" />
+        {/* Pestle head */}
+        <ellipse cx="169" cy="14" rx="13" ry="7.5" transform="rotate(-28 169 14)" stroke="rgba(26,60,52,0.78)" strokeWidth="3" fill="none" />
+        {/* Mortar bowl */}
+        <path d="M28 82 C22 155 178 155 172 82" stroke="rgba(26,60,52,0.78)" strokeWidth="3" fill="none" strokeLinecap="round" />
+        <ellipse cx="100" cy="82" rx="72" ry="19" stroke="rgba(26,60,52,0.78)" strokeWidth="3" fill="none" />
+        {/* Base */}
+        <path d="M56 152 L56 165 Q56 172 100 174 Q144 172 144 165 L144 152" stroke="rgba(26,60,52,0.50)" strokeWidth="2" fill="none" />
+        {/* Powder dots */}
+        <circle cx="78" cy="122" r="2.5" fill="rgba(26,60,52,0.30)" />
+        <circle cx="100" cy="133" r="2" fill="rgba(26,60,52,0.30)" />
+        <circle cx="119" cy="120" r="2.5" fill="rgba(26,60,52,0.30)" />
+        <circle cx="90" cy="113" r="1.5" fill="rgba(26,60,52,0.24)" />
+        <circle cx="112" cy="138" r="1.5" fill="rgba(26,60,52,0.22)" />
+      </svg>
+
+      <p
+        className="mt-6 font-accent uppercase text-[10px] tracking-[0.28em]"
+        style={{ color: "rgba(26,60,52,0.44)" }}
+      >
+        Est. 1970 · Nashik, India
+      </p>
+    </div>
+  );
+}
+
+/* ── Panel 1985: We chose dry ── */
+function Panel1985() {
+  return (
+    <div className="absolute inset-0 flex flex-col items-center justify-center px-10">
+      <span
+        className="absolute font-heading font-light select-none leading-none pointer-events-none"
+        style={{
+          fontSize: "clamp(8rem, 18vw, 15rem)",
+          color: "rgba(26,60,52,0.05)",
+          letterSpacing: "-0.04em",
+          bottom: "-0.1em",
+          right: "-0.03em",
+        }}
+        aria-hidden
+      >
+        1985
+      </span>
+
+      {/* Crossed-out water drop */}
+      <svg
+        viewBox="0 0 160 180"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        style={{ width: "clamp(65px, 11vw, 105px)", opacity: 0.78 }}
+        aria-hidden
+      >
+        <path
+          d="M80 18 Q118 68 118 104 Q118 144 80 144 Q42 144 42 104 Q42 68 80 18 Z"
+          stroke="rgba(26,60,52,0.55)"
+          strokeWidth="2.5"
+          fill="none"
+        />
+        <line x1="46" y1="56" x2="114" y2="132" stroke="rgba(26,60,52,0.82)" strokeWidth="2.5" strokeLinecap="round" />
+        <line x1="114" y1="56" x2="46" y2="132" stroke="rgba(26,60,52,0.82)" strokeWidth="2.5" strokeLinecap="round" />
+      </svg>
+
+      <p
+        className="mt-7 font-heading font-light text-center leading-tight"
+        style={{
+          fontSize: "clamp(1.125rem, 2.8vw, 1.5rem)",
+          color: "rgba(26,60,52,0.72)",
+          letterSpacing: "-0.01em",
+        }}
+      >
+        We chose <em>dry.</em>
+      </p>
+
+      <p
+        className="mt-3 font-accent uppercase text-center"
+        style={{
+          fontSize: "9px",
+          letterSpacing: "0.24em",
+          color: "rgba(26,60,52,0.38)",
+        }}
+      >
+        No preservatives. No exceptions.
+      </p>
+    </div>
+  );
+}
+
+/* ── Panel 1998: Herb names list ── */
+function Panel1998() {
+  const herbs = ["Neem", "Amla", "Shikakai", "Reetha", "Nagarmotha", "Mehendi"];
+  return (
+    <div className="absolute inset-0 flex flex-col items-center justify-center gap-0">
+      <span
+        className="absolute font-heading font-light select-none leading-none pointer-events-none"
+        style={{
+          fontSize: "clamp(8rem, 18vw, 15rem)",
+          color: "rgba(26,60,52,0.05)",
+          letterSpacing: "-0.04em",
+          bottom: "-0.1em",
+          right: "-0.03em",
+        }}
+        aria-hidden
+      >
+        1998
+      </span>
+
+      <div className="relative flex flex-col items-center" style={{ gap: "clamp(4px, 1vw, 10px)" }}>
+        {herbs.map((herb, i) => (
+          <p
+            key={herb}
+            className="font-heading font-light"
+            style={{
+              fontSize: "clamp(0.875rem, 2.1vw, 1.2rem)",
+              letterSpacing: "0.14em",
+              color: `rgba(26,60,52,${0.72 - i * 0.07})`,
+              lineHeight: "1.35",
+            }}
+          >
+            {herb.toUpperCase()}
+          </p>
+        ))}
+      </div>
+
+      <div
+        style={{
+          width: "32px",
+          height: "1px",
+          backgroundColor: "rgba(26,60,52,0.22)",
+          marginTop: "clamp(14px, 3vw, 22px)",
+        }}
+      />
+
+      <p
+        className="mt-3 font-accent uppercase"
+        style={{
+          fontSize: "9px",
+          letterSpacing: "0.24em",
+          color: "rgba(26,60,52,0.36)",
+        }}
+      >
+        One ingredient. Nothing more.
+      </p>
+    </div>
+  );
+}
+
+/* ── Panel 2010: 100 packs per batch ── */
+function Panel2010() {
+  return (
+    <div className="absolute inset-0 flex flex-col items-center justify-center">
+      <p
+        className="font-heading font-light leading-none"
+        style={{
+          fontSize: "clamp(5.5rem, 14vw, 10rem)",
+          color: "rgba(254,250,224,0.88)",
+          letterSpacing: "-0.04em",
+        }}
+      >
+        100
+      </p>
+
+      <p
+        className="font-body mt-3"
+        style={{
+          fontSize: "clamp(0.875rem, 1.8vw, 1rem)",
+          color: "rgba(254,250,224,0.55)",
+          letterSpacing: "0.03em",
+        }}
+      >
+        packs per batch
+      </p>
+
+      <div
+        style={{
+          width: "36px",
+          height: "1px",
+          backgroundColor: "rgba(254,250,224,0.28)",
+          margin: "clamp(16px, 3vw, 24px) 0",
+        }}
+      />
+
+      <p
+        className="font-accent uppercase text-center"
+        style={{
+          fontSize: "9px",
+          letterSpacing: "0.24em",
+          color: "rgba(254,250,224,0.36)",
+          maxWidth: "200px",
+        }}
+      >
+        We declined the acquisition.
+      </p>
+    </div>
+  );
+}
+
+/* ── Panel 2026: Jar illustration ── */
+function Panel2026() {
+  return (
+    <div className="absolute inset-0 flex flex-col items-center justify-center gap-0">
+      <span
+        className="absolute font-heading font-light select-none leading-none pointer-events-none"
+        style={{
+          fontSize: "clamp(8rem, 18vw, 15rem)",
+          color: "rgba(254,250,224,0.04)",
+          letterSpacing: "-0.04em",
+          bottom: "-0.1em",
+          right: "-0.03em",
+        }}
+        aria-hidden
+      >
+        2026
+      </span>
+
+      <svg
+        viewBox="0 0 160 200"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        style={{ width: "clamp(75px, 12vw, 120px)", opacity: 0.78 }}
+        aria-hidden
+      >
+        {/* Lid */}
+        <rect x="48" y="26" width="64" height="22" rx="4" stroke="rgba(254,250,224,0.75)" strokeWidth="2.5" fill="none" />
+        <line x1="54" y1="33" x2="106" y2="33" stroke="rgba(254,250,224,0.35)" strokeWidth="1" />
+        {/* Body */}
+        <path
+          d="M40 48 L40 155 Q40 172 80 174 Q120 172 120 155 L120 48 Z"
+          stroke="rgba(254,250,224,0.75)"
+          strokeWidth="2.5"
+          fill="none"
+          strokeLinejoin="round"
+        />
+        {/* Label area */}
+        <rect x="51" y="70" width="58" height="66" rx="3" stroke="rgba(254,250,224,0.22)" strokeWidth="1.5" fill="none" />
+        {/* Label lines */}
+        <line x1="59" y1="84" x2="101" y2="84" stroke="rgba(254,250,224,0.16)" strokeWidth="1" />
+        <line x1="62" y1="94" x2="98" y2="94" stroke="rgba(254,250,224,0.16)" strokeWidth="1" />
+        <line x1="64" y1="104" x2="96" y2="104" stroke="rgba(254,250,224,0.16)" strokeWidth="1" />
+        <line x1="59" y1="114" x2="101" y2="114" stroke="rgba(254,250,224,0.16)" strokeWidth="1" />
+        <line x1="62" y1="124" x2="98" y2="124" stroke="rgba(254,250,224,0.16)" strokeWidth="1" />
+      </svg>
+
+      <div className="text-center" style={{ marginTop: "clamp(16px, 3vw, 24px)" }}>
+        <p
+          className="font-heading font-light italic"
+          style={{
+            fontSize: "clamp(1.4rem, 3.5vw, 2.25rem)",
+            color: "rgba(254,250,224,0.82)",
+            letterSpacing: "-0.01em",
+          }}
+        >
+          Unchanged.
+        </p>
+        <p
+          className="mt-2 font-accent uppercase"
+          style={{
+            fontSize: "9px",
+            letterSpacing: "0.24em",
+            color: "rgba(254,250,224,0.36)",
+          }}
+        >
+          1970 — 2026
+        </p>
+      </div>
+    </div>
+  );
+}
+
+function renderPanel(num: string): React.ReactNode {
+  switch (num) {
+    case "I":   return <Panel1970 />;
+    case "II":  return <Panel1985 />;
+    case "III": return <Panel1998 />;
+    case "IV":  return <Panel2010 />;
+    case "V":   return <Panel2026 />;
+    default:    return null;
+  }
+}
+
 export default function OurStoryPage() {
   return (
     <>
@@ -109,7 +414,7 @@ export default function OurStoryPage() {
         {/* ── Hero ── */}
         <section
           style={{ backgroundColor: "var(--color-cream)" }}
-          className="relative overflow-hidden pt-28 pb-20 px-6 md:px-14 lg:px-24"
+          className="relative overflow-hidden pt-16 md:pt-28 pb-14 md:pb-20 px-6 md:px-14 lg:px-24"
         >
           {/* Watermark */}
           <div
@@ -170,18 +475,18 @@ export default function OurStoryPage() {
             className="grid grid-cols-1 md:grid-cols-2"
             style={{ minHeight: "480px" }}
           >
-            {/* Image placeholder */}
+            {/* Visual panel */}
             <div
-              className={
-                act.imageSide === "left"
-                  ? "order-1 md:order-1"
-                  : "order-1 md:order-2"
-              }
+              className={`relative overflow-hidden ${
+                act.imageSide === "left" ? "order-1 md:order-1" : "order-1 md:order-2"
+              }`}
               style={{
                 backgroundColor: act.imageBg,
                 minHeight: "320px",
               }}
-            />
+            >
+              {renderPanel(act.num)}
+            </div>
 
             {/* Text */}
             <div

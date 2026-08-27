@@ -18,7 +18,8 @@ export default function BlogSection() {
       <style>{`
         .blog-scroll::-webkit-scrollbar { display: none; }
         .blog-scroll { scrollbar-width: none; }
-        .blog-home-card { transition: transform 0.25s; flex-shrink: 0; }
+        .blog-home-card { transition: transform 0.25s; flex-shrink: 0; scroll-snap-align: center; }
+        @media (min-width: 768px) { .blog-home-card { scroll-snap-align: none; } }
         .blog-home-card:hover { transform: translateY(-4px); }
         .blog-home-card:hover .blog-home-title { color: var(--color-terracotta) !important; }
         .arrow-btn { transition: background-color 0.2s, box-shadow 0.2s; }
@@ -68,9 +69,10 @@ export default function BlogSection() {
           </div>
 
           {/* Scrollable cards */}
+          <div className="relative">
           <div
             ref={scrollRef}
-            className="blog-scroll flex gap-6 overflow-x-auto pb-2"
+            className="blog-scroll flex gap-6 overflow-x-auto pb-2 snap-x snap-mandatory md:snap-none"
           >
             {blogPosts.map((post) => (
                 <Link
@@ -113,6 +115,12 @@ export default function BlogSection() {
                   </div>
                 </Link>
             ))}
+          </div>
+          {/* Edge fade — signals more cards are scrollable off-screen (mobile only) */}
+          <div
+            className="pointer-events-none absolute right-0 top-0 bottom-2 w-10 md:hidden"
+            style={{ background: "linear-gradient(to right, rgba(254,250,224,0), var(--color-cream) 75%)" }}
+          />
           </div>
 
           {/* View all button */}

@@ -47,7 +47,7 @@ export default function InstagramReelCard({
   };
 
   return (
-    <div className="flex-shrink-0 w-[260px] md:w-full rounded-2xl overflow-hidden flex flex-col">
+    <div className="flex-shrink-0 w-[260px] md:w-full rounded-2xl overflow-hidden flex flex-col snap-center md:snap-align-none">
       {/* Instagram embed — 9:16 container, header clipped at top */}
       <div className="relative overflow-hidden flex-shrink-0" style={{ aspectRatio: '9/16' }}>
         <iframe

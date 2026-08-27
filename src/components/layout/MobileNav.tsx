@@ -37,6 +37,10 @@ export default function MobileNav() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [lastScrollY]);
 
+  // Hide during checkout — a bottom tab bar inviting users to "Home"/"Shop"
+  // mid-payment is a navigation footgun, not a convenience.
+  if (pathname.startsWith("/checkout")) return null;
+
   return (
     <nav
       className={cn(

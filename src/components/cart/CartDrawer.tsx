@@ -174,7 +174,7 @@ export default function CartDrawer() {
                 >
                   You may also like
                 </p>
-                <div className="flex gap-3 overflow-x-auto scrollbar-hide pb-1">
+                <div className="flex gap-3 overflow-x-auto scrollbar-hide pb-1 snap-x snap-proximity">
                   {suggestions.map((p) => (
                     <div key={p.slug} className="flex-shrink-0 w-20">
                       <Link href={`/shop/${p.slug}`} onClick={closeCart}>

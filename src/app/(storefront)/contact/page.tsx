@@ -111,7 +111,7 @@ export default function ContactPage() {
         {/* ── Hero ── */}
         <section
           style={{ backgroundColor: "var(--color-parchment)" }}
-          className="relative overflow-hidden pt-28 pb-20 px-6 md:px-14 lg:px-24"
+          className="relative overflow-hidden pt-16 md:pt-28 pb-14 md:pb-20 px-6 md:px-14 lg:px-24"
         >
           {/* Watermark */}
           <div

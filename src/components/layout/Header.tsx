@@ -123,7 +123,7 @@ export default function Header() {
         <AnnouncementBar />
 
         {/* Row 2 — Logo only */}
-        <div className="bg-cream py-2 flex flex-col items-center">
+        <div className="bg-cream py-1 flex flex-col items-center">
           <Link href="/" className="flex-shrink-0 overflow-hidden h-12 md:h-16 flex items-center">
             <Image
               src="/images/logo.png"
@@ -152,7 +152,7 @@ export default function Header() {
               </button>
             </div>
 
-            <div className="flex items-center justify-center gap-7 py-3">
+            <div className="flex items-center justify-center gap-7 py-2">
               <Link
                 href="/"
                 className="font-accent text-[13px] tracking-widest uppercase text-bark/70 hover:text-bark transition-colors"

@@ -64,7 +64,7 @@ export default function Footer() {
     <footer className="bg-bark text-cream/80 pb-20 md:pb-0">
       {/* Newsletter strip */}
       <div className="border-b border-cream/10">
-        <div className="container-brand section-rhythm-lg flex flex-col md:flex-row md:items-center justify-between gap-8">
+        <div className="container-brand py-10 md:py-14 flex flex-col md:flex-row md:items-center justify-between gap-8">
           {/* Left: copy */}
           <div className="max-w-xl">
             <p className="font-accent text-[11px] tracking-[0.2em] uppercase mb-5" style={{ color: "var(--color-gold-light)" }}>
@@ -107,20 +107,20 @@ export default function Footer() {
         </div>
       </div>
       {/* Main footer */}
-      <div className="container-brand pt-16 pb-12">
+      <div className="container-brand pt-10 pb-8">
         {/* Logo section */}
-        <div className="text-center mb-12">
+        <div className="text-center mb-6">
           <Image
             src="/images/logo.png"
             alt="Jaison Herbals — Natural Ayurvedic Herbal Powders"
             width={240}
             height={80}
-            className="h-20 md:h-24 w-auto mx-auto brightness-[1.8] contrast-[0.9]"
+            className="h-14 md:h-18 w-auto mx-auto brightness-[1.8] contrast-[0.9]"
           />
         </div>
 
         {/* Links grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-10 mt-10">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-10 mt-6">
           {Object.entries(footerLinks).map(([category, links]) => (
             <div key={category}>
               <h3 className="font-accent text-[13px] uppercase tracking-[0.15em] text-gold-light mb-5">

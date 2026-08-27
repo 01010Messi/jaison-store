@@ -48,8 +48,8 @@ export default function WhyPowderPage() {
 
       {/* ── SECTION 1 — Hero ── */}
       <section
-        className="relative overflow-hidden pt-36 md:pt-44 pb-20 md:pb-28"
-        style={{ backgroundColor: "var(--color-bark)", minHeight: "92vh" }}
+        className="relative overflow-hidden pt-20 md:pt-44 pb-16 md:pb-28 min-h-[68svh] md:min-h-[92vh]"
+        style={{ backgroundColor: "var(--color-bark)" }}
       >
         {/* Background watermark */}
         <div

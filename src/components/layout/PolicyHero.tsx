@@ -14,10 +14,10 @@ export default function PolicyHero({
   return (
     <section
       style={{ backgroundColor: "var(--color-parchment)" }}
-      className="pt-24 pb-14 px-6 md:px-14 lg:px-24"
+      className="pt-14 md:pt-24 pb-14 px-6 md:px-14 lg:px-24"
     >
       <p
-        className="relative font-accent text-[10px] tracking-[0.22em] uppercase mb-8"
+        className="relative font-accent text-[10px] tracking-[0.22em] uppercase mb-4 md:mb-8"
         style={{ color: "rgba(26,60,52,0.42)" }}
       >
         {eyebrow}
