@@ -132,11 +132,6 @@ export default function TestimonialsSection() {
               </div>
             ))}
           </div>
-          {/* Edge fade — signals more cards are scrollable off-screen (mobile only) */}
-          <div
-            className="pointer-events-none absolute right-0 top-0 bottom-4 w-10 md:hidden"
-            style={{ background: "linear-gradient(to right, rgba(239,228,197,0), var(--color-parchment) 75%)" }}
-          />
         </div>
 
         {/* Footer caption */}

@@ -331,7 +331,7 @@ export default function CheckoutPage() {
   }
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-[100svh] md:min-h-screen">
       {/* Header */}
       <div className="bg-surface-warm py-6 md:py-8">
         <div className="container-brand">

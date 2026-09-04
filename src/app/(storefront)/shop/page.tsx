@@ -119,28 +119,21 @@ function ShopContent() {
       {/* Filters Bar */}
       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-8">
         {/* Category pills */}
-        <div className="relative md:overflow-visible">
-          <div className="flex items-center gap-2 overflow-x-auto scrollbar-hide pb-1 md:pb-0">
-            {filterButtons.map((btn) => (
-              <button
-                key={btn.value}
-                onClick={() => setFilter("category", btn.value)}
-                className="flex-shrink-0 px-5 py-2 rounded-full font-accent text-[11px] uppercase tracking-wider transition-all duration-200 border"
-                style={
-                  activeCategory === btn.value
-                    ? { backgroundColor: "var(--color-bark)", color: "var(--color-cream)", borderColor: "var(--color-bark)" }
-                    : { backgroundColor: "transparent", color: "rgba(26,60,52,0.55)", borderColor: "var(--color-parchment)" }
-                }
-              >
-                {btn.label}
-              </button>
-            ))}
-          </div>
-          {/* Edge fade — signals more pills are scrollable off-screen (mobile only) */}
-          <div
-            className="pointer-events-none absolute right-0 top-0 bottom-1 w-8 md:hidden"
-            style={{ background: "linear-gradient(to right, rgba(254,250,224,0), var(--color-cream) 70%)" }}
-          />
+        <div className="flex items-center gap-2 overflow-x-auto scrollbar-hide pb-1 md:pb-0">
+          {filterButtons.map((btn) => (
+            <button
+              key={btn.value}
+              onClick={() => setFilter("category", btn.value)}
+              className="flex-shrink-0 px-5 py-2 rounded-full font-accent text-[11px] uppercase tracking-wider transition-all duration-200 border"
+              style={
+                activeCategory === btn.value
+                  ? { backgroundColor: "var(--color-bark)", color: "var(--color-cream)", borderColor: "var(--color-bark)" }
+                  : { backgroundColor: "transparent", color: "rgba(26,60,52,0.55)", borderColor: "var(--color-parchment)" }
+              }
+            >
+              {btn.label}
+            </button>
+          ))}
         </div>
 
         {/* Sort dropdown */}

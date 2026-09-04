@@ -23,6 +23,7 @@ const footerLinks = {
   Help: [
     { href: "/blog", label: "Blog" },
     { href: "/faq", label: "FAQs" },
+    { href: "/track-order", label: "Track Order" },
     { href: "/returns-policy", label: "Returns & Refunds" },
     { href: "/contact", label: "Contact Us" },
     { href: "/privacy-policy", label: "Privacy Policy" },
@@ -115,7 +116,7 @@ export default function Footer() {
             alt="Jaison Herbals — Natural Ayurvedic Herbal Powders"
             width={240}
             height={80}
-            className="h-14 md:h-18 w-auto mx-auto brightness-[1.8] contrast-[0.9]"
+            className="h-20 md:h-24 w-auto mx-auto brightness-[1.8] contrast-[0.9]"
           />
         </div>
 

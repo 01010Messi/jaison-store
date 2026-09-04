@@ -116,11 +116,6 @@ export default function BlogSection() {
                 </Link>
             ))}
           </div>
-          {/* Edge fade — signals more cards are scrollable off-screen (mobile only) */}
-          <div
-            className="pointer-events-none absolute right-0 top-0 bottom-2 w-10 md:hidden"
-            style={{ background: "linear-gradient(to right, rgba(254,250,224,0), var(--color-cream) 75%)" }}
-          />
           </div>
 
           {/* View all button */}

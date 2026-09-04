@@ -31,15 +31,7 @@ function MarqueeStrip({ prefix }: { prefix: string }) {
 
 export default function AnnouncementBar() {
   return (
-    <div
-      className="relative bg-bark overflow-hidden py-2.5"
-      style={{
-        maskImage:
-          "linear-gradient(to right, transparent, black 6%, black 94%, transparent)",
-        WebkitMaskImage:
-          "linear-gradient(to right, transparent, black 6%, black 94%, transparent)",
-      }}
-    >
+    <div className="bg-bark overflow-hidden py-2.5">
       <div className="flex animate-marquee" style={{ width: "max-content" }}>
         <MarqueeStrip prefix="a" />
         <MarqueeStrip prefix="b" />

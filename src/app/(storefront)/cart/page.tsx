@@ -75,7 +75,7 @@ export default function CartPage() {
   }
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-[100svh] md:min-h-screen">
       {/* Page Header */}
       <div className="bg-surface-warm py-8 md:py-12">
         <div className="container-brand">

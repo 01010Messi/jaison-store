@@ -3,6 +3,7 @@
 import { Suspense, useEffect } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
+import { useSession } from "next-auth/react";
 import { Check, ShoppingBag, ArrowRight, Package } from "lucide-react";
 import GoldRule from "@/components/decorative/GoldRule";
 import Button from "@/components/ui/Button";
@@ -21,9 +22,14 @@ const GOOGLE_ADS_CONVERSION_LABEL = process.env.NEXT_PUBLIC_GOOGLE_ADS_CONVERSIO
 
 function OrderSuccessContent() {
   const searchParams = useSearchParams();
+  const { status: sessionStatus } = useSession();
   const orderNumber = searchParams.get("order") || "";
   const total = searchParams.get("total") || "";
   const method = searchParams.get("method") || "";
+  const trackHref =
+    sessionStatus === "authenticated"
+      ? "/account/orders"
+      : `/track-order${orderNumber ? `?order=${encodeURIComponent(orderNumber)}` : ""}`;
 
   useEffect(() => {
     if (!orderNumber) return;
@@ -151,7 +157,7 @@ function OrderSuccessContent() {
               Continue Shopping
             </Button>
           </Link>
-          <Link href="/account/orders">
+          <Link href={trackHref}>
             <Button variant="ghost" size="md">
               <span className="flex items-center gap-1.5">
                 Track Order

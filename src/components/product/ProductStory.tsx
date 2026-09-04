@@ -148,11 +148,6 @@ export default function ProductStory({ product }: ProductStoryProps) {
             );
           })}
         </div>
-        {/* Edge fade — signals more tabs are scrollable off-screen (mobile only) */}
-        <div
-          className="pointer-events-none absolute right-0 top-10 md:top-12 bottom-1 w-10 md:hidden"
-          style={{ background: "linear-gradient(to right, rgba(254,250,224,0), var(--color-cream) 75%)" }}
-        />
       </div>
 
       {/* ── The Ritual — card grid ── */}
