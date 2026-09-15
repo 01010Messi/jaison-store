@@ -150,6 +150,7 @@ export default function ProductDetail({ product }: ProductDetailProps) {
   const handlePanMove = useCallback(
     (e: React.MouseEvent | React.TouchEvent) => {
       if (!isPanning) return;
+      if ("touches" in e) e.preventDefault();
       const clientX = "touches" in e ? e.touches[0].clientX : e.clientX;
       const clientY = "touches" in e ? e.touches[0].clientY : e.clientY;
       const scale = 1 + zoomLevel * 0.5;
@@ -224,6 +225,7 @@ export default function ProductDetail({ product }: ProductDetailProps) {
                 onTouchStart={handlePanStart}
                 onTouchMove={handlePanMove}
                 onTouchEnd={handlePanEnd}
+                style={{ touchAction: zoomLevel > 0 ? "none" : "pan-y" }}
               >
                 {allImages.map((img, i) => (
                   <Image
