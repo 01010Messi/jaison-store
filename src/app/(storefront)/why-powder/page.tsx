@@ -164,7 +164,7 @@ export default function WhyPowderPage() {
               anything. A single dried herb doesn&apos;t need them. The idea is
               simple; the execution is hard — it requires a dry workflow,
               moisture-proof packaging, batch-level quality control, and the discipline to
-              never reformulate. We have made one format for fifty-five years.
+              never reformulate. We have made one format for twenty-nine years.
             </p>
           </div>
 
@@ -244,7 +244,7 @@ export default function WhyPowderPage() {
               className="font-accent text-[10px] tracking-[0.2em] uppercase mt-2"
               style={{ color: "rgba(26,60,52,0.4)" }}
             >
-              MADE IN INDIA · SINCE 1970
+              MADE IN INDIA · SINCE 1997
             </p>
           </div>
 

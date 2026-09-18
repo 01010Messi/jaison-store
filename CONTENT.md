@@ -78,7 +78,7 @@ Writing rules used throughout (keep when editing):
 |-------|-------|------|
 | Zero | Preservatives | Dry powder needs none. Liquids can't say that. |
 | One | Ingredients per jar | The herb, ground and sifted. The label is one line long. |
-| 55 | Years, one format | Same recipes since 1970. Never reformulated. |
+| 29 | Years, one format | Same recipes since 1997. Never reformulated. |
 
 - Button: `Read the full argument →`
 

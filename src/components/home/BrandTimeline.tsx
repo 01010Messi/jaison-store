@@ -4,24 +4,14 @@ import Link from "next/link";
 
 const milestones = [
   {
-    year: "1970",
+    year: "1997",
     title: "One format.",
     body: "Jaison opens, hand-grinding the original Ubtan blend and packing it in jars. No liquids. No preservatives. No synthetics — not then, not now.",
   },
   {
-    year: "1985",
-    title: "The line in the sand.",
-    body: "The industry shifts to mass-market liquids that need preservatives and stabilisers to survive a shelf. Jaison refuses. The format does not change.",
-  },
-  {
-    year: "1998",
-    title: "Single ingredients.",
-    body: "Every herb is sold on its own — Neem, Amla, Shikakai — alongside the blends, so you can build your own ritual. The labels stay one line long.",
-  },
-  {
     year: "2026",
     title: "Still nothing hidden.",
-    body: "Fifty-five years on, every pouch is still one herb, and our original Ubtan blend still lists every ingredient by name — ground, sun-dried and sifted by hand, with zero preservatives.",
+    body: "Twenty-nine years on, every pouch is still one herb, and our original Ubtan blend still lists every ingredient by name — ground, sun-dried and sifted by hand, with zero preservatives.",
   },
 ];
 

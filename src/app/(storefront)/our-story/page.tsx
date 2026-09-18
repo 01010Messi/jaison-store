@@ -4,32 +4,32 @@ import { BreadcrumbJsonLd } from "@/components/seo/JsonLd";
 
 export const metadata: Metadata = {
   title: {
-    absolute: "Our Story — Pure Ayurvedic Herbal Powders Since 1970 | Jaison Herbals",
+    absolute: "Our Story — Pure Ayurvedic Herbal Powders Since 1997 | Jaison Herbals",
   },
   description:
-    "One format. Fifty-five years. Zero exceptions. How Jaison Herbals has made pure Ayurvedic herbal powders since 1970 — and why we never changed.",
+    "One format. Twenty-nine years. Zero exceptions. How Jaison Herbals has made pure Ayurvedic herbal powders since 1997 — and why we never changed.",
   alternates: {
     canonical: "https://jaisonskincare.com/our-story",
   },
   openGraph: {
-    title: "Our Story — Pure Ayurvedic Herbal Powders Since 1970",
+    title: "Our Story — Pure Ayurvedic Herbal Powders Since 1997",
     description:
-      "One format. Fifty-five years. Zero exceptions. How Jaison Herbals has made pure Ayurvedic herbal powders since 1970 — and why we never changed.",
+      "One format. Twenty-nine years. Zero exceptions. How Jaison Herbals has made pure Ayurvedic herbal powders since 1997 — and why we never changed.",
     url: "https://jaisonskincare.com/our-story",
     images: [
       {
         url: "https://jaisonskincare.com/images/og/og-default.jpg",
         width: 1200,
         height: 630,
-        alt: "Jaison Herbals — handcrafted Ayurvedic herbal powders since 1970",
+        alt: "Jaison Herbals — handcrafted Ayurvedic herbal powders since 1997",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Our Story — Pure Ayurvedic Herbal Powders Since 1970",
+    title: "Our Story — Pure Ayurvedic Herbal Powders Since 1997",
     description:
-      "One format. Fifty-five years. Zero exceptions. How Jaison Herbals has made pure Ayurvedic herbal powders since 1970 — and why we never changed.",
+      "One format. Twenty-nine years. Zero exceptions. How Jaison Herbals has made pure Ayurvedic herbal powders since 1997 — and why we never changed.",
     images: ["https://jaisonskincare.com/images/og/og-default.jpg"],
   },
 };
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
 const acts = [
   {
     num: "I",
-    year: "1970",
+    year: "1997",
     heading: "It started with one jar.",
     body: "The first batch was ground by hand for a simple reason: every herbal jar on the market was more filler than herb. A traditional ubtan — turmeric, sandalwood, gram flour, rose petal — should be exactly those things and nothing else. So we ground our own. The first jars went to neighbours. They came back for more.",
     imageSide: "left" as const,
@@ -45,22 +45,6 @@ const acts = [
   },
   {
     num: "II",
-    year: "1985",
-    heading: "The decision: no liquids.",
-    body: "Indian skincare was changing fast — cleansers, lotions, serums. Liquids were what the market wanted, and every consultant said the same: turn it into a liquid, add a preservative, scale it up. We said no. A shelf-stable liquid needs preservatives and stabilisers to last. A dry powder needs none. We have never added a synthetic ingredient to a product since.",
-    imageSide: "right" as const,
-    imageBg: "#D4C4A8",
-  },
-  {
-    num: "III",
-    year: "1998",
-    heading: "Single-ingredient line.",
-    body: "Customers kept asking what was inside the blends. So we started selling each herb on its own — Neem, Amla, Shikakai, Reetha. Each label listed exactly one thing. Some sold five jars a month, some five hundred. We kept making both. The catalogue is short on purpose.",
-    imageSide: "left" as const,
-    imageBg: "#B8956A",
-  },
-  {
-    num: "IV",
     year: "2010",
     heading: "We stayed small on purpose.",
     body: "A large FMCG offered to acquire us in 2010. The proposal involved adding 'enhanced' actives and moving production offshore. We declined. We have kept production small and in-house ever since. We make 100 packs per batch. We pack by hand. Scale was never the point — the format was.",
@@ -68,17 +52,17 @@ const acts = [
     imageBg: "#8B6B4A",
   },
   {
-    num: "V",
+    num: "III",
     year: "2026",
     heading: "Still nothing hidden.",
-    body: "Same small workshop. Same hand-ground process. The original 1970 recipes, unchanged. Every pouch is still one herb, and our original Ubtan blend still lists every ingredient by name — ground, sun-dried and sifted, then packed by hand.",
+    body: "Same small workshop. Same hand-ground process. The original 1997 recipes, unchanged. Every pouch is still one herb, and our original Ubtan blend still lists every ingredient by name — ground, sun-dried and sifted, then packed by hand.",
     imageSide: "left" as const,
     imageBg: "#3D2415",
   },
 ];
 
-/* ── Panel 1970: Mortar & Pestle ── */
-function Panel1970() {
+/* ── Panel 1997: Mortar & Pestle ── */
+function Panel1997() {
   return (
     <div className="absolute inset-0 flex flex-col items-center justify-center">
       <span
@@ -92,7 +76,7 @@ function Panel1970() {
         }}
         aria-hidden
       >
-        1970
+        1997
       </span>
 
       <svg
@@ -123,127 +107,7 @@ function Panel1970() {
         className="mt-6 font-accent uppercase text-[11px] tracking-[0.28em] font-medium"
         style={{ color: "rgba(26,60,52,0.65)" }}
       >
-        Est. 1970 · Nashik, India
-      </p>
-    </div>
-  );
-}
-
-/* ── Panel 1985: We chose dry ── */
-function Panel1985() {
-  return (
-    <div className="absolute inset-0 flex flex-col items-center justify-center px-10">
-      <span
-        className="absolute font-heading font-light select-none leading-none pointer-events-none"
-        style={{
-          fontSize: "clamp(8rem, 18vw, 15rem)",
-          color: "rgba(26,60,52,0.11)",
-          letterSpacing: "-0.04em",
-          bottom: "-0.1em",
-          right: "-0.03em",
-        }}
-        aria-hidden
-      >
-        1985
-      </span>
-
-      {/* Crossed-out water drop */}
-      <svg
-        viewBox="0 0 160 180"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        style={{ width: "clamp(80px, 13vw, 125px)", opacity: 0.95 }}
-        aria-hidden
-      >
-        <path
-          d="M80 18 Q118 68 118 104 Q118 144 80 144 Q42 144 42 104 Q42 68 80 18 Z"
-          stroke="rgba(26,60,52,0.72)"
-          strokeWidth="3"
-          fill="none"
-        />
-        <line x1="46" y1="56" x2="114" y2="132" stroke="rgba(26,60,52,0.92)" strokeWidth="3" strokeLinecap="round" />
-        <line x1="114" y1="56" x2="46" y2="132" stroke="rgba(26,60,52,0.92)" strokeWidth="3" strokeLinecap="round" />
-      </svg>
-
-      <p
-        className="mt-7 font-heading font-light text-center leading-tight"
-        style={{
-          fontSize: "clamp(1.25rem, 3vw, 1.625rem)",
-          color: "rgba(26,60,52,0.85)",
-          letterSpacing: "-0.01em",
-        }}
-      >
-        We chose <em>dry.</em>
-      </p>
-
-      <p
-        className="mt-3 font-accent uppercase text-center font-medium"
-        style={{
-          fontSize: "10px",
-          letterSpacing: "0.24em",
-          color: "rgba(26,60,52,0.58)",
-        }}
-      >
-        No preservatives. No exceptions.
-      </p>
-    </div>
-  );
-}
-
-/* ── Panel 1998: Herb names list ── */
-function Panel1998() {
-  const herbs = ["Neem", "Amla", "Shikakai", "Reetha", "Nagarmotha", "Mehendi"];
-  return (
-    <div className="absolute inset-0 flex flex-col items-center justify-center gap-0">
-      <span
-        className="absolute font-heading font-light select-none leading-none pointer-events-none"
-        style={{
-          fontSize: "clamp(8rem, 18vw, 15rem)",
-          color: "rgba(26,60,52,0.11)",
-          letterSpacing: "-0.04em",
-          bottom: "-0.1em",
-          right: "-0.03em",
-        }}
-        aria-hidden
-      >
-        1998
-      </span>
-
-      <div className="relative flex flex-col items-center" style={{ gap: "clamp(4px, 1vw, 10px)" }}>
-        {herbs.map((herb, i) => (
-          <p
-            key={herb}
-            className="font-heading font-normal"
-            style={{
-              fontSize: "clamp(1rem, 2.4vw, 1.35rem)",
-              letterSpacing: "0.14em",
-              color: `rgba(26,60,52,${0.88 - i * 0.06})`,
-              lineHeight: "1.35",
-            }}
-          >
-            {herb.toUpperCase()}
-          </p>
-        ))}
-      </div>
-
-      <div
-        style={{
-          width: "32px",
-          height: "1px",
-          backgroundColor: "rgba(26,60,52,0.35)",
-          marginTop: "clamp(14px, 3vw, 22px)",
-        }}
-      />
-
-      <p
-        className="mt-3 font-accent uppercase font-medium"
-        style={{
-          fontSize: "10px",
-          letterSpacing: "0.24em",
-          color: "rgba(26,60,52,0.58)",
-        }}
-      >
-        One ingredient. Nothing more.
+        Est. 1997 · Nashik, India
       </p>
     </div>
   );
@@ -364,7 +228,7 @@ function Panel2026() {
             color: "rgba(254,250,224,0.58)",
           }}
         >
-          1970 — 2026
+          1997 — 2026
         </p>
       </div>
     </div>
@@ -373,11 +237,9 @@ function Panel2026() {
 
 function renderPanel(num: string): React.ReactNode {
   switch (num) {
-    case "I":   return <Panel1970 />;
-    case "II":  return <Panel1985 />;
-    case "III": return <Panel1998 />;
-    case "IV":  return <Panel2010 />;
-    case "V":   return <Panel2026 />;
+    case "I":   return <Panel1997 />;
+    case "II":  return <Panel2010 />;
+    case "III": return <Panel2026 />;
     default:    return null;
   }
 }
@@ -439,7 +301,7 @@ export default function OurStoryPage() {
             className="relative font-accent text-[10px] tracking-[0.22em] uppercase mb-10"
             style={{ color: "rgba(26,60,52,0.40)" }}
           >
-            — OUR STORY · MADE IN INDIA · SINCE 1970
+            — OUR STORY · MADE IN INDIA · SINCE 1997
           </p>
 
           <h1
@@ -452,7 +314,7 @@ export default function OurStoryPage() {
           >
             One format.{" "}
             <span style={{ color: "var(--color-gold-deep)", fontStyle: "italic" }}>
-              Fifty-five years.
+              Twenty-nine years.
             </span>
             <br />
             Zero exceptions.
@@ -462,7 +324,7 @@ export default function OurStoryPage() {
             className="relative mt-8 font-body text-base leading-relaxed"
             style={{ color: "rgba(26,60,52,0.55)", maxWidth: "520px" }}
           >
-            We have made one thing since 1970: pure Ayurvedic herbal powder for skin
+            We have made one thing since 1997: pure Ayurvedic herbal powder for skin
             and hair. No preservatives. No synthetics. No reformulations to chase a trend.
             This is how — and why.
           </p>
@@ -567,7 +429,7 @@ export default function OurStoryPage() {
               maxWidth: "880px",
             }}
           >
-            <span style={{ color: "var(--color-bark)" }}>The next 55 years </span>
+            <span style={{ color: "var(--color-bark)" }}>The next 29 years </span>
             <span style={{ color: "var(--color-gold-deep)", fontStyle: "italic" }}>
               look exactly the same.
             </span>

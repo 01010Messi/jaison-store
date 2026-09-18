@@ -1,7 +1,7 @@
 "use client";
 
 const marqueeItems = [
-  { text: "55 YEARS", italic: false },
+  { text: "29 YEARS", italic: false },
   { text: "ONE FORMAT", italic: false },
   { text: "ZERO COMPROMISES", italic: false },
   { text: "CASH ON DELIVERY ACROSS INDIA", italic: false },

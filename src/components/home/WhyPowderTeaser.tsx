@@ -14,7 +14,7 @@ const claims = [
   {
     label: "Years, one format",
     value: "55",
-    note: "Same recipes since 1970. Never reformulated.",
+    note: "Same recipes since 1997. Never reformulated.",
   },
 ];
 

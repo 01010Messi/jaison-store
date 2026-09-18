@@ -9,7 +9,7 @@ const pillars = [
   {
     icon: "🧪",
     title: "No Preservatives. Ever.",
-    body: "Dry powders don't need preservatives to stay fresh. We decided in 1985 to never add a synthetic ingredient to any product. That decision hasn't changed.",
+    body: "Dry powders don't need preservatives to stay fresh. We decided from day one to never add a synthetic ingredient to any product. That decision hasn't changed.",
   },
   {
     icon: "📍",
@@ -18,8 +18,8 @@ const pillars = [
   },
   {
     icon: "🤲",
-    title: "A 55-Year Family Practice",
-    body: "What started as grinding herbs by hand for neighbours in 1970 is now a catalogue of 12 products. We've never changed the formula. We never will.",
+    title: "A 29-Year Family Practice",
+    body: "What started as grinding herbs by hand for neighbours in 1997 is now a catalogue of 12 products. We've never changed the formula. We never will.",
   },
 ];
 
