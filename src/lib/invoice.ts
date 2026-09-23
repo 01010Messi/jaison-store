@@ -183,7 +183,7 @@ export async function generateInvoice(data: InvoiceData): Promise<Buffer> {
       const amount = item.price * item.quantity;
       doc.text(`${index + 1}`, colX.sno, y, { width: 30 });
       doc.text(item.name, colX.desc, y, { width: 170 });
-      doc.text(item.hsnCode || "33049990", colX.hsn, y, { width: 50 });
+      doc.text(item.hsnCode || "30049011", colX.hsn, y, { width: 50 });
       doc.text(`${item.quantity}`, colX.qty, y, {
         width: 40,
         align: "center",

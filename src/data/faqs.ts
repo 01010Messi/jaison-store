@@ -121,7 +121,7 @@ export const faqGroups: FaqGroup[] = [
         id: "s5",
         title: "Are your products safe for all skin types?",
         content:
-          "Yes, with some guidance. Multani Mitti and Neem work especially well for oily and combination skin. Ubtan and Rose Petal Powder are great for normal to dry skin. Mixing your powder with curd or honey instead of water will make any formula more hydrating for dry skin types. We recommend exploring the 'How to Use' guide on each product page for skin-type specific tips.",
+          "Yes, with some guidance. Multani Mitti and Neem work especially well for oily and combination skin. Ubtan is great for normal to dry skin. Mixing your powder with curd or honey instead of water will make any formula more hydrating for dry skin types. We recommend exploring the 'How to Use' guide on each product page for skin-type specific tips.",
       },
     ],
   },
@@ -223,7 +223,7 @@ export const faqGroups: FaqGroup[] = [
         id: "q1",
         title: "Where do you source your herbs from?",
         content:
-          "We source our herbs from established, trusted agricultural suppliers across India. Each herb is sourced from regions where it grows naturally and abundantly — for example, amla from central India, neem from Maharashtra and Andhra Pradesh, and rose petals from Rajasthan. We prioritise freshness and traceable supply chains.",
+          "We source our herbs from established, trusted agricultural suppliers across India. Each herb is sourced from regions where it grows naturally and abundantly — for example, amla from central India and neem from Maharashtra and Andhra Pradesh. We prioritise freshness and traceable supply chains.",
       },
       {
         id: "q2",

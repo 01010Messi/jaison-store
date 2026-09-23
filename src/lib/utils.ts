@@ -77,7 +77,7 @@ export function calculateGST(
   customerState: string,
   companyState: string = "Maharashtra"
 ): { cgst: number; sgst: number; igst: number; total: number } {
-  const gstRate = 0.18; // 18% GST
+  const gstRate = 0.05; // 5% GST (HSN 3004 — Ayurvedic proprietary medicaments)
   const taxableAmount = subtotal;
 
   if (customerState.toLowerCase() === companyState.toLowerCase()) {

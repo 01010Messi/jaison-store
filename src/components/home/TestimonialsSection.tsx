@@ -9,7 +9,7 @@ const testimonials = [
     product: "Ubtan",
     avatarBg: "var(--color-gold)",
     quote:
-      "I've used Jaison's ubtan powder every week for eight years. Same turmeric-sandalwood blend — never needed anything else.",
+      "I've used Jaison's ubtan powder every week for eight years. Same trusted herbal blend — never needed anything else.",
   },
   {
     initial: "D",

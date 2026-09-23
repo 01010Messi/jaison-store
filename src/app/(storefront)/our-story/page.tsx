@@ -39,7 +39,7 @@ const acts = [
     num: "I",
     year: "1997",
     heading: "It started with one jar.",
-    body: "The first batch was ground by hand for a simple reason: every herbal jar on the market was more filler than herb. A traditional ubtan — turmeric, sandalwood, gram flour, rose petal — should be exactly those things and nothing else. So we ground our own. The first jars went to neighbours. They came back for more.",
+    body: "The first batch was ground by hand for a simple reason: every herbal jar on the market was more filler than herb. A traditional ubtan — Kachora, Nagarmotha, Bakuchi, Multani Mitti — should be exactly those things and nothing else. So we ground our own. The first jars went to neighbours. They came back for more.",
     imageSide: "left" as const,
     imageBg: "#C4A882",
   },

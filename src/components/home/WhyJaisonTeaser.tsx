@@ -14,7 +14,7 @@ const pillars = [
   {
     icon: "📍",
     title: "Sourced & Made in India",
-    body: "Our herbs are sourced from the regions where they grow best — Amla from central India, Neem from Maharashtra, Rose petals from Rajasthan. Processed in Nashik.",
+    body: "Our herbs are sourced from the regions where they grow best — Amla from central India, Neem from Maharashtra. Processed in Nashik.",
   },
   {
     icon: "🤲",

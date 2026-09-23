@@ -39,10 +39,10 @@ export const blogPosts: BlogPost[] = [
       "ayurvedic face pack",
     ],
     relatedProducts: ["ubtan-powder", "multani-mitti", "orange-peel-powder"],
-    content: `Ubtan is a traditional Ayurvedic blend of turmeric, sandalwood, gram flour, and herbs used for over 5,000 years to brighten skin, remove sun tan, and exfoliate naturally. It combines gentle physical exfoliation with proven anti-inflammatory and antibacterial plant compounds to deliver glowing skin without synthetic chemicals.
+    content: `Ubtan is a traditional Ayurvedic blend of herbs — led by Kachora, Nagarmotha, Bakuchi, Orange Peel and Multani Mitti — used for centuries to brighten skin, remove sun tan, and exfoliate naturally. It combines gentle physical exfoliation with anti-inflammatory, astringent and antioxidant-rich plant compounds to deliver glowing skin without synthetic chemicals.
 
 > **Key Takeaways**
-> - Curcumin in turmeric inhibits tyrosinase, the enzyme controlling melanin production, reducing dark spots at the cellular level (Journal of Ethnopharmacology, 2012)
+> - Bakuchi (Psoralea corylifolia) contains psoralen — the same botanical family behind bakuchiol, often discussed as a natural retinol alternative
 > - Ubtan's natural AHAs from haritaki match the exfoliating class used in clinical-grade skincare
 > - Use 2-3 times weekly for visible brightness improvement within 3-4 weeks
 
@@ -50,33 +50,35 @@ Ubtan is one of India's oldest beauty rituals — a tradition passed down throug
 
 ## What Is Ubtan?
 
-Ubtan is a paste made from a blend of natural ingredients like turmeric, sandalwood, gram flour, and other herbs. Unlike commercial face packs that rely on chemicals, ubtan works with your skin's natural biology — gently exfoliating dead cells, unclogging pores, and nourishing from within.
+Ubtan is a paste made from a blend of natural roots, rhizomes and herbs — Kachora, Nagarmotha, Bakuchi, Orange Peel, Multani Mitti, Haritaki and more. Unlike commercial face packs that rely on chemicals, ubtan works with your skin's natural biology — gently exfoliating dead cells, unclogging pores, and nourishing from within.
 
 Traditional ubtan recipes vary from family to family, but the core principle remains the same: pure, natural ingredients that have been trusted for thousands of years.
 
 ## Benefits of Using Ubtan on Your Skin
 
-**Brightens and evens skin tone** — The combination of turmeric and sandalwood in ubtan helps reduce pigmentation and dark spots, revealing brighter, more even-toned skin with regular use.
+**Brightens and evens skin tone** — Kachora and Nagarmotha work together in ubtan to help reduce pigmentation and dark spots, revealing brighter, more even-toned skin with regular use.
 
-**Natural exfoliation** — The gram flour and almond powder in ubtan act as gentle physical exfoliants, removing dead skin cells without the harshness of chemical scrubs.
+**Natural exfoliation** — Multani Mitti and the astringent herbs in ubtan gently draw out impurities and lift away dead skin cells without the harshness of chemical scrubs.
 
-**Anti-ageing properties** — Bakuchi in traditional ubtan formulations promotes collagen production, while haritaki provides natural AHAs that smooth fine lines.
+**Anti-ageing properties** — Bakuchi in Jaison's ubtan formulation promotes collagen production, while haritaki provides natural AHAs that smooth fine lines.
 
-**Reduces tan and sun damage** — Ubtan is one of the most effective natural de-tanning treatments. The turmeric and sandalwood work together to reverse sun damage over time.
+**Reduces tan and sun damage** — Ubtan is one of the most effective natural de-tanning treatments. Orange Peel's Vitamin C and Nagarmotha's astringent action work together to reverse sun damage over time.
 
-**Controls acne** — The antibacterial properties of turmeric combined with the oil-absorbing ability of gram flour make ubtan excellent for acne-prone skin.
+**Controls acne** — The antibacterial properties of neem and bakuchi, combined with Multani Mitti's oil-absorbing action, make ubtan excellent for acne-prone skin.
 
 ## The Science Behind Ubtan
 
-**Curcumin** (turmeric's active compound) inhibits tyrosinase, the enzyme controlling melanin production, reducing dark spots and uneven tone at the cellular level. A 2012 study published in the *Journal of Ethnopharmacology* confirmed turmeric extract's statistically significant depigmentation effect compared to a placebo control group. That's real, peer-reviewed evidence, not just tradition.
+**Bakuchi (Psoralea corylifolia)** in Jaison's ubtan blend contains psoralen — the same family of compounds behind bakuchiol, widely discussed as a natural retinol alternative. It's traditionally valued in Ayurveda for promoting a more even, youthful-looking skin tone.
 
-**Santalol** (sandalwood's essential oil compound) is documented in dermatology research to have significant anti-inflammatory and antimicrobial properties. It calms redness while sandalwood's cooling nature soothes irritated skin simultaneously.
+**Kachora (Curcuma zedoaria)**, the lead ingredient in our formula, is a wild turmeric relative long used in Ayurveda as a skin-brightening, anti-inflammatory rhizome — the aromatic backbone of the blend.
 
-**Saponins** in gram flour (besan) act as natural surfactant molecules that lift oil and dirt from pores without stripping the skin barrier. They're the same class of cleansing compounds used in gentle baby skincare. Gram flour also provides mild mechanical exfoliation, making ubtan a two-mechanism cleanser in one.
+**Nagarmotha (Cyperus rotundus)** is prized for its cooling, astringent action. It helps tighten pores and calm irritated skin, while its purifying properties support a clearer complexion.
 
-**Bakuchi (Psoralea corylifolia)** in Jaison's ubtan blend contains psoralen, a compound studied for its ability to stimulate melanocytes and promote a more even skin tone. It's sometimes called "natural retinol" for this reason. **Haritaki** rounds it out with natural alpha-hydroxy acids (AHAs), the same class of chemical exfoliants used in clinical-grade skincare products.
+**Multani Mitti (Fuller's Earth)** is a mineral-rich clay that draws out excess oil and impurities without stripping the skin, giving ubtan its deep-cleansing character.
 
-Worth noting: traditional ubtan recipes weren't random combinations. They were developed over centuries through careful observation of what worked, and modern phytochemistry keeps confirming why.
+**Haritaki** rounds out the blend with natural alpha-hydroxy acids (AHAs), the same class of exfoliants used in clinical-grade skincare products, while **Orange Peel** contributes Vitamin C and antioxidants for brightening.
+
+Worth noting: traditional ubtan recipes weren't random combinations. They were developed over centuries through careful observation of what worked, blending cooling, astringent and exfoliating herbs into one balanced formula.
 
 ## How to Prepare Ubtan Face Pack
 
@@ -165,9 +167,9 @@ Ubtan addresses existing tan by exfoliating tanned skin cells and inhibiting new
 
 Absolutely. Ubtan's traditionally applied to the whole body, especially before events like weddings. The same recipes work for body application. Just mix a larger quantity and focus on areas prone to tan: neck, arms, legs, knees, and elbows, which tend to be noticeably darker.
 
-**My ubtan turned my skin yellow. Is that normal?**
+**My ubtan left a light tint on my skin. Is that normal?**
 
-Yes. Turmeric temporarily tints the skin a light yellow that fades within 30-60 minutes of rinsing. Rinse thoroughly and follow with plain water. If the yellow tint persists, reduce the turmeric proportion in your recipe. Some people add a few drops of milk while rinsing to counteract it quickly.
+Yes. Some of the herbs in ubtan, like Kachora and Haldi, carry a natural earthy pigment that can leave a very light, temporary tint on the skin. It typically fades within 30-60 minutes of rinsing. Rinse thoroughly with plain water — a light moisturiser afterwards helps it fade faster if any tint lingers.
 
 **Can men use ubtan?**
 
@@ -175,7 +177,7 @@ Ubtan has no gender-specific application. In traditional Ayurvedic culture, it w
 
 ## Why Choose Jaison's Ubtan Powder?
 
-Our ubtan is crafted from a traditional Ayurvedic recipe featuring bakuchi, haritaki, turmeric, sandalwood, gram flour, almond powder, rose petals, saffron, and camphor. Every ingredient is 100% natural with zero chemicals, ensuring your skin gets only the purest care. Each batch is carefully processed to preserve the potency of every herb.
+Our ubtan is crafted from a traditional Ayurvedic recipe featuring Kachora, Nagarmotha, Bakuchi, Orange Peel, Multani Mitti, Haritaki and more — naturally sun-dried herbs, flowers, fruits and seeds. Every ingredient is 100% natural with zero chemicals, ensuring your skin gets only the purest care. Each batch is carefully processed to preserve the potency of every herb.
 
 Ubtan isn't just a face pack — it's a self-care ritual that connects you to centuries of Indian beauty wisdom. It works best as the weekly exfoliating step in a [complete Ayurvedic skincare routine](/blog/ayurvedic-skincare-routine-for-beginners) — the brightening anchor in any natural skin regimen. Give your skin the gift of this ancient tradition, and watch it thank you with a natural, healthy glow.`,
   },
@@ -437,7 +439,7 @@ One more thing worth knowing: Multani Mitti's swelling index, how much it expand
 
 **Method:** Make a slightly thick paste. Apply and leave for 10 minutes. Gently scrub in circular motions while removing. Rinse.
 
-**Why it works:** [Ubtan](/blog/how-to-use-ubtan-for-glowing-skin) brings its own brightening superpowers — turmeric, sandalwood, and saffron — which complement Multani Mitti's deep cleansing to reveal noticeably brighter, smoother skin in just one use.
+**Why it works:** [Ubtan](/blog/how-to-use-ubtan-for-glowing-skin) brings its own brightening superpowers — Kachora, Nagarmotha, and Orange Peel — which complement Multani Mitti's deep cleansing to reveal noticeably brighter, smoother skin in just one use.
 
 ## Tips for Best Results
 
@@ -921,7 +923,7 @@ This is the core of Ayurvedic skincare — the face pack. Choose based on your s
 
 **For acne-prone skin:** Neem powder + Multani Mitti + rose water. Fights bacteria while deep-cleaning pores.
 
-**For dull skin:** Ubtan powder + rose water. The turmeric and sandalwood in ubtan brighten and revive tired-looking skin — see the full [ubtan guide for glowing skin](/blog/how-to-use-ubtan-for-glowing-skin) for recipe variations and timing.
+**For dull skin:** Ubtan powder + rose water. The Kachora and Nagarmotha in ubtan brighten and revive tired-looking skin — see the full [ubtan guide for glowing skin](/blog/how-to-use-ubtan-for-glowing-skin) for recipe variations and timing.
 
 Apply the pack, leave for 15 minutes, scrub gently while removing, and rinse with cool water.
 
