@@ -20,6 +20,10 @@ const nextConfig = {
       {
         protocol: "https",
         hostname: "res.cloudinary.com",
+        // Cloudinary is a shared multi-tenant domain — scope to our own
+        // cloud name so this can't be used as an open image proxy for
+        // any other Cloudinary account's content.
+        pathname: `/${process.env.CLOUDINARY_CLOUD_NAME}/**`,
       },
     ],
   },
