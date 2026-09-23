@@ -23,7 +23,7 @@ export default function StorefrontLayout({
       <Header />
       <CartDrawer />
       <LeadMagnetPopup />
-      <main className="min-h-screen pt-[138px] md:pt-[168px]">
+      <main className="min-h-screen pt-[82px] md:pt-[168px]">
         {children}
       </main>
       <Footer />

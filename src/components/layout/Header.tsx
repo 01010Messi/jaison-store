@@ -122,25 +122,67 @@ export default function Header() {
         {/* Row 1 — Announcement marquee */}
         <AnnouncementBar />
 
-        {/* Row 2 — Logo only */}
-        <div className="bg-cream py-1 flex flex-col items-center">
-          <Link href="/" className="flex-shrink-0 overflow-hidden h-16 md:h-20 flex items-center">
+        {/* Row 2 — Logo only (desktop). Mobile skips this row entirely —
+            the logo lives in the single combined row below instead, so
+            hamburger/logo/cart sit level on one line instead of stacking
+            two header rows on top of each other. */}
+        <div className="hidden md:flex bg-cream py-1 flex-col items-center">
+          <Link href="/" className="flex-shrink-0 overflow-hidden h-20 flex items-center">
             <Image
               src="/images/logo.png"
               alt="Jaison Herbals — Natural Ayurvedic Herbal Powders for Skin and Hair"
               width={260}
               height={96}
-              sizes="(max-width: 768px) 190px, 260px"
-              className="h-28 md:h-36 w-auto mix-blend-multiply -my-6"
+              sizes="260px"
+              className="h-36 w-auto mix-blend-multiply -my-6"
               priority
             />
           </Link>
         </div>
 
-        {/* Row 3 — Navigation (desktop) / Hamburger row (mobile) */}
-        <div className="bg-cream border-b border-bark/10">
+        {/* Row 2 (mobile) — hamburger | logo | POTLI, one level, single row */}
+        <div className="md:hidden bg-cream border-b border-bark/10 relative flex items-center justify-between px-4 py-1.5">
+          <button
+            onClick={() => setIsMobileMenuOpen(true)}
+            className="p-1.5 text-bark/70 hover:text-bark transition-colors"
+            aria-label="Open menu"
+          >
+            <Menu className="h-5 w-5" />
+          </button>
+
+          <Link
+            href="/"
+            className="absolute left-1/2 -translate-x-1/2 flex-shrink-0 overflow-hidden h-[49px] flex items-center"
+          >
+            <Image
+              src="/images/logo.png"
+              alt="Jaison Herbals — Natural Ayurvedic Herbal Powders for Skin and Hair"
+              width={213}
+              height={78}
+              sizes="170px"
+              className="h-[78px] w-auto mix-blend-multiply -my-[17px]"
+              priority
+            />
+          </Link>
+
+          <button
+            onClick={toggleCart}
+            className="flex items-center gap-1.5 bg-bark text-cream rounded-full px-3 py-1.5 hover:bg-bark/90 transition-colors relative"
+            aria-label="Potli"
+          >
+            <ShoppingBag className="h-4 w-4" />
+            {count > 0 && (
+              <span className="absolute -top-1.5 -right-1.5 flex items-center justify-center w-4 h-4 text-[9px] font-accent font-bold bg-gold-light text-bark rounded-full">
+                {count}
+              </span>
+            )}
+          </button>
+        </div>
+
+        {/* Row 3 — Navigation (desktop only) */}
+        <div className="hidden md:block bg-cream border-b border-bark/10">
           {/* Desktop nav */}
-          <div className="hidden md:block relative">
+          <div className="relative">
             {/* Left: Search */}
             <div className="absolute left-4 top-1/2 -translate-y-1/2">
               <button
@@ -233,29 +275,6 @@ export default function Header() {
                 )}
               </button>
             </div>
-          </div>
-
-          {/* Mobile row: hamburger | gap | POTLI */}
-          <div className="md:hidden flex items-center justify-between px-4 py-2">
-            <button
-              onClick={() => setIsMobileMenuOpen(true)}
-              className="p-1.5 text-bark/70 hover:text-bark transition-colors"
-              aria-label="Open menu"
-            >
-              <Menu className="h-5 w-5" />
-            </button>
-            <button
-              onClick={toggleCart}
-              className="flex items-center gap-1.5 bg-bark text-cream rounded-full px-3 py-1.5 hover:bg-bark/90 transition-colors relative"
-              aria-label="Potli"
-            >
-              <ShoppingBag className="h-4 w-4" />
-              {count > 0 && (
-                <span className="absolute -top-1.5 -right-1.5 flex items-center justify-center w-4 h-4 text-[9px] font-accent font-bold bg-gold-light text-bark rounded-full">
-                  {count}
-                </span>
-              )}
-            </button>
           </div>
         </div>
 
