@@ -29,28 +29,28 @@ export const categories = [
     slug: "skin-care",
     description:
       "Natural, herbal skin care products crafted from pure ayurvedic ingredients for radiant, healthy skin.",
-    image: "/images/categories/skin-care.png",
+    image: "/images/categories/skin-care.webp",
   },
   {
     name: "Hair Care",
     slug: "hair-care",
     description:
       "Traditional hair care powders and treatments to nourish, strengthen, and revitalize your hair naturally.",
-    image: "/images/categories/hair-care.png",
+    image: "/images/categories/hair-care.webp",
   },
   {
     name: "Face Care",
     slug: "face-care",
     description:
       "Holistic face care solutions made from earth's finest herbs for complete wellness.",
-    image: "/images/categories/face-care.png",
+    image: "/images/categories/face-care.webp",
   },
   {
     name: "Combos",
     slug: "combos",
     description:
       "Curated herbal powder combos at unbeatable prices. Save more with our specially bundled Ayurvedic care sets.",
-    image: "/images/products/combo-jaison-special.png",
+    image: "/images/products/combo-jaison-special.webp",
   },
 ];
 
@@ -77,11 +77,11 @@ export const products: ProductData[] = [
     image: "/images/products/ubtan.webp",
     images: [
       "/images/products/ubtan.webp",
-      "/images/products/ubtan-essence.png",
-      "/images/products/ubtan-herbs.png",
-      "/images/products/ubtan-benefits.png",
-      "/images/products/ubtan-how-to-use.png",
-      "/images/products/ubtan-radiant.png",
+      "/images/products/ubtan-essence.webp",
+      "/images/products/ubtan-herbs.webp",
+      "/images/products/ubtan-benefits.webp",
+      "/images/products/ubtan-how-to-use.webp",
+      "/images/products/ubtan-radiant.webp",
       "/images/products/ubtan-styled2.webp",
     ],
     tags: ["bestseller", "skin-brightening", "anti-tan", "face-pack"],
@@ -108,9 +108,9 @@ export const products: ProductData[] = [
     image: "/images/products/amla-front.webp",
     images: [
       "/images/products/amla-front.webp",
-      "/images/products/amla-vitamin-c.png",
-      "/images/products/amla-benefits.png",
-      "/images/products/amla-how-to-use.png",
+      "/images/products/amla-vitamin-c.webp",
+      "/images/products/amla-benefits.webp",
+      "/images/products/amla-how-to-use.webp",
       "/images/products/amla-back.webp",
       "/images/products/amla-styled.webp",
     ],
@@ -138,9 +138,9 @@ export const products: ProductData[] = [
     image: "/images/products/neem-front.webp",
     images: [
       "/images/products/neem-front.webp",
-      "/images/products/neem-hero.png",
-      "/images/products/neem-benefits.png",
-      "/images/products/neem-how-to-use.png",
+      "/images/products/neem-hero.webp",
+      "/images/products/neem-benefits.webp",
+      "/images/products/neem-how-to-use.webp",
       "/images/products/neem-back.webp",
       "/images/products/neem-styled.webp",
     ],
@@ -203,9 +203,9 @@ export const products: ProductData[] = [
     image: "/images/products/multani-front.webp",
     images: [
       "/images/products/multani-front.webp",
-      "/images/products/multani-hero.png",
-      "/images/products/multani-benefits.png",
-      "/images/products/multani-how-to-use.png",
+      "/images/products/multani-hero.webp",
+      "/images/products/multani-benefits.webp",
+      "/images/products/multani-how-to-use.webp",
       "/images/products/multani-back.webp",
       "/images/products/multani-styled.webp",
     ],
@@ -233,9 +233,9 @@ export const products: ProductData[] = [
     image: "/images/products/orange-front.webp",
     images: [
       "/images/products/orange-front.webp",
-      "/images/products/orange-hero.png",
-      "/images/products/orange-benefits.png",
-      "/images/products/orange-ingredients.png",
+      "/images/products/orange-hero.webp",
+      "/images/products/orange-benefits.webp",
+      "/images/products/orange-ingredients.webp",
       "/images/products/orange-back.webp",
       "/images/products/orange-styled.webp",
     ],
@@ -290,10 +290,10 @@ export const products: ProductData[] = [
     image: "/images/products/reetha-front.webp",
     images: [
       "/images/products/reetha-front.webp",
-      "/images/products/reetha-hero.png",
-      "/images/products/reetha-product.png",
-      "/images/products/reetha-lifestyle.png",
-      "/images/products/reetha-benefits.png",
+      "/images/products/reetha-hero.webp",
+      "/images/products/reetha-product.webp",
+      "/images/products/reetha-lifestyle.webp",
+      "/images/products/reetha-benefits.webp",
       "/images/products/reetha-back.webp",
       "/images/products/reetha-styled.webp",
       "/images/products/reetha-styled2.webp",
@@ -322,9 +322,9 @@ export const products: ProductData[] = [
     image: "/images/products/nagmotha-front.webp",
     images: [
       "/images/products/nagmotha-front.webp",
-      "/images/products/nagmotha-hero.png",
-      "/images/products/nagmotha-benefits.png",
-      "/images/products/nagmotha-ingredients.png",
+      "/images/products/nagmotha-hero.webp",
+      "/images/products/nagmotha-benefits.webp",
+      "/images/products/nagmotha-ingredients.webp",
       "/images/products/nagmotha-back.webp",
       "/images/products/nagmotha-styled.webp",
       "/images/products/nagmotha-styled2.webp",
@@ -353,9 +353,9 @@ export const products: ProductData[] = [
       "For a Natural Hair Wash:\nMix equal parts of all three powders (1 tbsp each) with warm water to form a paste.\nApply evenly to wet hair and scalp.\nGently massage for 2-3 minutes.\nLeave on for 10-15 minutes.\nRinse thoroughly with water. No shampoo needed!\n\nFor a Hair Mask:\nMix 2 tbsp of the combined powders with curd or coconut milk.\nApply to hair from root to tip.\nLeave for 30-45 minutes.\nWash off with plain water for silky, nourished hair.",
     benefits:
       "Complete herbal hair wash — replaces chemical shampoos.\nAamla strengthens roots and prevents premature greying.\nReetha naturally cleanses without stripping oils.\nShikakai conditions and detangles for smooth, manageable hair.\nFights dandruff and soothes itchy scalp.\nPromotes healthy hair growth with regular use.\nSave 35% compared to individual purchases.",
-    image: "/images/products/combo-hair-trio.png",
+    image: "/images/products/combo-hair-trio.webp",
     images: [
-      "/images/products/combo-hair-trio.png",
+      "/images/products/combo-hair-trio.webp",
     ],
     tags: ["combo", "hair-care", "natural-shampoo", "anti-dandruff", "value-pack"],
     isFeatured: false,
@@ -379,9 +379,9 @@ export const products: ProductData[] = [
       "For Natural Hair Wash: Mix Aamla + Reetha + Shikakai in equal parts with warm water. Apply to scalp, massage gently, leave for 10-15 minutes, and rinse.\n\nFor Dandruff Treatment: Mix Nagarmotha powder with coconut oil, apply to scalp, leave overnight, and wash 2-3 times a week.\n\nFor Hair Colour & Conditioning: Mix Mehendi with warm water and a few drops of lemon juice. Apply to hair, leave for 1-2 hours, and rinse for rich colour and deep conditioning.\n\nFor Complete Care: Alternate between the hair wash (2-3x/week) and Mehendi treatment (1-2x/month) for best results.",
     benefits:
       "Complete 5-in-1 Ayurvedic hair care system.\nReplaces shampoo, conditioner, anti-dandruff treatment, hair colour, and scalp therapy.\nAamla strengthens and prevents greying.\nReetha gently cleanses without chemicals.\nShikakai conditions and adds natural shine.\nNagarmotha purifies scalp and fights dandruff.\nMehendi colours naturally and deeply conditions.\nSave 35% compared to individual purchases.",
-    image: "/images/products/combo-premium-hair-2.png",
+    image: "/images/products/combo-premium-hair-2.webp",
     images: [
-      "/images/products/combo-premium-hair-2.png",
+      "/images/products/combo-premium-hair-2.webp",
     ],
     tags: ["combo", "hair-care", "premium", "complete-care", "value-pack", "bestseller"],
     isFeatured: true,
@@ -405,9 +405,9 @@ export const products: ProductData[] = [
       "For Scalp Detox Mask:\nMix 1 tbsp each of Neem and Nagarmotha powder with curd to form a paste.\nApply directly to the scalp, parting hair in sections.\nLeave for 20-30 minutes.\nRinse with an Aamla wash (1 tbsp Aamla + water).\n\nFor Anti-Dandruff Oil Treatment:\nMix Nagarmotha and Neem powder with warm coconut oil.\nApply to scalp, leave overnight.\nWash 2-3 times a week for best results.\n\nFor Hair Strengthening Rinse:\nMix Aamla powder with warm water, apply after washing hair as a final rinse for added strength and shine.",
     benefits:
       "Targets the root cause of dandruff — scalp bacteria and fungus.\nNeem's antibacterial properties soothe itchy, irritated scalp.\nNagarmotha purifies scalp buildup and regulates oil.\nAamla strengthens follicles and promotes regrowth.\nReduces hair fall caused by scalp issues.\nNatural alternative to medicated anti-dandruff shampoos.\nSave 35% compared to individual purchases.",
-    image: "/images/products/combo-scalp-care.png",
+    image: "/images/products/combo-scalp-care.webp",
     images: [
-      "/images/products/combo-scalp-care.png",
+      "/images/products/combo-scalp-care.webp",
     ],
     tags: ["combo", "scalp-care", "anti-dandruff", "hair-fall", "value-pack"],
     isFeatured: false,
@@ -431,9 +431,9 @@ export const products: ProductData[] = [
       "For Hair (2-3x/week): Mix Shikakai + Aamla with warm water, apply to hair and scalp, leave 10-15 minutes, rinse.\n\nFor Scalp Treatment: Mix Neem powder with coconut oil, apply to scalp, leave overnight, wash off.\n\nFor Skin Cleansing: Mix Multani Mitti with rose water, apply to face, let dry 10-15 minutes, rinse for clean, tight pores.\n\nFor Glowing Skin: Mix Ubtan with rose water or milk, apply to face and neck, scrub gently, rinse after 10-15 minutes for radiant skin.\n\nFor best results, use the hair care routine 2-3 times a week and the skin care routine 3-4 times a week.",
     benefits:
       "Complete head-to-toe herbal care in one bundle.\nShikakai conditions hair naturally without chemicals.\nAamla strengthens roots and prevents premature greying.\nNeem fights dandruff, acne, and skin infections.\nMultani Mitti deep-cleanses pores and controls oil.\nUbtan brightens skin, reduces tan, and gives instant glow.\nOur biggest discount — save 45% on 5 premium products.\nPerfect gift for someone starting their Ayurvedic journey.",
-    image: "/images/products/combo-jaison-special.png",
+    image: "/images/products/combo-jaison-special.webp",
     images: [
-      "/images/products/combo-jaison-special.png",
+      "/images/products/combo-jaison-special.webp",
     ],
     tags: ["combo", "special", "hair-care", "skin-care", "complete-care", "value-pack", "bestseller"],
     isFeatured: true,

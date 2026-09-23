@@ -23,8 +23,8 @@ vercel --prod --yes  # deploy to production
 |---|---|
 | `CLAUDE.md` | Full project reference — stack, DB models, env vars, routes, deployment |
 | `DESIGN.md` | Design system — color tokens, typography, spacing, component rules |
-| `DESIGN-AUDIT.md` | Code quality audit (June 2026) — 23 issues, 58/100 score |
-| `AUDIT-ACTIONS.md` | Website audit action tracker — what's done, what's pending |
+| `docs/DESIGN-AUDIT.md` | Code quality audit (June 2026) — 23 issues, 58/100 score |
+| `docs/AUDIT-ACTIONS.md` | Website audit action tracker — what's done, what's pending |
 | `CONTENT.md` | Editable copy deck for all storefront text |
 
 ## Branch strategy

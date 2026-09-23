@@ -7,12 +7,21 @@ const nextConfig = {
     // Tree-shake large icon/animation packages to only include used exports.
     // Reduces the 219 KiB of unused JS flagged by PSI.
     optimizePackageImports: ["lucide-react", "framer-motion"],
+    serverActions: {
+      bodySizeLimit: "2mb",
+    },
   },
   images: {
     // Only the widths your layouts actually need
     deviceSizes: [640, 828, 1080, 1280, 1920],
     imageSizes: [64, 128, 256, 384],
     formats: ["image/webp"],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "res.cloudinary.com",
+      },
+    ],
   },
   async redirects() {
     return [

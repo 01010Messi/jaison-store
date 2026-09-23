@@ -75,7 +75,7 @@ Watermarks use bigger clamps (`clamp(8rem, 24vw, 20rem)` etc.) — decorative, s
 ## 5. Color & contrast rules
 
 - **Muted text:** minimum `/72` on cream/parchment, minimum `/70` on bark. Anything below those opacities is *decorative only* (watermarks, ornament glyphs, icon fills) and must be `aria-hidden`.
-  - **Why `/72`, not `/60`:** measured contrast — `bark/60` on cream is 3.59:1, below the 4.5:1 AA floor for normal text. `bark/72` clears AA on both cream (5.02:1) and parchment (4.53:1). The `/70` bark-surface floor was already correct (`cream/70` on bark measures 6.50:1) and is unchanged. Full measurements in `ACCESSIBILITY-AUDIT.md`.
+  - **Why `/72`, not `/60`:** measured contrast — `bark/60` on cream is 3.59:1, below the 4.5:1 AA floor for normal text. `bark/72` clears AA on both cream (5.02:1) and parchment (4.53:1). The `/70` bark-surface floor was already correct (`cream/70` on bark measures 6.50:1) and is unchanged. Full measurements documented in the session 17 accessibility audit (see CLAUDE.md changelog).
   - Non-text UI elements (icon fills, decorative glyphs) only need 3:1 (WCAG 1.4.11) — `bark/60` is fine for those, just never for text a user reads.
 - Gold numerals/ornaments are decorative; the step semantics are duplicated for screen readers in `StepCard` (`sr-only`).
 - `terracotta` is the accessible accent for small text; `terracotta-light` only at display sizes. Never pair light text (`cream`, `white`) directly on `gold`/`gold-light` for content a user must read — both measure well under 3:1.

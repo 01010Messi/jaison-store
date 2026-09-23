@@ -16,7 +16,7 @@ export default function HeroSection() {
           vertical sliver. Desktop: a viewport-height band. */}
       <div className="relative w-full aspect-[4/3] sm:aspect-[16/10] md:aspect-auto md:h-[min(72vh,640px)]">
         <Image
-          src="/images/hero-group.jpg"
+          src="/images/hero-group.webp"
           alt="Jaison herbal powders — the full range, ground fresh"
           fill
           className="object-cover"
