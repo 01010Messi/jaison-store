@@ -860,7 +860,7 @@ Your skin has an incredible ability to heal itself when given the right tools. N
 
 > **Key Takeaways**
 > - Healthy skin pH is 4.5-5.5; most commercial face washes sit at 6.5-8, disrupting this balance with every use
-> - Curcumin in turmeric has 8x more antioxidant activity than Vitamin E in multiple studies
+> - Ubtan's Bakuchi and Kachora deliver antioxidant and brightening compounds without synthetic actives
 > - A 2014 study in the Journal of Investigative Dermatology confirmed SLS-based cleansers disrupt the skin's 1.5 trillion-organism microbiome
 
 If you've been thinking about switching to natural skincare but feel overwhelmed by all the information out there, this guide is for you. Ayurvedic skincare isn't complicated — in fact, it's simpler than most modern routines. It's about working with your skin, not against it, using ingredients that nature has perfected over millions of years.
@@ -879,7 +879,7 @@ The results speak for themselves — Indian women have maintained beautiful skin
 
 **The skin microbiome:** Research from the *Journal of Investigative Dermatology* (2014) confirmed that healthy skin hosts a diverse microbiome of beneficial organisms that protect against pathogens. SLS-based cleansers disrupt this ecosystem with every use. Natural herb cleansers don't.
 
-**Antioxidant delivery:** Orange peel powder's Vitamin C is a direct antioxidant. Neem's nimbin and nimbidin are free radical scavengers. Turmeric's curcumin has been shown in multiple studies to have 8x more antioxidant activity than Vitamin E. Ubtan delivers antioxidants in a form the skin can absorb directly, not through a serum delivery system.
+**Antioxidant delivery:** Orange peel powder's Vitamin C is a direct antioxidant. Neem's nimbin and nimbidin are free radical scavengers. Bakuchi and Kachora, the lead herbs in ubtan, contribute their own antioxidant and anti-inflammatory compounds. Ubtan delivers antioxidants in a form the skin can absorb directly, not through a serum delivery system.
 
 Here's a comparison worth knowing: Retinol (promotes cell turnover) equals bakuchi. Hyaluronic acid (hydration) equals aloe vera. AHAs (exfoliation) equal amla and orange peel citric acid. Benzoyl peroxide (antibacterial) equals neem. The Ayurvedic system had functional equivalents to every modern skincare active, centuries before they were synthesised in a lab.
 
@@ -1156,7 +1156,7 @@ A mild tingling sensation is normal. It's the citric acid gently exfoliating the
 
 **Can orange peel powder remove a dark tan completely?**
 
-Orange peel addresses tan through two mechanisms: exfoliating the tanned upper skin layer and inhibiting new melanin production via PMFs. With 2-3 applications per week, most moderate tans fade significantly within 3-4 weeks. For faster results, combine with ubtan in the same pack, since ubtan adds turmeric's tyrosinase inhibition as a second mechanism.
+Orange peel addresses tan through two mechanisms: exfoliating the tanned upper skin layer and inhibiting new melanin production via PMFs. With 2-3 applications per week, most moderate tans fade significantly within 3-4 weeks. For faster results, combine with ubtan in the same pack, since ubtan's Kachora and Nagarmotha add their own brightening, astringent action as a second mechanism.
 
 **Is orange peel powder different from orange extract in commercial products?**
 
